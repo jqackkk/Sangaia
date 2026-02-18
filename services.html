@@ -3,11 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Citizenship - The United Provinces of Sangaia</title>
-    <!-- Same styles as index.html -->
+    <title>Services - The United Provinces of Sangaia</title>
     <style>
         /* --- FRUTIGER AERO / SKEUOMORPHIC STYLES --- */
-        
         :root {
             --glass-blue: rgba(220, 245, 255, 0.85);
             --gloss-highlight: rgba(255, 255, 255, 0.9);
@@ -15,8 +13,6 @@
             --fresh-green: #7cba01;
             --text-dark: #2c3e50;
             --text-light: #ffffff;
-
-            /* DEFINED STRIPES */
             --stripes: repeating-linear-gradient(
                 0deg,
                 #f2f2f2,
@@ -329,20 +325,6 @@
         ::-webkit-scrollbar-thumb:hover { background: #0099cc; }
 
         p { line-height: 1.6; margin-bottom: 15px; }
-
-        /* STATUS BOX STYLES */
-        #status-result {
-            margin-top: 15px;
-            padding: 10px;
-            border-radius: 5px;
-            border: 1px solid #ccc;
-            background: #f9f9f9;
-            display: none; /* Hidden by default */
-        }
-        #status-result.success { background: #e8f5e9; border-color: #a5d6a7; color: #2e7d32; }
-        #status-result.pending { background: #fff3e0; border-color: #ffe0b2; color: #ef6c00; }
-        #status-result.error { background: #ffebee; border-color: #ef9a9a; color: #c62828; }
-
     </style>
 </head>
 <body>
@@ -358,8 +340,8 @@
         <ul id="globalnav">
             <li><a href="index.html">Home</a></li>
             <li><a href="government.html">Government</a></li>
-            <li><a href="citizenship.html" class="active">Citizenship</a></li>
-            <li><a href="services.html">Services</a></li>
+            <li><a href="citizenship.html">Citizenship</a></li>
+            <li><a href="services.html" class="active">Services</a></li>
             <li><a href="about.html">About the Aeretocrat</a></li>
         </ul>
     </nav>
@@ -369,77 +351,98 @@
             
             <div class="main-col">
                 <div class="glass-panel">
-                    <h2>Unbiased & Open to All</h2>
+                    <h2>Ministry Directory</h2>
                     <p>
-                        Sangaia fundamentally rejects the arbitrary classifications used by other nations to divide people. We do not filter applicants based on race, sex, sexual orientation, marital status, or lineage.
+                        Sangaia provides streamlined access to all essential services through our federal ministries. Our digital-first infrastructure allows citizens to access support, information, and rights management from a single portal.
                     </p>
                     
-                    <h3>Pathways to Citizenship</h3>
-                    <div style="margin-top: 20px; display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
-                        <div style="background: rgba(0,0,0,0.03); padding: 10px; border-radius: 6px;">
-                            <strong>1. Birthright</strong><br>
-                            <span style="font-size:0.9em">Be born on Sangaian Land.</span>
+                    <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 20px; margin-top: 20px;">
+                        
+                        <!-- Ministry of Work -->
+                        <div style="background: rgba(255,255,255,0.8); border: 1px solid #ccc; border-radius: 6px; padding: 15px;">
+                            <h3 style="margin-top:0; color:#e67e22;">Ministry of Work</h3>
+                            <p style="font-size: 0.9em; color:#555;">Oversees everything to do with workers and their rights and their access to services, both internally and externally.</p>
+                            <a href="#" class="sangaia-btn" style="width: auto; height: 2em; font-size: 0.8em;"><span>Visit the Ministry of Work</span></a>
                         </div>
-                        <div style="background: rgba(0,0,0,0.03); padding: 10px; border-radius: 6px;">
-                            <strong>2. Parentage</strong><br>
-                            <span style="font-size:0.9em">Have Sangaian Parents or Parents with Sangaian Citizenship.</span>
+
+                        <!-- Ministry of Healthcare -->
+                        <div style="background: rgba(255,255,255,0.8); border: 1px solid #ccc; border-radius: 6px; padding: 15px;">
+                            <h3 style="margin-top:0; color:#c0392b;">Ministry of Healthcare</h3>
+                            <p style="font-size: 0.9em; color:#555;">Oversees disease control, healthcare services, and state-sponsored healthcare eligibility.</p>
+                            <a href="#" class="sangaia-btn" style="width: auto; height: 2em; font-size: 0.8em;"><span>Visit the Ministry of Healthcare</span></a>
                         </div>
-                        <div style="background: rgba(0,0,0,0.03); padding: 10px; border-radius: 6px;">
-                            <strong>3. Naturalization</strong><br>
-                            <span style="font-size:0.9em">Pass the Citizenship test and become naturalized.</span>
+
+                        <!-- Ministry of the Executive -->
+                        <div style="background: rgba(255,255,255,0.8); border: 1px solid #ccc; border-radius: 6px; padding: 15px;">
+                            <h3 style="margin-top:0; color:#2c3e50;">Ministry of the Executive</h3>
+                            <p style="font-size: 0.9em; color:#555;">Manages the entirety of Sangaia as a whole, and houses important figures such as the Aeretocrat and their cabinet.</p>
+                            <a href="#" class="sangaia-btn" style="width: auto; height: 2em; font-size: 0.8em;"><span>Visit the Ministry of the Executive</span></a>
                         </div>
-                        <div style="background: rgba(0,0,0,0.03); padding: 10px; border-radius: 6px;">
-                            <strong>4. Sponsorship</strong><br>
-                            <span style="font-size:0.9em">Direct Aeretocratic Sponsorship.</span>
+
+                        <!-- Ministry of Education -->
+                        <div style="background: rgba(255,255,255,0.8); border: 1px solid #ccc; border-radius: 6px; padding: 15px;">
+                            <h3 style="margin-top:0; color:#d35400;">Ministry of Education</h3>
+                            <p style="font-size: 0.9em; color:#555;">Oversees what is taught to students in public schools and what funding is allocated to state-sponsored education centers.</p>
+                            <a href="#" class="sangaia-btn" style="width: auto; height: 2em; font-size: 0.8em;"><span>Visit the Ministry of Education</span></a>
                         </div>
+
+                        <!-- Ministry of the Treasury -->
+                        <div style="background: rgba(255,255,255,0.8); border: 1px solid #ccc; border-radius: 6px; padding: 15px;">
+                            <h3 style="margin-top:0; color:#27ae60;">Ministry of the Treasury</h3>
+                            <p style="font-size: 0.9em; color:#555;">Oversees general funding for other ministries, federal budget, federal tax approval, and government debt management.</p>
+                            <a href="#" class="sangaia-btn" style="width: auto; height: 2em; font-size: 0.8em;"><span>Visit the Ministry of the Treasury</span></a>
+                        </div>
+
+                        <!-- Ministry of the Environment -->
+                        <div style="background: rgba(255,255,255,0.8); border: 1px solid #ccc; border-radius: 6px; padding: 15px;">
+                            <h3 style="margin-top:0; color:#16a085;">Ministry of the Environment</h3>
+                            <p style="font-size: 0.9em; color:#555;">Manages environmental services, biome funding, wildlife intervention, and conservation efforts.</p>
+                            <a href="#" class="sangaia-btn" style="width: auto; height: 2em; font-size: 0.8em;"><span>Visit the Ministry of the Environment</span></a>
+                        </div>
+
+                        <!-- Ministry of Domestic Affairs -->
+                        <div style="background: rgba(255,255,255,0.8); border: 1px solid #ccc; border-radius: 6px; padding: 15px;">
+                            <h3 style="margin-top:0; color:#8e44ad;">Ministry of Domestic Affairs</h3>
+                            <p style="font-size: 0.9em; color:#555;">Oversees relations between provinces, trade, and federal interactions, as well as roads and traffic services.</p>
+                            <a href="#" class="sangaia-btn" style="width: auto; height: 2em; font-size: 0.8em;"><span>Visit the Ministry of Domestic Affairs</span></a>
+                        </div>
+
+                        <!-- Ministry of External Affairs -->
+                        <div style="background: rgba(255,255,255,0.8); border: 1px solid #ccc; border-radius: 6px; padding: 15px;">
+                            <h3 style="margin-top:0; color:#2980b9;">Ministry of External Affairs</h3>
+                            <p style="font-size: 0.9em; color:#555;">Oversees relationships with other countries, manages Treaties, and international affairs.</p>
+                            <a href="#" class="sangaia-btn" style="width: auto; height: 2em; font-size: 0.8em;"><span>Visit the Ministry of External Affairs</span></a>
+                        </div>
+
+                        <!-- Ministry of Propaganda -->
+                        <div style="background: rgba(255,255,255,0.8); border: 1px solid #ccc; border-radius: 6px; padding: 15px;">
+                            <h3 style="margin-top:0; color:#7f8c8d;">Ministry of Propaganda</h3>
+                            <p style="font-size: 0.9em; color:#555;">Controls public broadcasts, reporter qualifications, and oversees churches and religious constructs.</p>
+                            <a href="#" class="sangaia-btn" style="width: auto; height: 2em; font-size: 0.8em;"><span>Visit the Ministry of Propaganda</span></a>
+                        </div>
+
                     </div>
-                </div>
-                
-                <div class="glass-panel">
-                     <h2>What to do next</h2>
-                     <p>After submitting your application, your file will undergo a rigorous review by the Provincial Council. Please follow these next steps:</p>
-                     
-                     <div style="margin-top: 15px;">
-                        <div style="margin-bottom: 12px; padding-bottom: 12px; border-bottom: 1px solid #eee;">
-                            <strong>1. Await Digital Confirmation</strong><br>
-                            <span style="font-size: 0.9em; color: #555;">You will receive a confirmation packet via secure email within 48 hours containing your unique tracking ID.</span>
-                        </div>
-                        
-                        <div style="margin-bottom: 12px; padding-bottom: 12px; border-bottom: 1px solid #eee;">
-                            <strong>2. Prepare Verification Documents</strong><br>
-                            <span style="font-size: 0.9em; color: #555;">Gather your birth certificate, identification, and character references for the Stage 2 verification process.</span>
-                        </div>
-                        
-                        <div>
-                            <strong>3. Track Your Progress</strong><br>
-                            <span style="font-size: 0.9em; color: #555;">Enter the ID provided in your confirmation email to check your status.</span>
-                            
-                            <div style="margin-top: 10px;">
-                                <!-- ADDED IDs HERE -->
-                                <input type="text" id="tracking-input" placeholder="Enter Application ID" style="padding: 8px; width: 60%; border: 1px solid #ccc; border-radius: 4px;">
-                                <button class="sangaia-btn" id="tracking-btn" style="width: auto; height: 2em; font-size: 0.8em; vertical-align: middle;"><span>Track</span></button>
-                            </div>
-                            <!-- ADDED RESULT CONTAINER -->
-                            <div id="status-result"></div>
-                        </div>
-                     </div>
                 </div>
             </div>
 
             <div class="sidebar-col">
-                <div class="glass-panel" style="background: linear-gradient(to bottom, #e3f2fd 0%, #bbdefb 100%);">
-                    <h2>Why Sangaia?</h2>
-                    <ul style="padding-left: 20px; color: #006699;">
-                        <li>No Income Tax for 5 Years</li>
-                        <li>Universal Housing Guarantee</li>
-                        <li>Digital-First Voting</li>
+                <div class="glass-panel" style="background: linear-gradient(to bottom, #ffcdd2 0%, #ef9a9a 100%);">
+                    <h2 style="color: #b71c1c;">Emergencies</h2>
+                    <p style="color: #7f0000; font-weight: bold;">Dial 9-1-1 for immediate assistance.</p>
+                    <ul style="padding-left: 20px; color: #7f0000;">
+                        <li>Provincial Police</li>
+                        <li>Medical Response</li>
+                        <li>Fire & Rescue</li>
                     </ul>
                 </div>
 
                 <div class="glass-panel">
-                    <h2>Forms</h2>
-                    <a href="#" class="sangaia-btn" style="font-size: 0.9rem; width: 100%;"><span>Download Form A-1</span></a>
-                    <a href="#" class="sangaia-btn" style="font-size: 0.9rem; width: 100%;"><span>Upload Documents</span></a>
+                    <h2>Infrastructure</h2>
+                    <ul style="padding-left: 20px; color: #006699;">
+                        <li><a href="#" style="color: #006699;">Transit Maps</a></li>
+                        <li><a href="#" style="color: #006699;">Internet Status</a></li>
+                        <li><a href="#" style="color: #006699;">Road Closures</a></li>
+                    </ul>
                 </div>
             </div>
 
@@ -452,53 +455,6 @@
     </footer>
 
 </div>
-
-<!-- SCRIPT TO FETCH STATUS -->
-<script>
-    document.getElementById('tracking-btn').addEventListener('click', function() {
-        const inputId = document.getElementById('tracking-input').value.trim();
-        const resultDiv = document.getElementById('status-result');
-        
-        if (!inputId) {
-            alert("Please enter a Tracking ID.");
-            return;
-        }
-
-        resultDiv.style.display = 'block';
-        resultDiv.innerHTML = "Searching records...";
-        resultDiv.className = ""; // Reset class
-
-        // Fetch the JSON file
-        fetch('status.json')
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error("Database file not found.");
-                }
-                return response.json();
-            })
-            .then(data => {
-                if (data[inputId]) {
-                    // ID Found
-                    const record = data[inputId];
-                    resultDiv.innerHTML = `<strong>Status: ${record.status}</strong><br>${record.message}`;
-                    
-                    // Simple color mapping
-                    if (record.color === 'green') resultDiv.className = 'success';
-                    else if (record.color === 'orange') resultDiv.className = 'pending';
-                    else resultDiv.className = 'error';
-                } else {
-                    // ID Not Found
-                    resultDiv.innerHTML = "<strong>Record Not Found</strong><br>Please check your ID and try again.";
-                    resultDiv.className = 'error';
-                }
-            })
-            .catch(error => {
-                resultDiv.innerHTML = "<strong>System Error</strong><br>Could not connect to the citizen database.";
-                resultDiv.className = 'error';
-                console.error(error);
-            });
-    });
-</script>
 
 </body>
 </html>
