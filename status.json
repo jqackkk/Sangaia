@@ -1,0 +1,17 @@
+{
+  "A-101": {
+    "status": "Approved",
+    "message": "Congratulations. Your citizenship has been ratified by the Provincial Council.",
+    "color": "green"
+  },
+  "A-102": {
+    "status": "Under Review",
+    "message": "Your virtue assessment is currently being processed by the Ministry of Justice.",
+    "color": "orange"
+  },
+  "A-103": {
+    "status": "Pending Documents",
+    "message": "We require a re-submission of your Form A-1. Please contact the clerk.",
+    "color": "red"
+  }
+}
