@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Societal Press - The United Provinces of Sangaia</title>
+    <style>
+        /* --- FRUTIGER AERO / SKEUOMORPHIC STYLES --- */
+        :root {
+            --glass-blue: rgba(220, 245, 255, 0.85);
+            --gloss-highlight: rgba(255, 255, 255, 0.9);
+            --ocean-blue: #0077be;
+            --fresh-green: #7cba01;
+            --text-dark: #2c3e50;
+            --text-light: #ffffff;
+            --stripes: repeating-linear-gradient(0deg, #f2f2f2, #f2f2f2 1px, #ffffff 1px, #ffffff 2px);
+        }
+
+        body {
+            background: var(--stripes);
+            min-height: 100dvh;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            flex-direction: column;
+            margin: 0;
+            font-family: 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+            color: var(--text-dark);
+        }
+
+        .main-container { width: 100%; margin: 0; background: transparent; border: none; border-radius: 0; box-shadow: none; padding: 0; flex-grow: 1; display: flex; flex-direction: column; }
+
+        header {
+            background: linear-gradient(to bottom, #0099cc 0%, #006699 100%);
+            padding: 30px; position: relative; overflow: hidden; border-bottom: 3px solid #004466; color: white; text-shadow: 0 2px 4px rgba(0,0,0,0.3); width: 100%; box-sizing: border-box;
+        }
+
+        header::after {
+            content: ""; position: absolute; top: 0; left: 0; width: 100%; height: 50%;
+            background: linear-gradient(to bottom, rgba(255,255,255,0.4) 0%, rgba(255,255,255,0.1) 100%); pointer-events: none;
+        }
+
+        h1 { margin: 0; font-size: 2.5em; letter-spacing: -1px; }
+        .subtitle { font-size: 1.1em; opacity: 0.9; margin-top: 5px; font-weight: normal; }
+
+        /* --- APPLE 2012 METAL NAV STYLES --- */
+        #globalheader {
+            width: 100%; height: 38px; margin: 0; background: linear-gradient(to bottom, #5e5e5e 0%, #3e3e3e 50%, #2d2d2d 51%, #1f1f1f 100%);
+            border-top: 1px solid #222; border-bottom: 1px solid #000; box-shadow: inset 0 1px 0 rgba(255,255,255,0.15), 0 2px 4px rgba(0,0,0,0.2);
+            font-size: 11px; position: relative; z-index: 99;
+        }
+
+        #globalnav { margin: 0; padding: 0; list-style: none; display: flex; justify-content: center; height: 100%; width: 100%; }
+        #globalnav li { position: relative; height: 100%; display: flex; align-items: center; }
+        #globalnav li::after { content: ""; position: absolute; right: 0; top: 0; bottom: 0; width: 1px; background: linear-gradient(to bottom, #333, #111); box-shadow: 1px 0 0 rgba(255,255,255,0.08); z-index: 1; }
+        #globalnav li:first-child::before { content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: 1px; background: linear-gradient(to bottom, #333, #111); box-shadow: 1px 0 0 rgba(255,255,255,0.08); z-index: 1; }
+        #globalnav li:last-child::after { display: block; }
+        #globalnav li a { display: block; color: #e8e8e8; text-decoration: none; text-shadow: 0 -1px 0 rgba(0,0,0,0.8); font-weight: bold; padding: 0 24px; line-height: 38px; transition: color 0.15s, text-shadow 0.15s; }
+        #globalnav li a:hover { color: #fff; text-shadow: 0 0 6px rgba(255,255,255,0.5), 0 -1px 0 rgba(0,0,0,0.8); background: linear-gradient(to bottom, rgba(255,255,255,0.05), rgba(255,255,255,0)); }
+        #globalnav li a.active { color: #fff; background: rgba(0,0,0,0.2); box-shadow: inset 0 2px 5px rgba(0,0,0,0.3); }
+
+        /* --- BUTTON STYLES --- */
+        .sangaia-btn {
+            font-size: 0.9rem; font-family: "myriad-pro", "Segoe UI", system-ui, sans-serif; height: 2.5em; padding: 0 1em; width: auto; min-width: 12em;
+            border-radius: 1000px; position: relative; overflow: hidden; cursor: pointer; outline: none; border: none; text-decoration: none; display: inline-flex; align-items: center; justify-content: center; margin: 5px; transition: all 0.1s ease-out; box-sizing: border-box; 
+            background: linear-gradient(rgba(160, 160, 160, 0.625), rgba(255, 255, 255, 0.625));
+            box-shadow: 0 0.375em 0.5em rgba(0, 0, 0, 0.2), 0 0.125em 0.125em rgba(0, 0, 0, 0.3), inset 0 0.25em 0.25em rgba(0, 0, 0, 0.4), inset 0 0.375em 0.5em 0.25em #BBBBBB; color: #333;
+        }
+        .sangaia-btn::before { content: ''; position: absolute; left: 50%; transform: translateX(-50%); height: 33%; background: linear-gradient(rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.3)); width: calc(100% - 0.875em); border-radius: 2em 2em 0.5em 0.5em; top: 5%; filter: blur(1px); z-index: 2; pointer-events: none; }
+        .sangaia-btn::after { content: ''; position: absolute; left: 50%; transform: translateX(-50%); height: 33%; background: linear-gradient(rgba(255, 255, 255, 0.2), rgb(255, 255, 255, 0.5)); width: calc(100% - 1.25em); border-radius: 0.75em; bottom: 10%; filter: blur(3px); z-index: 0; pointer-events: none; }
+        .sangaia-btn span { position: relative; top: -1px; z-index: 3; letter-spacing: 0.03em; font-weight: 600; text-shadow: 0 1px 1px rgba(255,255,255,0.8); }
+        .sangaia-btn:hover { filter: brightness(1.05); }
+
+        .sangaia-btn.active, .sangaia-btn:active {
+            background: linear-gradient(rgba(0, 65, 184, 0.625), rgba(45, 115, 199, 0.625), rgba(33, 160, 196, 0.625));
+            box-shadow: 0 0.375em 0.5em rgba(0, 0, 0, 0.3), 0 0.125em 0.125em rgba(0, 78, 187, 0.5), inset 0 0.25em 0.5em rgba(0, 17, 49, 0.8), inset 0 0.375em 0.5em 0.25em rgba(0, 78, 187, 0.75), 0 0 0.5em rgba(52, 106, 227, 0.5);
+            color: white; transform: translateY(1px);
+        }
+        .sangaia-btn.active span, .sangaia-btn:active span { text-shadow: 0 1px 2px rgba(0, 30, 80, 0.6); }
+
+        /* --- CONTENT AREA --- */
+        .content-wrapper { padding: 30px; min-height: 400px; width: 100%; box-sizing: border-box; flex-grow: 1; }
+
+        .glass-panel {
+            background: linear-gradient(to bottom, #fcfcfc 0%, #f1f1f1 100%);
+            border: 1px solid #ddd; border-radius: 8px; padding: 20px; margin-bottom: 25px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05), inset 0 1px 0 #fff; position: relative;
+        }
+        .glass-panel h2 { margin-top: 0; color: #006699; border-bottom: 1px solid #eee; padding-bottom: 10px; margin-bottom: 15px; font-size: 1.4em; }
+
+        /* --- BLOG GRID --- */
+        .article-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 25px; margin-top: 20px; }
+        .article-card { background: rgba(255,255,255,0.9); border: 1px solid #ccc; border-radius: 6px; padding: 20px; box-shadow: 0 2px 5px rgba(0,0,0,0.05); transition: transform 0.2s, box-shadow 0.2s; }
+        .article-card:hover { transform: translateY(-3px); box-shadow: 0 6px 12px rgba(0,0,0,0.1); }
+        .article-card h3 { margin: 0 0 10px 0; color: #006699; font-family: 'Times New Roman', Times, serif; font-size: 1.5em; font-style: italic; }
+        .article-card .date { font-size: 0.85em; color: #888; font-weight: bold; margin-bottom: 15px; display: block; }
+        .article-card p { font-size: 0.95em; color: #555; line-height: 1.5; margin-bottom: 20px; }
+
+        /* --- ARTICLE VIEWER & TEMPLATE STYLES --- */
+        #article-viewer { display: none; width: 100%; max-width: 1000px; margin: 0 auto; }
+        .viewer-controls { margin-bottom: 20px; }
+        
+        .article-paper {
+            background: #ffffff;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            padding: 50px 60px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            position: relative;
+        }
+
+        /* DYNAMIC ARTICLE TYPOGRAPHY */
+        .article-content .article-title {
+            font-family: 'Times New Roman', Times, serif;
+            font-weight: bold;
+            font-style: italic;
+            font-size: 2.8em;
+            text-align: left;
+            color: #111;
+            margin-top: 0;
+            border-bottom: 2px solid #006699;
+            padding-bottom: 10px;
+            margin-bottom: 30px;
+        }
+
+        .article-content h1, 
+        .article-content h2, 
+        .article-content h3, 
+        .article-content h4 {
+            font-family: 'Times New Roman', Times, serif;
+            font-weight: normal;
+            font-style: normal;
+            color: #006699;
+            margin-top: 1.5em;
+        }
+
+        .article-content p, 
+        .article-content li {
+            font-family: 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+            font-size: 1.05em;
+            line-height: 1.7;
+            color: #222;
+        }
+
+        .article-content .article-image {
+            float: right;
+            margin: 10px 0 25px 25px;
+            max-width: 45%;
+            border-radius: 6px;
+            box-shadow: 0 3px 8px rgba(0,0,0,0.15);
+            border: 1px solid #ddd;
+        }
+        
+        /* Clearfix for floating images */
+        .article-content::after { content: ""; display: table; clear: both; }
+
+        footer { text-align: center; padding: 20px; color: #555; font-size: 0.9em; text-shadow: 0 1px 0 rgba(255,255,255,0.5); background: rgba(255,255,255,0.6); width: 100%; margin-top: auto; }
+        ::-webkit-scrollbar { width: 12px; }
+        ::-webkit-scrollbar-track { background: #e0f7fa; }
+        ::-webkit-scrollbar-thumb { background: #88ccee; border: 2px solid #e0f7fa; border-radius: 10px; }
+    </style>
+</head>
+<body>
+
+<div class="main-container">
+    
+    <header>
+        <h1>Societal Press</h1>
+        <div class="subtitle">The Official Voice of the Aeretocracy.</div>
+    </header>
+
+    <nav id="globalheader">
+        <ul id="globalnav">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="government.html">Government</a></li>
+            <li><a href="citizenship.html">Citizenship</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="about.html">About the Aeretocrat</a></li>
+            <li><a href="societal_press.html" class="active">Societal Press</a></li>
+        </ul>
+    </nav>
+
+    <div class="content-wrapper">
+        
+        <!-- BLOG INDEX VIEW -->
+        <div id="blog-index" style="max-width: 1200px; margin: 0 auto;">
+            <div class="glass-panel">
+                <h2>Latest Publications</h2>
+                <p>Stay informed with official briefings, civic updates, and statements direct from the Ministries.</p>
+                
+                <div class="article-grid">
+                    
+                    <!-- Article Card 1 -->
+                    <div class="article-card">
+                        <h3>State of the Provinces</h3>
+                        <span class="date">October 14, 2026 | Ministry of the Executive</span>
+                        <p>The Aeretocrat delivers the quarterly review on the status of provincial budgets, inter-provincial trade, and civic milestones.</p>
+                        <button class="sangaia-btn" onclick="openArticle('state_of_provinces.html')" style="width: 100%; margin:0;"><span>Read Article</span></button>
+                    </div>
+
+                    <!-- Article Card 2 -->
+                    <div class="article-card">
+                        <h3>New Digital Transit Systems</h3>
+                        <span class="date">September 28, 2026 | Ministry of Domestic Affairs</span>
+                        <p>An overview of the newly digitized railway schedules and how citizens can link their MoE IDs for discounted fares.</p>
+                        <button class="sangaia-btn" onclick="openArticle('transit_update.html')" style="width: 100%; margin:0;"><span>Read Article</span></button>
+                    </div>
+                    
+                    <!-- Example Template Card -->
+                    <div class="article-card">
+                        <h3>Example Article Format</h3>
+                        <span class="date">Example Date | Author</span>
+                        <p>Click here to view what the layout of a standard Sangaian Press article looks like in the viewer.</p>
+                        <!-- Notice how this points to the exact filename in the 'articles' folder -->
+                        <button class="sangaia-btn" onclick="openArticle('example_article.html')" style="width: 100%; margin:0;"><span>Read Article</span></button>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <!-- ARTICLE VIEWER (Hidden by default) -->
+        <div id="article-viewer">
+            <div class="viewer-controls">
+                <button class="sangaia-btn" onclick="closeArticle()" style="margin:0;"><span>&larr; Back to Press Hub</span></button>
+            </div>
+            
+            <div class="article-paper">
+                <!-- Fetched HTML goes here -->
+                <div id="article-content-area" class="article-content">
+                    <!-- Loading text -->
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <footer>
+        &copy; 2026 United Provinces of Sangaia. All Rights Reserved.<br>
+        <span style="font-size: 0.8em; color: #888;">Powered by Aeretocratic Principles</span>
+    </footer>
+
+</div>
+
+<!-- FETCH LOGIC -->
+<script>
+    async function openArticle(filename) {
+        const indexView = document.getElementById('blog-index');
+        const viewerView = document.getElementById('article-viewer');
+        const contentArea = document.getElementById('article-content-area');
+        
+        // Show loading state and swap views
+        contentArea.innerHTML = '<div style="text-align:center; padding: 50px; color:#888; font-style: italic;">Fetching publication...</div>';
+        indexView.style.display = 'none';
+        viewerView.style.display = 'block';
+
+        // Fetch the file from the "articles" folder on GitHub
+        try {
+            const response = await fetch(`articles/${filename}`);
+            if (!response.ok) throw new Error('Article not found');
+            const html = await response.text();
+            
+            // Inject the pure HTML into the paper container
+            contentArea.innerHTML = html;
+            
+            // Scroll to the top of the article
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        } catch (error) {
+            console.error(error);
+            contentArea.innerHTML = `
+                <div style="text-align:center; color:#c0392b; padding: 50px; border: 2px dashed #ef9a9a; border-radius: 8px; background: #ffebee;">
+                    <h3 style="margin-top:0;">File Not Found</h3>
+                    <p style="margin-bottom:0;">Ensure you have uploaded the file <strong>${filename}</strong> to the <strong>articles/</strong> folder in your GitHub repository.</p>
+                </div>
+            `;
+        }
+    }
+
+    function closeArticle() {
+        document.getElementById('article-viewer').style.display = 'none';
+        document.getElementById('blog-index').style.display = 'block';
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+</script>
+
+</body>
+</html>
