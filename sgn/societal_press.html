@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Societal Press - The United Provinces of Sangaia</title>
+    <title>Сонитиа Прэсо - Свои Сонит Провиткия эк Сангаиа</title>
     <style>
         /* --- FRUTIGER AERO / SKEUOMORPHIC STYLES --- */
         :root {
@@ -118,8 +118,7 @@
 
         /* --- BLOG GRID --- */
         .article-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 25px; margin-top: 20px; }
-        .article-card { background: rgba(255,255,255,0.9); border: 1px solid #ccc; border-radius: 6px; padding: 20px; box-shadow: 0 2px 5px rgba(0,0,0,0.05); transition: transform 0.2s, box-shadow 0.2s; }
-        .article-card:hover { transform: translateY(-3px); box-shadow: 0 6px 12px rgba(0,0,0,0.1); }
+        .article-card { background: rgba(255,255,255,0.9); border: 1px solid #ccc; border-radius: 6px; padding: 20px; box-shadow: 0 2px 5px rgba(0,0,0,0.05);  }
         .article-card h3 { margin: 0 0 10px 0; color: #006699; font-family: 'Times New Roman', Times, serif; font-size: 1.5em; font-style: italic; }
         .article-card .date { font-size: 0.85em; color: #888; font-weight: bold; margin-bottom: 15px; display: block; }
         .article-card p { font-size: 0.95em; color: #555; line-height: 1.5; margin-bottom: 20px; }
@@ -194,15 +193,15 @@
             <img src="../media/nav_logo.png" style="height: 24px; width: auto;" alt="Logo">
         </div>
         <div style="position: absolute; right: 15px; display: flex; align-items: center; height: 100%; z-index: 100;">
-            <a href="../societal_press.html" style="color: #bbb; text-decoration: none; font-size: 11px; font-weight: bold; letter-spacing: 0.5px; padding: 3px 8px; border: 1px solid #444; border-radius: 4px; background: linear-gradient(to bottom, #555, #333); box-shadow: 0 1px 2px rgba(0,0,0,0.3); transition: all 0.2s ease;" onmouseover="this.style.color='#fff'; this.style.borderColor='#666';" onmouseout="this.style.color='#bbb'; this.style.borderColor='#444';">Sangaian</a>
+            <a href="../societal_press.html" style="color: #bbb; text-decoration: none; font-size: 11px; font-weight: bold; letter-spacing: 0.5px; padding: 3px 8px; border: 1px solid #444; border-radius: 4px; background: linear-gradient(to bottom, #555, #333); box-shadow: 0 1px 2px rgba(0,0,0,0.3); transition: all 0.2s ease;" onmouseover="this.style.color='#fff'; this.style.borderColor='#666';" onmouseout="this.style.color='#bbb'; this.style.borderColor='#444';">Сангаиан</a>
         </div>
         <ul id="globalnav">
-            <li><a href="index.html">Home</a></li>
-            <li><a href="government.html">Government</a></li>
-            <li><a href="citizenship.html">Citizenship</a></li>
-            <li><a href="services.html">Services</a></li>
-            <li><a href="about.html">About the Aeretocrat</a></li>
-            <li><a href="societal_press.html" class="active">Societal Press</a></li>
+            <li><a href="index.html">Домо</a></li>
+            <li><a href="government.html">Губэрно</a></li>
+            <li><a href="citizenship.html">Циви</a></li>
+            <li><a href="services.html">Дуло</a></li>
+            <li><a href="about.html">Цирку свои Арэтократ</a></li>
+            <li><a href="societal_press.html" class="active">Сонитиа Прэсо</a></li>
         </ul>
     </nav>
 
@@ -211,34 +210,34 @@
         <!-- BLOG INDEX VIEW -->
         <div id="blog-index" style="max-width: 1200px; margin: 0 auto;">
             <div class="glass-panel">
-                <h2>Latest Publications</h2>
-                <p>Stay informed with official briefings, civic updates, and statements direct from the Ministries.</p>
+                <h2>Ултимо Публикатио</h2>
+                <p>Стао информо зин офикио брэвио, цивико актуало, инкаи фэмиа дирэкто апо свои Министро.</p>
                 
                 <div class="article-grid">
                     
                     <!-- Article Card 1 -->
                     <div class="article-card">
-                        <h3>Provincial Review: Half-Year Address</h3>
-                        <span class="date">July 3rd, 2026 | Ministry of the Executive</span>
-                        <p>The Societal Press deliversa summary of the quarterly review on the status of provincial budgets, inter-provincial trade, and civic milestones, outlined by the Aeretocrat.</p>
-                        <button class="sangaia-btn" onclick="openArticle('state_of_provinces.html')" style="width: 100%; margin:0;"><span>Read Article</span></button>
+                        <h3>Провиткия Рэвизо: Димидио-Анно Фэмиа</h3>
+                        <span class="date">Жулио Тэртио, Дио Милус Дио Дэкум Сэкс | Министро эк свои Эксэкуто</span>
+                        <p>Свои Сонитиа Прэсо традо уна сума эк свои куатро-анно рэвизо ин свои стату эк Провиткия бугэтио, интэр-Провиткия мэрко, инкаи цивико марко, дэлинио паро свои Арэтократ.</p>
+                        <button class="sangaia-btn" onclick="openArticle('state_of_provinces.html')" style="width: 100%; margin:0;"><span>Лэго Артикуло</span></button>
                     </div>
 
                     <!-- Article Card 2 -->
                     <div class="article-card">
-                        <h3>New Digital Transit Systems</h3>
-                        <span class="date">September 28, 2026 | Ministry of Domestic Affairs</span>
-                        <p>An overview of the newly digitized railway schedules and how citizens can link their MoE IDs for discounted fares.</p>
-                        <button class="sangaia-btn" onclick="openArticle('transit_update.html')" style="width: 100%; margin:0;"><span>Read Article</span></button>
+                        <h3>Ново Дигито Транзито Систэма</h3>
+                        <span class="date">Сэптэмбэро Дио Дэкум Окто, Дио Милус Дио Дэкум Сэкс | Министро эк Домо Прагма</span>
+                        <p>Уна супэрвизо эк свои ново дигито факто фэрро-виа скэдуло инкаи куомо циви динам нэксо сум М-эк-Э ИД про дисконто прэтио.</p>
+                        <button class="sangaia-btn" onclick="openArticle('transit_update.html')" style="width: 100%; margin:0;"><span>Лэго Артикуло</span></button>
                     </div>
                     
                     <!-- Example Template Card -->
                     <div class="article-card">
-                        <h3>Example Article Format</h3>
-                        <span class="date">Example Date | Author</span>
-                        <p>Click here to view what the layout of a standard Sangaian Press article looks like in the viewer.</p>
+                        <h3>Экзэмпло Артикуло Формато</h3>
+                        <span class="date">Экзэмпло Дато | Аукто</span>
+                        <p>Клико эки ад видэ ти свои диспозио эк уна стандарто Сангаиа Прэсо артикуло видэ симили ин свои визоро.</p>
                         <!-- Notice how this points to the exact filename in the 'articles' folder -->
-                        <button class="sangaia-btn" onclick="openArticle('example_article.html')" style="width: 100%; margin:0;"><span>Read Article</span></button>
+                        <button class="sangaia-btn" onclick="openArticle('example_article.html')" style="width: 100%; margin:0;"><span>Лэго Артикуло</span></button>
                     </div>
 
                 </div>
@@ -248,7 +247,7 @@
         <!-- ARTICLE VIEWER (Hidden by default) -->
         <div id="article-viewer">
             <div class="viewer-controls">
-                <button class="sangaia-btn" onclick="closeArticle()" style="margin:0;"><span>&larr; Back to Press Hub</span></button>
+                <button class="sangaia-btn" onclick="closeArticle()" style="margin:0;"><span>&larr; Рэтро ад Прэсо Цэнтро</span></button>
             </div>
             
             <div class="article-paper">
@@ -276,7 +275,7 @@
         const contentArea = document.getElementById('article-content-area');
         
         // Show loading state and swap views
-        contentArea.innerHTML = '<div style="text-align:center; padding: 50px; color:#888; font-style: italic;">Fetching publication...</div>';
+        contentArea.innerHTML = '<div style="text-align:center; padding: 50px; color:#888; font-style: italic;">Фэро публикатио...</div>';
         indexView.style.display = 'none';
         viewerView.style.display = 'block';
 
@@ -295,8 +294,8 @@
             console.error(error);
             contentArea.innerHTML = `
                 <div style="text-align:center; color:#c0392b; padding: 50px; border: 2px dashed #ef9a9a; border-radius: 8px; background: #ffebee;">
-                    <h3 style="margin-top:0;">File Not Found</h3>
-                    <p style="margin-bottom:0;">Ensure you have uploaded the file <strong>${filename}</strong> to the <strong>articles/</strong> folder in your GitHub repository.</p>
+                    <h3 style="margin-top:0;">Докумэнто Ми Трово</h3>
+                    <p style="margin-bottom:0;">Сэкуро ту эхо сублэво свои докумэнто <strong>${filename}</strong> ад свои <strong>articles/</strong> карпэто ин тус ГитХуб рэпозо.</p>
                 </div>
             `;
         }
