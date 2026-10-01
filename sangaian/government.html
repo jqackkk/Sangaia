@@ -3,10 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About the Aeretocrat - The United Provinces of Sangaia</title>
+    <title>Government - The United Provinces of Sangaia</title>
     <!-- Same styles as index.html -->
     <style>
         /* --- FRUTIGER AERO / SKEUOMORPHIC STYLES --- */
+        
         :root {
             --glass-blue: rgba(220, 245, 255, 0.85);
             --gloss-highlight: rgba(255, 255, 255, 0.9);
@@ -61,13 +62,11 @@
             height: 38px;
             margin: 0;
             border-radius: 0;
-            background: #444; 
             background: linear-gradient(to bottom, #5e5e5e 0%, #3e3e3e 50%, #2d2d2d 51%, #1f1f1f 100%);
             border-top: 1px solid #222;
             border-bottom: 1px solid #000;
             box-shadow: inset 0 1px 0 rgba(255,255,255,0.15), 0 2px 4px rgba(0,0,0,0.2);
             font-size: 11px;
-            font-family: "Lucida Grande", "Lucida Sans Unicode", Helvetica, Arial, sans-serif;
             position: relative;
             z-index: 99;
         }
@@ -90,7 +89,6 @@
             display: flex;
             align-items: center;
         }
-
         #globalnav li::after {
             content: "";
             position: absolute;
@@ -102,7 +100,6 @@
             box-shadow: 1px 0 0 rgba(255,255,255,0.08);
             z-index: 1;
         }
-        
         #globalnav li:first-child::before {
             content: "";
             position: absolute;
@@ -114,21 +111,26 @@
             box-shadow: 1px 0 0 rgba(255,255,255,0.08);
             z-index: 1;
         }
-
-        #globalnav li:last-child::after { 
-            display: block; 
+        #globalnav li:last-child::after {
+            display: block;
         }
 
         #globalnav li a {
             display: flex;
             align-items: center;
+            justify-content: center;
             height: 100%;
+            min-height: 38px;
+            box-sizing: border-box;
             color: #e8e8e8;
             text-decoration: none;
             text-shadow: 0 -1px 0 rgba(0,0,0,0.8);
             font-weight: bold;
             padding: 0 24px;
             line-height: 38px;
+            white-space: nowrap;
+            position: relative;
+            z-index: 2;
             transition: text-shadow 0.2s ease, color 0.2s ease, background 0.2s ease, box-shadow 0.2s ease;
         }
 
@@ -138,11 +140,7 @@
             text-shadow: 0 0 8px rgba(255, 255, 255, 0.8), 0 -1px 0 rgba(0,0,0,0.8);
         }
         
-        #globalnav li a.active {
-            color: #fff;
-            background: rgba(0,0,0,0.2);
-            box-shadow: inset 0 2px 5px rgba(0,0,0,0.3);
-        }
+        #globalnav li a.active { color: #fff; background: rgba(0,0,0,0.2); box-shadow: inset 0 2px 5px rgba(0,0,0,0.3); }
 
         /* --- BUTTON STYLES --- */
         .sangaia-btn {
@@ -257,17 +255,17 @@
 
     <nav id="globalheader">
         <div style="position: absolute; left: 15px; display: flex; align-items: center; height: 100%;">
-            <img src="media/nav_logo.png" style="height: 24px; width: auto;" alt="Logo">
+            <img src="../media/nav_logo.png" style="height: 24px; width: auto;" alt="Logo">
         </div>
         <div style="position: absolute; right: 15px; display: flex; align-items: center; height: 100%; z-index: 100;">
-            <a href="sangaian/about.html" style="color: #bbb; text-decoration: none; font-size: 11px; font-weight: bold; letter-spacing: 0.5px; padding: 3px 8px; border: 1px solid #444; border-radius: 4px; background: linear-gradient(to bottom, #555, #333); box-shadow: 0 1px 2px rgba(0,0,0,0.3); transition: all 0.2s ease;" onmouseover="this.style.color='#fff'; this.style.borderColor='#666';" onmouseout="this.style.color='#bbb'; this.style.borderColor='#444';">Sangaian</a>
+            <a href="../government.html" style="color: #bbb; text-decoration: none; font-size: 11px; font-weight: bold; letter-spacing: 0.5px; padding: 3px 8px; border: 1px solid #444; border-radius: 4px; background: linear-gradient(to bottom, #555, #333); box-shadow: 0 1px 2px rgba(0,0,0,0.3); transition: all 0.2s ease;" onmouseover="this.style.color='#fff'; this.style.borderColor='#666';" onmouseout="this.style.color='#bbb'; this.style.borderColor='#444';">English</a>
         </div>
         <ul id="globalnav">
             <li><a href="index.html">Home</a></li>
-            <li><a href="government.html">Government</a></li>
+            <li><a href="government.html" class="active">Government</a></li>
             <li><a href="citizenship.html">Citizenship</a></li>
             <li><a href="services.html">Services</a></li>
-            <li><a href="about.html" class="active">About the Aeretocrat</a></li>
+            <li><a href="about.html">About the Aeretocrat</a></li>
             <li><a href="societal_press.html">Societal Press</a></li>
         </ul>
     </nav>
@@ -277,43 +275,42 @@
             
             <div class="main-col">
                 <div class="glass-panel">
-                    <h2>The Face of Sangaia</h2>
-                    <p>
-                        The Aeretocrat is not a ruler in the traditional sense, but more of a guardian of the Constitution. The title derives from the Greek <em>arete</em> (virtue) and <em>kratos</em> (power), signifying a governance structure rooted in moral excellence rather than political might.
-                    </p>
-                    <p>
-                        In Sangaia, the law is supreme. The Aeretocrat’s primary duty is to ensure that the Provincial Councils adhere strictly to the Constitution. They possess the power of veto against any legislation that contradicts our founding principles, but they cannot draft new laws themselves.
-                    </p>
+                    <h2>The Aeretocracy</h2>
+                    <p>You might hear the word "Aeretocracy" and think it sounds complicated. But the idea behind it is actually very simple. It’s about common sense and good leadership. In a lot of places, the people in charge get there just because they have a lot of money or because they are good at making speeches. In Sangaia, we do things differently. An Aeretocracy means "Rule by the Best." We believe the government should be run like a well-oiled machine, led by people who have actually proven they are smart, capable, and honest.</p>
                     
-                    <div style="background: rgba(0,0,0,0.03); padding: 15px; border-radius: 6px; border: 1px solid #0077be; margin-top: 20px;">
-                        <em>"True leadership is the discipline to enforce the law even when it limits one's own power. We build not for the next election, but for the next century."</em>
-                    </div>
-                </div>
+                    <h3>One Strong Leader</h3>
+                    <p>Imagine a ship in a storm. You can’t have everyone arguing over which way to turn the wheel; you need one Captain to make the tough calls right then and there. In our government, we have one main leader (called the Aeretocrat). However, this doesn't mean he is a bully. It means he has the power to get things done quickly without all the red tape and stalling you see in other governments.</p>
+                
+                    <h3>A Complete Rulebook</h3>
+                    <p>Even the Captain has to follow the rules. We have a Constitution—a written contract that protects your rights. The leader cannot just do whatever he wants. He has to stick to the rulebook. This protects your freedom and makes sure nobody gets too much power.</p>
 
-                <div class="glass-panel">
-                    <h2>Executive Duties</h2>
-                    <ul>
-                        <li><strong>Arbitration:</strong> Resolving disputes between Provinces.</li>
-                        <li><strong>Defense:</strong> Commander-in-Chief of the Sangaian Military.</li>
-                        <li><strong>Diplomacy:</strong> Representing Sangaia in international affairs.</li>
-                        <li><strong>Community:</strong> Ensuring the local communities get fair representation.</li>
-                    </ul>
+                    <h3>Dictated by You</h3>
+                    <p>Just because there is one leader doesn't mean you don't have a say. We have a group called the Body of Electives. These are folks chosen—by the people—to represent you. They work with the leader to make sure the government is doing what is best for the people.</p>
+
+                    <h3>Earning Your Keep</h3>
+                    <p>In Sangaia, being a citizen is a privilege, not a handout. We believe you should care about your country enough to learn about it. To become a voting citizen, you have to pass a test to show you understand how things work. It’s like getting a driver’s license: You have to prove you know the rules of the road before you get the keys. This ensures that the people making decisions are educated and informed.</p>
+
+                    <h3>Zero Monetary Strings Attached</h3>
+                    <p>We believe that if you work hard for your money, you should keep it. We have a strict rule that the government can never take more than 20% of what you earn. Furthermore, we don't spend money we don't have. We keep the government debt limit low so we don't pass bills on to our posterity that they will always have to return marked as "insufficient funds". </p>
+
+                    <h3>The Bottom Line</h3>
+                    <p>An Aeretocracy is a government that mixes the strength of a single leader with the freedom of the people. It is built for folks who want a government that is efficient, fair, and respects hard work.</p>
+                
                 </div>
             </div>
 
             <div class="sidebar-col">
-                <div class="glass-panel" style="background: linear-gradient(to bottom, #fff3e0 0%, #ffe0b2 100%);">
-                    <h2 style="color: #e65100;">Public Schedule</h2>
-                    <p style="font-size: 0.9em; color: #e65100;">Upcoming appearances:</p>
-                    <ul style="padding-left: 20px; color: #bf360c;">
-                        <li><strong>Mar 12:</strong> Provincial Address</li>
-                        <li><strong>Apr 05:</strong> Housing Summit</li>
+                <div class="glass-panel" style="background: linear-gradient(to bottom, #e3f2fd 0%, #bbdefb 100%);">
+                    <h2>Official Documents</h2>
+                    <ul style="padding-left: 20px; color: #006699;">
+                        <li><a href="TUPOS V.pdf" download="TUPOS V.pdf" style="color: #006699; text-decoration: none;">The Constitution</a></li>
+                        <li><a href="Sangaia-map.png" download="Sangaia-map.png" style="color: #006699; text-decoration: none;">Provincial Map</a></li>
                     </ul>
                 </div>
-
                 <div class="glass-panel">
-                    <h2>Office of the Aeretocrat</h2>
-                    <p>For press inquiries or official correspondence, please consult the Ministry of the Excecutive.</p>
+                    <h2>Quick Facts</h2>
+                    <p style="font-size: 0.9em;">The Sangaian Government, <strong>in 2030</strong>, will make the move to embrace the Sangaian language, and will <strong>no longer be English-first</strong>. You can learn Sangaian swiftly from the <strong>Ministry of Education</strong>.</p>
+                    <p style="font-size: 0.9em;">The Sangaian Government itself <strong>didn't exist</strong> until <strong>late 2024</strong>, despite the fact that Sangaia itself has existed since <strong>mid 2020</strong>; constant revolutions prevented a safe chance for setup and establishment.</p>
                 </div>
             </div>
 
