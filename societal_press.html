@@ -31,21 +31,18 @@
 
         .main-container { width: 100%; margin: 0; background: transparent; border: none; border-radius: 0; box-shadow: none; padding: 0; flex-grow: 1; display: flex; flex-direction: column; }
 
-        header {
-            background: linear-gradient(to bottom, #0099cc 0%, #006699 100%);
-            padding: 30px; position: relative; overflow: hidden; border-bottom: 3px solid #004466; color: white; text-shadow: 0 2px 4px rgba(0,0,0,0.3); width: 100%; box-sizing: border-box;
-        }
+        
 
-        header::after {
-            content: ""; position: absolute; top: 0; left: 0; width: 100%; height: 50%;
-            background: linear-gradient(to bottom, rgba(255,255,255,0.4) 0%, rgba(255,255,255,0.1) 100%); pointer-events: none;
-        }
+        
 
         h1 { margin: 0; font-size: 2.5em; letter-spacing: -1px; }
-        .subtitle { font-size: 1.1em; opacity: 0.9; margin-top: 5px; font-weight: normal; }
+        
 
         /* --- APPLE 2012 METAL NAV STYLES --- */
         #globalheader {
+            display: flex;
+            align-items: center;
+            position: relative;
             width: 100%;
             height: 38px;
             background: linear-gradient(to bottom, #5e5e5e 0%, #3e3e3e 50%, #2d2d2d 51%, #1f1f1f 100%);
@@ -58,6 +55,7 @@
         }
 
         #globalnav {
+            flex-grow: 1;
             margin: 0;
             padding: 0;
             list-style: none;
@@ -93,21 +91,21 @@
         /* --- BUTTON STYLES --- */
         .sangaia-btn {
             font-size: 0.9rem; font-family: "myriad-pro", "Segoe UI", system-ui, sans-serif; height: 2.5em; padding: 0 1em; width: auto; min-width: 12em;
-            border-radius: 1000px; position: relative; overflow: hidden; cursor: pointer; outline: none; border: none; text-decoration: none; display: inline-flex; align-items: center; justify-content: center; margin: 5px; transition: all 0.1s ease-out; box-sizing: border-box; 
-            background: linear-gradient(rgba(160, 160, 160, 0.625), rgba(255, 255, 255, 0.625));
-            box-shadow: 0 0.375em 0.5em rgba(0, 0, 0, 0.2), 0 0.125em 0.125em rgba(0, 0, 0, 0.3), inset 0 0.25em 0.25em rgba(0, 0, 0, 0.4), inset 0 0.375em 0.5em 0.25em #BBBBBB; color: #333;
-        }
-        .sangaia-btn::before { content: ''; position: absolute; left: 50%; transform: translateX(-50%); height: 33%; background: linear-gradient(rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.3)); width: calc(100% - 0.875em); border-radius: 2em 2em 0.5em 0.5em; top: 5%; filter: blur(1px); z-index: 2; pointer-events: none; }
-        .sangaia-btn::after { content: ''; position: absolute; left: 50%; transform: translateX(-50%); height: 33%; background: linear-gradient(rgba(255, 255, 255, 0.2), rgb(255, 255, 255, 0.5)); width: calc(100% - 1.25em); border-radius: 0.75em; bottom: 10%; filter: blur(3px); z-index: 0; pointer-events: none; }
-        .sangaia-btn span { position: relative; top: -1px; z-index: 3; letter-spacing: 0.03em; font-weight: 600; text-shadow: 0 1px 1px rgba(255,255,255,0.8); }
-        .sangaia-btn:hover { filter: brightness(1.05); }
+            border-radius: 5px; position: relative; overflow: hidden; cursor: pointer; outline: none;  text-decoration: none; display: inline-flex; align-items: center; justify-content: center; margin: 5px; transition: all 0.1s ease-out; box-sizing: border-box; 
+            
+              
+        background: linear-gradient(to bottom, #88cc00 0%, #70a800 100%); box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1); border: 1px solid #5a8a01; color: white;}
+        
+        
+        .sangaia-btn span { position: relative; z-index: 3; font-weight: 600; text-shadow: 0 1px 1px rgba(0,0,0,0.3); }
+        .sangaia-btn:hover { background: linear-gradient(to bottom, #95df00 0%, #7bc200 100%); filter: none; }
 
         .sangaia-btn.active, .sangaia-btn:active {
-            background: linear-gradient(rgba(0, 65, 184, 0.625), rgba(45, 115, 199, 0.625), rgba(33, 160, 196, 0.625));
-            box-shadow: 0 0.375em 0.5em rgba(0, 0, 0, 0.3), 0 0.125em 0.125em rgba(0, 78, 187, 0.5), inset 0 0.25em 0.5em rgba(0, 17, 49, 0.8), inset 0 0.375em 0.5em 0.25em rgba(0, 78, 187, 0.75), 0 0 0.5em rgba(52, 106, 227, 0.5);
-            color: white; transform: translateY(1px);
-        }
-        .sangaia-btn.active span, .sangaia-btn:active span { text-shadow: 0 1px 2px rgba(0, 30, 80, 0.6); }
+            
+             
+             transform: translateY(1px);
+        background: linear-gradient(to bottom, #639600 0%, #537d00 100%); box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.2); border: 1px solid #426300; color: white;}
+        .sangaia-btn.active span, .sangaia-btn:active span { text-shadow: 0 1px 2px rgba(0, 0, 0, 0.4); }
 
         /* --- CONTENT AREA --- */
         .content-wrapper { padding: 30px; min-height: 400px; width: 100%; box-sizing: border-box; flex-grow: 1; }
@@ -190,12 +188,12 @@
 
 <div class="main-container">
     
-    <header>
-        <h1>Societal Press</h1>
-        <div class="subtitle">The Official Voice of the Aeretocracy.</div>
-    </header>
+    
 
     <nav id="globalheader">
+        <div style="position: absolute; left: 15px; display: flex; align-items: center; height: 100%;">
+            <img src="media/nav_logo.png" style="height: 24px; width: auto;" alt="Logo">
+        </div>
         <ul id="globalnav">
             <li><a href="index.html">Home</a></li>
             <li><a href="government.html">Government</a></li>
