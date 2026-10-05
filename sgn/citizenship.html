@@ -423,7 +423,7 @@
         resultDiv.className = ""; // Reset class
 
         // Fetch the JSON file
-        fetch('status.json')
+        fetch('../status.json')
             .then(response => {
                 if (!response.ok) {
                     throw new Error("Database file not found.");
