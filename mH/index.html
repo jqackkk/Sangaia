@@ -1,1 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ministry of Healthcare - Sangaia</title>
+    <style>
+        /* --- FRUTIGER AERO / SKEUOMORPHIC STYLES --- */
+        :root {
+            --glass-blue: rgba(220, 245, 255, 0.85);
+            --gloss-highlight: rgba(255, 255, 255, 0.9);
+            --ocean-blue: #c62828;
+            --fresh-green: #0277bd;
+            --text-dark: #2c3e50;
+            --text-light: #ffffff;
+        }
 
+        body {
+            background: #ffffff;
+            min-height: 100dvh;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            flex-direction: column;
+            margin: 0;
+            font-family: 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+            color: var(--text-dark);
+        }
+
+        .main-container {
+            width: 100%;
+            margin: 0;
+            background: transparent;
+            padding: 0;
+            flex-grow: 1; 
+        }
+
+        
+
+        
+
+        h1 { margin: 0; font-size: 2.5em; letter-spacing: -1px; }
+        
+
+        #globalheader {
+            display: flex;
+            align-items: center;
+            position: relative;
+            width: 100%;
+            height: 38px;
+            background: linear-gradient(to bottom, #5e5e5e 0%, #3e3e3e 50%, #2d2d2d 51%, #1f1f1f 100%);
+            border-top: 1px solid #222;
+            border-bottom: 1px solid #000;
+            box-shadow: inset 0 1px 0 rgba(255,255,255,0.15), 0 2px 4px rgba(0,0,0,0.2);
+            font-size: 11px;
+            position: relative;
+            z-index: 99;
+        }
+
+        #globalnav {
+            flex-grow: 1;
+            margin: 0;
+            padding: 0;
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            height: 100%;
+        }
+
+        #globalnav li { position: relative; height: 100%; display: flex; align-items: center; }
+        #globalnav li::after {
+            content: ""; position: absolute; right: 0; width: 1px; height: 100%;
+            background: linear-gradient(to bottom, #333, #111); box-shadow: 1px 0 0 rgba(255,255,255,0.08);
+        }
+        #globalnav li:first-child::before {
+            content: ""; position: absolute; left: 0; width: 1px; height: 100%;
+            background: linear-gradient(to bottom, #333, #111); box-shadow: 1px 0 0 rgba(255,255,255,0.08);
+        }
+
+        #globalnav li a {
+            display: block; color: #e8e8e8; text-decoration: none; text-shadow: 0 -1px 0 rgba(0,0,0,0.8);
+            font-weight: bold; padding: 0 24px; line-height: 38px;
+            transition: text-shadow 0.2s ease, color 0.2s ease, background 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        #globalnav li a:hover {
+            color: #fff;
+            background: linear-gradient(rgba(255,255,255,0.05), rgba(255,255,255,0));
+            text-shadow: 0 0 8px rgba(255, 255, 255, 0.8), 0 -1px 0 rgba(0,0,0,0.8);
+        }
+        
+        #globalnav li a.active { color: #fff; background: rgba(0,0,0,0.2); box-shadow: inset 0 2px 5px rgba(0,0,0,0.3); }
+
+        .sangaia-btn {
+            font-size: 0.9rem; font-family: "myriad-pro", "Segoe UI", sans-serif; height: 2.5em;
+            padding: 0 1em; width: 15em; border-radius: 3px; position: relative; overflow: hidden;
+            cursor: pointer;  text-decoration: none; display: inline-flex;
+            align-items: center; justify-content: center; margin: 5px; 
+            
+             
+             box-sizing: border-box;
+        background: linear-gradient(to bottom, #e53935 0%, #c62828 100%); box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1); border: 1px solid #b71c1c; color: white;}
+
+        
+
+        
+
+        .sangaia-btn:hover { background: linear-gradient(to bottom, #ef5350 0%, #d32f2f 100%); }
+        .sangaia-btn span { position: relative; z-index: 3; font-weight: 600; text-shadow: 0 1px 1px rgba(0,0,0,0.3); }
+
+        .sangaia-btn.active, .sangaia-btn:active {
+            
+             
+             
+        background: linear-gradient(to bottom, #b71c1c 0%, #7f0000 100%); box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.2); border: 1px solid #7f0000; color: white;}
+
+        .sangaia-btn.active span, .sangaia-btn:active span { text-shadow: 0 1px 2px rgba(0, 0, 0, 0.4); }
+
+        .content-wrapper { padding: 30px; width: 100%; box-sizing: border-box; }
+
+        .glass-panel {
+            background: linear-gradient(to bottom, #fcfcfc 0%, #f1f1f1 100%);
+            border: 1px solid #ddd; border-radius: 8px; padding: 20px; margin-bottom: 25px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05), inset 0 1px 0 #fff; position: relative;
+        }
+
+        .glass-panel h2 { margin: 0 0 15px; color: #c62828; border-bottom: 1px solid #eee; padding-bottom: 10px; font-size: 1.4em; }
+        
+        /* --- 3D FLIP CAROUSEL STYLES --- */
+        .carousel-container {
+            width: 100%;
+            max-width: 1200px;
+            height: 300px;
+            margin: 0 auto 25px auto;
+            perspective: 1000px;
+            border-radius: 8px;
+            border: 1px solid #ddd;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05), inset 0 1px 0 #fff;
+            background: #fff;
+            overflow: hidden; /* Ensures images don't spill out during flip */
+        }
+
+        .carousel-track {
+            width: 100%;
+            height: 100%;
+            position: relative;
+            transform-style: preserve-3d;
+            transition: transform 1s cubic-bezier(0.645, 0.045, 0.355, 1); /* Smooth "Apple-like" easing */
+        }
+
+        .carousel-slide {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .carousel-slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: bottom;
+        }
+
+        /* We structure the slides as faces of a vertical prism/cube.
+           Since we have 4 slides, we can treat them like a 4-sided spinner.
+           Height is 300px.
+           TranslateZ = 300px / 2 = 150px.
+        */
+        .slide-1 { transform: rotateX(0deg) translateZ(150px); }
+        .slide-2 { transform: rotateX(-90deg) translateZ(150px); }
+        .slide-3 { transform: rotateX(-180deg) translateZ(150px); }
+        .slide-4 { transform: rotateX(-270deg) translateZ(150px); }
+
+        .content-grid { display: grid; grid-template-columns: 1fr; gap: 20px; max-width: 1200px; margin: 0 auto; }
+        @media (min-width: 768px) { .content-grid { grid-template-columns: 2fr 1fr; } }
+
+        footer { text-align: center; padding: 20px; font-size: 0.9em; background: rgba(255,255,255,0.6); margin-top: auto; }
+        p { line-height: 1.6; margin: 0 0 15px; }
+    </style>
+</head>
+<body>
+<div class="main-container">
+    
+    <nav id="globalheader">
+        <div style="position: absolute; left: 15px; display: flex; align-items: center; height: 100%;">
+            <img src="../media/nav_logo.png" style="height: 24px; width: auto;" alt="Logo">
+        </div>
+        <div style="position: absolute; right: 15px; display: flex; align-items: center; height: 100%; z-index: 100;">
+            <a href="sgn/index.html" style="color: #bbb; text-decoration: none; font-size: 11px; font-weight: bold; letter-spacing: 0.5px; padding: 3px 8px; border: 1px solid #444; border-radius: 4px; background: linear-gradient(to bottom, #555, #333); box-shadow: 0 1px 2px rgba(0,0,0,0.3); transition: all 0.2s ease;" onmouseover="this.style.color='#fff'; this.style.borderColor='#666';" onmouseout="this.style.color='#bbb'; this.style.borderColor='#444';">English</a>
+        </div>
+        <ul id="globalnav">
+            <li><a href="index.html" class="active">Home</a></li>
+            <li><a href="#">Services</a></li>
+            <li><a href="#">Hospitals</a></li>
+            <li><a href="#">Research</a></li>
+            <li><a href="#">Insurance</a></li>
+            <li><a href="#">Support</a></li>
+        </ul>
+    </nav>
+    <div class="content-wrapper">
+        
+        <!-- 3D FLIP CAROUSEL -->
+        <div class="carousel-container">
+            <div class="carousel-track" id="track">
+                <!-- Slide 1 -->
+                <div class="carousel-slide slide-1">
+                    <img src="../slide1.jpg" onerror="this.src='https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?q=80&w=1200&auto=format&fit=crop'" alt="Sangaia Slide 1">
+                </div>
+                <!-- Slide 2 -->
+                <div class="carousel-slide slide-2">
+                    <img src="../slide2.jpg" onerror="this.src='https://images.unsplash.com/photo-1441974231531-c6227db76b6e?q=80&w=1200&auto=format&fit=crop'" alt="Sangaia Slide 2">
+                </div>
+                <!-- Slide 3 -->
+                <div class="carousel-slide slide-3">
+                    <img src="../slide3.jpg" onerror="this.src='https://images.unsplash.com/photo-1506744038136-46273834b3fb?q=80&w=1200&auto=format&fit=crop'" alt="Sangaia Slide 3">
+                </div>
+                <!-- Slide 4 -->
+                <div class="carousel-slide slide-4">
+                    <img src="../slide4.jpg" onerror="this.src='https://images.unsplash.com/photo-1472214103451-9374bd1c798e?q=80&w=1200&auto=format&fit=crop'" alt="Sangaia Slide 4">
+                </div>
+            </div>
+        </div>
+
+        <div class="content-grid">
+            <div class="main-col">
+                <div class="glass-panel">
+                    <h2>Your Health, Our Priority.</h2>
+                    <p>The Ministry of Healthcare is dedicated to ensuring that every citizen of Sangaia has access to top-tier medical facilities, comprehensive health insurance, and rapid emergency response teams. </p>
+                    <p>We oversee disease control, medical research, and state-sponsored wellness programs to build a healthier nation.</p>
+                </div>
+                <div class="glass-panel">
+                    <h2>Modern Medicine. Compassionate Care.</h2>
+                    <p>Unlike outdated systems that prioritize profit over patients, Sangaian Healthcare is fundamentally built to serve the people. Our network of hospitals and clinics is fully integrated, meaning your medical history is seamlessly and securely available to authorized professionals.</p>
+                    <p>We focus on preventative care and holistic wellbeing, ensuring that your health is protected at every stage of life.</p>
+                    <a href="#" class="sangaia-btn"><span>Learn About Services</span></a>
+                </div>
+            </div>
+            <div class="sidebar-col">
+                <div class="glass-panel" style="background: linear-gradient(to bottom, #ffebee 0%, #ffcdd2 100%);">
+                    <h2>Emergency</h2>
+                    <p>Need immediate medical assistance? Dial 9-1-1 or find the nearest provincial hospital.</p>
+                    <div style="text-align: center;">
+                        <a href="#" class="sangaia-btn"><span>Find a Hospital</span></a>
+                    </div>
+                </div>
+                <div class="glass-panel">
+                    <h2>Quick Links</h2>
+                    <ul style="padding-left: 20px;">
+                        <li><a href="#" style="color: #c62828;">Insurance Eligibility</a></li>
+                        <li><a href="#" style="color: #c62828;">Disease Control Center</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer>
+        &copy; 2026 United Provinces of Sangaia. All Rights Reserved.<br>
+        <span style="font-size: 0.8em; color: #888;">Ministry of Healthcare</span>
+    </footer>
+</div>
+
+<script>
+    // --- VERTICAL FLIP LOGIC ---
+    let currentRotation = 0;
+    const track = document.getElementById('track');
+    
+    // Rotate 90 degrees every 4 seconds
+    setInterval(() => {
+        currentRotation += 90;
+        track.style.transform = `rotateX(${currentRotation}deg)`;
+    }, 4000); 
+</script>
+
+</body>
+</html>
