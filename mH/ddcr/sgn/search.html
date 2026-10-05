@@ -210,10 +210,6 @@
 #search-container { position: relative; width: 100%; max-width: 800px; margin: 0 auto; }
 #search-box { width: 100%; padding: 18px 20px; font-size: 1.2em; border: 2px solid #ccc; border-radius: 8px; box-sizing: border-box; transition: all 0.2s; }
 #search-box:focus { border-color: #c62828; outline: none;  }
-#suggestions { position: absolute; top: 100%; left: 0; right: 0; background: #fff; border: 1px solid #ddd; border-top: none; border-radius: 0 0 8px 8px; box-shadow: 0 6px 12px rgba(0,0,0,0.1); max-height: 300px; overflow-y: auto; z-index: 1000; display: none; }
-.suggestion-item { padding: 12px 20px; cursor: pointer; border-bottom: 1px solid #f5f5f5; font-size: 1.05em; color: #333; }
-.suggestion-item:last-child { border-bottom: none; }
-.suggestion-item:hover { background: #ffebee; color: #c62828; }
 #results { margin-top: 30px; max-width: 800px; margin-left: auto; margin-right: auto; }
 .result-card { background: #fff; border: 1px solid #e0e0e0; padding: 20px; border-radius: 8px; margin-bottom: 15px; box-shadow: 0 2px 4px rgba(0,0,0,0.02); transition: transform 0.2s; }
 .result-card:hover { transform: translateY(-2px); box-shadow: 0 4px 8px rgba(0,0,0,0.05); border-color: #c62828; }
@@ -226,8 +222,7 @@
     
     <div id="search-container">
         <input type="text" id="search-box" placeholder="Search topics (e.g., Influenza, Vaccines, Guidelines...)" autocomplete="off">
-        <div id="suggestions"></div>
-    </div>
+            </div>
 </div>
 <div id="results">
 
@@ -264,12 +259,11 @@ const healthTopics = [
 ];
 
 const searchBox = document.getElementById('search-box');
-const suggestionsBox = document.getElementById('suggestions');
 const resultsBox = document.getElementById('results');
 
 function performSearch(query) {
     if (!query.trim()) {
-        suggestionsBox.style.display = 'none';
+        
         resultsBox.innerHTML = `
     <div class="result-card">
         <h3 style="font-size: 1.1em; color: #555; margin-bottom: 10px;">Trending Topic</h3>
@@ -288,14 +282,6 @@ function performSearch(query) {
     const lowerQuery = query.toLowerCase();
     const matches = healthTopics.filter(t => t.title.toLowerCase().includes(lowerQuery) || t.desc.toLowerCase().includes(lowerQuery));
     
-    // Render Suggestions (max 6)
-    if (matches.length > 0) {
-        suggestionsBox.innerHTML = matches.slice(0, 6).map(m => `<div class="suggestion-item" onclick="selectTopic('${m.title}')">${m.title}</div>`).join('');
-        suggestionsBox.style.display = 'block';
-    } else {
-        suggestionsBox.style.display = 'none';
-    }
-    
     // Render Results
     resultsBox.innerHTML = matches.map(m => `
         <div class="result-card">
@@ -311,18 +297,7 @@ function performSearch(query) {
 
 searchBox.addEventListener('input', (e) => performSearch(e.target.value));
 
-window.selectTopic = function(title) {
-    searchBox.value = title;
-    suggestionsBox.style.display = 'none';
-    performSearch(title);
-};
 
-// Close suggestions when clicking outside
-document.addEventListener('click', (e) => {
-    if (e.target !== searchBox && e.target !== suggestionsBox) {
-        suggestionsBox.style.display = 'none';
-    }
-});
 </script>
 
 </div>
@@ -331,18 +306,6 @@ document.addEventListener('click', (e) => {
         <span style="font-size: 0.8em; color: #888;">Ministry of Healthcare</span>
     </footer>
 </div>
-
-<script>
-    // --- VERTICAL FLIP LOGIC ---
-    let currentRotation = 0;
-    const track = document.getElementById('track');
-    
-    // Rotate 90 degrees every 4 seconds
-    setInterval(() => {
-        currentRotation += 90;
-        track.style.transform = `rotateX(${currentRotation}deg)`;
-    }, 4000); 
-</script>
 
 </body>
 </html>
