@@ -1,0 +1,647 @@
+English: The United Provinces of Sangaia
+Sangaian: Свои Сонит Провиткия эк Сангаиа
+
+English: Home
+Sangaian: Домо
+
+English: Government
+Sangaian: Губэрно
+
+English: Citizenship
+Sangaian: Циви
+
+English: Services
+Sangaian: Дуло
+
+English: About the Aeretocrat
+Sangaian: Цирку свои Арэтократ
+
+English: Societal Press
+Sangaian: Сонитиа Индикэ
+
+English: Better for Everyone. Including You.
+Sangaian: Маги Бэнэ про Холо Сяни. Инклаво Ту.
+
+English: Sangaia is meant to fix what its predecessor, the United States, could not.
+Sangaian: Сангаиа эст ноэо ад рэпаро ти сум антэо, свои Сонит Провиткия эк Амэрика, динас ми.
+
+English: Offering cheaper land, better home settings, more freedoms, a better foundation for democracy and republicanism, and a balanced monetary system, all united within provincial territories which are easily understood and navigable.
+Sangaian: Офэро минус экспо тэра, маги бэнэ домо фундо, маги свобода, уна маги бэнэ фундо про дэмократиа инкаи рэпубликиа, инкаи уна либро пэкуниа систэма, холо сонит ин Провиткия ти эст факили интэло инкаи навиго.
+
+English: Sangaia strives to be better and better every day, which is why we know you will strive to help make it better as well.
+Sangaian: Сангаиа цэнто ад эсэ маги бэнэ инкаи маги бэнэ холо хэмэра, ти эст куар Сонтаволя гнози ту волу цэнто ад жуво факто ид маги бэнэ итэм.
+
+English: Reinvented Politics. Constitutionally Ruled.
+Sangaian: Ново Зэмио Политикиа. Своротицания Губэрно.
+
+English: Sangaia has invented a new form of government: The Aeretocracy.
+Sangaian: Сангаиа эхо зэмио уна ново прагма эк губэрно: Свои Арэтократиа.
+
+English: Unlike other nations with differing political ideas, we don't force our oppositions into labor camps, kill others who speak against us, or have unfair, inhumane rules;
+Sangaian: Ми симили шэно натио зин дифэро политикиа докэ, Сонтаволя ми фортис ностэр анти интро лаборо кастро, ктэино шэно ти фэми анти Сонтаволя, вэл эхо ми жустиа, ми хумано рэгканон;
+
+English: we don't censor other people and occupy hundreds of native tribes who don't even know we exist;
+Sangaian: Сонтаволя ми кэнсо шэно сяни инкаи окупо цэнтум эк нативо трибо ти ми этон гнози Сонтаволя эсэ;
+
+English: and we don't force our children into labor, or disrespect the privacy of our citizens.
+Sangaian: инкаи Сонтаволя ми фортис ностэр инфанто интро лаборо, вэл ми рэспэкто свои приватиа эк ностэр циви.
+
+English: Sangaia offers almost identical rules and structures as the outdated, yet somehow loved, below-average American Democracy.
+Sangaian: Сангаиа офэро симили рэгканон инкаи фундо омо свои вэто, ала амо, суб-мэдио Амэрика Дэмократиа.
+
+English: The difference? It's structured so that no one–not even the Aeretocrat–can break it.
+Sangaian: Свои дифэро? Ид эст зэтуо уто нон сяни—ми этон свои Арэтократ—динам румпо ид.
+
+English: Learn About Government
+Sangaian: Диско Цирку Губэрно
+
+English: Everyone has an equal opportunity to become a citizen.
+Sangaian: Холо Сяни эхо уна изо оказио ад фио уна циви.
+
+English: We do not distinguish based on arbitrary classifications.
+Sangaian: Сонтаволя практо ми дифэро ин шэно прагма.
+
+English: Apply Now
+Sangaian: Аплико Своя
+
+English: Quick Links
+Sangaian: Цэлэро Нэксо
+
+English: The Constitution
+Sangaian: Свои Своротицания
+
+English: Ministry Directory
+Sangaian: Министро Индикэ
+
+English: 2026 United Provinces of Sangaia. All Rights Reserved.
+Sangaian: Дио Милус Дио Дэкум Сэкс Сонит Провиткия эк Сангаиа. Холо Жусо Сэрво.
+
+English: Powered by Aeretocratic Principles
+Sangaian: Динамиа Паро Арэтократиа Рэгканон
+
+
+
+--- GOVERNMENT.HTML TRANSLATIONS ---
+
+English: Government - The United Provinces of Sangaia
+Sangaian: Губэрно - Свои Сонит Провиткия эк Сангаиа
+
+English: The Aeretocracy
+Sangaian: Свои Арэтократиа
+
+English: You might hear the word "Aeretocracy" and think it sounds complicated.
+Sangaian: Ту зинам аудио свои вэрбус "Арэтократиа" инкаи докэ ид аудио комплико.
+
+English: But the idea behind it is actually very simple.
+Sangaian: Ала свои идэа эксо ид эст вэро валдэ симпло.
+
+English: It’s about common sense and good leadership.
+Sangaian: Ид эст цирку комуно сэнсо инкаи бэнэ дукиа.
+
+English: In a lot of places, the people in charge get there just because they have a lot of money or because they are good at making speeches.
+Sangaian: Ин поли локо, свои сяни ин дукиа ламба эки мэро ратио или эхо поли пэкуниа вэл ратио или эст бэнэ апуд факто фэмиа.
+
+English: In Sangaia, we do things differently.
+Sangaian: Ин Сангаиа, Сонтаволя практо прагма дифэро.
+
+English: An Aeretocracy means "Rule by the Best."
+Sangaian: Уна Арэтократиа ноэо "Губэрниа паро свои Оптимо."
+
+English: We believe the government should be run like a well-oiled machine, led by people who have actually proven they are smart, capable, and honest.
+Sangaian: Сонтаволя крэдо свои губэрно чрэо эсэ трэхо симили уна бэнэ макина, хаго паро сяни ти эхо вэро монстро или эст сапио, динамо, инкаи хонсто.
+
+English: One Strong Leader
+Sangaian: Унус Фортис Дуксо
+
+English: Imagine a ship in a storm.
+Sangaian: Имагино уна навис ин уна тэмпоста.
+
+English: You can’t have everyone arguing over which way to turn the wheel;
+Sangaian: Ту динам ми эхо холо сяни аргуо цирку пио виа ад трэпо свои рото;
+
+English: you need one Captain to make the tough calls right then and there.
+Sangaian: ту хрэа унус Капитано ад факто свои дуро шало жус тоти инкаи эки.
+
+English: In our government, we have one main leader (called the Aeretocrat).
+Sangaian: Ин ностэр губэрно, Сонтаволя эхо унус прото дуксо (шало свои Арэтократ).
+
+English: However, this doesn't mean he is a bully.
+Sangaian: Ала, хок ми ноэо ил эст уна тирано.
+
+English: It means he has the power to get things done quickly without all the red tape and stalling you see in other governments.
+Sangaian: Ид ноэо ил эхо свои динамиа ад факто прагма практо цэлэро сино холо свои рубаро тэниа инкаи ямэно ту видэ ин шэно губэрно.
+
+English: A Complete Rulebook
+Sangaian: Уна Тото Рэгканон-Либро
+
+English: Even the Captain has to follow the rules.
+Sangaian: Этон свои Капитано хрэа ад хэпо свои рэгканон.
+
+English: We have a Constitution—a written contract that protects your rights.
+Sangaian: Сонтаволя эхо уна Своротицания—уна графо контракто ти сэкуро тус жусо.
+
+English: The leader cannot just do whatever he wants.
+Sangaian: Свои дуксо динам ми мэро практо холо ил тэло.
+
+English: He has to stick to the rulebook.
+Sangaian: Ил хрэа ад тиро ад свои рэгканон-либро.
+
+English: This protects your freedom and makes sure nobody gets too much power.
+Sangaian: Хок сэкуро тус свобода инкаи факто сэкуро нэмо ламба поли динамиа.
+
+English: Dictated by You
+Sangaian: Дикто паро Ту
+
+English: Just because there is one leader doesn't mean you don't have a say.
+Sangaian: Мэро ратио эки эст унус дуксо ми ноэо ту эхо ми уна дико.
+
+English: We have a group called the Body of Electives.
+Sangaian: Сонтаволя эхо уна групо шало свои Корпо эк Элэкто.
+
+English: These are folks chosen—by the people—to represent you.
+Sangaian: Хок эст сяни элэкто—паро свои сяни—ад рэпрэзэнто ту.
+
+English: They work with the leader to make sure the government is doing what is best for the people.
+Sangaian: Или лаборо зин свои дуксо ад факто сэкуро свои губэрно эст практо ти эст оптимо про свои сяни.
+
+English: Earning Your Keep
+Sangaian: Мэрито тус Тиро
+
+English: In Sangaia, being a citizen is a privilege, not a handout.
+Sangaian: Ин Сангаиа, эсэ уна циви эст уна привилэгиа, ми уна доно.
+
+English: We believe you should care about your country enough to learn about it.
+Sangaian: Сонтаволя крэдо ту чрэо кура цирку тус натио сати ад диско цирку ид.
+
+English: To become a voting citizen, you have to pass a test to show you understand how things work.
+Sangaian: Ад фио уна вото циви, ту хрэа ад трансо уна тэсто ад монстро ту интэло куомо прагма лаборо.
+
+English: It’s like getting a driver’s license: You have to prove you know the rules of the road before you get the keys.
+Sangaian: Ид эст симили ламба уна дуксо ликэнсо: Ту хрэа ад монстро ту гнози свои рэгканон эк свои виа антэо ту ламба свои клавис.
+
+English: This ensures that the people making decisions are educated and informed.
+Sangaian: Хок факто сэкуро ти свои сяни факто дэкизо эст эдуко инкаи информо.
+
+English: Zero Monetary Strings Attached
+Sangaian: Зэро Пэкуниа Лиго Адо
+
+English: We believe that if you work hard for your money, you should keep it.
+Sangaian: Сонтаволя крэдо ти эан ту лаборо дуро про тус пэкуниа, ту чрэо тиро ид.
+
+English: We have a strict rule that the government can never take more than 20% of what you earn.
+Sangaian: Сонтаволя эхо уна стрикто рэгканон ти свои губэрно динам нэвун капио маги куамо Дио Дэкум пэрцэнто эк ти ту мэрито.
+
+English: Furthermore, we don't spend money we don't have.
+Sangaian: Итэм, Сонтаволя практо ми дапано пэкуниа Сонтаволя практо ми эхо.
+
+English: We keep the government debt limit low so we don't pass bills on to our posterity that they will always have to return marked as "insufficient funds".
+Sangaian: Сонтаволя тиро свои губэрно дэбито лимито лово уто Сонтаволя практо ми трансо билос ад ностэр футуриа ти или волу сэмпо хрэа ад рэтурно марко омо "ми сати пэкуниа".
+
+English: The Bottom Line
+Sangaian: Свои Базо Линиа
+
+English: An Aeretocracy is a government that mixes the strength of a single leader with the freedom of the people.
+Sangaian: Уна Арэтократиа эст уна губэрно ти миксо свои фортис эк уна сингуло дуксо зин свои свобода эк свои сяни.
+
+English: It is built for folks who want a government that is efficient, fair, and respects hard work.
+Sangaian: Ид эст оико про сяни ти тэло уна губэрно ти эст эфекто, жустиа, инкаи рэспэкто дуро лаборо.
+
+English: Official Documents
+Sangaian: Офикио Докумэнто
+
+English: Provincial Map
+Sangaian: Провиткия Мапа
+
+English: Quick Facts
+Sangaian: Цэлэро Факто
+
+English: The Sangaian Government, in 2030, will make the move to embrace the Sangaian language, and will no longer be English-first.
+Sangaian: Свои Сангаиа Губэрно, ин Дио Милус Трэс Дэкум, волу факто свои мовэо ад комплэкто свои Сангаиа лингуа, инкаи волу эсэ ми маги Англо-прото.
+
+English: You can learn Sangaian swiftly from the Ministry of Education.
+Sangaian: Ту динам диско Сангаиа цэлэро апо свои Министро эк Эдуко.
+
+English: The Sangaian Government itself didn't exist until late 2024, despite the fact that Sangaia itself has existed since mid 2020; constant revolutions prevented a safe chance for setup and establishment.
+Sangaian: Свои Сангаиа Губэрно ипсо практо ми эсэ унтило лато Дио Милус Дио Дэкум Куатро, ми кура свои факто ти Сангаиа ипсо эхо эсэ апо мэдио Дио Милус Дио Дэкум; константо рэволутио стопо уна сэкуро оказио про зэтуо инкаи зэтуо.
+
+
+
+--- CITIZENSHIP.HTML TRANSLATIONS ---
+
+English: Citizenship - The United Provinces of Sangaia
+Sangaian: Циви - Свои Сонит Провиткия эк Сангаиа
+
+English: Unbiased & Open to All
+Sangaian: Ми Праэжудо инкаи Оиго ад Холо
+
+English: Sangaia fundamentally rejects the arbitrary classifications used by other nations to divide people.
+Sangaian: Сангаиа фундо рэжэкто свои либэро сорто узо паро шэно натио ад дивидо сяни.
+
+English: We do not filter applicants based on race, sex, sexual orientation, marital status, or lineage.
+Sangaian: Сонтаволя практо ми сорто апликато ин гэнос, сэксо, сэксо ориэнто, марито стату, вэл линиа.
+
+English: Pathways to Citizenship
+Sangaian: Виа ад Циви
+
+English: 1. Birthright
+Sangaian: Унус. Нато Жус
+
+English: Be born on Sangaian Land.
+Sangaian: Эсэ нато ин Сангаиа Тэра.
+
+English: 2. Parentage
+Sangaian: Дио. Парэнто
+
+English: Have Sangaian Parents or Parents with Sangaian Citizenship.
+Sangaian: Эхо Сангаиа Парэнто вэл Парэнто зин Сангаиа Циви.
+
+English: 3. Naturalization
+Sangaian: Трэс. Натуро факто
+
+English: Pass the Citizenship test and the Literacy test to become naturalized.
+Sangaian: Трансо свои Циви тэсто инкаи свои Литэро тэсто ад фио натуро.
+
+English: 4. Sponsorship
+Sangaian: Куатро. Спонсо
+
+English: Direct Aeretocratic Sponsorship.
+Sangaian: Дирэкто Арэтократиа Спонсо.
+
+English: Test Prep - Citizenship
+Sangaian: Тэсто Праэпаро - Циви
+
+English: You can easily prepare for the citizenship test. Here's what we reccomend you do:
+Sangaian: Ту динам факили праэпаро про свои циви тэсто. Свово эст ти Сонтаволя рэкомэндо ту практо:
+
+English: Study the constitution of Sangaia thoroughly.
+Sangaian: Студио свои Своротицания эк Сангаиа тото.
+
+English: Ensure you remember the terminology used in the constitution.
+Sangaian: Сэкуро ту мнао свои вэрбо узо ин свои Своротицания.
+
+English: Memorize the numbers provided in the constitution that detail amounts of civic employees.
+Sangaian: Мнао свои нумэро провидо ин свои Своротицания ти дэтало куанто эк цивико лаборато.
+
+English: Don't second-guess yourself.
+Sangaian: Ми дио докэ ипсо.
+
+English: Test Prep - Literacy
+Sangaian: Тэсто Праэпаро - Литэро
+
+English: Words are hard, but not when you know the context. Here's what we reccomend you do:
+Sangaian: Вэрбус эст дуро, ала ми куам ту гнози свои контэксто. Свово эст ти Сонтаволя рэкомэндо ту практо:
+
+English: Study the sentence structure of your language choice thoroughly.
+Sangaian: Студио свои сэнтэтиа фундо эк тус лингуа элэкто тото.
+
+English: Memorize verbage and how to address people based on status (if applicable).
+Sangaian: Мнао вэрбо инкаи куомо ад шало сяни ин стату.
+
+English: If you do not remember the meaning of a word, break it down into its root word.
+Sangaian: Эан ту практо ми мнао свои ноэо эк уна вэрбус, румпо ид интро сус радикс вэрбус.
+
+English: Think about how your 70-year-old teacher would say it.
+Sangaian: Докэ цирку куомо тус Сэптэм Дэкум анно вэто докэно волу фэми ид.
+
+English: What to do next
+Sangaian: Ти ад практо проксимо
+
+English: After submitting your application, your file will undergo a rigorous review by the Ministry of Domestic Affairs. Please follow these next steps:
+Sangaian: Посто субмито тус апликатио, тус докумэнто волу субэо уна дуро рэвизо паро свои Министро эк Домо Прагма. Плако хэпо хок проксимо граду:
+
+English: 1. Await Digital Confirmation
+Sangaian: Унус. Ямэно Дигито Конфирмо
+
+English: You will receive a confirmation packet via secure email within 48 hours containing your unique tracking ID.
+Sangaian: Ту волу ламба уна конфирмо пако паро сэкуро э-мито ин Куатро Дэкум Окто хора тэнэо тус уникэ трако ИД.
+
+English: 2. Prepare Verification Documents
+Sangaian: Дио. Праэпаро Вэрито Докумэнто
+
+English: Gather your birth certificate, identification, and any other documents that may be requested by the clerk.
+Sangaian: Колкто тус нато докумэнто, ИД докумэнто, инкаи шэно докумэнто ти зинам эсэ эрото паро свои клэрико.
+
+English: 3. Track Your Progress
+Sangaian: Трэс. Трако тус Прово
+
+English: Still curious? Enter the ID provided in your confirmation email to check your status.
+Sangaian: Итэм куриозо? Типо свои ИД провидо ин тус конфирмо э-мито ад индикэ тус стату.
+
+English: Enter Application ID
+Sangaian: Типо Апликатио ИД
+
+English: Track
+Sangaian: Трако
+
+English: Why Sangaia?
+Sangaian: Куар Сангаиа?
+
+English: No Income Taxes
+Sangaian: Зэро Интройто Таксо
+
+English: Free University
+Sangaian: Либэро Унивэрсо
+
+English: Well-Paying Jobs
+Sangaian: Бэнэ-Цолво Лаборо
+
+English: Strong and Reliable Currency
+Sangaian: Фортис инкаи Фидо Пэкуниа
+
+English: Strict 1-Person-1-Vote Policy
+Sangaian: Стрикто Унус-Сяни-Унус-Вото Политикиа
+
+English: Growing and Charitable Community
+Sangaian: Фуо инкаи Карито Комунитиа
+
+English: Forms
+Sangaian: Формо
+
+English: Visit the Citizenship Test
+Sangaian: Визо свои Циви Тэсто
+
+English: Visit the Literacy Test
+Sangaian: Визо свои Литэро Тэсто
+
+English: You must complete any literacy test provided by the Sangaian Government to gain citizenship. Any literacy test that claims to certify Sangaian Language or English literacy that is not from this site is illegitimate.
+Sangaian: Ту дэи тото шэно литэро тэсто провидо паро свои Сангаиа Губэрно ад ламба циви. Шэно литэро тэсто ти фэми ад вэрито Сангаиа Лингуа вэл Англо литэро ти эст ми апо хок локо эст ми лэгито.
+
+English: You could just check the json file in the github project to find out what step of the citizenship process you're in, but it's way more fun to view it on this page.
+Sangaian: Ту динам мэро индикэ свои json докумэнто ин свои гитхуб прожэкто ад индикэ ти граду эк свои циви виа ту эст ин, ала ид эст маги жоко ад видэ ид ин хок локо.
+
+English: As soon as you get citizenship, you can vote in any upcoming election if you are of the age of majority as referenced in the Constitution. You do not need to apply for anything; it does all the work for you!
+Sangaian: Ас цэлэро ас ту ламба циви, ту динам вото ин шэно проксимо элэктио эан ту эст эк свои аэта эк мажоро ас рэпрэзэнто ин свои Своротицания. Ту практо ми хрэа ад аплико про шэно прагма; ид практо холо свои лаборо про ту!
+
+English: You do not need to be fluent in Sangaian to gain citizenship. As long as you can read, write, and speak a sufficient amount of any official language declared by the Constitution, you're good to go.
+Sangaian: Ту практо ми хрэа ад эсэ флуо ин Сангаиа ад ламба циви. Ас макрао ас ту динам лэго, графо, инкаи фэми уна сати нумэро эк шэно офикио лингуа дэкларо паро свои Своротицания, ту эст бэнэ ад иро.
+
+
+
+--- SERVICES.HTML TRANSLATIONS ---
+
+English: Services - The United Provinces of Sangaia
+Sangaian: Дуло - Свои Сонит Провиткия эк Сангаиа
+
+English: Ministry Directory
+Sangaian: Министро Индикэ
+
+English: Sangaia provides streamlined access to all essential services through our federal ministries. Our digital-first infrastructure allows citizens to access support, information, and rights management from a single portal.
+Sangaian: Сангаиа провидо рэкто адито ад холо эсэтио дуло паро ностэр фэдэро министро. Ностэр дигито-прото субструкто януо циви ад адито супорто, информатио, инкаи жусо мануго апо уна сингуло порта.
+
+English: Ministry of Work
+Sangaian: Министро эк Лаборо
+
+English: Oversees everything to do with workers and their rights and their access to services, both internally and externally.
+Sangaian: Супэрвидо холо прагма ад практо зин лаборато инкаи сум жусо инкаи сум адито ад дуло, амбо интро инкаи экстро.
+
+English: Visit the Ministry of Work
+Sangaian: Визо свои Министро эк Лаборо
+
+English: Ministry of Healthcare
+Sangaian: Министро эк Салутиа-Кура
+
+English: Oversees disease control, healthcare services, ambulances, and state-sponsored healthcare eligibility.
+Sangaian: Супэрвидо морбо контроло, салутиа-кура дуло, амбуланто, инкаи Провиткия-спонсо салутиа-кура элигио.
+
+English: Visit the Ministry of Healthcare
+Sangaian: Визо свои Министро эк Салутиа-Кура
+
+English: Ministry of the Executive
+Sangaian: Министро эк свои Эксэкуто
+
+English: Manages the entirety of Sangaia as a whole, and houses important figures such as the Aeretocrat and their cabinet.
+Sangaian: Мануго свои тото эк Сангаиа ас уна холо, инкаи домо магнус фигуро симили свои Арэтократ инкаи сум кабино.
+
+English: Visit the Ministry of the Executive
+Sangaian: Визо свои Министро эк свои Эксэкуто
+
+English: Ministry of Education
+Sangaian: Министро эк Эдуко
+
+English: Oversees what is taught to students in public schools and what funding is allocated to state-sponsored education centers.
+Sangaian: Супэрвидо ти эст докэ ад студиозо ин публико скола инкаи ти пэкуниа эст алоко ад Провиткия-спонсо эдуко цэнтро.
+
+English: Visit the Ministry of Education
+Sangaian: Визо свои Министро эк Эдуко
+
+English: Ministry of the Treasury
+Sangaian: Министро эк свои Пэкуниа-Домо
+
+English: Oversees general funding for other ministries, federal budget, federal tax approval, and government debt management.
+Sangaian: Супэрвидо холо пэкуниа про шэно министро, фэдэро бугэтио, фэдэро таксо апробо, инкаи губэрно дэбито мануго.
+
+English: Visit the Ministry of the Treasury
+Sangaian: Визо свои Министро эк свои Пэкуниа-Домо
+
+English: Ministry of the Environment
+Sangaian: Министро эк свои Амбито
+
+English: Manages environmental services, biome funding, wildlife intervention, and conservation efforts.
+Sangaian: Мануго амбито дуло, биомо пэкуниа, фэра интэрвэно, инкаи консэрво цэнто.
+
+English: Visit the Ministry of the Environment
+Sangaian: Визо свои Министро эк свои Амбито
+
+English: Ministry of Domestic Affairs
+Sangaian: Министро эк Домо Прагма
+
+English: Oversees relations between provinces, trade, and federal interactions, as well as roads and traffic services.
+Sangaian: Супэрвидо рэлатио интэр Провиткия, мэрко, инкаи фэдэро интэракто, ас бэнэ ас виа инкаи транзито дуло.
+
+English: Visit the Ministry of Domestic Affairs
+Sangaian: Визо свои Министро эк Домо Прагма
+
+English: Ministry of External Affairs
+Sangaian: Министро эк Экстро Прагма
+
+English: Oversees relationships with other countries, manages treaties, international affairs, and embassies.
+Sangaian: Супэрвидо рэлатио зин шэно натио, мануго трактато, интэр-натио прагма, инкаи эмбасо.
+
+English: Visit the Ministry of External Affairs
+Sangaian: Визо свои Министро эк Экстро Прагма
+
+English: Ministry of Propaganda
+Sangaian: Министро эк Пропаго
+
+English: Controls public broadcasts, reporter qualifications, and oversees churches and religious constructs.
+Sangaian: Контроло публико эмито, рэпорто куалифико, инкаи супэрвидо экклэсиа инкаи рэлигио конструкто.
+
+English: Visit the Ministry of Propaganda
+Sangaian: Визо свои Министро эк Пропаго
+
+English: Emergencies
+Sangaian: Эмэрго
+
+English: Dial 9-1-1 for immediate assistance.
+Sangaian: Типо Унус Мин Дэкум-Унус-Унус про статим асисто.
+
+English: Provincial Police
+Sangaian: Провиткия Полико
+
+English: Medical Response
+Sangaian: Мэдико Рэспонсо
+
+English: Fire & Rescue
+Sangaian: Игни инкаи Салво
+
+English: Networks
+Sangaian: Рэти
+
+English: As of the 26th of February, 2026, all major networks, including government networks and services, are operational.
+Sangaian: Ас эк свои Дио Дэкум Сэкс эк Фэбруатио, Дио Милус Дио Дэкум Сэкс, холо мажоро рэти, инклаво губэрно рэти инкаи дуло, эст опэро.
+
+English: If you have any questions about your network, or would like to report an outage, please contact your ISP (Internet Service Provider).
+Sangaian: Эан ту эхо шэно куэстио цирку тус рэти, вэл волу тэло ад рэпорто уна фалу, плако контакто тус ИСП (Интэр-рэти Дуло Провидо).
+
+English: Traffic & Transit
+Sangaian: Транзито
+
+English: As of the 26th of February, 2026, all transit services are available and will be arriving on schedule throughout the week.
+Sangaian: Ас эк свои Дио Дэкум Сэкс эк Фэбруатио, Дио Милус Дио Дэкум Сэкс, холо транзито дуло эст праэсто инкаи волу эсэ адвэно ин скэдуло ин холо свои сэптима.
+
+English: As reported by the Division of Traffic Services, there are no accidents, traffic jams, or construction events occuring on any major roads or highways.
+Sangaian: Ас рэпорто паро свои Дивизо эк Транзито Дуло, эки эст зэро акидэто, транзито блоко, вэл конструкто прагма тугхо ин шэно мажоро виа.
+
+English: If you have any questions about your access to transit services or about traffic, or would like to report a blockage or event that otherwise prevents the flow of traffic, please report it to the Division of Traffic Services.
+Sangaian: Эан ту эхо шэно куэстио цирку тус адито ад транзито дуло, вэл волу тэло ад рэпорто уна блоко ти стопо свои флуо эк транзито, плако рэпорто ид ад свои Дивизо эк Транзито Дуло.
+
+English: Many people associate propaganda with censorship or brainwashing, but the Ministry of Propaganda does the exact opposite.
+Sangaian: Поли сяни социо пропаго зин кэнсо вэл лаво-мэнти, ала свои Министро эк Пропаго практо свои экзакто опозито.
+
+English: While it does permit what can be shown to the public on broadcasting systems such as electronic mail or television, it doesn't do so from a political standpoint.
+Sangaian: Куам ид практо пэрмито ти динам эсэ монстро ад свои публико ин эмито систэма симили э-мито вэл тэлэвизо, ид практо ми практо со апо уна политикиа стату.
+
+English: It also administers what churches are allowed to be created and monitors their spending should their belief system support wealth-redistribution to the community.
+Sangaian: Ид итэм администро ти экклэсиа эст януо ад эсэ зэмио инкаи монито сум дапано эан сум крэдо систэма супорто рико-рэдивидо ад свои комунитиа.
+
+English: The Ministry of the Treasury receives random, unannounced check-ins from members of the Body of Electives.
+Sangaian: Свои Министро эк свои Пэкуниа-Домо ламба рандо, ми анукио визо апо сяни эк свои Корпо эк Элэкто.
+
+English: This prevents fraud and ensures that money is going to where it belongs.
+Sangaian: Хок стопо фраудо инкаи сэкуро ти пэкуниа эст иро ад эки ид пэртино.
+
+English: The Ministry of Work existed before the actual Sangaian Government was even thought of.
+Sangaian: Свои Министро эк Лаборо эсэ антэо свои вэро Сангаиа Губэрно эсэ этон докэ эк.
+
+English: It has evolved over time as Sangaia went through its revolutions.
+Sangaian: Ид эхо эволуо супэр тэмпус ас Сангаиа иро паро сум рэволутио.
+
+
+
+--- ABOUT.HTML TRANSLATIONS ---
+
+English: About the Aeretocrat - The United Provinces of Sangaia
+Sangaian: Цирку свои Арэтократ - Свои Сонит Провиткия эк Сангаиа
+
+English: The Face of Sangaia
+Sangaian: Свои Факиэ эк Сангаиа
+
+English: The Aeretocrat is not a ruler in the traditional sense, but more of a guardian of the Constitution.
+Sangaian: Свои Арэтократ эст ми уна дуксо ин свои традитио сэнсо, ала маги эк уна кустодо эк свои Своротицания.
+
+English: The title derives from the Greek <em>arete</em> (virtue) and <em>kratos</em> (power), signifying a governance structure rooted in moral excellence rather than political might.
+Sangaian: Свои титуло дэриво апо свои Граэко <em>арэтэ</em> (вуртэс) инкаи <em>кратос</em> (динамиа), сигнифико уна губэрно структуро радикс ин морало арэтиа маги куамо политикиа динамиа.
+
+English: In Sangaia, the law is supreme.
+Sangaian: Ин Сангаиа, свои лэксо эст супрэмо.
+
+English: The Aeretocrat’s primary duty is to ensure that the Provincial Councils adhere strictly to the Constitution.
+Sangaian: Свои Арэтократ'с прото офикио эст ад сэкуро ти свои Провиткия Консилио адхэро стрикто ад свои Своротицания.
+
+English: They possess the power of veto against any legislation that contradicts our founding principles, but they cannot draft new laws themselves.
+Sangaian: Или тэнэо свои динамиа эк прохибо анти шэно лэксо ти антидико ностэр зэтуо рэгканон, ала или динам ми скрибо ново лэксо ипсо.
+
+English: "True leadership is the discipline to enforce the law even when it limits one's own power. We build not for the next election, but for the next century."
+Sangaian: "Вэро дукиа эст свои дискиплина ад фортис свои лэксо этон куам ид лимито уна'с ипсо динамиа. Сонтаволя оико ми про свои проксимо элэктио, ала про свои проксимо цэнтури."
+
+English: Executive Duties
+Sangaian: Эксэкуто Офикио
+
+English: <strong>Arbitration:</strong> Resolving disputes between Provinces.
+Sangaian: <strong>Арбитро:</strong> Рэзолво диспуто интэр Провиткия.
+
+English: <strong>Defense:</strong> Commander-in-Chief of the Sangaian Military.
+Sangaian: <strong>Дэфэнсо:</strong> Импэрато-ин-Прото эк свои Сангаиа Милитари.
+
+English: <strong>Diplomacy:</strong> Representing Sangaia in international affairs.
+Sangaian: <strong>Дипломо:</strong> Рэпрэзэнто Сангаиа ин интэр-натио прагма.
+
+English: <strong>Community:</strong> Ensuring the local communities get fair representation.
+Sangaian: <strong>Комунитиа:</strong> Сэкуро свои локало комунитиа ламба жустиа рэпрэзэнто.
+
+English: Public Schedule
+Sangaian: Публико Скэдуло
+
+English: Upcoming appearances:
+Sangaian: Проксимо апаритио:
+
+English: <strong>Mar 12:</strong> Provincial Address
+Sangaian: <strong>Мартио Дэкум-Дио:</strong> Провиткия Фэмиа
+
+English: <strong>Apr 05:</strong> Housing Summit
+Sangaian: <strong>Априло Пэнтус:</strong> Домо Сумито
+
+English: Office of the Aeretocrat
+Sangaian: Офикио эк свои Арэтократ
+
+English: For press inquiries or official correspondence, please consult the Ministry of the Excecutive.
+Sangaian: Про прэсо куэстио вэл офикио эпистола, плако консуло свои Министро эк свои Эксэкуто.
+
+
+
+--- SOCIETAL_PRESS.HTML TRANSLATIONS ---
+
+English: Societal Press - The United Provinces of Sangaia
+Sangaian: Сонитиа Прэсо - Свои Сонит Провиткия эк Сангаиа
+
+English: Societal Press
+Sangaian: Сонитиа Прэсо
+
+English: Latest Publications
+Sangaian: Ултимо Публикатио
+
+English: Stay informed with official briefings, civic updates, and statements direct from the Ministries.
+Sangaian: Стао информо зин офикио брэвио, цивико актуало, инкаи фэмиа дирэкто апо свои Министро.
+
+English: Provincial Review: Half-Year Address
+Sangaian: Провиткия Рэвизо: Димидио-Анно Фэмиа
+
+English: July 3rd, 2026 | Ministry of the Executive
+Sangaian: Жулио Тэртио, Дио Милус Дио Дэкум Сэкс | Министро эк свои Эксэкуто
+
+English: The Societal Press deliversa summary of the quarterly review on the status of provincial budgets, inter-provincial trade, and civic milestones, outlined by the Aeretocrat.
+Sangaian: Свои Сонитиа Прэсо традо уна сума эк свои куатро-анно рэвизо ин свои стату эк Провиткия бугэтио, интэр-Провиткия мэрко, инкаи цивико марко, дэлинио паро свои Арэтократ.
+
+English: Read Article
+Sangaian: Лэго Артикуло
+
+English: New Digital Transit Systems
+Sangaian: Ново Дигито Транзито Систэма
+
+English: September 28, 2026 | Ministry of Domestic Affairs
+Sangaian: Сэптэмбэро Дио Дэкум Окто, Дио Милус Дио Дэкум Сэкс | Министро эк Домо Прагма
+
+English: An overview of the newly digitized railway schedules and how citizens can link their MoE IDs for discounted fares.
+Sangaian: Уна супэрвизо эк свои ново дигито факто фэрро-виа скэдуло инкаи куомо циви динам нэксо сум М-эк-Э ИД про дисконто прэтио.
+
+English: Example Article Format
+Sangaian: Экзэмпло Артикуло Формато
+
+English: Example Date | Author
+Sangaian: Экзэмпло Дато | Аукто
+
+English: Click here to view what the layout of a standard Sangaian Press article looks like in the viewer.
+Sangaian: Клико эки ад видэ ти свои диспозио эк уна стандарто Сангаиа Прэсо артикуло видэ симили ин свои визоро.
+
+English: &larr; Back to Press Hub
+Sangaian: &larr; Рэтро ад Прэсо Цэнтро
+
+English: Fetching publication...
+Sangaian: Фэро публикатио...
+
+English: File Not Found
+Sangaian: Докумэнто Ми Трово
+
+English: Ensure you have uploaded the file <strong>${filename}</strong> to the <strong>articles/</strong> folder in your GitHub repository.
+Sangaian: Сэкуро ту эхо сублэво свои докумэнто <strong>${filename}</strong> ад свои <strong>articles/</strong> карпэто ин тус ГитХуб рэпозо.
+
