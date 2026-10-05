@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Research - Ministry of Healthcare</title>
+    <title>DDCR - Ministry of Healthcare</title>
     <style>
         /* --- FRUTIGER AERO / SKEUOMORPHIC STYLES --- */
         :root {
@@ -188,34 +188,57 @@
     
     <nav id="globalheader">
         <div style="position: absolute; left: 15px; display: flex; align-items: center; height: 100%;">
-            <img src="../media/nav_logo.png" style="height: 24px; width: auto;" alt="Logo">
+            <img src="../../media/nav_logo.png" style="height: 24px; width: auto;" alt="Logo">
         </div>
         <div style="position: absolute; right: 15px; display: flex; align-items: center; height: 100%; z-index: 100; gap: 15px;">
-            <img src="../media/mh_logo.png" style="height: 24px; width: auto;" alt="Ministry Logo">
-            <a href="sgn/research.html" style="color: #bbb; text-decoration: none; font-size: 11px; font-weight: bold; letter-spacing: 0.5px; padding: 3px 8px; border: 1px solid #444; border-radius: 4px; background: linear-gradient(to bottom, #555, #333); box-shadow: 0 1px 2px rgba(0,0,0,0.3); transition: all 0.2s ease;" onmouseover="this.style.color='#fff'; this.style.borderColor='#666';" onmouseout="this.style.color='#bbb'; this.style.borderColor='#444';">English</a>
+            <img src="../../media/mh_logo.png" style="height: 24px; width: auto;" alt="Ministry Logo">
+            <a href="sgn/index.html" style="color: #bbb; text-decoration: none; font-size: 11px; font-weight: bold; letter-spacing: 0.5px; padding: 3px 8px; border: 1px solid #444; border-radius: 4px; background: linear-gradient(to bottom, #555, #333); box-shadow: 0 1px 2px rgba(0,0,0,0.3); transition: all 0.2s ease;" onmouseover="this.style.color='#fff'; this.style.borderColor='#666';" onmouseout="this.style.color='#bbb'; this.style.borderColor='#444';">English</a>
         </div>
         <ul id="globalnav">
-            <li><a href="index.html">Home</a></li>
-            <li><a href="departments.html">Departments</a></li>
-            <li><a href="services.html">Services</a></li>
-            <li><a href="hospitals.html">Hospitals</a></li>
-            <li><a href="research.html" class="active">Research</a></li>
-            <li><a href="support.html">Support</a></li>
+            <li><a href="../index.html" >Home</a></li>
+            <li><a href="../departments.html">Departments</a></li>
+            <li><a href="../services.html">Services</a></li>
+            <li><a href="../hospitals.html">Hospitals</a></li>
+            <li><a href="../research.html">Research</a></li>
+            <li><a href="../support.html">Support</a></li>
         </ul>
     </nav>
     <div class="content-wrapper">
         
-        
+        <!-- 3D FLIP CAROUSEL -->
+        <div class="carousel-container">
+            <div class="carousel-track" id="track">
+                <!-- Slide 1 -->
+                <div class="carousel-slide slide-1">
+                    <img src="../../slide1.jpg" onerror="this.src='https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?q=80&w=1200&auto=format&fit=crop'" alt="Sangaia Slide 1">
+                </div>
+                <!-- Slide 2 -->
+                <div class="carousel-slide slide-2">
+                    <img src="../../slide2.jpg" onerror="this.src='https://images.unsplash.com/photo-1441974231531-c6227db76b6e?q=80&w=1200&auto=format&fit=crop'" alt="Sangaia Slide 2">
+                </div>
+                <!-- Slide 3 -->
+                <div class="carousel-slide slide-3">
+                    <img src="../../slide3.jpg" onerror="this.src='https://images.unsplash.com/photo-1506744038136-46273834b3fb?q=80&w=1200&auto=format&fit=crop'" alt="Sangaia Slide 3">
+                </div>
+                <!-- Slide 4 -->
+                <div class="carousel-slide slide-4">
+                    <img src="../../slide4.jpg" onerror="this.src='https://images.unsplash.com/photo-1472214103451-9374bd1c798e?q=80&w=1200&auto=format&fit=crop'" alt="Sangaia Slide 4">
+                </div>
+            </div>
+        </div>
 
         <div class="content-grid">
             <div class="main-col">
                 <div class="glass-panel">
-                    <h2>Medical Research & Development</h2>
-                    <p>The Ministry of Healthcare invests heavily in the future of medicine. Our Disease Control Center and research laboratories work tirelessly to cure illnesses and improve quality of life.</p>
+                    <h2>Department of Disease Control & Research</h2>
+                    <p>The DDCR serves as Sangaia's primary defense against infectious diseases and public health crises. We constantly monitor global and domestic health trends.</p>
+                    <p>Through rigorous research and proactive containment strategies, we ensure the safety of our citizens.</p>
                 </div>
                 <div class="glass-panel">
-                    <h2>Clinical Trials & Innovations</h2>
-                    <p>Sangaia is at the forefront of medical technology. We prioritize ethical research and the rapid deployment of life-saving pharmaceutical innovations to our hospital networks.</p>
+                    <h2>Pioneering Medical Solutions.</h2>
+                    <p>Our research laboratories are equipped with the latest technology, allowing our scientists to develop vaccines, cures, and treatments at an unprecedented pace.</p>
+                    <p>The DDCR works directly with provincial hospitals to roll out new health mandates and medical procedures.</p>
+                    <a href="../services.html" class="sangaia-btn"><span>View Research Initiatives</span></a>
                 </div>
             </div>
             <div class="sidebar-col">
@@ -223,14 +246,14 @@
                     <h2>Emergency</h2>
                     <p>Need immediate medical assistance? Dial 9-1-1 or find the nearest provincial hospital.</p>
                     <div style="text-align: center;">
-                        <a href="hospitals.html" class="sangaia-btn"><span>Find a Hospital</span></a>
+                        <a href="../hospitals.html" class="sangaia-btn"><span>Find a Hospital</span></a>
                     </div>
                 </div>
                 <div class="glass-panel">
                     <h2>Quick Links</h2>
                     <ul style="padding-left: 20px;">
-                        <li><a href="support.html" style="color: #c62828;">Patient Resources</a></li>
-                        <li><a href="research.html" style="color: #c62828;">Disease Control Center</a></li>
+                        <li><a href="../support.html" style="color: #c62828;">Patient Resources</a></li>
+                        <li><a href="../research.html" style="color: #c62828;">Disease Control Center</a></li>
                     </ul>
                 </div>
             </div>
