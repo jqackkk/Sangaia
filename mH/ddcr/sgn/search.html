@@ -222,8 +222,7 @@
 </style>
 
 <div class="glass-panel" style="text-align: center; padding: 50px 20px;">
-    <h2 style="font-size: 2em; margin-bottom: 10px;">DDCR Database Search</h2>
-    <p style="color: #666; margin-bottom: 30px; font-size: 1.1em;">Fast, client-side search indexing hundreds of health topics, guidelines, and reports.</p>
+    
     
     <div id="search-container">
         <input type="text" id="search-box" placeholder="Search topics (e.g., Influenza, Vaccines, Guidelines...)" autocomplete="off">
@@ -232,12 +231,12 @@
 </div>
 <div id="results">
 
-    <div class="result-card" style="border-left: 4px solid #0277bd;">
+    <div class="result-card">
         <h3 style="font-size: 1.1em; color: #555; margin-bottom: 10px;">Trending Topic</h3>
         <h3><a href="health_topics.html" style="color: #c62828; text-decoration: none;">Seasonal Influenza (Flu) Guidelines</a></h3>
         <p>Review the latest provincial recommendations for the current flu season, including vaccination center locations.</p>
     </div>
-    <div class="result-card" style="border-left: 4px solid #0277bd;">
+    <div class="result-card">
         <h3 style="font-size: 1.1em; color: #555; margin-bottom: 10px;">Trending Topic</h3>
         <h3><a href="health_topics.html" style="color: #c62828; text-decoration: none;">Vaccination Schedules</a></h3>
         <p>Comprehensive provincial requirements and timelines for pediatric and adult vaccines.</p>
@@ -272,12 +271,12 @@ function performSearch(query) {
     if (!query.trim()) {
         suggestionsBox.style.display = 'none';
         resultsBox.innerHTML = `
-    <div class="result-card" style="border-left: 4px solid #0277bd;">
+    <div class="result-card">
         <h3 style="font-size: 1.1em; color: #555; margin-bottom: 10px;">Trending Topic</h3>
         <h3><a href="health_topics.html" style="color: #c62828; text-decoration: none;">Seasonal Influenza (Flu) Guidelines</a></h3>
         <p>Review the latest provincial recommendations for the current flu season, including vaccination center locations.</p>
     </div>
-    <div class="result-card" style="border-left: 4px solid #0277bd;">
+    <div class="result-card">
         <h3 style="font-size: 1.1em; color: #555; margin-bottom: 10px;">Trending Topic</h3>
         <h3><a href="health_topics.html" style="color: #c62828; text-decoration: none;">Vaccination Schedules</a></h3>
         <p>Comprehensive provincial requirements and timelines for pediatric and adult vaccines.</p>
