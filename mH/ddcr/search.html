@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DDCR - Ministry of Healthcare</title>
+    <title>Search - DDCR</title>
     <style>
         /* --- FRUTIGER AERO / SKEUOMORPHIC STYLES --- */
         :root {
@@ -191,13 +191,13 @@
             <img src="../../media/mh_logo.png" style="height: 24px; width: auto;" alt="Logo">
         </div>
         <div style="position: absolute; right: 15px; display: flex; align-items: center; height: 100%; z-index: 100;">
-            <a href="../index.html" style="color: #bbb; text-decoration: none; font-size: 11px; font-weight: bold; letter-spacing: 0.5px; padding: 3px 8px; border: 1px solid #444; border-radius: 4px; background: linear-gradient(to bottom, #555, #333); box-shadow: 0 1px 2px rgba(0,0,0,0.3); transition: all 0.2s ease;" onmouseover="this.style.color='#fff'; this.style.borderColor='#666';" onmouseout="this.style.color='#bbb'; this.style.borderColor='#444';">Sangaian</a>
+            <a href="sgn/index.html" style="color: #bbb; text-decoration: none; font-size: 11px; font-weight: bold; letter-spacing: 0.5px; padding: 3px 8px; border: 1px solid #444; border-radius: 4px; background: linear-gradient(to bottom, #555, #333); box-shadow: 0 1px 2px rgba(0,0,0,0.3); transition: all 0.2s ease;" onmouseover="this.style.color='#fff'; this.style.borderColor='#666';" onmouseout="this.style.color='#bbb'; this.style.borderColor='#444';">English</a>
         </div>
                 <ul id="globalnav">
-            <li><a href="index.html" class="active">Home</a></li>
+            <li><a href="index.html" >Home</a></li>
             <li><a href="health_topics.html">Health Topics</a></li>
             <li><a href="outbreaks.html">Outbreaks</a></li>
-            <li><a href="search.html">Search</a></li>
+            <li><a href="search.html" class="active">Search</a></li>
         </ul>
     </nav>
     <div class="content-wrapper">
@@ -224,38 +224,106 @@
             </div>
         </div>
 
-        <div class="content-grid">
-            <div class="main-col">
-                <div class="glass-panel">
-                    <h2>Department of Disease Control & Research</h2>
-                    <p>The DDCR serves as Sangaia's primary defense against infectious diseases and public health crises. We constantly monitor global and domestic health trends.</p>
-                    <p>Through rigorous research and proactive containment strategies, we ensure the safety of our citizens.</p>
-                </div>
-                <div class="glass-panel">
-                    <h2>Pioneering Medical Solutions.</h2>
-                    <p>Our research laboratories are equipped with the latest technology, allowing our scientists to develop vaccines, cures, and treatments at an unprecedented pace.</p>
-                    <p>The DDCR works directly with provincial hospitals to roll out new health mandates and medical procedures.</p>
-                    <a href="../services.html" class="sangaia-btn"><span>View Research Initiatives</span></a>
-                </div>
-            </div>
-            <div class="sidebar-col">
-                <div class="glass-panel" style="background: linear-gradient(to bottom, #ffebee 0%, #ffcdd2 100%);">
-                    <h2>Emergency</h2>
-                    <p>Need immediate medical assistance? Dial 9-1-1 or find the nearest provincial hospital.</p>
-                    <div style="text-align: center;">
-                        <a href="../hospitals.html" class="sangaia-btn"><span>Find a Hospital</span></a>
-                    </div>
-                </div>
-                <div class="glass-panel">
-                    <h2>Quick Links</h2>
-                    <ul style="padding-left: 20px;">
-                        <li><a href="../support.html" style="color: #c62828;">Patient Resources</a></li>
-                        <li><a href="../research.html" style="color: #c62828;">Disease Control Center</a></li>
-                    </ul>
-                </div>
-            </div>
-        </div>
+        <div class="content-wrapper" style="padding: 30px; max-width: 1000px; margin: 0 auto; width: 100%; box-sizing: border-box;">
+
+<style>
+#search-container { position: relative; width: 100%; max-width: 800px; margin: 0 auto; }
+#search-box { width: 100%; padding: 18px 20px; font-size: 1.2em; border: 2px solid #ccc; border-radius: 8px; box-sizing: border-box; transition: all 0.2s; }
+#search-box:focus { border-color: #c62828; outline: none; box-shadow: 0 0 8px rgba(198, 40, 40, 0.2); }
+#suggestions { position: absolute; top: 100%; left: 0; right: 0; background: #fff; border: 1px solid #ddd; border-top: none; border-radius: 0 0 8px 8px; box-shadow: 0 6px 12px rgba(0,0,0,0.1); max-height: 300px; overflow-y: auto; z-index: 1000; display: none; }
+.suggestion-item { padding: 12px 20px; cursor: pointer; border-bottom: 1px solid #f5f5f5; font-size: 1.05em; color: #333; }
+.suggestion-item:last-child { border-bottom: none; }
+.suggestion-item:hover { background: #ffebee; color: #c62828; }
+#results { margin-top: 30px; max-width: 800px; margin-left: auto; margin-right: auto; }
+.result-card { background: #fff; border: 1px solid #e0e0e0; padding: 20px; border-radius: 8px; margin-bottom: 15px; box-shadow: 0 2px 4px rgba(0,0,0,0.02); transition: transform 0.2s; }
+.result-card:hover { transform: translateY(-2px); box-shadow: 0 4px 8px rgba(0,0,0,0.05); border-color: #c62828; }
+.result-card h3 { margin: 0 0 8px; font-size: 1.3em; }
+.result-card p { margin: 0; font-size: 0.95em; color: #666; line-height: 1.5; }
+</style>
+
+<div class="glass-panel" style="text-align: center; padding: 50px 20px;">
+    <h2 style="font-size: 2em; margin-bottom: 10px;">DDCR Database Search</h2>
+    <p style="color: #666; margin-bottom: 30px; font-size: 1.1em;">Fast, client-side search indexing hundreds of health topics, guidelines, and reports.</p>
+    
+    <div id="search-container">
+        <input type="text" id="search-box" placeholder="Search topics (e.g., Influenza, Vaccines, Guidelines...)" autocomplete="off">
+        <div id="suggestions"></div>
     </div>
+</div>
+<div id="results"></div>
+
+<script>
+// DDCR Mock Database
+// Built for extremely fast O(N) client-side filtering.
+const healthTopics = [
+    { title: "Influenza (Flu)", desc: "Seasonal flu guidelines, vaccination info, and prevention protocols for provincial hospitals.", link: "health_topics.html" },
+    { title: "COVID-19", desc: "Outbreak tracking, testing centers, booster shot availability, and quarantine rules.", link: "health_topics.html" },
+    { title: "Malaria", desc: "Travel guidelines, preventative medication, and symptoms to watch for.", link: "health_topics.html" },
+    { title: "Vaccination Schedules", desc: "Provincial requirements for pediatric and adult vaccines.", link: "health_topics.html" },
+    { title: "Tuberculosis (TB)", desc: "Screening requirements, treatment protocols, and isolation standards.", link: "health_topics.html" },
+    { title: "Cholera", desc: "Water safety guidelines, active outbreak areas, and hydration therapy.", link: "health_topics.html" },
+    { title: "Mental Health", desc: "Resources for anxiety, depression, and access to provincial psychiatric care.", link: "health_topics.html" },
+    { title: "Diabetes", desc: "Management strategies, dietary advice, and state-sponsored insulin access programs.", link: "health_topics.html" },
+    { title: "Cardiovascular Health", desc: "Heart disease prevention, cholesterol guidelines, and dietary recommendations.", link: "health_topics.html" },
+    { title: "Zika Virus", desc: "Mosquito prevention, pregnancy guidelines, and affected provinces.", link: "health_topics.html" },
+    { title: "Ebola Virus Disease", desc: "Strict quarantine protocols, outbreak history, and emergency response.", link: "health_topics.html" },
+    { title: "Rabies", desc: "Animal bite protocols, post-exposure prophylaxis (PEP), and wildlife monitoring.", link: "health_topics.html" },
+    { title: "Asthma", desc: "Inhaler access, air quality warnings, and emergency management.", link: "health_topics.html" },
+    { title: "Nutrition Guidelines", desc: "Sangaian dietary recommendations, vitamins, and public school meal standards.", link: "health_topics.html" }
+];
+
+const searchBox = document.getElementById('search-box');
+const suggestionsBox = document.getElementById('suggestions');
+const resultsBox = document.getElementById('results');
+
+function performSearch(query) {
+    if (!query.trim()) {
+        suggestionsBox.style.display = 'none';
+        resultsBox.innerHTML = '';
+        return;
+    }
+    
+    const lowerQuery = query.toLowerCase();
+    const matches = healthTopics.filter(t => t.title.toLowerCase().includes(lowerQuery) || t.desc.toLowerCase().includes(lowerQuery));
+    
+    // Render Suggestions (max 6)
+    if (matches.length > 0) {
+        suggestionsBox.innerHTML = matches.slice(0, 6).map(m => `<div class="suggestion-item" onclick="selectTopic('${m.title}')">${m.title}</div>`).join('');
+        suggestionsBox.style.display = 'block';
+    } else {
+        suggestionsBox.style.display = 'none';
+    }
+    
+    // Render Results
+    resultsBox.innerHTML = matches.map(m => `
+        <div class="result-card">
+            <h3><a href="${m.link}" style="color: #c62828; text-decoration: none;">${m.title}</a></h3>
+            <p>${m.desc}</p>
+        </div>
+    `).join('');
+    
+    if (matches.length === 0) {
+        resultsBox.innerHTML = '<div class="result-card"><p style="text-align:center;">No results found for "'+query+'". Please try another term.</p></div>';
+    }
+}
+
+searchBox.addEventListener('input', (e) => performSearch(e.target.value));
+
+window.selectTopic = function(title) {
+    searchBox.value = title;
+    suggestionsBox.style.display = 'none';
+    performSearch(title);
+};
+
+// Close suggestions when clicking outside
+document.addEventListener('click', (e) => {
+    if (e.target !== searchBox && e.target !== suggestionsBox) {
+        suggestionsBox.style.display = 'none';
+    }
+});
+</script>
+
+</div>
     <footer>
         &copy; 2026 United Provinces of Sangaia. All Rights Reserved.<br>
         <span style="font-size: 0.8em; color: #888;">Ministry of Healthcare</span>
