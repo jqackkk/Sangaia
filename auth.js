@@ -1,10 +1,14 @@
+// Ensure global variable exists to prevent ReferenceErrors if CDN is blocked
+if (typeof window.supabase === 'undefined') {
+    window.supabase = null;
+}
 
 const supabaseUrl = 'https://qcgdjdnihwchjargpfcc.supabase.co';
 const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InFjZ2RqZG5paHdjaGphcmdwZmNjIiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTE0NzkxNTIsImV4cCI6MjEwNzA1NTE1Mn0.AfstClw4oXLj7stYL1bfyKSCMFBHZQBVBQACTT4dNLM';
-let supabase = null;
 
-if (window.supabase) {
-    supabase = window.supabase.createClient(supabaseUrl, supabaseKey);
+// Overwrite the global library object with the initialized client
+if (window.supabase && typeof window.supabase.createClient === 'function') {
+    window.supabase = window.supabase.createClient(supabaseUrl, supabaseKey);
 }
 
 const scripts = document.getElementsByTagName('script');
@@ -23,7 +27,7 @@ async function updateAuthWidget() {
 
     const defaultBtn = `<a href="${rootPath}dashboard.html" style="color: #bbb; text-decoration: none; font-size: 11px; font-weight: bold; letter-spacing: 0.5px; padding: 3px 8px; border: 1px solid #444; border-radius: 4px; background: linear-gradient(to bottom, #555, #333); transition: all 0.2s ease;">Sign In / Register</a>`;
 
-    if (!supabase) {
+    if (!supabase || !supabase.auth) {
         widget.innerHTML = defaultBtn;
         return;
     }
@@ -63,8 +67,8 @@ if (document.readyState === 'loading') {
     updateAuthWidget();
 }
 
-if (supabase) {
-    supabase.auth.onAuthStateChange((event, session) => {
+if (window.supabase && window.supabase.auth) {
+    window.supabase.auth.onAuthStateChange((event, session) => {
         updateAuthWidget();
     });
 }

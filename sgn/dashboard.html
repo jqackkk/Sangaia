@@ -440,7 +440,7 @@
 
     // Dashboard Data Loading
     async function loadDashboard(user) {
-        if (!supabase) return;
+        if (!supabase || !supabase.auth) return;
         document.getElementById('auth-section').classList.add('hidden');
         document.getElementById('dashboard-section').classList.remove('hidden');
         
@@ -487,7 +487,7 @@
 
     // Benefits Management
     async function loadBenefits(userId) {
-        if (!supabase) return;
+        if (!supabase || !supabase.auth) return;
         const { data: benefits, error } = await supabase
             .from('government_benefits')
             .select('*')
@@ -508,7 +508,7 @@
     }
 
     async function applyForBenefit() {
-        if (!supabase) return alert("Hema i fa'afeso'ota'i i le sapalai Sangaia.");
+        if (!supabase || !supabase.auth) return alert("Hema i fa'afeso'ota'i i le sapalai Sangaia.");
         const { data: { user } } = await supabase.auth.getUser();
         if (!user) return;
 
@@ -537,7 +537,7 @@
     // Handlers
     async function handleLogin() {
         const errorDiv = document.getElementById('auth-error');
-        if (!supabase) return errorDiv.innerText = "Le mafai ona feso'ota'i. Fa'amolemole siaki lau initaneti po'o le poloka o skripiti.";
+        if (!supabase || !supabase.auth) return errorDiv.innerText = "Le mafai ona feso'ota'i. Fa'amolemole siaki lau initaneti po'o le poloka o skripiti.";
         errorDiv.style.color = '#c62828';
         errorDiv.innerText = "";
         
@@ -550,7 +550,7 @@
 
     async function handleSignup() {
         const errorDiv = document.getElementById('auth-error');
-        if (!supabase) return errorDiv.innerText = "Le mafai ona feso'ota'i. Fa'amolemole siaki lau initaneti po'o le poloka o skripiti.";
+        if (!supabase || !supabase.auth) return errorDiv.innerText = "Le mafai ona feso'ota'i. Fa'amolemole siaki lau initaneti po'o le poloka o skripiti.";
         errorDiv.style.color = '#c62828';
         errorDiv.innerText = "";
         
@@ -593,13 +593,13 @@
     }
 
     async function handleLogout() {
-        if (!supabase) return;
+        if (!supabase || !supabase.auth) return;
         await supabase.auth.signOut();
         window.location.reload();
     }
     
     async function updateProfileName() {
-        if (!supabase) return alert("Le mafai ona feso'ota'i i le sapalai.");
+        if (!supabase || !supabase.auth) return alert("Le mafai ona feso'ota'i i le sapalai.");
         const newName = document.getElementById('update-name').value;
         if(!newName) return;
         const { data: { user } } = await supabase.auth.getUser();
@@ -614,7 +614,7 @@
     }
 
     // Init
-    if (supabase) {
+    if (supabase && supabase.auth) {
         supabase.auth.onAuthStateChange((event, session) => {
             if (session) {
                 loadDashboard(session.user);

@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<body>
+<script>
+var supabase = { createClient: () => "client" }; // CDN does this
+</script>
+<script>
+let supabase = null;
+if (window.supabase) {
+    supabase = window.supabase.createClient();
+}
+console.log(supabase);
+</script>
+</body>
+</html>
