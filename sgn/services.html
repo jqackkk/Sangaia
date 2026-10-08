@@ -216,10 +216,11 @@
         <div style="position: absolute; left: 15px; display: flex; align-items: center; height: 100%;">
             <img src="../media/nav_logo.png" style="height: 24px; width: auto;" alt="Logo">
         </div>
-        <div style="position: absolute; right: 15px; display: flex; align-items: center; height: 100%; z-index: 100;">
+        <div style="position: absolute; right: 15px; display: flex; align-items: center; gap: 15px; height: 100%; z-index: 100;">
+            <div id="auth-widget"></div>
             <a href="../services.html" style="color: #bbb; text-decoration: none; font-size: 11px; font-weight: bold; letter-spacing: 0.5px; padding: 3px 8px; border: 1px solid #444; border-radius: 4px; background: linear-gradient(to bottom, #555, #333); box-shadow: 0 1px 2px rgba(0,0,0,0.3); transition: all 0.2s ease;" onmouseover="this.style.color='#fff'; this.style.borderColor='#666';" onmouseout="this.style.color='#bbb'; this.style.borderColor='#444';">Сангаиан</a>
         </div>
-        <ul id="globalnav">
+                <ul id="globalnav">
             <li><a href="index.html">Домо</a></li>
             <li><a href="government.html">Губэрно</a></li>
             <li><a href="citizenship.html">Циви</a></li>
@@ -241,67 +242,67 @@
                     
                     <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 20px; margin-top: 20px;">
                         
-                        <!-- Министро эк Лаборо -->
+                        <!-- Министриа эк Лабориа -->
                         <div style="background: rgba(255,255,255,0.8); border: 1px solid #ccc; border-radius: 6px; padding: 15px;">
-                            <h3 style="margin-top:0; color:#006699;">Министро эк Лаборо</h3>
+                            <h3 style="margin-top:0; color:#006699;">Министриа эк Лабориа</h3>
                             <p style="font-size: 0.9em; color:#555;">Супэрвидо холо прагма ад практо зин лаборато инкаи сум жусо инкаи сум адито ад дуло, амбо интро инкаи экстро.</p>
-                            <a href="https://work.sangaia.org/index.html" class="sangaia-btn" style="width: auto; height: 2em; font-size: 0.8em;"><span>Визо свои Министро эк Лаборо</span></a>
+                            <a href="https://work.sangaia.org/index.html" class="sangaia-btn" style="width: auto; height: 2em; font-size: 0.8em;"><span>Визо свои Министриа эк Лабориа</span></a>
                         </div>
 
-                        <!-- Министро эк Салутиа-Кура -->
+                        <!-- Министриа эк Салутиа -->
                         <div style="background: rgba(255,255,255,0.8); border: 1px solid #ccc; border-radius: 6px; padding: 15px;">
-                            <h3 style="margin-top:0; color:#006699;">Министро эк Салутиа-Кура</h3>
+                            <h3 style="margin-top:0; color:#006699;">Министриа эк Салутиа</h3>
                             <p style="font-size: 0.9em; color:#555;">Супэрвидо морбо контроло, салутиа-кура дуло, амбуланто, инкаи Провиткия-спонсо салутиа-кура элигио.</p>
-                            <a href="https://healthcare.sangaia.org/index.html" class="sangaia-btn" style="width: auto; height: 2em; font-size: 0.8em;"><span>Визо свои Министро эк Салутиа-Кура</span></a>
+                            <a href="https://healthcare.sangaia.org/index.html" class="sangaia-btn" style="width: auto; height: 2em; font-size: 0.8em;"><span>Визо свои Министриа эк Салутиа</span></a>
                         </div>
 
-                        <!-- Министро эк свои Эксэкуто -->
+                        <!-- Министриа эк Эксэкутио -->
                         <div style="background: rgba(255,255,255,0.8); border: 1px solid #ccc; border-radius: 6px; padding: 15px;">
-                            <h3 style="margin-top:0; color:#006699;">Министро эк свои Эксэкуто</h3>
+                            <h3 style="margin-top:0; color:#006699;">Министриа эк Эксэкутио</h3>
                             <p style="font-size: 0.9em; color:#555;">Мануго свои тото эк Сангаиа ас уна холо, инкаи домо магнус фигуро симили свои Арэтократ инкаи сум кабино.</p>
-                            <a href="https://executive.sangaia.org/index.html" class="sangaia-btn" style="width: auto; height: 2em; font-size: 0.8em;"><span>Визо свои Министро эк свои Эксэкуто</span></a>
+                            <a href="https://executive.sangaia.org/index.html" class="sangaia-btn" style="width: auto; height: 2em; font-size: 0.8em;"><span>Визо свои Министриа эк Эксэкутио</span></a>
                         </div>
 
-                        <!-- Министро эк Эдуко -->
+                        <!-- Министриа эк Эдукатио -->
                         <div style="background: rgba(255,255,255,0.8); border: 1px solid #ccc; border-radius: 6px; padding: 15px;">
-                            <h3 style="margin-top:0; color:#006699;">Министро эк Эдуко</h3>
+                            <h3 style="margin-top:0; color:#006699;">Министриа эк Эдукатио</h3>
                             <p style="font-size: 0.9em; color:#555;">Супэрвидо ти эст докэ ад студиозо ин публико скола инкаи ти пэкуниа эст алоко ад Провиткия-спонсо эдуко цэнтро.</p>
-                            <a href="https://education.sangaia.org/index.html" class="sangaia-btn" style="width: auto; height: 2em; font-size: 0.8em;"><span>Визо свои Министро эк Эдуко</span></a>
+                            <a href="https://education.sangaia.org/index.html" class="sangaia-btn" style="width: auto; height: 2em; font-size: 0.8em;"><span>Визо свои Министриа эк Эдукатио</span></a>
                         </div>
 
-                        <!-- Министро эк свои Пэкуниа-Домо -->
+                        <!-- Министриа эк Аэрарио -->
                         <div style="background: rgba(255,255,255,0.8); border: 1px solid #ccc; border-radius: 6px; padding: 15px;">
-                            <h3 style="margin-top:0; color:#006699;">Министро эк свои Пэкуниа-Домо</h3>
+                            <h3 style="margin-top:0; color:#006699;">Министриа эк Аэрарио</h3>
                             <p style="font-size: 0.9em; color:#555;">Супэрвидо холо пэкуниа про шэно министро, фэдэро бугэтио, фэдэро таксо апробо, инкаи губэрно дэбито мануго.</p>
-                            <a href="https://treasury.sangaia.org/index.html" class="sangaia-btn" style="width: auto; height: 2em; font-size: 0.8em;"><span>Визо свои Министро эк свои Пэкуниа-Домо</span></a>
+                            <a href="https://treasury.sangaia.org/index.html" class="sangaia-btn" style="width: auto; height: 2em; font-size: 0.8em;"><span>Визо свои Министриа эк Аэрарио</span></a>
                         </div>
 
-                        <!-- Министро эк свои Амбито -->
+                        <!-- Министриа эк Амбиэто -->
                         <div style="background: rgba(255,255,255,0.8); border: 1px solid #ccc; border-radius: 6px; padding: 15px;">
-                            <h3 style="margin-top:0; color:#006699;">Министро эк свои Амбито</h3>
+                            <h3 style="margin-top:0; color:#006699;">Министриа эк Амбиэто</h3>
                             <p style="font-size: 0.9em; color:#555;">Мануго амбито дуло, биомо пэкуниа, фэра интэрвэно, инкаи консэрво цэнто.</p>
-                            <a href="https://environment.sangaia.org/index.html" class="sangaia-btn" style="width: auto; height: 2em; font-size: 0.8em;"><span>Визо свои Министро эк свои Амбито</span></a>
+                            <a href="https://environment.sangaia.org/index.html" class="sangaia-btn" style="width: auto; height: 2em; font-size: 0.8em;"><span>Визо свои Министриа эк Амбиэто</span></a>
                         </div>
 
-                        <!-- Министро эк Домо Прагма -->
+                        <!-- Министриа эк Домэстико -->
                         <div style="background: rgba(255,255,255,0.8); border: 1px solid #ccc; border-radius: 6px; padding: 15px;">
-                            <h3 style="margin-top:0; color:#006699;">Министро эк Домо Прагма</h3>
+                            <h3 style="margin-top:0; color:#006699;">Министриа эк Домэстико</h3>
                             <p style="font-size: 0.9em; color:#555;">Супэрвидо рэлатио интэр Провиткия, мэрко, инкаи фэдэро интэракто, ас бэнэ ас виа инкаи транзито дуло.</p>
-                            <a href="https://domesticaffairs.sangaia.org/index.html" class="sangaia-btn" style="width: auto; height: 2em; font-size: 0.8em;"><span>Визо свои Министро эк Домо Прагма</span></a>
+                            <a href="https://domesticaffairs.sangaia.org/index.html" class="sangaia-btn" style="width: auto; height: 2em; font-size: 0.8em;"><span>Визо свои Министриа эк Домэстико</span></a>
                         </div>
 
-                        <!-- Министро эк Экстро Прагма -->
+                        <!-- Министриа эк Экстэрно -->
                         <div style="background: rgba(255,255,255,0.8); border: 1px solid #ccc; border-radius: 6px; padding: 15px;">
-                            <h3 style="margin-top:0; color:#006699;">Министро эк Экстро Прагма</h3>
+                            <h3 style="margin-top:0; color:#006699;">Министриа эк Экстэрно</h3>
                             <p style="font-size: 0.9em; color:#555;">Супэрвидо рэлатио зин шэно натио, мануго трактато, интэр-натио прагма, инкаи эмбасо.</p>
-                            <a href="https://externalaffairs.sangaia.org/index.html" class="sangaia-btn" style="width: auto; height: 2em; font-size: 0.8em;"><span>Визо свои Министро эк Экстро Прагма</span></a>
+                            <a href="https://externalaffairs.sangaia.org/index.html" class="sangaia-btn" style="width: auto; height: 2em; font-size: 0.8em;"><span>Визо свои Министриа эк Экстэрно</span></a>
                         </div>
 
-                        <!-- Министро эк Пропаго -->
+                        <!-- Министриа эк Пропагандиа -->
                         <div style="background: rgba(255,255,255,0.8); border: 1px solid #ccc; border-radius: 6px; padding: 15px;">
-                            <h3 style="margin-top:0; color:#006699;">Министро эк Пропаго</h3>
+                            <h3 style="margin-top:0; color:#006699;">Министриа эк Пропагандиа</h3>
                             <p style="font-size: 0.9em; color:#555;">Контроло публико эмито, рэпорто куалифико, инкаи супэрвидо экклэсиа инкаи рэлигио конструкто.</p>
-                            <a href="https://propaganda.sangaia.org/index.html" class="sangaia-btn" style="width: auto; height: 2em; font-size: 0.8em;"><span>Визо свои Министро эк Пропаго</span></a>
+                            <a href="https://propaganda.sangaia.org/index.html" class="sangaia-btn" style="width: auto; height: 2em; font-size: 0.8em;"><span>Визо свои Министриа эк Пропагандиа</span></a>
                         </div>
                     </div>
                 </div>
@@ -333,10 +334,10 @@
                 </div>
 
                     <div class="glass-panel">
-                    <h2>Quick Facts</h2>
-                    <p style="font-size: 0.9em;">Поли сяни социо пропаго зин кэнсо вэл лаво-мэнти, ала свои Министро эк Пропаго практо свои экзакто опозито. Куам ид практо пэрмито ти динам эсэ монстро ад свои публико ин эмито систэма симили э-мито вэл тэлэвизо, ид практо ми практо со апо уна политикиа стату. Ид итэм администро ти экклэсиа эст януо ад эсэ зэмио инкаи монито сум дапано эан сум крэдо систэма супорто рико-рэдивидо ад свои комунитиа.</p>
-                    <p style="font-size: 0.9em;">Свои Министро эк свои Пэкуниа-Домо ламба рандо, ми анукио визо апо сяни эк свои Корпо эк Элэкто. Хок стопо фраудо инкаи сэкуро ти пэкуниа эст иро ад эки ид пэртино.</p>
-                    <p style="font-size: 0.9em;">Свои Министро эк Лаборо эсэ антэо свои вэро Сангаиа Губэрно эсэ этон докэ эк. Ид эхо эволуо супэр тэмпус ас Сангаиа иро паро сум рэволутио.</p>
+                    <h2>Цэлэро Факто</h2>
+                    <p style="font-size: 0.9em;">Поли сяни социо пропаго зин кэнсо вэл лаво-мэнти, ала свои Министриа эк Пропагандиа практо свои экзакто опозито. Куам ид практо пэрмито ти динам эсэ монстро ад свои публико ин эмито систэма симили э-мито вэл тэлэвизо, ид практо ми практо со апо уна политикиа стату. Ид итэм администро ти экклэсиа эст януо ад эсэ зэмио инкаи монито сум дапано эан сум крэдо систэма супорто рико-рэдивидо ад свои комунитиа.</p>
+                    <p style="font-size: 0.9em;">Свои Министриа эк Аэрарио ламба рандо, ми анукио визо апо сяни эк свои Корпо эк Элэкто. Хок стопо фраудо инкаи сэкуро ти пэкуниа эст иро ад эки ид пэртино.</p>
+                    <p style="font-size: 0.9em;">Свои Министриа эк Лабориа эсэ антэо свои вэро Сангаиа Губэрно эсэ этон докэ эк. Ид эхо эволуо супэр тэмпус ас Сангаиа иро паро сум рэволутио.</p>
                     </div>
                 </div>
             </div>
@@ -345,11 +346,14 @@
     </div>
 
     <footer>
-        &copy; 2026 United Provinces of Sangaia. All Rights Reserved.<br>
-        <span style="font-size: 0.8em; color: #888;">Powered by Aeretocratic Principles</span>
+        &copy; Дио Милус Дио Дэкум Сэкс Сонит Провиткия эк Сангаиа. Холо Жусо Сэрво.<br>
+        <span style="font-size: 0.8em; color: #888;">Динамиа паро Арэтократиа Рэгканон</span>
     </footer>
 
 </div>
 
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="../../auth.js"></script>
 </body>
 </html>

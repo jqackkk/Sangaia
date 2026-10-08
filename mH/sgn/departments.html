@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Departments - Ministry of Healthcare</title>
+    <title>Дэпарто - Министриа эк Салутиа</title>
     <style>
         /* --- FRUTIGER AERO / SKEUOMORPHIC STYLES --- */
         :root {
@@ -188,17 +188,19 @@
     
     <nav id="globalheader">
         <div style="position: absolute; left: 15px; display: flex; align-items: center; height: 100%;">
-            <img src="../media/mh_logo.png" style="height: 24px; width: auto;" alt="Logo">
+            <img src="../../media/mh_logo.png" style="height: 24px; width: auto;" alt="Logo">
         </div>
-        <div style="position: absolute; right: 15px; display: flex; align-items: center; height: 100%; z-index: 100;">
-            <a href="../departments.html" style="color: #bbb; text-decoration: none; font-size: 11px; font-weight: bold; letter-spacing: 0.5px; padding: 3px 8px; border: 1px solid #444; border-radius: 4px; background: linear-gradient(to bottom, #555, #333); box-shadow: 0 1px 2px rgba(0,0,0,0.3); transition: all 0.2s ease;" onmouseover="this.style.color='#fff'; this.style.borderColor='#666';" onmouseout="this.style.color='#bbb'; this.style.borderColor='#444';">Sangaian</a>
+        <div style="position: absolute; right: 15px; display: flex; align-items: center; gap: 15px; height: 100%; z-index: 100;">
+            <div id="auth-widget"></div>
+            <a href="../departments.html" style="color: #bbb; text-decoration: none; font-size: 11px; font-weight: bold; letter-spacing: 0.5px; padding: 3px 8px; border: 1px solid #444; border-radius: 4px; background: linear-gradient(to bottom, #555, #333); box-shadow: 0 1px 2px rgba(0,0,0,0.3); transition: all 0.2s ease;" onmouseover="this.style.color='#fff'; this.style.borderColor='#666';" onmouseout="this.style.color='#bbb'; this.style.borderColor='#444';">Сангаиан</a>
         </div>
-        <ul id="globalnav">
-            <li><a href="index.html">Home</a></li>
-            <li><a href="services.html" >Services</a></li>
-            <li><a href="hospitals.html">Hospitals</a></li>
-            <li><a href="research.html">Research</a></li>
-            <li><a href="support.html">Support</a></li>
+                <ul id="globalnav">
+            <li><a href="index.html">Домо</a></li>
+            <li><a href="departments.html" class="active">Дэпарто</a></li>
+            <li><a href="services.html">Дуло</a></li>
+            <li><a href="hospitals.html">Хоспитало</a></li>
+            <li><a href="research.html">Инвэстиго</a></li>
+            <li><a href="support.html">Супорто</a></li>
         </ul>
     </nav>
     <div class="content-wrapper">
@@ -208,36 +210,36 @@
         <div class="content-grid">
             <div class="main-col">
                 <div class="glass-panel">
-                    <h2>Ministry Departments</h2>
-                    <p>The Ministry of Healthcare is divided into several specialized departments. Each department focuses on a core aspect of public health, research, and emergency response.</p>
+                    <h2>Министриа Дэпарто</h2>
+                    <p>Свои Министриа эк Салутиа эст дивидо интро поли спэкиало дэпарто. Холо дэпарто фокусо ин уна корда аспэкто эк публико салутиа, инвэстиго, инкаи эмэрго рэспонсо.</p>
                 </div>
                 <div class="glass-panel">
-                    <h2>Department of Disease Control & Research (DDCR)</h2>
-                    <p>The DDCR is responsible for monitoring public health trends, developing vaccines, and preventing outbreaks. They also conduct advanced medical research.</p>
-                    <a href="ddcr/index.html" class="sangaia-btn"><span>Visit the DDCR</span></a>
+                    <h2>Дэпарто эк Морбо Контроло инкаи Инвэстиго (ДМКИ)</h2>
+                    <p>Свои ДМКИ эст рэспонсо про монито публико салутиа трэндо, зэмио вакцина, инкаи праэвэно эрупто. Или итэм практо авансо мэдико инвэстиго.</p>
+                    <a href="ddcr/index.html" class="sangaia-btn"><span>Визо свои ДМКИ</span></a>
                 </div>
             </div>
             <div class="sidebar-col">
                 <div class="glass-panel" style="background: linear-gradient(to bottom, #ffebee 0%, #ffcdd2 100%);">
-                    <h2>Emergency</h2>
-                    <p>Need immediate medical assistance? Dial 9-1-1 or find the nearest provincial hospital.</p>
+                    <h2>Эмэрго</h2>
+                    <p>Хрэа статим мэдико асисто? Типо Унус Мин Дэкум-Унус-Унус вэл трово свои проксимо Провиткия хоспитало.</p>
                     <div style="text-align: center;">
-                        <a href="hospitals.html" class="sangaia-btn"><span>Find a Hospital</span></a>
+                        <a href="hospitals.html" class="sangaia-btn"><span>Трово уна Хоспитало</span></a>
                     </div>
                 </div>
                 <div class="glass-panel">
-                    <h2>Quick Links</h2>
+                    <h2>Цэлэро Нэксо</h2>
                     <ul style="padding-left: 20px;">
-                        <li><a href="support.html" style="color: #c62828;">Patient Resources</a></li>
-                        <li><a href="research.html" style="color: #c62828;">Disease Control Center</a></li>
+                        <li><a href="support.html" style="color: #c62828;">Патиэнто Рэсурсо</a></li>
+                        <li><a href="research.html" style="color: #c62828;">Морбо Контроло Цэнтро</a></li>
                     </ul>
                 </div>
             </div>
         </div>
     </div>
     <footer>
-        &copy; 2026 United Provinces of Sangaia. All Rights Reserved.<br>
-        <span style="font-size: 0.8em; color: #888;">Ministry of Healthcare</span>
+        &copy; Дио Милус Дио Дэкум Сэкс Сонит Провиткия эк Сангаиа. Холо Жусо Сэрво.<br>
+        <span style="font-size: 0.8em; color: #888;">Министриа эк Салутиа</span>
     </footer>
 </div>
 
@@ -253,5 +255,8 @@
     }, 4000); 
 </script>
 
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="../../../auth.js"></script>
 </body>
 </html>

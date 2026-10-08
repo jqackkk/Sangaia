@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sangaia Citizen Portal</title>
+    <style>
+        /* --- FRUTIGER AERO / SKEUOMORPHIC STYLES --- */
+        :root {
+            --glass-blue: rgba(220, 245, 255, 0.85);
+            --gloss-highlight: rgba(255, 255, 255, 0.9);
+            --ocean-blue: #0077be;
+            --fresh-green: #7cba01;
+            --text-dark: #2c3e50;
+            --text-light: #ffffff;
+        }
+
+        body {
+            background: #ffffff;
+            min-height: 100dvh;
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            flex-direction: column;
+            margin: 0;
+            font-family: 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+            color: var(--text-dark);
+        }
+
+        /* --- GLOBAL NAVBAR --- */
+        nav#globalheader {
+            width: 100%; height: 44px; background: rgba(0, 0, 0, 0.8);
+            position: relative; z-index: 9999;
+            box-shadow: inset 0 -1px 0 rgba(255,255,255,0.2), 0 2px 4px rgba(0,0,0,0.4);
+            display: flex; align-items: center; justify-content: center;
+        }
+        nav#globalheader ul {
+            list-style: none; margin: 0; padding: 0; display: flex; height: 100%;
+        }
+        nav#globalheader li { height: 100%; }
+        nav#globalheader a {
+            color: #d6d6d6; text-decoration: none; font-size: 13px; font-weight: 500;
+            padding: 0 15px; height: 100%; display: flex; align-items: center;
+            transition: color 0.2s ease, text-shadow 0.2s ease; font-family: -apple-system, sans-serif;
+        }
+        nav#globalheader a:hover { color: #fff; text-shadow: 0 0 8px rgba(255,255,255,0.6); }
+
+        .sangaia-btn {
+            font-size: 0.9rem; font-family: "myriad-pro", "Segoe UI", sans-serif; height: 2.5em;
+            padding: 0 1em; border-radius: 3px; position: relative; overflow: hidden;
+            cursor: pointer; text-decoration: none; display: inline-flex;
+            align-items: center; justify-content: center; margin: 5px 0; box-sizing: border-box;
+            background: linear-gradient(to bottom, #7cba01 0%, #5d8c01 100%);
+            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1); border: 1px solid #4a7000; color: white;
+            transition: all 0.2s;
+        }
+        .sangaia-btn:hover { background: linear-gradient(to bottom, #88cc00 0%, #70a800 100%); }
+        .sangaia-btn span { position: relative; z-index: 3; font-weight: 600; text-shadow: 0 1px 1px rgba(0,0,0,0.3); }
+
+        .btn-blue {
+            background: linear-gradient(to bottom, #0093e9 0%, #0077be 100%);
+            border: 1px solid #005a8f;
+        }
+        .btn-blue:hover { background: linear-gradient(to bottom, #1ca3f4 0%, #0087d6 100%); }
+
+        .content-wrapper { padding: 30px; width: 100%; max-width: 1000px; box-sizing: border-box; flex-grow: 1; }
+
+        .glass-panel {
+            background: linear-gradient(to bottom, #fcfcfc 0%, #f1f1f1 100%);
+            border: 1px solid #ddd; border-radius: 8px; padding: 25px; margin-bottom: 25px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05), inset 0 1px 0 #fff; position: relative;
+        }
+        .glass-panel h2 { margin-top: 0; color: #006699; border-bottom: 1px solid #eee; padding-bottom: 10px; font-size: 1.4em; }
+        .glass-panel h3 { color: #333; font-size: 1.1em; margin-top: 20px; border-bottom: 1px solid #ddd; padding-bottom: 5px;}
+
+        /* Form Elements */
+        input[type="text"], input[type="email"], input[type="password"], input[type="date"] {
+            width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 4px;
+            box-sizing: border-box; margin-bottom: 15px; font-family: inherit;
+        }
+
+        /* Tabs */
+        .tab-container { display: flex; border-bottom: 1px solid #ddd; margin-bottom: 20px; overflow-x: auto; }
+        .tab {
+            padding: 10px 20px; cursor: pointer; border-radius: 8px 8px 0 0;
+            background: #eaeaea; margin-right: 5px; border: 1px solid #ddd; border-bottom: none;
+            font-weight: bold; color: #555; transition: background 0.2s; white-space: nowrap;
+        }
+        .tab:hover { background: #f5f5f5; }
+        .tab.active { background: #fff; color: #0077be; border-bottom: 2px solid #fff; margin-bottom: -1px; }
+        .tab-content { display: none; }
+        .tab-content.active { display: block; }
+
+        /* ID Card Styling */
+        .id-card {
+            background: linear-gradient(135deg, #0077be 0%, #00a4e4 100%);
+            color: white; border-radius: 12px; padding: 20px; box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            position: relative; overflow: hidden; margin-bottom: 20px; border: 1px solid rgba(255,255,255,0.3);
+        }
+        .id-card::before {
+            content: ''; position: absolute; top: -50%; left: -50%; width: 200%; height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 60%); pointer-events: none;
+        }
+        .id-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; border-bottom: 1px solid rgba(255,255,255,0.2); padding-bottom: 10px; }
+        .id-body { display: flex; gap: 20px; }
+        .id-photo { width: 100px; height: 120px; background: #fff; border-radius: 6px; display: flex; align-items: center; justify-content: center; color: #aaa; overflow: hidden; }
+        .id-details p { margin: 5px 0; font-size: 0.9em; }
+        .id-details strong { display: inline-block; width: 120px; opacity: 0.8; }
+        
+        .hidden { display: none !important; }
+        
+        footer { text-align: center; padding: 20px; color: #555; font-size: 0.9em; background: rgba(255,255,255,0.6); width: 100%; margin-top: auto; }
+    </style>
+</head>
+<body>
+
+<nav id="globalheader">
+    <div style="position: absolute; left: 15px; display: flex; align-items: center; height: 100%;">
+        <img src="media/nav_logo.png" style="height: 24px; width: auto;" alt="Logo">
+    </div>
+    <div style="position: absolute; right: 15px; display: flex; align-items: center; gap: 15px; height: 100%; z-index: 100;">
+        <div id="auth-widget"></div>
+        <a href="sgn/index.html" style="color: #bbb; text-decoration: none; font-size: 11px; font-weight: bold; letter-spacing: 0.5px; padding: 3px 8px; border: 1px solid #444; border-radius: 4px; background: linear-gradient(to bottom, #555, #333); box-shadow: 0 1px 2px rgba(0,0,0,0.3);">English</a>
+    </div>
+    <ul id="globalnav">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="government.html">Government</a></li>
+        <li><a href="citizenship.html">Citizenship</a></li>
+        <li><a href="services.html">Services</a></li>
+        <li><a href="about.html">About the Aeretocrat</a></li>
+        <li><a href="societal_press.html">Societal Press</a></li>
+    </ul>
+</nav>
+
+<div class="content-wrapper">
+    
+    <!-- AUTHENTICATION SECTION (Visible when logged out) -->
+    <div id="auth-section" class="glass-panel" style="max-width: 400px; margin: 50px auto;">
+        <h2 style="text-align: center;">Citizen Portal Access</h2>
+        <div id="login-container">
+            <p style="text-align: center; color: #666; font-size: 0.9em;">Sign in to manage your Sangaia ID.</p>
+            <label>Email</label>
+            <input type="email" id="login-email" placeholder="citizen@sangaia.org">
+            <label>Password</label>
+            <input type="password" id="login-password">
+            <button class="sangaia-btn btn-blue" onclick="handleLogin()" style="width: 100%;"><span>Sign In</span></button>
+            <p style="text-align: center; font-size: 0.85em; margin-top: 15px;">New citizen? <a href="javascript:void(0)" onclick="toggleAuthMode()" style="color: #0077be;">Create your ID</a></p>
+        </div>
+
+        <div id="signup-container" class="hidden">
+            <p style="text-align: center; color: #666; font-size: 0.9em;">Register your new Digital Sangaia ID.</p>
+            <label>Full Legal Name</label>
+            <input type="text" id="signup-name" placeholder="John Doe">
+            <label>Date of Birth</label>
+            <input type="date" id="signup-dob">
+            <label>Email</label>
+            <input type="email" id="signup-email" placeholder="citizen@sangaia.org">
+            <label>Password</label>
+            <input type="password" id="signup-password">
+            <button class="sangaia-btn" onclick="handleSignup()" style="width: 100%;"><span>Register ID</span></button>
+            <p style="text-align: center; font-size: 0.85em; margin-top: 15px;">Already registered? <a href="javascript:void(0)" onclick="toggleAuthMode()" style="color: #0077be;">Sign In</a></p>
+        </div>
+        <div id="auth-error" style="color: #c62828; font-size: 0.85em; text-align: center; margin-top: 10px;"></div>
+    </div>
+
+    <!-- DASHBOARD SECTION (Visible when logged in) -->
+    <div id="dashboard-section" class="hidden">
+        <div style="display: flex; justify-content: space-between; align-items: flex-end; border-bottom: 1px solid #ddd; padding-bottom: 10px; margin-bottom: 20px;">
+            <h2 style="margin: 0; color: #006699;">Welcome, <span id="dash-name">Citizen</span></h2>
+            <button class="sangaia-btn" onclick="handleLogout()" style="margin:0; height: 30px; font-size: 0.8em;"><span>Sign Out</span></button>
+        </div>
+
+        <div class="tab-container">
+            <div class="tab active" onclick="switchTab('overview')">Overview</div>
+            <div class="tab" onclick="switchTab('profile')">Profile & Settings</div>
+            <div class="tab" onclick="switchTab('legal')">Legal & Citizenship</div>
+            <div class="tab" onclick="switchTab('health-edu')">Health & Education</div>
+            <div class="tab" onclick="switchTab('programs')">Government Programs</div>
+        </div>
+
+        <!-- OVERVIEW TAB -->
+        <div id="tab-overview" class="tab-content active">
+            <div class="id-card">
+                <div class="id-header">
+                    <span style="font-weight: bold; letter-spacing: 1px;">UNITED PROVINCES OF SANGAIA</span>
+                    <span style="font-size: 0.8em; opacity: 0.8;">DIGITAL ID CARD</span>
+                </div>
+                <div class="id-body">
+                    <div class="id-photo" id="id-photo-display">
+                        <span style="font-size: 40px;" id="id-initial"></span>
+                    </div>
+                    <div class="id-details">
+                        <p><strong>Sangaia ID Number:</strong> <span id="id-number">Loading...</span></p>
+                        <p><strong>Full Name:</strong> <span id="id-fullname">Loading...</span></p>
+                        <p><strong>Date of Birth:</strong> <span id="id-dob">Loading...</span></p>
+                        <p><strong>Status:</strong> <span id="id-status" style="color: #a5d6a7; font-weight: bold;">Loading...</span></p>
+                        <p><strong>Issue Date:</strong> <span id="id-issued">Loading...</span></p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="glass-panel">
+                <h2>Sensitive Information Access</h2>
+                <p>Your secure data is kept private. Below is the contact information on file.</p>
+                <p><strong>Primary Email:</strong> <span id="sensitive-email"></span></p>
+                <p><strong>Phone Number:</strong> Unregistered</p>
+                <p><strong>Physical Address:</strong> Unregistered</p>
+                <button class="sangaia-btn btn-blue" onclick="switchTab('profile')"><span>Update Contact Info</span></button>
+            </div>
+        </div>
+
+        <!-- PROFILE SETTINGS TAB -->
+        <div id="tab-profile" class="tab-content">
+            <div class="glass-panel">
+                <h2>Profile & Settings</h2>
+                
+                <h3>Profile Picture</h3>
+                <p style="font-size: 0.9em; color: #666;">Upload a square photo to appear on your Digital ID.</p>
+                <input type="file" id="pic-upload" accept="image/*" style="margin-bottom: 10px;">
+                <button class="sangaia-btn btn-blue" onclick="alert('Profile picture uploaded successfully! (Simulation)')"><span>Upload</span></button>
+                
+                <h3>Change Username / Name</h3>
+                <input type="text" id="update-name" placeholder="New Full Name">
+                <button class="sangaia-btn btn-blue" onclick="updateProfileName()"><span>Update Name</span></button>
+
+                <h3>Change Password</h3>
+                <input type="password" placeholder="New Password">
+                <button class="sangaia-btn btn-blue" onclick="alert('Password updated. (Simulation)')"><span>Update Password</span></button>
+
+                <h3>Address Management</h3>
+                <input type="text" placeholder="123 Sangaia Blvd, Jasper, FL">
+                <button class="sangaia-btn btn-blue" onclick="alert('Address registered to your ID. (Simulation)')"><span>Save Address</span></button>
+            </div>
+        </div>
+
+        <!-- LEGAL & CITIZENSHIP TAB -->
+        <div id="tab-legal" class="tab-content">
+            <div class="glass-panel">
+                <h2>Legal & Citizenship Portal</h2>
+                
+                <h3>Citizenship & Visas</h3>
+                <p><strong>Current Status:</strong> Citizen</p>
+                <p><strong>Visa History:</strong> None on file.</p>
+
+                <h3>Literacy Tests</h3>
+                <p>No verified literacy test results on file. A passed test is required for continued citizenship.</p>
+                <button class="sangaia-btn btn-blue" onclick="window.location.href='application.html'"><span>Take Literacy Test</span></button>
+
+                <h3>Crimes & Offenses Database</h3>
+                <p style="color: #2c3e50; padding: 10px; background: rgba(0,0,0,0.05); border-radius: 4px;">
+                    Your record is currently <strong>clean</strong>. No infractions reported by the Ministry of Domestic Affairs.
+                </p>
+
+                <h3>Licenses</h3>
+                <p>No driving or commercial licenses issued.</p>
+            </div>
+        </div>
+
+        <!-- HEALTH & EDUCATION TAB -->
+        <div id="tab-health-edu" class="tab-content">
+            <div class="glass-panel">
+                <h2>Health & Education Profiles</h2>
+                
+                <h3>Healthcare Profile (Ministry of Healthcare)</h3>
+                <p><strong>Primary GP:</strong> Unassigned</p>
+                <p><strong>Insurance Plan:</strong> State-Provided Healthcare</p>
+                <p><strong>Blood Type:</strong> Unknown</p>
+                <button class="sangaia-btn btn-blue" onclick="window.location.href='mH/index.html'"><span>Visit Healthcare Portal</span></button>
+
+                <h3>Education Profile (Ministry of Education)</h3>
+                <p><strong>Current Enrollment:</strong> None</p>
+                <p><strong>Highest Degree:</strong> N/A</p>
+                <button class="sangaia-btn btn-blue" onclick="window.location.href='mE/index.html'"><span>Visit Education Portal</span></button>
+            </div>
+        </div>
+
+        <!-- GOV PROGRAMS TAB -->
+        <div id="tab-programs" class="tab-content">
+            <div class="glass-panel">
+                <h2>Government Benefit Programs</h2>
+                <p>Apply for and manage your government benefits, grants, and subsidies directly.</p>
+                
+                <div id="benefits-list" style="margin-bottom: 20px;">
+                    <!-- Benefits loaded via JS -->
+                </div>
+                
+                <hr style="border: 0; border-top: 1px solid #ddd; margin: 20px 0;">
+                
+                <h3>Apply for a Benefit</h3>
+                <input type="text" id="benefit-name" placeholder="E.g., Provincial Food Subsidy">
+                <input type="text" id="benefit-desc" placeholder="Reason for applying">
+                <button class="sangaia-btn" onclick="applyForBenefit()"><span>Submit Application</span></button>
+
+                <h3 style="margin-top: 30px;">Community Service Database</h3>
+                <p><strong>Hours Logged:</strong> 0 hours</p>
+                <p>Log community service hours to fast-track certain government applications.</p>
+                <button class="sangaia-btn btn-blue" onclick="alert('Feature coming soon.')"><span>Log Hours</span></button>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<footer>
+    &copy; 2026 United Provinces of Sangaia. All Rights Reserved.
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="auth.js"></script>
+<script>
+    // Tab Switching Logic
+    function switchTab(tabId) {
+        document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+        document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+        
+        event.target.classList.add('active');
+        document.getElementById('tab-' + tabId).classList.add('active');
+    }
+
+    // Auth UI Toggle
+    let isLogin = true;
+    function toggleAuthMode() {
+        isLogin = !isLogin;
+        document.getElementById('login-container').classList.toggle('hidden', !isLogin);
+        document.getElementById('signup-container').classList.toggle('hidden', isLogin);
+        document.getElementById('auth-error').innerText = '';
+    }
+
+    // Dashboard Data Loading
+    async function loadDashboard(user) {
+        document.getElementById('auth-section').classList.add('hidden');
+        document.getElementById('dashboard-section').classList.remove('hidden');
+        
+        document.getElementById('sensitive-email').innerText = user.email;
+
+        // Fetch Citizen Record
+        const { data: citizen, error } = await supabase
+            .from('sangaia_citizens')
+            .select('*')
+            .eq('id', user.id)
+            .single();
+            
+        if (citizen) {
+            document.getElementById('dash-name').innerText = citizen.full_name;
+            document.getElementById('id-fullname').innerText = citizen.full_name;
+            document.getElementById('id-number').innerText = citizen.sangaia_id_number;
+            document.getElementById('id-dob').innerText = citizen.date_of_birth || 'N/A';
+            document.getElementById('id-status').innerText = citizen.account_status;
+            document.getElementById('id-issued').innerText = citizen.issue_date;
+            
+            // Set initial
+            document.getElementById('id-initial').innerText = citizen.full_name.charAt(0).toUpperCase();
+            
+            // Pre-fill profile setting
+            document.getElementById('update-name').value = citizen.full_name;
+        } else {
+            document.getElementById('dash-name').innerText = user.email;
+            document.getElementById('id-fullname').innerText = "Record Not Found";
+            // If they signed up via another method without a citizen record, we could prompt them to create one here.
+        }
+
+        loadBenefits(user.id);
+    }
+
+    // Benefits Management
+    async function loadBenefits(userId) {
+        const { data: benefits, error } = await supabase
+            .from('government_benefits')
+            .select('*')
+            .eq('citizen_id', userId);
+            
+        const listDiv = document.getElementById('benefits-list');
+        if (benefits && benefits.length > 0) {
+            let html = '<ul style="padding-left: 20px;">';
+            benefits.forEach(b => {
+                let color = b.status === 'Pending' ? '#f39c12' : (b.status === 'Approved' ? '#27ae60' : '#333');
+                html += `<li style="margin-bottom: 10px;"><strong>${b.benefit_name}</strong> - <span style="color:${color}; font-weight:bold;">${b.status}</span><br><span style="font-size:0.85em; color:#666;">${b.description || ''}</span></li>`;
+            });
+            html += '</ul>';
+            listDiv.innerHTML = html;
+        } else {
+            listDiv.innerHTML = '<p style="color: #888;">No active benefits or applications.</p>';
+        }
+    }
+
+    async function applyForBenefit() {
+        const { data: { user } } = await supabase.auth.getUser();
+        if (!user) return;
+
+        const name = document.getElementById('benefit-name').value;
+        const desc = document.getElementById('benefit-desc').value;
+        
+        if(!name) return alert("Please provide a benefit name.");
+
+        const { error } = await supabase.from('government_benefits').insert([{
+            citizen_id: user.id,
+            benefit_name: name,
+            description: desc,
+            status: 'Pending'
+        }]);
+
+        if (error) {
+            alert("Error applying: " + error.message);
+        } else {
+            document.getElementById('benefit-name').value = '';
+            document.getElementById('benefit-desc').value = '';
+            loadBenefits(user.id);
+            alert("Application submitted successfully.");
+        }
+    }
+
+    // Handlers
+    async function handleLogin() {
+        const email = document.getElementById('login-email').value;
+        const pass = document.getElementById('login-password').value;
+        const { data, error } = await supabase.auth.signInWithPassword({ email, password: pass });
+        
+        if (error) document.getElementById('auth-error').innerText = error.message;
+    }
+
+    async function handleSignup() {
+        const name = document.getElementById('signup-name').value;
+        const dob = document.getElementById('signup-dob').value;
+        const email = document.getElementById('signup-email').value;
+        const pass = document.getElementById('signup-password').value;
+        
+        if(!name) return document.getElementById('auth-error').innerText = "Full Name is required.";
+
+        const { data, error } = await supabase.auth.signUp({ email, password: pass });
+        
+        if (error) {
+            document.getElementById('auth-error').innerText = error.message;
+        } else if (data.user) {
+            // Immediately insert citizen record
+            const { error: insertError } = await supabase.from('sangaia_citizens').insert([{
+                id: data.user.id,
+                full_name: name,
+                date_of_birth: dob || null
+            }]);
+            
+            if (insertError) {
+                console.error("Error creating citizen record:", insertError);
+            }
+        }
+    }
+
+    async function handleLogout() {
+        await supabase.auth.signOut();
+        window.location.reload();
+    }
+    
+    async function updateProfileName() {
+        const newName = document.getElementById('update-name').value;
+        if(!newName) return;
+        const { data: { user } } = await supabase.auth.getUser();
+        
+        const { error } = await supabase.from('sangaia_citizens').update({ full_name: newName }).eq('id', user.id);
+        if(error) alert("Error: " + error.message);
+        else {
+            alert("Name updated successfully!");
+            loadDashboard(user);
+            updateAuthWidget(); // Update navbar
+        }
+    }
+
+    // Init
+    supabase.auth.onAuthStateChange((event, session) => {
+        if (session) {
+            loadDashboard(session.user);
+        } else {
+            document.getElementById('auth-section').classList.remove('hidden');
+            document.getElementById('dashboard-section').classList.add('hidden');
+        }
+    });
+
+</script>
+</body>
+</html>

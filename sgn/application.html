@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Citizenship Application - Sangaia</title>
+    <title>Циви Апликатио - Сангаиа</title>
     <style>
         /* --- FRUTIGER AERO / SKEUOMORPHIC STYLES --- */
         :root {
@@ -188,18 +188,19 @@
     
     <nav id="globalheader">
         <div style="position: absolute; left: 15px; display: flex; align-items: center; height: 100%;">
-            <img src="media/nav_logo.png" style="height: 24px; width: auto;" alt="Logo">
+            <img src="../media/nav_logo.png" style="height: 24px; width: auto;" alt="Logo">
         </div>
-        <div style="position: absolute; right: 15px; display: flex; align-items: center; height: 100%; z-index: 100;">
-            <a href="../application.html" style="color: #bbb; text-decoration: none; font-size: 11px; font-weight: bold; letter-spacing: 0.5px; padding: 3px 8px; border: 1px solid #444; border-radius: 4px; background: linear-gradient(to bottom, #555, #333); box-shadow: 0 1px 2px rgba(0,0,0,0.3); transition: all 0.2s ease;" onmouseover="this.style.color='#fff'; this.style.borderColor='#666';" onmouseout="this.style.color='#bbb'; this.style.borderColor='#444';">Sangaian</a>
+        <div style="position: absolute; right: 15px; display: flex; align-items: center; gap: 15px; height: 100%; z-index: 100;">
+            <div id="auth-widget"></div>
+            <a href="../application.html" style="color: #bbb; text-decoration: none; font-size: 11px; font-weight: bold; letter-spacing: 0.5px; padding: 3px 8px; border: 1px solid #444; border-radius: 4px; background: linear-gradient(to bottom, #555, #333); box-shadow: 0 1px 2px rgba(0,0,0,0.3); transition: all 0.2s ease;" onmouseover="this.style.color='#fff'; this.style.borderColor='#666';" onmouseout="this.style.color='#bbb'; this.style.borderColor='#444';">Сангаиан</a>
         </div>
-        <ul id="globalnav">
-            <li><a href="index.html" >Home</a></li>
-            <li><a href="government.html">Government</a></li>
-            <li><a href="citizenship.html" class="active">Citizenship</a></li>
-            <li><a href="services.html">Services</a></li>
-            <li><a href="about.html">About the Aeretocrat</a></li>
-            <li><a href="societal_press.html">Societal Press</a></li>
+                <ul id="globalnav">
+            <li><a href="index.html">Домо</a></li>
+            <li><a href="government.html">Губэрно</a></li>
+            <li><a href="citizenship.html" class="active">Циви</a></li>
+            <li><a href="services.html">Дуло</a></li>
+            <li><a href="about.html">Цирку свои Арэтократ</a></li>
+            <li><a href="societal_press.html">Сонитиа Прэсо</a></li>
         </ul>
     </nav>
     <div class="content-wrapper">
@@ -208,83 +209,324 @@
 
         
 <div class="glass-panel" style="max-width: 800px; margin: 0 auto; text-align: left;">
-    <h2 style="text-align: center; border-bottom: none; margin-bottom: 5px;">Citizenship Application & Test</h2>
-    <p style="text-align: center; color: #666; margin-bottom: 30px;">Please fill out the form below accurately. This application serves as both your formal request for naturalization and your citizenship test.</p>
+    <h2 style="text-align: center; border-bottom: none; margin-bottom: 5px;">Циви Апликатио инкаи Тэсто</h2>
+    <p style="text-align: center; color: #666; margin-bottom: 15px;">Плако тото свои формо субэ вэро. Хок апликатио дуло ас амбо тус формало эрото про натуро факто инкаи тус циви тэсто.</p>
+    
+    <div style="background-color: #fff3cd; color: #856404; padding: 15px; border-radius: 4px; margin-bottom: 20px; font-size: 0.95em; border: 1px solid #ffeeba;">
+        <strong>Анукио:</strong> АИ-зэмио рэспонсо эст стрикто ми-лэгито инкаи волу рэзолво ин статим ми-лэгито эк тус апликатио. Холо рэспонсо дэи эсэ тус ипсо.
+        <br><br>
+        <span style="color: #d9534f; font-weight: bold;">* Ноэо уна хрэа куэстио</span>
+    </div>
 
     <form action="https://formspree.io/f/xppqqzzn" method="POST" style="display: flex; flex-direction: column; gap: 20px;">
         
-        <!-- PERSONAL INFO -->
+        <!-- SECTION 1 - ABOUT YOU -->
         <div style="background: rgba(0,0,0,0.02); padding: 20px; border-radius: 8px; border: 1px solid #eee;">
-            <h3 style="margin-top: 0; color: #0077be; font-size: 1.2em;">Part 1: Personal Information</h3>
+            <h3 style="margin-top: 0; color: #0077be; font-size: 1.2em;">Сэктио Унус - Цирку Ту</h3>
+            <p style="font-size: 0.9em; margin-bottom: 20px; color: #666;">Ту волу рэспонсо куэстио цирку ипсо. Холо эк хок эст сэкуро, инкаи тус информатио эст приватиа. Сонтаволя эрото ти ту типо тус Э-мито субэ уто Сонтаволя динам мито ту тус рэзолво. Эан ту практо ми, Сонтаволя волу ми гнози куомо ад традо хок информатио рэтро ад ту. Сонтаволя волу ми-видо холо субмито сино уна Э-мито Адито адо ад или.</p>
             
-            <label style="font-weight: bold; display: block; margin-bottom: 5px;">Full Legal Name</label>
-            <input type="text" name="name" required style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box; margin-bottom: 15px;">
-            
-            <label style="font-weight: bold; display: block; margin-bottom: 5px;">Email Address (For Application Tracking)</label>
+            <label style="font-weight: bold; display: block; margin-bottom: 5px;">Унус. Э-мито *</label>
             <input type="email" name="email" required style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box; margin-bottom: 15px;">
             
-            <label style="font-weight: bold; display: block; margin-bottom: 5px;">Why do you wish to become a citizen of Sangaia?</label>
-            <textarea name="reason" rows="4" required style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box; resize: vertical;"></textarea>
+            <label style="font-weight: bold; display: block; margin-bottom: 5px;">Дио. Ти эст свои актуало дато ту эст ламба хок тэсто? *</label>
+            <p style="margin: 0 0 5px 0; font-size: 0.85em; color: #888;">Экзэмпло: Жануатио Сэптэм, Дио Милус Дэкум Новэм</p>
+            <input type="text" name="date_taken" required style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box; margin-bottom: 15px;">
+            
+            <label style="font-weight: bold; display: block; margin-bottom: 5px;">Трэс. Ти эст тус номэн? *</label>
+            <p style="margin: 0 0 5px 0; font-size: 0.85em; color: #888;">Прото/Мэдио (Эан аплико)/Ултимо</p>
+            <input type="text" name="name" required style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box; margin-bottom: 15px;">
+            
+            <label style="font-weight: bold; display: block; margin-bottom: 5px;">Куатро. Эст ту актуало лаборо? *</label>
+            <div style="margin-bottom: 15px;">
+                <label style="display: block; margin-bottom: 5px;"><input type="radio" name="employed" value="Ита" required> Ита</label>
+                <label style="display: block; margin-bottom: 5px;"><input type="radio" name="employed" value="Мин" required> Мин</label>
+                <label style="display: block; margin-bottom: 5px;"><input type="radio" name="employed" value="Ипсо-лаборо" required> Ипсо-лаборо</label>
+            </div>
+
+            <label style="font-weight: bold; display: block; margin-bottom: 5px;">Пэнтус. Эан ту эст лаборо, ти эст тус анно интройто?</label>
+            <div style="margin-bottom: 15px;">
+                <label style="display: block; margin-bottom: 5px;"><input type="radio" name="salary" value="Суб Дэкум-Милус"> Суб Дэкум-Милус</label>
+                <label style="display: block; margin-bottom: 5px;"><input type="radio" name="salary" value="Дэкум-Милус ад Дио Дэкум Пэнтус Милус"> Дэкум-Милус ад Дио Дэкум Пэнтус Милус</label>
+                <label style="display: block; margin-bottom: 5px;"><input type="radio" name="salary" value="Дио Дэкум Пэнтус Милус ад Пэнтус Дэкум Милус"> Дио Дэкум Пэнтус Милус ад Пэнтус Дэкум Милус</label>
+                <label style="display: block; margin-bottom: 5px;"><input type="radio" name="salary" value="Пэнтус Дэкум Милус ад Сэптэм Дэкум Пэнтус Милус"> Пэнтус Дэкум Милус ад Сэптэм Дэкум Пэнтус Милус</label>
+                <label style="display: block; margin-bottom: 5px;"><input type="radio" name="salary" value="Сэптэм Дэкум Пэнтус Милус ад Цэнтум Милус"> Сэптэм Дэкум Пэнтус Милус ад Цэнтум Милус</label>
+                <label style="display: block; margin-bottom: 5px;"><input type="radio" name="salary" value="Супэр Цэнтум Милус"> Супэр Цэнтум Милус</label>
+            </div>
+
+            <label style="font-weight: bold; display: block; margin-bottom: 5px;">Сэкс. Ти эст тус аэта? *</label>
+            <div style="margin-bottom: 15px;">
+                <label style="display: block; margin-bottom: 5px;"><input type="radio" name="age" value="Суб Дэкум-Трэс" required> Суб Дэкум-Трэс</label>
+                <label style="display: block; margin-bottom: 5px;"><input type="radio" name="age" value="Дэкум-Трэс ад Дэкум-Окто" required> Дэкум-Трэс ад Дэкум-Окто</label>
+                <label style="display: block; margin-bottom: 5px;"><input type="radio" name="age" value="Дэкум-Окто ад Дио Дэкум Пэнтус" required> Дэкум-Окто ад Дио Дэкум Пэнтус</label>
+                <label style="display: block; margin-bottom: 5px;"><input type="radio" name="age" value="Дио Дэкум Пэнтус ад Трэс Дэкум Пэнтус" required> Дио Дэкум Пэнтус ад Трэс Дэкум Пэнтус</label>
+                <label style="display: block; margin-bottom: 5px;"><input type="radio" name="age" value="Трэс Дэкум Пэнтус ад Куатро Дэкум Пэнтус" required> Трэс Дэкум Пэнтус ад Куатро Дэкум Пэнтус</label>
+                <label style="display: block; margin-bottom: 5px;"><input type="radio" name="age" value="Куатро Дэкум Пэнтус ад Пэнтус Дэкум Пэнтус" required> Куатро Дэкум Пэнтус ад Пэнтус Дэкум Пэнтус</label>
+                <label style="display: block; margin-bottom: 5px;"><input type="radio" name="age" value="Пэнтус Дэкум Пэнтус ад Сэкс Дэкум Пэнтус" required> Пэнтус Дэкум Пэнтус ад Сэкс Дэкум Пэнтус</label>
+                <label style="display: block; margin-bottom: 5px;"><input type="radio" name="age" value="Сэкс Дэкум Пэнтус ад Сэптэм Дэкум Пэнтус" required> Сэкс Дэкум Пэнтус ад Сэптэм Дэкум Пэнтус</label>
+                <label style="display: block; margin-bottom: 5px;"><input type="radio" name="age" value="супэр Сэптэм Дэкум Пэнтус" required> супэр Сэптэм Дэкум Пэнтус</label>
+            </div>
+
+            <label style="font-weight: bold; display: block; margin-bottom: 5px;">Сэптэм. Эхо ту уна кримэно хисториа? *</label>
+            <div style="margin-bottom: 15px;">
+                <label style="display: block; margin-bottom: 5px;"><input type="radio" name="criminal_history" value="Ита" required> Ита</label>
+                <label style="display: block; margin-bottom: 5px;"><input type="radio" name="criminal_history" value="Мин" required> Мин</label>
+            </div>
+
+            <label style="font-weight: bold; display: block; margin-bottom: 5px;">Окто. Эхо ту нэвун эсэ тэсто ин уна курто эк лэксо? *</label>
+            <div style="margin-bottom: 15px;">
+                <label style="display: block; margin-bottom: 5px;"><input type="radio" name="tried_in_court" value="Ита" required> Ита</label>
+                <label style="display: block; margin-bottom: 5px;"><input type="radio" name="tried_in_court" value="Мин" required> Мин</label>
+            </div>
+
+            <label style="font-weight: bold; display: block; margin-bottom: 5px;">Новэм. Эан тэсто, ти эст ту тэсто про?</label>
+            <p style="margin: 0 0 5px 0; font-size: 0.85em; color: #888;">Мэро типо эки эан ту элэкто Ита ин свои антэо куэстио. Практо ми дивидо холо дэтало эк тус касо, вэл эан ту эст конвикто. Дэтало экзакто ти ту эст тэсто про.</p>
+            <textarea name="tried_reason" rows="3" style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box; resize: vertical; margin-bottom: 15px;"></textarea>
+
+            <label style="font-weight: bold; display: block; margin-bottom: 5px;">Дэкум. Эхо ту нэвун эсэ конвикто ин уна курто эк лэксо? *</label>
+            <div style="margin-bottom: 15px;">
+                <label style="display: block; margin-bottom: 5px;"><input type="radio" name="convicted" value="Ита" required> Ита</label>
+                <label style="display: block; margin-bottom: 5px;"><input type="radio" name="convicted" value="Мин" required> Мин</label>
+            </div>
+
+            <label style="font-weight: bold; display: block; margin-bottom: 5px;">Дэкум-Унус. Эан конвикто, ти эст ту конвикто эк?</label>
+            <p style="margin: 0 0 5px 0; font-size: 0.85em; color: #888;">Мэро типо эки эан ту элэкто Ита ин свои антэо куэстио. Практо ми дивидо холо дэтало эк тус касо. Листо холо ту эст конвикто эк.</p>
+            <textarea name="convicted_reason" rows="3" style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box; resize: vertical; margin-bottom: 15px;"></textarea>
+
+            <label style="font-weight: bold; display: block; margin-bottom: 5px;">Дэкум-Дио. Эхо ту шэно инфанто? *</label>
+            <div style="margin-bottom: 15px;">
+                <label style="display: block; margin-bottom: 5px;"><input type="radio" name="has_children" value="Ита" required> Ита</label>
+                <label style="display: block; margin-bottom: 5px;"><input type="radio" name="has_children" value="Мин" required> Мин</label>
+            </div>
+
+            <label style="font-weight: bold; display: block; margin-bottom: 5px;">Дэкум-Трэс. Эан ту эхо инфанто, куанто практо ту эхо?</label>
+            <p style="margin: 0 0 5px 0; font-size: 0.85em; color: #888;">Мэро элэкто эки эан ту элэкто Ита ин свои антэо куэстио.</p>
+            <div style="margin-bottom: 15px;">
+                <label style="display: block; margin-bottom: 5px;"><input type="checkbox" name="num_children" value="1"> 1</label>
+                <label style="display: block; margin-bottom: 5px;"><input type="checkbox" name="num_children" value="2"> 2</label>
+                <label style="display: block; margin-bottom: 5px;"><input type="checkbox" name="num_children" value="3"> 3</label>
+                <label style="display: block; margin-bottom: 5px;"><input type="checkbox" name="num_children" value="4"> 4</label>
+                <label style="display: block; margin-bottom: 5px;"><input type="checkbox" name="num_children" value="5"> 5</label>
+                <label style="display: block; margin-bottom: 5px;"><input type="checkbox" name="num_children" value="Супэр Пэнтус"> Супэр Пэнтус</label>
+            </div>
+
+            <label style="font-weight: bold; display: block; margin-bottom: 5px;">Дэкум-Куатро. Ти эст сум аэта?</label>
+            <p style="margin: 0 0 5px 0; font-size: 0.85em; color: #888;">Мэро типо эки эан ту элэкто Ита ин свои антэо куэстио.</p>
+            <textarea name="children_ages" rows="2" style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box; resize: vertical; margin-bottom: 15px;"></textarea>
+
+            <label style="font-weight: bold; display: block; margin-bottom: 5px;">Дэкум-Пэнтус. Эхо ту шэно фамилиа ти эст актуало циви эк свои Сонит Провиткия эк Сангаиа? *</label>
+            <div style="margin-bottom: 15px;">
+                <label style="display: block; margin-bottom: 5px;"><input type="radio" name="family_citizens" value="Ита" required> Ита</label>
+                <label style="display: block; margin-bottom: 5px;"><input type="radio" name="family_citizens" value="Мин" required> Мин</label>
+            </div>
+
+            <label style="font-weight: bold; display: block; margin-bottom: 5px;">Дэкум-Сэкс. Эан ту эхо шэно фамилиа, ти эст сум номэн, инкаи свои Провиткия или вита ин?</label>
+            <p style="margin: 0 0 5px 0; font-size: 0.85em; color: #888;">Мэро типо эки эан ту элэкто Ита ин свои антэо куэстио.</p>
+            <textarea name="family_details" rows="3" style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box; resize: vertical; margin-bottom: 15px;"></textarea>
+
+            <label style="font-weight: bold; display: block; margin-bottom: 5px;">Дэкум-Сэптэм. Эхо ту эсэ вита ин свои Сонит Провиткия эк Сангаиа суб уна ВИСА? *</label>
+            <div style="margin-bottom: 15px;">
+                <label style="display: block; margin-bottom: 5px;"><input type="radio" name="under_visa" value="Ита" required> Ита</label>
+                <label style="display: block; margin-bottom: 5px;"><input type="radio" name="under_visa" value="Мин" required> Мин</label>
+            </div>
+
+            <label style="font-weight: bold; display: block; margin-bottom: 5px;">Дэкум-Окто. Эан со, куомо макрао эхо ту эсэ эки про?</label>
+            <p style="margin: 0 0 5px 0; font-size: 0.85em; color: #888;">Мэро типо эки эан ту элэкто Ита ин свои антэо куэстио.</p>
+            <input type="text" name="visa_duration" style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box; margin-bottom: 15px;">
+
+            <label style="font-weight: bold; display: block; margin-bottom: 5px;">Дэкум-Новэм. Эхо ту шэно граду? *</label>
+            <div style="margin-bottom: 15px;">
+                <label style="display: block; margin-bottom: 5px;"><input type="radio" name="has_degrees" value="Ита" required> Ита</label>
+                <label style="display: block; margin-bottom: 5px;"><input type="radio" name="has_degrees" value="Мин" required> Мин</label>
+            </div>
+
+            <label style="font-weight: bold; display: block; margin-bottom: 5px;">Дио Дэкум. Эан со, ти эст ту граду ин?</label>
+            <p style="margin: 0 0 5px 0; font-size: 0.85em; color: #888;">Мэро типо эки эан ту элэкто Ита ин свои антэо куэстио.</p>
+            <input type="text" name="degrees" style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box; margin-bottom: 15px;">
+
+            <label style="font-weight: bold; display: block; margin-bottom: 5px;">Дио Дэкум-Унус. Эхо ту шэно вэрито? *</label>
+            <div style="margin-bottom: 15px;">
+                <label style="display: block; margin-bottom: 5px;"><input type="radio" name="has_certifications" value="Ита" required> Ита</label>
+                <label style="display: block; margin-bottom: 5px;"><input type="radio" name="has_certifications" value="Мин" required> Мин</label>
+            </div>
+
+            <label style="font-weight: bold; display: block; margin-bottom: 5px;">Дио Дэкум-Дио. Эан со, ти эст ту вэрито ин?</label>
+            <p style="margin: 0 0 5px 0; font-size: 0.85em; color: #888;">Мэро типо эки эан ту элэкто Ита ин свои антэо куэстио.</p>
+            <textarea name="certifications" rows="2" style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box; resize: vertical; margin-bottom: 15px;"></textarea>
+
+            <label style="font-weight: bold; display: block; margin-bottom: 5px;">Дио Дэкум-Трэс. Ти лингуа практо ту фэми? *</label>
+            <input type="text" name="languages" required style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box; margin-bottom: 15px;">
+
+            <label style="font-weight: bold; display: block; margin-bottom: 5px;">Дио Дэкум-Куатро. Уби эст ту иро апо, эан аплико?</label>
+            <p style="margin: 0 0 5px 0; font-size: 0.85em; color: #888;">Мэро рэспонсо хок эан ту плано ин лико тус актуало натио ад вита сэмпо ин Сангаиа.</p>
+            <input type="text" name="immigrating_from" style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box; margin-bottom: 15px;">
         </div>
 
-        <!-- CITIZENSHIP TEST -->
+        <!-- THE CONSTITUTION -->
         <div style="background: rgba(0,0,0,0.02); padding: 20px; border-radius: 8px; border: 1px solid #eee;">
-            <h3 style="margin-top: 0; color: #0077be; font-size: 1.2em;">Part 2: Citizenship Test</h3>
-            <p style="font-size: 0.9em; margin-bottom: 20px;">Answer the following questions to the best of your ability. Incorrect answers may result in the rejection of your application.</p>
+            <h3 style="margin-top: 0; color: #0077be; font-size: 1.2em;">Свои Своротицания</h3>
+            <p style="font-size: 0.9em; margin-bottom: 20px; color: #666;">Ту волу рэспонсо куэстио цирку Свои Сангаиа Своротицания.</p>
             
-            <label style="font-weight: bold; display: block; margin-bottom: 5px;">1. What is the fundamental form of government in Sangaia?</label>
-            <select name="q1_government" required style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box; margin-bottom: 15px;">
-                <option value="" disabled selected>Select an option...</option>
-                <option value="Democracy">Democracy</option>
-                <option value="Aeretocracy">Aeretocracy</option>
-                <option value="Monarchy">Monarchy</option>
-                <option value="Oligarchy">Oligarchy</option>
-            </select>
-            
-            <label style="font-weight: bold; display: block; margin-bottom: 5px;">2. Who holds the ultimate power to break or bypass the Sangaian Constitution?</label>
-            <select name="q2_constitution" required style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box; margin-bottom: 15px;">
-                <option value="" disabled selected>Select an option...</option>
-                <option value="The Aeretocrat">The Aeretocrat</option>
-                <option value="The Body of Electives">The Body of Electives</option>
-                <option value="No one">No one</option>
-                <option value="The Ministry of Domestic Affairs">The Ministry of Domestic Affairs</option>
-            </select>
-            
-            <label style="font-weight: bold; display: block; margin-bottom: 5px;">3. Are you required to be fluent in Sangaian to gain citizenship?</label>
-            <select name="q3_language" required style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box; margin-bottom: 15px;">
-                <option value="" disabled selected>Select an option...</option>
-                <option value="Yes">Yes, Sangaian fluency is strictly required.</option>
-                <option value="No">No, literacy in any official language is sufficient.</option>
-            </select>
-            
-            <label style="font-weight: bold; display: block; margin-bottom: 5px;">4. Which of the following is NOT a characteristic of Sangaia?</label>
-            <select name="q4_characteristic" required style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box; margin-bottom: 15px;">
-                <option value="" disabled selected>Select an option...</option>
-                <option value="Free University">Free University</option>
-                <option value="Strict 1-Person-1-Vote Policy">Strict 1-Person-1-Vote Policy</option>
-                <option value="High Income Taxes">High Income Taxes</option>
-                <option value="Equal opportunity for all">Equal opportunity for all</option>
-            </select>
+            <label style="font-weight: bold; display: block; margin-bottom: 5px;">Дио Дэкум-Пэнтус. Эст ту сати фидо цирку свои своротицания ад рэспонсо свои проксимо куэстио? *</label>
+            <div style="margin-bottom: 15px;">
+                <label style="display: block; margin-bottom: 5px;"><input type="radio" name="confident_constitution" value="Ита" required> Ита (Трансо ад куэстио Дио Дэкум-Сэкс)</label>
+                <label style="display: block; margin-bottom: 5px;"><input type="radio" name="confident_constitution" value="Мин" required> Мин (Трансо ад куэстио Трэс Дэкум-Дио)</label>
+            </div>
+
+            <label style="font-weight: bold; display: block; margin-bottom: 5px;">Дио Дэкум-Сэкс. Куанто артикуло эст ин Свои Сангаиа Своротицания? *</label>
+            <div style="margin-bottom: 15px;">
+                <label style="display: block; margin-bottom: 5px;"><input type="radio" name="num_articles" value="4"> 4</label>
+                <label style="display: block; margin-bottom: 5px;"><input type="radio" name="num_articles" value="7"> 7</label>
+                <label style="display: block; margin-bottom: 5px;"><input type="radio" name="num_articles" value="8"> 8</label>
+                <label style="display: block; margin-bottom: 5px;"><input type="radio" name="num_articles" value="10"> 10</label>
+                <label style="display: block; margin-bottom: 5px;"><input type="radio" name="num_articles" value="Эго практо ми гнози."> Эго практо ми гнози.</label>
+            </div>
+
+            <label style="font-weight: bold; display: block; margin-bottom: 5px;">Дио Дэкум-Сэптэм. Куи апробо Свои Своротицания? *</label>
+            <div style="margin-bottom: 15px;">
+                <label style="display: block; margin-bottom: 5px;"><input type="radio" name="ratified_constitution" value="Жак Давэнпорт"> Жак Давэнпорт</label>
+                <label style="display: block; margin-bottom: 5px;"><input type="radio" name="ratified_constitution" value="Цэлинда Салах"> Цэлинда Салах</label>
+                <label style="display: block; margin-bottom: 5px;"><input type="radio" name="ratified_constitution" value="Клэмэнт Брис"> Клэмэнт Брис</label>
+                <label style="display: block; margin-bottom: 5px;"><input type="radio" name="ratified_constitution" value="Эго практо ми гнози."> Эго практо ми гнози.</label>
+            </div>
+
+            <label style="font-weight: bold; display: block; margin-bottom: 5px;">Дио Дэкум-Окто. Куи трэхо Свои Губэрно? *</label>
+            <div style="margin-bottom: 15px;">
+                <label style="display: block; margin-bottom: 5px;"><input type="radio" name="runs_government" value="Свои Праэсидо"> Свои Праэсидо</label>
+                <label style="display: block; margin-bottom: 5px;"><input type="radio" name="runs_government" value="Свои Диктато"> Свои Диктато</label>
+                <label style="display: block; margin-bottom: 5px;"><input type="radio" name="runs_government" value="Свои Импэрато-ин-Прото"> Свои Импэрато-ин-Прото</label>
+                <label style="display: block; margin-bottom: 5px;"><input type="radio" name="runs_government" value="Свои Дуксо"> Свои Дуксо</label>
+            </div>
+
+            <label style="font-weight: bold; display: block; margin-bottom: 5px;">Дио Дэкум-Новэм. Куи вото ин Лэксо? *</label>
+            <div style="margin-bottom: 15px;">
+                <label style="display: block; margin-bottom: 5px;"><input type="radio" name="votes_legislation" value="Свои Лэксо-Групо"> Свои Лэксо-Групо</label>
+                <label style="display: block; margin-bottom: 5px;"><input type="radio" name="votes_legislation" value="Свои Корпо эк Элэкто"> Свои Корпо эк Элэкто</label>
+                <label style="display: block; margin-bottom: 5px;"><input type="radio" name="votes_legislation" value="Конгрэсо"> Конгрэсо</label>
+            </div>
+
+            <label style="font-weight: bold; display: block; margin-bottom: 5px;">Трэс Дэкум. Эхо сонтаволя уна Курто Систэма? *</label>
+            <div style="margin-bottom: 15px;">
+                <label style="display: block; margin-bottom: 5px;"><input type="radio" name="judicial_system" value="Ита"> Ита</label>
+                <label style="display: block; margin-bottom: 5px;"><input type="radio" name="judicial_system" value="Мин"> Мин</label>
+            </div>
+
+            <label style="font-weight: bold; display: block; margin-bottom: 5px;">Трэс Дэкум-Унус. Номэн унус артикуло апо Свои Своротицания. *</label>
+            <input type="text" name="name_article" style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box; margin-bottom: 15px;">
         </div>
 
-        <!-- LITERACY ATTESTATION -->
+        <!-- HEALTHCARE -->
         <div style="background: rgba(0,0,0,0.02); padding: 20px; border-radius: 8px; border: 1px solid #eee;">
-            <h3 style="margin-top: 0; color: #0077be; font-size: 1.2em;">Part 3: Literacy Attestation</h3>
+            <h3 style="margin-top: 0; color: #0077be; font-size: 1.2em;">Салутиа</h3>
+            <p style="font-size: 0.9em; margin-bottom: 20px; color: #666;">Ту волу рэспонсо куэстио цирку салутиа-кура.</p>
             
-            <label style="display: flex; align-items: flex-start; gap: 10px; font-weight: normal; cursor: pointer;">
-                <input type="checkbox" name="literacy_attestation" required style="margin-top: 4px;">
-                <span>I attest, under penalty of rejection, that I can read, write, and speak a sufficient amount of an official language declared by the Constitution of Sangaia, and that I have completed this form independently.</span>
-            </label>
+            <label style="font-weight: bold; display: block; margin-bottom: 5px;">Трэс Дэкум-Дио. Эхо сонтаволя Провиткия-Провидо Салутиа? *</label>
+            <div style="margin-bottom: 15px;">
+                <label style="display: block; margin-bottom: 5px;"><input type="radio" name="state_healthcare" value="Ита" required> Ита</label>
+                <label style="display: block; margin-bottom: 5px;"><input type="radio" name="state_healthcare" value="Мин" required> Мин</label>
+            </div>
+
+            <label style="font-weight: bold; display: block; margin-bottom: 5px;">Трэс Дэкум-Трэс. Эхо ту аплико про Салутиа? *</label>
+            <div style="margin-bottom: 15px;">
+                <label style="display: block; margin-bottom: 5px;"><input type="radio" name="applied_healthcare" value="Ита" required> Ита</label>
+                <label style="display: block; margin-bottom: 5px;"><input type="radio" name="applied_healthcare" value="Мин" required> Мин</label>
+            </div>
+
+            <label style="font-weight: bold; display: block; margin-bottom: 5px;">Трэс Дэкум-Куатро. Эхо ту шэно мэнти морбо? *</label>
+            <div style="margin-bottom: 15px;">
+                <label style="display: block; margin-bottom: 5px;"><input type="radio" name="mental_conditions" value="Ита" required> Ита</label>
+                <label style="display: block; margin-bottom: 5px;"><input type="radio" name="mental_conditions" value="Мин" required> Мин</label>
+            </div>
+
+            <label style="font-weight: bold; display: block; margin-bottom: 5px;">Трэс Дэкум-Пэнтус. Эан со, ти эст или?</label>
+            <p style="margin: 0 0 5px 0; font-size: 0.85em; color: #888;">Мэро типо эки эан ту элэкто Ита ин свои антэо куэстио.</p>
+            <input type="text" name="mental_conditions_details" style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box; margin-bottom: 15px;">
+
+            <label style="font-weight: bold; display: block; margin-bottom: 5px;">Трэс Дэкум-Сэкс. Эхо ту уна базо интэло эк куомо Сангаиа Салутиа лаборо? *</label>
+            <div style="margin-bottom: 15px;">
+                <label style="display: block; margin-bottom: 5px;"><input type="radio" name="healthcare_understanding" value="Ита" required> Ита</label>
+                <label style="display: block; margin-bottom: 5px;"><input type="radio" name="healthcare_understanding" value="Мин" required> Мин</label>
+            </div>
+
+            <label style="font-weight: bold; display: block; margin-bottom: 5px;">Трэс Дэкум-Сэптэм. Ти практо Сангаиа-сяни шало сум мэдико ас? *</label>
+            <div style="margin-bottom: 15px;">
+                <label style="display: block; margin-bottom: 5px;"><input type="radio" name="doctor_reference" value="Уна КП (Комуно Практо-сяни)" required> Уна КП (Комуно Практо-сяни)</label>
+                <label style="display: block; margin-bottom: 5px;"><input type="radio" name="doctor_reference" value="Уна КМ (Комуно Мэдико)" required> Уна КМ (Комуно Мэдико)</label>
+                <label style="display: block; margin-bottom: 5px;"><input type="radio" name="doctor_reference" value="Уна ПРМ (Прото Кура Мэдико)" required> Уна ПРМ (Прото Кура Мэдико)</label>
+            </div>
+
+            <label style="font-weight: bold; display: block; margin-bottom: 5px;">Трэс Дэкум-Окто. Эхо ту нэвун ламба Сангаиа Салутиа? *</label>
+            <div style="margin-bottom: 15px;">
+                <label style="display: block; margin-bottom: 5px;"><input type="radio" name="received_healthcare" value="Ита" required> Ита</label>
+                <label style="display: block; margin-bottom: 5px;"><input type="radio" name="received_healthcare" value="Мин" required> Мин</label>
+            </div>
+
+            <label style="font-weight: bold; display: block; margin-bottom: 5px;">Трэс Дэкум-Новэм. Эан ту эхо, куар?</label>
+            <p style="margin: 0 0 5px 0; font-size: 0.85em; color: #888;">Мэро типо эки эан ту элэкто Ита ин свои антэо куэстио. Практо ми дивидо холо дэтало эк тус визо.</p>
+            <input type="text" name="healthcare_visit_reason" style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box; margin-bottom: 15px;">
+
+            <label style="font-weight: bold; display: block; margin-bottom: 5px;">Куатро Дэкум. Куомо сэмпо практо ту визо тус мэдико? *</label>
+            <p style="margin: 0 0 5px 0; font-size: 0.85em; color: #888;">Унус = Валдэ ми-сэмпо, Дэкум = Валдэ сэмпо</p>
+            <div style="display: flex; gap: 10px; margin-bottom: 15px; flex-wrap: wrap; align-items: center;">
+                <span>Валдэ ми-сэмпо</span>
+                <label><input type="radio" name="doctor_visit_freq" value="1" required> 1</label>
+                <label><input type="radio" name="doctor_visit_freq" value="2" required> 2</label>
+                <label><input type="radio" name="doctor_visit_freq" value="3" required> 3</label>
+                <label><input type="radio" name="doctor_visit_freq" value="4" required> 4</label>
+                <label><input type="radio" name="doctor_visit_freq" value="5" required> 5</label>
+                <label><input type="radio" name="doctor_visit_freq" value="6" required> 6</label>
+                <label><input type="radio" name="doctor_visit_freq" value="7" required> 7</label>
+                <label><input type="radio" name="doctor_visit_freq" value="8" required> 8</label>
+                <label><input type="radio" name="doctor_visit_freq" value="9" required> 9</label>
+                <label><input type="radio" name="doctor_visit_freq" value="10" required> 10</label>
+                <span>Валдэ сэмпо</span>
+            </div>
+
+            <label style="font-weight: bold; display: block; margin-bottom: 5px;">Куатро Дэкум-Унус. Практо Сангаиа офэро Салутиа Инсуро Плано? *</label>
+            <div style="margin-bottom: 15px;">
+                <label style="display: block; margin-bottom: 5px;"><input type="radio" name="healthcare_insurance" value="Ита" required> Ита</label>
+                <label style="display: block; margin-bottom: 5px;"><input type="radio" name="healthcare_insurance" value="Мин" required> Мин</label>
+            </div>
         </div>
 
-        <button type="submit" class="sangaia-btn" style="width: 100%; font-size: 1.1em; padding: 15px; height: auto;"><span>Submit Citizenship Application</span></button>
+        <!-- REVIEW -->
+        <div style="background: rgba(0,0,0,0.02); padding: 20px; border-radius: 8px; border: 1px solid #eee;">
+            <h3 style="margin-top: 0; color: #0077be; font-size: 1.2em;">Рэвизо</h3>
+            <p style="font-size: 0.9em; margin-bottom: 20px; color: #666;">Ту волу рэспонсо шэно ултимо рэвизо куэстио.</p>
+            
+            <label style="font-weight: bold; display: block; margin-bottom: 5px;">Куатро Дэкум-Дио. Практо ту интэло тус апликатио зинам эсэ ми-лэгито эан ту ми эхо типо тус Э-мито? *</label>
+            <div style="margin-bottom: 15px;">
+                <label style="display: block; margin-bottom: 5px;"><input type="radio" name="understand_email" value="Ита" required> Ита</label>
+            </div>
+
+            <label style="font-weight: bold; display: block; margin-bottom: 5px;">Куатро Дэкум-Трэс. Практо ту интэло ти ту зинам эсэ эрото маги куэстио? *</label>
+            <div style="margin-bottom: 15px;">
+                <label style="display: block; margin-bottom: 5px;"><input type="radio" name="understand_questioning" value="Ита" required> Ита</label>
+            </div>
+
+            <label style="font-weight: bold; display: block; margin-bottom: 5px;">Куатро Дэкум-Куатро. Практо ту гнози ти Свои Своротицания эст свои супрэмо лэксо эк свои тэра? *</label>
+            <div style="margin-bottom: 15px;">
+                <label style="display: block; margin-bottom: 5px;"><input type="radio" name="acknowledge_constitution" value="Ита" required> Ита</label>
+            </div>
+
+            <label style="font-weight: bold; display: block; margin-bottom: 5px;">Куатро Дэкум-Пэнтус. Эхо ту тото уна Англо вэл Сангаиа литэро тэсто? *</label>
+            <p style="margin: 0 0 5px 0; font-size: 0.85em; color: #888;">Эан ту эхо, плако элэкто пио унус ту эхо ламба апо свои суб-листо.</p>
+            <select name="literacy_test" required style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box; margin-bottom: 15px;">
+                <option value="" disabled selected>Элэкто уна опрэ...</option>
+                <option value="Англо Литэро Тэсто">Англо Литэро Тэсто</option>
+                <option value="Сангаиа Литэро Тэсто">Сангаиа Литэро Тэсто</option>
+                <option value="Амбо">Амбо</option>
+                <option value="Нэутэро">Нэутэро</option>
+            </select>
+        </div>
+
+        <button type="submit" class="sangaia-btn" style="width: 100%; font-size: 1.1em; padding: 15px; height: auto;"><span>Субмито Циви Апликатио</span></button>
     </form>
 </div>
 
     </div>
     <footer>
-        &copy; 2026 United Provinces of Sangaia. All Rights Reserved.<br>
-        <span style="font-size: 0.8em; color: #888;">Powered by Aeretocratic Principles</span>
+        &copy; Дио Милус Дио Дэкум Сэкс Сонит Провиткия эк Сангаиа. Холо Жусо Сэрво.<br>
+        <span style="font-size: 0.8em; color: #888;">Динамиа паро Арэтократиа Рэгканон</span>
     </footer>
 </div>
 
@@ -300,5 +542,8 @@
     }, 4000); 
 </script>
 
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="../../auth.js"></script>
 </body>
 </html>

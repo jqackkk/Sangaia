@@ -190,11 +190,12 @@
         <div style="position: absolute; left: 15px; display: flex; align-items: center; height: 100%;">
             <img src="media/nav_logo.png" style="height: 24px; width: auto;" alt="Logo">
         </div>
-        <div style="position: absolute; right: 15px; display: flex; align-items: center; height: 100%; z-index: 100;">
+        <div style="position: absolute; right: 15px; display: flex; align-items: center; gap: 15px; height: 100%; z-index: 100;">
+            <div id="auth-widget"></div>
             <a href="sgn/application.html" style="color: #bbb; text-decoration: none; font-size: 11px; font-weight: bold; letter-spacing: 0.5px; padding: 3px 8px; border: 1px solid #444; border-radius: 4px; background: linear-gradient(to bottom, #555, #333); box-shadow: 0 1px 2px rgba(0,0,0,0.3); transition: all 0.2s ease;" onmouseover="this.style.color='#fff'; this.style.borderColor='#666';" onmouseout="this.style.color='#bbb'; this.style.borderColor='#444';">English</a>
         </div>
-        <ul id="globalnav">
-            <li><a href="index.html" >Home</a></li>
+                <ul id="globalnav">
+            <li><a href="index.html">Home</a></li>
             <li><a href="government.html">Government</a></li>
             <li><a href="citizenship.html" class="active">Citizenship</a></li>
             <li><a href="services.html">Services</a></li>
@@ -209,72 +210,313 @@
         
 <div class="glass-panel" style="max-width: 800px; margin: 0 auto; text-align: left;">
     <h2 style="text-align: center; border-bottom: none; margin-bottom: 5px;">Citizenship Application & Test</h2>
-    <p style="text-align: center; color: #666; margin-bottom: 30px;">Please fill out the form below accurately. This application serves as both your formal request for naturalization and your citizenship test.</p>
+    <p style="text-align: center; color: #666; margin-bottom: 15px;">Please fill out the form below accurately. This application serves as both your formal request for naturalization and your citizenship test.</p>
+    
+    <div style="background-color: #fff3cd; color: #856404; padding: 15px; border-radius: 4px; margin-bottom: 20px; font-size: 0.95em; border: 1px solid #ffeeba;">
+        <strong>Notice:</strong> AI-generated responses are strictly unacceptable and will result in the immediate invalidation of your application. All answers must be your own.
+        <br><br>
+        <span style="color: #d9534f; font-weight: bold;">* Indicates a required question</span>
+    </div>
 
     <form action="https://formspree.io/f/xppqqzzn" method="POST" style="display: flex; flex-direction: column; gap: 20px;">
         
-        <!-- PERSONAL INFO -->
+        <!-- SECTION 1 - ABOUT YOU -->
         <div style="background: rgba(0,0,0,0.02); padding: 20px; border-radius: 8px; border: 1px solid #eee;">
-            <h3 style="margin-top: 0; color: #0077be; font-size: 1.2em;">Part 1: Personal Information</h3>
+            <h3 style="margin-top: 0; color: #0077be; font-size: 1.2em;">Section 1 - About You</h3>
+            <p style="font-size: 0.9em; margin-bottom: 20px; color: #666;">You will answer questions about yourself. All of this is secure, and your information is private. We ask that you input your Email below so we can send you your results. If you don't, we won't know how to relay this information back to you. We will ignore all submissions without an Email Address attached to them.</p>
             
-            <label style="font-weight: bold; display: block; margin-bottom: 5px;">Full Legal Name</label>
-            <input type="text" name="name" required style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box; margin-bottom: 15px;">
-            
-            <label style="font-weight: bold; display: block; margin-bottom: 5px;">Email Address (For Application Tracking)</label>
+            <label style="font-weight: bold; display: block; margin-bottom: 5px;">1. Email *</label>
             <input type="email" name="email" required style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box; margin-bottom: 15px;">
             
-            <label style="font-weight: bold; display: block; margin-bottom: 5px;">Why do you wish to become a citizen of Sangaia?</label>
-            <textarea name="reason" rows="4" required style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box; resize: vertical;"></textarea>
+            <label style="font-weight: bold; display: block; margin-bottom: 5px;">2. What is the current date you are taking this test? *</label>
+            <p style="margin: 0 0 5px 0; font-size: 0.85em; color: #888;">Example: January 7, 2019</p>
+            <input type="text" name="date_taken" required style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box; margin-bottom: 15px;">
+            
+            <label style="font-weight: bold; display: block; margin-bottom: 5px;">3. What is your name? *</label>
+            <p style="margin: 0 0 5px 0; font-size: 0.85em; color: #888;">First/Middle (If applicable)/Last</p>
+            <input type="text" name="name" required style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box; margin-bottom: 15px;">
+            
+            <label style="font-weight: bold; display: block; margin-bottom: 5px;">4. Are you currently employed? *</label>
+            <div style="margin-bottom: 15px;">
+                <label style="display: block; margin-bottom: 5px;"><input type="radio" name="employed" value="Yes" required> Yes</label>
+                <label style="display: block; margin-bottom: 5px;"><input type="radio" name="employed" value="No" required> No</label>
+                <label style="display: block; margin-bottom: 5px;"><input type="radio" name="employed" value="Self-Employed" required> Self-Employed</label>
+            </div>
+
+            <label style="font-weight: bold; display: block; margin-bottom: 5px;">5. If you're employed, what is your yearly salary?</label>
+            <div style="margin-bottom: 15px;">
+                <label style="display: block; margin-bottom: 5px;"><input type="radio" name="salary" value="Under $10,000"> Under $10,000</label>
+                <label style="display: block; margin-bottom: 5px;"><input type="radio" name="salary" value="$10,000 to $25,000"> $10,000 to $25,000</label>
+                <label style="display: block; margin-bottom: 5px;"><input type="radio" name="salary" value="$25,000 to $50,000"> $25,000 to $50,000</label>
+                <label style="display: block; margin-bottom: 5px;"><input type="radio" name="salary" value="$50,000 to $75,000"> $50,000 to $75,000</label>
+                <label style="display: block; margin-bottom: 5px;"><input type="radio" name="salary" value="$75,000 to $100,000"> $75,000 to $100,000</label>
+                <label style="display: block; margin-bottom: 5px;"><input type="radio" name="salary" value="Over $100,000"> Over $100,000</label>
+            </div>
+
+            <label style="font-weight: bold; display: block; margin-bottom: 5px;">6. What is your age? *</label>
+            <div style="margin-bottom: 15px;">
+                <label style="display: block; margin-bottom: 5px;"><input type="radio" name="age" value="Under 13" required> Under 13</label>
+                <label style="display: block; margin-bottom: 5px;"><input type="radio" name="age" value="13 to 18" required> 13 to 18</label>
+                <label style="display: block; margin-bottom: 5px;"><input type="radio" name="age" value="18 to 25" required> 18 to 25</label>
+                <label style="display: block; margin-bottom: 5px;"><input type="radio" name="age" value="25 to 35" required> 25 to 35</label>
+                <label style="display: block; margin-bottom: 5px;"><input type="radio" name="age" value="35 to 45" required> 35 to 45</label>
+                <label style="display: block; margin-bottom: 5px;"><input type="radio" name="age" value="45 to 55" required> 45 to 55</label>
+                <label style="display: block; margin-bottom: 5px;"><input type="radio" name="age" value="55 to 65" required> 55 to 65</label>
+                <label style="display: block; margin-bottom: 5px;"><input type="radio" name="age" value="65 to 75" required> 65 to 75</label>
+                <label style="display: block; margin-bottom: 5px;"><input type="radio" name="age" value="above 75" required> above 75</label>
+            </div>
+
+            <label style="font-weight: bold; display: block; margin-bottom: 5px;">7. Do you have a criminal history? *</label>
+            <div style="margin-bottom: 15px;">
+                <label style="display: block; margin-bottom: 5px;"><input type="radio" name="criminal_history" value="Yes" required> Yes</label>
+                <label style="display: block; margin-bottom: 5px;"><input type="radio" name="criminal_history" value="No" required> No</label>
+            </div>
+
+            <label style="font-weight: bold; display: block; margin-bottom: 5px;">8. Have you ever been tried in a court of law? *</label>
+            <div style="margin-bottom: 15px;">
+                <label style="display: block; margin-bottom: 5px;"><input type="radio" name="tried_in_court" value="Yes" required> Yes</label>
+                <label style="display: block; margin-bottom: 5px;"><input type="radio" name="tried_in_court" value="No" required> No</label>
+            </div>
+
+            <label style="font-weight: bold; display: block; margin-bottom: 5px;">9. If tried, what were you tried for?</label>
+            <p style="margin: 0 0 5px 0; font-size: 0.85em; color: #888;">Only type here if you selected Yes on the previous question. Do not share all the details of your case, or whether you were convicted. Describe exactly what you were tried for.</p>
+            <textarea name="tried_reason" rows="3" style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box; resize: vertical; margin-bottom: 15px;"></textarea>
+
+            <label style="font-weight: bold; display: block; margin-bottom: 5px;">10. Have you ever been convicted in a court of law? *</label>
+            <div style="margin-bottom: 15px;">
+                <label style="display: block; margin-bottom: 5px;"><input type="radio" name="convicted" value="Yes" required> Yes</label>
+                <label style="display: block; margin-bottom: 5px;"><input type="radio" name="convicted" value="No" required> No</label>
+            </div>
+
+            <label style="font-weight: bold; display: block; margin-bottom: 5px;">11. If convicted, what were you convicted of?</label>
+            <p style="margin: 0 0 5px 0; font-size: 0.85em; color: #888;">Only type here if you selected Yes on the previous question. Do not share all the details of your case. List everything you were convicted of.</p>
+            <textarea name="convicted_reason" rows="3" style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box; resize: vertical; margin-bottom: 15px;"></textarea>
+
+            <label style="font-weight: bold; display: block; margin-bottom: 5px;">12. Do you have any children? *</label>
+            <div style="margin-bottom: 15px;">
+                <label style="display: block; margin-bottom: 5px;"><input type="radio" name="has_children" value="Yes" required> Yes</label>
+                <label style="display: block; margin-bottom: 5px;"><input type="radio" name="has_children" value="No" required> No</label>
+            </div>
+
+            <label style="font-weight: bold; display: block; margin-bottom: 5px;">13. If you have children, how many do you have?</label>
+            <p style="margin: 0 0 5px 0; font-size: 0.85em; color: #888;">Only check here if you selected Yes on the previous question.</p>
+            <div style="margin-bottom: 15px;">
+                <label style="display: block; margin-bottom: 5px;"><input type="checkbox" name="num_children" value="1"> 1</label>
+                <label style="display: block; margin-bottom: 5px;"><input type="checkbox" name="num_children" value="2"> 2</label>
+                <label style="display: block; margin-bottom: 5px;"><input type="checkbox" name="num_children" value="3"> 3</label>
+                <label style="display: block; margin-bottom: 5px;"><input type="checkbox" name="num_children" value="4"> 4</label>
+                <label style="display: block; margin-bottom: 5px;"><input type="checkbox" name="num_children" value="5"> 5</label>
+                <label style="display: block; margin-bottom: 5px;"><input type="checkbox" name="num_children" value="Over 5"> Over 5</label>
+            </div>
+
+            <label style="font-weight: bold; display: block; margin-bottom: 5px;">14. What are their ages?</label>
+            <p style="margin: 0 0 5px 0; font-size: 0.85em; color: #888;">Only type here if you selected Yes on the previous question.</p>
+            <textarea name="children_ages" rows="2" style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box; resize: vertical; margin-bottom: 15px;"></textarea>
+
+            <label style="font-weight: bold; display: block; margin-bottom: 5px;">15. Do you have any family who are current citizens of the United Provinces of Sangaia? *</label>
+            <div style="margin-bottom: 15px;">
+                <label style="display: block; margin-bottom: 5px;"><input type="radio" name="family_citizens" value="Yes" required> Yes</label>
+                <label style="display: block; margin-bottom: 5px;"><input type="radio" name="family_citizens" value="No" required> No</label>
+            </div>
+
+            <label style="font-weight: bold; display: block; margin-bottom: 5px;">16. If you have any family, what are their names, and the province they live in?</label>
+            <p style="margin: 0 0 5px 0; font-size: 0.85em; color: #888;">Only type here if you selected Yes on the previous question.</p>
+            <textarea name="family_details" rows="3" style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box; resize: vertical; margin-bottom: 15px;"></textarea>
+
+            <label style="font-weight: bold; display: block; margin-bottom: 5px;">17. Have you been living in the United Provinces of Sangaia under a VISA? *</label>
+            <div style="margin-bottom: 15px;">
+                <label style="display: block; margin-bottom: 5px;"><input type="radio" name="under_visa" value="Yes" required> Yes</label>
+                <label style="display: block; margin-bottom: 5px;"><input type="radio" name="under_visa" value="No" required> No</label>
+            </div>
+
+            <label style="font-weight: bold; display: block; margin-bottom: 5px;">18. If so, how long have you been here for?</label>
+            <p style="margin: 0 0 5px 0; font-size: 0.85em; color: #888;">Only type here if you selected Yes on the previous question.</p>
+            <input type="text" name="visa_duration" style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box; margin-bottom: 15px;">
+
+            <label style="font-weight: bold; display: block; margin-bottom: 5px;">19. Do you have any degrees? *</label>
+            <div style="margin-bottom: 15px;">
+                <label style="display: block; margin-bottom: 5px;"><input type="radio" name="has_degrees" value="Yes" required> Yes</label>
+                <label style="display: block; margin-bottom: 5px;"><input type="radio" name="has_degrees" value="No" required> No</label>
+            </div>
+
+            <label style="font-weight: bold; display: block; margin-bottom: 5px;">20. If so, what are you degreed in?</label>
+            <p style="margin: 0 0 5px 0; font-size: 0.85em; color: #888;">Only type here if you selected Yes on the previous question.</p>
+            <input type="text" name="degrees" style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box; margin-bottom: 15px;">
+
+            <label style="font-weight: bold; display: block; margin-bottom: 5px;">21. Do you have any certifications? *</label>
+            <div style="margin-bottom: 15px;">
+                <label style="display: block; margin-bottom: 5px;"><input type="radio" name="has_certifications" value="Yes" required> Yes</label>
+                <label style="display: block; margin-bottom: 5px;"><input type="radio" name="has_certifications" value="No" required> No</label>
+            </div>
+
+            <label style="font-weight: bold; display: block; margin-bottom: 5px;">22. If so, what are you certified in?</label>
+            <p style="margin: 0 0 5px 0; font-size: 0.85em; color: #888;">Only type here if you selected Yes on the previous question.</p>
+            <textarea name="certifications" rows="2" style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box; resize: vertical; margin-bottom: 15px;"></textarea>
+
+            <label style="font-weight: bold; display: block; margin-bottom: 5px;">23. What languages do you speak? *</label>
+            <input type="text" name="languages" required style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box; margin-bottom: 15px;">
+
+            <label style="font-weight: bold; display: block; margin-bottom: 5px;">24. Where are you immigrating from, if applicable?</label>
+            <p style="margin: 0 0 5px 0; font-size: 0.85em; color: #888;">Only answer this if you plan on leaving your current country to live permanently in Sangaia.</p>
+            <input type="text" name="immigrating_from" style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box; margin-bottom: 15px;">
         </div>
 
-        <!-- CITIZENSHIP TEST -->
+        <!-- THE CONSTITUTION -->
         <div style="background: rgba(0,0,0,0.02); padding: 20px; border-radius: 8px; border: 1px solid #eee;">
-            <h3 style="margin-top: 0; color: #0077be; font-size: 1.2em;">Part 2: Citizenship Test</h3>
-            <p style="font-size: 0.9em; margin-bottom: 20px;">Answer the following questions to the best of your ability. Incorrect answers may result in the rejection of your application.</p>
+            <h3 style="margin-top: 0; color: #0077be; font-size: 1.2em;">The Constitution</h3>
+            <p style="font-size: 0.9em; margin-bottom: 20px; color: #666;">You will answer questions about The Sangaian Constitution.</p>
             
-            <label style="font-weight: bold; display: block; margin-bottom: 5px;">1. What is the fundamental form of government in Sangaia?</label>
-            <select name="q1_government" required style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box; margin-bottom: 15px;">
-                <option value="" disabled selected>Select an option...</option>
-                <option value="Democracy">Democracy</option>
-                <option value="Aeretocracy">Aeretocracy</option>
-                <option value="Monarchy">Monarchy</option>
-                <option value="Oligarchy">Oligarchy</option>
-            </select>
-            
-            <label style="font-weight: bold; display: block; margin-bottom: 5px;">2. Who holds the ultimate power to break or bypass the Sangaian Constitution?</label>
-            <select name="q2_constitution" required style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box; margin-bottom: 15px;">
-                <option value="" disabled selected>Select an option...</option>
-                <option value="The Aeretocrat">The Aeretocrat</option>
-                <option value="The Body of Electives">The Body of Electives</option>
-                <option value="No one">No one</option>
-                <option value="The Ministry of Domestic Affairs">The Ministry of Domestic Affairs</option>
-            </select>
-            
-            <label style="font-weight: bold; display: block; margin-bottom: 5px;">3. Are you required to be fluent in Sangaian to gain citizenship?</label>
-            <select name="q3_language" required style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box; margin-bottom: 15px;">
-                <option value="" disabled selected>Select an option...</option>
-                <option value="Yes">Yes, Sangaian fluency is strictly required.</option>
-                <option value="No">No, literacy in any official language is sufficient.</option>
-            </select>
-            
-            <label style="font-weight: bold; display: block; margin-bottom: 5px;">4. Which of the following is NOT a characteristic of Sangaia?</label>
-            <select name="q4_characteristic" required style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box; margin-bottom: 15px;">
-                <option value="" disabled selected>Select an option...</option>
-                <option value="Free University">Free University</option>
-                <option value="Strict 1-Person-1-Vote Policy">Strict 1-Person-1-Vote Policy</option>
-                <option value="High Income Taxes">High Income Taxes</option>
-                <option value="Equal opportunity for all">Equal opportunity for all</option>
-            </select>
+            <label style="font-weight: bold; display: block; margin-bottom: 5px;">25. Do you feel confident enough about the constitution to answer the following questions? *</label>
+            <div style="margin-bottom: 15px;">
+                <label style="display: block; margin-bottom: 5px;"><input type="radio" name="confident_constitution" value="Yes" required> Yes (Skip to question 26)</label>
+                <label style="display: block; margin-bottom: 5px;"><input type="radio" name="confident_constitution" value="No" required> No (Skip to question 32)</label>
+            </div>
+
+            <label style="font-weight: bold; display: block; margin-bottom: 5px;">26. How many articles are in The Sangaian Constitution? *</label>
+            <div style="margin-bottom: 15px;">
+                <label style="display: block; margin-bottom: 5px;"><input type="radio" name="num_articles" value="4"> 4</label>
+                <label style="display: block; margin-bottom: 5px;"><input type="radio" name="num_articles" value="7"> 7</label>
+                <label style="display: block; margin-bottom: 5px;"><input type="radio" name="num_articles" value="8"> 8</label>
+                <label style="display: block; margin-bottom: 5px;"><input type="radio" name="num_articles" value="10"> 10</label>
+                <label style="display: block; margin-bottom: 5px;"><input type="radio" name="num_articles" value="I don't know."> I don't know.</label>
+            </div>
+
+            <label style="font-weight: bold; display: block; margin-bottom: 5px;">27. Who ratified The Constitution? *</label>
+            <div style="margin-bottom: 15px;">
+                <label style="display: block; margin-bottom: 5px;"><input type="radio" name="ratified_constitution" value="Jack Davenport"> Jack Davenport</label>
+                <label style="display: block; margin-bottom: 5px;"><input type="radio" name="ratified_constitution" value="Celinda Salah"> Celinda Salah</label>
+                <label style="display: block; margin-bottom: 5px;"><input type="radio" name="ratified_constitution" value="Clement Bryce"> Clement Bryce</label>
+                <label style="display: block; margin-bottom: 5px;"><input type="radio" name="ratified_constitution" value="I don't know."> I don't know.</label>
+            </div>
+
+            <label style="font-weight: bold; display: block; margin-bottom: 5px;">28. Who runs The Government? *</label>
+            <div style="margin-bottom: 15px;">
+                <label style="display: block; margin-bottom: 5px;"><input type="radio" name="runs_government" value="The President"> The President</label>
+                <label style="display: block; margin-bottom: 5px;"><input type="radio" name="runs_government" value="The Dictator"> The Dictator</label>
+                <label style="display: block; margin-bottom: 5px;"><input type="radio" name="runs_government" value="The Commander-in-Chief"> The Commander-in-Chief</label>
+                <label style="display: block; margin-bottom: 5px;"><input type="radio" name="runs_government" value="The Leader"> The Leader</label>
+            </div>
+
+            <label style="font-weight: bold; display: block; margin-bottom: 5px;">29. Who votes on Legislation? *</label>
+            <div style="margin-bottom: 15px;">
+                <label style="display: block; margin-bottom: 5px;"><input type="radio" name="votes_legislation" value="The Legislature"> The Legislature</label>
+                <label style="display: block; margin-bottom: 5px;"><input type="radio" name="votes_legislation" value="The Body of Electives"> The Body of Electives</label>
+                <label style="display: block; margin-bottom: 5px;"><input type="radio" name="votes_legislation" value="Congress"> Congress</label>
+            </div>
+
+            <label style="font-weight: bold; display: block; margin-bottom: 5px;">30. Do we have a Judicial System? *</label>
+            <div style="margin-bottom: 15px;">
+                <label style="display: block; margin-bottom: 5px;"><input type="radio" name="judicial_system" value="Yes"> Yes</label>
+                <label style="display: block; margin-bottom: 5px;"><input type="radio" name="judicial_system" value="No"> No</label>
+            </div>
+
+            <label style="font-weight: bold; display: block; margin-bottom: 5px;">31. Name one article from The Constitution. *</label>
+            <input type="text" name="name_article" style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box; margin-bottom: 15px;">
         </div>
 
-        <!-- LITERACY ATTESTATION -->
+        <!-- HEALTHCARE -->
         <div style="background: rgba(0,0,0,0.02); padding: 20px; border-radius: 8px; border: 1px solid #eee;">
-            <h3 style="margin-top: 0; color: #0077be; font-size: 1.2em;">Part 3: Literacy Attestation</h3>
+            <h3 style="margin-top: 0; color: #0077be; font-size: 1.2em;">Healthcare</h3>
+            <p style="font-size: 0.9em; margin-bottom: 20px; color: #666;">You will answer questions about healthcare.</p>
             
-            <label style="display: flex; align-items: flex-start; gap: 10px; font-weight: normal; cursor: pointer;">
-                <input type="checkbox" name="literacy_attestation" required style="margin-top: 4px;">
-                <span>I attest, under penalty of rejection, that I can read, write, and speak a sufficient amount of an official language declared by the Constitution of Sangaia, and that I have completed this form independently.</span>
-            </label>
+            <label style="font-weight: bold; display: block; margin-bottom: 5px;">32. Do we have State-Provided Healthcare? *</label>
+            <div style="margin-bottom: 15px;">
+                <label style="display: block; margin-bottom: 5px;"><input type="radio" name="state_healthcare" value="Yes" required> Yes</label>
+                <label style="display: block; margin-bottom: 5px;"><input type="radio" name="state_healthcare" value="No" required> No</label>
+            </div>
+
+            <label style="font-weight: bold; display: block; margin-bottom: 5px;">33. Have you applied for Healthcare? *</label>
+            <div style="margin-bottom: 15px;">
+                <label style="display: block; margin-bottom: 5px;"><input type="radio" name="applied_healthcare" value="Yes" required> Yes</label>
+                <label style="display: block; margin-bottom: 5px;"><input type="radio" name="applied_healthcare" value="No" required> No</label>
+            </div>
+
+            <label style="font-weight: bold; display: block; margin-bottom: 5px;">34. Do you have any mental conditions? *</label>
+            <div style="margin-bottom: 15px;">
+                <label style="display: block; margin-bottom: 5px;"><input type="radio" name="mental_conditions" value="Yes" required> Yes</label>
+                <label style="display: block; margin-bottom: 5px;"><input type="radio" name="mental_conditions" value="No" required> No</label>
+            </div>
+
+            <label style="font-weight: bold; display: block; margin-bottom: 5px;">35. If so, what are they?</label>
+            <p style="margin: 0 0 5px 0; font-size: 0.85em; color: #888;">Only type here if you selected Yes on the previous question.</p>
+            <input type="text" name="mental_conditions_details" style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box; margin-bottom: 15px;">
+
+            <label style="font-weight: bold; display: block; margin-bottom: 5px;">36. Do you have a basic understanding of how Sangaian Healthcare works? *</label>
+            <div style="margin-bottom: 15px;">
+                <label style="display: block; margin-bottom: 5px;"><input type="radio" name="healthcare_understanding" value="Yes" required> Yes</label>
+                <label style="display: block; margin-bottom: 5px;"><input type="radio" name="healthcare_understanding" value="No" required> No</label>
+            </div>
+
+            <label style="font-weight: bold; display: block; margin-bottom: 5px;">37. What do Sangaians refer to their doctor as? *</label>
+            <div style="margin-bottom: 15px;">
+                <label style="display: block; margin-bottom: 5px;"><input type="radio" name="doctor_reference" value="A GP (General Practitioner)" required> A GP (General Practitioner)</label>
+                <label style="display: block; margin-bottom: 5px;"><input type="radio" name="doctor_reference" value="A GD (General Doctor)" required> A GD (General Doctor)</label>
+                <label style="display: block; margin-bottom: 5px;"><input type="radio" name="doctor_reference" value="A PCD (Primary Care Doctor)" required> A PCD (Primary Care Doctor)</label>
+            </div>
+
+            <label style="font-weight: bold; display: block; margin-bottom: 5px;">38. Have you ever received Sangaian Healthcare? *</label>
+            <div style="margin-bottom: 15px;">
+                <label style="display: block; margin-bottom: 5px;"><input type="radio" name="received_healthcare" value="Yes" required> Yes</label>
+                <label style="display: block; margin-bottom: 5px;"><input type="radio" name="received_healthcare" value="No" required> No</label>
+            </div>
+
+            <label style="font-weight: bold; display: block; margin-bottom: 5px;">39. If you have, why?</label>
+            <p style="margin: 0 0 5px 0; font-size: 0.85em; color: #888;">Only type here if you selected Yes on the previous question. Do not share all the details of your visit.</p>
+            <input type="text" name="healthcare_visit_reason" style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box; margin-bottom: 15px;">
+
+            <label style="font-weight: bold; display: block; margin-bottom: 5px;">40. How often do you visit your doctor? *</label>
+            <p style="margin: 0 0 5px 0; font-size: 0.85em; color: #888;">1 = Very rarely, 10 = Very often</p>
+            <div style="display: flex; gap: 10px; margin-bottom: 15px; flex-wrap: wrap; align-items: center;">
+                <span>Very rarely</span>
+                <label><input type="radio" name="doctor_visit_freq" value="1" required> 1</label>
+                <label><input type="radio" name="doctor_visit_freq" value="2" required> 2</label>
+                <label><input type="radio" name="doctor_visit_freq" value="3" required> 3</label>
+                <label><input type="radio" name="doctor_visit_freq" value="4" required> 4</label>
+                <label><input type="radio" name="doctor_visit_freq" value="5" required> 5</label>
+                <label><input type="radio" name="doctor_visit_freq" value="6" required> 6</label>
+                <label><input type="radio" name="doctor_visit_freq" value="7" required> 7</label>
+                <label><input type="radio" name="doctor_visit_freq" value="8" required> 8</label>
+                <label><input type="radio" name="doctor_visit_freq" value="9" required> 9</label>
+                <label><input type="radio" name="doctor_visit_freq" value="10" required> 10</label>
+                <span>Very often</span>
+            </div>
+
+            <label style="font-weight: bold; display: block; margin-bottom: 5px;">41. Does Sangaia offer Healthcare Insurance Plans? *</label>
+            <div style="margin-bottom: 15px;">
+                <label style="display: block; margin-bottom: 5px;"><input type="radio" name="healthcare_insurance" value="Yes" required> Yes</label>
+                <label style="display: block; margin-bottom: 5px;"><input type="radio" name="healthcare_insurance" value="No" required> No</label>
+            </div>
+        </div>
+
+        <!-- REVIEW -->
+        <div style="background: rgba(0,0,0,0.02); padding: 20px; border-radius: 8px; border: 1px solid #eee;">
+            <h3 style="margin-top: 0; color: #0077be; font-size: 1.2em;">Review</h3>
+            <p style="font-size: 0.9em; margin-bottom: 20px; color: #666;">You will answer some final review questions.</p>
+            
+            <label style="font-weight: bold; display: block; margin-bottom: 5px;">42. Do you understand your application may be invalidated should you not have entered your Email? *</label>
+            <div style="margin-bottom: 15px;">
+                <label style="display: block; margin-bottom: 5px;"><input type="radio" name="understand_email" value="Yes" required> Yes</label>
+            </div>
+
+            <label style="font-weight: bold; display: block; margin-bottom: 5px;">43. Do you understand that you may be subject to further questioning? *</label>
+            <div style="margin-bottom: 15px;">
+                <label style="display: block; margin-bottom: 5px;"><input type="radio" name="understand_questioning" value="Yes" required> Yes</label>
+            </div>
+
+            <label style="font-weight: bold; display: block; margin-bottom: 5px;">44. Do you acknowledge that The Constitution is the ultimate and supreme law of the land? *</label>
+            <div style="margin-bottom: 15px;">
+                <label style="display: block; margin-bottom: 5px;"><input type="radio" name="acknowledge_constitution" value="Yes" required> Yes</label>
+            </div>
+
+            <label style="font-weight: bold; display: block; margin-bottom: 5px;">45. Have you completed an English or Sangaian literacy test? *</label>
+            <p style="margin: 0 0 5px 0; font-size: 0.85em; color: #888;">If you have, please select which one you have taken from the dropdown.</p>
+            <select name="literacy_test" required style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box; margin-bottom: 15px;">
+                <option value="" disabled selected>Select an option...</option>
+                <option value="English Literacy Test">English Literacy Test</option>
+                <option value="Sangaian Literacy Test">Sangaian Literacy Test</option>
+                <option value="Both">Both</option>
+                <option value="Neither">Neither</option>
+            </select>
         </div>
 
         <button type="submit" class="sangaia-btn" style="width: 100%; font-size: 1.1em; padding: 15px; height: auto;"><span>Submit Citizenship Application</span></button>
@@ -300,5 +542,8 @@
     }, 4000); 
 </script>
 
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="../auth.js"></script>
 </body>
 </html>

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Search - DDCR</title>
+    <title>Трово - ДМКИ</title>
     <style>
         /* --- FRUTIGER AERO / SKEUOMORPHIC STYLES --- */
         :root {
@@ -188,16 +188,17 @@
     
     <nav id="globalheader">
         <div style="position: absolute; left: 15px; display: flex; align-items: center; height: 100%;">
-            <img src="../../media/mh_logo.png" style="height: 24px; width: auto;" alt="Logo">
+            <img src="../../../media/mh_logo.png" style="height: 24px; width: auto;" alt="Logo">
         </div>
-        <div style="position: absolute; right: 15px; display: flex; align-items: center; height: 100%; z-index: 100;">
-            <a href="../search.html" style="color: #bbb; text-decoration: none; font-size: 11px; font-weight: bold; letter-spacing: 0.5px; padding: 3px 8px; border: 1px solid #444; border-radius: 4px; background: linear-gradient(to bottom, #555, #333); box-shadow: 0 1px 2px rgba(0,0,0,0.3); transition: all 0.2s ease;" onmouseover="this.style.color='#fff'; this.style.borderColor='#666';" onmouseout="this.style.color='#bbb'; this.style.borderColor='#444';">Sangaian</a>
+        <div style="position: absolute; right: 15px; display: flex; align-items: center; gap: 15px; height: 100%; z-index: 100;">
+            <div id="auth-widget"></div>
+            <a href="../search.html" style="color: #bbb; text-decoration: none; font-size: 11px; font-weight: bold; letter-spacing: 0.5px; padding: 3px 8px; border: 1px solid #444; border-radius: 4px; background: linear-gradient(to bottom, #555, #333); box-shadow: 0 1px 2px rgba(0,0,0,0.3); transition: all 0.2s ease;" onmouseover="this.style.color='#fff'; this.style.borderColor='#666';" onmouseout="this.style.color='#bbb'; this.style.borderColor='#444';">Сангаиан</a>
         </div>
                 <ul id="globalnav">
-            <li><a href="index.html" >Home</a></li>
-            <li><a href="health_topics.html">Health Topics</a></li>
-            <li><a href="outbreaks.html">Outbreaks</a></li>
-            <li><a href="search.html" class="active">Search</a></li>
+            <li><a href="index.html" >Домо</a></li>
+            <li><a href="health_topics.html">Салутиа Прагма</a></li>
+            <li><a href="outbreaks.html">Эрупто</a></li>
+            <li><a href="search.html" class="active">Трово</a></li>
         </ul>
     </nav>
     <div class="content-wrapper">
@@ -220,20 +221,20 @@
     
     
     <div id="search-container">
-        <input type="text" id="search-box" placeholder="Search topics (e.g., Influenza, Vaccines, Guidelines...)" autocomplete="off">
+        <input type="text" id="search-box" placeholder="Трово topics (e.g., Influenza, Vaccines, Guidelines...)" autocomplete="off">
             </div>
 </div>
 <div id="results">
 
     <div class="result-card">
-        <h3 style="font-size: 1.1em; color: #555; margin-bottom: 10px;">Trending Topic</h3>
-        <h3><a href="health_topics.html" style="color: #c62828; text-decoration: none;">Seasonal Influenza (Flu) Guidelines</a></h3>
-        <p>Review the latest provincial recommendations for the current flu season, including vaccination center locations.</p>
+        <h3 style="font-size: 1.1em; color: #555; margin-bottom: 10px;">Трэндо Прагма</h3>
+        <h3><a href="health_topics.html" style="color: #c62828; text-decoration: none;">Анно Флуо Рэгканон</a></h3>
+        <p>Рэвизо свои ултимо Провиткия рэкомэндо про свои актуало флуо тэмпус, инклаво вакцина цэнтро локо.</p>
     </div>
     <div class="result-card">
-        <h3 style="font-size: 1.1em; color: #555; margin-bottom: 10px;">Trending Topic</h3>
-        <h3><a href="health_topics.html" style="color: #c62828; text-decoration: none;">Vaccination Schedules</a></h3>
-        <p>Comprehensive provincial requirements and timelines for pediatric and adult vaccines.</p>
+        <h3 style="font-size: 1.1em; color: #555; margin-bottom: 10px;">Трэндо Прагма</h3>
+        <h3><a href="health_topics.html" style="color: #c62828; text-decoration: none;">Вакцина Скэдуло</a></h3>
+        <p>Тото Провиткия хрэа инкаи тэмпус-линиа про инфанто инкаи мажоро вакцина.</p>
     </div>
     </div>
 
@@ -241,15 +242,15 @@
 // DDCR Mock Database
 // Built for extremely fast O(N) client-side filtering.
 const healthTopics = [
-    { title: "Influenza (Flu)", desc: "Seasonal flu guidelines, vaccination info, and prevention protocols for provincial hospitals.", link: "health_topics.html" },
+    { title: "Флуо", desc: "Seasonal flu guidelines, vaccination info, and prevention protocols for provincial hospitals.", link: "health_topics.html" },
     { title: "COVID-19", desc: "Outbreak tracking, testing centers, booster shot availability, and quarantine rules.", link: "health_topics.html" },
     { title: "Malaria", desc: "Travel guidelines, preventative medication, and symptoms to watch for.", link: "health_topics.html" },
-    { title: "Vaccination Schedules", desc: "Provincial requirements for pediatric and adult vaccines.", link: "health_topics.html" },
+    { title: "Вакцина Скэдуло", desc: "Provincial requirements for pediatric and adult vaccines.", link: "health_topics.html" },
     { title: "Tuberculosis (TB)", desc: "Screening requirements, treatment protocols, and isolation standards.", link: "health_topics.html" },
     { title: "Cholera", desc: "Water safety guidelines, active outbreak areas, and hydration therapy.", link: "health_topics.html" },
     { title: "Mental Health", desc: "Resources for anxiety, depression, and access to provincial psychiatric care.", link: "health_topics.html" },
     { title: "Diabetes", desc: "Management strategies, dietary advice, and state-sponsored insulin access programs.", link: "health_topics.html" },
-    { title: "Cardiovascular Health", desc: "Heart disease prevention, cholesterol guidelines, and dietary recommendations.", link: "health_topics.html" },
+    { title: "Корда Салутиа", desc: "Heart disease prevention, cholesterol guidelines, and dietary recommendations.", link: "health_topics.html" },
     { title: "Zika Virus", desc: "Mosquito prevention, pregnancy guidelines, and affected provinces.", link: "health_topics.html" },
     { title: "Ebola Virus Disease", desc: "Strict quarantine protocols, outbreak history, and emergency response.", link: "health_topics.html" },
     { title: "Rabies", desc: "Animal bite protocols, post-exposure prophylaxis (PEP), and wildlife monitoring.", link: "health_topics.html" },
@@ -260,19 +261,19 @@ const healthTopics = [
 const searchBox = document.getElementById('search-box');
 const resultsBox = document.getElementById('results');
 
-function performSearch(query) {
+function performТрово(query) {
     if (!query.trim()) {
         
         resultsBox.innerHTML = `
     <div class="result-card">
-        <h3 style="font-size: 1.1em; color: #555; margin-bottom: 10px;">Trending Topic</h3>
-        <h3><a href="health_topics.html" style="color: #c62828; text-decoration: none;">Seasonal Influenza (Flu) Guidelines</a></h3>
-        <p>Review the latest provincial recommendations for the current flu season, including vaccination center locations.</p>
+        <h3 style="font-size: 1.1em; color: #555; margin-bottom: 10px;">Трэндо Прагма</h3>
+        <h3><a href="health_topics.html" style="color: #c62828; text-decoration: none;">Анно Флуо Рэгканон</a></h3>
+        <p>Рэвизо свои ултимо Провиткия рэкомэндо про свои актуало флуо тэмпус, инклаво вакцина цэнтро локо.</p>
     </div>
     <div class="result-card">
-        <h3 style="font-size: 1.1em; color: #555; margin-bottom: 10px;">Trending Topic</h3>
-        <h3><a href="health_topics.html" style="color: #c62828; text-decoration: none;">Vaccination Schedules</a></h3>
-        <p>Comprehensive provincial requirements and timelines for pediatric and adult vaccines.</p>
+        <h3 style="font-size: 1.1em; color: #555; margin-bottom: 10px;">Трэндо Прагма</h3>
+        <h3><a href="health_topics.html" style="color: #c62828; text-decoration: none;">Вакцина Скэдуло</a></h3>
+        <p>Тото Провиткия хрэа инкаи тэмпус-линиа про инфанто инкаи мажоро вакцина.</p>
     </div>
     `;
         return;
@@ -290,21 +291,24 @@ function performSearch(query) {
     `).join('');
     
     if (matches.length === 0) {
-        resultsBox.innerHTML = '<div class="result-card"><p style="text-align:center;">No results found for "'+query+'". Please try another term.</p></div>';
+        resultsBox.innerHTML = '<div class="result-card"><p style="text-align:center;">Мин results found for "'+query+'". Please try another term.</p></div>';
     }
 }
 
-searchBox.addEventListener('input', (e) => performSearch(e.target.value));
+searchBox.addEventListener('input', (e) => performТрово(e.target.value));
 
 
 </script>
 
 </div>
     <footer>
-        &copy; 2026 United Provinces of Sangaia. All Rights Reserved.<br>
-        <span style="font-size: 0.8em; color: #888;">Ministry of Healthcare</span>
+        &copy; Дио Милус Дио Дэкум Сэкс Сонит Провиткия эк Сангаиа. Холо Жусо Сэрво.<br>
+        <span style="font-size: 0.8em; color: #888;">Министриа эк Салутиа</span>
     </footer>
 </div>
 
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="../../../../auth.js"></script>
 </body>
 </html>

@@ -190,30 +190,39 @@
         <div style="position: absolute; left: 15px; display: flex; align-items: center; height: 100%;">
             <img src="../media/mh_logo.png" style="height: 24px; width: auto;" alt="Logo">
         </div>
-        <div style="position: absolute; right: 15px; display: flex; align-items: center; height: 100%; z-index: 100;">
+        <div style="position: absolute; right: 15px; display: flex; align-items: center; gap: 15px; height: 100%; z-index: 100;">
+            <div id="auth-widget"></div>
             <a href="sgn/services.html" style="color: #bbb; text-decoration: none; font-size: 11px; font-weight: bold; letter-spacing: 0.5px; padding: 3px 8px; border: 1px solid #444; border-radius: 4px; background: linear-gradient(to bottom, #555, #333); box-shadow: 0 1px 2px rgba(0,0,0,0.3); transition: all 0.2s ease;" onmouseover="this.style.color='#fff'; this.style.borderColor='#666';" onmouseout="this.style.color='#bbb'; this.style.borderColor='#444';">English</a>
         </div>
-        <ul id="globalnav">
+                <ul id="globalnav">
             <li><a href="index.html">Home</a></li>
+            <li><a href="departments.html">Departments</a></li>
             <li><a href="services.html" class="active">Services</a></li>
             <li><a href="hospitals.html">Hospitals</a></li>
             <li><a href="research.html">Research</a></li>
             <li><a href="support.html">Support</a></li>
         </ul>
     </nav>
+    
     <div class="content-wrapper">
-        
-        
-
         <div class="content-grid">
             <div class="main-col">
                 <div class="glass-panel">
-                    <h2>Comprehensive Healthcare Services</h2>
-                    <p>We offer a wide range of services to ensure the health and wellbeing of all Sangaians. From general checkups to specialized surgery, our provincial clinics are equipped to handle your needs.</p>
+                    <h2>The Sangaian Health Charter</h2>
+                    <p>The Sangaian Health Charter ensures that all citizens have access to essential healthcare. It comprehensively covers preventative medicine, emergency response, life-saving surgeries, and specialized care programs such as mental health support and physical therapy.</p>
+                    <div style="margin-top: 15px;">
+                        <a href="../media/health_prices.pdf" download class="sangaia-btn"><span>Download Service Pricing PDF</span></a>
+                    </div>
                 </div>
                 <div class="glass-panel">
-                    <h2>Specialized Care Programs</h2>
-                    <p>Our state-sponsored programs include mental health support, physical therapy, and elderly care. All citizens have equal access to these specialized services under the Sangaian Health Mandate.</p>
+                    <h2>Comprehensive Healthcare Services</h2>
+                    <p>We offer a wide range of services to ensure the health and wellbeing of all Sangaians. Below is a quick guide on where you should go for your medical needs:</p>
+                    <ul style="line-height: 1.6; margin-top: 10px;">
+                        <li><strong>Bleeding or serious injury?</strong> Go to a hospital immediately or call 9-1-1.</li>
+                        <li><strong>Cold or flu?</strong> Visit your local clinic.</li>
+                        <li><strong>Routine checkup?</strong> Schedule an appointment with your GP.</li>
+                        <li><strong>Mental health support?</strong> Contact provincial specialized care.</li>
+                    </ul>
                 </div>
             </div>
             <div class="sidebar-col">
@@ -223,13 +232,6 @@
                     <div style="text-align: center;">
                         <a href="hospitals.html" class="sangaia-btn"><span>Find a Hospital</span></a>
                     </div>
-                </div>
-                <div class="glass-panel">
-                    <h2>Quick Links</h2>
-                    <ul style="padding-left: 20px;">
-                        <li><a href="support.html" style="color: #c62828;">Patient Resources</a></li>
-                        <li><a href="research.html" style="color: #c62828;">Disease Control Center</a></li>
-                    </ul>
                 </div>
             </div>
         </div>
@@ -252,5 +254,8 @@
     }, 4000); 
 </script>
 
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="../../auth.js"></script>
 </body>
 </html>
