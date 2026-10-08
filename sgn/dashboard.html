@@ -225,19 +225,19 @@
     
     <nav id="globalheader">
         <div style="position: absolute; left: 15px; display: flex; align-items: center; height: 100%;">
-            <img src="media/nav_logo.png" style="height: 24px; width: auto;" alt="Logo">
+            <img src="../media/nav_logo.png" style="height: 24px; width: auto;" alt="Logo">
         </div>
         <div style="position: absolute; right: 15px; display: flex; align-items: center; gap: 15px; height: 100%; z-index: 100;">
-            <div id="auth-widget"><a href="dashboard.html" style="color: #bbb; text-decoration: none; font-size: 11px; font-weight: bold; letter-spacing: 0.5px; padding: 3px 8px; border: 1px solid #444; border-radius: 4px; background: linear-gradient(to bottom, #555, #333); box-shadow: 0 1px 2px rgba(0,0,0,0.3); transition: all 0.2s ease;" onmouseover="this.style.color='#fff'; this.style.borderColor='#666';" onmouseout="this.style.color='#bbb'; this.style.borderColor='#444';">Sign In / Register</a></div>
-            <a href="sgn/index.html" style="color: #bbb; text-decoration: none; font-size: 11px; font-weight: bold; letter-spacing: 0.5px; padding: 3px 8px; border: 1px solid #444; border-radius: 4px; background: linear-gradient(to bottom, #555, #333); box-shadow: 0 1px 2px rgba(0,0,0,0.3); transition: all 0.2s ease;" onmouseover="this.style.color='#fff'; this.style.borderColor='#666';" onmouseout="this.style.color='#bbb'; this.style.borderColor='#444';">English</a>
+            <div id="auth-widget"><a href="../dashboard.html" style="color: #bbb; text-decoration: none; font-size: 11px; font-weight: bold; letter-spacing: 0.5px; padding: 3px 8px; border: 1px solid #444; border-radius: 4px; background: linear-gradient(to bottom, #555, #333); box-shadow: 0 1px 2px rgba(0,0,0,0.3); transition: all 0.2s ease;" onmouseover="this.style.color='#fff'; this.style.borderColor='#666';" onmouseout="this.style.color='#bbb'; this.style.borderColor='#444';">Sign In / Register</a></div>
+            <a href="../index.html" style="color: #bbb; text-decoration: none; font-size: 11px; font-weight: bold; letter-spacing: 0.5px; padding: 3px 8px; border: 1px solid #444; border-radius: 4px; background: linear-gradient(to bottom, #555, #333); box-shadow: 0 1px 2px rgba(0,0,0,0.3); transition: all 0.2s ease;" onmouseover="this.style.color='#fff'; this.style.borderColor='#666';" onmouseout="this.style.color='#bbb'; this.style.borderColor='#444';">Сангаиан</a>
         </div>
                 <ul id="globalnav">
-            <li><a href="index.html" class="active">Home</a></li>
-            <li><a href="government.html">Government</a></li>
-            <li><a href="citizenship.html">Citizenship</a></li>
-            <li><a href="services.html">Services</a></li>
-            <li><a href="about.html">About the Aeretocrat</a></li>
-            <li><a href="societal_press.html">Societal Press</a></li>
+            <li><a href="index.html" class="active">Домо</a></li>
+            <li><a href="government.html">Губэрно</a></li>
+            <li><a href="citizenship.html">Циви</a></li>
+            <li><a href="services.html">Дуло</a></li>
+            <li><a href="about.html">Цирку свои Арэтократ</a></li>
+            <li><a href="societal_press.html">Сонитиа Прэсо</a></li>
         </ul>
     </nav>
     <div class="content-wrapper">
@@ -351,7 +351,7 @@
 
                 <h3>Literacy Tests</h3>
                 <p>No verified literacy test results on file. A passed test is required for continued citizenship.</p>
-                <button class="sangaia-btn btn-blue" onclick="window.location.href='application.html'"><span>Take Literacy Test</span></button>
+                <button class="sangaia-btn btn-blue" onclick="window.location.href='../sgn/application.html'"><span>Take Literacy Test</span></button>
 
                 <h3>Crimes & Offenses Database</h3>
                 <p style="color: #2c3e50; padding: 10px; background: rgba(0,0,0,0.05); border-radius: 4px;">
@@ -372,12 +372,12 @@
                 <p><strong>Primary GP:</strong> Unassigned</p>
                 <p><strong>Insurance Plan:</strong> State-Provided Healthcare</p>
                 <p><strong>Blood Type:</strong> Unknown</p>
-                <button class="sangaia-btn btn-blue" onclick="window.location.href='mH/index.html'"><span>Visit Healthcare Portal</span></button>
+                <button class="sangaia-btn btn-blue" onclick="window.location.href='../mH/sgn/index.html'"><span>Visit Healthcare Portal</span></button>
 
                 <h3>Education Profile (Ministry of Education)</h3>
                 <p><strong>Current Enrollment:</strong> None</p>
                 <p><strong>Highest Degree:</strong> N/A</p>
-                <button class="sangaia-btn btn-blue" onclick="window.location.href='mE/index.html'"><span>Visit Education Portal</span></button>
+                <button class="sangaia-btn btn-blue" onclick="window.location.href='../mE/sgn/index.html'"><span>Visit Education Portal</span></button>
             </div>
         </div>
 
@@ -409,8 +409,8 @@
     </div>
 
     <footer>
-        &copy; 2026 United Provinces of Sangaia. All Rights Reserved.<br>
-        <span style="font-size: 0.8em; color: #888;">Powered by Aeretocratic Principles</span>
+        &copy; Дио Милус Дио Дэкум Сэкс Сонит Провиткия эк Сангаиа. Холо Жусо Сэрво.<br>
+        <span style="font-size: 0.8em; color: #888;">Динамиа Паро Арэтократиа Рэгканон</span>
     </footer>
 </div>
 
@@ -418,7 +418,7 @@
 
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-<script src="auth.js"></script>
+<script src="../auth.js"></script>
 <script>
 
     function switchTab(tabId) {
@@ -498,7 +498,7 @@
     }
 
     async function applyForBenefit() {
-        if (!supabase) return alert("Unable to connect to secure servers.");
+        if (!supabase) return alert("Hema i fa'afeso'ota'i i le sapalai Sangaia.");
         const { data: { user } } = await supabase.auth.getUser();
         if (!user) return;
 
@@ -526,7 +526,7 @@
 
     // Handlers
     async function handleLogin() {
-        if (!supabase) return document.getElementById('auth-error').innerText = "Unable to connect to Sangaia Secure Servers. Please ensure you have internet access and are not blocking scripts.";
+        if (!supabase) return document.getElementById('auth-error').innerText = "Le mafai ona feso'ota'i. Fa'amolemole siaki lau initaneti po'o le poloka o skripiti.";
         const email = document.getElementById('login-email').value;
         const pass = document.getElementById('login-password').value;
         const { data, error } = await supabase.auth.signInWithPassword({ email, password: pass });
@@ -535,7 +535,7 @@
     }
 
     async function handleSignup() {
-        if (!supabase) return document.getElementById('auth-error').innerText = "Unable to connect to Sangaia Secure Servers. Please ensure you have internet access and are not blocking scripts.";
+        if (!supabase) return document.getElementById('auth-error').innerText = "Le mafai ona feso'ota'i. Fa'amolemole siaki lau initaneti po'o le poloka o skripiti.";
         const name = document.getElementById('signup-name').value;
         const dob = document.getElementById('signup-dob').value;
         const email = document.getElementById('signup-email').value;
@@ -571,7 +571,7 @@
     }
     
     async function updateProfileName() {
-        if (!supabase) return alert("Unable to connect to secure servers.");
+        if (!supabase) return alert("Le mafai ona feso'ota'i i le sapalai.");
         const newName = document.getElementById('update-name').value;
         if(!newName) return;
         const { data: { user } } = await supabase.auth.getUser();
@@ -598,7 +598,7 @@
     } else {
         document.getElementById('auth-section').classList.remove('hidden');
         document.getElementById('dashboard-section').classList.add('hidden');
-        document.getElementById('auth-error').innerText = "Unable to connect to Sangaia Secure Servers. Please ensure you have internet access and are not blocking scripts.";
+        document.getElementById('auth-error').innerText = "Le mafai ona feso'ota'i i le sapalai Sangaia. Fa'amolemole siaki lau initaneti po'o le poloka o skripiti.";
     }
 
 
