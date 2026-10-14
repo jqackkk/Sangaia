@@ -287,6 +287,17 @@
 
         <!-- OVERVIEW TAB -->
         <div id="tab-overview" class="tab-content active">
+            <!-- OFFICIAL ISSUED ID CARD (ISO/IEC 7810 ID-1) -->
+            <div id="official-card-container" style="display: none; margin-bottom: 25px;">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+                    <span style="font-size: 0.85em; font-weight: bold; color: #0077be; text-transform: uppercase; letter-spacing: 1px;">Official Issued Sangaian ID Card (ISO/IEC 7810 ID-1)</span>
+                    <a id="download-id-card-btn" href="#" target="_blank" download="sangaia_id_card.png" style="font-size: 0.8em; color: #0077be; text-decoration: none; font-weight: bold;">View Full Size &darr;</a>
+                </div>
+                <div style="position: relative; width: 100%; max-width: 460px; margin: 0 auto; aspect-ratio: 85.6 / 53.98; border-radius: 14px; overflow: hidden; box-shadow: 0 8px 25px rgba(0,0,0,0.25); border: 2px solid rgba(255,255,255,0.8); background: #eee;">
+                    <img id="official-id-card-img" src="" alt="Official Sangaia ID Card" style="width: 100%; height: 100%; object-fit: cover; display: block;">
+                </div>
+            </div>
+
             <div class="id-card">
                 <div class="id-header">
                     <span style="font-weight: bold; letter-spacing: 1px;">UNITED PROVINCES OF SANGAIA</span>
@@ -310,8 +321,8 @@
                 <h2>Sensitive Information Access</h2>
                 <p>Your secure data is kept private. Below is the contact information on file.</p>
                 <p><strong>Primary Email:</strong> <span id="sensitive-email"></span></p>
-                <p><strong>Phone Number:</strong> Unregistered</p>
-                <p><strong>Physical Address:</strong> Unregistered</p>
+                <p><strong>Phone Number:</strong> <span id="sensitive-phone">Unregistered</span></p>
+                <p><strong>Physical Address:</strong> <span id="sensitive-address">Unregistered</span></p>
                 <button class="sangaia-btn btn-blue" onclick="switchTab('profile')"><span>Update Contact Info</span></button>
             </div>
         </div>
@@ -331,12 +342,19 @@
                 <button class="sangaia-btn btn-blue" onclick="updateProfileName()"><span>Update Name</span></button>
 
                 <h3>Change Password</h3>
-                <input type="password" placeholder="New Password">
-                <button class="sangaia-btn btn-blue" onclick="alert('Password updated. (Simulation)')"><span>Update Password</span></button>
+                <input type="password" id="update-pass" placeholder="New Password">
+                <button class="sangaia-btn btn-blue" onclick="updatePassword()"><span>Update Password</span></button>
 
-                <h3>Address Management</h3>
-                <input type="text" placeholder="123 Sangaia Blvd, Jasper, FL">
-                <button class="sangaia-btn btn-blue" onclick="alert('Address registered to your ID. (Simulation)')"><span>Save Address</span></button>
+                <h3>Contact & Address Management</h3>
+                <input type="text" id="update-phone" placeholder="Phone Number (e.g. +1 555-0199)">
+                <input type="text" id="update-address" placeholder="Physical Address (e.g. 101 Capital Way)">
+                <button class="sangaia-btn btn-blue" onclick="updateContactInfo()"><span>Save Contact Info</span></button>
+
+                <h3 style="margin-top: 25px;">Citizen History & Audit Log</h3>
+                <p style="font-size: 0.85em; color: #666;">Official record of name changes, status updates, and civil registry events.</p>
+                <div id="citizen-history-list" style="margin-top: 10px;">
+                    <p style="color: #888; font-size: 0.85em;">No recorded history events.</p>
+                </div>
             </div>
         </div>
 
@@ -346,17 +364,19 @@
                 <h2>Legal & Citizenship Portal</h2>
                 
                 <h3>Citizenship & Visas</h3>
-                <p><strong>Current Status:</strong> Citizen</p>
+                <p><strong>Current Status:</strong> <span id="legal-status">Active Citizen</span></p>
                 <p><strong>Visa History:</strong> None on file.</p>
 
                 <h3>Literacy Tests</h3>
                 <p>No verified literacy test results on file. A passed test is required for continued citizenship.</p>
                 <button class="sangaia-btn btn-blue" onclick="window.location.href='application.html'"><span>Take Literacy Test</span></button>
 
-                <h3>Crimes & Offenses Database</h3>
-                <p style="color: #2c3e50; padding: 10px; background: rgba(0,0,0,0.05); border-radius: 4px;">
-                    Your record is currently <strong>clean</strong>. No infractions reported by the Ministry of Domestic Affairs.
-                </p>
+                <h3>Crimes & Jail Records Database</h3>
+                <div id="jail-records-list">
+                    <p style="color: #2c3e50; padding: 10px; background: rgba(0,0,0,0.05); border-radius: 4px;">
+                        Your record is currently <strong>clean</strong>. No infractions or incarcerations reported by the Ministry of Domestic Affairs.
+                    </p>
+                </div>
 
                 <h3>Licenses</h3>
                 <p>No driving or commercial licenses issued.</p>
@@ -369,15 +389,25 @@
                 <h2>Health & Education Profiles</h2>
                 
                 <h3>Healthcare Profile (Ministry of Healthcare)</h3>
-                <p><strong>Primary GP:</strong> Unassigned</p>
-                <p><strong>Insurance Plan:</strong> State-Provided Healthcare</p>
-                <p><strong>Blood Type:</strong> Unknown</p>
-                <button class="sangaia-btn btn-blue" onclick="window.location.href='mH/index.html'"><span>Visit Healthcare Portal</span></button>
+                <p><strong>Primary GP:</strong> <span id="health-gp">Unassigned</span></p>
+                <p><strong>Insurance Plan:</strong> State-Provided Universal Healthcare</p>
+                <p><strong>Blood Type:</strong> <span id="health-blood">Unknown</span></p>
+                <p><strong>Allergies:</strong> <span id="health-allergies">None on record</span></p>
+                
+                <h4 style="margin-top: 15px; margin-bottom: 5px;">Clinical Records & History</h4>
+                <div id="health-records-list">
+                    <p style="color: #888; font-size: 0.85em;">No clinical records on file.</p>
+                </div>
+                <button class="sangaia-btn btn-blue" style="margin-top: 15px;" onclick="window.location.href='https://healthcare.sangaia.org/'"><span>Visit Healthcare Portal</span></button>
 
-                <h3>Education Profile (Ministry of Education)</h3>
-                <p><strong>Current Enrollment:</strong> None</p>
-                <p><strong>Highest Degree:</strong> N/A</p>
-                <button class="sangaia-btn btn-blue" onclick="window.location.href='mE/index.html'"><span>Visit Education Portal</span></button>
+                <h3 style="margin-top: 25px;">Education Profile (Ministry of Education)</h3>
+                <p><strong>Education Level:</strong> <span id="edu-level">Unregistered</span></p>
+                
+                <h4 style="margin-top: 15px; margin-bottom: 5px;">Courses Being Taken (Ministry of Education)</h4>
+                <div id="courses-list">
+                    <p style="color: #888; font-size: 0.85em;">No active course enrollments on file.</p>
+                </div>
+                <button class="sangaia-btn btn-blue" style="margin-top: 15px;" onclick="window.location.href='mE/index.html'"><span>Visit Education Portal</span></button>
             </div>
         </div>
 
@@ -399,9 +429,15 @@
                 <button class="sangaia-btn" onclick="applyForBenefit()"><span>Submit Application</span></button>
 
                 <h3 style="margin-top: 30px;">Community Service Database</h3>
-                <p><strong>Hours Logged:</strong> 0 hours</p>
-                <p>Log community service hours to fast-track certain government applications.</p>
-                <button class="sangaia-btn btn-blue" onclick="alert('Feature coming soon.')"><span>Log Hours</span></button>
+                <p><strong>Verified Hours Logged:</strong> <span id="cs-total-hours">0.00</span> hours</p>
+                <div id="cs-list" style="margin-bottom: 15px;"></div>
+                
+                <h4 style="margin-top: 15px; margin-bottom: 5px;">Log Community Service Hours</h4>
+                <input type="text" id="cs-org" placeholder="Organization name (e.g., Sangaia Red Cross)">
+                <input type="number" step="0.5" id="cs-hours" placeholder="Hours completed (e.g., 4.0)">
+                <input type="text" id="cs-desc" placeholder="Activity description">
+                <input type="text" id="cs-supervisor" placeholder="Supervisor Name / Contact">
+                <button class="sangaia-btn btn-blue" onclick="logCommunityService()"><span>Submit Service Hours</span></button>
             </div>
         </div>
 
@@ -476,6 +512,28 @@
             
             // Pre-fill profile setting
             document.getElementById('update-name').value = citizen.full_name;
+            if (citizen.phone_number) {
+                document.getElementById('sensitive-phone').innerText = citizen.phone_number;
+                document.getElementById('update-phone').value = citizen.phone_number;
+            }
+            if (citizen.physical_address) {
+                document.getElementById('sensitive-address').innerText = citizen.physical_address;
+                document.getElementById('update-address').value = citizen.physical_address;
+            }
+            if (citizen.blood_type) document.getElementById('health-blood').innerText = citizen.blood_type;
+            if (citizen.allergies) document.getElementById('health-allergies').innerText = citizen.allergies;
+            if (citizen.primary_doctor) document.getElementById('health-gp').innerText = citizen.primary_doctor;
+            if (citizen.education_level) document.getElementById('edu-level').innerText = citizen.education_level;
+            if (citizen.account_status) document.getElementById('legal-status').innerText = citizen.account_status + ' Citizen';
+
+            // Render Official Issued ID Card (ISO/IEC 7810 ID-1)
+            if (citizen.id_card) {
+                document.getElementById('official-card-container').style.display = 'block';
+                document.getElementById('official-id-card-img').src = citizen.id_card;
+                document.getElementById('download-id-card-btn').href = citizen.id_card;
+            } else {
+                document.getElementById('official-card-container').style.display = 'none';
+            }
         } else {
             document.getElementById('dash-name').innerText = user.email;
             document.getElementById('id-fullname').innerText = "Record Not Found";
@@ -483,6 +541,7 @@
         }
 
         loadBenefits(user.id);
+        loadAdditionalData(user.id);
     }
 
     // Benefits Management
@@ -531,6 +590,153 @@
             document.getElementById('benefit-desc').value = '';
             loadBenefits(user.id);
             alert("Application submitted successfully.");
+        }
+    }
+
+    // Extended Data Loaders (Courses, Health, Community Service, Jail Records, History)
+    async function loadAdditionalData(userId) {
+        if (!supabase || !supabase.auth) return;
+
+        // 1. Education Courses
+        try {
+            const { data: courses } = await supabase.from('education_courses').select('*').eq('citizen_id', userId).order('enrolled_at', { ascending: false });
+            const coursesDiv = document.getElementById('courses-list');
+            if (courses && courses.length > 0) {
+                let html = '<ul style="padding-left: 20px;">';
+                courses.forEach(c => {
+                    html += `<li style="margin-bottom: 8px;"><strong>${c.course_code}: ${c.course_title}</strong> (${c.credits} Credits)<br><span style="font-size: 0.85em; color: #555;">Status: <strong>${c.status}</strong> | Grade: ${c.grade || 'In Progress'} | ${c.institution || ''}</span></li>`;
+                });
+                html += '</ul>';
+                coursesDiv.innerHTML = html;
+            }
+        } catch (e) { console.warn("Education courses table not loaded", e); }
+
+        // 2. Community Service Hours
+        try {
+            const { data: cs } = await supabase.from('community_service_records').select('*').eq('citizen_id', userId).order('served_on', { ascending: false });
+            const csDiv = document.getElementById('cs-list');
+            if (cs && cs.length > 0) {
+                let totalVerified = 0;
+                let html = '<ul style="padding-left: 20px;">';
+                cs.forEach(item => {
+                    if (item.status === 'Verified') totalVerified += parseFloat(item.hours) || 0;
+                    let color = item.status === 'Verified' ? '#27ae60' : (item.status === 'Rejected' ? '#c0392b' : '#f39c12');
+                    html += `<li style="margin-bottom: 8px;"><strong>${item.organization_name}</strong> - ${item.hours} hrs (<span style="color:${color}; font-weight:bold;">${item.status}</span>)<br><span style="font-size:0.85em; color:#555;">${item.activity_description || ''} (Date: ${item.served_on})</span></li>`;
+                });
+                html += '</ul>';
+                csDiv.innerHTML = html;
+                document.getElementById('cs-total-hours').innerText = totalVerified.toFixed(2);
+            }
+        } catch (e) { console.warn("Community service table not loaded", e); }
+
+        // 3. Health Records
+        try {
+            const { data: health } = await supabase.from('health_records').select('*').eq('citizen_id', userId).order('record_date', { ascending: false });
+            const healthDiv = document.getElementById('health-records-list');
+            if (health && health.length > 0) {
+                let html = '<ul style="padding-left: 20px;">';
+                health.forEach(h => {
+                    html += `<li style="margin-bottom: 8px;"><strong>[${h.record_type}] ${h.title}</strong> (${h.record_date})<br><span style="font-size:0.85em; color:#555;">${h.description || ''} &bull; Dr: ${h.doctor_name || 'Staff'} (${h.facility_name})</span></li>`;
+                });
+                html += '</ul>';
+                healthDiv.innerHTML = html;
+            }
+        } catch (e) { console.warn("Health records table not loaded", e); }
+
+        // 4. Jail & Criminal Records
+        try {
+            const { data: crimes } = await supabase.from('jail_criminal_records').select('*').eq('citizen_id', userId).order('record_date', { ascending: false });
+            const jailDiv = document.getElementById('jail-records-list');
+            if (crimes && crimes.length > 0) {
+                let html = '<ul style="padding-left: 20px;">';
+                crimes.forEach(cr => {
+                    html += `<li style="margin-bottom: 8px; color: #c0392b;"><strong>Case ${cr.case_number}: ${cr.offense_name}</strong> (${cr.offense_severity})<br><span style="font-size:0.85em; color:#444;">Status: <strong>${cr.status}</strong> | Facility: ${cr.facility_name} | Sentence: ${cr.sentence_details || 'N/A'}</span></li>`;
+                });
+                html += '</ul>';
+                jailDiv.innerHTML = html;
+            }
+        } catch (e) { console.warn("Jail records table not loaded", e); }
+
+        // 5. Citizen History & Audit Log
+        try {
+            const { data: history } = await supabase.from('citizen_history').select('*').eq('citizen_id', userId).order('changed_at', { ascending: false });
+            const histDiv = document.getElementById('citizen-history-list');
+            if (history && history.length > 0) {
+                let html = '<ul style="padding-left: 20px;">';
+                history.forEach(h => {
+                    let dateStr = new Date(h.changed_at).toLocaleDateString();
+                    html += `<li style="margin-bottom: 6px; font-size: 0.9em;"><strong>${h.change_type}:</strong> ${h.old_value ? 'From "' + h.old_value + '" to ' : ''}"${h.new_value}" <span style="font-size:0.8em; color:#888;">(${dateStr})</span></li>`;
+                });
+                html += '</ul>';
+                histDiv.innerHTML = html;
+            }
+        } catch (e) { console.warn("Citizen history table not loaded", e); }
+    }
+
+    async function updateContactInfo() {
+        if (!supabase || !supabase.auth) return alert("Unable to connect to secure servers.");
+        const phone = document.getElementById('update-phone').value;
+        const address = document.getElementById('update-address').value;
+        const { data: { user } } = await supabase.auth.getUser();
+        if (!user) return;
+
+        const { error } = await supabase.from('sangaia_citizens').update({
+            phone_number: phone,
+            physical_address: address
+        }).eq('id', user.id);
+
+        if (error) {
+            alert("Error updating contact info: " + error.message);
+        } else {
+            alert("Contact info saved successfully.");
+            loadDashboard(user);
+        }
+    }
+
+    async function updatePassword() {
+        if (!supabase || !supabase.auth) return alert("Unable to connect to secure servers.");
+        const newPass = document.getElementById('update-pass').value;
+        if (!newPass || newPass.length < 6) return alert("Password must be at least 6 characters.");
+        
+        const { error } = await supabase.auth.updateUser({ password: newPass });
+        if (error) {
+            alert("Error updating password: " + error.message);
+        } else {
+            alert("Password updated successfully.");
+            document.getElementById('update-pass').value = '';
+        }
+    }
+
+    async function logCommunityService() {
+        if (!supabase || !supabase.auth) return alert("Unable to connect to secure servers.");
+        const { data: { user } } = await supabase.auth.getUser();
+        if (!user) return;
+
+        const org = document.getElementById('cs-org').value;
+        const hours = parseFloat(document.getElementById('cs-hours').value);
+        const desc = document.getElementById('cs-desc').value;
+        const supervisor = document.getElementById('cs-supervisor').value;
+
+        if (!org || !hours || hours <= 0) return alert("Please provide an organization and valid hours.");
+
+        const { error } = await supabase.from('community_service_records').insert([{
+            citizen_id: user.id,
+            organization_name: org,
+            hours: hours,
+            activity_description: desc,
+            supervisor_name: supervisor,
+            status: 'Pending'
+        }]);
+
+        if (error) {
+            alert("Error logging hours: " + error.message);
+        } else {
+            alert("Community service hours submitted for provincial review.");
+            document.getElementById('cs-org').value = '';
+            document.getElementById('cs-hours').value = '';
+            document.getElementById('cs-desc').value = '';
+            document.getElementById('cs-supervisor').value = '';
+            loadAdditionalData(user.id);
         }
     }
 
