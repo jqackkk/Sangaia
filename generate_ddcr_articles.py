@@ -979,3 +979,4 @@ with open('supabase_ddcr_schema.sql', 'w', encoding='utf-8') as f:
 
 print("Saved supabase_ddcr_schema.sql")
 print("All tasks completed successfully.")
+

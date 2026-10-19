@@ -288,17 +288,17 @@
         <!-- OVERVIEW TAB -->
         <div id="tab-overview" class="tab-content active">
             <!-- OFFICIAL ISSUED ID CARD (ISO/IEC 7810 ID-1) -->
-            <div id="official-card-container" style="display: none; margin-bottom: 25px;">
+            <div id="official-card-container" style="display: none; margin-bottom: 25px; max-width: 460px; margin-left: 0; margin-right: auto;">
                 <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
                     <span style="font-size: 0.85em; font-weight: bold; color: #0077be; text-transform: uppercase; letter-spacing: 1px;">Official Issued Sangaian ID Card (ISO/IEC 7810 ID-1)</span>
                     <a id="download-id-card-btn" href="#" target="_blank" download="sangaia_id_card.png" style="font-size: 0.8em; color: #0077be; text-decoration: none; font-weight: bold;">View Full Size &darr;</a>
                 </div>
-                <div style="position: relative; width: 100%; max-width: 460px; margin: 0 auto; aspect-ratio: 85.6 / 53.98; border-radius: 14px; overflow: hidden; box-shadow: 0 8px 25px rgba(0,0,0,0.25); border: 2px solid rgba(255,255,255,0.8); background: #eee;">
-                    <img id="official-id-card-img" src="" alt="Official Sangaia ID Card" style="width: 100%; height: 100%; object-fit: cover; display: block;">
+                <div style="position: relative; width: 100%; max-width: 460px; margin: 0; aspect-ratio: 85.6 / 53.98; border-radius: 0; overflow: hidden; box-shadow: 0 4px 15px rgba(0,0,0,0.18); border: 1px solid #ccc; background: #eee;">
+                    <img id="official-id-card-img" src="" alt="Official Sangaia ID Card" style="width: 100%; height: 100%; object-fit: cover; display: block; border-radius: 0;">
                 </div>
             </div>
 
-            <div class="id-card">
+            <div class="id-card" id="digital-id-card">
                 <div class="id-header">
                     <span style="font-weight: bold; letter-spacing: 1px;">UNITED PROVINCES OF SANGAIA</span>
                     <span style="font-size: 0.8em; opacity: 0.8;">DIGITAL ID CARD</span>
@@ -527,16 +527,22 @@
             if (citizen.account_status) document.getElementById('legal-status').innerText = citizen.account_status + ' Citizen';
 
             // Render Official Issued ID Card (ISO/IEC 7810 ID-1)
+            const digitalCard = document.getElementById('digital-id-card');
             if (citizen.id_card) {
                 document.getElementById('official-card-container').style.display = 'block';
                 document.getElementById('official-id-card-img').src = citizen.id_card;
                 document.getElementById('download-id-card-btn').href = citizen.id_card;
+                if (digitalCard) digitalCard.style.display = 'none';
             } else {
                 document.getElementById('official-card-container').style.display = 'none';
+                if (digitalCard) digitalCard.style.display = 'block';
             }
         } else {
             document.getElementById('dash-name').innerText = user.email;
             document.getElementById('id-fullname').innerText = "Record Not Found";
+            const digitalCard = document.getElementById('digital-id-card');
+            if (digitalCard) digitalCard.style.display = 'block';
+            document.getElementById('official-card-container').style.display = 'none';
             // If they signed up via another method without a citizen record, we could prompt them to create one here.
         }
 
