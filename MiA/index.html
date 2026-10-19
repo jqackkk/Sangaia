@@ -3,37 +3,33 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ministry of External Affairs - United Provinces of Sangaia</title>
+    <title>Ministry of Domestic Affairs - United Provinces of Sangaia</title>
     <style>
-        /* --- MINISTRY OF EXTERNAL AFFAIRS: PINK FRUTIGER AERO & SKEUOMORPHIC STYLES --- */
+        /* --- MINISTRY OF DOMESTIC AFFAIRS: NAVY BLUE FRUTIGER AERO & SKEUOMORPHIC STYLES --- */
         :root {
-            --rose-deep: #880e4f;
-            --rose-primary: #ad1457;
-            --rose-bold: #c2185b;
-            --rose-vibrant: #d81b60;
-            --pink-bright: #e91e63;
-            --pink-light: #ec407a;
-            --pink-soft: #f48fb1;
-            --pink-pale: #fce4ec;
-            --pink-glass: #fff0f5;
-            --pink-glow: #f8bbd0;
-            --gold-accent: #c2410c;
-            --charcoal-dark: #2d0a1b;
-            --text-dark: #3b0a24;
-            --text-muted: #6b3952;
-            --border-pink: #f48fb1;
-            --border-dark: #c2185b;
+            --navy-midnight: #0a192f;
+            --navy-deep: #0d2346;
+            --navy-primary: #102a54;
+            --navy-border: #1b3a6b;
+            --navy-royal: #1d4ed8;
+            --navy-bright: #2563eb;
+            --navy-accent: #3b82f6;
+            --navy-pale: #e0e9f8;
+            --navy-glass: #f0f4fb;
+            --navy-glow: #bfdbfe;
+            --silver-metal: #cbd5e1;
+            --text-dark: #0f172a;
+            --text-navy: #1e3a8a;
+            --text-muted: #475569;
             --card-bg: #ffffff;
-            --level-1: #15803d;
-            --level-2: #ca8a04;
-            --level-3: #ea580c;
-            --level-4: #b91c1c;
+            --gold-accent: #d97706;
+            --fresh-green: #16a34a;
         }
 
         * { box-sizing: border-box; }
 
         body {
-            background: #fff5f8 radial-gradient(circle at 50% 0%, #ffffff 0%, #fce7f0 100%) no-repeat fixed;
+            background: #f1f5fa radial-gradient(circle at 50% 0%, #ffffff 0%, #e2eaf5 100%) no-repeat fixed;
             min-height: 100dvh;
             width: 100%;
             display: flex;
@@ -104,7 +100,7 @@
         
         #globalnav li a.active { color: #fff; background: rgba(0,0,0,0.25); box-shadow: inset 0 2px 5px rgba(0,0,0,0.3); }
 
-        /* --- SKEUOMORPHIC PINK & ROSE BUTTONS --- */
+        /* --- SKEUOMORPHIC NAVY & ROYAL BUTTONS --- */
         .sangaia-btn {
             font-size: 0.88rem;
             font-family: inherit;
@@ -119,40 +115,48 @@
             align-items: center;
             justify-content: center;
             box-sizing: border-box;
-            background: linear-gradient(to bottom, #ffffff 0%, #fff0f5 50%, #f8bbd0 100%);
-            box-shadow: 0 2px 5px rgba(136, 14, 79, 0.1), inset 0 1px 0 #ffffff;
-            border: 1px solid var(--border-pink);
-            color: var(--rose-deep);
+            background: linear-gradient(to bottom, #ffffff 0%, #f0f4fa 50%, #dbe4f0 100%);
+            box-shadow: 0 2px 5px rgba(10, 25, 47, 0.1), inset 0 1px 0 #ffffff;
+            border: 1px solid #94a3b8;
+            color: var(--navy-midnight);
             font-weight: bold;
             transition: all 0.2s ease;
             text-shadow: 0 1px 0 #ffffff;
         }
 
         .sangaia-btn:hover {
-            background: linear-gradient(to bottom, #ffffff 0%, #fdf2f8 50%, #fce4ec 100%);
-            box-shadow: 0 3px 8px rgba(136, 14, 79, 0.15), inset 0 1px 0 #ffffff;
+            background: linear-gradient(to bottom, #ffffff 0%, #f8fafc 50%, #e2eaf5 100%);
+            box-shadow: 0 3px 8px rgba(10, 25, 47, 0.15), inset 0 1px 0 #ffffff;
             transform: translateY(-1px);
         }
 
         .sangaia-btn:active {
             transform: translateY(1px);
-            background: linear-gradient(to bottom, #f8bbd0 0%, #f48fb1 100%);
+            background: linear-gradient(to bottom, #dbe4f0 0%, #cbd5e1 100%);
             box-shadow: inset 0 2px 4px rgba(0,0,0,0.15);
         }
 
-        /* Pink Rose Primary Button */
-        .sangaia-btn.btn-pink {
-            background: linear-gradient(to bottom, #ec407a 0%, #d81b60 50%, #ad1457 100%);
-            border-color: #880e4f;
+        /* Navy Primary Button */
+        .sangaia-btn.btn-navy {
+            background: linear-gradient(to bottom, #2563eb 0%, #1d4ed8 50%, #102a54 100%);
+            border-color: #0d2346;
             color: #ffffff;
-            text-shadow: 0 -1px 0 rgba(0,0,0,0.5);
-            box-shadow: 0 2px 5px rgba(136, 14, 79, 0.25), inset 0 1px 0 rgba(255,255,255,0.3);
+            text-shadow: 0 -1px 0 rgba(0,0,0,0.6);
+            box-shadow: 0 2px 5px rgba(10, 25, 47, 0.3), inset 0 1px 0 rgba(255,255,255,0.3);
         }
 
-        .sangaia-btn.btn-pink:hover {
-            background: linear-gradient(to bottom, #f06292 0%, #e91e63 50%, #c2185b 100%);
-            box-shadow: 0 3px 8px rgba(136, 14, 79, 0.3), inset 0 1px 0 rgba(255,255,255,0.4);
+        .sangaia-btn.btn-navy:hover {
+            background: linear-gradient(to bottom, #3b82f6 0%, #2563eb 50%, #1b3a6b 100%);
+            box-shadow: 0 3px 8px rgba(10, 25, 47, 0.35), inset 0 1px 0 rgba(255,255,255,0.4);
             color: #ffffff;
+        }
+
+        /* Royal Accent Button */
+        .sangaia-btn.btn-royal {
+            background: linear-gradient(to bottom, #0284c7 0%, #0369a1 50%, #0c4a6e 100%);
+            border-color: #082f49;
+            color: #ffffff;
+            text-shadow: 0 -1px 0 rgba(0,0,0,0.4);
         }
 
         /* --- CONTENT PANELS --- */
@@ -165,19 +169,19 @@
         }
 
         .glass-panel {
-            background: linear-gradient(to bottom, #ffffff 0%, #fff8fa 100%);
-            border: 1px solid #fbcfe8;
+            background: linear-gradient(to bottom, #ffffff 0%, #f9fbfe 100%);
+            border: 1px solid #bfdbfe;
             border-radius: 10px;
             padding: 26px;
             margin-bottom: 25px;
-            box-shadow: 0 3px 12px rgba(173, 20, 87, 0.05), inset 0 1px 0 #ffffff;
+            box-shadow: 0 3px 12px rgba(10, 25, 47, 0.05), inset 0 1px 0 #ffffff;
             position: relative;
         }
 
         .glass-panel h2 {
             margin: 0 0 15px 0;
-            color: var(--rose-deep);
-            border-bottom: 2px solid #fce7f3;
+            color: var(--navy-midnight);
+            border-bottom: 2px solid #e2e8f0;
             padding-bottom: 10px;
             font-size: 1.45em;
             letter-spacing: -0.3px;
@@ -188,14 +192,14 @@
             gap: 10px;
         }
 
-        /* --- HERO BANNER (PINK FRUTIGER AERO) --- */
-        .pink-hero-card {
-            background: linear-gradient(135deg, #ffffff 0%, #fdf2f8 40%, #fce4ec 100%);
+        /* --- HERO BANNER (NAVY BLUE FRUTIGER AERO) --- */
+        .navy-hero-card {
+            background: linear-gradient(135deg, #ffffff 0%, #edf4fc 40%, #d8e5f7 100%);
             color: var(--text-dark);
             border-radius: 12px;
             padding: 35px 30px;
             margin-bottom: 30px;
-            box-shadow: 0 6px 22px rgba(173, 20, 87, 0.12), inset 0 1px 0 #ffffff;
+            box-shadow: 0 6px 22px rgba(13, 35, 70, 0.12), inset 0 1px 0 #ffffff;
             display: flex;
             align-items: center;
             justify-content: space-between;
@@ -203,16 +207,16 @@
             flex-wrap: wrap;
             position: relative;
             overflow: hidden;
-            border: 1px solid var(--border-pink);
+            border: 1px solid #93c5fd;
         }
 
         .hero-text-col { max-width: 680px; }
 
         .hero-badge {
             display: inline-block;
-            background: linear-gradient(to bottom, #ffffff 0%, #fce4ec 100%);
-            color: var(--rose-deep);
-            border: 1px solid var(--border-pink);
+            background: linear-gradient(to bottom, #ffffff 0%, #e2eaf5 100%);
+            color: var(--navy-midnight);
+            border: 1px solid #93c5fd;
             padding: 4px 12px;
             border-radius: 20px;
             font-size: 0.76rem;
@@ -220,7 +224,7 @@
             letter-spacing: 1px;
             text-transform: uppercase;
             margin-bottom: 12px;
-            box-shadow: 0 1px 3px rgba(136,14,79,0.08);
+            box-shadow: 0 1px 3px rgba(13,35,70,0.1);
         }
 
         .hero-title {
@@ -228,7 +232,7 @@
             margin: 0 0 12px 0;
             letter-spacing: -0.5px;
             line-height: 1.2;
-            color: var(--rose-deep);
+            color: var(--navy-midnight);
             text-shadow: 0 1px 0 rgba(255,255,255,0.8);
         }
 
@@ -249,15 +253,16 @@
 
         .stat-ticker-box {
             background: #ffffff;
-            border: 1px solid #fbcfe8;
+            border: 1px solid #cbd5e1;
             border-radius: 8px;
             padding: 16px 20px;
-            box-shadow: 0 2px 6px rgba(173, 20, 87, 0.04);
-            border-top: 4px solid var(--rose-bold);
+            box-shadow: 0 2px 6px rgba(10, 25, 47, 0.04);
+            border-top: 4px solid var(--navy-primary);
         }
 
-        .stat-ticker-box.pink-accent { border-top-color: var(--pink-bright); }
-        .stat-ticker-box.deep-accent { border-top-color: var(--rose-deep); }
+        .stat-ticker-box.royal-accent { border-top-color: var(--navy-bright); }
+        .stat-ticker-box.green-accent { border-top-color: var(--fresh-green); }
+        .stat-ticker-box.gold-accent { border-top-color: var(--gold-accent); }
 
         .stat-label {
             font-size: 0.78rem;
@@ -271,88 +276,81 @@
         .stat-value {
             font-size: 1.6rem;
             font-weight: 800;
-            color: var(--rose-deep);
+            color: var(--navy-midnight);
         }
 
         .stat-desc {
             font-size: 0.8rem;
-            color: #834e68;
+            color: #64748b;
             margin-top: 4px;
         }
 
-        /* Search & Filter Bar */
-        .filter-bar {
-            display: flex;
-            gap: 12px;
-            flex-wrap: wrap;
-            margin-bottom: 20px;
-            align-items: center;
-            background: #ffffff;
-            padding: 14px 18px;
-            border-radius: 8px;
-            border: 1px solid #fbcfe8;
-        }
-
-        .filter-input {
-            padding: 8px 12px;
-            border: 1px solid #fbcfe8;
-            border-radius: 5px;
-            font-family: inherit;
-            font-size: 0.88rem;
-            background: #ffffff;
-            color: #333;
-        }
-
-        .filter-input:focus {
-            outline: none;
-            border-color: var(--pink-bright);
-            box-shadow: 0 0 0 3px rgba(233, 30, 99, 0.15);
-        }
-
-        /* Travel Advisory Grid */
-        .advisory-grid {
+        /* --- FEATURE CARDS & GRIDS --- */
+        .feature-grid-3 {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
-            gap: 16px;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 20px;
             margin-top: 15px;
-            max-height: 520px;
-            overflow-y: auto;
-            padding-right: 6px;
         }
 
-        .advisory-card {
+        .feature-card {
             background: #ffffff;
-            border: 1px solid #fce7f3;
+            border: 1px solid #cbd5e1;
             border-radius: 8px;
-            padding: 16px;
-            box-shadow: 0 2px 6px rgba(0,0,0,0.03);
-            border-left: 5px solid #16a34a;
+            padding: 22px;
+            box-shadow: 0 2px 8px rgba(10,25,47,0.04);
             display: flex;
             flex-direction: column;
             justify-content: space-between;
+            border-top: 4px solid var(--navy-primary);
             transition: all 0.2s ease;
-            cursor: pointer;
         }
 
-        .advisory-card:hover {
+        .feature-card:hover {
             transform: translateY(-2px);
-            box-shadow: 0 6px 14px rgba(173, 20, 87, 0.08);
-            border-color: var(--pink-soft);
+            box-shadow: 0 6px 16px rgba(10,25,47,0.08);
+            border-top-color: var(--navy-bright);
         }
 
-        .advisory-card.lvl-1 { border-left-color: var(--level-1); }
-        .advisory-card.lvl-2 { border-left-color: var(--level-2); }
-        .advisory-card.lvl-3 { border-left-color: var(--level-3); }
-        .advisory-card.lvl-4 { border-left-color: var(--level-4); }
+        .feature-card h3 {
+            margin: 0 0 8px 0;
+            font-size: 1.15rem;
+            color: var(--navy-midnight);
+        }
 
-        .advisory-country-name {
-            font-size: 1.1rem;
-            font-weight: bold;
-            color: var(--rose-deep);
-            margin: 0 0 4px 0;
+        /* Traffic Status Cards */
+        .traffic-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 16px;
+            margin: 15px 0;
+        }
+
+        .traffic-card {
+            background: #ffffff;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            padding: 16px 20px;
             display: flex;
             align-items: center;
             justify-content: space-between;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.03);
+            border-left: 5px solid #16a34a;
+        }
+
+        .traffic-card.caution { border-left-color: #f59e0b; }
+        .traffic-card.heavy { border-left-color: #ef4444; }
+
+        .route-badge {
+            font-size: 0.85rem;
+            font-weight: 800;
+            color: #ffffff;
+            background: var(--navy-midnight);
+            padding: 4px 10px;
+            border-radius: 4px;
+            display: inline-block;
+            margin-bottom: 4px;
+            letter-spacing: 0.5px;
         }
 
         /* Tables */
@@ -361,30 +359,30 @@
             margin: 15px 0;
         }
 
-        .pink-table {
+        .navy-table {
             width: 100%;
             border-collapse: collapse;
             font-size: 0.92rem;
             background: #ffffff;
         }
 
-        .pink-table th, .pink-table td {
+        .navy-table th, .navy-table td {
             padding: 12px 16px;
-            border: 1px solid #fbcfe8;
+            border: 1px solid #cbd5e1;
             text-align: left;
         }
 
-        .pink-table th {
-            background: linear-gradient(to bottom, #ffffff 0%, #fdf2f8 100%);
-            color: var(--rose-deep);
+        .navy-table th {
+            background: linear-gradient(to bottom, #ffffff 0%, #e8eef8 100%);
+            color: var(--navy-midnight);
             font-weight: bold;
             font-size: 0.84rem;
             text-transform: uppercase;
             letter-spacing: 0.5px;
         }
 
-        .pink-table tr:nth-child(even) { background: #fffbfd; }
-        .pink-table tr:hover { background: #fdf2f8; }
+        .navy-table tr:nth-child(even) { background: #f8fafc; }
+        .navy-table tr:hover { background: #f0f4fa; }
 
         /* Badges */
         .badge {
@@ -396,35 +394,26 @@
             text-transform: uppercase;
         }
 
-        .badge-lvl1 { background: #dcfce7; color: #15803d; border: 1px solid #bbf7d0; }
-        .badge-lvl2 { background: #fef9c3; color: #a16207; border: 1px solid #fef08a; }
-        .badge-lvl3 { background: #ffedd5; color: #c2410c; border: 1px solid #fed7aa; }
-        .badge-lvl4 { background: #fee2e2; color: #b91c1c; border: 1px solid #fecaca; }
-        .badge-pink { background: #fce7f3; color: #be185d; border: 1px solid #fbcfe8; }
+        .badge-navy { background: #dbeafe; color: #1e40af; border: 1px solid #bfdbfe; }
+        .badge-green { background: #dcfce7; color: #15803d; border: 1px solid #bbf7d0; }
+        .badge-amber { background: #fef3c7; color: #b45309; border: 1px solid #fde68a; }
+        .badge-gray { background: #f1f5f9; color: #475569; border: 1px solid #e2e8f0; }
 
-        /* Filter Pills */
-        .pill-group {
-            display: flex;
-            gap: 6px;
-            flex-wrap: wrap;
-        }
-
-        .filter-pill {
-            font-size: 0.8rem;
-            font-weight: bold;
-            padding: 4px 10px;
-            border-radius: 16px;
-            border: 1px solid #fbcfe8;
+        /* Inputs */
+        .filter-input {
+            padding: 8px 12px;
+            border: 1px solid #cbd5e1;
+            border-radius: 5px;
+            font-family: inherit;
+            font-size: 0.88rem;
             background: #ffffff;
-            color: var(--rose-deep);
-            cursor: pointer;
-            transition: all 0.2s ease;
+            color: #333;
         }
 
-        .filter-pill:hover, .filter-pill.active {
-            background: var(--pink-bright);
-            color: #ffffff;
-            border-color: var(--pink-bright);
+        .filter-input:focus {
+            outline: none;
+            border-color: var(--navy-bright);
+            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
         }
 
         /* Modals */
@@ -435,7 +424,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(45, 10, 27, 0.6);
+            background: rgba(10, 25, 47, 0.6);
             backdrop-filter: blur(4px);
             z-index: 1000;
             align-items: center;
@@ -453,8 +442,8 @@
             max-height: 90vh;
             overflow-y: auto;
             padding: 30px;
-            box-shadow: 0 10px 30px rgba(136, 14, 79, 0.3);
-            border-top: 6px solid var(--rose-bold);
+            box-shadow: 0 10px 30px rgba(10,25,47,0.3);
+            border-top: 6px solid var(--navy-midnight);
             animation: modalFadeIn 0.25s ease;
         }
 
@@ -468,7 +457,7 @@
             padding: 25px;
             font-size: 0.9em;
             background: rgba(255, 255, 255, 0.7);
-            border-top: 1px solid #fbcfe8;
+            border-top: 1px solid #cbd5e1;
             margin-top: auto;
             width: 100%;
             color: var(--text-muted);
@@ -493,410 +482,459 @@
         <ul id="globalnav">
             <li><a href="https://sangaia.org/index.html">Home</a></li>
             <li><a href="#overview">Overview</a></li>
-            <li><a href="#travel-advisories">Travel Advisories</a></li>
-            <li><a href="#treaties">Treaties & Accords</a></li>
-            <li><a href="#embassies">Embassies & Consulates</a></li>
-            <li><a href="#visa-services">Visa Services</a></li>
+            <li><a href="#provincial-relations">Provincial Relations</a></li>
+            <li><a href="#provincial-trade">Internal Trade</a></li>
+            <li><a href="#federal-interactions">Federal Relations</a></li>
+            <li><a href="#traffic-roads">Traffic & Highways</a></li>
             <li><a href="https://sangaia.org/services.html">All Ministries</a></li>
         </ul>
     </nav>
 
     <div class="content-wrapper">
 
-        <!-- PINK FRUTIGER AERO HERO BANNER -->
-        <div class="pink-hero-card" id="overview">
+        <!-- NAVY BLUE FRUTIGER AERO HERO BANNER -->
+        <div class="navy-hero-card" id="overview">
             <div class="hero-text-col">
                 <span class="hero-badge">United Provinces of Sangaia &bull; Executive Branch</span>
-                <h1 class="hero-title">Ministry of External Affairs</h1>
-                <p class="hero-sub">Guiding sovereign international diplomacy, publishing worldwide travel security advisories, safeguarding active and historical treaties, and facilitating 24/7 global consular and embassy availability.</p>
+                <h1 class="hero-title">Ministry of Domestic Affairs</h1>
+                <p class="hero-sub">Fostering inter-provincial harmony, guaranteeing tariff-free internal commerce, harmonizing federal-provincial governance accords, and overseeing the national highway and roadway safety infrastructure.</p>
                 <div style="display: flex; gap: 12px; flex-wrap: wrap;">
-                    <a href="#travel-advisories" class="sangaia-btn btn-pink"><span>Search Travel Advisories &rarr;</span></a>
-                    <a href="#treaties" class="sangaia-btn"><span>Treaties & Accords Archive</span></a>
-                    <a href="#embassies" class="sangaia-btn"><span>Embassy Availability & Visas</span></a>
+                    <a href="#provincial-relations" class="sangaia-btn btn-navy"><span>Council of Governors &rarr;</span></a>
+                    <a href="#provincial-trade" class="sangaia-btn"><span>Domestic Trade Common Market</span></a>
+                    <a href="#traffic-roads" class="sangaia-btn btn-royal"><span>Highway Telemetry & Traffic</span></a>
                 </div>
             </div>
 
             <div style="text-align: center;">
-                <img src="../media/sangaia_seal.png" onerror="this.onerror=null; this.src='media/sangaia_seal.png';" alt="Seal of Sangaia" style="height: 110px; width: auto; filter: drop-shadow(0 4px 8px rgba(136,14,79,0.25));">
-                <div style="font-size: 0.78rem; font-weight: bold; text-transform: uppercase; letter-spacing: 1.5px; margin-top: 8px; color: var(--rose-deep);">Federal Foreign & Diplomatic Missions Authority</div>
+                <img src="../media/sangaia_seal.png" onerror="this.onerror=null; this.src='media/sangaia_seal.png';" alt="Seal of Sangaia" style="height: 110px; width: auto; filter: drop-shadow(0 4px 8px rgba(10,25,47,0.3));">
+                <div style="font-size: 0.78rem; font-weight: bold; text-transform: uppercase; letter-spacing: 1.5px; margin-top: 8px; color: var(--navy-midnight);">Federal Domestic & Provincial Coordination Authority</div>
             </div>
         </div>
 
         <!-- STAT TICKERS -->
         <div class="stat-ticker-grid">
+            <div class="stat-ticker-box royal-accent">
+                <div class="stat-label">Annual Domestic Commerce</div>
+                <div class="stat-value">S$ 48.20 B</div>
+                <div class="stat-desc">0% internal tariffs, 100% free movement</div>
+            </div>
+
+            <div class="stat-ticker-box green-accent">
+                <div class="stat-label">Inter-Provincial Concordat</div>
+                <div class="stat-value" style="color: var(--fresh-green);">100%</div>
+                <div class="stat-desc">All 5 provinces in unanimous accord</div>
+            </div>
+
+            <div class="stat-ticker-box gold-accent">
+                <div class="stat-label">Paved Highway Arteries</div>
+                <div class="stat-value" style="color: var(--gold-accent);">14,850 km</div>
+                <div class="stat-desc">99.4% optimal surface smoothness</div>
+            </div>
+
             <div class="stat-ticker-box">
-                <div class="stat-label">Global Diplomatic Missions</div>
-                <div class="stat-value">38 Missions</div>
-                <div class="stat-desc">Resident embassies & consulates abroad</div>
-            </div>
-
-            <div class="stat-ticker-box pink-accent">
-                <div class="stat-label">Passport Mobility Index</div>
-                <div class="stat-value" style="color: var(--pink-bright);">184 Nations</div>
-                <div class="stat-desc">Visa-free or visa-on-arrival access</div>
-            </div>
-
-            <div class="stat-ticker-box deep-accent">
-                <div class="stat-label">Ratified Sovereign Treaties</div>
-                <div class="stat-value">64 Accords</div>
-                <div class="stat-desc">Active bilateral & multilateral treaties</div>
-            </div>
-
-            <div class="stat-ticker-box">
-                <div class="stat-label">Consular Emergency Response</div>
-                <div class="stat-value">&lt; 15 Min</div>
-                <div class="stat-desc">24/7 emergency dispatch for citizens abroad</div>
+                <div class="stat-label">Freight Border Clearance</div>
+                <div class="stat-value">&lt; 4 Min</div>
+                <div class="stat-desc">Automated weight-in-motion corridors</div>
             </div>
         </div>
 
-        <!-- SECTION 1: WORLDWIDE TRAVEL ADVISORIES -->
-        <div class="glass-panel" id="travel-advisories">
+        <!-- SECTION 1: PROVINCIAL RELATIONS & COUNCIL OF GOVERNORS -->
+        <div class="glass-panel" id="provincial-relations">
             <h2>
-                <span>Worldwide Travel Advisories & Security Notices</span>
-                <span class="badge badge-pink">Updated Live</span>
-            </h2>
-            <p>
-                Official diplomatic travel advisories issued by the Ministry of External Affairs for every worldwide nation. Inspect real-time risk tiers, entry requirements, and emergency consular stations.
-            </p>
-
-            <!-- Search & Filters -->
-            <div class="filter-bar">
-                <div style="flex-grow: 1; min-width: 220px;">
-                    <input type="text" id="adv-search" class="filter-input" style="width: 100%;" placeholder="Search by nation name or keyword (e.g. Japan, France, Brazil)..." oninput="filterAdvisories()">
-                </div>
-                <div class="pill-group" id="region-pills">
-                    <span class="filter-pill active" onclick="setRegionFilter('all')">All Regions</span>
-                    <span class="filter-pill" onclick="setRegionFilter('europe')">Europe</span>
-                    <span class="filter-pill" onclick="setRegionFilter('americas')">Americas</span>
-                    <span class="filter-pill" onclick="setRegionFilter('asia')">Asia-Pacific</span>
-                    <span class="filter-pill" onclick="setRegionFilter('mideast')">Middle East</span>
-                    <span class="filter-pill" onclick="setRegionFilter('africa')">Africa</span>
-                </div>
-                <div class="pill-group" id="level-pills">
-                    <span class="filter-pill active" onclick="setLevelFilter('all')">All Levels</span>
-                    <span class="filter-pill" onclick="setLevelFilter('1')">Level 1 (Normal)</span>
-                    <span class="filter-pill" onclick="setLevelFilter('2')">Level 2 (Caution)</span>
-                    <span class="filter-pill" onclick="setLevelFilter('3')">Level 3 (Reconsider)</span>
-                    <span class="filter-pill" onclick="setLevelFilter('4')">Level 4 (Do Not Travel)</span>
-                </div>
-            </div>
-
-            <!-- Country Advisory Cards Grid -->
-            <div class="advisory-grid" id="advisories-container">
-                <!-- Populated by JS -->
-            </div>
-        </div>
-
-        <!-- SECTION 2: ACTIVE & PAST TREATIES -->
-        <div class="glass-panel" id="treaties">
-            <h2>
-                <span>Active & Historical International Treaties Archive</span>
-                <button type="button" class="sangaia-btn btn-pink" onclick="openTreatyModal()">
-                    <span>Request Treaty Certified Copy &rarr;</span>
+                <span>Provincial Relations & Council of Governors</span>
+                <button type="button" class="sangaia-btn btn-navy" onclick="openPetitionModal()">
+                    <span>Petition Provincial Council &rarr;</span>
                 </button>
             </h2>
             <p>
-                Certified public register of all international covenants, multilateral conventions, and historical peace accords ratified by the Aeretocrat and the Body of Electives.
+                In the United Provinces of Sangaia, democratic balance requires close inter-provincial harmony. The Council of Governors convenes quarterly to resolve boundary disputes, oversee shared water rights, and uphold mutual legal recognition across all jurisdictions.
             </p>
 
-            <div style="margin-bottom: 15px;">
-                <div class="pill-group">
-                    <span class="filter-pill active" id="tab-active-treaties" onclick="switchTreatyTab('active')">Active Bilateral & Multilateral Accords</span>
-                    <span class="filter-pill" id="tab-past-treaties" onclick="switchTreatyTab('past')">Historical & Superseded Treaties</span>
+            <div class="feature-grid-3">
+                <div class="feature-card">
+                    <div>
+                        <span class="badge badge-navy" style="margin-bottom: 8px;">Provincial Seat</span>
+                        <h3>Veridia Central Province</h3>
+                        <p style="font-size: 0.88rem; color: #475569;">
+                            <strong>Governor:</strong> Hon. Elena Vasquez<br>
+                            <strong>Administrative Capital:</strong> Veridia City<br>
+                            <strong>Focus:</strong> Central valley agricultural hubs, pharmaceutical reserves, and federal legislative liaison.
+                        </p>
+                    </div>
+                    <div style="background: #f1f5f9; border-radius: 6px; padding: 10px; font-size: 0.82rem; font-weight: bold; color: var(--navy-midnight);">
+                        Harmony Accord: Fully Ratified &bull; 0 Pending Border Disputes
+                    </div>
                 </div>
-            </div>
 
-            <div class="data-table-wrapper" id="active-treaties-table">
-                <table class="pink-table">
-                    <thead>
-                        <tr>
-                            <th>Treaty Title & Reference</th>
-                            <th>Partner Nations / Parties</th>
-                            <th>Ratification Date</th>
-                            <th>Scope & Statutory Objectives</th>
-                            <th>Status</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td><strong>Veridia Maritime Navigation & Sovereign Canal Accord</strong><br><span style="font-size:0.75rem; color:#834e68;">Ref: SGN-TRT-2024-01</span></td>
-                            <td>28 Maritime Signatories (incl. UK, Norway, Singapore, Japan)</td>
-                            <td>12 March 2024</td>
-                            <td>Guarantees free non-discriminatory navigation for peaceful commercial vessels transiting the Sangaian Canal Locks.</td>
-                            <td><span class="badge badge-lvl1">Active & In Force</span></td>
-                        </tr>
-                        <tr>
-                            <td><strong>Universal Extradition & Anti-Corruption Protocol</strong><br><span style="font-size:0.75rem; color:#834e68;">Ref: SGN-TRT-2023-08</span></td>
-                            <td>Bilateral with Switzerland, Canada, Austria, New Zealand</td>
-                            <td>19 October 2023</td>
-                            <td>Criminal extradition framework excluding political offenses; guarantees zero foreign tax evasion shelter in Sangaia.</td>
-                            <td><span class="badge badge-lvl1">Active & In Force</span></td>
-                        </tr>
-                        <tr>
-                            <td><strong>Nordic Clean Energy & Cold-Climate Tech Sharing Pact</strong><br><span style="font-size:0.75rem; color:#834e68;">Ref: SGN-TRT-2025-03</span></td>
-                            <td>Kingdom of Norway, Republic of Iceland, Finland</td>
-                            <td>14 January 2025</td>
-                            <td>Joint engineering research on high-efficiency sub-zero hydroelectric turbines and permafrost preservation.</td>
-                            <td><span class="badge badge-lvl1">Active & In Force</span></td>
-                        </tr>
-                        <tr>
-                            <td><strong>Sangaian Sovereign Free Trade Agreement (TUPOS-FTA)</strong><br><span style="font-size:0.75rem; color:#834e68;">Ref: SGN-TRT-2022-11</span></td>
-                            <td>14 Global Trade Partners</td>
-                            <td>08 August 2022</td>
-                            <td>Reciprocal zero-tariff trade on agricultural grains, timber, clean micro-electronics, and pharmaceutical supplies.</td>
-                            <td><span class="badge badge-lvl1">Active & In Force</span></td>
-                        </tr>
-                        <tr>
-                            <td><strong>Pacific High-Seas Kelp & Marine Biosphere Conservation Pact</strong><br><span style="font-size:0.75rem; color:#834e68;">Ref: SGN-TRT-2024-09</span></td>
-                            <td>Multilateral Environmental Convention</td>
-                            <td>22 September 2024</td>
-                            <td>Establishes binding international quotas preventing commercial trawling across migratory sea otter and osprey belts.</td>
-                            <td><span class="badge badge-lvl1">Active & In Force</span></td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
+                <div class="feature-card">
+                    <div>
+                        <span class="badge badge-navy" style="margin-bottom: 8px;">Provincial Seat</span>
+                        <h3>Nova Sangaia Province</h3>
+                        <p style="font-size: 0.88rem; color: #475569;">
+                            <strong>Governor:</strong> Dr. Henrik Zhao<br>
+                            <strong>Administrative Capital:</strong> Nova Sangaia Metro<br>
+                            <strong>Focus:</strong> High-speed maglev connectivity, microelectronics, financial technology, and urban green belts.
+                        </p>
+                    </div>
+                    <div style="background: #f1f5f9; border-radius: 6px; padding: 10px; font-size: 0.82rem; font-weight: bold; color: var(--navy-midnight);">
+                        Harmony Accord: Fully Ratified &bull; Maglev Terminal Shared Rights
+                    </div>
+                </div>
 
-            <div class="data-table-wrapper" id="past-treaties-table" style="display: none;">
-                <table class="pink-table">
-                    <thead>
-                        <tr>
-                            <th>Historical Treaty</th>
-                            <th>Original Parties</th>
-                            <th>Active Period</th>
-                            <th>Historical Context & Resolution</th>
-                            <th>Status</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td><strong>Treaty of Hornet's Point (Independence & Boundary Accord)</strong><br><span style="font-size:0.75rem; color:#834e68;">Ref: SGN-HIST-2018-01</span></td>
-                            <td>Founding Provincial Assembly & International Mediators</td>
-                            <td>2018 &ndash; Permanent</td>
-                            <td>Concluded the Sangaian independence movement; established territorial borders and constitutional self-rule.</td>
-                            <td><span class="badge badge-pink">Foundational (Historical)</span></td>
-                        </tr>
-                        <tr>
-                            <td><strong>The Armistice of Old Veridia</strong><br><span style="font-size:0.75rem; color:#834e68;">Ref: SGN-HIST-2016-04</span></td>
-                            <td>Provincial Councils of Veridia & Highlands</td>
-                            <td>2016 &ndash; 2018</td>
-                            <td>Ceasefire agreement ending border resource clashes; superseded by the Constitution of the United Provinces.</td>
-                            <td><span class="badge badge-lvl2">Superseded by Constitution</span></td>
-                        </tr>
-                        <tr>
-                            <td><strong>Colonial Customs & Tariff Convention</strong><br><span style="font-size:0.75rem; color:#834e68;">Ref: SGN-HIST-2014-02</span></td>
-                            <td>Former Colonial Administration</td>
-                            <td>2014 &ndash; 2019</td>
-                            <td>Imposed foreign colonial export duties; formally abolished upon ratification of the Sovereign Free Trade Charter.</td>
-                            <td><span class="badge badge-lvl4">Dissolved & Repealed</span></td>
-                        </tr>
-                    </tbody>
-                </table>
+                <div class="feature-card">
+                    <div>
+                        <span class="badge badge-navy" style="margin-bottom: 8px;">Provincial Seat</span>
+                        <h3>Maritime Coast Province</h3>
+                        <p style="font-size: 0.88rem; color: #475569;">
+                            <strong>Governor:</strong> Capt. Ronald Sterling<br>
+                            <strong>Administrative Capital:</strong> Hornet's Point<br>
+                            <strong>Focus:</strong> Deepwater container ports, canal lock operations, fisheries management, and naval drydocks.
+                        </p>
+                    </div>
+                    <div style="background: #f1f5f9; border-radius: 6px; padding: 10px; font-size: 0.82rem; font-weight: bold; color: var(--navy-midnight);">
+                        Harmony Accord: Fully Ratified &bull; Port Fee Equalization Certified
+                    </div>
+                </div>
+
+                <div class="feature-card">
+                    <div>
+                        <span class="badge badge-navy" style="margin-bottom: 8px;">Provincial Seat</span>
+                        <h3>Northern Highlands Province</h3>
+                        <p style="font-size: 0.88rem; color: #475569;">
+                            <strong>Governor:</strong> Astrid Solberg<br>
+                            <strong>Administrative Capital:</strong> Summit Pass<br>
+                            <strong>Focus:</strong> Hydroelectric grid generation, alpine minerals, winter roadway de-icing, and boreal timber.
+                        </p>
+                    </div>
+                    <div style="background: #f1f5f9; border-radius: 6px; padding: 10px; font-size: 0.82rem; font-weight: bold; color: var(--navy-midnight);">
+                        Harmony Accord: Fully Ratified &bull; Hydro Power Surplus Accord
+                    </div>
+                </div>
+
+                <div class="feature-card">
+                    <div>
+                        <span class="badge badge-navy" style="margin-bottom: 8px;">Provincial Seat</span>
+                        <h3>Southern Meadows Province</h3>
+                        <p style="font-size: 0.88rem; color: #475569;">
+                            <strong>Governor:</strong> Mateo Alverez<br>
+                            <strong>Administrative Capital:</strong> Prairie Junction<br>
+                            <strong>Focus:</strong> Pasture dairy cooperatives, grain grain storage silos, drought resilience, and pollinator zones.
+                        </p>
+                    </div>
+                    <div style="background: #f1f5f9; border-radius: 6px; padding: 10px; font-size: 0.82rem; font-weight: bold; color: var(--navy-midnight);">
+                        Harmony Accord: Fully Ratified &bull; Shared Grazing Territory Accords
+                    </div>
+                </div>
+
+                <div class="feature-card" style="border-top-color: var(--gold-accent);">
+                    <div>
+                        <span class="badge badge-amber" style="margin-bottom: 8px;">Arbitration Tribunal</span>
+                        <h3>Inter-Provincial Dispute Court</h3>
+                        <p style="font-size: 0.88rem; color: #475569;">
+                            <strong>Chief Magistrate:</strong> Justice Valerie Thorne<br>
+                            <strong>Location:</strong> Federal Arbitration Chamber, Veridia<br>
+                            <strong>Jurisdiction:</strong> Binding arbitration for contract disputes between municipal authorities.
+                        </p>
+                    </div>
+                    <div style="background: #fffbeb; border-radius: 6px; padding: 10px; font-size: 0.82rem; font-weight: bold; color: var(--gold-accent);">
+                        Case Backlog: 0 &bull; Average Resolution Time: 18 Days
+                    </div>
+                </div>
             </div>
         </div>
 
-        <!-- SECTION 3: EMBASSY AVAILABILITY & CONSULAR SERVICES -->
-        <div class="glass-panel" id="embassies">
+        <!-- SECTION 2: PROVINCIAL TRADE & COMMON MARKET -->
+        <div class="glass-panel" id="provincial-trade">
             <h2>
-                <span>Embassy Availability & Diplomatic Mission Directory</span>
-                <button type="button" class="sangaia-btn btn-pink" onclick="openVisaModal()">
-                    <span>Book Consular Appointment / Visa &rarr;</span>
+                <span>Provincial Trade & The Sangaian Internal Common Market</span>
+                <button type="button" class="sangaia-btn btn-navy" onclick="openManifestModal()">
+                    <span>Register Freight Manifest &rarr;</span>
                 </button>
             </h2>
             <p>
-                Directory of resident Sangaian missions worldwide and accredited foreign embassies located in the Federal Diplomatic Quarter (Veridia City). Consular appointments are bookable online.
+                The Sangaian Constitution explicitly prohibits inter-provincial trade tariffs, quotas, or transport embargoes. Over S$ 48.2 Billion in annual domestic commerce flows freely across rail, maglev, and highway freight corridors.
             </p>
-
-            <h3 style="color: var(--rose-deep); margin-top: 20px; font-size: 1.15rem;">
-                Sangaian Embassies & Consulates Abroad
-            </h3>
-
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 16px; margin: 15px 0;">
-                <div style="background: #ffffff; border: 1px solid #fbcfe8; border-radius: 8px; padding: 18px; border-top: 4px solid var(--rose-bold);">
-                    <div style="display: flex; justify-content: space-between; align-items: flex-start;">
-                        <h4 style="margin: 0; color: var(--rose-deep);">Embassy to Switzerland & the UN</h4>
-                        <span class="badge badge-lvl1">Open Today</span>
-                    </div>
-                    <p style="font-size: 0.86rem; color: #475569; margin: 8px 0;">
-                        <strong>Head of Mission:</strong> Ambassador Clara von Bern<br>
-                        <strong>Address:</strong> Rue de Varembé 14, 1202 Geneva, Switzerland<br>
-                        <strong>Hours:</strong> Mon&ndash;Fri 09:00&ndash;16:30 CET<br>
-                        <strong>Services:</strong> Visas, Passport Renewals, Citizen Repatriation
-                    </p>
-                    <div style="font-size: 0.8rem; font-weight: bold; color: var(--pink-bright);">24/7 Hotline: +41 22 799 4400</div>
-                </div>
-
-                <div style="background: #ffffff; border: 1px solid #fbcfe8; border-radius: 8px; padding: 18px; border-top: 4px solid var(--rose-bold);">
-                    <div style="display: flex; justify-content: space-between; align-items: flex-start;">
-                        <h4 style="margin: 0; color: var(--rose-deep);">Embassy to Japan & East Asia</h4>
-                        <span class="badge badge-lvl1">Open Today</span>
-                    </div>
-                    <p style="font-size: 0.86rem; color: #475569; margin: 8px 0;">
-                        <strong>Head of Mission:</strong> Ambassador Kenji Takahashi<br>
-                        <strong>Address:</strong> Minato City, Roppongi 5-11, Tokyo, Japan<br>
-                        <strong>Hours:</strong> Mon&ndash;Fri 09:00&ndash;17:00 JST<br>
-                        <strong>Services:</strong> Visas, Commercial Freight Clearances, Notarials
-                    </p>
-                    <div style="font-size: 0.8rem; font-weight: bold; color: var(--pink-bright);">24/7 Hotline: +81 3 5555 0180</div>
-                </div>
-
-                <div style="background: #ffffff; border: 1px solid #fbcfe8; border-radius: 8px; padding: 18px; border-top: 4px solid var(--rose-bold);">
-                    <div style="display: flex; justify-content: space-between; align-items: flex-start;">
-                        <h4 style="margin: 0; color: var(--rose-deep);">Embassy to the United Kingdom</h4>
-                        <span class="badge badge-lvl1">Open Today</span>
-                    </div>
-                    <p style="font-size: 0.86rem; color: #475569; margin: 8px 0;">
-                        <strong>Head of Mission:</strong> Ambassador Arthur Pendelton<br>
-                        <strong>Address:</strong> 34 Belgrave Square, London SW1X 8QB, UK<br>
-                        <strong>Hours:</strong> Mon&ndash;Fri 09:00&ndash;16:30 GMT<br>
-                        <strong>Services:</strong> Passport Renewal, Student Visas, Legal Authentication
-                    </p>
-                    <div style="font-size: 0.8rem; font-weight: bold; color: var(--pink-bright);">24/7 Hotline: +44 20 7946 0992</div>
-                </div>
-
-                <div style="background: #ffffff; border: 1px solid #fbcfe8; border-radius: 8px; padding: 18px; border-top: 4px solid var(--rose-bold);">
-                    <div style="display: flex; justify-content: space-between; align-items: flex-start;">
-                        <h4 style="margin: 0; color: var(--rose-deep);">Embassy to the United States & Canada</h4>
-                        <span class="badge badge-lvl1">Open Today</span>
-                    </div>
-                    <p style="font-size: 0.86rem; color: #475569; margin: 8px 0;">
-                        <strong>Head of Mission:</strong> Ambassador Sarah Montgomery<br>
-                        <strong>Address:</strong> 2201 Massachusetts Ave NW, Washington D.C., USA<br>
-                        <strong>Hours:</strong> Mon&ndash;Fri 09:00&ndash;17:00 EST<br>
-                        <strong>Services:</strong> Visas, Citizen Emergency Relief, Trade Liaison
-                    </p>
-                    <div style="font-size: 0.8rem; font-weight: bold; color: var(--pink-bright);">24/7 Hotline: +1 202 555 0174</div>
-                </div>
-            </div>
-
-            <!-- Foreign Embassies in Sangaia -->
-            <h3 style="color: var(--rose-deep); margin-top: 25px; font-size: 1.15rem;" id="visa-services">
-                Foreign Diplomatic Missions in Sangaia (Federal Capital Enclave)
-            </h3>
 
             <div class="data-table-wrapper">
-                <table class="pink-table">
+                <table class="navy-table">
                     <thead>
                         <tr>
-                            <th>Accredited Foreign Embassy</th>
-                            <th>Ambassador / Plenipotentiary</th>
-                            <th>Enclave Address in Veridia</th>
-                            <th>Operating Schedule</th>
-                            <th>Citizen Inquiries & Visas</th>
+                            <th>Origin Province</th>
+                            <th>Key Domestic Exports</th>
+                            <th>Primary Destination</th>
+                            <th>Annual Volume (S$)</th>
+                            <th>Regulatory Clearance</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
-                            <td><strong>Embassy of the Swiss Confederation</strong></td>
-                            <td>H.E. Markus Hodel</td>
-                            <td>Diplomatic Ring 4, Veridia City</td>
-                            <td>Mon&ndash;Fri 09:30&ndash;15:30</td>
-                            <td><span class="badge badge-lvl1">Full Consular & Schengen Visas</span></td>
+                            <td><strong>Veridia Central</strong></td>
+                            <td>Hard red wheat, clinical pharmaceuticals, agricultural harvesters</td>
+                            <td>All Provinces (National Supply)</td>
+                            <td><span style="font-weight: 800; color: var(--navy-midnight);">S$ 14,200,000,000</span></td>
+                            <td><span class="badge badge-green">100% Tariff-Free & Inspected</span></td>
                         </tr>
                         <tr>
-                            <td><strong>Embassy of Japan</strong></td>
-                            <td>H.E. Yoko Tanaka</td>
-                            <td>Diplomatic Ring 8, Veridia City</td>
-                            <td>Mon&ndash;Fri 09:00&ndash;16:00</td>
-                            <td><span class="badge badge-lvl1">Full Consular & Cultural Exchange</span></td>
+                            <td><strong>Maritime Coast</strong></td>
+                            <td>Seafood, marine aquaculture, container logistics, industrial salt</td>
+                            <td>Veridia Central & Northern Highlands</td>
+                            <td><span style="font-weight: 800; color: var(--navy-midnight);">S$ 11,800,000,000</span></td>
+                            <td><span class="badge badge-green">100% Tariff-Free & Inspected</span></td>
                         </tr>
                         <tr>
-                            <td><strong>Embassy of Canada</strong></td>
-                            <td>H.E. David Campbell</td>
-                            <td>Diplomatic Ring 12, Veridia City</td>
-                            <td>Mon&ndash;Fri 09:00&ndash;15:30</td>
-                            <td><span class="badge badge-lvl1">Full Consular & Trade Promotion</span></td>
+                            <td><strong>Northern Highlands</strong></td>
+                            <td>Hydro-electric power, boreal timber, structural granite, minerals</td>
+                            <td>Nova Sangaia & Maritime Coast</td>
+                            <td><span style="font-weight: 800; color: var(--navy-midnight);">S$ 9,600,000,000</span></td>
+                            <td><span class="badge badge-green">100% Tariff-Free & Inspected</span></td>
                         </tr>
                         <tr>
-                            <td><strong>Embassy of the Kingdom of Norway</strong></td>
-                            <td>H.E. Solveig Lind</td>
-                            <td>Diplomatic Ring 15, Veridia City</td>
-                            <td>Mon&ndash;Fri 10:00&ndash;15:00</td>
-                            <td><span class="badge badge-lvl1">Full Consular & Energy Coordination</span></td>
+                            <td><strong>Nova Sangaia</strong></td>
+                            <td>Microprocessors, maglev rolling stock, financial services, software</td>
+                            <td>All Provinces (National Grid)</td>
+                            <td><span style="font-weight: 800; color: var(--navy-midnight);">S$ 8,100,000,000</span></td>
+                            <td><span class="badge badge-green">100% Tariff-Free & Inspected</span></td>
                         </tr>
                         <tr>
-                            <td><strong>Embassy of the Republic of Singapore</strong></td>
-                            <td>H.E. Lim Wei Kiat</td>
-                            <td>Diplomatic Ring 19, Veridia City</td>
-                            <td>Mon&ndash;Fri 09:00&ndash;16:30</td>
-                            <td><span class="badge badge-lvl1">Full Consular & Maritime Logistics</span></td>
+                            <td><strong>Southern Meadows</strong></td>
+                            <td>Pasture dairy, organic beef, apples, textiles, wool, bio-fuels</td>
+                            <td>Nova Sangaia & Veridia Central</td>
+                            <td><span style="font-weight: 800; color: var(--navy-midnight);">S$ 4,500,000,000</span></td>
+                            <td><span class="badge badge-green">100% Tariff-Free & Inspected</span></td>
                         </tr>
                     </tbody>
+                    <tfoot>
+                        <tr style="background: #e8eef8; font-weight: bold;">
+                            <td>Total Internal Common Market</td>
+                            <td colspan="2">Seamless Cross-Border Movement of Goods & Food</td>
+                            <td style="color: var(--navy-midnight); font-size: 1.05rem;">S$ 48,200,000,000</td>
+                            <td>0% Import Duties Enforced</td>
+                        </tr>
+                    </tfoot>
                 </table>
             </div>
         </div>
 
-    </div>
+        <!-- SECTION 3: FEDERAL INTERACTIONS & CO-GOVERNANCE -->
+        <div class="glass-panel" id="federal-interactions">
+            <h2>
+                <span>Federal Interactions & Co-Governance Accord</span>
+                <span class="badge badge-navy">Constitutional Competence Charter</span>
+            </h2>
+            <p>
+                Governance in Sangaia is defined by clear constitutional boundaries: the federal branch manages defense, currency, and cross-border transport, while provinces retain complete authority over municipal policing, zoning, and primary clinics.
+            </p>
 
-    <!-- MODAL 1: TRAVEL ADVISORY DETAIL -->
-    <div class="modal-overlay" id="advisory-modal">
-        <div class="modal-card">
-            <h3 style="color: var(--rose-deep); margin-top: 0;" id="adv-modal-title">Nation Travel Advisory</h3>
-            <div id="adv-modal-badge" style="margin-bottom: 12px;"></div>
-            <div id="adv-modal-body" style="font-size: 0.95rem; color: #333; line-height: 1.6; margin: 15px 0;"></div>
-            <div style="text-align: right; margin-top: 20px;">
-                <button type="button" class="sangaia-btn" onclick="closeAdvisoryModal()"><span>Close Window</span></button>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px; margin: 20px 0;">
+                <div style="background: var(--navy-glass); border: 1px solid #bfdbfe; border-radius: 8px; padding: 18px;">
+                    <strong style="color: var(--navy-midnight); font-size: 1.05rem;">1. Exclusive Federal Domain</strong>
+                    <ul style="padding-left: 20px; font-size: 0.88rem; color: #475569; margin: 8px 0 0 0;">
+                        <li>National defense & territorial airspace security (MdA)</li>
+                        <li>Sovereign currency & constitutional debt ceiling (mT)</li>
+                        <li>High-speed inter-provincial maglev tracks & canals</li>
+                        <li>Foreign treaties & diplomatic embassies</li>
+                    </ul>
+                </div>
+
+                <div style="background: var(--navy-glass); border: 1px solid #bfdbfe; border-radius: 8px; padding: 18px;">
+                    <strong style="color: var(--navy-midnight); font-size: 1.05rem;">2. Provincial Jurisdiction</strong>
+                    <ul style="padding-left: 20px; font-size: 0.88rem; color: #475569; margin: 8px 0 0 0;">
+                        <li>Municipal police departments & civil peacekeepers</li>
+                        <li>Primary & secondary public school administrations</li>
+                        <li>Local zoning, building codes & commercial permits</li>
+                        <li>Provincial parks & local road resurfacing</li>
+                    </ul>
+                </div>
+
+                <div style="background: var(--navy-glass); border: 1px solid #bfdbfe; border-radius: 8px; padding: 18px;">
+                    <strong style="color: var(--navy-midnight); font-size: 1.05rem;">3. Shared Constitutional Powers</strong>
+                    <ul style="padding-left: 20px; font-size: 0.88rem; color: #475569; margin: 8px 0 0 0;">
+                        <li>Environmental protection & clean water enforcement</li>
+                        <li>Emergency healthcare hospital coordination (mH)</li>
+                        <li>Highway highway patrol & weight-station licensing</li>
+                        <li>Disaster emergency response & flood brigades</li>
+                    </ul>
+                </div>
             </div>
         </div>
+
+        <!-- SECTION 4: TRAFFIC & ROAD SERVICES -->
+        <div class="glass-panel" id="traffic-roads">
+            <h2>
+                <span>National Traffic & Roadway Infrastructure Services</span>
+                <button type="button" class="sangaia-btn btn-navy" onclick="openHazardModal()">
+                    <span>Report Highway Hazard &rarr;</span>
+                </button>
+            </h2>
+            <p>
+                The Ministry of Domestic Affairs operates the Federal Highway Administration, maintaining 14,850 kilometers of paved inter-provincial highways with zero-pothole warranties, intelligent de-icing arrays, and free 24/7 roadside motorist assistance.
+            </p>
+
+            <h3 style="color: var(--navy-midnight); margin: 20px 0 10px 0; font-size: 1.1rem;">
+                Live Highway Arteries & Roadway Telemetry
+            </h3>
+
+            <div class="traffic-grid">
+                <div class="traffic-card">
+                    <div>
+                        <span class="route-badge">HIGHWAY S-1</span>
+                        <div style="font-weight: bold; color: var(--navy-midnight);">Maritime Coastal Arterial</div>
+                        <div style="font-size: 0.82rem; color: #64748b;">Hornet's Point &harr; Veridia City (240 km)</div>
+                    </div>
+                    <div style="text-align: right;">
+                        <span class="badge badge-green">Clear &bull; 98 km/h</span>
+                        <div style="font-size: 0.78rem; color: #64748b; margin-top: 4px;">Pavement Dry</div>
+                    </div>
+                </div>
+
+                <div class="traffic-card caution">
+                    <div>
+                        <span class="route-badge" style="background: #0284c7;">HIGHWAY S-2</span>
+                        <div style="font-weight: bold; color: var(--navy-midnight);">Highlands Alpine Pass</div>
+                        <div style="font-size: 0.82rem; color: #64748b;">Summit Pass Corridor (180 km)</div>
+                    </div>
+                    <div style="text-align: right;">
+                        <span class="badge badge-amber">Caution &bull; Snow Slush</span>
+                        <div style="font-size: 0.78rem; color: #64748b; margin-top: 4px;">Plows Deployed</div>
+                    </div>
+                </div>
+
+                <div class="traffic-card">
+                    <div>
+                        <span class="route-badge" style="background: #1e3a8a;">EXPRESSWAY S-3</span>
+                        <div style="font-weight: bold; color: var(--navy-midnight);">Nova Sangaia Metro Orbital</div>
+                        <div style="font-size: 0.82rem; color: #64748b;">Metropolitan Ring Road (110 km)</div>
+                    </div>
+                    <div style="text-align: right;">
+                        <span class="badge badge-green">Flowing &bull; 74 km/h</span>
+                        <div style="font-size: 0.78rem; color: #64748b; margin-top: 4px;">Smart Signals Active</div>
+                    </div>
+                </div>
+
+                <div class="traffic-card">
+                    <div>
+                        <span class="route-badge" style="background: #15803d;">HIGHWAY S-4</span>
+                        <div style="font-weight: bold; color: var(--navy-midnight);">Southern Prairie Trunk</div>
+                        <div style="font-size: 0.82rem; color: #64748b;">Prairie Junction &harr; Veridia South (320 km)</div>
+                    </div>
+                    <div style="text-align: right;">
+                        <span class="badge badge-green">Clear &bull; 110 km/h</span>
+                        <div style="font-size: 0.78rem; color: #64748b; margin-top: 4px;">Optimal Visibility</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Road Services Directory -->
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px; margin-top: 25px;">
+                <div style="background: #ffffff; border: 1px solid #cbd5e1; border-radius: 8px; padding: 18px; border-top: 4px solid var(--navy-primary);">
+                    <h4 style="margin: 0 0 6px 0; color: var(--navy-midnight);">Commercial Oversize Permits</h4>
+                    <p style="font-size: 0.86rem; color: #475569; margin: 0 0 10px 0;">Automated digital permits for heavy modular equipment and wind turbine transit.</p>
+                    <a href="#traffic-roads" class="sangaia-btn" style="font-size: 0.8rem;" onclick="openNotice('Commercial Permit Portal', 'Commercial oversize load clearances are synchronized instantly with Sangaia ID and Highway Patrol telemetry.')">
+                        <span>Check Permit Rules &rarr;</span>
+                    </a>
+                </div>
+
+                <div style="background: #ffffff; border: 1px solid #cbd5e1; border-radius: 8px; padding: 18px; border-top: 4px solid var(--navy-primary);">
+                    <h4 style="margin: 0 0 6px 0; color: var(--navy-midnight);">24/7 Motorist Assistance Patrol</h4>
+                    <p style="font-size: 0.86rem; color: #475569; margin: 0 0 10px 0;">Free roadside assistance (fuel delivery, tire changes, towing) on all national highways.</p>
+                    <span style="font-size: 0.84rem; font-weight: bold; color: var(--navy-bright);">Dial 9-1-1 or #ROAD from any highway mobile</span>
+                </div>
+
+                <div style="background: #ffffff; border: 1px solid #cbd5e1; border-radius: 8px; padding: 18px; border-top: 4px solid var(--navy-primary);">
+                    <h4 style="margin: 0 0 6px 0; color: var(--navy-midnight);">Universal Driver's License Reciprocity</h4>
+                    <p style="font-size: 0.86rem; color: #475569; margin: 0 0 10px 0;">All provincial licenses operate interchangeably with zero relicensing fees when moving.</p>
+                    <span class="badge badge-green">100% Reciprocity Across All 5 Provinces</span>
+                </div>
+            </div>
+        </div>
+
     </div>
 
-    <!-- MODAL 2: VISA & CONSULAR BOOKING -->
-    <div class="modal-overlay" id="visa-modal">
+    <!-- MODAL 1: COUNCIL PETITION -->
+    <div class="modal-overlay" id="petition-modal">
         <div class="modal-card">
-            <h3 style="color: var(--rose-deep); margin-top: 0;">Book Diplomatic Consular Appointment</h3>
-            <p style="font-size: 0.85rem; color: #6b3952;">Official scheduling with the Sangaian Consular Service Division.</p>
-            <form onsubmit="handleVisaSubmit(event)">
+            <h3 style="color: var(--navy-midnight); margin-top: 0;">Petition the Council of Provincial Governors</h3>
+            <p style="font-size: 0.85rem; color: #475569;">
+                Filing formal representations or inter-provincial arbitration requests.
+            </p>
+            <form onsubmit="handlePetitionSubmit(event)">
                 <div style="margin-bottom: 12px;">
-                    <label style="font-size: 0.78rem; font-weight: bold; color: var(--rose-deep); display: block; margin-bottom: 4px;">Applicant Legal Name or Sangaia ID *</label>
-                    <input type="text" id="visa-name" class="filter-input" style="width: 100%;" required placeholder="Legal Name or Sangaia ID">
+                    <label style="font-size: 0.78rem; font-weight: bold; color: var(--navy-midnight); display: block; margin-bottom: 4px;">Applicant Name or Sangaia ID *</label>
+                    <input type="text" id="pet-name" class="filter-input" style="width: 100%;" required placeholder="Legal Name or Sangaia ID">
                 </div>
                 <div style="margin-bottom: 12px;">
-                    <label style="font-size: 0.78rem; font-weight: bold; color: var(--rose-deep); display: block; margin-bottom: 4px;">Consular Service Category *</label>
-                    <select id="visa-service" class="filter-input" style="width: 100%;" required>
-                        <option value="Sangaian Citizen Passport Renewal Abroad">Sangaian Citizen Passport Renewal Abroad</option>
-                        <option value="Foreign National Entry / Tourism Visa Application">Foreign National Entry / Tourism Visa Application</option>
-                        <option value="Diplomatic & Trade Accreditation">Diplomatic & Trade Accreditation</option>
-                        <option value="Legal Document Authentication & Apostille">Legal Document Authentication & Apostille</option>
-                        <option value="Emergency Citizen Repatriation Relief">Emergency Citizen Repatriation Relief</option>
+                    <label style="font-size: 0.78rem; font-weight: bold; color: var(--navy-midnight); display: block; margin-bottom: 4px;">Concerned Provinces *</label>
+                    <select id="pet-provinces" class="filter-input" style="width: 100%;" required>
+                        <option value="All Provinces (National Policy)">All Provinces (National Policy)</option>
+                        <option value="Veridia Central & Nova Sangaia">Veridia Central & Nova Sangaia</option>
+                        <option value="Maritime Coast & Northern Highlands">Maritime Coast & Northern Highlands</option>
+                        <option value="Southern Meadows & Veridia Central">Southern Meadows & Veridia Central</option>
                     </select>
                 </div>
                 <div style="margin-bottom: 12px;">
-                    <label style="font-size: 0.78rem; font-weight: bold; color: var(--rose-deep); display: block; margin-bottom: 4px;">Target Embassy / Mission Location *</label>
-                    <input type="text" id="visa-location" class="filter-input" style="width: 100%;" required placeholder="e.g. Geneva, Tokyo, London, or Federal Capital Veridia">
-                </div>
-                <div style="margin-bottom: 12px;">
-                    <label style="font-size: 0.78rem; font-weight: bold; color: var(--rose-deep); display: block; margin-bottom: 4px;">Appointment Date & Specific Requirements *</label>
-                    <textarea id="visa-details" class="filter-input" style="width: 100%; height: 75px;" required placeholder="State preferred date, travel itinerary, urgent medical or legal circumstances..."></textarea>
+                    <label style="font-size: 0.78rem; font-weight: bold; color: var(--navy-midnight); display: block; margin-bottom: 4px;">Subject & Policy Proposition *</label>
+                    <textarea id="pet-desc" class="filter-input" style="width: 100%; height: 75px;" required placeholder="Describe policy resolution, border issue, or common market inquiry..."></textarea>
                 </div>
                 <div style="display: flex; justify-content: flex-end; gap: 10px; margin-top: 18px;">
-                    <button type="button" class="sangaia-btn" onclick="closeVisaModal()"><span>Cancel</span></button>
-                    <button type="submit" class="sangaia-btn btn-pink"><span>Confirm Consular Booking</span></button>
+                    <button type="button" class="sangaia-btn" onclick="closePetitionModal()"><span>Cancel</span></button>
+                    <button type="submit" class="sangaia-btn btn-navy"><span>Lodge Petition with Council</span></button>
                 </div>
             </form>
         </div>
     </div>
 
-    <!-- MODAL 3: TREATY REQUEST -->
-    <div class="modal-overlay" id="treaty-modal">
+    <!-- MODAL 2: FREIGHT MANIFEST REGISTRATION -->
+    <div class="modal-overlay" id="manifest-modal">
         <div class="modal-card">
-            <h3 style="color: var(--rose-deep); margin-top: 0;">Request Certified Treaty Instrument</h3>
-            <p style="font-size: 0.85rem; color: #6b3952;">Direct archival request from the Federal Diplomatic Registry.</p>
-            <form onsubmit="handleTreatySubmit(event)">
+            <h3 style="color: var(--navy-midnight); margin-top: 0;">Inter-Provincial Freight Manifest Registration</h3>
+            <p style="font-size: 0.85rem; color: #475569;">Official clearance for commercial cargo carriers under the Sangaian Common Market.</p>
+            <form onsubmit="handleManifestSubmit(event)">
                 <div style="margin-bottom: 12px;">
-                    <label style="font-size: 0.78rem; font-weight: bold; color: var(--rose-deep); display: block; margin-bottom: 4px;">Applicant or Academic Institution *</label>
-                    <input type="text" id="trt-name" class="filter-input" style="width: 100%;" required placeholder="Name, University, or Legal Counsel">
+                    <label style="font-size: 0.78rem; font-weight: bold; color: var(--navy-midnight); display: block; margin-bottom: 4px;">Carrier Enterprise / Transport Cooperative *</label>
+                    <input type="text" id="man-carrier" class="filter-input" style="width: 100%;" required placeholder="e.g. Sangaia Trans-Continental Haulers">
                 </div>
                 <div style="margin-bottom: 12px;">
-                    <label style="font-size: 0.78rem; font-weight: bold; color: var(--rose-deep); display: block; margin-bottom: 4px;">Treaty Title or Reference ID *</label>
-                    <input type="text" id="trt-title" class="filter-input" style="width: 100%;" required placeholder="e.g. SGN-TRT-2024-01 Maritime Navigation Accord">
+                    <label style="font-size: 0.78rem; font-weight: bold; color: var(--navy-midnight); display: block; margin-bottom: 4px;">Commodity Category & Tonnage *</label>
+                    <input type="text" id="man-cargo" class="filter-input" style="width: 100%;" required placeholder="e.g. 40 Metric Tons Hard Red Winter Wheat">
                 </div>
                 <div style="margin-bottom: 12px;">
-                    <label style="font-size: 0.78rem; font-weight: bold; color: var(--rose-deep); display: block; margin-bottom: 4px;">Purpose of Archival Research *</label>
-                    <textarea id="trt-reason" class="filter-input" style="width: 100%; height: 75px;" required placeholder="State legal research, academic publication, commercial trade verification..."></textarea>
+                    <label style="font-size: 0.78rem; font-weight: bold; color: var(--navy-midnight); display: block; margin-bottom: 4px;">Route & Transit Corridor *</label>
+                    <input type="text" id="man-route" class="filter-input" style="width: 100%;" required placeholder="e.g. Veridia Central to Hornet's Point via Highway S-1">
                 </div>
                 <div style="display: flex; justify-content: flex-end; gap: 10px; margin-top: 18px;">
-                    <button type="button" class="sangaia-btn" onclick="closeTreatyModal()"><span>Cancel</span></button>
-                    <button type="submit" class="sangaia-btn btn-pink"><span>Issue Certified Archival Instrument</span></button>
+                    <button type="button" class="sangaia-btn" onclick="closeManifestModal()"><span>Cancel</span></button>
+                    <button type="submit" class="sangaia-btn btn-navy"><span>Issue RFID Transit Clearance</span></button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- MODAL 3: HIGHWAY HAZARD REPORT -->
+    <div class="modal-overlay" id="hazard-modal">
+        <div class="modal-card">
+            <h3 style="color: var(--navy-midnight); margin-top: 0;">Report Highway Hazard or Roadway Incident</h3>
+            <p style="font-size: 0.85rem; color: #475569;">Direct dispatch to the Federal Highway Patrol and Roadway Repair Directorate.</p>
+            <form onsubmit="handleHazardSubmit(event)">
+                <div style="margin-bottom: 12px;">
+                    <label style="font-size: 0.78rem; font-weight: bold; color: var(--navy-midnight); display: block; margin-bottom: 4px;">Highway / Mile Marker Location *</label>
+                    <input type="text" id="haz-location" class="filter-input" style="width: 100%;" required placeholder="e.g. Highway S-2, Mile Marker 42 (Highlands Pass)">
+                </div>
+                <div style="margin-bottom: 12px;">
+                    <label style="font-size: 0.78rem; font-weight: bold; color: var(--navy-midnight); display: block; margin-bottom: 4px;">Hazard Description *</label>
+                    <select id="haz-type" class="filter-input" style="width: 100%;" required>
+                        <option value="Road Debris / Fallen Rock">Road Debris / Fallen Rock</option>
+                        <option value="Disabled Commercial Vehicle">Disabled Commercial Vehicle</option>
+                        <option value="Snow / Ice Accumulation">Snow / Ice Accumulation</option>
+                        <option value="Signal / Guardrail Damage">Signal / Guardrail Damage</option>
+                    </select>
+                </div>
+                <div style="margin-bottom: 12px;">
+                    <label style="font-size: 0.78rem; font-weight: bold; color: var(--navy-midnight); display: block; margin-bottom: 4px;">Additional Details *</label>
+                    <textarea id="haz-desc" class="filter-input" style="width: 100%; height: 75px;" required placeholder="Describe lane blockage, severity, immediate safety requirements..."></textarea>
+                </div>
+                <div style="display: flex; justify-content: flex-end; gap: 10px; margin-top: 18px;">
+                    <button type="button" class="sangaia-btn" onclick="closeHazardModal()"><span>Cancel</span></button>
+                    <button type="submit" class="sangaia-btn btn-navy"><span>Transmit to Highway Patrol</span></button>
                 </div>
             </form>
         </div>
@@ -905,7 +943,7 @@
     <!-- GENERAL NOTICE MODAL -->
     <div class="modal-overlay" id="notice-modal">
         <div class="modal-card">
-            <h3 style="color: var(--rose-deep); margin-top: 0;" id="notice-title">Notification</h3>
+            <h3 style="color: var(--navy-midnight); margin-top: 0;" id="notice-title">Notification</h3>
             <div id="notice-body" style="font-size: 0.95rem; color: #333; line-height: 1.6; margin: 15px 0;"></div>
             <div style="text-align: right; margin-top: 20px;">
                 <button type="button" class="sangaia-btn" onclick="closeNoticeModal()"><span>Close Window</span></button>
@@ -916,7 +954,7 @@
     <footer>
         &copy; 2026 United Provinces of Sangaia. All Rights Reserved.<br>
         <span style="font-size: 0.85em; color: var(--text-muted);">
-            Ministry of External Affairs &bull; Department of Sovereign Diplomacy, Treaties & Consular Protection
+            Ministry of Domestic Affairs &bull; Department of Provincial Coordination, Internal Commerce & Highway Administration
         </span>
     </footer>
 </div>
@@ -926,240 +964,78 @@
 <script src="auth.js" onerror="this.onerror=null; this.src='../auth.js';"></script>
 
 <script>
-    // --- COMPREHENSIVE WORLDWIDE TRAVEL ADVISORIES DATABASE ---
-    const worldwideAdvisories = [
-        // Level 1: Normal Precautions
-        { name: "Japan", region: "asia", level: 1, flag: "🇯🇵", desc: "Exercise normal precautions. Comprehensive public safety, low crime rates, pristine transit infrastructure. Sangaian citizens receive 90-day visa waiver." },
-        { name: "Switzerland", region: "europe", level: 1, flag: "🇨🇭", desc: "Exercise normal precautions. Excellent medical facilities and sovereign banking reciprocity with Sangaia. Full bilateral consular support in Bern and Geneva." },
-        { name: "Norway", region: "europe", level: 1, flag: "🇳🇴", desc: "Exercise normal precautions. Peaceful maritime and energy relations with Sangaia. Rapid emergency consular mutual assistance treaty active." },
-        { name: "New Zealand", region: "asia", level: 1, flag: "🇳🇿", desc: "Exercise normal precautions. Pristine environmental biosecurity rules. Visa-free access for 90 days for Sangaia passport holders." },
-        { name: "Iceland", region: "europe", level: 1, flag: "🇮🇸", desc: "Exercise normal precautions. Geothermal cooperation partner. Respect volcanic alerts and winter alpine road signage." },
-        { name: "Singapore", region: "asia", level: 1, flag: "🇸🇬", desc: "Exercise normal precautions. Zero-tariff trade partner. Strict compliance with local municipal laws required." },
-        { name: "Canada", region: "americas", level: 1, flag: "🇨🇦", desc: "Exercise normal precautions. Bilateral free trade accord active. Full consular presence in Ottawa and Vancouver." },
-        { name: "South Korea", region: "asia", level: 1, flag: "🇰🇷", desc: "Exercise normal precautions. High-tech trade hub. Robust emergency infrastructure and seamless electronic travel clearance." },
-        { name: "Finland", region: "europe", level: 1, flag: "🇫🇮", desc: "Exercise normal precautions. High safety standards and cold-climate technology exchange treaties active." },
-        { name: "Australia", region: "asia", level: 1, flag: "🇦🇺", desc: "Exercise normal precautions. Comprehensive reciprocal consular assistance. Adhere strictly to marine wildlife conservation zones." },
-        { name: "Portugal", region: "europe", level: 1, flag: "🇵🇹", desc: "Exercise normal precautions. Stable maritime nation with visa-waiver reciprocity." },
-        { name: "Austria", region: "europe", level: 1, flag: "🇦🇹", desc: "Exercise normal precautions. European diplomatic hub with reciprocal consular protections." },
-
-        // Level 2: Exercise Increased Caution
-        { name: "United Kingdom", region: "europe", level: 2, flag: "🇬🇧", desc: "Exercise increased caution due to transport strikes and occasional urban civil protests. London Embassy fully staffed." },
-        { name: "France", region: "europe", level: 2, flag: "🇫🇷", desc: "Exercise increased caution due to periodic transport demonstrations and elevated pickpocketing in tourist sectors." },
-        { name: "Germany", region: "europe", level: 2, flag: "🇩🇪", desc: "Exercise increased caution due to transport infrastructure maintenance and potential aviation union actions." },
-        { name: "Italy", region: "europe", level: 2, flag: "🇮🇹", desc: "Exercise increased caution due to petty property crime in major historical centers and peak seasonal heat waves." },
-        { name: "Spain", region: "europe", level: 2, flag: "🇪🇸", desc: "Exercise increased caution due to pickpocketing in coastal resorts and urban transit hubs." },
-        { name: "Brazil", region: "americas", level: 2, flag: "🇧🇷", desc: "Exercise increased caution due to street crime in urban metropolises. Avoid unescorted night travel outside diplomatic zones." },
-        { name: "Mexico", region: "americas", level: 2, flag: "🇲🇽", desc: "Exercise increased caution in tourist corridors; avoid non-essential highway travel in certain border states." },
-        { name: "South Africa", region: "africa", level: 2, flag: "🇿🇦", desc: "Exercise increased caution due to localized crime and intermittent electrical grid load-shedding schedules." },
-        { name: "Thailand", region: "asia", level: 2, flag: "🇹🇭", desc: "Exercise increased caution due to localized civil demonstrations and seasonal monsoon flooding in southern provinces." },
-        { name: "India", region: "asia", level: 2, flag: "🇮🇳", desc: "Exercise increased caution due to severe urban traffic, atmospheric seasonal smog, and remote border restrictions." },
-        { name: "Peru", region: "americas", level: 2, flag: "🇵🇪", desc: "Exercise increased caution due to periodic regional transit roadblocks and high-altitude health advisories." },
-        { name: "Morocco", region: "africa", level: 2, flag: "🇲🇦", desc: "Exercise increased caution in desert border frontiers; urban coastal corridors remain secure and welcoming." },
-        { name: "Kenya", region: "africa", level: 2, flag: "🇰🇪", desc: "Exercise increased caution in northern border zones; wildlife safari national parks operate under heavy ranger security." },
-
-        // Level 3: Reconsider Travel
-        { name: "Colombia", region: "americas", level: 3, flag: "🇨🇴", desc: "Reconsider travel to rural border provinces due to armed cartel activity. Major cities require strict pre-vetted transport." },
-        { name: "Egypt", region: "mideast", level: 3, flag: "🇪🇬", desc: "Reconsider travel to North Sinai and western desert borders due to military security checkpoints." },
-        { name: "Pakistan", region: "asia", level: 3, flag: "🇵🇰", desc: "Reconsider travel due to border security skirmishes and civil unrest in non-urban districts." },
-        { name: "Nigeria", region: "africa", level: 3, flag: "🇳🇬", desc: "Reconsider travel due to regional insurgent activity in northeastern states and maritime piracy off the delta." },
-        { name: "Honduras", region: "americas", level: 3, flag: "🇭🇳", desc: "Reconsider travel due to high violent crime rates and gang extortion networks outside secure resort enclaves." },
-        { name: "Chad", region: "africa", level: 3, flag: "🇹🇩", desc: "Reconsider travel due to political instability and armed checkpoint restrictions across remote desert routes." },
-        { name: "Turkey (Syrian Border)", region: "mideast", level: 3, flag: "🇹🇷", desc: "Reconsider travel within 30 km of the southern Syrian frontier due to military conflict exclusion zones." },
-
-        // Level 4: Do Not Travel
-        { name: "North Korea", region: "asia", level: 4, flag: "🇰🇵", desc: "DO NOT TRAVEL. Critical risk of arbitrary arrest, total lack of diplomatic consular access, and strict exit bans." },
-        { name: "Syria", region: "mideast", level: 4, flag: "🇸🇾", desc: "DO NOT TRAVEL. Active military armed conflict, aerial bombardments, and non-operational consular infrastructure." },
-        { name: "Yemen", region: "mideast", level: 4, flag: "🇾🇪", desc: "DO NOT TRAVEL. Severe humanitarian crisis, active maritime missile attacks, and no commercial repatriation routes." },
-        { name: "Somalia", region: "africa", level: 4, flag: "🇸🇴", desc: "DO NOT TRAVEL. Extreme risk of terrorism, piracy in coastal waters, and lack of recognized civil law enforcement." },
-        { name: "South Sudan", region: "africa", level: 4, flag: "🇸🇸", desc: "DO NOT TRAVEL. Widespread armed conflict, severe food insecurity, and armed checkpoints targeting foreign nationals." },
-        { name: "Haiti", region: "americas", level: 4, flag: "🇭🇹", desc: "DO NOT TRAVEL. Critical state of gang territorial control, collapse of civil services, and port/airport blockades." },
-        { name: "Afghanistan", region: "asia", level: 4, flag: "🇦🇫", desc: "DO NOT TRAVEL. Severe risk of detention, zero recognized diplomatic ties, and extreme civil rights crackdowns." },
-        { name: "Russia", region: "europe", level: 4, flag: "🇷🇺", desc: "DO NOT TRAVEL. International sanctions, risk of arbitrary detention of foreign nationals, and restricted financial networks." },
-        { name: "Iran", region: "mideast", level: 4, flag: "🇮🇷", desc: "DO NOT TRAVEL. High risk of arbitrary questioning, detention, and lack of neutral consular protections." },
-        { name: "Libya", region: "africa", level: 4, flag: "🇱🇾", desc: "DO NOT TRAVEL. Armed militia clashes, military airport closures, and absence of unified central government." }
-    ];
-
-    let currentRegion = 'all';
-    let currentLevel = 'all';
-
-    function renderAdvisories(list) {
-        const container = document.getElementById('advisories-container');
-        if (!container) return;
-
-        if (list.length === 0) {
-            container.innerHTML = `<div style="grid-column: 1/-1; text-align: center; padding: 30px; color: #834e68;">No nations match the specified search or filter criteria.</div>`;
-            return;
-        }
-
-        container.innerHTML = list.map(item => {
-            let lvlClass = `lvl-${item.level}`;
-            let badgeClass = `badge-lvl${item.level}`;
-            let lvlText = `Level ${item.level}`;
-            if (item.level === 1) lvlText = "Level 1: Normal";
-            else if (item.level === 2) lvlText = "Level 2: Caution";
-            else if (item.level === 3) lvlText = "Level 3: Reconsider";
-            else if (item.level === 4) lvlText = "Level 4: Do Not Travel";
-
-            return `
-                <div class="advisory-card ${lvlClass}" onclick="viewAdvisoryDossier('${item.name}', ${item.level}, '${item.flag}', '${item.desc.replace(/'/g, "\\'")}')">
-                    <div>
-                        <div class="advisory-country-name">
-                            <span>${item.flag} ${item.name}</span>
-                            <span class="badge ${badgeClass}">${lvlText}</span>
-                        </div>
-                        <p style="font-size: 0.85rem; color: #475569; margin: 6px 0 0 0; line-height: 1.5;">
-                            ${item.desc.substring(0, 115)}...
-                        </p>
-                    </div>
-                    <div style="margin-top: 10px; font-size: 0.78rem; font-weight: bold; color: var(--pink-bright);">
-                        View Security Brief & Consular Stations &rarr;
-                    </div>
-                </div>
-            `;
-        }).join('');
-    }
-
-    function filterAdvisories() {
-        const q = (document.getElementById('adv-search').value || '').toLowerCase();
-
-        const filtered = worldwideAdvisories.filter(item => {
-            const matchQuery = item.name.toLowerCase().includes(q) || item.desc.toLowerCase().includes(q);
-            const matchRegion = (currentRegion === 'all' || item.region === currentRegion);
-            const matchLevel = (currentLevel === 'all' || item.level.toString() === currentLevel);
-            return matchQuery && matchRegion && matchLevel;
-        });
-
-        renderAdvisories(filtered);
-    }
-
-    function setRegionFilter(reg) {
-        currentRegion = reg;
-        document.querySelectorAll('#region-pills .filter-pill').forEach(el => el.classList.remove('active'));
-        const target = Array.from(document.querySelectorAll('#region-pills .filter-pill')).find(el => el.getAttribute('onclick').includes(reg));
-        if (target) target.classList.add('active');
-        filterAdvisories();
-    }
-
-    function setLevelFilter(lvl) {
-        currentLevel = lvl;
-        document.querySelectorAll('#level-pills .filter-pill').forEach(el => el.classList.remove('active'));
-        const target = Array.from(document.querySelectorAll('#level-pills .filter-pill')).find(el => el.getAttribute('onclick').includes(lvl));
-        if (target) target.classList.add('active');
-        filterAdvisories();
-    }
-
-    function viewAdvisoryDossier(name, level, flag, desc) {
-        let lvlText = "Level 1 &ndash; Exercise Normal Precautions";
-        let badgeColor = "#15803d";
-        let bgBox = "#dcfce7";
-
-        if (level === 2) {
-            lvlText = "Level 2 &ndash; Exercise Increased Caution";
-            badgeColor = "#a16207";
-            bgBox = "#fef9c3";
-        } else if (level === 3) {
-            lvlText = "Level 3 &ndash; Reconsider Travel";
-            badgeColor = "#c2410c";
-            bgBox = "#ffedd5";
-        } else if (level === 4) {
-            lvlText = "Level 4 &ndash; DO NOT TRAVEL";
-            badgeColor = "#b91c1c";
-            bgBox = "#fee2e2";
-        }
-
-        document.getElementById('adv-modal-title').textContent = `${flag} Travel Advisory: ${name}`;
-        document.getElementById('adv-modal-badge').innerHTML = `
-            <div style="background: ${bgBox}; border-left: 4px solid ${badgeColor}; padding: 10px 14px; border-radius: 4px; font-weight: bold; color: ${badgeColor};">
-                ${lvlText}
-            </div>
-        `;
-
-        document.getElementById('adv-modal-body').innerHTML = `
-            <p style="font-size: 0.95rem; color: #1e293b; line-height: 1.6;">${desc}</p>
-
-            <h4 style="margin: 14px 0 6px 0; color: #880e4f;">Sangaian Passport & Entry Protocol</h4>
-            <div style="background: #fff0f5; border: 1px solid #fbcfe8; border-radius: 6px; padding: 12px; font-size: 0.88rem; color: #4a0e2e;">
-                <strong>Visa Regulations:</strong> Sangaian citizens holding biometric passports are granted reciprocal diplomatic protections. Ensure passport maintains at least 6 months validity from departure date.
-            </div>
-
-            <h4 style="margin: 14px 0 6px 0; color: #880e4f;">Consular Assistance Dispatch</h4>
-            <p style="font-size: 0.86rem; color: #475569; line-height: 1.5;">
-                In the event of an arrest, natural disaster, medical emergency, or loss of passport documents, contact the Global Consular Assistance Desk immediately via international toll-free line: <strong>+1 800 555 SGN-AID</strong> or submit an emergency relief dispatch petition.
-            </p>
-        `;
-
-        document.getElementById('advisory-modal').classList.add('show');
-    }
-
-    function closeAdvisoryModal() {
-        document.getElementById('advisory-modal').classList.remove('show');
-    }
-
-    // Initial render
-    renderAdvisories(worldwideAdvisories);
-
-    // --- TREATY TABS ---
-    function switchTreatyTab(tab) {
-        if (tab === 'active') {
-            document.getElementById('tab-active-treaties').classList.add('active');
-            document.getElementById('tab-past-treaties').classList.remove('active');
-            document.getElementById('active-treaties-table').style.display = 'block';
-            document.getElementById('past-treaties-table').style.display = 'none';
-        } else {
-            document.getElementById('tab-active-treaties').classList.remove('active');
-            document.getElementById('tab-past-treaties').classList.add('active');
-            document.getElementById('active-treaties-table').style.display = 'none';
-            document.getElementById('past-treaties-table').style.display = 'block';
-        }
-    }
-
     // --- MODALS & FORMS ---
-    function openVisaModal() {
-        document.getElementById('visa-modal').classList.add('show');
+    function openPetitionModal() {
+        document.getElementById('petition-modal').classList.add('show');
     }
-    function closeVisaModal() {
-        document.getElementById('visa-modal').classList.remove('show');
+    function closePetitionModal() {
+        document.getElementById('petition-modal').classList.remove('show');
     }
 
-    function handleVisaSubmit(e) {
+    function handlePetitionSubmit(e) {
         e.preventDefault();
-        const name = document.getElementById('visa-name').value;
-        const serv = document.getElementById('visa-service').value;
-        const loc = document.getElementById('visa-location').value;
-        closeVisaModal();
+        const name = document.getElementById('pet-name').value;
+        const prov = document.getElementById('pet-provinces').value;
+        closePetitionModal();
 
-        const ticket = `VISA-APPT-2026-${Math.random().toString(36).substring(2,7).toUpperCase()}`;
-        openNotice("Diplomatic Consular Appointment Booked", `
-            <div style="background:#fce7f3; border:1px solid #fbcfe8; border-radius:6px; padding:15px; color:#880e4f;">
+        const ticket = `PET-COUNCIL-2026-${Math.random().toString(36).substring(2,7).toUpperCase()}`;
+        openNotice("Council Petition Registered", `
+            <div style="background:#dbeafe; border:1px solid #bfdbfe; border-radius:6px; padding:15px; color:#1e40af;">
                 <strong>Applicant:</strong> ${name}<br>
-                <strong>Service Category:</strong> ${serv}<br>
-                <strong>Mission Location:</strong> ${loc}<br>
-                <strong>Appointment Confirmation Key:</strong> <code>${ticket}</code>
+                <strong>Jurisdiction:</strong> ${prov}<br>
+                <strong>Dossier Reference ID:</strong> <code>${ticket}</code>
             </div>
-            <p>Your consular hearing has been confirmed. Please bring your Sangaia ID or national passport with two biological standard photos to your appointment window.</p>
+            <p>Your representation has been submitted to the Secretariat of the Council of Provincial Governors. It will be scheduled on the formal docket for the upcoming quarterly assembly.</p>
         `);
         e.target.reset();
     }
 
-    function openTreatyModal() {
-        document.getElementById('treaty-modal').classList.add('show');
+    function openManifestModal() {
+        document.getElementById('manifest-modal').classList.add('show');
     }
-    function closeTreatyModal() {
-        document.getElementById('treaty-modal').classList.remove('show');
+    function closeManifestModal() {
+        document.getElementById('manifest-modal').classList.remove('show');
     }
 
-    function handleTreatySubmit(e) {
+    function handleManifestSubmit(e) {
         e.preventDefault();
-        const trt = document.getElementById('trt-title').value;
-        closeTreatyModal();
+        const carrier = document.getElementById('man-carrier').value;
+        const cargo = document.getElementById('man-cargo').value;
+        closeManifestModal();
 
-        const ref = `ARCHIVE-TRT-${Math.random().toString(36).substring(2,8).toUpperCase()}`;
-        openNotice("Certified Archival Instrument Dispatched", `
-            <div style="background:#fff0f5; border:1px solid #fbcfe8; border-radius:6px; padding:15px; color:#ad1457;">
-                <strong>Requested Instrument:</strong> ${trt}<br>
-                <strong>Archival Certification ID:</strong> <code>${ref}</code>
+        const rfid = `RFID-TRADE-2026-${Math.random().toString(36).substring(2,8).toUpperCase()}`;
+        openNotice("RFID Freight Clearance Issued", `
+            <div style="background:#dcfce7; border:1px solid #bbf7d0; border-radius:6px; padding:15px; color:#15803d;">
+                <strong>Carrier:</strong> ${carrier}<br>
+                <strong>Cargo:</strong> ${cargo}<br>
+                <strong>Automated RFID Transit Key:</strong> <code>${rfid}</code>
             </div>
-            <p>A digitally signed, legally certified instrument of ratification has been routed to your registered Sangaia ID address.</p>
+            <p>Your commercial consignment is cleared for 100% tariff-free transit across all provincial boundaries. Automated weigh-in sensors will log your pass without vehicle stoppage.</p>
+        `);
+        e.target.reset();
+    }
+
+    function openHazardModal() {
+        document.getElementById('hazard-modal').classList.add('show');
+    }
+    function closeHazardModal() {
+        document.getElementById('hazard-modal').classList.remove('show');
+    }
+
+    function handleHazardSubmit(e) {
+        e.preventDefault();
+        const loc = document.getElementById('haz-location').value;
+        const type = document.getElementById('haz-type').value;
+        closeHazardModal();
+
+        const dispatchId = `HWY-DISP-${Math.random().toString(36).substring(2,7).toUpperCase()}`;
+        openNotice("Highway Patrol Dispatched", `
+            <div style="background:#fef3c7; border:1px solid #fde68a; border-radius:6px; padding:15px; color:#92400e;">
+                <strong>Location:</strong> ${loc}<br>
+                <strong>Incident Type:</strong> ${type}<br>
+                <strong>Patrol Dispatch Key:</strong> <code>${dispatchId}</code>
+            </div>
+            <p>The nearest Highway Patrol unit and maintenance crew have been routed to the coordinates. Digital overhead signage on the corridor has been updated with warning advisories.</p>
         `);
         e.target.reset();
     }
