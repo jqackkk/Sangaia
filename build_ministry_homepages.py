@@ -31,13 +31,10 @@ def build_executive():
     ]
 
     main_content = """
-    <div class="ol-status-bubble" id="overview">
-        &ldquo;The republic is founded not upon force, but upon virtue, law, and sovereign transparency. Every citizen has a voice before the Aeretocrat.&rdquo;
-        <div class="ol-status-date">Executive Council Dispatch &bull; Updated Today</div>
     </div>
 
     <!-- The Aeretocrat's Personal Blog & Journal -->
-    <div class="ol-card" id="journal">
+    <div class="card" id="overview"><a id="journal"></a>
         <div class="ol-card-title">
             <span>The Aeretocrat's Journal &bull; Personal Dispatches &amp; Philosophy</span>
             <button type="button" class="ol-btn ol-btn-sm" onclick="openAskModal()">Ask the Aeretocrat</button>
@@ -363,13 +360,10 @@ def build_treasury():
     ]
 
     main_content = """
-    <div class="ol-status-bubble" id="overview">
-        &ldquo;Sangaia maintains 100% sovereign fiscal solvency with $0 foreign debt, fully asset-backed silver reserves, and annual balanced operational budgets.&rdquo;
-        <div class="ol-status-date">Treasury Comptroller &bull; Updated Today</div>
     </div>
 
     <!-- Zero Sovereign Debt Tracker -->
-    <div class="ol-card" id="debt">
+    <div class="card" id="overview"><a id="debt"></a>
         <div class="ol-card-title">
             <span>Sovereign Debt Ceiling &amp; Foreign Solvency Ledger</span>
             <span class="ol-badge-tag ol-badge-success">Constitutional Compliance</span>
@@ -573,13 +567,10 @@ def build_work():
     ]
 
     main_content = """
-    <div class="ol-status-bubble" id="overview">
-        &ldquo;Labor is the bedrock of sovereign prosperity. Every full-time worker in Sangaia is guaranteed a dignified living wage, comprehensive health protection, and democratic guild representation.&rdquo;
-        <div class="ol-status-date">Ministry of Work &bull; Updated Today</div>
     </div>
 
     <!-- Living Wage Standards & Net Salary Calculator -->
-    <div class="ol-card" id="pay-standards">
+    <div class="card" id="overview"><a id="pay-standards"></a>
         <div class="ol-card-title">
             <span>Statutory Living Wage Standards &amp; Interactive Net Pay Calculator</span>
             <span class="ol-badge-tag ol-badge-success">Statutory Floor: $25.00 / hr</span>
@@ -896,13 +887,10 @@ def build_healthcare():
     ]
 
     main_content = """
-    <div class="ol-status-bubble" id="overview">
-        &ldquo;Healthcare is a fundamental human right. In Sangaia, medical treatment is 100% universal and free at the point of service for every resident citizen.&rdquo;
-        <div class="ol-status-date">Surgeon General of Sangaia &bull; Updated Today</div>
     </div>
 
     <!-- Universal Coverage Screening -->
-    <div class="ol-card" id="coverage">
+    <div class="card" id="overview"><a id="coverage"></a>
         <div class="ol-card-title">
             <span>Universal Healthcare Coverage &amp; Digital Insurance Verification</span>
             <span class="ol-badge-tag ol-badge-success">Zero Out-of-Pocket Fees</span>
@@ -1068,13 +1056,10 @@ def build_education():
     ]
 
     main_content = """
-    <div class="ol-status-bubble" id="overview">
-        &ldquo;Education is the foundation of self-governance. Free universal public tuition from kindergarten through doctoral study, free from predatory student loans and corporate influence.&rdquo;
-        <div class="ol-status-date">Ministry of Education &bull; Updated Today</div>
     </div>
 
     <!-- Open Digital Textbooks -->
-    <div class="ol-card" id="textbooks">
+    <div class="card" id="overview"><a id="textbooks"></a>
         <div class="ol-card-title">
             <span>Open National Textbook &amp; Curriculum Repository</span>
             <span class="ol-badge-tag ol-badge-success">100% Free Public Access</span>
@@ -1209,13 +1194,10 @@ def build_domestic():
     ]
 
     main_content = """
-    <div class="ol-status-bubble" id="overview">
-        &ldquo;Coordinating harmony, fair trade, and robust infrastructure across the 5 Sovereign Provinces: New Jasper, New Madison, Liveland, Sentinel, and Columbia.&rdquo;
-        <div class="ol-status-date">Ministry of Domestic Affairs &bull; Updated Today</div>
     </div>
 
     <!-- The 5 Sovereign Provinces -->
-    <div class="ol-card" id="provinces">
+    <div class="card" id="overview"><a id="provinces"></a>
         <div class="ol-card-title">
             <span>The Five Sovereign Provinces of Sangaia</span>
             <span class="ol-badge-tag ol-badge-success">Interstate Harmony Pact Active</span>
@@ -1370,13 +1352,10 @@ def build_external():
     ]
 
     main_content = """
-    <div class="ol-status-bubble" id="overview">
-        &ldquo;Sangaia conducts foreign relations upon principles of strict armed neutrality, reciprocal trade, and universal respect for national sovereignty.&rdquo;
-        <div class="ol-status-date">Ministry of External Affairs &bull; Updated Today</div>
     </div>
 
     <!-- Travel Advisories for Every Worldwide Nation -->
-    <div class="ol-card" id="travel">
+    <div class="card" id="overview"><a id="travel"></a>
         <div class="ol-card-title">
             <span>Global Travel Advisories &bull; Worldwide Nation Directory</span>
             <span class="ol-badge-tag ol-badge-success">Consular Telemetry Live</span>
@@ -1526,13 +1505,10 @@ def build_environment():
     ]
 
     main_content = """
-    <div class="ol-status-bubble" id="overview">
-        &ldquo;Preserving our pristine biomes: 100% renewable grid targets, sustainable food security, and over 3.4 million native trees planted across all 5 provinces.&rdquo;
-        <div class="ol-status-date">Ministry of the Environment &bull; Updated Today</div>
     </div>
 
     <!-- Live Atmospheric Weather in Panotherm (°Пт) -->
-    <div class="ol-card" id="weather">
+    <div class="card" id="overview"><a id="weather"></a>
         <div class="ol-card-title">
             <span>Atmospheric Telemetry &bull; Standard Weather in Панотерм (&deg;Пт)</span>
             <button type="button" class="ol-btn ol-btn-sm" onclick="detectUserLocation()">Detect My Location Weather</button>
@@ -1768,13 +1744,10 @@ def build_propaganda():
     ]
 
     main_content = """
-    <div class="ol-status-bubble" id="overview">
-        &ldquo;Propaganda in Sangaia is defined by its classical root: propagating truth, civic literacy, and cultural heritage, while protecting the public against corporate media manipulation.&rdquo;
-        <div class="ol-status-date">Ministry of Propaganda &bull; Updated Today</div>
     </div>
 
     <!-- Live Audio Radio Player -->
-    <div class="ol-card" id="radio">
+    <div class="card" id="overview"><a id="radio"></a>
         <div class="ol-card-title">
             <span>Sangaia National Public Radio &bull; Live Audio Broadcast</span>
             <span class="ol-badge-tag ol-badge-success">ON AIR NOW</span>

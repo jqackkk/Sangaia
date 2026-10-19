@@ -247,13 +247,10 @@ def build_units():
     ]
 
     main_content = """
-    <div class="ol-status-bubble" id="overview">
-        &ldquo;By decree of the Aeretocrat, Sangaia establishes clean, intuitive base-10 unit scaling while maintaining perfect human physical proportion.&rdquo;
-        <div class="ol-status-date">Weights &amp; Measures Bureau &bull; Official Standard Active</div>
     </div>
 
     <!-- Panotherm Temperature Converter -->
-    <div class="ol-card" id="temp-converter">
+    <div class="card" id="overview"><a id="temp-converter"></a>
         <div class="ol-card-title">
             <span>1. Temperature Standard &bull; The Панотерм (&deg;Пт)</span>
             <span class="ol-badge-tag ol-badge-success">&deg;Пт = 0.9 &times; &deg;C = 0.5 &times; (&deg;F - 32)</span>
@@ -493,9 +490,6 @@ def build_services():
     ]
 
     main_content = """
-    <div class="ol-status-bubble" id="overview">
-        &ldquo;Sangaia provides digital-first, cryptographic public service delivery with zero bureaucracy and immediate citizen verification.&rdquo;
-        <div class="ol-status-date">Public Service Delivery Hub &bull; 72 Tools Online</div>
     </div>
 
     <div class="ol-card">
@@ -644,12 +638,9 @@ def build_citizenship():
     ]
 
     main_content = """
-    <div class="ol-status-bubble" id="overview">
-        &ldquo;Sovereign citizenship in Sangaia is rooted in virtue, civic participation, and equal protection of the laws. We welcome all who respect republican liberties.&rdquo;
-        <div class="ol-status-date">Civic Registry Bureau &bull; Applications Open</div>
     </div>
 
-    <div class="ol-card" id="charter">
+    <div class="card" id="overview"><a id="charter"></a>
         <div class="ol-card-title">
             <span>The Sangaian Charter of Fundamental Liberties</span>
             <span class="ol-badge-tag ol-badge-success">Constitutional Guarantees</span>
@@ -719,9 +710,6 @@ def build_gov_about():
     ]
 
     main_gov = """
-    <div class="ol-status-bubble" id="overview">
-        &ldquo;The Aeretocracy combines democratic republican representation with strict meritocratic and constitutional virtue.&rdquo;
-        <div class="ol-status-date">Constitutional Registry &bull; Verified Law</div>
     </div>
 
     <div class="ol-card" id="virtues">
@@ -780,9 +768,6 @@ def build_gov_about():
     ]
 
     main_about = """
-    <div class="ol-status-bubble" id="overview">
-        &ldquo;Sangaia was founded upon a singular ideal: that human civilization can achieve technological advancement without sacrificing liberty, health, or virtue.&rdquo;
-        <div class="ol-status-date">Republic Overview &bull; Sangaia Sovereign Archives</div>
     </div>
 
     <div class="ol-card" id="history">
@@ -834,9 +819,6 @@ def build_societal_press():
     ]
 
     main_content = """
-    <div class="ol-status-bubble" id="overview">
-        &ldquo;Statutory public record: All laws, executive orders, and judicial decrees must be published openly in the Gazette before taking legal force.&rdquo;
-        <div class="ol-status-date">Official Gazette Volume XII &bull; Published Today</div>
     </div>
 
     <div class="ol-card">
@@ -879,9 +861,6 @@ def build_supporting_portals():
 
     # dashboard.html
     dash_content = """
-    <div class="ol-status-bubble" id="overview">
-        &ldquo;Live national progress dashboard: Tracking key performance indicators across all 9 ministries and 5 provinces.&rdquo;
-        <div class="ol-status-date">Statistical Bureau &bull; Telemetry Active</div>
     </div>
     <div class="ol-card">
         <div class="ol-card-title">
@@ -928,9 +907,6 @@ def build_supporting_portals():
 
     # application.html
     app_content = """
-    <div class="ol-status-bubble" id="overview">
-        &ldquo;Public service, civil registry, and citizenship applications portal.&rdquo;
-        <div class="ol-status-date">Civic Registry Bureau</div>
     </div>
     <div class="ol-card">
         <div class="ol-card-title">
@@ -980,9 +956,6 @@ def build_supporting_portals():
 
     # id.html
     id_content = """
-    <div class="ol-status-bubble" id="overview">
-        &ldquo;Sangaia ID: Sovereign digital identity card and single-sign-on cryptographic credential.&rdquo;
-        <div class="ol-status-date">Identity Verification Authority</div>
     </div>
     <div class="ol-card" style="max-width:520px; margin:0 auto; background:#ffffff; border:2px solid #7fa8c0; border-radius:6px; box-shadow:0 6px 20px rgba(0,0,0,0.1);">
         <div style="background:linear-gradient(135deg, #1e3a8a, #2563eb); color:#ffffff; padding:12px 16px; border-radius:4px 4px 0 0; display:flex; justify-content:space-between; align-items:center;">
@@ -1021,9 +994,6 @@ def build_supporting_portals():
 
     # literacy_test.html & literacy_exam_en.html
     exam_content = """
-    <div class="ol-status-bubble" id="overview">
-        &ldquo;Citizenship Literacy Examination: 5 essential questions on Sangaian law, units, and governance.&rdquo;
-        <div class="ol-status-date">Academic &amp; Civic Board</div>
     </div>
     <div class="ol-card">
         <div class="ol-card-title">
