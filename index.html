@@ -1085,7 +1085,7 @@ a:hover {
 }
 
   </style>
-  <link rel="stylesheet" href="/css/sangaia-live.css?v=20261019_v3">
+  <link rel="stylesheet" href="/css/sangaia-live.css?v=20261019_v4">
   <script src="/js/sangaia-live.js" defer></script>
 </head>
 <body class="theme-federal">
@@ -1098,7 +1098,7 @@ a:hover {
       </div>
       <div class="top-right">
         <form class="search-box" action="/services.html" method="get">
-          <input type="text" name="q" placeholder="Search people &amp; posts" />
+          <input type="text" name="q" placeholder="Search services, laws &amp; gazette" />
           <button type="submit" aria-label="Search"><span class="mif-search"></span></button>
         </form>
         <div class="user-profile-menu" id="userProfileMenu">
@@ -1110,7 +1110,7 @@ a:hover {
             <a href="/id.html"><span class="mif-profile"></span> Sangaia ID Card</a>
             <a href="/citizenship.html"><span class="mif-checkmark"></span> Citizenship Status</a>
             <a href="/units.html"><span class="mif-compass"></span> Units &amp; Measures</a>
-            <a href="/dashboard.html"><span class="mif-chart-bars"></span> Sovereign Telemetry</a>
+            <a href="/dashboard.html"><span class="mif-chart-bars"></span> Sovereign Registry</a>
             <div style="border-top:1px solid #e1dfdd; margin:4px 0;"></div>
             <a href="/index.html"><span class="mif-home"></span> Federal Home</a>
           </div>
@@ -1125,16 +1125,11 @@ a:hover {
 
   <!-- Navigation Bar -->
   <nav class="subnav">
-    <a href="/index.html" class="active">Home</a>
-    <a href="/executive.html">Executive</a>
-    <a href="/treasury.html">Treasury</a>
-    <a href="/work.html">Work</a>
-    <a href="/healthcare.html">Healthcare</a>
-    <a href="/education.html">Education</a>
-    <a href="/domesticaffairs.html">Domestic</a>
-    <a href="/externalaffairs.html">External</a>
-    <a href="/environment.html">Environment</a>
-    <a href="/propaganda.html">Propaganda</a>
+    <a href="/index.html" class="active">Federal Home</a>
+    <a href="#overview">Overview</a>
+    <a href="#showcase">5 Provinces</a>
+    <a href="#aeretocracy">The Aeretocracy</a>
+    <a href="#ministries">9 Ministries</a>
     <a href="/services.html">Services</a>
     <a href="/units.html">Units (Мн • °Пт)</a>
   </nav>
@@ -1144,84 +1139,35 @@ a:hover {
     <!-- Left Column: Primary Content -->
     <div class="left-col">
 
-    <!-- Post Composer Card -->
-    <div class="card composer">
-        <div class="toolbar">
-            <button class="tool-btn" onclick="formatDoc('bold')">B</button>
-            <button class="tool-btn" onclick="formatDoc('italic')">I</button>
-            <button class="tool-btn" onclick="formatDoc('underline')">U</button>
-            <button class="tool-btn" onclick="formatDoc('strikeThrough')">S</button>
-            <button class="tool-btn" aria-label="Link"><span class="mif-link"></span></button>
-            <button class="tool-btn" aria-label="Emoji"><span class="mif-face"></span></button>
-            <div class="color-picker"></div>
-            <select id="fontSelect">
-                <option>Segoe WP (default)</option>
-                <option>Segoe UI</option>
-                <option>Metropolis</option>
-                <option>Hanken Grotesk</option>
-                <option>Tahoma</option>
-                <option>Verdana</option>
-            </select>
-            <select id="audienceSelect">
-                <option>Everyone</option>
-                <option>My network</option>
-                <option>Only me</option>
-            </select>
-        </div>
-
-        <textarea id="postInput" placeholder="What's on your mind?"></textarea>
-
-        <div class="composer-footer">
-            <button class="btn-share" id="postBtn">Share</button>
-            <div class="composer-actions">
-                <a>Add photo</a>
-                <a>Add video</a>
-                <a>Attach file</a>
-            </div>
-        </div>
-    </div>
-
-    <!-- Feed Container -->
-    <div class="card">
-        <div class="feed-tabs">
-            <a href="#" class="active">What's new?</a>
-            <a href="#">My network</a>
-            <a href="#">Groups</a>
-            <a href="#">Global network</a>
-            <a href="#">Umiki</a>
-            <span class="mif-filter filter-icon" aria-label="Filter"></span>
-        </div>
-
-        <div id="postsList">
-            <div class="post-item">
-                <img class="post-avatar" src="/images/default-wl.png" alt="avatar" width="44" height="44" style="width:44px; height:44px; border-radius:2px; object-fit:contain; background:#ffffff;" />
-                <div class="post-content-wrap">
-                    <p><a href="/id.html" class="post-author">Jqackkk</a> says: "Coding"</p>
-                    <div class="post-meta">3 hours ago &bull; Sangaia Sovereign Network</div>
-                </div>
-            </div>
-
-            <div class="post-item">
-                <img class="post-avatar" src="/images/default-wl.png" alt="avatar" width="44" height="44" style="width:44px; height:44px; border-radius:2px; object-fit:contain; background:#ffffff;" />
-                <div class="post-content-wrap">
-                    <p><a href="/id.html" class="post-author">Jqackkk</a> changed their profile picture</p>
-                    <div class="post-meta">4 days ago</div>
-                </div>
-            </div>
-
-            <div class="post-item">
-                <img class="post-avatar" src="/images/default-wl.png" alt="avatar" width="44" height="44" style="width:44px; height:44px; border-radius:2px; object-fit:contain; background:#ffffff;" />
-                <div class="post-content-wrap">
-                    <p><a href="/id.html" class="post-author">Jqackkk</a> published <a href="/id.html">Sangaia ID</a> on <a href="/services.html">the Live Store</a></p>
-                    <div class="post-meta">4 days ago</div>
-                </div>
-            </div>
-        </div>
-    </div>
-
     <div class="ol-status-bubble" id="overview">
         &ldquo;Welcome to Sangaia Live: The unified federal gateway for all sovereign public services, provincial coordination, and civic identity.&rdquo;
-        <div class="ol-status-date">Sovereign State Gazette &bull; Updated Today</div>
+        <div class="ol-status-date">Sovereign State Gazette &bull; Official Federal Dispatch</div>
+    </div>
+
+    <!-- Official Republic Overview Card -->
+    <div class="ol-card">
+        <div class="ol-card-title">
+            <span>Executive Federal Overview</span>
+            <span class="ol-badge-tag ol-badge-success">Constitutional Republic</span>
+        </div>
+        <p>Sangaia is a sovereign constitutional republic operating under the Aeretocracy. Sangaia unites five autonomous provinces—<strong>New Jasper, New Madison, Liveland, Sentinel, and Columbia</strong>—providing universal public services, guaranteed living wages ($25.00/hr floor), zero foreign sovereign debt, and tuition-free education and healthcare.</p>
+        <div class="ol-grid-3" style="margin-top:12px;">
+            <div style="background:#f8fafc; border:1px solid #e1dfdd; border-radius:2px; padding:10px; text-align:center;">
+                <div style="font-size:11px; color:#605e5c; text-transform:uppercase; font-weight:600;">Sovereign Currency</div>
+                <div style="font-size:18px; font-weight:700; color:#0078d4; margin:4px 0;">$ (Dollar)</div>
+                <div style="font-size:11px; color:#8a8886;">Zero Foreign Debt</div>
+            </div>
+            <div style="background:#f8fafc; border:1px solid #e1dfdd; border-radius:2px; padding:10px; text-align:center;">
+                <div style="font-size:11px; color:#605e5c; text-transform:uppercase; font-weight:600;">Temperature Standard</div>
+                <div style="font-size:18px; font-weight:700; color:#0078d4; margin:4px 0;">Панотерм (°Пт)</div>
+                <div style="font-size:11px; color:#8a8886;">°Пт = 0.5 &times; (°F - 32)</div>
+            </div>
+            <div style="background:#f8fafc; border:1px solid #e1dfdd; border-radius:2px; padding:10px; text-align:center;">
+                <div style="font-size:11px; color:#605e5c; text-transform:uppercase; font-weight:600;">Distance Standard</div>
+                <div style="font-size:18px; font-weight:700; color:#0078d4; margin:4px 0;">Мономер (Мн)</div>
+                <div style="font-size:11px; color:#8a8886;">1 Мн = 2.5 cm</div>
+            </div>
+        </div>
     </div>
 
     <!-- 3D Flip Provincial Showcase -->
@@ -1313,26 +1259,8 @@ a:hover {
     
     </div>
 
-    <!-- Right Column: Status & Sidebar Widgets -->
+    <!-- Right Column: Official Sidebar Widgets -->
     <aside class="sidebar">
-      <div class="card beta-banner">
-        This is a BETA experience. Things may be changed or removed at any time.
-      </div>
-
-      <div class="card">
-        <h3>Your status</h3>
-        <p style="color: var(--text-muted); font-size: 12px;">This shows next to your name across Sangaia Live.</p>
-        
-        <div class="status-input-group">
-          <input type="text" id="statusField" value="Serving Sangaia" />
-          <button type="button" aria-label="Status icon"><span class="mif-face"></span></button>
-        </div>
-
-        <div class="status-controls">
-          <button class="btn-status" id="updateStatusBtn">Update status</button>
-          <span class="btn-clear" id="clearStatusBtn">Clear</span>
-        </div>
-      </div>
 
       <div class="card">
         <h3>Sovereign Republic of Sangaia</h3>
@@ -1347,6 +1275,18 @@ a:hover {
 <li><a href="/citizenship.html"><span class="mif-chevron-right"></span> Citizenship Application</a></li>
 
         </ul>
+      </div>
+
+
+      <div class="card" style="font-size: 12px; line-height: 1.6;">
+        <h3 style="color: var(--text-main); margin-bottom: 6px;">Official Government Seal</h3>
+        <p style="color: var(--text-muted); margin-bottom: 8px;">United Provinces of Sangaia &bull; Sovereign Constitutional Gateway</p>
+        <div style="display: flex; flex-direction: column; gap: 4px; color: var(--text-muted);">
+          <div><strong style="color: var(--text-main);">Jurisdiction:</strong> 5 Provinces (New Jasper, New Madison, Liveland, Sentinel, Columbia)</div>
+          <div><strong style="color: var(--text-main);">Currency:</strong> $ (Sangaian Dollar)</div>
+          <div><strong style="color: var(--text-main);">Standards:</strong> Панотерм (°Пт) &bull; Мономер (Мн)</div>
+          <div><strong style="color: var(--text-main);">Classification:</strong> Verified Official Portal</div>
+        </div>
       </div>
 
 
@@ -1366,45 +1306,8 @@ a:hover {
         </div>
     </div>
     
-      <div class="card">
-        <h3>Trending hashtags</h3>
-        <p style="color: var(--text-muted); font-size: 12px; margin-top: 4px;">
-          Nothing is trending right now. A hashtag trends once five different people use it within a day.
-        </p>
-
-        <h4>Latest hashtags</h4>
-        <div class="hashtag-list">
-          <a class="hashtag" href="/services.html?tag=sangaialive">#sangaialive</a>
-          <a class="hashtag" href="/treasury.html?tag=sovereigndollar">#sovereigndollar</a>
-          <a class="hashtag" href="/units.html?tag=monomer">#monomer</a>
-          <a class="hashtag" href="/units.html?tag=panoterm">#panoterm</a>
-          <a class="hashtag" href="/executive.html?tag=aeretocrat">#aeretocrat</a>
-          <a class="hashtag" href="/propaganda.html?tag=nationalradio">#nationalradio</a>
-          <a class="hashtag" href="/work.html?tag=laborstandards">#laborstandards</a>
-          <a class="hashtag" href="/healthcare.html?tag=5provinces">#5provinces</a>
-          <a class="hashtag" href="/domesticaffairs.html?tag=interprovincial">#interprovincial</a>
-          <a class="hashtag" href="/externalaffairs.html?tag=treaties">#treaties</a>
-        </div>
-        <p style="margin-top: 10px;"><a href="/services.html" style="font-size: 12px;">All hashtags</a></p>
-      </div>
-
-      <div class="card" style="font-size: 12px; color: var(--text-muted);">
-        <h3 style="color: var(--text-main);">Sovereign Telemetry</h3>
-        <div style="margin-top: 8px; display: flex; flex-direction: column; gap: 5px;">
-          <div>Federal Currency: <strong style="color: var(--text-main);">$ (Sangaian Dollar)</strong></div>
-          <div>Territory: <strong style="color: var(--text-main);">5 Provinces</strong> (New Jasper, New Madison, Liveland, Sentinel, Columbia)</div>
-          <div>Temperature Standard: <strong style="color: var(--text-main);">Панотерм (22°Пт)</strong></div>
-          <div>Distance Standard: <strong style="color: var(--text-main);">Мономер (1 Мн = 2.5 cm)</strong></div>
-          <div>Gateway Status: <span style="color: #15803d; font-weight: 600;">Active &bull; Operational</span></div>
-        </div>
-      </div>
     </aside>
   </main>
-
-  <!-- Docked Messages Tab -->
-  <div class="messages-dock" id="messagesDock">
-    <span class="mif-bubble"></span> Messages
-  </div>
 
 
 

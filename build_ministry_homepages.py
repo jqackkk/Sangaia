@@ -9,6 +9,8 @@ and telemetry widgets.
 import os
 import shutil
 from generate_all_sites import generate_page
+from build_departments import MINISTRY_NAV_TABS, get_subdomain_nav_tabs
+from build_healthcare_pages import build_all_healthcare_secondary
 
 # -----------------------------------------------------------------------------
 # 1. MINISTRY OF THE EXECUTIVE (MoEX)
@@ -31,7 +33,6 @@ def build_executive():
     ]
 
     main_content = """
-    </div>
 
     <!-- The Aeretocrat's Personal Blog & Journal -->
     <div class="card" id="overview"><a id="journal"></a>
@@ -336,9 +337,11 @@ def build_executive():
     </script>
     """
 
-    generate_page("executive.html", title, theme, tab, hero_title, hero_sub, "Office of the Aeretocrat", "Head of State & Government", "Council Active", sidebar_links, main_content, sidebar_right, modals, scripts)
-    generate_page("MoEX/index.html", title, theme, tab, hero_title, hero_sub, "Office of the Aeretocrat", "Head of State & Government", "Council Active", sidebar_links, main_content, sidebar_right, modals, scripts)
-    generate_page("mEx/index.html", title, theme, tab, hero_title, hero_sub, "Office of the Aeretocrat", "Head of State & Government", "Council Active", sidebar_links, main_content, sidebar_right, modals, scripts)
+    nav_tabs = MINISTRY_NAV_TABS["executive"]
+    sub_nav_tabs = get_subdomain_nav_tabs(nav_tabs)
+    generate_page("executive.html", title, theme, "home", hero_title, hero_sub, "Office of the Aeretocrat", "Head of State & Government", "Council Active", sidebar_links, main_content, sidebar_right, modals, scripts, custom_nav_tabs=nav_tabs)
+    generate_page("MoEX/index.html", title, theme, "home", hero_title, hero_sub, "Office of the Aeretocrat", "Head of State & Government", "Council Active", sidebar_links, main_content, sidebar_right, modals, scripts, custom_nav_tabs=sub_nav_tabs)
+    generate_page("mEx/index.html", title, theme, "home", hero_title, hero_sub, "Office of the Aeretocrat", "Head of State & Government", "Council Active", sidebar_links, main_content, sidebar_right, modals, scripts, custom_nav_tabs=sub_nav_tabs)
 
 # -----------------------------------------------------------------------------
 # 2. MINISTRY OF THE TREASURY (mT)
@@ -360,7 +363,6 @@ def build_treasury():
     ]
 
     main_content = """
-    </div>
 
     <!-- Zero Sovereign Debt Tracker -->
     <div class="card" id="overview"><a id="debt"></a>
@@ -543,8 +545,10 @@ def build_treasury():
     </script>
     """
 
-    generate_page("treasury.html", title, theme, tab, hero_title, hero_sub, "Ministry of the Treasury", "Fiscal & Solvency Authority", "Solvency Verified", sidebar_links, main_content, sidebar_right, modals, scripts)
-    generate_page("mT/index.html", title, theme, tab, hero_title, hero_sub, "Ministry of the Treasury", "Fiscal & Solvency Authority", "Solvency Verified", sidebar_links, main_content, sidebar_right, modals, scripts)
+    nav_tabs = MINISTRY_NAV_TABS["treasury"]
+    sub_nav_tabs = get_subdomain_nav_tabs(nav_tabs)
+    generate_page("treasury.html", title, theme, "home", hero_title, hero_sub, "Ministry of the Treasury", "Fiscal & Solvency Authority", "Solvency Verified", sidebar_links, main_content, sidebar_right, modals, scripts, custom_nav_tabs=nav_tabs)
+    generate_page("mT/index.html", title, theme, "home", hero_title, hero_sub, "Ministry of the Treasury", "Fiscal & Solvency Authority", "Solvency Verified", sidebar_links, main_content, sidebar_right, modals, scripts, custom_nav_tabs=sub_nav_tabs)
 
 # -----------------------------------------------------------------------------
 # 3. MINISTRY OF WORK (mW)
@@ -567,7 +571,6 @@ def build_work():
     ]
 
     main_content = """
-    </div>
 
     <!-- Living Wage Standards & Net Salary Calculator -->
     <div class="card" id="overview"><a id="pay-standards"></a>
@@ -864,8 +867,10 @@ def build_work():
     </script>
     """
 
-    generate_page("work.html", title, theme, tab, hero_title, hero_sub, "Ministry of Work", "Labor Standards Authority", "Standards Active", sidebar_links, main_content, sidebar_right, modals, scripts)
-    generate_page("mW/index.html", title, theme, tab, hero_title, hero_sub, "Ministry of Work", "Labor Standards Authority", "Standards Active", sidebar_links, main_content, sidebar_right, modals, scripts)
+    nav_tabs = MINISTRY_NAV_TABS["work"]
+    sub_nav_tabs = get_subdomain_nav_tabs(nav_tabs)
+    generate_page("work.html", title, theme, "home", hero_title, hero_sub, "Ministry of Work", "Labor Standards Authority", "Standards Active", sidebar_links, main_content, sidebar_right, modals, scripts, custom_nav_tabs=nav_tabs)
+    generate_page("mW/index.html", title, theme, "home", hero_title, hero_sub, "Ministry of Work", "Labor Standards Authority", "Standards Active", sidebar_links, main_content, sidebar_right, modals, scripts, custom_nav_tabs=sub_nav_tabs)
 
 # -----------------------------------------------------------------------------
 # 4. MINISTRY OF HEALTHCARE (mH)
@@ -887,7 +892,6 @@ def build_healthcare():
     ]
 
     main_content = """
-    </div>
 
     <!-- Universal Coverage Screening -->
     <div class="card" id="overview"><a id="coverage"></a>
@@ -1030,11 +1034,12 @@ def build_healthcare():
     </script>
     """
 
-    generate_page("healthcare.html", title, theme, tab, hero_title, hero_sub, "Ministry of Healthcare", "Universal Health Authority", "Clinics Operational", sidebar_links, main_content, sidebar_right, modals, scripts)
-    generate_page("mH/index.html", title, theme, tab, hero_title, hero_sub, "Ministry of Healthcare", "Universal Health Authority", "Clinics Operational", sidebar_links, main_content, sidebar_right, modals, scripts)
-    # copy to hospitals, services, research, support in mH
-    for subpage in ["hospitals.html", "services.html", "research.html", "support.html"]:
-        shutil.copy("mH/index.html", f"mH/{subpage}")
+    nav_tabs = MINISTRY_NAV_TABS["healthcare"]
+    sub_nav_tabs = get_subdomain_nav_tabs(nav_tabs)
+    generate_page("healthcare.html", title, theme, "home", hero_title, hero_sub, "Ministry of Healthcare", "Universal Health Authority", "Clinics Operational", sidebar_links, main_content, sidebar_right, modals, scripts, custom_nav_tabs=nav_tabs)
+    generate_page("mH/index.html", title, theme, "home", hero_title, hero_sub, "Ministry of Healthcare", "Universal Health Authority", "Clinics Operational", sidebar_links, main_content, sidebar_right, modals, scripts, custom_nav_tabs=sub_nav_tabs)
+    # Generate all rich pre-redesign healthcare pages
+    build_all_healthcare_secondary()
 
 # -----------------------------------------------------------------------------
 # 5. MINISTRY OF EDUCATION (mE)
@@ -1056,7 +1061,6 @@ def build_education():
     ]
 
     main_content = """
-    </div>
 
     <!-- Open Digital Textbooks -->
     <div class="card" id="overview"><a id="textbooks"></a>
@@ -1170,9 +1174,11 @@ def build_education():
     </script>
     """
 
-    generate_page("education.html", title, theme, tab, hero_title, hero_sub, "Ministry of Education", "Academic & Standards Authority", "Curricula Active", sidebar_links, main_content, sidebar_right, modals, scripts)
-    generate_page("mE/index.html", title, theme, tab, hero_title, hero_sub, "Ministry of Education", "Academic & Standards Authority", "Curricula Active", sidebar_links, main_content, sidebar_right, modals, scripts)
-    generate_page("mEd/index.html", title, theme, tab, hero_title, hero_sub, "Ministry of Education", "Academic & Standards Authority", "Curricula Active", sidebar_links, main_content, sidebar_right, modals, scripts)
+    nav_tabs = MINISTRY_NAV_TABS["education"]
+    sub_nav_tabs = get_subdomain_nav_tabs(nav_tabs)
+    generate_page("education.html", title, theme, "home", hero_title, hero_sub, "Ministry of Education", "Academic & Standards Authority", "Curricula Active", sidebar_links, main_content, sidebar_right, modals, scripts, custom_nav_tabs=nav_tabs)
+    generate_page("mE/index.html", title, theme, "home", hero_title, hero_sub, "Ministry of Education", "Academic & Standards Authority", "Curricula Active", sidebar_links, main_content, sidebar_right, modals, scripts, custom_nav_tabs=sub_nav_tabs)
+    generate_page("mEd/index.html", title, theme, "home", hero_title, hero_sub, "Ministry of Education", "Academic & Standards Authority", "Curricula Active", sidebar_links, main_content, sidebar_right, modals, scripts, custom_nav_tabs=sub_nav_tabs)
 
 # -----------------------------------------------------------------------------
 # 6. MINISTRY OF DOMESTIC AFFAIRS (MiA)
@@ -1194,7 +1200,6 @@ def build_domestic():
     ]
 
     main_content = """
-    </div>
 
     <!-- The 5 Sovereign Provinces -->
     <div class="card" id="overview"><a id="provinces"></a>
@@ -1329,8 +1334,10 @@ def build_domestic():
     </script>
     """
 
-    generate_page("domesticaffairs.html", title, theme, tab, hero_title, hero_sub, "Ministry of Domestic Affairs", "Internal Governance Authority", "Pacts Verified", sidebar_links, main_content, sidebar_right, modals, scripts)
-    generate_page("MiA/index.html", title, theme, tab, hero_title, hero_sub, "Ministry of Domestic Affairs", "Internal Governance Authority", "Pacts Verified", sidebar_links, main_content, sidebar_right, modals, scripts)
+    nav_tabs = MINISTRY_NAV_TABS["domesticaffairs"]
+    sub_nav_tabs = get_subdomain_nav_tabs(nav_tabs)
+    generate_page("domesticaffairs.html", title, theme, "home", hero_title, hero_sub, "Ministry of Domestic Affairs", "Internal Governance Authority", "Pacts Verified", sidebar_links, main_content, sidebar_right, modals, scripts, custom_nav_tabs=nav_tabs)
+    generate_page("MiA/index.html", title, theme, "home", hero_title, hero_sub, "Ministry of Domestic Affairs", "Internal Governance Authority", "Pacts Verified", sidebar_links, main_content, sidebar_right, modals, scripts, custom_nav_tabs=sub_nav_tabs)
 
 # -----------------------------------------------------------------------------
 # 7. MINISTRY OF EXTERNAL AFFAIRS (MdA)
@@ -1352,7 +1359,6 @@ def build_external():
     ]
 
     main_content = """
-    </div>
 
     <!-- Travel Advisories for Every Worldwide Nation -->
     <div class="card" id="overview"><a id="travel"></a>
@@ -1481,8 +1487,10 @@ def build_external():
     </script>
     """
 
-    generate_page("externalaffairs.html", title, theme, tab, hero_title, hero_sub, "Ministry of External Affairs", "Foreign Service & Diplomatic Corp", "Missions Active", sidebar_links, main_content, sidebar_right, modals, scripts)
-    generate_page("MdA/index.html", title, theme, tab, hero_title, hero_sub, "Ministry of External Affairs", "Foreign Service & Diplomatic Corp", "Missions Active", sidebar_links, main_content, sidebar_right, modals, scripts)
+    nav_tabs = MINISTRY_NAV_TABS["externalaffairs"]
+    sub_nav_tabs = get_subdomain_nav_tabs(nav_tabs)
+    generate_page("externalaffairs.html", title, theme, "home", hero_title, hero_sub, "Ministry of External Affairs", "Foreign Service & Diplomatic Corp", "Missions Active", sidebar_links, main_content, sidebar_right, modals, scripts, custom_nav_tabs=nav_tabs)
+    generate_page("MdA/index.html", title, theme, "home", hero_title, hero_sub, "Ministry of External Affairs", "Foreign Service & Diplomatic Corp", "Missions Active", sidebar_links, main_content, sidebar_right, modals, scripts, custom_nav_tabs=sub_nav_tabs)
 
 # -----------------------------------------------------------------------------
 # 8. MINISTRY OF THE ENVIRONMENT (MtE)
@@ -1505,7 +1513,6 @@ def build_environment():
     ]
 
     main_content = """
-    </div>
 
     <!-- Live Atmospheric Weather in Panotherm (°Пт) -->
     <div class="card" id="overview"><a id="weather"></a>
@@ -1720,9 +1727,11 @@ def build_environment():
     </script>
     """
 
-    generate_page("environment.html", title, theme, tab, hero_title, hero_sub, "Ministry of the Environment", "Ecological Stewardship Authority", "Telemetry Active", sidebar_links, main_content, sidebar_right, modals, scripts)
-    generate_page("MtE/index.html", title, theme, tab, hero_title, hero_sub, "Ministry of the Environment", "Ecological Stewardship Authority", "Telemetry Active", sidebar_links, main_content, sidebar_right, modals, scripts)
-    generate_page("mEnv/index.html", title, theme, tab, hero_title, hero_sub, "Ministry of the Environment", "Ecological Stewardship Authority", "Telemetry Active", sidebar_links, main_content, sidebar_right, modals, scripts)
+    nav_tabs = MINISTRY_NAV_TABS["environment"]
+    sub_nav_tabs = get_subdomain_nav_tabs(nav_tabs)
+    generate_page("environment.html", title, theme, "home", hero_title, hero_sub, "Ministry of the Environment", "Ecological Stewardship Authority", "Telemetry Active", sidebar_links, main_content, sidebar_right, modals, scripts, custom_nav_tabs=nav_tabs)
+    generate_page("MtE/index.html", title, theme, "home", hero_title, hero_sub, "Ministry of the Environment", "Ecological Stewardship Authority", "Telemetry Active", sidebar_links, main_content, sidebar_right, modals, scripts, custom_nav_tabs=sub_nav_tabs)
+    generate_page("mEnv/index.html", title, theme, "home", hero_title, hero_sub, "Ministry of the Environment", "Ecological Stewardship Authority", "Telemetry Active", sidebar_links, main_content, sidebar_right, modals, scripts, custom_nav_tabs=sub_nav_tabs)
 
 # -----------------------------------------------------------------------------
 # 9. MINISTRY OF PROPAGANDA (mP)
@@ -1744,7 +1753,6 @@ def build_propaganda():
     ]
 
     main_content = """
-    </div>
 
     <!-- Live Audio Radio Player -->
     <div class="card" id="overview"><a id="radio"></a>
@@ -1899,8 +1907,10 @@ def build_propaganda():
     </script>
     """
 
-    generate_page("propaganda.html", title, theme, tab, hero_title, hero_sub, "Ministry of Propaganda", "Civic Information Authority", "Broadcasts Active", sidebar_links, main_content, sidebar_right, modals, scripts)
-    generate_page("mP/index.html", title, theme, tab, hero_title, hero_sub, "Ministry of Propaganda", "Civic Information Authority", "Broadcasts Active", sidebar_links, main_content, sidebar_right, modals, scripts)
+    nav_tabs = MINISTRY_NAV_TABS["propaganda"]
+    sub_nav_tabs = get_subdomain_nav_tabs(nav_tabs)
+    generate_page("propaganda.html", title, theme, "home", hero_title, hero_sub, "Ministry of Propaganda", "Civic Information Authority", "Broadcasts Active", sidebar_links, main_content, sidebar_right, modals, scripts, custom_nav_tabs=nav_tabs)
+    generate_page("mP/index.html", title, theme, "home", hero_title, hero_sub, "Ministry of Propaganda", "Civic Information Authority", "Broadcasts Active", sidebar_links, main_content, sidebar_right, modals, scripts, custom_nav_tabs=sub_nav_tabs)
 
 if __name__ == "__main__":
     build_executive()

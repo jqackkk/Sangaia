@@ -1,0 +1,1317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>5-Province Hospital Emergency Network & Regional Medical Centers :: Sangaia Live</title>
+  <link href="https://cdn.metroui.org.ua/4.5.12/icons.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <style>
+/* ==========================================================================
+   SANGAIA LIVE MASTER DESIGN SYSTEM
+   Standardized layout, typography (Segoe WP), and ministerial theme engine.
+   Strictly aligned with the user-defined One Live architecture.
+   ========================================================================== */
+
+:root {
+  --primary: #0078d4;
+  --bg: #f3f3f3;
+  --card-bg: #ffffff;
+  --border: #e1dfdd;
+  --border-dark: #cccccc;
+  --text-main: #201f1e;
+  --text-muted: #605e5c;
+  --text-light: #8a8886;
+  --accent-btn: #6e8494;
+  --accent-btn-hover: #5d707e;
+  --metro-blue: #002050;
+  --font-family: 'Segoe WP', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* --- Ministerial Theme Overrides --- */
+body.theme-executive {
+  --primary: #1e3a8a; /* Imperial Navy & Gold */
+  --accent-btn: #1e3a8a;
+  --accent-btn-hover: #172554;
+}
+
+body.theme-treasury {
+  --primary: #0f766e; /* Slate & Emerald */
+  --accent-btn: #0f766e;
+  --accent-btn-hover: #115e59;
+}
+
+body.theme-work {
+  --primary: #6b21a8; /* Industrial Purple */
+  --accent-btn: #6b21a8;
+  --accent-btn-hover: #581c87;
+}
+
+body.theme-healthcare {
+  --primary: #b91c1c; /* Clinical Crimson */
+  --accent-btn: #b91c1c;
+  --accent-btn-hover: #991b1b;
+}
+
+body.theme-education {
+  --primary: #0284c7; /* Academic Cyan */
+  --accent-btn: #0284c7;
+  --accent-btn-hover: #0369a1;
+}
+
+body.theme-domestic {
+  --primary: #1e293b; /* Deep Navy Blue */
+  --accent-btn: #334155;
+  --accent-btn-hover: #0f172a;
+}
+
+body.theme-external {
+  --primary: #db2777; /* Diplomatic Rose / Pink */
+  --accent-btn: #db2777;
+  --accent-btn-hover: #be185d;
+}
+
+body.theme-environment {
+  --primary: #15803d; /* Forest Green */
+  --accent-btn: #15803d;
+  --accent-btn-hover: #166534;
+}
+
+body.theme-propaganda {
+  --primary: #ea580c; /* Vibrant Orange */
+  --accent-btn: #ea580c;
+  --accent-btn-hover: #c2410c;
+}
+
+body.theme-federal,
+body.theme-default {
+  --primary: #0078d4; /* Sovereign Windows Live Blue */
+  --accent-btn: #6e8494;
+  --accent-btn-hover: #5d707e;
+}
+
+/* Global Reset */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-family);
+  background-color: var(--bg);
+  color: var(--text-main);
+  font-size: 13.5px;
+  line-height: 1.4;
+  min-height: 100vh;
+  position: relative;
+  padding-bottom: 48px; /* space for docked messages */
+}
+
+a {
+  color: var(--primary);
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* ==========================================================================
+   Top Hero Header
+   ========================================================================== */
+.hero-header {
+  position: relative;
+  background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.45)),
+              url('https://images.unsplash.com/photo-1519501025264-65ba15a82390?auto=format&fit=crop&w=1600&q=80') center/cover no-repeat;
+  color: #fff;
+  padding: 16px 36px 24px 36px;
+}
+
+.top-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 20px;
+  font-weight: 600;
+  letter-spacing: -0.3px;
+}
+
+.brand a, .brand span {
+  color: #fff;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.brand .mif-windows {
+  font-size: 18px;
+  color: #fff;
+}
+
+.top-right {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.search-box {
+  display: flex;
+  align-items: center;
+  background: #fff;
+  border-radius: 2px;
+  overflow: hidden;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+}
+
+.search-box input {
+  border: none;
+  outline: none;
+  padding: 6px 10px;
+  font-size: 12.5px;
+  width: 190px;
+  font-family: inherit;
+  color: var(--text-main);
+}
+
+.search-box button {
+  background: #f38b00;
+  border: none;
+  padding: 7px 10px;
+  color: #fff;
+  cursor: pointer;
+  font-size: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.search-box button:hover {
+  background: #e07f00;
+}
+
+.user-profile-menu {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 500;
+  position: relative;
+  user-select: none;
+}
+
+.user-profile-menu img {
+  width: 28px !important;
+  height: 28px !important;
+  max-width: 28px !important;
+  max-height: 28px !important;
+  border-radius: 2px;
+  border: 1px solid rgba(255,255,255,0.6);
+  object-fit: contain;
+  background: #ffffff;
+  display: block;
+}
+
+.user-profile-menu .user-dropdown {
+  display: none;
+  position: absolute;
+  right: 0;
+  top: 36px;
+  background: #fff;
+  color: var(--text-main);
+  border: 1px solid var(--border);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  border-radius: 2px;
+  width: 200px;
+  z-index: 1000;
+  padding: 8px 0;
+}
+
+.user-profile-menu.open .user-dropdown {
+  display: block;
+}
+
+.user-dropdown .user-dropdown-header {
+  padding: 6px 14px;
+  font-size: 11px;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  font-weight: 700;
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 4px;
+}
+
+.user-dropdown a {
+  display: block;
+  padding: 6px 14px;
+  color: var(--text-main);
+  font-size: 13px;
+  text-decoration: none;
+}
+
+.user-dropdown a:hover {
+  background: #f0f0f0;
+  color: var(--primary);
+  text-decoration: none;
+}
+
+.hero-content h1 {
+  font-size: 28px;
+  font-weight: 400;
+  margin-bottom: 4px;
+  letter-spacing: -0.5px;
+}
+
+.hero-content p {
+  font-size: 13px;
+  opacity: 0.9;
+}
+
+/* ==========================================================================
+   Sub-Navigation Bar
+   ========================================================================== */
+.subnav {
+  background: #fff;
+  border-bottom: 1px solid var(--border);
+  padding: 0 36px;
+  display: flex;
+  gap: 28px;
+  overflow-x: auto;
+  scrollbar-width: thin;
+}
+
+.subnav a {
+  color: var(--text-main);
+  padding: 12px 2px;
+  font-size: 13.5px;
+  text-decoration: none;
+  display: inline-block;
+  position: relative;
+  white-space: nowrap;
+}
+
+.subnav a.active {
+  font-weight: 600;
+  border-bottom: 3px solid var(--primary);
+  color: var(--primary);
+}
+
+.subnav a:hover:not(.active) {
+  color: var(--primary);
+}
+
+/* ==========================================================================
+   Main Content Grid
+   ========================================================================== */
+.main-wrapper {
+  max-width: 1200px;
+  margin: 20px auto;
+  padding: 0 20px;
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 20px;
+}
+
+.left-col {
+  display: flex;
+  flex-direction: column;
+}
+
+.sidebar {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Standard Card */
+.card {
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: 2px;
+  padding: 16px;
+  margin-bottom: 16px;
+}
+
+.card h2 {
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 12px;
+  color: var(--primary);
+}
+
+.card h3 {
+  font-size: 15px;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+.card h4 {
+  font-size: 13px;
+  font-weight: 600;
+  color: #333;
+  margin: 12px 0 8px 0;
+}
+
+/* ==========================================================================
+   Post Composer
+   ========================================================================== */
+.composer {
+  padding: 16px;
+}
+
+.toolbar {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 10px;
+  flex-wrap: wrap;
+}
+
+.tool-btn {
+  background: none;
+  border: 1px solid var(--border-dark);
+  border-radius: 2px;
+  padding: 3px 8px;
+  font-size: 12px;
+  font-weight: bold;
+  cursor: pointer;
+  color: var(--text-main);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 24px;
+}
+
+.tool-btn:hover {
+  background: #eaeaea;
+}
+
+.color-picker {
+  width: 22px;
+  height: 22px;
+  background: #000;
+  border: 1px solid var(--border-dark);
+  cursor: pointer;
+}
+
+.toolbar select {
+  border: 1px solid var(--border-dark);
+  border-radius: 2px;
+  padding: 3px 6px;
+  font-size: 12px;
+  outline: none;
+  background: #fff;
+  font-family: inherit;
+}
+
+.composer textarea {
+  width: 100%;
+  height: 72px;
+  border: 1px solid var(--border-dark);
+  border-radius: 2px;
+  padding: 10px;
+  font-family: inherit;
+  font-size: 13px;
+  resize: vertical;
+  outline: none;
+}
+
+.composer textarea:focus {
+  border-color: var(--primary);
+}
+
+.composer-footer {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 10px;
+}
+
+.btn-share {
+  background: var(--accent-btn);
+  color: #fff;
+  border: none;
+  padding: 6px 16px;
+  border-radius: 2px;
+  cursor: pointer;
+  font-weight: 500;
+  font-family: inherit;
+}
+
+.btn-share:hover {
+  background: var(--accent-btn-hover);
+}
+
+.composer-actions a {
+  color: var(--text-muted);
+  font-size: 12.5px;
+  margin-left: 10px;
+  cursor: pointer;
+}
+
+.composer-actions a:hover {
+  color: var(--primary);
+}
+
+/* ==========================================================================
+   Feed Tabs & Items
+   ========================================================================== */
+.feed-tabs {
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 16px;
+  gap: 18px;
+  padding: 0 4px;
+}
+
+.feed-tabs a {
+  color: var(--text-main);
+  padding: 8px 0;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+.feed-tabs a.active {
+  font-weight: 600;
+  border-bottom: 2px solid var(--primary);
+  color: var(--primary);
+}
+
+.filter-icon {
+  margin-left: auto;
+  color: var(--text-muted);
+  cursor: pointer;
+}
+
+.post-item {
+  display: flex;
+  gap: 12px;
+  padding: 12px 0;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.post-item:last-child {
+  border-bottom: none;
+}
+
+.post-avatar {
+  width: 44px !important;
+  height: 44px !important;
+  max-width: 44px !important;
+  max-height: 44px !important;
+  object-fit: contain;
+  border-radius: 2px;
+  flex-shrink: 0;
+  background: #ffffff;
+  display: block;
+}
+
+.post-content-wrap {
+  flex: 1;
+}
+
+.post-author {
+  font-weight: 600;
+  color: var(--primary);
+  text-decoration: none;
+}
+
+.post-meta {
+  font-size: 11.5px;
+  color: var(--text-light);
+  margin-top: 4px;
+}
+
+/* ==========================================================================
+   Sidebar Widgets
+   ========================================================================== */
+.beta-banner {
+  background: #eef5fc;
+  border: 1px solid #cbe0f5;
+  color: #33597d;
+  font-size: 12.5px;
+  padding: 12px;
+  line-height: 1.4;
+}
+
+.status-input-group {
+  display: flex;
+  margin-top: 8px;
+  border: 1px solid var(--border-dark);
+  border-radius: 2px;
+  overflow: hidden;
+  background: #fff;
+}
+
+.status-input-group input {
+  border: none;
+  outline: none;
+  padding: 6px 8px;
+  flex: 1;
+  font-size: 13px;
+  font-family: inherit;
+}
+
+.status-input-group button {
+  background: none;
+  border: none;
+  padding: 0 8px;
+  cursor: pointer;
+  color: #888;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.status-controls {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 8px;
+}
+
+.btn-status {
+  background: var(--accent-btn);
+  border: none;
+  color: #fff;
+  padding: 5px 12px;
+  border-radius: 2px;
+  cursor: pointer;
+  font-size: 12px;
+  font-family: inherit;
+}
+
+.btn-status:hover {
+  background: var(--accent-btn-hover);
+}
+
+.btn-clear {
+  color: var(--text-muted);
+  cursor: pointer;
+  font-size: 12px;
+}
+
+.btn-clear:hover {
+  text-decoration: underline;
+}
+
+.hashtag-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  margin-top: 6px;
+}
+
+.hashtag {
+  background: #f0f0f0;
+  border: 1px solid var(--border);
+  color: #555;
+  font-size: 11.5px;
+  padding: 3px 6px;
+  border-radius: 2px;
+  text-decoration: none;
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.hashtag:hover {
+  background: #e4e4e4;
+  color: #222;
+  text-decoration: none;
+}
+
+/* ==========================================================================
+   Docked Messages Tab
+   ========================================================================== */
+.messages-dock {
+  position: fixed;
+  bottom: 0;
+  right: 24px;
+  background: #546573;
+  color: #fff;
+  padding: 8px 16px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  font-weight: 500;
+  border-top-left-radius: 4px;
+  border-top-right-radius: 4px;
+  cursor: pointer;
+  box-shadow: 0 -2px 6px rgba(0,0,0,0.15);
+  z-index: 9999;
+  user-select: none;
+}
+
+.messages-dock:hover {
+  background: #445461;
+}
+
+/* ==========================================================================
+   Universal Component Utilities (Tables, Forms, Modals, Badges, Metrics)
+   ========================================================================== */
+
+/* Badges */
+.badge {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 600;
+  padding: 2px 7px;
+  border-radius: 2px;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+}
+
+.badge-primary { background: #e0f2fe; color: #0369a1; border: 1px solid #bae6fd; }
+.badge-success { background: #dcfce7; color: #15803d; border: 1px solid #bbf7d0; }
+.badge-warning { background: #fef3c7; color: #b45309; border: 1px solid #fde68a; }
+.badge-danger  { background: #fee2e2; color: #b91c1c; border: 1px solid #fecaca; }
+.badge-neutral { background: #f3f4f6; color: #4b5563; border: 1px solid #e5e7eb; }
+
+/* Buttons */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 7px 14px;
+  font-size: 13px;
+  font-weight: 500;
+  border-radius: 2px;
+  cursor: pointer;
+  border: 1px solid transparent;
+  font-family: inherit;
+  text-decoration: none;
+}
+
+.btn-primary {
+  background: var(--primary);
+  color: #fff;
+}
+
+.btn-primary:hover {
+  filter: brightness(0.92);
+  text-decoration: none;
+}
+
+.btn-secondary {
+  background: var(--accent-btn);
+  color: #fff;
+}
+
+.btn-secondary:hover {
+  background: var(--accent-btn-hover);
+  text-decoration: none;
+}
+
+.btn-outline {
+  background: #fff;
+  border-color: var(--border-dark);
+  color: var(--text-main);
+}
+
+.btn-outline:hover {
+  background: #f7f7f7;
+  text-decoration: none;
+}
+
+.btn-sm {
+  padding: 4px 8px;
+  font-size: 11.5px;
+}
+
+/* Data Tables */
+.data-table-container {
+  width: 100%;
+  overflow-x: auto;
+  margin: 12px 0;
+}
+
+.data-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 12.5px;
+  text-align: left;
+}
+
+.data-table th {
+  background: #f8fafc;
+  border-bottom: 2px solid var(--border);
+  padding: 8px 10px;
+  font-weight: 600;
+  color: var(--text-muted);
+}
+
+.data-table td {
+  border-bottom: 1px solid #f1f5f9;
+  padding: 8px 10px;
+  color: var(--text-main);
+}
+
+.data-table tr:hover td {
+  background: #fbfcfd;
+}
+
+/* Forms & Inputs */
+.form-group {
+  margin-bottom: 12px;
+}
+
+.form-label {
+  display: block;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text-muted);
+  margin-bottom: 4px;
+}
+
+.form-input, .form-select, .form-textarea {
+  width: 100%;
+  padding: 7px 10px;
+  border: 1px solid var(--border-dark);
+  border-radius: 2px;
+  font-size: 13px;
+  font-family: inherit;
+  background: #fff;
+  color: var(--text-main);
+  outline: none;
+}
+
+.form-input:focus, .form-select:focus, .form-textarea:focus {
+  border-color: var(--primary);
+}
+
+/* Department Tool Cards */
+.dept-card {
+  border: 1px solid var(--border);
+  border-radius: 2px;
+  padding: 14px;
+  margin-bottom: 14px;
+  background: #fff;
+  transition: box-shadow 0.15s ease;
+}
+
+.dept-card:hover {
+  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+}
+
+.dept-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 8px;
+}
+
+.dept-title {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--primary);
+}
+
+.dept-mandate {
+  font-size: 12.5px;
+  color: var(--text-muted);
+  margin-bottom: 10px;
+  line-height: 1.45;
+}
+
+.dept-tools-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.dept-tool-item {
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 2px;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.dept-tool-item h4 {
+  margin: 0 0 4px 0;
+  font-size: 13px;
+  color: var(--text-main);
+}
+
+.dept-tool-item p {
+  font-size: 11.5px;
+  color: var(--text-muted);
+  margin-bottom: 8px;
+  flex: 1;
+}
+
+/* Metric / Telemetry Cards */
+.telemetry-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+  gap: 10px;
+  margin: 12px 0;
+}
+
+.metric-box {
+  background: #f8fafc;
+  border: 1px solid var(--border);
+  border-radius: 2px;
+  padding: 10px;
+  text-align: center;
+}
+
+.metric-box .metric-val {
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--primary);
+  margin-bottom: 2px;
+}
+
+.metric-box .metric-lbl {
+  font-size: 11px;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  font-weight: 600;
+}
+
+/* Quick Nav Sidebar List */
+.sidebar-nav-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.sidebar-nav-list a {
+  display: block;
+  padding: 6px 10px;
+  font-size: 12.5px;
+  color: var(--text-main);
+  border-radius: 2px;
+  text-decoration: none;
+}
+
+.sidebar-nav-list a:hover {
+  background: #f0f0f0;
+  color: var(--primary);
+}
+
+.sidebar-nav-list a.active {
+  background: #eef5fc;
+  font-weight: 600;
+  color: var(--primary);
+  border-left: 3px solid var(--primary);
+}
+
+/* Modal Dialog System */
+.modal-overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 10000;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.modal-overlay.active {
+  display: flex;
+}
+
+.modal-box {
+  background: #ffffff;
+  border-radius: 3px;
+  width: 100%;
+  max-width: 580px;
+  max-height: 90vh;
+  overflow-y: auto;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
+  border: 1px solid var(--border-dark);
+}
+
+.modal-header {
+  padding: 14px 18px;
+  background: #f8fafc;
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.modal-header h3 {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--text-main);
+  margin: 0;
+}
+
+.modal-close {
+  background: none;
+  border: none;
+  font-size: 18px;
+  cursor: pointer;
+  color: #888;
+}
+
+.modal-close:hover {
+  color: #000;
+}
+
+.modal-body {
+  padding: 18px;
+}
+
+.modal-footer {
+  padding: 12px 18px;
+  background: #f8fafc;
+  border-top: 1px solid var(--border);
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+}
+
+.modal-result-box {
+  display: none;
+  background: #f0fdf4;
+  border: 1px solid #bbf7d0;
+  border-radius: 2px;
+  padding: 12px;
+  margin-top: 14px;
+  font-size: 12.5px;
+}
+
+.modal-result-box.active {
+  display: block;
+}
+
+/* Audio Player Widget (Ministry of Propaganda) */
+.radio-player-card {
+  background: #1c1917;
+  color: #fff;
+  border-radius: 2px;
+  padding: 16px;
+  margin-bottom: 16px;
+}
+
+.radio-player-card h3 {
+  color: #fb923c;
+}
+
+.radio-stream-btn {
+  background: #ea580c;
+  color: #fff;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 2px;
+  cursor: pointer;
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.radio-stream-btn:hover {
+  background: #c2410c;
+}
+
+/* Compatibility Aliases for components */
+.ol-modal-overlay { position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.5); z-index: 10000; display: none; align-items: center; justify-content: center; padding: 20px; }
+.ol-modal-overlay.active { display: flex; }
+.ol-modal-dialog { background: #fff; border-radius: 3px; width: 100%; max-width: 580px; max-height: 90vh; overflow-y: auto; box-shadow: 0 10px 25px rgba(0,0,0,0.25); border: 1px solid var(--border-dark); }
+.ol-modal-head { padding: 14px 18px; background: #f8fafc; border-bottom: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; }
+.ol-modal-title { font-size: 16px; font-weight: 600; color: var(--text-main); }
+.ol-modal-close { background: none; border: none; font-size: 20px; cursor: pointer; color: #888; }
+.ol-modal-close:hover { color: #000; }
+.ol-modal-foot { padding: 12px 18px; background: #f8fafc; border-top: 1px solid var(--border); display: flex; justify-content: flex-end; gap: 10px; }
+.ol-input, .ol-select, .ol-textarea { width: 100%; padding: 7px 10px; border: 1px solid var(--border-dark); border-radius: 2px; font-size: 13px; font-family: inherit; background: #fff; color: var(--text-main); outline: none; box-sizing: border-box; }
+.ol-input:focus, .ol-select:focus, .ol-textarea:focus { border-color: var(--primary); }
+.ol-btn { display: inline-flex; align-items: center; justify-content: center; gap: 6px; padding: 7px 14px; font-size: 13px; font-weight: 500; border-radius: 2px; cursor: pointer; border: 1px solid var(--border-dark); background: #fff; color: var(--text-main); font-family: inherit; text-decoration: none; }
+.ol-btn:hover { background: #f7f7f7; text-decoration: none; }
+.ol-btn-primary { background: var(--primary); color: #fff; border-color: transparent; }
+.ol-btn-primary:hover { filter: brightness(0.92); color: #fff; }
+.ol-btn-sm { padding: 4px 8px; font-size: 11.5px; }
+.ol-badge-tag { display: inline-block; font-size: 11px; font-weight: 600; padding: 2px 7px; border-radius: 2px; text-transform: uppercase; letter-spacing: 0.3px; background: #e0f2fe; color: #0369a1; border: 1px solid #bae6fd; }
+.ol-badge-success { background: #dcfce7; color: #15803d; border: 1px solid #bbf7d0; }
+.ol-grid-2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 12px; }
+.ol-grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px; }
+.ol-note { background: #f8fafc; border-left: 3px solid var(--primary); padding: 8px 12px; font-size: 12.5px; color: var(--text-muted); }
+.ol-sidebox { background: var(--card-bg); border: 1px solid var(--border); border-radius: 2px; padding: 14px; margin-bottom: 14px; }
+.ol-sidebox h3 { font-size: 14px; font-weight: 600; margin-bottom: 6px; }
+.ol-status-bubble { background: #eef5fc; border-left: 4px solid var(--primary); padding: 12px 16px; margin-bottom: 16px; font-style: italic; font-size: 13.5px; border-radius: 2px; }
+.ol-status-date { font-style: normal; font-size: 11px; color: var(--text-muted); margin-top: 4px; text-transform: uppercase; font-weight: 600; }
+.ol-card-title { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; font-size: 15px; font-weight: 600; color: var(--primary); }
+.ol-title-link { font-size: 12px; font-weight: 500; }
+.ol-small { font-size: 12px; }
+.ol-muted { color: var(--text-muted); }
+.ol-mt-10 { margin-top: 10px; }
+.modal-telemetry-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 10px; margin-top: 10px; }
+.telemetry-card { background: #f8fafc; border: 1px solid var(--border); border-radius: 2px; padding: 8px; text-align: center; }
+.telemetry-name { font-size: 11px; color: var(--text-muted); text-transform: uppercase; font-weight: 600; }
+.telemetry-val { font-size: 18px; font-weight: 700; color: var(--primary); margin: 2px 0; }
+.telemetry-sub { font-size: 11px; color: var(--text-light); }
+.modal-results-box { display: none; background: #f0fdf4; border: 1px solid #bbf7d0; border-radius: 2px; padding: 12px; margin: 12px 18px; font-size: 12.5px; }
+.modal-results-box.active { display: block; }
+#modal-dynamic-fields { padding: 14px 18px; }
+
+/* Responsive adjustments */
+@media (max-width: 800px) {
+  .main-wrapper {
+    grid-template-columns: 1fr;
+  }
+  .subnav {
+    overflow-x: auto;
+  }
+  .hero-header {
+    padding: 16px 20px 20px 20px;
+  }
+}
+
+  </style>
+  <link rel="stylesheet" href="/css/sangaia-live.css?v=20261019_v4">
+  <script src="/js/sangaia-live.js" defer></script>
+</head>
+<body class="theme-healthcare">
+
+  <!-- Top Hero Header -->
+  <header class="hero-header">
+    <div class="top-bar">
+      <div class="brand">
+        <a href="/index.html"><span class="mif-windows"></span> Sangaia Live</a>
+      </div>
+      <div class="top-right">
+        <form class="search-box" action="/services.html" method="get">
+          <input type="text" name="q" placeholder="Search services, laws &amp; gazette" />
+          <button type="submit" aria-label="Search"><span class="mif-search"></span></button>
+        </form>
+        <div class="user-profile-menu" id="userProfileMenu">
+          <img src="/images/default-wl.png" alt="Avatar" width="28" height="28" style="width:28px; height:28px; border-radius:2px; object-fit:contain; background:#ffffff;" />
+          <span>Jqackkk</span>
+          <span class="mif-arrow-drop-down" style="font-size: 14px;"></span>
+          <div class="user-dropdown">
+            <div class="user-dropdown-header">Citizen: SG-2026-F1E8</div>
+            <a href="/id.html"><span class="mif-profile"></span> Sangaia ID Card</a>
+            <a href="/citizenship.html"><span class="mif-checkmark"></span> Citizenship Status</a>
+            <a href="/units.html"><span class="mif-compass"></span> Units &amp; Measures</a>
+            <a href="/dashboard.html"><span class="mif-chart-bars"></span> Sovereign Registry</a>
+            <div style="border-top:1px solid #e1dfdd; margin:4px 0;"></div>
+            <a href="/index.html"><span class="mif-home"></span> Federal Home</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="hero-content">
+      <h1>Hospital Emergency Network & Regional Medical Centers</h1>
+      <p>Level 1 trauma care, acute intensive triage, and regional medical facilities across all 5 sovereign provinces</p>
+    </div>
+  </header>
+
+  <!-- Navigation Bar -->
+  <nav class="subnav">
+    <a href="/healthcare.html">Healthcare Home</a>
+    <a href="/healthcare_departments.html">Departments</a>
+    <a href="/healthcare_services.html">Medical Services</a>
+    <a href="/healthcare_hospitals.html" class="active">5-Province Hospitals</a>
+    <a href="/healthcare_research.html">Medical Research</a>
+    <a href="/healthcare_support.html">Patient Support</a>
+    <a href="/mH/ddcr/index.html">DDCR Disease Control</a>
+    <a href="/index.html">← Federal Portal</a>
+  </nav>
+
+  <!-- Content Grid -->
+  <main class="main-wrapper">
+    <!-- Left Column: Primary Content -->
+    <div class="left-col">
+
+    <!-- Hospital Network Overview -->
+    <div class="ol-card" id="overview">
+        <div class="ol-card-title">
+            <span>Sangaia Integrated Hospital Network</span>
+            <span class="ol-badge-tag ol-badge-success">5 Provincial Centers Active</span>
+        </div>
+        <p>Sangaia boasts a fully integrated network of state-of-the-art public hospitals across all five sovereign provinces. Every facility operates 24/7 acute trauma response, subsidized neonatal and pediatric wings, and emergency room care with zero out-of-pocket costs for registered citizens.</p>
+        <div class="ol-grid-3" style="margin-top:12px;">
+            <div style="background:#f8fafc; border:1px solid #e1dfdd; border-radius:2px; padding:10px; text-align:center;">
+                <div style="font-size:11px; color:#605e5c; text-transform:uppercase; font-weight:600;">Average ER Wait Time</div>
+                <div style="font-size:18px; font-weight:700; color:#b91c1c; margin:4px 0;">12 Minutes</div>
+                <div style="font-size:11px; color:#8a8886;">Rapid Triage Standard</div>
+            </div>
+            <div style="background:#f8fafc; border:1px solid #e1dfdd; border-radius:2px; padding:10px; text-align:center;">
+                <div style="font-size:11px; color:#605e5c; text-transform:uppercase; font-weight:600;">Emergency Copay</div>
+                <div style="font-size:18px; font-weight:700; color:#b91c1c; margin:4px 0;">$ 0.00</div>
+                <div style="font-size:11px; color:#8a8886;">100% Sovereign Funded</div>
+            </div>
+            <div style="background:#f8fafc; border:1px solid #e1dfdd; border-radius:2px; padding:10px; text-align:center;">
+                <div style="font-size:11px; color:#605e5c; text-transform:uppercase; font-weight:600;">Helipad Capacity</div>
+                <div style="font-size:18px; font-weight:700; color:#b91c1c; margin:4px 0;">5 / 5 Bases</div>
+                <div style="font-size:11px; color:#8a8886;">Air Medevac Active</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Province 1: Watson Healthcare (New Jasper) -->
+    <div class="ol-card" id="watson">
+        <div class="ol-card-title">
+            <span>Watson Healthcare &bull; Province of New Jasper</span>
+            <span class="ol-badge-tag">Level 1 Trauma Center</span>
+        </div>
+        <div style="display:flex; flex-direction:column; gap:6px; font-size:13px; margin:8px 0;">
+            <div><strong>Sangaian Address:</strong> H0001 1st Street, Shesk, New Jasper, 1-1000</div>
+            <div style="color:#605e5c;"><em>Map Reference: 506 4th St NW, Jasper, FL 32052</em></div>
+            <div><strong>Key Departments:</strong> Emergency Medicine, Cardiovascular Surgery, Pediatric ICU, Orthopedics</div>
+            <div><strong>ER Availability:</strong> 24/7 Triage &bull; 48 Acute Beds &bull; Immediate Trauma Team</div>
+        </div>
+        <div style="margin-top:10px;">
+            <button type="button" class="ol-btn ol-btn-sm" onclick="alert('Routing directions to Watson Healthcare (New Jasper)...')">Get Driving Directions &rarr;</button>
+        </div>
+    </div>
+
+    <!-- Province 2: New Madison Hospital (New Madison) -->
+    <div class="ol-card" id="madison">
+        <div class="ol-card-title">
+            <span>New Madison Hospital &bull; Province of New Madison</span>
+            <span class="ol-badge-tag">Regional Acute Center</span>
+        </div>
+        <div style="display:flex; flex-direction:column; gap:6px; font-size:13px; margin:8px 0;">
+            <div><strong>Sangaian Address:</strong> H0002 2nd Street, Madison City, New Madison, 1-2000</div>
+            <div style="color:#605e5c;"><em>Map Reference: 224 NW Crane Ave, Madison, FL 32340</em></div>
+            <div><strong>Key Departments:</strong> Intensive Care, Maternal Health, Emergency Pediatrics, Dialysis Unit</div>
+            <div><strong>ER Availability:</strong> 24/7 Triage &bull; 36 Acute Beds &bull; Dedicated Stroke Response Unit</div>
+        </div>
+        <div style="margin-top:10px;">
+            <button type="button" class="ol-btn ol-btn-sm" onclick="alert('Routing directions to New Madison Hospital (New Madison)...')">Get Driving Directions &rarr;</button>
+        </div>
+    </div>
+
+    <!-- Province 3: Suwannee Emergency (Liveland) -->
+    <div class="ol-card" id="suwannee">
+        <div class="ol-card-title">
+            <span>Suwannee Emergency Hospital &bull; Province of Liveland</span>
+            <span class="ol-badge-tag">Rapid Response Center</span>
+        </div>
+        <div style="display:flex; flex-direction:column; gap:6px; font-size:13px; margin:8px 0;">
+            <div><strong>Sangaian Address:</strong> H0003 3rd Street, Oaks, Liveland, 1-3000</div>
+            <div style="color:#605e5c;"><em>Map Reference: 1100 11th St SW, Live Oak, FL 32064</em></div>
+            <div><strong>Key Departments:</strong> Rapid Emergency Triage, Acute Medical Care, Helipad Dispatch, Surgical Suites</div>
+            <div><strong>ER Availability:</strong> 24/7 Triage &bull; 40 Acute Beds &bull; Coastal Disaster Relief Wing</div>
+        </div>
+        <div style="margin-top:10px;">
+            <button type="button" class="ol-btn ol-btn-sm" onclick="alert('Routing directions to Suwannee Emergency (Liveland)...')">Get Driving Directions &rarr;</button>
+        </div>
+    </div>
+
+    <!-- Province 4: Sentinel Memorial Hospital (Sentinel) -->
+    <div class="ol-card" id="sentinel">
+        <div class="ol-card-title">
+            <span>Sentinel Memorial Hospital &bull; Province of Sentinel</span>
+            <span class="ol-badge-tag">Neurological & Trauma Hub</span>
+        </div>
+        <div style="display:flex; flex-direction:column; gap:6px; font-size:13px; margin:8px 0;">
+            <div><strong>Sangaian Address:</strong> H0004 4th Street, Sentinel Ridge, Sentinel, 1-4000</div>
+            <div style="color:#605e5c;"><em>Map Reference: 168 NW Main Blvd, Lake City, FL 32055</em></div>
+            <div><strong>Key Departments:</strong> Specialized Neurological Wing, Orthopedic Surgery, Free Emergency Care, Burn Center</div>
+            <div><strong>ER Availability:</strong> 24/7 Triage &bull; 54 Acute Beds &bull; Advanced CT / MRI Diagnostic Suite</div>
+        </div>
+        <div style="margin-top:10px;">
+            <button type="button" class="ol-btn ol-btn-sm" onclick="alert('Routing directions to Sentinel Memorial Hospital (Sentinel)...')">Get Driving Directions &rarr;</button>
+        </div>
+    </div>
+
+    <!-- Province 5: Columbia Regional Medical Center (Columbia) -->
+    <div class="ol-card" id="columbia">
+        <div class="ol-card-title">
+            <span>Columbia Regional Medical Center &bull; Province of Columbia</span>
+            <span class="ol-badge-tag">Comprehensive Medical Hub</span>
+        </div>
+        <div style="display:flex; flex-direction:column; gap:6px; font-size:13px; margin:8px 0;">
+            <div><strong>Sangaian Address:</strong> H0005 5th Street, Columbia City, Columbia, 1-5000</div>
+            <div style="color:#605e5c;"><em>Map Reference: 4288 SW State Road 47, Lake City, FL 32024</em></div>
+            <div><strong>Key Departments:</strong> Regional Oncology Center, Neonatal ICU, Sovereign Healthcare Research Hub, Toxicology</div>
+            <div><strong>ER Availability:</strong> 24/7 Triage &bull; 62 Acute Beds &bull; State-Level Pandemic Isolation Wing</div>
+        </div>
+        <div style="margin-top:10px;">
+            <button type="button" class="ol-btn ol-btn-sm" onclick="alert('Routing directions to Columbia Regional Medical Center (Columbia)...')">Get Driving Directions &rarr;</button>
+        </div>
+    </div>
+
+    <!-- Emergency Protocols -->
+    <div class="ol-card" id="emergency-protocols">
+        <div class="ol-card-title">
+            <span>Emergency Medical Transport &amp; Ambulance Dispatch</span>
+            <span class="ol-badge-tag" style="background:#b91c1c; color:#fff; border-color:#991b1b;">Hotline: 9-1-1</span>
+        </div>
+        <p>If you or someone near you experiences chest pain, severe hemorrhage, respiratory distress, or trauma, dial <strong>9-1-1</strong> immediately. Ambulance dispatch is 100% sovereign-funded with zero out-of-pocket bills for all residents.</p>
+    </div>
+    
+    </div>
+
+    <!-- Right Column: Official Sidebar Widgets -->
+    <aside class="sidebar">
+
+      <div class="card">
+        <h3>Ministry of Healthcare</h3>
+        <p style="color: var(--text-muted); font-size: 12px; margin-bottom: 8px;">5-Province Hospital Network</p>
+        <ul class="sidebar-nav-list">
+          <li><a href="#overview" class="active"><span class="mif-chevron-right"></span> Overview & ER Triage</a></li>
+<li><a href="#watson"><span class="mif-chevron-right"></span> Watson Healthcare (New Jasper)</a></li>
+<li><a href="#madison"><span class="mif-chevron-right"></span> New Madison Hospital (New Madison)</a></li>
+<li><a href="#suwannee"><span class="mif-chevron-right"></span> Suwannee Emergency (Liveland)</a></li>
+<li><a href="#sentinel"><span class="mif-chevron-right"></span> Sentinel Memorial Hospital (Sentinel)</a></li>
+<li><a href="#columbia"><span class="mif-chevron-right"></span> Columbia Regional Center (Columbia)</a></li>
+<li><a href="#emergency-protocols"><span class="mif-chevron-right"></span> Emergency Protocols</a></li>
+
+        </ul>
+      </div>
+
+
+      <div class="card" style="font-size: 12px; line-height: 1.6;">
+        <h3 style="color: var(--text-main); margin-bottom: 6px;">Official Government Seal</h3>
+        <p style="color: var(--text-muted); margin-bottom: 8px;">United Provinces of Sangaia &bull; Sovereign Constitutional Gateway</p>
+        <div style="display: flex; flex-direction: column; gap: 4px; color: var(--text-muted);">
+          <div><strong style="color: var(--text-main);">Jurisdiction:</strong> 5 Provinces (New Jasper, New Madison, Liveland, Sentinel, Columbia)</div>
+          <div><strong style="color: var(--text-main);">Currency:</strong> $ (Sangaian Dollar)</div>
+          <div><strong style="color: var(--text-main);">Standards:</strong> Панотерм (°Пт) &bull; Мономер (Мн)</div>
+          <div><strong style="color: var(--text-main);">Classification:</strong> Verified Official Portal</div>
+        </div>
+      </div>
+
+
+    <div class="ol-sidebox">
+        <h3>Emergency Dispatch</h3>
+        <p class="ol-small ol-muted">24/7 Sovereign Triage Dispatchers standing by across New Jasper, New Madison, Liveland, Sentinel, and Columbia.</p>
+        <div class="ol-mt-10">
+            <a href="tel:911" class="ol-btn ol-btn-primary ol-btn-sm" style="width:100%; text-align:center; background:#b91c1c; border-color:#991b1b;">Dial Emergency 9-1-1</a>
+        </div>
+    </div>
+    <div class="ol-sidebox">
+        <h3>Statutory Health Directory</h3>
+        <p class="ol-small ol-muted">Explore statutory departments, health licenses, and clinical standards.</p>
+        <div class="ol-mt-10">
+            <a href="/healthcare_departments.html" class="ol-btn ol-btn-sm" style="width:100%; text-align:center;">Launch Departments</a>
+        </div>
+    </div>
+    
+    </aside>
+  </main>
+
+
+
+</body>
+</html>

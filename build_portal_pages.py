@@ -40,84 +40,35 @@ def build_index():
     ]
 
     main_content = """
-    <!-- Post Composer Card -->
-    <div class="card composer">
-        <div class="toolbar">
-            <button class="tool-btn" onclick="formatDoc('bold')">B</button>
-            <button class="tool-btn" onclick="formatDoc('italic')">I</button>
-            <button class="tool-btn" onclick="formatDoc('underline')">U</button>
-            <button class="tool-btn" onclick="formatDoc('strikeThrough')">S</button>
-            <button class="tool-btn" aria-label="Link"><span class="mif-link"></span></button>
-            <button class="tool-btn" aria-label="Emoji"><span class="mif-face"></span></button>
-            <div class="color-picker"></div>
-            <select id="fontSelect">
-                <option>Segoe WP (default)</option>
-                <option>Segoe UI</option>
-                <option>Metropolis</option>
-                <option>Hanken Grotesk</option>
-                <option>Tahoma</option>
-                <option>Verdana</option>
-            </select>
-            <select id="audienceSelect">
-                <option>Everyone</option>
-                <option>My network</option>
-                <option>Only me</option>
-            </select>
-        </div>
-
-        <textarea id="postInput" placeholder="What's on your mind?"></textarea>
-
-        <div class="composer-footer">
-            <button class="btn-share" id="postBtn">Share</button>
-            <div class="composer-actions">
-                <a>Add photo</a>
-                <a>Add video</a>
-                <a>Attach file</a>
-            </div>
-        </div>
-    </div>
-
-    <!-- Feed Container -->
-    <div class="card">
-        <div class="feed-tabs">
-            <a href="#" class="active">What's new?</a>
-            <a href="#">My network</a>
-            <a href="#">Groups</a>
-            <a href="#">Global network</a>
-            <a href="#">Umiki</a>
-            <span class="mif-filter filter-icon" aria-label="Filter"></span>
-        </div>
-
-        <div id="postsList">
-            <div class="post-item">
-                <img class="post-avatar" src="/images/default-wl.png" alt="avatar" width="44" height="44" style="width:44px; height:44px; border-radius:2px; object-fit:contain; background:#ffffff;" />
-                <div class="post-content-wrap">
-                    <p><a href="/id.html" class="post-author">Jqackkk</a> says: "Coding"</p>
-                    <div class="post-meta">3 hours ago &bull; Sangaia Sovereign Network</div>
-                </div>
-            </div>
-
-            <div class="post-item">
-                <img class="post-avatar" src="/images/default-wl.png" alt="avatar" width="44" height="44" style="width:44px; height:44px; border-radius:2px; object-fit:contain; background:#ffffff;" />
-                <div class="post-content-wrap">
-                    <p><a href="/id.html" class="post-author">Jqackkk</a> changed their profile picture</p>
-                    <div class="post-meta">4 days ago</div>
-                </div>
-            </div>
-
-            <div class="post-item">
-                <img class="post-avatar" src="/images/default-wl.png" alt="avatar" width="44" height="44" style="width:44px; height:44px; border-radius:2px; object-fit:contain; background:#ffffff;" />
-                <div class="post-content-wrap">
-                    <p><a href="/id.html" class="post-author">Jqackkk</a> published <a href="/id.html">Sangaia ID</a> on <a href="/services.html">the Live Store</a></p>
-                    <div class="post-meta">4 days ago</div>
-                </div>
-            </div>
-        </div>
-    </div>
-
     <div class="ol-status-bubble" id="overview">
         &ldquo;Welcome to Sangaia Live: The unified federal gateway for all sovereign public services, provincial coordination, and civic identity.&rdquo;
-        <div class="ol-status-date">Sovereign State Gazette &bull; Updated Today</div>
+        <div class="ol-status-date">Sovereign State Gazette &bull; Official Federal Dispatch</div>
+    </div>
+
+    <!-- Official Republic Overview Card -->
+    <div class="ol-card">
+        <div class="ol-card-title">
+            <span>Executive Federal Overview</span>
+            <span class="ol-badge-tag ol-badge-success">Constitutional Republic</span>
+        </div>
+        <p>Sangaia is a sovereign constitutional republic operating under the Aeretocracy. Sangaia unites five autonomous provinces—<strong>New Jasper, New Madison, Liveland, Sentinel, and Columbia</strong>—providing universal public services, guaranteed living wages ($25.00/hr floor), zero foreign sovereign debt, and tuition-free education and healthcare.</p>
+        <div class="ol-grid-3" style="margin-top:12px;">
+            <div style="background:#f8fafc; border:1px solid #e1dfdd; border-radius:2px; padding:10px; text-align:center;">
+                <div style="font-size:11px; color:#605e5c; text-transform:uppercase; font-weight:600;">Sovereign Currency</div>
+                <div style="font-size:18px; font-weight:700; color:#0078d4; margin:4px 0;">$ (Dollar)</div>
+                <div style="font-size:11px; color:#8a8886;">Zero Foreign Debt</div>
+            </div>
+            <div style="background:#f8fafc; border:1px solid #e1dfdd; border-radius:2px; padding:10px; text-align:center;">
+                <div style="font-size:11px; color:#605e5c; text-transform:uppercase; font-weight:600;">Temperature Standard</div>
+                <div style="font-size:18px; font-weight:700; color:#0078d4; margin:4px 0;">Панотерм (°Пт)</div>
+                <div style="font-size:11px; color:#8a8886;">°Пт = 0.5 &times; (°F - 32)</div>
+            </div>
+            <div style="background:#f8fafc; border:1px solid #e1dfdd; border-radius:2px; padding:10px; text-align:center;">
+                <div style="font-size:11px; color:#605e5c; text-transform:uppercase; font-weight:600;">Distance Standard</div>
+                <div style="font-size:18px; font-weight:700; color:#0078d4; margin:4px 0;">Мономер (Мн)</div>
+                <div style="font-size:11px; color:#8a8886;">1 Мн = 2.5 cm</div>
+            </div>
+        </div>
     </div>
 
     <!-- 3D Flip Provincial Showcase -->
@@ -226,7 +177,16 @@ def build_index():
     </div>
     """
 
-    generate_page("index.html", title, theme, tab, hero_title, hero_sub, "Sovereign Republic of Sangaia", "Federal Executive Gateway", "Live Infrastructure", sidebar_links, main_content, sidebar_right)
+    federal_nav_tabs = [
+        ("home", "Federal Home", "/index.html"),
+        ("overview", "Overview", "#overview"),
+        ("showcase", "5 Provinces", "#showcase"),
+        ("aeretocracy", "The Aeretocracy", "#aeretocracy"),
+        ("ministries", "9 Ministries", "#ministries"),
+        ("services", "Services", "/services.html"),
+        ("units", "Units (Мн • °Пт)", "/units.html"),
+    ]
+    generate_page("index.html", title, theme, tab, hero_title, hero_sub, "Sovereign Republic of Sangaia", "Federal Executive Gateway", "Live Infrastructure", sidebar_links, main_content, sidebar_right, custom_nav_tabs=federal_nav_tabs)
 
 # -----------------------------------------------------------------------------
 # 2. SOVEREIGN WEIGHTS & MEASURES (units.html)
@@ -247,7 +207,6 @@ def build_units():
     ]
 
     main_content = """
-    </div>
 
     <!-- Panotherm Temperature Converter -->
     <div class="card" id="overview"><a id="temp-converter"></a>
@@ -490,7 +449,6 @@ def build_services():
     ]
 
     main_content = """
-    </div>
 
     <div class="ol-card">
         <div class="ol-card-title">
@@ -638,7 +596,6 @@ def build_citizenship():
     ]
 
     main_content = """
-    </div>
 
     <div class="card" id="overview"><a id="charter"></a>
         <div class="ol-card-title">
@@ -710,7 +667,6 @@ def build_gov_about():
     ]
 
     main_gov = """
-    </div>
 
     <div class="ol-card" id="virtues">
         <div class="ol-card-title">
@@ -768,7 +724,6 @@ def build_gov_about():
     ]
 
     main_about = """
-    </div>
 
     <div class="ol-card" id="history">
         <div class="ol-card-title">
@@ -819,7 +774,6 @@ def build_societal_press():
     ]
 
     main_content = """
-    </div>
 
     <div class="ol-card">
         <div class="ol-card-title">
@@ -861,7 +815,6 @@ def build_supporting_portals():
 
     # dashboard.html
     dash_content = """
-    </div>
     <div class="ol-card">
         <div class="ol-card-title">
             <span>Macroeconomic &amp; Fiscal Key Performance Indicators</span>
@@ -907,7 +860,6 @@ def build_supporting_portals():
 
     # application.html
     app_content = """
-    </div>
     <div class="ol-card">
         <div class="ol-card-title">
             <span>Submit Official Civic Application</span>
@@ -956,7 +908,6 @@ def build_supporting_portals():
 
     # id.html
     id_content = """
-    </div>
     <div class="ol-card" style="max-width:520px; margin:0 auto; background:#ffffff; border:2px solid #7fa8c0; border-radius:6px; box-shadow:0 6px 20px rgba(0,0,0,0.1);">
         <div style="background:linear-gradient(135deg, #1e3a8a, #2563eb); color:#ffffff; padding:12px 16px; border-radius:4px 4px 0 0; display:flex; justify-content:space-between; align-items:center;">
             <div>
@@ -994,7 +945,6 @@ def build_supporting_portals():
 
     # literacy_test.html & literacy_exam_en.html
     exam_content = """
-    </div>
     <div class="ol-card">
         <div class="ol-card-title">
             <span>Civic Naturalization Examination</span>

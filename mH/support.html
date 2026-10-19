@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Ministry of Healthcare :: Sangaia Live</title>
+  <title>Patient Support, Citizen Advocacy & Healthcare FAQ :: Sangaia Live</title>
   <link href="https://cdn.metroui.org.ua/4.5.12/icons.css" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
   <style>
@@ -1085,7 +1085,7 @@ a:hover {
 }
 
   </style>
-  <link rel="stylesheet" href="/css/sangaia-live.css?v=20261019_v3">
+  <link rel="stylesheet" href="/css/sangaia-live.css?v=20261019_v4">
   <script src="/js/sangaia-live.js" defer></script>
 </head>
 <body class="theme-healthcare">
@@ -1098,7 +1098,7 @@ a:hover {
       </div>
       <div class="top-right">
         <form class="search-box" action="/services.html" method="get">
-          <input type="text" name="q" placeholder="Search people &amp; posts" />
+          <input type="text" name="q" placeholder="Search services, laws &amp; gazette" />
           <button type="submit" aria-label="Search"><span class="mif-search"></span></button>
         </form>
         <div class="user-profile-menu" id="userProfileMenu">
@@ -1110,7 +1110,7 @@ a:hover {
             <a href="/id.html"><span class="mif-profile"></span> Sangaia ID Card</a>
             <a href="/citizenship.html"><span class="mif-checkmark"></span> Citizenship Status</a>
             <a href="/units.html"><span class="mif-compass"></span> Units &amp; Measures</a>
-            <a href="/dashboard.html"><span class="mif-chart-bars"></span> Sovereign Telemetry</a>
+            <a href="/dashboard.html"><span class="mif-chart-bars"></span> Sovereign Registry</a>
             <div style="border-top:1px solid #e1dfdd; margin:4px 0;"></div>
             <a href="/index.html"><span class="mif-home"></span> Federal Home</a>
           </div>
@@ -1118,25 +1118,21 @@ a:hover {
       </div>
     </div>
     <div class="hero-content">
-      <h1>Ministry of Healthcare</h1>
-      <p>Universal state-sponsored health coverage, hospital emergency room triage & public disease control</p>
+      <h1>Patient Support & Citizen Advocacy</h1>
+      <p>24/7 medical advice hotline, patient rights, hospital navigator, and comprehensive healthcare FAQ</p>
     </div>
   </header>
 
   <!-- Navigation Bar -->
   <nav class="subnav">
-    <a href="/index.html">Home</a>
-    <a href="/executive.html">Executive</a>
-    <a href="/treasury.html">Treasury</a>
-    <a href="/work.html">Work</a>
-    <a href="/healthcare.html" class="active">Healthcare</a>
-    <a href="/education.html">Education</a>
-    <a href="/domesticaffairs.html">Domestic</a>
-    <a href="/externalaffairs.html">External</a>
-    <a href="/environment.html">Environment</a>
-    <a href="/propaganda.html">Propaganda</a>
-    <a href="/services.html">Services</a>
-    <a href="/units.html">Units (Мн • °Пт)</a>
+    <a href="index.html">Healthcare Home</a>
+    <a href="departments.html">Departments</a>
+    <a href="services.html">Medical Services</a>
+    <a href="hospitals.html">5-Province Hospitals</a>
+    <a href="research.html">Medical Research</a>
+    <a href="support.html" class="active">Patient Support</a>
+    <a href="ddcr/index.html">DDCR Disease Control</a>
+    <a href="https://sangaia.org/index.html">← Federal Portal</a>
   </nav>
 
   <!-- Content Grid -->
@@ -1144,221 +1140,102 @@ a:hover {
     <!-- Left Column: Primary Content -->
     <div class="left-col">
 
+    <!-- Patient Support Overview -->
+    <div class="ol-card" id="overview">
+        <div class="ol-card-title">
+            <span>Patient Support &amp; Healthcare Navigation</span>
+            <span class="ol-badge-tag ol-badge-success">Advocacy Services Free</span>
+        </div>
+        <p>The Patient Support Directorate assists citizens with hospital appointments, medical record transfers between provinces, accessibility accommodations, and grievance resolution. We ensure that every patient receives compassionate, prompt, and dignified care.</p>
     </div>
 
-    <!-- Universal Coverage Screening -->
-    <div class="card" id="overview"><a id="coverage"></a>
+    <!-- Frequently Asked Questions -->
+    <div class="ol-card" id="faq">
         <div class="ol-card-title">
-            <span>Universal Healthcare Coverage &amp; Digital Insurance Verification</span>
-            <span class="ol-badge-tag ol-badge-success">Zero Out-of-Pocket Fees</span>
+            <span>Frequently Asked Questions</span>
+            <span class="ol-badge-tag">Sangaia Health Mandate</span>
         </div>
-        <p class="ol-small">Every registered Sangaia ID holder is automatically enrolled into Tier 1 Universal Comprehensive Care, covering hospitalization, dental surgery, psychological therapy, and prescription drugs.</p>
-        <div class="ol-grid-3" style="margin-top:10px;">
-            <div class="ol-metric-box">
-                <div class="ol-metric-val">$ 0.00</div>
-                <div class="ol-metric-lbl">Copay at Point of Care</div>
+        <div style="display:flex; flex-direction:column; gap:12px; margin-top:8px;">
+            <div style="background:#f8fafc; border:1px solid #e1dfdd; border-radius:2px; padding:12px;">
+                <strong style="color:#b91c1c; font-size:14px;">How do I apply for healthcare?</strong>
+                <p class="ol-small" style="margin-top:4px;">All citizens are automatically eligible for universal healthcare under the Sangaian Health Mandate upon receipt of their Sangaia ID. You can present your physical or digital Sangaia ID at any provincial clinic or hospital for immediate registration.</p>
             </div>
-            <div class="ol-metric-box">
-                <div class="ol-metric-val">100%</div>
-                <div class="ol-metric-lbl">Subsidized Generic Rx</div>
-            </div>
-            <div class="ol-metric-box">
-                <div class="ol-metric-val">5 Provinces</div>
-                <div class="ol-metric-lbl">Unified Digital Charting</div>
-            </div>
-        </div>
-    </div>
 
-    <!-- Live Hospital ER Capacity Metrics Across the 5 Provinces -->
-    <div class="ol-card" id="hospitals">
-        <div class="ol-card-title">
-            <span>Live Hospital Emergency Room Capacity Across the 5 Provinces</span>
-            <span class="ol-badge-tag ol-badge-success">Live Triage Network</span>
-        </div>
-        <p class="ol-small ol-muted">Real-time telemetry of regional trauma centers across all 5 Sovereign Provinces.</p>
-        <table class="ol-table">
-            <thead>
-                <tr>
-                    <th>Provincial Medical Center</th>
-                    <th>Territory</th>
-                    <th>ICU Beds Free</th>
-                    <th>Avg Triage Wait</th>
-                    <th>Trauma Status</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr><td>Shesk Sovereign University Hospital</td><td>New Jasper</td><td>24 / 80 Free</td><td>12 min</td><td><span class="ol-badge-tag ol-badge-success">Operational</span></td></tr>
-                <tr><td>Madison Valley Regional Trauma Center</td><td>New Madison</td><td>18 / 60 Free</td><td>15 min</td><td><span class="ol-badge-tag ol-badge-success">Operational</span></td></tr>
-                <tr><td>Oaks Coastal Marine Hospital</td><td>Liveland</td><td>32 / 70 Free</td><td>8 min</td><td><span class="ol-badge-tag ol-badge-success">Operational</span></td></tr>
-                <tr><td>Sentinel Ridge Highland Clinic</td><td>Sentinel</td><td>14 / 40 Free</td><td>10 min</td><td><span class="ol-badge-tag ol-badge-success">Operational</span></td></tr>
-                <tr><td>Columbia City Metropolitan Health Hub</td><td>Columbia</td><td>28 / 65 Free</td><td>14 min</td><td><span class="ol-badge-tag ol-badge-success">Operational</span></td></tr>
-            </tbody>
-        </table>
-    </div>
-
-    <!-- Disease Control & CDC Research -->
-    <div class="ol-card" id="cdc">
-        <div class="ol-card-title">
-            <span>National Disease Control Telemetry &amp; Public Hygiene</span>
-            <span class="ol-badge-tag ol-badge-success">Epidemic Index: LOW</span>
-        </div>
-        <div class="ol-grid-2" style="margin-top:10px;">
-            <div style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:3px; padding:12px;">
-                <strong>Water Quality &amp; Pathogen Screening:</strong>
-                <div class="ol-small" style="margin-top:4px;">Municipal water testing conducted daily across all 5 provincial aquifers: 100% compliant with zero toxic chemical runoff.</div>
+            <div style="background:#f8fafc; border:1px solid #e1dfdd; border-radius:2px; padding:12px;">
+                <strong style="color:#b91c1c; font-size:14px;">What does the Sangaian Health Charter cover?</strong>
+                <p class="ol-small" style="margin-top:4px;">The Charter comprehensively covers preventative checkups, emergency room care, routine surgeries, organ transplants, mental health counseling, prescription medications on the national formulary, dental restorations, and corrective eye examinations at 100% state expense.</p>
             </div>
-            <div style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:3px; padding:12px;">
-                <strong>Respiratory &amp; Viral Surveillance:</strong>
-                <div class="ol-small" style="margin-top:4px;">Automated clinical monitoring shows seasonal influenza transmission at baseline levels. Emergency vaccination supply at 140% statutory threshold.</div>
+
+            <div style="background:#f8fafc; border:1px solid #e1dfdd; border-radius:2px; padding:12px;">
+                <strong style="color:#b91c1c; font-size:14px;">How do I find a doctor or specialist?</strong>
+                <p class="ol-small" style="margin-top:4px;">You may schedule an appointment directly at any public hospital in New Jasper, New Madison, Liveland, Sentinel, or Columbia. Referrals for specialized surgical disciplines are issued within 48 hours by your primary care physician.</p>
+            </div>
+
+            <div style="background:#f8fafc; border:1px solid #e1dfdd; border-radius:2px; padding:12px;">
+                <strong style="color:#b91c1c; font-size:14px;">What do I do in an emergency?</strong>
+                <p class="ol-small" style="margin-top:4px;">For life-threatening conditions, dial <strong>9-1-1</strong> immediately. For non-life-threatening medical guidance, you can call the 24/7 Sovereign Health Nurse Line at <strong>1-800-SANGAIA-CARE</strong>.</p>
             </div>
         </div>
     </div>
 
-    <!-- Paramedic & Emergency Ambulance Network -->
-    <div class="ol-card" id="ambulance">
+    <!-- Patient Rights Charter -->
+    <div class="ol-card" id="rights">
         <div class="ol-card-title">
-            <span>Paramedic Network &amp; Non-Emergency Medical Transport</span>
-            <button type="button" class="ol-btn ol-btn-sm" onclick="openAmbulanceModal()">Book Medical Transport</button>
+            <span>Patient Rights &amp; Legal Guarantees</span>
+            <span class="ol-badge-tag">Statutory Protection</span>
         </div>
-        <p class="ol-small">In life-threatening emergencies, dial <strong>9-1-1</strong>. For scheduled clinical transfers, dialysis transit, and mobility assistance, citizens may book state-funded transports.</p>
+        <p>Every individual receiving care in Sangaia is legally guaranteed:</p>
+        <ul style="margin:8px 0 0 20px; font-size:13px; line-height:1.6; color:#201f1e;">
+            <li>The right to informed consent, complete treatment disclosure, and dignity.</li>
+            <li>Zero surprise medical bills or commercial collection harassment.</li>
+            <li>Cryptographic privacy of electronic medical records under sovereign data protection laws.</li>
+            <li>Free interpretation services in any recognized regional or international language.</li>
+        </ul>
     </div>
     
     </div>
 
-    <!-- Right Column: Status & Sidebar Widgets -->
+    <!-- Right Column: Official Sidebar Widgets -->
     <aside class="sidebar">
-      <div class="card beta-banner">
-        This is a BETA experience. Things may be changed or removed at any time.
-      </div>
-
-      <div class="card">
-        <h3>Your status</h3>
-        <p style="color: var(--text-muted); font-size: 12px;">This shows next to your name across Sangaia Live.</p>
-        
-        <div class="status-input-group">
-          <input type="text" id="statusField" value="Serving Sangaia" />
-          <button type="button" aria-label="Status icon"><span class="mif-face"></span></button>
-        </div>
-
-        <div class="status-controls">
-          <button class="btn-status" id="updateStatusBtn">Update status</button>
-          <span class="btn-clear" id="clearStatusBtn">Clear</span>
-        </div>
-      </div>
 
       <div class="card">
         <h3>Ministry of Healthcare</h3>
-        <p style="color: var(--text-muted); font-size: 12px; margin-bottom: 8px;">Universal Health Authority</p>
+        <p style="color: var(--text-muted); font-size: 12px; margin-bottom: 8px;">Advocacy & FAQ</p>
         <ul class="sidebar-nav-list">
-          <li><a href="#overview" class="active"><span class="mif-chevron-right"></span> Overview & Universal Care</a></li>
-<li><a href="#coverage"><span class="mif-chevron-right"></span> Universal Coverage Screening</a></li>
-<li><a href="#hospitals"><span class="mif-chevron-right"></span> Hospital ER Capacity</a></li>
-<li><a href="#cdc"><span class="mif-chevron-right"></span> Disease Control Telemetry</a></li>
-<li><a href="#ambulance"><span class="mif-chevron-right"></span> Ambulance Dispatch</a></li>
-<li><a href="/healthcare_departments.html"><span class="mif-chevron-right"></span> Departments Portal →</a></li>
+          <li><a href="#overview" class="active"><span class="mif-chevron-right"></span> Patient Support Overview</a></li>
+<li><a href="#faq"><span class="mif-chevron-right"></span> Frequently Asked Questions</a></li>
+<li><a href="#rights"><span class="mif-chevron-right"></span> Patient Rights Charter</a></li>
+<li><a href="#hotline"><span class="mif-chevron-right"></span> Medical Evacuation Hotline</a></li>
+<li><a href="#ombudsman"><span class="mif-chevron-right"></span> Patient Ombudsman Contact</a></li>
 
         </ul>
       </div>
 
 
+      <div class="card" style="font-size: 12px; line-height: 1.6;">
+        <h3 style="color: var(--text-main); margin-bottom: 6px;">Official Government Seal</h3>
+        <p style="color: var(--text-muted); margin-bottom: 8px;">United Provinces of Sangaia &bull; Sovereign Constitutional Gateway</p>
+        <div style="display: flex; flex-direction: column; gap: 4px; color: var(--text-muted);">
+          <div><strong style="color: var(--text-main);">Jurisdiction:</strong> 5 Provinces (New Jasper, New Madison, Liveland, Sentinel, Columbia)</div>
+          <div><strong style="color: var(--text-main);">Currency:</strong> $ (Sangaian Dollar)</div>
+          <div><strong style="color: var(--text-main);">Standards:</strong> Панотерм (°Пт) &bull; Мономер (Мн)</div>
+          <div><strong style="color: var(--text-main);">Classification:</strong> Verified Official Portal</div>
+        </div>
+      </div>
+
+
     <div class="ol-sidebox">
-        <h3>Healthcare Services</h3>
-        <p class="ol-small ol-muted">Check prescription benefit claims, digital card enrollment, hospital licensing, and non-emergency transports.</p>
+        <h3>24/7 Patient Helpline</h3>
+        <p class="ol-small ol-muted">Speak with a registered triage nurse or patient advocate toll-free anytime.</p>
         <div class="ol-mt-10">
-            <a href="/healthcare_departments.html" class="ol-btn ol-btn-primary ol-btn-sm" style="width:100%; text-align:center;">Launch Healthcare Departments</a>
+            <button type="button" class="ol-btn ol-btn-primary ol-btn-sm" style="width:100%; background:#b91c1c; border-color:#991b1b;" onclick="alert('Connecting to 24/7 Patient Nurse Line (Toll-Free 1-800-SANGAIA-CARE)...')">Call Nurse Line</button>
         </div>
     </div>
     
-      <div class="card">
-        <h3>Trending hashtags</h3>
-        <p style="color: var(--text-muted); font-size: 12px; margin-top: 4px;">
-          Nothing is trending right now. A hashtag trends once five different people use it within a day.
-        </p>
-
-        <h4>Latest hashtags</h4>
-        <div class="hashtag-list">
-          <a class="hashtag" href="/services.html?tag=sangaialive">#sangaialive</a>
-          <a class="hashtag" href="/treasury.html?tag=sovereigndollar">#sovereigndollar</a>
-          <a class="hashtag" href="/units.html?tag=monomer">#monomer</a>
-          <a class="hashtag" href="/units.html?tag=panoterm">#panoterm</a>
-          <a class="hashtag" href="/executive.html?tag=aeretocrat">#aeretocrat</a>
-          <a class="hashtag" href="/propaganda.html?tag=nationalradio">#nationalradio</a>
-          <a class="hashtag" href="/work.html?tag=laborstandards">#laborstandards</a>
-          <a class="hashtag" href="/healthcare.html?tag=5provinces">#5provinces</a>
-          <a class="hashtag" href="/domesticaffairs.html?tag=interprovincial">#interprovincial</a>
-          <a class="hashtag" href="/externalaffairs.html?tag=treaties">#treaties</a>
-        </div>
-        <p style="margin-top: 10px;"><a href="/services.html" style="font-size: 12px;">All hashtags</a></p>
-      </div>
-
-      <div class="card" style="font-size: 12px; color: var(--text-muted);">
-        <h3 style="color: var(--text-main);">Sovereign Telemetry</h3>
-        <div style="margin-top: 8px; display: flex; flex-direction: column; gap: 5px;">
-          <div>Federal Currency: <strong style="color: var(--text-main);">$ (Sangaian Dollar)</strong></div>
-          <div>Territory: <strong style="color: var(--text-main);">5 Provinces</strong> (New Jasper, New Madison, Liveland, Sentinel, Columbia)</div>
-          <div>Temperature Standard: <strong style="color: var(--text-main);">Панотерм (22°Пт)</strong></div>
-          <div>Distance Standard: <strong style="color: var(--text-main);">Мономер (1 Мн = 2.5 cm)</strong></div>
-          <div>Gateway Status: <span style="color: #15803d; font-weight: 600;">Active &bull; Operational</span></div>
-        </div>
-      </div>
     </aside>
   </main>
 
-  <!-- Docked Messages Tab -->
-  <div class="messages-dock" id="messagesDock">
-    <span class="mif-bubble"></span> Messages
-  </div>
 
 
-    <!-- Ambulance Booking Modal -->
-    <div class="ol-modal-overlay" id="ambModal">
-        <div class="ol-modal-dialog">
-            <div class="ol-modal-head">
-                <span class="ol-modal-title">Book Non-Emergency Medical Transport</span>
-                <button type="button" class="ol-modal-close" onclick="closeModal('ambModal')">&times;</button>
-            </div>
-            <div class="form-group">
-                <label class="form-label">Patient Legal Name</label>
-                <input type="text" class="ol-input" id="amb-name" placeholder="Patient Name">
-            </div>
-            <div class="form-group">
-                <label class="form-label">Sangaia ID Number</label>
-                <input type="text" class="ol-input" id="amb-id" placeholder="SG-XXXX-XXXX">
-            </div>
-            <div class="form-group">
-                <label class="form-label">Pick-up Province &amp; Address</label>
-                <input type="text" class="ol-input" id="amb-addr" placeholder="Address">
-            </div>
-            <div class="form-group">
-                <label class="form-label">Destination Medical Center</label>
-                <select class="ol-select" id="amb-dest">
-                    <option>Shesk Sovereign University Hospital</option>
-                    <option>Madison Valley Trauma Center</option>
-                    <option>Oaks Coastal Marine Hospital</option>
-                    <option>Sentinel Ridge Highland Clinic</option>
-                    <option>Columbia City Health Hub</option>
-                </select>
-            </div>
-            <div class="modal-results-box" id="ambResults"></div>
-            <div class="ol-modal-foot">
-                <button type="button" class="ol-btn" onclick="closeModal('ambModal')">Cancel</button>
-                <button type="button" class="ol-btn ol-btn-primary" onclick="submitAmb()">Confirm Dispatch</button>
-            </div>
-        </div>
-    </div>
-    
-
-    <script>
-    function openAmbulanceModal() { document.getElementById('ambModal').classList.add('active'); }
-    function closeModal(id) { document.getElementById(id).classList.remove('active'); }
-
-    function submitAmb() {
-        const res = document.getElementById('ambResults');
-        const token = 'MED-DISP-' + Math.floor(100000 + Math.random() * 900000);
-        res.innerHTML = `<strong>Transport Dispatch Confirmed:</strong> Confirmation Code: <span style="font-family:monospace;">${token}</span>. Fully subsidized under Universal Healthcare.`;
-        res.classList.add('active');
-    }
-    </script>
-    
 </body>
 </html>

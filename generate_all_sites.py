@@ -11,6 +11,7 @@ Renders pages following the user's exact One Live template architecture:
 7. Sangaian Cyrillic translations omitted for now as requested.
 8. Core CSS embedded directly in <style> to prevent unstyled/vertical rendering due to caching.
 9. No personal face images anywhere on the site.
+10. No social media features (no status fields, no trending tags, no telemetry widgets).
 """
 
 import os
@@ -34,22 +35,22 @@ def generate_page(
     main_content_html,
     sidebar_right_extra_html="",
     modal_dialog_html="",
-    extra_scripts=""
+    extra_scripts="",
+    custom_nav_tabs=None,
+    sidebar_info_html=None
 ):
-    nav_tabs = [
-        ("home", "Home", "/index.html"),
-        ("executive", "Executive", "/executive.html"),
-        ("treasury", "Treasury", "/treasury.html"),
-        ("work", "Work", "/work.html"),
-        ("healthcare", "Healthcare", "/healthcare.html"),
-        ("education", "Education", "/education.html"),
-        ("domestic", "Domestic", "/domesticaffairs.html"),
-        ("external", "External", "/externalaffairs.html"),
-        ("environment", "Environment", "/environment.html"),
-        ("propaganda", "Propaganda", "/propaganda.html"),
-        ("services", "Services", "/services.html"),
-        ("units", "Units (Мн • °Пт)", "/units.html"),
-    ]
+    if custom_nav_tabs:
+        nav_tabs = custom_nav_tabs
+    else:
+        nav_tabs = [
+            ("home", "Home", "/index.html"),
+            ("overview", "Overview", "/index.html#overview"),
+            ("provinces", "5 Provinces", "/index.html#provinces"),
+            ("aeretocracy", "Aeretocracy", "/index.html#aeretocracy"),
+            ("ministries", "9 Ministries", "/index.html#ministries"),
+            ("services", "Services", "/services.html"),
+            ("units", "Units (Мн • °Пт)", "/units.html"),
+        ]
 
     subnav_html = ""
     for tab_id, tab_label, tab_url in nav_tabs:
@@ -68,11 +69,25 @@ def generate_page(
 
         sidebar_nav_html = f"""
       <div class="card">
-        <h3>{sidebar_title or 'Sovereign Navigation'}</h3>
+        <h3>{sidebar_title or 'Directory & Navigation'}</h3>
         <p style="color: var(--text-muted); font-size: 12px; margin-bottom: 8px;">{sidebar_subtitle or 'Official Portals'}</p>
         <ul class="sidebar-nav-list">
           {links_rendered}
         </ul>
+      </div>
+"""
+
+    if sidebar_info_html is None:
+        sidebar_info_html = """
+      <div class="card" style="font-size: 12px; line-height: 1.6;">
+        <h3 style="color: var(--text-main); margin-bottom: 6px;">Official Government Seal</h3>
+        <p style="color: var(--text-muted); margin-bottom: 8px;">United Provinces of Sangaia &bull; Sovereign Constitutional Gateway</p>
+        <div style="display: flex; flex-direction: column; gap: 4px; color: var(--text-muted);">
+          <div><strong style="color: var(--text-main);">Jurisdiction:</strong> 5 Provinces (New Jasper, New Madison, Liveland, Sentinel, Columbia)</div>
+          <div><strong style="color: var(--text-main);">Currency:</strong> $ (Sangaian Dollar)</div>
+          <div><strong style="color: var(--text-main);">Standards:</strong> Панотерм (°Пт) &bull; Мономер (Мн)</div>
+          <div><strong style="color: var(--text-main);">Classification:</strong> Verified Official Portal</div>
+        </div>
       </div>
 """
 
@@ -87,7 +102,7 @@ def generate_page(
   <style>
 {MASTER_EMBEDDED_CSS}
   </style>
-  <link rel="stylesheet" href="/css/sangaia-live.css?v=20261019_v3">
+  <link rel="stylesheet" href="/css/sangaia-live.css?v=20261019_v4">
   <script src="/js/sangaia-live.js" defer></script>
 </head>
 <body class="{theme_class}">
@@ -100,7 +115,7 @@ def generate_page(
       </div>
       <div class="top-right">
         <form class="search-box" action="/services.html" method="get">
-          <input type="text" name="q" placeholder="Search people &amp; posts" />
+          <input type="text" name="q" placeholder="Search services, laws &amp; gazette" />
           <button type="submit" aria-label="Search"><span class="mif-search"></span></button>
         </form>
         <div class="user-profile-menu" id="userProfileMenu">
@@ -112,7 +127,7 @@ def generate_page(
             <a href="/id.html"><span class="mif-profile"></span> Sangaia ID Card</a>
             <a href="/citizenship.html"><span class="mif-checkmark"></span> Citizenship Status</a>
             <a href="/units.html"><span class="mif-compass"></span> Units &amp; Measures</a>
-            <a href="/dashboard.html"><span class="mif-chart-bars"></span> Sovereign Telemetry</a>
+            <a href="/dashboard.html"><span class="mif-chart-bars"></span> Sovereign Registry</a>
             <div style="border-top:1px solid #e1dfdd; margin:4px 0;"></div>
             <a href="/index.html"><span class="mif-home"></span> Federal Home</a>
           </div>
@@ -136,67 +151,13 @@ def generate_page(
 {main_content_html}
     </div>
 
-    <!-- Right Column: Status & Sidebar Widgets -->
+    <!-- Right Column: Official Sidebar Widgets -->
     <aside class="sidebar">
-      <div class="card beta-banner">
-        This is a BETA experience. Things may be changed or removed at any time.
-      </div>
-
-      <div class="card">
-        <h3>Your status</h3>
-        <p style="color: var(--text-muted); font-size: 12px;">This shows next to your name across Sangaia Live.</p>
-        
-        <div class="status-input-group">
-          <input type="text" id="statusField" value="Serving Sangaia" />
-          <button type="button" aria-label="Status icon"><span class="mif-face"></span></button>
-        </div>
-
-        <div class="status-controls">
-          <button class="btn-status" id="updateStatusBtn">Update status</button>
-          <span class="btn-clear" id="clearStatusBtn">Clear</span>
-        </div>
-      </div>
 {sidebar_nav_html}
+{sidebar_info_html}
 {sidebar_right_extra_html}
-      <div class="card">
-        <h3>Trending hashtags</h3>
-        <p style="color: var(--text-muted); font-size: 12px; margin-top: 4px;">
-          Nothing is trending right now. A hashtag trends once five different people use it within a day.
-        </p>
-
-        <h4>Latest hashtags</h4>
-        <div class="hashtag-list">
-          <a class="hashtag" href="/services.html?tag=sangaialive">#sangaialive</a>
-          <a class="hashtag" href="/treasury.html?tag=sovereigndollar">#sovereigndollar</a>
-          <a class="hashtag" href="/units.html?tag=monomer">#monomer</a>
-          <a class="hashtag" href="/units.html?tag=panoterm">#panoterm</a>
-          <a class="hashtag" href="/executive.html?tag=aeretocrat">#aeretocrat</a>
-          <a class="hashtag" href="/propaganda.html?tag=nationalradio">#nationalradio</a>
-          <a class="hashtag" href="/work.html?tag=laborstandards">#laborstandards</a>
-          <a class="hashtag" href="/healthcare.html?tag=5provinces">#5provinces</a>
-          <a class="hashtag" href="/domesticaffairs.html?tag=interprovincial">#interprovincial</a>
-          <a class="hashtag" href="/externalaffairs.html?tag=treaties">#treaties</a>
-        </div>
-        <p style="margin-top: 10px;"><a href="/services.html" style="font-size: 12px;">All hashtags</a></p>
-      </div>
-
-      <div class="card" style="font-size: 12px; color: var(--text-muted);">
-        <h3 style="color: var(--text-main);">Sovereign Telemetry</h3>
-        <div style="margin-top: 8px; display: flex; flex-direction: column; gap: 5px;">
-          <div>Federal Currency: <strong style="color: var(--text-main);">$ (Sangaian Dollar)</strong></div>
-          <div>Territory: <strong style="color: var(--text-main);">5 Provinces</strong> (New Jasper, New Madison, Liveland, Sentinel, Columbia)</div>
-          <div>Temperature Standard: <strong style="color: var(--text-main);">Панотерм (22°Пт)</strong></div>
-          <div>Distance Standard: <strong style="color: var(--text-main);">Мономер (1 Мн = 2.5 cm)</strong></div>
-          <div>Gateway Status: <span style="color: #15803d; font-weight: 600;">Active &bull; Operational</span></div>
-        </div>
-      </div>
     </aside>
   </main>
-
-  <!-- Docked Messages Tab -->
-  <div class="messages-dock" id="messagesDock">
-    <span class="mif-bubble"></span> Messages
-  </div>
 
 {modal_dialog_html}
 {extra_scripts}
@@ -208,4 +169,4 @@ def generate_page(
         f.write(page_html)
 
 if __name__ == "__main__":
-    print("generate_all_sites module loaded with embedded CSS.")
+    print("generate_all_sites module updated without social widgets.")

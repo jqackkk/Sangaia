@@ -14,6 +14,15 @@ from generate_all_sites import generate_page
 
 DDCR_DIR = "mH/ddcr"
 
+DDCR_NAV_TABS = [
+    ("home", "DDCR Home", "/mH/ddcr/index.html"),
+    ("topics", "Health Topics (A-Z)", "/mH/ddcr/health_topics.html"),
+    ("outbreaks", "Active Outbreaks", "/mH/ddcr/outbreaks.html"),
+    ("search", "PubMed Research", "/mH/ddcr/search.html"),
+    ("healthcare", "← Healthcare Home", "/healthcare.html"),
+    ("federal", "← Federal Portal", "/index.html"),
+]
+
 def build_ddcr_index():
     main_content = """
     <div class="card">
@@ -77,7 +86,7 @@ def build_ddcr_index():
         filename=os.path.join(DDCR_DIR, "index.html"),
         title="Department of Disease Control & Research (DDCR)",
         theme_class="theme-healthcare",
-        active_tab="healthcare",
+        active_tab="home",
         hero_title="Department of Disease Control & Research (DDCR)",
         hero_sub="National Epidemiological Surveillance, Pathogen Monitoring & Clinical Research",
         sidebar_title="Ministry of Healthcare",
@@ -85,7 +94,8 @@ def build_ddcr_index():
         sidebar_status="Active Surveillance",
         sidebar_nav_links=[],
         main_content_html=main_content,
-        sidebar_right_extra_html=sidebar_extra
+        sidebar_right_extra_html=sidebar_extra,
+        custom_nav_tabs=DDCR_NAV_TABS
     )
 
 def build_ddcr_topics():
@@ -226,7 +236,7 @@ def build_ddcr_topics():
         filename=os.path.join(DDCR_DIR, "health_topics.html"),
         title="Health Topics (A-Z) - DDCR",
         theme_class="theme-healthcare",
-        active_tab="healthcare",
+        active_tab="topics",
         hero_title="DDCR Health Topics & Pathogens Directory",
         hero_sub="Comprehensive Disease Registry, Clinical Protocols & Evidence-Based Guidelines",
         sidebar_title="Ministry of Healthcare",
@@ -235,7 +245,8 @@ def build_ddcr_topics():
         sidebar_nav_links=[],
         main_content_html=main_content,
         sidebar_right_extra_html=sidebar_extra,
-        extra_scripts=extra_scripts
+        extra_scripts=extra_scripts,
+        custom_nav_tabs=DDCR_NAV_TABS
     )
 
 def build_ddcr_outbreaks():
@@ -311,7 +322,7 @@ def build_ddcr_outbreaks():
         filename=os.path.join(DDCR_DIR, "outbreaks.html"),
         title="Active Outbreaks & Protocols - DDCR",
         theme_class="theme-healthcare",
-        active_tab="healthcare",
+        active_tab="outbreaks",
         hero_title="Active Epidemiological Outbreaks",
         hero_sub="National Quarantine Guidance, Vaccine Allocations & Clinical Protocols",
         sidebar_title="Ministry of Healthcare",
@@ -319,7 +330,8 @@ def build_ddcr_outbreaks():
         sidebar_status="Active Surveillance",
         sidebar_nav_links=[],
         main_content_html=main_content,
-        sidebar_right_extra_html=sidebar_extra
+        sidebar_right_extra_html=sidebar_extra,
+        custom_nav_tabs=DDCR_NAV_TABS
     )
 
 def build_ddcr_search():
@@ -440,7 +452,7 @@ def build_ddcr_search():
         filename=os.path.join(DDCR_DIR, "search.html"),
         title="Medical Research Database - DDCR",
         theme_class="theme-healthcare",
-        active_tab="healthcare",
+        active_tab="search",
         hero_title="DDCR Scientific Literature Database",
         hero_sub="Search Peer-Reviewed Infectious Disease Literature & National Clinical Trials",
         sidebar_title="Ministry of Healthcare",
@@ -449,7 +461,8 @@ def build_ddcr_search():
         sidebar_nav_links=[],
         main_content_html=main_content,
         sidebar_right_extra_html=sidebar_extra,
-        extra_scripts=extra_scripts
+        extra_scripts=extra_scripts,
+        custom_nav_tabs=DDCR_NAV_TABS
     )
 
 def build_ddcr_article():
@@ -524,7 +537,7 @@ def build_ddcr_article():
         filename=os.path.join(DDCR_DIR, "article.html"),
         title="Clinical Protocol - DDCR",
         theme_class="theme-healthcare",
-        active_tab="healthcare",
+        active_tab="topics",
         hero_title="DDCR Clinical Protocol & Treatment Directive",
         hero_sub="National Disease Guideline & Scientific Evidence",
         sidebar_title="Ministry of Healthcare",
@@ -533,7 +546,8 @@ def build_ddcr_article():
         sidebar_nav_links=[],
         main_content_html=main_content,
         sidebar_right_extra_html=sidebar_extra,
-        extra_scripts=extra_scripts
+        extra_scripts=extra_scripts,
+        custom_nav_tabs=DDCR_NAV_TABS
     )
 
 def build_article_press():
