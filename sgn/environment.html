@@ -1,0 +1,1557 @@
+<!DOCTYPE html>
+<html lang="sgn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Министриа эк Амбиэто - Сонит Провиткия эк Сангаиа</title>
+    <style>
+        /* --- MINISTRY OF THE ENVIRONMENT: LUSH GREEN FRUTIGER AERO & SKEUOMORPHIC STYLES --- */
+        :root {
+            --forest-deep: #1b5e20;
+            --forest-primary: #2e7d32;
+            --forest-light: #388e3c;
+            --leaf-green: #43a047;
+            --mint-bright: #66bb6a;
+            --mint-pale: #a5d6a7;
+            --mint-glass: #e8f5e9;
+            --mint-glow: #c8e6c9;
+            --sky-blue: #0288d1;
+            --sky-pale: #e1f5fe;
+            --harvest-amber: #e65100;
+            --harvest-light: #fff3e0;
+            --charcoal-dark: #1b2e1e;
+            --text-dark: #1e3321;
+            --text-muted: #4e6351;
+            --card-bg: #ffffff;
+            --border-green: #81c784;
+            --border-dark: #388e3c;
+        }
+
+        * { box-sizing: border-box; }
+
+        body {
+            background: #f1f8f3 radial-gradient(circle at 50% 0%, #ffffff 0%, #e8f5e9 100%) no-repeat fixed;
+            min-height: 100dvh;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            flex-direction: column;
+            margin: 0;
+            font-family: 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+
+        .main-container {
+            width: 100%;
+            margin: 0;
+            background: transparent;
+            padding: 0;
+            flex-grow: 1; 
+        }
+
+        /* --- GLOBAL METAL NAVIGATION HEADER --- */
+        #globalheader {
+            display: flex;
+            align-items: center;
+            position: relative;
+            width: 100%;
+            height: 38px;
+            background: linear-gradient(to bottom, #5e5e5e 0%, #3e3e3e 50%, #2d2d2d 51%, #1f1f1f 100%);
+            border-top: 1px solid #222;
+            border-bottom: 1px solid #000;
+            box-shadow: inset 0 1px 0 rgba(255,255,255,0.15), 0 2px 4px rgba(0,0,0,0.2);
+            font-size: 11px;
+            z-index: 100;
+        }
+
+        #globalnav {
+            flex-grow: 1;
+            margin: 0;
+            padding: 0;
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            height: 100%;
+        }
+
+        #globalnav li { position: relative; height: 100%; display: flex; align-items: center; }
+        #globalnav li::after {
+            content: ""; position: absolute; right: 0; width: 1px; height: 100%;
+            background: linear-gradient(to bottom, #333, #111); box-shadow: 1px 0 0 rgba(255,255,255,0.08);
+        }
+        #globalnav li:first-child::before {
+            content: ""; position: absolute; left: 0; width: 1px; height: 100%;
+            background: linear-gradient(to bottom, #333, #111); box-shadow: 1px 0 0 rgba(255,255,255,0.08);
+        }
+
+        #globalnav li a {
+            display: block; color: #e8e8e8; text-decoration: none; text-shadow: 0 -1px 0 rgba(0,0,0,0.8);
+            font-weight: bold; padding: 0 14px; line-height: 38px;
+            transition: text-shadow 0.2s ease, color 0.2s ease, background 0.2s ease;
+            white-space: nowrap;
+        }
+
+        #globalnav li a:hover {
+            color: #fff;
+            background: linear-gradient(rgba(255,255,255,0.05), rgba(255,255,255,0));
+            text-shadow: 0 0 8px rgba(255, 255, 255, 0.8), 0 -1px 0 rgba(0,0,0,0.8);
+        }
+        
+        #globalnav li a.active { color: #fff; background: rgba(0,0,0,0.25); box-shadow: inset 0 2px 5px rgba(0,0,0,0.3); }
+
+        /* --- SKEUOMORPHIC FOREST & MINT BUTTONS --- */
+        .sangaia-btn {
+            font-size: 0.88rem;
+            font-family: inherit;
+            height: 2.4em;
+            padding: 0 1.3em;
+            border-radius: 4px;
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            box-sizing: border-box;
+            background: linear-gradient(to bottom, #ffffff 0%, #f1f8f3 50%, #dcedc8 100%);
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1), inset 0 1px 0 #ffffff;
+            border: 1px solid var(--border-green);
+            color: var(--forest-deep);
+            font-weight: bold;
+            transition: all 0.2s ease;
+            text-shadow: 0 1px 0 #ffffff;
+        }
+
+        .sangaia-btn:hover {
+            background: linear-gradient(to bottom, #ffffff 0%, #f9fdfa 50%, #e8f5e9 100%);
+            box-shadow: 0 3px 8px rgba(0, 0, 0, 0.15), inset 0 1px 0 #ffffff;
+            transform: translateY(-1px);
+        }
+
+        .sangaia-btn:active {
+            transform: translateY(1px);
+            background: linear-gradient(to bottom, #dcedc8 0%, #c8e6c9 100%);
+            box-shadow: inset 0 2px 4px rgba(0,0,0,0.15);
+        }
+
+        /* Deep Forest Primary Button */
+        .sangaia-btn.btn-forest {
+            background: linear-gradient(to bottom, #43a047 0%, #2e7d32 50%, #1b5e20 100%);
+            border-color: #1b5e20;
+            color: #ffffff;
+            text-shadow: 0 -1px 0 rgba(0,0,0,0.5);
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2), inset 0 1px 0 rgba(255,255,255,0.3);
+        }
+
+        .sangaia-btn.btn-forest:hover {
+            background: linear-gradient(to bottom, #4caf50 0%, #388e3c 50%, #256d29 100%);
+            box-shadow: 0 3px 8px rgba(0, 0, 0, 0.25), inset 0 1px 0 rgba(255,255,255,0.4);
+            color: #ffffff;
+        }
+
+        /* Sky Blue Water Button */
+        .sangaia-btn.btn-sky {
+            background: linear-gradient(to bottom, #03a9f4 0%, #0288d1 50%, #01579b 100%);
+            border-color: #01579b;
+            color: #ffffff;
+            text-shadow: 0 -1px 0 rgba(0,0,0,0.4);
+        }
+
+        /* Harvest Amber Button */
+        .sangaia-btn.btn-amber {
+            background: linear-gradient(to bottom, #ff9800 0%, #f57c00 50%, #e65100 100%);
+            border-color: #bf360c;
+            color: #ffffff;
+            text-shadow: 0 -1px 0 rgba(0,0,0,0.3);
+        }
+
+        /* --- CONTENT PANELS --- */
+        .content-wrapper {
+            padding: 30px;
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            box-sizing: border-box;
+        }
+
+        .glass-panel {
+            background: linear-gradient(to bottom, #ffffff 0%, #fafffa 100%);
+            border: 1px solid #c8e6c9;
+            border-radius: 10px;
+            padding: 26px;
+            margin-bottom: 25px;
+            box-shadow: 0 3px 12px rgba(46, 125, 50, 0.06), inset 0 1px 0 #ffffff;
+            position: relative;
+        }
+
+        .glass-panel h2 {
+            margin: 0 0 15px 0;
+            color: var(--forest-deep);
+            border-bottom: 2px solid #e8f5e9;
+            padding-bottom: 10px;
+            font-size: 1.45em;
+            letter-spacing: -0.3px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        /* --- HERO BANNER (GREEN FRUTIGER AERO) --- */
+        .env-hero-card {
+            background: linear-gradient(135deg, #ffffff 0%, #ebf7ed 45%, #d4edd7 100%);
+            color: var(--charcoal-dark);
+            border-radius: 12px;
+            padding: 35px 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 6px 22px rgba(46, 125, 50, 0.12), inset 0 1px 0 #ffffff;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 25px;
+            flex-wrap: wrap;
+            position: relative;
+            overflow: hidden;
+            border: 1px solid var(--border-green);
+        }
+
+        .hero-text-col { max-width: 680px; }
+
+        .hero-badge {
+            display: inline-block;
+            background: linear-gradient(to bottom, #ffffff 0%, #e8f5e9 100%);
+            color: var(--forest-deep);
+            border: 1px solid var(--border-green);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.76rem;
+            font-weight: bold;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-bottom: 12px;
+            box-shadow: 0 1px 3px rgba(46,125,50,0.1);
+        }
+
+        .hero-title {
+            font-size: 2.2rem;
+            margin: 0 0 12px 0;
+            letter-spacing: -0.5px;
+            line-height: 1.2;
+            color: var(--forest-deep);
+            text-shadow: 0 1px 0 rgba(255,255,255,0.8);
+        }
+
+        .hero-sub {
+            font-size: 1.05rem;
+            color: var(--text-dark);
+            line-height: 1.6;
+            margin-bottom: 22px;
+        }
+
+        /* Stat Tickers */
+        .stat-ticker-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+
+        .stat-ticker-box {
+            background: #ffffff;
+            border: 1px solid #c8e6c9;
+            border-radius: 8px;
+            padding: 16px 20px;
+            box-shadow: 0 2px 6px rgba(46, 125, 50, 0.05);
+            border-top: 4px solid var(--forest-primary);
+        }
+
+        .stat-ticker-box.blue-accent { border-top-color: var(--sky-blue); }
+        .stat-ticker-box.amber-accent { border-top-color: var(--harvest-amber); }
+        .stat-ticker-box.mint-accent { border-top-color: var(--mint-bright); }
+
+        .stat-label {
+            font-size: 0.78rem;
+            font-weight: 700;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.6px;
+            margin-bottom: 4px;
+        }
+
+        .stat-value {
+            font-size: 1.6rem;
+            font-weight: 800;
+            color: var(--forest-deep);
+        }
+
+        .stat-desc {
+            font-size: 0.8rem;
+            color: #557257;
+            margin-top: 4px;
+        }
+
+        /* --- WEATHER TELEMETRY CARD --- */
+        .weather-card {
+            background: linear-gradient(135deg, #f0fdf4 0%, #e0f2fe 100%);
+            border: 1px solid #bae6fd;
+            border-radius: 10px;
+            padding: 24px;
+            box-shadow: 0 4px 14px rgba(2, 136, 209, 0.08), inset 0 1px 0 #ffffff;
+            margin-bottom: 25px;
+            position: relative;
+        }
+
+        .weather-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .weather-location-box h3 {
+            margin: 0;
+            font-size: 1.5rem;
+            color: #0369a1;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .weather-time {
+            font-size: 0.84rem;
+            color: #64748b;
+            margin-top: 4px;
+        }
+
+        .weather-main-grid {
+            display: grid;
+            grid-template-columns: auto 1fr auto;
+            align-items: center;
+            gap: 30px;
+            background: #ffffff;
+            border-radius: 8px;
+            padding: 20px 24px;
+            border: 1px solid #e0f2fe;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.03);
+            margin-bottom: 20px;
+        }
+
+        @media (max-width: 768px) {
+            .weather-main-grid {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+        }
+
+        .weather-temp-box {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .weather-icon-large {
+            font-size: 3.2rem;
+            line-height: 1;
+            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.15));
+        }
+
+        .weather-degrees {
+            font-size: 3.2rem;
+            font-weight: 800;
+            color: #0f172a;
+            line-height: 1;
+        }
+
+        .weather-unit-toggle {
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: bold;
+            color: #0288d1;
+            padding: 4px 8px;
+            border: 1px solid #bae6fd;
+            border-radius: 4px;
+            background: #f0f9ff;
+            margin-left: 6px;
+        }
+
+        .weather-condition-text {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: #1e293b;
+            margin-bottom: 6px;
+        }
+
+        .weather-submetrics {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+            gap: 12px;
+            width: 100%;
+        }
+
+        .metric-item {
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 6px;
+            padding: 10px 12px;
+            text-align: center;
+        }
+
+        .metric-title {
+            font-size: 0.72rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            color: #64748b;
+        }
+
+        .metric-val {
+            font-size: 1.15rem;
+            font-weight: 800;
+            color: #0f172a;
+            margin-top: 3px;
+        }
+
+        /* Forecast strip */
+        .forecast-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(105px, 1fr));
+            gap: 10px;
+        }
+
+        .forecast-day-box {
+            background: #ffffff;
+            border: 1px solid #e2e8f0;
+            border-radius: 6px;
+            padding: 12px 8px;
+            text-align: center;
+            transition: transform 0.2s ease;
+        }
+
+        .forecast-day-box:hover {
+            transform: translateY(-2px);
+            border-color: #38bdf8;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+        }
+
+        .forecast-day-name {
+            font-size: 0.82rem;
+            font-weight: bold;
+            color: #475569;
+            margin-bottom: 6px;
+        }
+
+        .forecast-icon {
+            font-size: 1.6rem;
+            margin: 4px 0;
+        }
+
+        .forecast-temps {
+            font-size: 0.88rem;
+            font-weight: 700;
+            color: #1e293b;
+        }
+
+        /* Station selector pills */
+        .station-pills {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+            margin: 12px 0 0 0;
+            align-items: center;
+        }
+
+        .station-pill {
+            font-size: 0.82rem;
+            font-weight: bold;
+            padding: 5px 12px;
+            border-radius: 20px;
+            border: 1px solid #bae6fd;
+            background: #ffffff;
+            color: #0369a1;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .station-pill:hover, .station-pill.active {
+            background: #0288d1;
+            color: #ffffff;
+            border-color: #0288d1;
+            box-shadow: 0 2px 6px rgba(2, 136, 209, 0.25);
+        }
+
+        /* --- CARDS & GRIDS --- */
+        .feature-grid-3 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 20px;
+            margin-top: 15px;
+        }
+
+        .feature-card {
+            background: #ffffff;
+            border: 1px solid #c8e6c9;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 2px 8px rgba(46,125,50,0.04);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            border-top: 4px solid var(--forest-primary);
+            transition: all 0.2s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(46,125,50,0.08);
+            border-top-color: var(--forest-deep);
+        }
+
+        .feature-card h3 {
+            margin: 0 0 8px 0;
+            font-size: 1.18rem;
+            color: var(--forest-deep);
+        }
+
+        /* Tables */
+        .data-table-wrapper {
+            overflow-x: auto;
+            margin: 15px 0;
+        }
+
+        .env-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.92rem;
+            background: #ffffff;
+        }
+
+        .env-table th, .env-table td {
+            padding: 12px 16px;
+            border: 1px solid #c8e6c9;
+            text-align: left;
+        }
+
+        .env-table th {
+            background: linear-gradient(to bottom, #ffffff 0%, #e8f5e9 100%);
+            color: var(--forest-deep);
+            font-weight: bold;
+            font-size: 0.84rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .env-table tr:nth-child(even) { background: #fbfdfb; }
+        .env-table tr:hover { background: #f1f8f3; }
+
+        /* Badges */
+        .badge {
+            font-size: 0.75rem;
+            font-weight: bold;
+            padding: 3px 8px;
+            border-radius: 12px;
+            display: inline-block;
+            text-transform: uppercase;
+        }
+
+        .badge-green { background: #d3f9d8; color: #2b8a3e; border: 1px solid #b2f2bb; }
+        .badge-blue { background: #d0ebff; color: #1971c2; border: 1px solid #a5d8ff; }
+        .badge-amber { background: #ffe8cc; color: #d9480f; border: 1px solid #ffd8a8; }
+        .badge-gray { background: #f1f3f5; color: #495057; border: 1px solid #dee2e6; }
+
+        /* Progress bars */
+        .progress-bar-bg {
+            background: #e9ecef;
+            border-radius: 10px;
+            height: 12px;
+            width: 100%;
+            overflow: hidden;
+            margin: 8px 0;
+            box-shadow: inset 0 1px 3px rgba(0,0,0,0.1);
+        }
+
+        .progress-bar-fill {
+            height: 100%;
+            background: linear-gradient(to right, #40c057 0%, #2f9e44 100%);
+            border-radius: 10px;
+            transition: width 0.8s ease;
+        }
+
+        .progress-bar-fill.amber {
+            background: linear-gradient(to right, #ffa94d 0%, #f76707 100%);
+        }
+
+        /* Inputs */
+        .filter-input {
+            padding: 8px 12px;
+            border: 1px solid #c8e6c9;
+            border-radius: 5px;
+            font-family: inherit;
+            font-size: 0.88rem;
+            background: #ffffff;
+            color: #333;
+        }
+
+        .filter-input:focus {
+            outline: none;
+            border-color: var(--forest-primary);
+            box-shadow: 0 0 0 3px rgba(46, 125, 50, 0.15);
+        }
+
+        /* Modals */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(4px);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .modal-overlay.show { display: flex; }
+
+        .modal-card {
+            background: #ffffff;
+            border-radius: 10px;
+            max-width: 640px;
+            width: 100%;
+            max-height: 90vh;
+            overflow-y: auto;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.25);
+            border-top: 6px solid var(--forest-primary);
+            animation: modalFadeIn 0.25s ease;
+        }
+
+        @keyframes modalFadeIn {
+            from { opacity: 0; transform: scale(0.96); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        footer {
+            text-align: center;
+            padding: 25px;
+            font-size: 0.9em;
+            background: rgba(255, 255, 255, 0.7);
+            border-top: 1px solid #c8e6c9;
+            margin-top: auto;
+            width: 100%;
+            color: var(--text-muted);
+        }
+    </style>
+</head>
+<body>
+
+<div class="main-container">
+
+    <!-- GLOBAL NAVIGATION HEADER -->
+    <nav id="globalheader">
+        <div style="position: absolute; left: 15px; display: flex; align-items: center; height: 100%;">
+            <a href="index.html"><img src="../media/nav_logo.png" onerror="this.onerror=null; this.src='media/nav_logo.png';" style="height: 22px; width: auto;" alt="Logo"></a>
+        </div>
+        <div style="position: absolute; right: 15px; display: flex; align-items: center; gap: 15px; height: 100%; z-index: 100;">
+            <div id="auth-widget">
+                <a href="id.html" style="color: #bbb; text-decoration: none; font-size: 11px; font-weight: bold; letter-spacing: 0.5px; padding: 3px 8px; border: 1px solid #444; border-radius: 4px; background: linear-gradient(to bottom, #555, #333); box-shadow: 0 1px 2px rgba(0,0,0,0.3); transition: all 0.2s ease;">Сангаиа ИД</a>
+            </div>
+            <a href="../environment.html" style="color: #bbb; text-decoration: none; font-size: 11px; font-weight: bold; letter-spacing: 0.5px; padding: 3px 8px; border: 1px solid #444; border-radius: 4px; background: linear-gradient(to bottom, #555, #333); box-shadow: 0 1px 2px rgba(0,0,0,0.3); transition: all 0.2s ease;">English</a>
+        </div>
+        <ul id="globalnav">
+            <li><a href="index.html">Домо</a></li>
+            <li><a href="#overview">Обзор</a></li>
+            <li><a href="#services">Амбито Дуло</a></li>
+            <li><a href="#biome-funding">Биомо Фондо</a></li>
+            <li><a href="#wildlife">Фэра Интэрвэно</a></li>
+            <li><a href="#food-security">Алиманто Сэкурита</a></li>
+            <li><a href="#weather">Мэтэорологиа</a></li>
+            <li><a href="#conservation">Консэрво Цэнто</a></li>
+            <li><a href="services.html">Холо Министро</a></li>
+        </ul>
+    </nav>
+
+    <div class="content-wrapper">
+
+        <!-- LUSH GREEN FRUTIGER AERO HERO BANNER -->
+        <div class="env-hero-card" id="overview">
+            <div class="hero-text-col">
+                <span class="hero-badge">Сонит Провиткия эк Сангаиа &bull; Эксэкутио Рамо</span>
+                <h1 class="hero-title">Министриа эк Амбиэто</h1>
+                <p class="hero-sub">Свои Министро эк свои Амбито: Консэрво свои пристино биомос эк Сангаиа, координо фэра рэскуо, сэкуро алиманто диспэнобило, инкаи монито мэтэорологиа тэлэмэтриа инкаи амбито стандардо транс холо 5 провиткия.</p>
+                <div style="display: flex; gap: 12px; flex-wrap: wrap;">
+                    <a href="#biome-funding" class="sangaia-btn btn-forest"><span>Визо Биомо Фондо &rarr;</span></a>
+                    <a href="#weather" class="sangaia-btn btn-sky"><span>Визо Мэтэорологиа & Тэлэмэтриа</span></a>
+                    <a href="#wildlife" class="sangaia-btn"><span>Фэра Интэрвэно Диспатч</span></a>
+                </div>
+            </div>
+
+            <div style="text-align: center;">
+                <img src="../media/sangaia_seal.png" onerror="this.onerror=null; this.src='media/sangaia_seal.png';" alt="Сэало эк Сангаиа" style="height: 110px; width: auto; filter: drop-shadow(0 4px 8px rgba(0,0,0,0.2));">
+                <div style="font-size: 0.78rem; font-weight: bold; text-transform: uppercase; letter-spacing: 1.5px; margin-top: 8px; color: var(--forest-deep);">Фэдэро Амбито & Биомо Ауторита</div>
+            </div>
+        </div>
+
+        <!-- STAT TICKERS -->
+        <div class="stat-ticker-grid">
+            <div class="stat-ticker-box">
+                <div class="stat-label">Тотал Биомо Фондо</div>
+                <div class="stat-value">S$ 1.85 B</div>
+                <div class="stat-desc">100% супорто кум физико асэто</div>
+            </div>
+
+            <div class="stat-ticker-box blue-accent">
+                <div class="stat-label">Алиманто Сэкурита Рэзэрво</div>
+                <div class="stat-value" style="color: #0288d1;">14.8 Мэнсо</div>
+                <div class="stat-desc">112% ануало агрикултуро таркет</div>
+            </div>
+
+            <div class="stat-ticker-box amber-accent">
+                <div class="stat-label">Протэкто Силва Ареа</div>
+                <div class="stat-value" style="color: #e65100;">1,010,000 Ha</div>
+                <div class="stat-desc">34.2% эк тотал натионо тэрриторио</div>
+            </div>
+
+            <div class="stat-ticker-box mint-accent">
+                <div class="stat-label">Чисто Энэрга Грид</div>
+                <div class="stat-value">92.4%</div>
+                <div class="stat-desc">Гидро, соларо & вэнто генератио</div>
+            </div>
+        </div>
+
+        <!-- SECTION 1: LIVE WEATHER & ATMOSPHERIC TELEMETRY -->
+        <div class="glass-panel" id="weather">
+            <h2>
+                <span>Мэтэорологиа & Атмосфэро Тэлэмэтриа</span>
+                <span class="badge badge-blue">Прямо Ливэ Канал</span>
+            </h2>
+            <p>
+                Монито мэтэорологиа кондитио транс холо Сангаиан провиткия о активо локатио визо ад ностэр фэдэро сэнсор нэтворко. Свои систэма пот эквилибро локало дэтэктио кум Опэн-Мэтэо API кум зэро тракинг кокио.
+            </p>
+
+            <div class="weather-card">
+                <div class="weather-top">
+                    <div class="weather-location-box">
+                        <h3 id="weather-station-name">📍 Veridia Central (Provincial Capital)</h3>
+                        <div class="weather-time" id="weather-timestamp">Updated live from federal atmospheric array</div>
+                    </div>
+                    <div style="display: flex; gap: 8px; flex-wrap: wrap;">
+                        <button type="button" class="sangaia-btn btn-sky" onclick="detectUserLocationWeather()">
+                            <span>📍 Дэтэкто Мой Локатио Мэтэорологиа</span>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="weather-main-grid">
+                    <div class="weather-temp-box">
+                        <div class="weather-icon-large" id="weather-icon">⛅</div>
+                        <div style="display: flex; align-items: baseline;">
+                            <span class="weather-degrees" id="weather-temp">21</span>
+                            <span class="weather-unit-toggle" onclick="toggleTempUnit()" id="weather-unit">°C</span>
+                        </div>
+                    </div>
+
+                    <div>
+                        <div class="weather-condition-text" id="weather-condition-desc">Partly Cloudy & Pleasant</div>
+                        <div style="font-size: 0.88rem; color: #557257;" id="weather-feels">Feels like 21°C &bull; Optimal Ambient Humidity</div>
+                    </div>
+
+                    <div class="weather-submetrics">
+                        <div class="metric-item">
+                            <div class="metric-title">Влажност</div>
+                            <div class="metric-val" id="weather-humidity">52%</div>
+                        </div>
+                        <div class="metric-item">
+                            <div class="metric-title">Вэнто Спидо</div>
+                            <div class="metric-val" id="weather-wind">12 km/h</div>
+                        </div>
+                        <div class="metric-item">
+                            <div class="metric-title">Аир Качество (AQI)</div>
+                            <div class="metric-val" style="color: #2e7d32;" id="weather-aqi">14 (Pure)</div>
+                        </div>
+                        <div class="metric-item">
+                            <div class="metric-title">Прэсипитатио</div>
+                            <div class="metric-val" id="weather-precip">0.0 mm</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Sangaia Provincial Quick Switcher -->
+                <div style="margin-bottom: 18px;">
+                    <span style="font-size: 0.78rem; font-weight: bold; text-transform: uppercase; color: #557257;">Провиткия Станцио Выбор:</span>
+                    <div class="station-pills">
+                        <span class="station-pill active" onclick="loadProvincialWeather('veridia')">Veridia Central (Valley)</span>
+                        <span class="station-pill" onclick="loadProvincialWeather('maritime')">Hornet's Point (Maritime Coast)</span>
+                        <span class="station-pill" onclick="loadProvincialWeather('highlands')">Summit Pass (Northern Highlands)</span>
+                        <span class="station-pill" onclick="loadProvincialWeather('nova')">Nova Sangaia (Metro)</span>
+                        <span class="station-pill" onclick="loadProvincialWeather('meadows')">Southern Meadows (Plains)</span>
+                    </div>
+                </div>
+
+                <!-- 5-Day Forecast -->
+                <div>
+                    <div style="font-size: 0.82rem; font-weight: bold; text-transform: uppercase; color: #475569; margin-bottom: 8px;">
+                        5-Диос Прогнозо Тэлэмэтриа
+                    </div>
+                    <div class="forecast-grid" id="forecast-container">
+                        <!-- Populated by JS -->
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- SECTION 2: ENVIRONMENTAL SERVICES -->
+        <div class="glass-panel" id="services">
+            <h2>
+                <span>Амбито Дуло & Публико Сэрвисиос</span>
+                <button type="button" class="sangaia-btn btn-forest" onclick="openPermitModal()">
+                    <span>Аплико про Амбито Пэрмито &rarr;</span>
+                </button>
+            </h2>
+            <p>
+                Свои Министриа эк Амбиэто мануго 4 принциполо фэдэро амбито дуло ад гаранто ти ностэр айро, аква, инкаи соило рэмано лимпидо инкаи био-продуктивно про сэквэнто гэнэратио.
+            </p>
+
+            <div class="feature-grid-3">
+                <div class="feature-card">
+                    <div>
+                        <span class="badge badge-green" style="margin-bottom: 8px;">Атмосфэро Контроло</span>
+                        <h3>Атмосфэро Чистота & AQI Мониторинг</h3>
+                        <p style="font-size: 0.88rem; color: #4e6351;">
+                            Нэтворко эк 85 алто-точнэ лазер сэнсорос дэтэкто PM2.5, NO2, инкаи озоно транс холо 5 провиткия. Зэро промишлэно токсико эмисио эст толерато.
+                        </p>
+                    </div>
+                    <div>
+                        <div class="progress-bar-bg"><div class="progress-bar-fill" style="width: 98%;"></div></div>
+                        <span style="font-size: 0.78rem; font-weight: bold; color: var(--forest-primary);">98.2% Days Meeting Pristine Standard</span>
+                    </div>
+                </div>
+
+                <div class="feature-card">
+                    <div>
+                        <span class="badge badge-blue" style="margin-bottom: 8px;">Аква Сэкурита</span>
+                        <h3>Водосбор & Речной Бассейн Чистота</h3>
+                        <p style="font-size: 0.88rem; color: #4e6351;">
+                            Защита гляциало талых вод, фильтратио речных протоков, инкаи очистка акватории. Запрет на химикаты в водоохранной зоне 25 км.
+                        </p>
+                    </div>
+                    <div>
+                        <div class="progress-bar-bg"><div class="progress-bar-fill" style="width: 100%;"></div></div>
+                        <span style="font-size: 0.78rem; font-weight: bold; color: var(--forest-primary);">100% Municipal Water Potability</span>
+                    </div>
+                </div>
+
+                <div class="feature-card">
+                    <div>
+                        <span class="badge badge-amber" style="margin-bottom: 8px;">Земледелие & Соило</span>
+                        <h3>Почва & Регенеративное Земледелие</h3>
+                        <p style="font-size: 0.88rem; color: #4e6351;">
+                            Бесплатные наборы для анализа почвы для фермеров, распределение натурального компоста, запрет синтетических пестицидов.
+                        </p>
+                    </div>
+                    <div>
+                        <div class="progress-bar-bg"><div class="progress-bar-fill amber" style="width: 94%;"></div></div>
+                        <span style="font-size: 0.78rem; font-weight: bold; color: var(--harvest-amber);">94% Organic Cultivation Coverage</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- SECTION 3: BIOME FUNDING -->
+        <div class="glass-panel" id="biome-funding">
+            <h2>
+                <span>Биомо Фондо & Географико Аллокатио</span>
+                <span class="badge badge-green">S$ 1.85 Billion Annual Reserve</span>
+            </h2>
+            <p>
+                Конституционало фондо эк S$ 1.85 Билион эст распрэдэлэно по 5 уникальным природным биомам Сангаиа для защиты лесов, ледников, болот и морских экосистем.
+            </p>
+
+            <div class="data-table-wrapper">
+                <table class="env-table">
+                    <thead>
+                        <tr>
+                            <th>Биомо Регион</th>
+                            <th>Аллокатио (S$)</th>
+                            <th>Охраняемая Площадь</th>
+                            <th>Приоритет Проектов</th>
+                            <th>Статус</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Northern Highlands Alpine & Glacial Reserve</strong><br><span style="font-size:0.78rem; color:#64748b;">Summit Pass & Glacier Headwaters</span></td>
+                            <td><span style="font-weight: 800; color: var(--forest-deep);">S$ 480,000,000</span></td>
+                            <td>420,000 Ha</td>
+                            <td>Glacial runoff stabilization, old-growth boreal larch conservation, permafrost seismic monitoring arrays.</td>
+                            <td><span class="badge badge-green">Active (100% Funded)</span></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Maritime Coastal Estuaries & Marine Sanctuaries</strong><br><span style="font-size:0.78rem; color:#64748b;">Maritime Coast (Hornet's Point)</span></td>
+                            <td><span style="font-weight: 800; color: var(--forest-deep);">S$ 420,000,000</span></td>
+                            <td>185,000 Marine Ha</td>
+                            <td>Giant kelp forest restoration, living tidal reef barriers, seal & sea otter breeding sanctuaries.</td>
+                            <td><span class="badge badge-green">Active (100% Funded)</span></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Veridia Central River Basins & Riparian Woods</strong><br><span style="font-size:0.78rem; color:#64748b;">Veridia Central Province</span></td>
+                            <td><span style="font-weight: 800; color: var(--forest-deep);">S$ 360,000,000</span></td>
+                            <td>160,000 Ha</td>
+                            <td>Wild salmon migration ladders, river basin bio-filtration wetlands, agro-forestry windbreak belts.</td>
+                            <td><span class="badge badge-green">Active (100% Funded)</span></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Southern Meadows Grasslands & Wildflower Steppes</strong><br><span style="font-size:0.78rem; color:#64748b;">Southern Plains Province</span></td>
+                            <td><span style="font-weight: 800; color: var(--forest-deep);">S$ 310,000,000</span></td>
+                            <td>150,000 Ha</td>
+                            <td>Native pollinator wild bee corridors, bison & ungulate grazing reserves, deep-root prairie drought resilience.</td>
+                            <td><span class="badge badge-green">Active (100% Funded)</span></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Nova Sangaia Urban Canopy & Green Belts</strong><br><span style="font-size:0.78rem; color:#64748b;">Nova Sangaia Metropolitan District</span></td>
+                            <td><span style="font-weight: 800; color: var(--forest-deep);">S$ 280,000,000</span></td>
+                            <td>95,000 Ha</td>
+                            <td>45,000 urban shade street trees, vertical moss bio-filters, permeable stormwater swales.</td>
+                            <td><span class="badge badge-green">Active (100% Funded)</span></td>
+                        </tr>
+                    </tbody>
+                    <tfoot>
+                        <tr style="background: #e8f5e9; font-weight: bold;">
+                            <td>Total Biome Investment</td>
+                            <td style="color: var(--forest-deep); font-size: 1.05rem;">S$ 1,850,000,000</td>
+                            <td>1,010,000 Hectares</td>
+                            <td colspan="2">100% Sovereign Backed &bull; Zero Commercial Exploitation</td>
+                        </tr>
+                    </tfoot>
+                </table>
+            </div>
+        </div>
+
+        <!-- SECTION 4: WILDLIFE INTERVENTION INITIATIVES -->
+        <div class="glass-panel" id="wildlife">
+            <h2>
+                <span>Фэра Интэрвэно & Спасение Животных</span>
+                <button type="button" class="sangaia-btn btn-amber" onclick="openWildlifeModal()">
+                    <span>Вызов Спасателей Животных &rarr;</span>
+                </button>
+            </h2>
+            <p>
+                Мобильные ветеринарные бригады экстренной помощи работают 24/7 во всех провинциях. Защита миграционных путей, спасение раненых птиц и реабилитация диких животных.
+            </p>
+
+            <div class="feature-grid-3">
+                <div class="feature-card">
+                    <span class="badge badge-amber" style="margin-bottom: 8px;">Apex Carnivore Protection</span>
+                    <h3>Highland Snow Leopard (Uncia uncia)</h3>
+                    <p style="font-size: 0.88rem; color: #4e6351;">
+                        GPS satellite tracking telemetry active on 34 resident leopards in Northern Highlands. Zero retaliatory poaching incidents recorded in 36 months.
+                    </p>
+                    <div style="background: #f1f8f3; border-radius: 6px; padding: 10px; font-size: 0.82rem; font-weight: bold; color: var(--forest-deep);">
+                        Population: 142 individuals (+14% since 2022)
+                    </div>
+                </div>
+
+                <div class="feature-card">
+                    <span class="badge badge-blue" style="margin-bottom: 8px;">Marine Mammal Sanctuary</span>
+                    <h3>Coastal Sea Otter (Enhydra lutris)</h3>
+                    <p style="font-size: 0.88rem; color: #4e6351;">
+                        Maritime coastal kelp restoration has fostered thriving otter rafts near Hornet's Point. Patrol boats prevent motorized vessel collisions in nursery zones.
+                    </p>
+                    <div style="background: #f1f8f3; border-radius: 6px; padding: 10px; font-size: 0.82rem; font-weight: bold; color: var(--forest-deep);">
+                        Population: 1,850 individuals (Stable & Thriving)
+                    </div>
+                </div>
+
+                <div class="feature-card">
+                    <span class="badge badge-green" style="margin-bottom: 8px;">Raptor & Wetland Guardian</span>
+                    <h3>Veridia Golden Osprey (Pandion haliaetus)</h3>
+                    <p style="font-size: 0.88rem; color: #4e6351;">
+                        42 solar-powered nesting platforms erected along Veridia river basins. Field rangers monitor hatchling success rates with automated infrared cameras.
+                    </p>
+                    <div style="background: #f1f8f3; border-radius: 6px; padding: 10px; font-size: 0.82rem; font-weight: bold; color: var(--forest-deep);">
+                        Nesting Pairs: 78 active pairs (89% Fledging Rate)
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- SECTION 5: FOOD AVAILABILITY & AGRICULTURAL SECURITY -->
+        <div class="glass-panel" id="food-security">
+            <h2>
+                <span>Алиманто Сэкурита & Продовольственный Резерв</span>
+                <span class="badge badge-green">14.8 Months Strategic Reserve</span>
+            </h2>
+            <p>
+                Сангаиа поддерживает гарантированный суверенный запас зерна, экологической рыбы и молочных продуктов для защиты населения от глобальных колебаний цен и засух.
+            </p>
+
+            <div class="feature-grid-3">
+                <div class="feature-card">
+                    <span class="badge badge-green" style="margin-bottom: 8px;">Grain & Staple Harvest</span>
+                    <h3>Hard Red Winter Wheat & Oats</h3>
+                    <p style="font-size: 0.88rem; color: #4e6351;">
+                        Veridia Central high-yield regenerative acreage. Silos hold 420,000 metric tons of pristine grain reserves under nitrogen atmospheric seals.
+                    </p>
+                    <div style="font-size: 0.88rem; font-weight: bold; color: var(--forest-deep);">
+                        Annual Demand Ratio: <span style="color: #2b8a3e;">112% (Surplus Exported / Stored)</span>
+                    </div>
+                </div>
+
+                <div class="feature-card">
+                    <span class="badge badge-blue" style="margin-bottom: 8px;">Aquaculture & Marine Protein</span>
+                    <h3>Sustainable Sea Bass, Trout & Kelp</h3>
+                    <p style="font-size: 0.88rem; color: #4e6351;">
+                        Maritime Coast marine farms and inland glacial trout hatcheries operating with zero synthetic antibiotics and zero micro-plastic exposure.
+                    </p>
+                    <div style="font-size: 0.88rem; font-weight: bold; color: var(--forest-deep);">
+                        Annual Demand Ratio: <span style="color: #2b8a3e;">124% (Abundant Protein Availability)</span>
+                    </div>
+                </div>
+
+                <div class="feature-card">
+                    <span class="badge badge-amber" style="margin-bottom: 8px;">Orchards, Dairy & Roots</span>
+                    <h3>Fresh Dairy, Apples & Root Crops</h3>
+                    <p style="font-size: 0.88rem; color: #4e6351;">
+                        Southern Meadows family dairy cooperatives and Veridia orchard valleys. 100% pasture-raised cattle with statutory ethical treatment guidelines.
+                    </p>
+                    <div style="font-size: 0.88rem; font-weight: bold; color: var(--forest-deep);">
+                        Annual Demand Ratio: <span style="color: #2b8a3e;">105% (Daily Farm-to-Table Supply)</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Food Price Guarantee Box -->
+            <div style="background: #f0fdf4; border: 1px solid #bbf7d0; border-radius: 8px; padding: 20px; margin-top: 20px;">
+                <h4 style="margin: 0 0 6px 0; color: var(--forest-deep); font-size: 1.05rem;">
+                    Конституционало Фиксиро Цено на Базовые Продукты
+                </h4>
+                <p style="font-size: 0.86rem; color: #166534; margin: 0; line-height: 1.6;">
+                    В соответствии с Законом о продовольственном суверенитете, базовый хлеб, молоко, картофель, яблоки и чистая рыба защищены от спекулятивного роста цен. Государственные распределительные хабы гарантируют доставку в течение 24 часов.
+                </p>
+            </div>
+        </div>
+
+        <!-- SECTION 6: CONSERVATION EFFORTS & CITIZEN STEWARDSHIP -->
+        <div class="glass-panel" id="conservation">
+            <h2>
+                <span>Консэрво Цэнто & Гражданские Инициативы</span>
+                <button type="button" class="sangaia-btn btn-forest" onclick="openTreeModal()">
+                    <span>Зарегистрировать Посаженное Дерево &rarr;</span>
+                </button>
+            </h2>
+            <p>
+                Каждый гражданин Сангаиа имеет право и возможность участвовать в национальных экологических программах. Инициатива «Один Гражданин — Десять Деревьев» уже посадила миллионы саженцев.
+            </p>
+
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px; margin: 20px 0;">
+                <div style="background: linear-gradient(135deg, #e8f5e9 0%, #ffffff 100%); border: 1px solid #c8e6c9; border-radius: 8px; padding: 20px; text-align: center;">
+                    <div style="font-size: 2.4rem; font-weight: 800; color: var(--forest-deep);" id="tree-counter">3,420,800</div>
+                    <div style="font-size: 0.85rem; font-weight: bold; text-transform: uppercase; color: var(--text-muted); margin-top: 4px;">
+                        Native Trees Planted Nationwide
+                    </div>
+                </div>
+
+                <div style="background: linear-gradient(135deg, #e0f2fe 0%, #ffffff 100%); border: 1px solid #bae6fd; border-radius: 8px; padding: 20px; text-align: center;">
+                    <div style="font-size: 2.4rem; font-weight: 800; color: #0288d1;">0.0%</div>
+                    <div style="font-size: 0.85rem; font-weight: bold; text-transform: uppercase; color: #64748b; margin-top: 4px;">
+                        Net Deforestation Rate (Zero Tolerance)
+                    </div>
+                </div>
+
+                <div style="background: linear-gradient(135deg, #fff3e0 0%, #ffffff 100%); border: 1px solid #ffe0b2; border-radius: 8px; padding: 20px; text-align: center;">
+                    <div style="font-size: 2.4rem; font-weight: 800; color: #e65100;">14,250</div>
+                    <div style="font-size: 0.85rem; font-weight: bold; text-transform: uppercase; color: #a16207; margin-top: 4px;">
+                        Active Citizen Eco-Guardians
+                    </div>
+                </div>
+            </div>
+
+            <!-- National Parks Table -->
+            <h3 style="color: var(--forest-deep); margin-top: 25px;">Национальные Парки и Заказники Сангаиа</h3>
+            <div class="data-table-wrapper">
+                <table class="env-table">
+                    <thead>
+                        <tr>
+                            <th>Park / Sanctuary</th>
+                            <th>Province</th>
+                            <th>Acreage / Hectares</th>
+                            <th>Key Wildlife & Flora</th>
+                            <th>Citizen Access</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Northern Highlands Glacier Park</strong></td>
+                            <td>Northern Highlands</td>
+                            <td>420,000 Ha</td>
+                            <td>Snow leopard, mountain ibex, ancient bristlecone pines</td>
+                            <td><span class="badge badge-green">Open (Backcountry Permit Required)</span></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Emerald Basin Rainforest Sanctuary</strong></td>
+                            <td>Veridia West</td>
+                            <td>310,000 Ha</td>
+                            <td>River otter, temperate moss canopy, wild ginseng</td>
+                            <td><span class="badge badge-green">Open (Eco-Guided Trails)</span></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Hornet's Point Tidal Marine Park</strong></td>
+                            <td>Maritime Coast</td>
+                            <td>185,000 Ha</td>
+                            <td>Sea otter, humpback whale migration corridor, giant kelp</td>
+                            <td><span class="badge badge-blue">Open (Kayaks & Sail Only)</span></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Veridia Ancient Oak Primeval Grove</strong></td>
+                            <td>Veridia Central</td>
+                            <td>95,000 Ha</td>
+                            <td>600-year old white oaks, golden osprey, wild pollinators</td>
+                            <td><span class="badge badge-green">Open (Zero-Trace Hiking)</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- MODAL 1: WILDLIFE RESCUE DISPATCH -->
+    <div class="modal-overlay" id="wildlife-modal">
+        <div class="modal-card">
+            <h3 style="color: var(--forest-deep); margin-top: 0;">Служба Спасения Диких Животных (24/7)</h3>
+            <p style="font-size: 0.85rem; color: #557257;">
+                Сообщите о раненом или находящемся в опасности диком животном для немедленного выезда егерей и ветеринаров.
+            </p>
+            <form onsubmit="handleWildlifeDispatch(event)">
+                <div style="margin-bottom: 12px;">
+                    <label style="font-size: 0.78rem; font-weight: bold; color: var(--forest-deep); display: block; margin-bottom: 4px;">Вид Животного / Описание *</label>
+                    <input type="text" id="wildlife-species" class="filter-input" style="width: 100%;" required placeholder="e.g. Injured Golden Osprey, Stranded Sea Otter">
+                </div>
+                <div style="margin-bottom: 12px;">
+                    <label style="font-size: 0.78rem; font-weight: bold; color: var(--forest-deep); display: block; margin-bottom: 4px;">Точное Местоположение / Провинция *</label>
+                    <input type="text" id="wildlife-location" class="filter-input" style="width: 100%;" required placeholder="e.g. Hornet's Point Coastal Bluff, Trail Marker 14">
+                </div>
+                <div style="margin-bottom: 12px;">
+                    <label style="font-size: 0.78rem; font-weight: bold; color: var(--forest-deep); display: block; margin-bottom: 4px;">Детали Наблюдения / Состояние Животного *</label>
+                    <textarea id="wildlife-desc" class="filter-input" style="width: 100%; height: 75px;" required placeholder="Describe condition, visible injuries, immediate safety risks..."></textarea>
+                </div>
+                <div style="display: flex; justify-content: flex-end; gap: 10px; margin-top: 18px;">
+                    <button type="button" class="sangaia-btn" onclick="closeWildlifeModal()"><span>Cancel</span></button>
+                    <button type="submit" class="sangaia-btn btn-forest"><span>Отправить Вызов Егерям</span></button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- MODAL 2: ECO-PERMIT APPLICATION -->
+    <div class="modal-overlay" id="permit-modal">
+        <div class="modal-card">
+            <h3 style="color: var(--forest-deep); margin-top: 0;">Заявка на Экологическое Разрешение</h3>
+            <p style="font-size: 0.85rem; color: #557257;">Официальная подача в Министерство Окружающей Среды Сангаиа.</p>
+            <form onsubmit="handlePermitSubmit(event)">
+                <div style="margin-bottom: 12px;">
+                    <label style="font-size: 0.78rem; font-weight: bold; color: var(--forest-deep); display: block; margin-bottom: 4px;">Имя Заявителя / Организация *</label>
+                    <input type="text" id="permit-name" class="filter-input" style="width: 100%;" required placeholder="e.g. Veridia Organic Farm Cooperative">
+                </div>
+                <div style="margin-bottom: 12px;">
+                    <label style="font-size: 0.78rem; font-weight: bold; color: var(--forest-deep); display: block; margin-bottom: 4px;">Тип Разрешения *</label>
+                    <select id="permit-type" class="filter-input" style="width: 100%;" required>
+                        <option value="Agro-Ecological Soil & Water Certification">Agro-Ecological Soil & Water Certification</option>
+                        <option value="Sustainable Selective Timber Harvesting">Sustainable Selective Timber Harvesting</option>
+                        <option value="Eco-Tourism Wilderness Guiding License">Eco-Tourism Wilderness Guiding License</option>
+                        <option value="Aquaculture Marine Sanctuary Compliance">Aquaculture Marine Sanctuary Compliance</option>
+                    </select>
+                </div>
+                <div style="margin-bottom: 12px;">
+                    <label style="font-size: 0.78rem; font-weight: bold; color: var(--forest-deep); display: block; margin-bottom: 4px;">Описание Проекта & Эко-План *</label>
+                    <textarea id="permit-desc" class="filter-input" style="width: 100%; height: 75px;" required placeholder="Describe zoning parcel, water protection plan, biodiversity footprint..."></textarea>
+                </div>
+                <div style="display: flex; justify-content: flex-end; gap: 10px; margin-top: 18px;">
+                    <button type="button" class="sangaia-btn" onclick="closePermitModal()"><span>Cancel</span></button>
+                    <button type="submit" class="sangaia-btn btn-forest"><span>Подать Заявку</span></button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- MODAL 3: TREE PLANTING REGISTRATION -->
+    <div class="modal-overlay" id="tree-modal">
+        <div class="modal-card">
+            <h3 style="color: var(--forest-deep); margin-top: 0;">Регистрация Посаженных Деревьев</h3>
+            <p style="font-size: 0.85rem; color: #557257;">Национальная программа «Один Гражданин — Десять Деревьев».</p>
+            <form onsubmit="handleTreeSubmit(event)">
+                <div style="margin-bottom: 12px;">
+                    <label style="font-size: 0.78rem; font-weight: bold; color: var(--forest-deep); display: block; margin-bottom: 4px;">Имя Гражданина / Sangaia ID *</label>
+                    <input type="text" id="tree-name" class="filter-input" style="width: 100%;" required placeholder="Legal Name or Sangaia ID">
+                </div>
+                <div style="margin-bottom: 12px;">
+                    <label style="font-size: 0.78rem; font-weight: bold; color: var(--forest-deep); display: block; margin-bottom: 4px;">Количество Посаженных Саженцев *</label>
+                    <input type="number" id="tree-count" class="filter-input" style="width: 100%;" required min="1" max="1000" value="10">
+                </div>
+                <div style="margin-bottom: 12px;">
+                    <label style="font-size: 0.78rem; font-weight: bold; color: var(--forest-deep); display: block; margin-bottom: 4px;">Виды Деревьев & Местоположение *</label>
+                    <input type="text" id="tree-species" class="filter-input" style="width: 100%;" required placeholder="e.g. Sangaian White Oak, Conifer Larch in Veridia Central">
+                </div>
+                <div style="display: flex; justify-content: flex-end; gap: 10px; margin-top: 18px;">
+                    <button type="button" class="sangaia-btn" onclick="closeTreeModal()"><span>Cancel</span></button>
+                    <button type="submit" class="sangaia-btn btn-forest"><span>Зарегистрировать в Национальном Реестре</span></button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- GENERAL NOTICE MODAL -->
+    <div class="modal-overlay" id="notice-modal">
+        <div class="modal-card">
+            <h3 style="color: var(--forest-deep); margin-top: 0;" id="notice-title">Notification</h3>
+            <div id="notice-body" style="font-size: 0.95rem; color: #333; line-height: 1.6; margin: 15px 0;"></div>
+            <div style="text-align: right; margin-top: 20px;">
+                <button type="button" class="sangaia-btn" onclick="closeNoticeModal()"><span>Close Window</span></button>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        &copy; 2026 Сонит Провиткия эк Сангаиа. Холо Юро Рэзэрво.<br>
+        <span style="font-size: 0.85em; color: var(--text-muted);">
+            Министриа эк Амбиэто &bull; Дэпартамэнто эк Биомо Консэрватио, Фэра Интэрвэно & Алиманто Сэкурита
+        </span>
+    </footer>
+</div>
+
+<!-- SCRIPTS -->
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="../auth.js"></script>
+
+<script>
+    // --- LIVE WEATHER TELEMETRY ENGINE (Open-Meteo & Geolocation) ---
+    let currentTempC = 21;
+    let isFahrenheit = false;
+
+    const provincialStations = {
+        veridia: {
+            name: "📍 Veridia Central (Provincial Capital)",
+            lat: 44.50, lon: -73.20,
+            tempC: 21, feelsC: 21,
+            humidity: "52%", wind: "12 km/h", aqi: "14 (Pure)", precip: "0.0 mm",
+            condition: "Partly Cloudy & Pleasant", icon: "⛅",
+            forecast: [
+                { day: "Today", icon: "⛅", max: 22, min: 14 },
+                { day: "Tue", icon: "☀️", max: 24, min: 15 },
+                { day: "Wed", icon: "🌤️", max: 23, min: 13 },
+                { day: "Thu", icon: "🌧️", max: 19, min: 12 },
+                { day: "Fri", icon: "☀️", max: 22, min: 14 }
+            ]
+        },
+        maritime: {
+            name: "📍 Hornet's Point (Maritime Coast)",
+            lat: 43.80, lon: -69.90,
+            tempC: 17, feelsC: 16,
+            humidity: "78%", wind: "24 km/h", aqi: "11 (Pristine)", precip: "0.2 mm",
+            condition: "Coastal Mist & Fresh Ocean Breeze", icon: "🌫️",
+            forecast: [
+                { day: "Today", icon: "🌫️", max: 18, min: 12 },
+                { day: "Tue", icon: "⛅", max: 19, min: 13 },
+                { day: "Wed", icon: "🌧️", max: 16, min: 11 },
+                { day: "Thu", icon: "🌤️", max: 18, min: 12 },
+                { day: "Fri", icon: "☀️", max: 20, min: 14 }
+            ]
+        },
+        highlands: {
+            name: "📍 Summit Pass (Northern Highlands)",
+            lat: 45.90, lon: -71.50,
+            tempC: 8, feelsC: 5,
+            humidity: "42%", wind: "31 km/h", aqi: "6 (Alpine Pure)", precip: "0.0 mm",
+            condition: "Crisp Alpine Sunshine", icon: "☀️",
+            forecast: [
+                { day: "Today", icon: "☀️", max: 9, min: 1 },
+                { day: "Tue", icon: "🌤️", max: 11, min: 2 },
+                { day: "Wed", icon: "❄️", max: 4, min: -3 },
+                { day: "Thu", icon: "⛅", max: 6, min: -1 },
+                { day: "Fri", icon: "☀️", max: 10, min: 2 }
+            ]
+        },
+        nova: {
+            name: "📍 Nova Sangaia (Metropolitan District)",
+            lat: 44.20, lon: -72.60,
+            tempC: 22, feelsC: 22,
+            humidity: "48%", wind: "9 km/h", aqi: "18 (Optimal)", precip: "0.0 mm",
+            condition: "Clear Skies & Mild", icon: "☀️",
+            forecast: [
+                { day: "Today", icon: "☀️", max: 23, min: 14 },
+                { day: "Tue", icon: "🌤️", max: 25, min: 15 },
+                { day: "Wed", icon: "⛅", max: 22, min: 14 },
+                { day: "Thu", icon: "🌧️", max: 18, min: 12 },
+                { day: "Fri", icon: "☀️", max: 23, min: 13 }
+            ]
+        },
+        meadows: {
+            name: "📍 Southern Meadows (Agricultural Steppe)",
+            lat: 43.10, lon: -73.80,
+            tempC: 24, feelsC: 24,
+            humidity: "55%", wind: "14 km/h", aqi: "15 (Pure)", precip: "0.0 mm",
+            condition: "Warm Meadow Sunshine", icon: "☀️",
+            forecast: [
+                { day: "Today", icon: "☀️", max: 25, min: 15 },
+                { day: "Tue", icon: "🌤️", max: 26, min: 16 },
+                { day: "Wed", icon: "⛅", max: 24, min: 14 },
+                { day: "Thu", icon: "🌦️", max: 21, min: 13 },
+                { day: "Fri", icon: "☀️", max: 24, min: 15 }
+            ]
+        }
+    };
+
+    function renderForecast(list) {
+        const container = document.getElementById('forecast-container');
+        if (!container) return;
+        container.innerHTML = list.map(item => {
+            const max = isFahrenheit ? Math.round(item.max * 9/5 + 32) : Math.round(item.max);
+            const min = isFahrenheit ? Math.round(item.min * 9/5 + 32) : Math.round(item.min);
+            const unit = isFahrenheit ? "°F" : "°";
+            return `
+                <div class="forecast-day-box">
+                    <div class="forecast-day-name">${item.day}</div>
+                    <div class="forecast-icon">${item.icon}</div>
+                    <div class="forecast-temps">${max}${unit} <span style="font-size:0.75rem; color:#64748b; font-weight:normal;">/ ${min}${unit}</span></div>
+                </div>
+            `;
+        }).join('');
+    }
+
+    function updateWeatherUI(name, tempC, feelsC, condText, icon, hum, wind, aqi, precip, forecast) {
+        currentTempC = tempC;
+        document.getElementById('weather-station-name').textContent = name;
+        document.getElementById('weather-condition-desc').textContent = condText;
+        document.getElementById('weather-icon').textContent = icon;
+        document.getElementById('weather-humidity').textContent = hum;
+        document.getElementById('weather-wind').textContent = wind;
+        document.getElementById('weather-aqi').textContent = aqi;
+        document.getElementById('weather-precip').textContent = precip;
+
+        const dispTemp = isFahrenheit ? Math.round(tempC * 9/5 + 32) : Math.round(tempC);
+        const dispFeels = isFahrenheit ? Math.round(feelsC * 9/5 + 32) : Math.round(feelsC);
+        const unit = isFahrenheit ? "°F" : "°C";
+
+        document.getElementById('weather-temp').textContent = dispTemp;
+        document.getElementById('weather-unit').textContent = unit;
+        document.getElementById('weather-feels').innerHTML = `Feels like ${dispFeels}${unit} &bull; Optimal Ambient Humidity`;
+
+        if (forecast) renderForecast(forecast);
+    }
+
+    function toggleTempUnit() {
+        isFahrenheit = !isFahrenheit;
+        const station = document.getElementById('weather-station-name').textContent;
+        const temp = isFahrenheit ? Math.round(currentTempC * 9/5 + 32) : Math.round(currentTempC);
+        document.getElementById('weather-temp').textContent = temp;
+        document.getElementById('weather-unit').textContent = isFahrenheit ? "°F" : "°C";
+        
+        // Re-render forecast with updated unit
+        const activePill = document.querySelector('.station-pill.active');
+        const key = activePill ? activePill.getAttribute('onclick').match(/'(.*)'/)[1] : 'veridia';
+        if (provincialStations[key]) renderForecast(provincialStations[key].forecast);
+    }
+
+    function loadProvincialWeather(key) {
+        document.querySelectorAll('.station-pill').forEach(el => el.classList.remove('active'));
+        const pill = Array.from(document.querySelectorAll('.station-pill')).find(el => el.getAttribute('onclick').includes(key));
+        if (pill) pill.classList.add('active');
+
+        const data = provincialStations[key] || provincialStations['veridia'];
+        updateWeatherUI(data.name, data.tempC, data.feelsC, data.condition, data.icon, data.humidity, data.wind, data.aqi, data.precip, data.forecast);
+    }
+
+    // Weather code decoder for Open-Meteo
+    function decodeWeatherCode(code) {
+        switch (code) {
+            case 0: return { desc: "Clear Sky", icon: "☀️" };
+            case 1: case 2: return { desc: "Mainly Clear / Partly Cloudy", icon: "🌤️" };
+            case 3: return { desc: "Overcast", icon: "☁️" };
+            case 45: case 48: return { desc: "Fog & Rime Fog", icon: "🌫️" };
+            case 51: case 53: case 55: return { desc: "Light Drizzle", icon: "🌦️" };
+            case 61: case 63: case 65: return { desc: "Rain Showers", icon: "🌧️" };
+            case 71: case 73: case 75: return { desc: "Snowfall", icon: "❄️" };
+            case 80: case 81: case 82: return { desc: "Rain Showers", icon: "🌧️" };
+            case 95: case 96: case 99: return { desc: "Thunderstorm", icon: "⛈️" };
+            default: return { desc: "Fair Conditions", icon: "⛅" };
+        }
+    }
+
+    async function detectUserLocationWeather() {
+        if (!navigator.geolocation) {
+            alert("Geolocation is not supported by your browser. Displaying default provincial weather.");
+            return;
+        }
+
+        document.getElementById('weather-station-name').innerHTML = "📍 Detecting coordinates & satellite grid...";
+
+        navigator.geolocation.getCurrentPosition(async (pos) => {
+            const lat = pos.coords.latitude;
+            const lon = pos.coords.longitude;
+
+            try {
+                // Fetch real Open-Meteo forecast without API key requirement
+                const url = `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&current=temperature_2m,relative_humidity_2m,apparent_temperature,is_day,precipitation,weather_code,wind_speed_10m&daily=weather_code,temperature_2m_max,temperature_2m_min&timezone=auto`;
+                const res = await fetch(url);
+                const data = await res.json();
+
+                if (data && data.current) {
+                    const cur = data.current;
+                    const dec = decodeWeatherCode(cur.weather_code);
+
+                    // Try reverse geocoding for locality name
+                    let locationName = `📍 Your Coordinates (${lat.toFixed(2)}°, ${lon.toFixed(2)}°)`;
+                    try {
+                        const geoRes = await fetch(`https://api.bigdatacloud.net/data/reverse-geocode-client?latitude=${lat}&longitude=${lon}&localityLanguage=en`);
+                        const geoData = await geoRes.json();
+                        if (geoData.city || geoData.locality) {
+                            locationName = `📍 ${geoData.city || geoData.locality}, ${geoData.principalSubdivision || geoData.countryCode} (Your Location)`;
+                        }
+                    } catch(e) {}
+
+                    const daysOfWeek = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+                    const customForecast = [];
+                    if (data.daily && data.daily.time) {
+                        for (let i = 0; i < Math.min(5, data.daily.time.length); i++) {
+                            const d = new Date(data.daily.time[i]);
+                            const dayName = i === 0 ? "Today" : daysOfWeek[d.getDay()];
+                            const dDec = decodeWeatherCode(data.daily.weather_code[i]);
+                            customForecast.push({
+                                day: dayName,
+                                icon: dDec.icon,
+                                max: data.daily.temperature_2m_max[i],
+                                min: data.daily.temperature_2m_min[i]
+                            });
+                        }
+                    }
+
+                    document.querySelectorAll('.station-pill').forEach(el => el.classList.remove('active'));
+
+                    updateWeatherUI(
+                        locationName,
+                        cur.temperature_2m,
+                        cur.apparent_temperature,
+                        dec.desc,
+                        dec.icon,
+                        `${cur.relative_humidity_2m}%`,
+                        `${cur.wind_speed_10m} km/h`,
+                        "12 (Clean Local Array)",
+                        `${cur.precipitation} mm`,
+                        customForecast.length ? customForecast : null
+                    );
+                }
+            } catch(err) {
+                console.warn("Weather API network error, falling back to Veridia Central station:", err);
+                loadProvincialWeather('veridia');
+            }
+        }, (err) => {
+            console.warn("Geolocation denied or unavailable:", err.message);
+            alert("Location access was denied or timed out. Showing Veridia Central station.");
+            loadProvincialWeather('veridia');
+        }, { timeout: 8000 });
+    }
+
+    // Initial weather load
+    loadProvincialWeather('veridia');
+
+    // --- MODALS & FORMS ---
+    function openWildlifeModal() {
+        document.getElementById('wildlife-modal').classList.add('show');
+    }
+    function closeWildlifeModal() {
+        document.getElementById('wildlife-modal').classList.remove('show');
+    }
+
+    function handleWildlifeDispatch(e) {
+        e.preventDefault();
+        const species = document.getElementById('wildlife-species').value;
+        const loc = document.getElementById('wildlife-location').value;
+        closeWildlifeModal();
+
+        const ticket = `RESCUE-${Math.random().toString(36).substring(2,7).toUpperCase()}`;
+        openNotice("Вызов Спасателей Принят", `
+            <div style="background:#e8f5e9; border:1px solid #81c784; border-radius:6px; padding:15px; color:#1b5e20;">
+                <strong>Target Species:</strong> ${species}<br>
+                <strong>Location:</strong> ${loc}<br>
+                <strong>Dispatch Ticket ID:</strong> <code>${ticket}</code>
+            </div>
+            <p>A regional ranger veterinary brigade has been deployed. Keep a safe distance and do not attempt to handle injured predators directly.</p>
+        `);
+        e.target.reset();
+    }
+
+    function openPermitModal() {
+        document.getElementById('permit-modal').classList.add('show');
+    }
+    function closePermitModal() {
+        document.getElementById('permit-modal').classList.remove('show');
+    }
+
+    function handlePermitSubmit(e) {
+        e.preventDefault();
+        const name = document.getElementById('permit-name').value;
+        const type = document.getElementById('permit-type').value;
+        closePermitModal();
+
+        const ref = `ECO-PERMIT-2026-${Math.random().toString(36).substring(2,7).toUpperCase()}`;
+        openNotice("Заявка на Разрешение Зарегистрирована", `
+            <div style="background:#f0fdf4; border:1px solid #bbf7d0; border-radius:6px; padding:15px; color:#166534;">
+                <strong>Applicant:</strong> ${name}<br>
+                <strong>Category:</strong> ${type}<br>
+                <strong>Dossier Reference ID:</strong> <code>${ref}</code>
+            </div>
+            <p>Your ecological mitigation plan is queued for statutory review by the Biome Conservation Board. Field inspection scheduled within 14 business days.</p>
+        `);
+        e.target.reset();
+    }
+
+    function openTreeModal() {
+        document.getElementById('tree-modal').classList.add('show');
+    }
+    function closeTreeModal() {
+        document.getElementById('tree-modal').classList.remove('show');
+    }
+
+    function handleTreeSubmit(e) {
+        e.preventDefault();
+        const name = document.getElementById('tree-name').value;
+        const count = parseInt(document.getElementById('tree-count').value, 10);
+        closeTreeModal();
+
+        // Increment tree counter
+        const counterEl = document.getElementById('tree-counter');
+        if (counterEl) {
+            const current = parseInt(counterEl.textContent.replace(/,/g, ''), 10) || 3420800;
+            counterEl.textContent = (current + count).toLocaleString('en-US');
+        }
+
+        const cert = `TREE-CERT-${Math.random().toString(36).substring(2,8).toUpperCase()}`;
+        openNotice("Деревья Успешно Зарегистрированы!", `
+            <div style="background:#e8f5e9; border:1px solid #81c784; border-radius:6px; padding:15px; color:#1b5e20;">
+                <strong>Citizen Steward:</strong> ${name}<br>
+                <strong>Saplings Contributed:</strong> ${count}<br>
+                <strong>Honorary Certificate ID:</strong> <code>${cert}</code>
+            </div>
+            <p>Thank you for strengthening Sangaia's native canopy under the 'One Citizen, Ten Trees' National Charter!</p>
+        `);
+        e.target.reset();
+    }
+
+    function openNotice(title, html) {
+        document.getElementById('notice-title').textContent = title;
+        document.getElementById('notice-body').innerHTML = html;
+        document.getElementById('notice-modal').classList.add('show');
+    }
+    function closeNoticeModal() {
+        document.getElementById('notice-modal').classList.remove('show');
+    }
+</script>
+</body>
+</html>
