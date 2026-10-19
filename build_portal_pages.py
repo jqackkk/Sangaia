@@ -41,9 +41,9 @@ def build_index():
     ]
 
     main_content = """
-    <div class="ol-status-bubble" id="overview">
-        &ldquo;Welcome to Sangaia Live: The unified federal gateway for all sovereign public services, provincial coordination, and civic identity.&rdquo;
-        <div class="ol-status-date">Sovereign State Gazette &bull; Official Federal Dispatch</div>
+    <div class="ol-proclamation-card" id="overview">
+        <div style="font-weight:600; color:var(--primary); margin-bottom:4px;">Federal Gateway Proclamation</div>
+        <div>Welcome to Sangaia Live: The unified sovereign gateway for all public services, interprovincial coordination, and constitutional identity across the five united provinces.</div>
     </div>
 
     <!-- Official Republic Overview Card -->
@@ -467,72 +467,72 @@ def build_services():
         </div>
 
         <div id="servicesMasterList">
-            <div class="ol-feed-item serv-entry" data-cat="executive">
-                <div class="ol-feed-body">
+            <div class="docket-entry serv-entry" data-cat="executive">
+                <div class="docket-entry-body">
                     <strong style="font-size:14px; color:#1e3a8a;">🏛️ Ministry of the Executive</strong>
                     <div class="ol-small">Official Gazette decree archives, citizen petition pipeline, dignitary ceremonial protocol, national KPI progress dashboard, multi-ministry policy whitepapers.</div>
                     <div class="ol-mt-10"><a href="/executive_departments.html" class="ol-btn ol-btn-sm">Launch Executive Departments (6 Tools) &rarr;</a></div>
                 </div>
             </div>
 
-            <div class="ol-feed-item serv-entry" data-cat="treasury">
-                <div class="ol-feed-body">
+            <div class="docket-entry serv-entry" data-cat="treasury">
+                <div class="docket-entry-body">
                     <strong style="font-size:14px; color:#0f766e;">💰 Ministry of the Treasury</strong>
                     <div class="ol-small">Individual &amp; corporate tax calculator, digital tax filing &amp; clearance, tax appeals, debt tracker &amp; solidarity bonds, procurement tenders, and expenditure audits.</div>
                     <div class="ol-mt-10"><a href="/treasury_departments.html" class="ol-btn ol-btn-sm">Launch Treasury Departments (9 Tools) &rarr;</a></div>
                 </div>
             </div>
 
-            <div class="ol-feed-item serv-entry" data-cat="work">
-                <div class="ol-feed-body">
+            <div class="docket-entry serv-entry" data-cat="work">
+                <div class="docket-entry-body">
                     <strong style="font-size:14px; color:#6b21a8;">⚒️ Ministry of Work</strong>
                     <div class="ol-small">Anonymous labor whistleblower reporting, union registry, online mediation calendar, national job board, unemployment safety nets, vocational retraining, foreign labor visas.</div>
                     <div class="ol-mt-10"><a href="/work_departments.html" class="ol-btn ol-btn-sm">Launch Work Departments (9 Tools) &rarr;</a></div>
                 </div>
             </div>
 
-            <div class="ol-feed-item serv-entry" data-cat="healthcare">
-                <div class="ol-feed-body">
+            <div class="docket-entry serv-entry" data-cat="healthcare">
+                <div class="docket-entry-body">
                     <strong style="font-size:14px; color:#b91c1c;">🏥 Ministry of Healthcare</strong>
                     <div class="ol-small">Universal coverage eligibility screening, digital health card management, prescription claims, live ER triage capacity, non-emergency transports, and paramedic licensing.</div>
                     <div class="ol-mt-10"><a href="/healthcare_departments.html" class="ol-btn ol-btn-sm">Launch Healthcare Departments (6 Tools) &rarr;</a></div>
                 </div>
             </div>
 
-            <div class="ol-feed-item serv-entry" data-cat="education">
-                <div class="ol-feed-body">
+            <div class="docket-entry serv-entry" data-cat="education">
+                <div class="docket-entry-body">
                     <strong style="font-size:14px; color:#0284c7;">🎓 Ministry of Education</strong>
                     <div class="ol-small">Digital textbook repository, teacher certification, school performance scorecards, university accreditation, tuition-free research grants, and institutional funding audits.</div>
                     <div class="ol-mt-10"><a href="/education_departments.html" class="ol-btn ol-btn-sm">Launch Education Departments (9 Tools) &rarr;</a></div>
                 </div>
             </div>
 
-            <div class="ol-feed-item serv-entry" data-cat="domestic">
-                <div class="ol-feed-body">
+            <div class="docket-entry serv-entry" data-cat="domestic">
+                <div class="docket-entry-body">
                     <strong style="font-size:14px; color:#1e293b;">🏢 Ministry of Domestic Affairs</strong>
                     <div class="ol-small">Live road condition maps in Monomers/Kilomers, road maintenance reporting, commercial driver licensing, digital vehicle titles, provincial trade registry, inter-provincial dispute arbitration.</div>
                     <div class="ol-mt-10"><a href="/domesticaffairs_departments.html" class="ol-btn ol-btn-sm">Launch Domestic Departments (9 Tools) &rarr;</a></div>
                 </div>
             </div>
 
-            <div class="ol-feed-item serv-entry" data-cat="external">
-                <div class="ol-feed-body">
+            <div class="docket-entry serv-entry" data-cat="external">
+                <div class="docket-entry-body">
                     <strong style="font-size:14px; color:#db2777;">🌐 Ministry of External Affairs</strong>
                     <div class="ol-small">Consular services locator, emergency repatriation assistance, diplomatic visa applications, public treaty archive, treaty violation reporting, export compliance assistance.</div>
                     <div class="ol-mt-10"><a href="/externalaffairs_departments.html" class="ol-btn ol-btn-sm">Launch External Departments (9 Tools) &rarr;</a></div>
                 </div>
             </div>
 
-            <div class="ol-feed-item serv-entry" data-cat="environment">
-                <div class="ol-feed-body">
+            <div class="docket-entry serv-entry" data-cat="environment">
+                <div class="docket-entry-body">
                     <strong style="font-size:14px; color:#15803d;">🌲 Ministry of the Environment</strong>
                     <div class="ol-small">Local weather in &deg;Пт, public land use permits, provincial biome funding trackers, wildlife intervention hotline, endangered species monitoring, emissions telemetry, and organic certifications.</div>
                     <div class="ol-mt-10"><a href="/environment_departments.html" class="ol-btn ol-btn-sm">Launch Environment Departments (9 Tools) &rarr;</a></div>
                 </div>
             </div>
 
-            <div class="ol-feed-item serv-entry" data-cat="propaganda">
-                <div class="ol-feed-body">
+            <div class="docket-entry serv-entry" data-cat="propaganda">
+                <div class="docket-entry-body">
                     <strong style="font-size:14px; color:#ea580c;">📻 Ministry of Propaganda</strong>
                     <div class="ol-small">State broadcast channel directory, live radio audio stream player, journalist accreditation registry, religious society registry, and mandatory 85% wealth redistribution audits.</div>
                     <div class="ol-mt-10"><a href="/propaganda_departments.html" class="ol-btn ol-btn-sm">Launch Propaganda Departments (9 Tools) &rarr;</a></div>
@@ -781,26 +781,38 @@ def build_societal_press():
             <span>Recent Official Executive Decrees</span>
             <span class="ol-badge-tag ol-badge-success">Enacted Law</span>
         </div>
-        <div class="ol-feed-item">
-            <div class="ol-feed-body">
-                <strong style="color:#1e3a8a;">Decree No. 104-B: Mandatory 85% Wealth Redistribution for Religious Tithes</strong>
-                <div class="ol-small" style="margin:4px 0 6px;">Enacts strict statutory accounting for all recognized chapels. Tithes must be returned directly to public kitchens, youth education, and community aid.</div>
-                <div class="ol-feed-age">Published October 19, 2026 &bull; Promulgated by the Aeretocrat</div>
+        <div class="docket-entry">
+            <div class="docket-entry-header">
+                <div>
+                    <span class="mif-file-text" style="color:var(--primary); margin-right:6px;"></span>
+                    <strong style="color:#1e3a8a;">Decree No. 104-B: Mandatory 85% Wealth Redistribution for Religious Tithes</strong>
+                </div>
+                <span class="ol-badge-tag ol-badge-success">Enacted</span>
             </div>
+            <div class="docket-entry-body">Enacts strict statutory accounting for all recognized chapels. Tithes must be returned directly to public kitchens, youth education, and community aid.</div>
+            <div class="docket-entry-meta">Published October 19, 2026 &bull; Promulgated by the Aeretocrat</div>
         </div>
-        <div class="ol-feed-item">
-            <div class="ol-feed-body">
-                <strong style="color:#15803d;">Decree No. 103-A: Universal Standard Units Adoption (Панотерм &amp; Мономер)</strong>
-                <div class="ol-small" style="margin:4px 0 6px;">Mandates base-10 Monomer scaling (1 Мн = 2.5 cm) and Panotherm (&deg;Пт = 0.9 &times; &deg;C) across all five provincial school boards and public signage.</div>
-                <div class="ol-feed-age">Published October 15, 2026 &bull; Promulgated by the Aeretocrat</div>
+        <div class="docket-entry">
+            <div class="docket-entry-header">
+                <div>
+                    <span class="mif-file-text" style="color:var(--primary); margin-right:6px;"></span>
+                    <strong style="color:#15803d;">Decree No. 103-A: Universal Standard Units Adoption (Панотерм &amp; Мономер)</strong>
+                </div>
+                <span class="ol-badge-tag ol-badge-success">Enacted</span>
             </div>
+            <div class="docket-entry-body">Mandates base-10 Monomer scaling (1 Мн = 2.5 cm) and Panotherm (&deg;Пт = 0.9 &times; &deg;C) across all five provincial school boards and public signage.</div>
+            <div class="docket-entry-meta">Published October 15, 2026 &bull; Promulgated by the Aeretocrat</div>
         </div>
-        <div class="ol-feed-item">
-            <div class="ol-feed-body">
-                <strong style="color:#0f766e;">Decree No. 102-F: Zero Out-of-Pocket Point-of-Service Healthcare Affirmation</strong>
-                <div class="ol-small" style="margin:4px 0 6px;">Reaffirms constitutional prohibition against any emergency room, clinic, or pharmacy levying copays upon Sangaian ID holders.</div>
-                <div class="ol-feed-age">Published October 10, 2026 &bull; Promulgated by the Aeretocrat</div>
+        <div class="docket-entry">
+            <div class="docket-entry-header">
+                <div>
+                    <span class="mif-file-text" style="color:var(--primary); margin-right:6px;"></span>
+                    <strong style="color:#0f766e;">Decree No. 102-F: Zero Out-of-Pocket Point-of-Service Healthcare Affirmation</strong>
+                </div>
+                <span class="ol-badge-tag ol-badge-success">Enacted</span>
             </div>
+            <div class="docket-entry-body">Reaffirms constitutional prohibition against any emergency room, clinic, or pharmacy levying copays upon Sangaian ID holders.</div>
+            <div class="docket-entry-meta">Published October 10, 2026 &bull; Promulgated by the Aeretocrat</div>
         </div>
     </div>
     """

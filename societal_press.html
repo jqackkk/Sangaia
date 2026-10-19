@@ -366,274 +366,70 @@ a:hover {
 }
 
 /* ==========================================================================
-   Post Composer
+   Sovereign Portals, Registries & Document Dockets
    ========================================================================== */
-.composer {
+.sovereign-card {
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: 2px;
   padding: 16px;
-}
-
-.toolbar {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  margin-bottom: 10px;
-  flex-wrap: wrap;
-}
-
-.tool-btn {
-  background: none;
-  border: 1px solid var(--border-dark);
-  border-radius: 2px;
-  padding: 3px 8px;
-  font-size: 12px;
-  font-weight: bold;
-  cursor: pointer;
-  color: var(--text-main);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  min-height: 24px;
-}
-
-.tool-btn:hover {
-  background: #eaeaea;
-}
-
-.color-picker {
-  width: 22px;
-  height: 22px;
-  background: #000;
-  border: 1px solid var(--border-dark);
-  cursor: pointer;
-}
-
-.toolbar select {
-  border: 1px solid var(--border-dark);
-  border-radius: 2px;
-  padding: 3px 6px;
-  font-size: 12px;
-  outline: none;
-  background: #fff;
-  font-family: inherit;
-}
-
-.composer textarea {
-  width: 100%;
-  height: 72px;
-  border: 1px solid var(--border-dark);
-  border-radius: 2px;
-  padding: 10px;
-  font-family: inherit;
-  font-size: 13px;
-  resize: vertical;
-  outline: none;
-}
-
-.composer textarea:focus {
-  border-color: var(--primary);
-}
-
-.composer-footer {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  margin-top: 10px;
-}
-
-.btn-share {
-  background: var(--accent-btn);
-  color: #fff;
-  border: none;
-  padding: 6px 16px;
-  border-radius: 2px;
-  cursor: pointer;
-  font-weight: 500;
-  font-family: inherit;
-}
-
-.btn-share:hover {
-  background: var(--accent-btn-hover);
-}
-
-.composer-actions a {
-  color: var(--text-muted);
-  font-size: 12.5px;
-  margin-left: 10px;
-  cursor: pointer;
-}
-
-.composer-actions a:hover {
-  color: var(--primary);
-}
-
-/* ==========================================================================
-   Feed Tabs & Items
-   ========================================================================== */
-.feed-tabs {
-  display: flex;
-  align-items: center;
-  border-bottom: 1px solid var(--border);
   margin-bottom: 16px;
-  gap: 18px;
-  padding: 0 4px;
 }
 
-.feed-tabs a {
-  color: var(--text-main);
-  padding: 8px 0;
-  font-size: 13px;
-  cursor: pointer;
-}
-
-.feed-tabs a.active {
-  font-weight: 600;
-  border-bottom: 2px solid var(--primary);
-  color: var(--primary);
-}
-
-.filter-icon {
-  margin-left: auto;
-  color: var(--text-muted);
-  cursor: pointer;
-}
-
-.post-item {
+.docket-entry {
   display: flex;
-  gap: 12px;
-  padding: 12px 0;
-  border-bottom: 1px solid #f0f0f0;
-}
-
-.post-item:last-child {
-  border-bottom: none;
-}
-
-.post-avatar {
-  width: 44px !important;
-  height: 44px !important;
-  max-width: 44px !important;
-  max-height: 44px !important;
-  object-fit: contain;
+  flex-direction: column;
+  gap: 6px;
+  padding: 12px;
+  background: #fbfcfd;
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--primary);
   border-radius: 2px;
-  flex-shrink: 0;
-  background: #ffffff;
-  display: block;
+  margin-bottom: 10px;
 }
 
-.post-content-wrap {
-  flex: 1;
+.docket-entry:last-child {
+  margin-bottom: 0;
 }
 
-.post-author {
+.docket-entry-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.docket-entry-title {
+  font-size: 13.5px;
   font-weight: 600;
   color: var(--primary);
   text-decoration: none;
 }
 
-.post-meta {
-  font-size: 11.5px;
-  color: var(--text-light);
-  margin-top: 4px;
-}
-
-/* ==========================================================================
-   Sidebar Widgets
-   ========================================================================== */
-.beta-banner {
-  background: #eef5fc;
-  border: 1px solid #cbe0f5;
-  color: #33597d;
-  font-size: 12.5px;
-  padding: 12px;
-  line-height: 1.4;
-}
-
-.status-input-group {
-  display: flex;
-  margin-top: 8px;
-  border: 1px solid var(--border-dark);
-  border-radius: 2px;
-  overflow: hidden;
-  background: #fff;
-}
-
-.status-input-group input {
-  border: none;
-  outline: none;
-  padding: 6px 8px;
-  flex: 1;
-  font-size: 13px;
-  font-family: inherit;
-}
-
-.status-input-group button {
-  background: none;
-  border: none;
-  padding: 0 8px;
-  cursor: pointer;
-  color: #888;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.status-controls {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  margin-top: 8px;
-}
-
-.btn-status {
-  background: var(--accent-btn);
-  border: none;
-  color: #fff;
-  padding: 5px 12px;
-  border-radius: 2px;
-  cursor: pointer;
-  font-size: 12px;
-  font-family: inherit;
-}
-
-.btn-status:hover {
-  background: var(--accent-btn-hover);
-}
-
-.btn-clear {
-  color: var(--text-muted);
-  cursor: pointer;
-  font-size: 12px;
-}
-
-.btn-clear:hover {
+.docket-entry-title:hover {
   text-decoration: underline;
 }
 
-.hashtag-list {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 5px;
-  margin-top: 6px;
+.docket-entry-body {
+  font-size: 12.5px;
+  color: var(--text-main);
+  line-height: 1.45;
 }
 
-.hashtag {
-  background: #f0f0f0;
+.docket-entry-meta {
+  font-size: 11px;
+  color: var(--text-muted);
+}
+
+.ol-proclamation-card {
+  background: #f8fafc;
   border: 1px solid var(--border);
-  color: #555;
-  font-size: 11.5px;
-  padding: 3px 6px;
+  border-left: 4px solid var(--primary);
+  padding: 12px 16px;
+  margin-bottom: 16px;
+  font-size: 13px;
   border-radius: 2px;
-  text-decoration: none;
-  max-width: 100%;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-}
-
-.hashtag:hover {
-  background: #e4e4e4;
-  color: #222;
-  text-decoration: none;
 }
 
 /* ==========================================================================
@@ -1033,8 +829,8 @@ a:hover {
 .ol-note { background: #f8fafc; border-left: 3px solid var(--primary); padding: 8px 12px; font-size: 12.5px; color: var(--text-muted); }
 .ol-sidebox { background: var(--card-bg); border: 1px solid var(--border); border-radius: 2px; padding: 14px; margin-bottom: 14px; }
 .ol-sidebox h3 { font-size: 14px; font-weight: 600; margin-bottom: 6px; }
-.ol-status-bubble { background: #eef5fc; border-left: 4px solid var(--primary); padding: 12px 16px; margin-bottom: 16px; font-style: italic; font-size: 13.5px; border-radius: 2px; }
-.ol-status-date { font-style: normal; font-size: 11px; color: var(--text-muted); margin-top: 4px; text-transform: uppercase; font-weight: 600; }
+.ol-status-bubble { background: #f8fafc; border: 1px solid var(--border); border-left: 4px solid var(--primary); padding: 12px 16px; margin-bottom: 16px; font-size: 13px; border-radius: 2px; }
+.ol-status-date { font-style: normal; font-size: 11px; color: var(--text-muted); margin-top: 4px; font-weight: 500; }
 .ol-card-title { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; font-size: 15px; font-weight: 600; color: var(--primary); }
 .ol-title-link { font-size: 12px; font-weight: 500; }
 .ol-small { font-size: 12px; }
@@ -1123,26 +919,38 @@ a:hover {
             <span>Recent Official Executive Decrees</span>
             <span class="ol-badge-tag ol-badge-success">Enacted Law</span>
         </div>
-        <div class="ol-feed-item">
-            <div class="ol-feed-body">
-                <strong style="color:#1e3a8a;">Decree No. 104-B: Mandatory 85% Wealth Redistribution for Religious Tithes</strong>
-                <div class="ol-small" style="margin:4px 0 6px;">Enacts strict statutory accounting for all recognized chapels. Tithes must be returned directly to public kitchens, youth education, and community aid.</div>
-                <div class="ol-feed-age">Published October 19, 2026 &bull; Promulgated by the Aeretocrat</div>
+        <div class="docket-entry">
+            <div class="docket-entry-header">
+                <div>
+                    <span class="mif-file-text" style="color:var(--primary); margin-right:6px;"></span>
+                    <strong style="color:#1e3a8a;">Decree No. 104-B: Mandatory 85% Wealth Redistribution for Religious Tithes</strong>
+                </div>
+                <span class="ol-badge-tag ol-badge-success">Enacted</span>
             </div>
+            <div class="docket-entry-body">Enacts strict statutory accounting for all recognized chapels. Tithes must be returned directly to public kitchens, youth education, and community aid.</div>
+            <div class="docket-entry-meta">Published October 19, 2026 &bull; Promulgated by the Aeretocrat</div>
         </div>
-        <div class="ol-feed-item">
-            <div class="ol-feed-body">
-                <strong style="color:#15803d;">Decree No. 103-A: Universal Standard Units Adoption (Панотерм &amp; Мономер)</strong>
-                <div class="ol-small" style="margin:4px 0 6px;">Mandates base-10 Monomer scaling (1 Мн = 2.5 cm) and Panotherm (&deg;Пт = 0.9 &times; &deg;C) across all five provincial school boards and public signage.</div>
-                <div class="ol-feed-age">Published October 15, 2026 &bull; Promulgated by the Aeretocrat</div>
+        <div class="docket-entry">
+            <div class="docket-entry-header">
+                <div>
+                    <span class="mif-file-text" style="color:var(--primary); margin-right:6px;"></span>
+                    <strong style="color:#15803d;">Decree No. 103-A: Universal Standard Units Adoption (Панотерм &amp; Мономер)</strong>
+                </div>
+                <span class="ol-badge-tag ol-badge-success">Enacted</span>
             </div>
+            <div class="docket-entry-body">Mandates base-10 Monomer scaling (1 Мн = 2.5 cm) and Panotherm (&deg;Пт = 0.9 &times; &deg;C) across all five provincial school boards and public signage.</div>
+            <div class="docket-entry-meta">Published October 15, 2026 &bull; Promulgated by the Aeretocrat</div>
         </div>
-        <div class="ol-feed-item">
-            <div class="ol-feed-body">
-                <strong style="color:#0f766e;">Decree No. 102-F: Zero Out-of-Pocket Point-of-Service Healthcare Affirmation</strong>
-                <div class="ol-small" style="margin:4px 0 6px;">Reaffirms constitutional prohibition against any emergency room, clinic, or pharmacy levying copays upon Sangaian ID holders.</div>
-                <div class="ol-feed-age">Published October 10, 2026 &bull; Promulgated by the Aeretocrat</div>
+        <div class="docket-entry">
+            <div class="docket-entry-header">
+                <div>
+                    <span class="mif-file-text" style="color:var(--primary); margin-right:6px;"></span>
+                    <strong style="color:#0f766e;">Decree No. 102-F: Zero Out-of-Pocket Point-of-Service Healthcare Affirmation</strong>
+                </div>
+                <span class="ol-badge-tag ol-badge-success">Enacted</span>
             </div>
+            <div class="docket-entry-body">Reaffirms constitutional prohibition against any emergency room, clinic, or pharmacy levying copays upon Sangaian ID holders.</div>
+            <div class="docket-entry-meta">Published October 10, 2026 &bull; Promulgated by the Aeretocrat</div>
         </div>
     </div>
     

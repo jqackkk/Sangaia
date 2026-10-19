@@ -34,54 +34,48 @@ def build_executive():
 
     main_content = """
 
-    <!-- The Aeretocrat's Personal Blog & Journal -->
+    <!-- Executive Dispatches & Philosophical Treatises Docket -->
     <div class="card" id="overview"><a id="journal"></a>
         <div class="ol-card-title">
-            <span>The Aeretocrat's Journal &bull; Personal Dispatches &amp; Philosophy</span>
-            <button type="button" class="ol-btn ol-btn-sm" onclick="openAskModal()">Ask the Aeretocrat</button>
+            <span>Executive Dispatches &amp; Philosophical Treatises</span>
+            <button type="button" class="ol-btn ol-btn-sm" onclick="openAskModal()">File Official Inquiry</button>
         </div>
-        <p class="ol-small ol-muted">Personal writings, philosophical treatises on civic virtue, and weekly addresses from the Office of the Aeretocrat.</p>
+        <p class="ol-small ol-muted">Official philosophical treatises, civic virtue dissertations, and executive addresses promulgated by the Office of the Aeretocrat.</p>
 
-        <div class="ol-feed-item">
-            <div class="ol-feed-avatar">
-                <span class="ol-avatar sm" style="width:32px; height:32px; display:inline-flex; align-items:center; justify-content:center; background:#fff; border-radius:2px;"><img src="/media/sangaia_seal.png" alt="Aeretocrat" width="28" height="28" style="width:28px; height:28px; object-fit:contain;"><span class="ol-presence-dot"></span></span>
-            </div>
-            <div class="ol-feed-body">
-                <div class="ol-feed-head">
-                    <a href="javascript:void(0)" onclick="openDispatch(1)"><strong>On the Moral Necessity of Sovereign Solvency</strong></a>
-                    <span class="ol-badge-tag" style="margin-left:6px;">Macroeconomics</span>
+        <div class="docket-entry">
+            <div class="docket-entry-header">
+                <div>
+                    <span class="mif-file-text" style="color:var(--primary); margin-right:6px;"></span>
+                    <a href="javascript:void(0)" onclick="openDispatch(1)" class="docket-entry-title">On the Moral Necessity of Sovereign Solvency</a>
                 </div>
-                <p class="ol-small" style="margin:4px 0 6px;">"A nation that borrows from predatory international banking cartels sells the birthright of its unborn generations. In Sangaia, our constitutional prohibition on foreign sovereign debt is not merely fiscal prudence—it is our absolute shield of national liberty."</p>
-                <div class="ol-feed-age">October 19, 2026 &bull; 8 min read &bull; <a href="javascript:void(0)" onclick="openDispatch(1)">Read Full Dispatch &rarr;</a></div>
+                <span class="ol-badge-tag">Macroeconomics</span>
             </div>
+            <p class="docket-entry-body">&ldquo;A nation that borrows from predatory international banking cartels sells the birthright of its unborn generations. In Sangaia, our constitutional prohibition on foreign sovereign debt is not merely fiscal prudence—it is our absolute shield of national liberty.&rdquo;</p>
+            <div class="docket-entry-meta">Promulgated October 19, 2026 &bull; Official Dispatch No. EX-2026-08 &bull; <a href="javascript:void(0)" onclick="openDispatch(1)">Read Full Dispatch &rarr;</a></div>
         </div>
 
-        <div class="ol-feed-item">
-            <div class="ol-feed-avatar">
-                <span class="ol-avatar sm" style="width:32px; height:32px; display:inline-flex; align-items:center; justify-content:center; background:#fff; border-radius:2px;"><img src="/media/sangaia_seal.png" alt="Aeretocrat" width="28" height="28" style="width:28px; height:28px; object-fit:contain;"><span class="ol-presence-dot"></span></span>
-            </div>
-            <div class="ol-feed-body">
-                <div class="ol-feed-head">
-                    <a href="javascript:void(0)" onclick="openDispatch(2)"><strong>Why the Aeretocracy Replaces Partisan Strife</strong></a>
-                    <span class="ol-badge-tag" style="margin-left:6px;">Political Philosophy</span>
+        <div class="docket-entry">
+            <div class="docket-entry-header">
+                <div>
+                    <span class="mif-file-text" style="color:var(--primary); margin-right:6px;"></span>
+                    <a href="javascript:void(0)" onclick="openDispatch(2)" class="docket-entry-title">Why the Aeretocracy Replaces Partisan Strife</a>
                 </div>
-                <p class="ol-small" style="margin:4px 0 6px;">"Party systems do not encourage debate; they encourage tribal warfare funded by oligarchs. By aligning ministerial councils with strict meritocratic and constitutional virtues, we ensure every decision serves the common good."</p>
-                <div class="ol-feed-age">October 12, 2026 &bull; 12 min read &bull; <a href="javascript:void(0)" onclick="openDispatch(2)">Read Full Dispatch &rarr;</a></div>
+                <span class="ol-badge-tag">Political Philosophy</span>
             </div>
+            <p class="docket-entry-body">&ldquo;Party systems do not encourage debate; they encourage tribal warfare funded by oligarchs. By aligning ministerial councils with strict meritocratic and constitutional virtues, we ensure every decision serves the common good.&rdquo;</p>
+            <div class="docket-entry-meta">Promulgated October 12, 2026 &bull; Official Dispatch No. EX-2026-07 &bull; <a href="javascript:void(0)" onclick="openDispatch(2)">Read Full Dispatch &rarr;</a></div>
         </div>
 
-        <div class="ol-feed-item">
-            <div class="ol-feed-avatar">
-                <span class="ol-avatar sm" style="width:32px; height:32px; display:inline-flex; align-items:center; justify-content:center; background:#fff; border-radius:2px;"><img src="/media/sangaia_seal.png" alt="Aeretocrat" width="28" height="28" style="width:28px; height:28px; object-fit:contain;"><span class="ol-presence-dot"></span></span>
-            </div>
-            <div class="ol-feed-body">
-                <div class="ol-feed-head">
-                    <a href="javascript:void(0)" onclick="openDispatch(3)"><strong>Harmonizing the Five Sovereign Provinces</strong></a>
-                    <span class="ol-badge-tag" style="margin-left:6px;">Federalism</span>
+        <div class="docket-entry">
+            <div class="docket-entry-header">
+                <div>
+                    <span class="mif-file-text" style="color:var(--primary); margin-right:6px;"></span>
+                    <a href="javascript:void(0)" onclick="openDispatch(3)" class="docket-entry-title">Harmonizing the Five Sovereign Provinces</a>
                 </div>
-                <p class="ol-small" style="margin:4px 0 6px;">"From the coastal harbors of Liveland to the highlands of Sentinel, New Jasper, New Madison, and Columbia, our diversity is our endurance. Let each province foster its unique traditions within our unbreakable union."</p>
-                <div class="ol-feed-age">October 5, 2026 &bull; 6 min read &bull; <a href="javascript:void(0)" onclick="openDispatch(3)">Read Full Dispatch &rarr;</a></div>
+                <span class="ol-badge-tag">Federalism</span>
             </div>
+            <p class="docket-entry-body">&ldquo;From the coastal harbors of Liveland to the highlands of Sentinel, New Jasper, New Madison, and Columbia, our diversity is our endurance. Let each province foster its unique traditions within our unbreakable union.&rdquo;</p>
+            <div class="docket-entry-meta">Promulgated October 5, 2026 &bull; Official Dispatch No. EX-2026-06 &bull; <a href="javascript:void(0)" onclick="openDispatch(3)">Read Full Dispatch &rarr;</a></div>
         </div>
     </div>
 
