@@ -1,1 +1,1241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ministry of the Treasury - United Provinces of Sangaia</title>
+    <style>
+        /* --- MINISTRY OF THE TREASURY: GHOST-WHITE & LIGHT GRAY PLATINUM SKEUOMORPHISM --- */
+        :root {
+            --ghost-white: #f8f9fa;
+            --ghost-card: #ffffff;
+            --gray-subtle: #f1f3f5;
+            --gray-light: #e9ecef;
+            --gray-border: #ced4da;
+            --gray-border-dark: #adb5bd;
+            --gray-metal: #dee2e6;
+            --charcoal-dark: #212529;
+            --charcoal-medium: #343a40;
+            --charcoal-light: #495057;
+            --text-dark: #1a1e21;
+            --text-muted: #5c6770;
+            --surplus-green: #2b8a3e;
+            --debt-blue: #1c7ed6;
+            --gold-accent: #d9480f;
+        }
 
+        * { box-sizing: border-box; }
+
+        body {
+            background: #f8f9fa radial-gradient(circle at 50% 0%, #ffffff 0%, #e9ecef 100%) no-repeat fixed;
+            min-height: 100dvh;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            flex-direction: column;
+            margin: 0;
+            font-family: 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+
+        .main-container {
+            width: 100%;
+            margin: 0;
+            background: transparent;
+            padding: 0;
+            flex-grow: 1; 
+        }
+
+        /* --- GLOBAL METAL NAVIGATION HEADER --- */
+        #globalheader {
+            display: flex;
+            align-items: center;
+            position: relative;
+            width: 100%;
+            height: 38px;
+            background: linear-gradient(to bottom, #5e5e5e 0%, #3e3e3e 50%, #2d2d2d 51%, #1f1f1f 100%);
+            border-top: 1px solid #222;
+            border-bottom: 1px solid #000;
+            box-shadow: inset 0 1px 0 rgba(255,255,255,0.15), 0 2px 4px rgba(0,0,0,0.2);
+            font-size: 11px;
+            z-index: 100;
+        }
+
+        #globalnav {
+            flex-grow: 1;
+            margin: 0;
+            padding: 0;
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            height: 100%;
+        }
+
+        #globalnav li { position: relative; height: 100%; display: flex; align-items: center; }
+        #globalnav li::after {
+            content: ""; position: absolute; right: 0; width: 1px; height: 100%;
+            background: linear-gradient(to bottom, #333, #111); box-shadow: 1px 0 0 rgba(255,255,255,0.08);
+        }
+        #globalnav li:first-child::before {
+            content: ""; position: absolute; left: 0; width: 1px; height: 100%;
+            background: linear-gradient(to bottom, #333, #111); box-shadow: 1px 0 0 rgba(255,255,255,0.08);
+        }
+
+        #globalnav li a {
+            display: block; color: #e8e8e8; text-decoration: none; text-shadow: 0 -1px 0 rgba(0,0,0,0.8);
+            font-weight: bold; padding: 0 16px; line-height: 38px;
+            transition: text-shadow 0.2s ease, color 0.2s ease, background 0.2s ease;
+            white-space: nowrap;
+        }
+
+        #globalnav li a:hover {
+            color: #fff;
+            background: linear-gradient(rgba(255,255,255,0.05), rgba(255,255,255,0));
+            text-shadow: 0 0 8px rgba(255, 255, 255, 0.8), 0 -1px 0 rgba(0,0,0,0.8);
+        }
+        
+        #globalnav li a.active { color: #fff; background: rgba(0,0,0,0.25); box-shadow: inset 0 2px 5px rgba(0,0,0,0.3); }
+
+        /* --- SKEUOMORPHIC PLATINUM & CHARCOAL BUTTONS --- */
+        .sangaia-btn {
+            font-size: 0.88rem;
+            font-family: inherit;
+            height: 2.4em;
+            padding: 0 1.3em;
+            border-radius: 4px;
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            box-sizing: border-box;
+            background: linear-gradient(to bottom, #ffffff 0%, #f1f3f5 50%, #dee2e6 100%);
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1), inset 0 1px 0 #ffffff;
+            border: 1px solid var(--gray-border-dark);
+            color: var(--charcoal-dark);
+            font-weight: bold;
+            transition: all 0.2s ease;
+            text-shadow: 0 1px 0 #ffffff;
+        }
+
+        .sangaia-btn:hover {
+            background: linear-gradient(to bottom, #ffffff 0%, #f8f9fa 50%, #e9ecef 100%);
+            box-shadow: 0 3px 8px rgba(0, 0, 0, 0.15), inset 0 1px 0 #ffffff;
+            transform: translateY(-1px);
+        }
+
+        .sangaia-btn:active {
+            transform: translateY(1px);
+            background: linear-gradient(to bottom, #dee2e6 0%, #ced4da 100%);
+            box-shadow: inset 0 2px 4px rgba(0,0,0,0.15);
+        }
+
+        /* Charcoal Primary Button */
+        .sangaia-btn.btn-charcoal {
+            background: linear-gradient(to bottom, #495057 0%, #343a40 50%, #212529 100%);
+            border-color: #111417;
+            color: #ffffff;
+            text-shadow: 0 -1px 0 rgba(0,0,0,0.6);
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.25), inset 0 1px 0 rgba(255,255,255,0.25);
+        }
+
+        .sangaia-btn.btn-charcoal:hover {
+            background: linear-gradient(to bottom, #5c636a 0%, #41474e 50%, #2b3035 100%);
+            box-shadow: 0 3px 8px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255,255,255,0.4);
+            color: #ffffff;
+        }
+
+        /* Green Surplus Button */
+        .sangaia-btn.btn-green {
+            background: linear-gradient(to bottom, #40c057 0%, #2f9e44 50%, #2b8a3e 100%);
+            border-color: #237032;
+            color: white;
+            text-shadow: 0 -1px 0 rgba(0,0,0,0.3);
+        }
+
+        /* --- CONTENT PANELS --- */
+        .content-wrapper {
+            padding: 30px;
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            box-sizing: border-box;
+        }
+
+        .glass-panel {
+            background: linear-gradient(to bottom, #ffffff 0%, #fbfcfd 100%);
+            border: 1px solid var(--gray-border);
+            border-radius: 10px;
+            padding: 26px;
+            margin-bottom: 25px;
+            box-shadow: 0 3px 12px rgba(0, 0, 0, 0.04), inset 0 1px 0 #ffffff;
+            position: relative;
+        }
+
+        .glass-panel h2 {
+            margin: 0 0 15px 0;
+            color: var(--charcoal-dark);
+            border-bottom: 2px solid var(--gray-light);
+            padding-bottom: 10px;
+            font-size: 1.45em;
+            letter-spacing: -0.3px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        /* --- HERO BANNER (GHOST-WHITE & LIGHT GRAY PLATINUM) --- */
+        .treasury-hero-card {
+            background: linear-gradient(135deg, #ffffff 0%, #f4f6f8 40%, #e2e6ea 100%);
+            color: var(--charcoal-dark);
+            border-radius: 12px;
+            padding: 35px 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08), inset 0 1px 0 #ffffff;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 25px;
+            flex-wrap: wrap;
+            position: relative;
+            overflow: hidden;
+            border: 1px solid var(--gray-border-dark);
+        }
+
+        .hero-text-col { max-width: 680px; }
+
+        .hero-badge {
+            display: inline-block;
+            background: linear-gradient(to bottom, #ffffff 0%, #e9ecef 100%);
+            color: var(--charcoal-dark);
+            border: 1px solid var(--gray-border-dark);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.76rem;
+            font-weight: bold;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-bottom: 12px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+        }
+
+        .hero-title {
+            font-size: 2.2rem;
+            margin: 0 0 12px 0;
+            letter-spacing: -0.5px;
+            line-height: 1.2;
+            color: var(--charcoal-dark);
+            text-shadow: 0 1px 0 #ffffff;
+        }
+
+        .hero-sub {
+            font-size: 1.05rem;
+            color: var(--charcoal-light);
+            line-height: 1.6;
+            margin-bottom: 22px;
+        }
+
+        /* Stat Tickers */
+        .stat-ticker-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+
+        .stat-ticker-box {
+            background: #ffffff;
+            border: 1px solid var(--gray-border);
+            border-radius: 8px;
+            padding: 16px 20px;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
+            border-top: 4px solid var(--charcoal-medium);
+        }
+
+        .stat-ticker-box.green-accent { border-top-color: var(--surplus-green); }
+        .stat-ticker-box.blue-accent { border-top-color: var(--debt-blue); }
+
+        .stat-label {
+            font-size: 0.78rem;
+            font-weight: 700;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.6px;
+            margin-bottom: 4px;
+        }
+
+        .stat-value {
+            font-size: 1.6rem;
+            font-weight: 800;
+            color: var(--charcoal-dark);
+        }
+
+        .stat-desc {
+            font-size: 0.8rem;
+            color: #6c757d;
+            margin-top: 4px;
+        }
+
+        /* --- DEBT CEILING METER --- */
+        .meter-container {
+            background: #e9ecef;
+            border-radius: 12px;
+            height: 24px;
+            width: 100%;
+            overflow: hidden;
+            position: relative;
+            box-shadow: inset 0 2px 4px rgba(0,0,0,0.15);
+            margin: 15px 0 10px 0;
+            border: 1px solid #ced4da;
+        }
+
+        .meter-fill {
+            height: 100%;
+            background: linear-gradient(to right, #40c057 0%, #fab005 70%, #fa5252 100%);
+            border-radius: 12px 0 0 12px;
+            transition: width 1s ease-in-out;
+            position: relative;
+        }
+
+        .meter-markers {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.8rem;
+            color: #6c757d;
+            font-weight: 600;
+        }
+
+        /* --- TABLES & DATA GRIDS --- */
+        .data-table-wrapper {
+            overflow-x: auto;
+            margin: 15px 0;
+        }
+
+        .treasury-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.92rem;
+            background: #ffffff;
+        }
+
+        .treasury-table th, .treasury-table td {
+            padding: 12px 16px;
+            border: 1px solid var(--gray-border);
+            text-align: left;
+        }
+
+        .treasury-table th {
+            background: linear-gradient(to bottom, #ffffff 0%, #e9ecef 100%);
+            color: var(--charcoal-dark);
+            font-weight: bold;
+            font-size: 0.84rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .treasury-table tr:nth-child(even) { background: #f8f9fa; }
+        .treasury-table tr:hover { background: #f1f3f5; }
+
+        /* Badges */
+        .badge {
+            font-size: 0.75rem;
+            font-weight: bold;
+            padding: 3px 8px;
+            border-radius: 12px;
+            display: inline-block;
+            text-transform: uppercase;
+        }
+
+        .badge-gray { background: #e9ecef; color: #495057; border: 1px solid #ced4da; }
+        .badge-green { background: #d3f9d8; color: #2b8a3e; border: 1px solid #b2f2bb; }
+        .badge-blue { background: #d0ebff; color: #1971c2; border: 1px solid #a5d8ff; }
+        .badge-gold { background: #fff3bf; color: #f08c00; border: 1px solid #ffec99; }
+
+        /* --- BODY OF ELECTIVES MEMBER CARDS --- */
+        .electives-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .elective-card {
+            background: #ffffff;
+            border: 1px solid var(--gray-border);
+            border-radius: 10px;
+            padding: 22px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.04);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            position: relative;
+            border-top: 5px solid var(--charcoal-medium);
+            transition: all 0.2s ease;
+        }
+
+        .elective-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(0,0,0,0.08);
+            border-top-color: var(--charcoal-dark);
+        }
+
+        .member-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 10px;
+        }
+
+        .member-name {
+            font-size: 1.15rem;
+            font-weight: bold;
+            color: var(--charcoal-dark);
+            margin: 0;
+        }
+
+        .member-role {
+            font-size: 0.82rem;
+            color: var(--text-muted);
+            margin: 2px 0 8px 0;
+        }
+
+        .member-pay-box {
+            background: linear-gradient(to bottom, #f8f9fa 0%, #e9ecef 100%);
+            border: 1px solid var(--gray-border);
+            border-radius: 6px;
+            padding: 10px 14px;
+            margin: 10px 0 14px 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .pay-amount {
+            font-size: 1.25rem;
+            font-weight: 800;
+            color: var(--surplus-green);
+        }
+
+        .pay-caption {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+        }
+
+        .member-report-snippet {
+            font-size: 0.86rem;
+            color: #495057;
+            line-height: 1.5;
+            margin-bottom: 14px;
+            flex-grow: 1;
+        }
+
+        /* Filter Bars */
+        .filter-bar {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+            margin-bottom: 20px;
+            align-items: center;
+            background: #ffffff;
+            padding: 14px 18px;
+            border-radius: 8px;
+            border: 1px solid var(--gray-border);
+        }
+
+        .filter-select, .filter-input {
+            padding: 8px 12px;
+            border: 1px solid var(--gray-border);
+            border-radius: 5px;
+            font-family: inherit;
+            font-size: 0.88rem;
+            background: #ffffff;
+            color: #333;
+        }
+
+        .filter-select:focus, .filter-input:focus {
+            outline: none;
+            border-color: var(--charcoal-dark);
+            box-shadow: 0 0 0 3px rgba(33, 37, 41, 0.15);
+        }
+
+        /* --- MODALS --- */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(4px);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .modal-overlay.show { display: flex; }
+
+        .modal-card {
+            background: #ffffff;
+            border-radius: 10px;
+            max-width: 640px;
+            width: 100%;
+            max-height: 90vh;
+            overflow-y: auto;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.25);
+            border-top: 6px solid var(--charcoal-dark);
+            animation: modalFadeIn 0.25s ease;
+        }
+
+        @keyframes modalFadeIn {
+            from { opacity: 0; transform: scale(0.96); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        footer {
+            text-align: center;
+            padding: 25px;
+            font-size: 0.9em;
+            background: rgba(255, 255, 255, 0.7);
+            border-top: 1px solid var(--gray-border);
+            margin-top: auto;
+            width: 100%;
+            color: var(--text-muted);
+        }
+    </style>
+</head>
+<body>
+
+<div class="main-container">
+
+    <!-- GLOBAL NAVIGATION HEADER -->
+    <nav id="globalheader">
+        <div style="position: absolute; left: 15px; display: flex; align-items: center; height: 100%;">
+            <a href="https://sangaia.org/index.html"><img src="../media/nav_logo.png" onerror="this.onerror=null; this.src='media/nav_logo.png';" style="height: 22px; width: auto;" alt="Logo"></a>
+        </div>
+        <div style="position: absolute; right: 15px; display: flex; align-items: center; gap: 15px; height: 100%; z-index: 100;">
+            <div id="auth-widget">
+                <a href="https://sangaia.org/id.html" style="color: #bbb; text-decoration: none; font-size: 11px; font-weight: bold; letter-spacing: 0.5px; padding: 3px 8px; border: 1px solid #444; border-radius: 4px; background: linear-gradient(to bottom, #555, #333); box-shadow: 0 1px 2px rgba(0,0,0,0.3); transition: all 0.2s ease;">Sangaia ID</a>
+            </div>
+            <a href="sgn/index.html" style="color: #bbb; text-decoration: none; font-size: 11px; font-weight: bold; letter-spacing: 0.5px; padding: 3px 8px; border: 1px solid #444; border-radius: 4px; background: linear-gradient(to bottom, #555, #333); box-shadow: 0 1px 2px rgba(0,0,0,0.3); transition: all 0.2s ease;">Сангаиан</a>
+        </div>
+        <ul id="globalnav">
+            <li><a href="https://sangaia.org/index.html">Home</a></li>
+            <li><a href="#overview">Overview</a></li>
+            <li><a href="#debt-ceiling">Debt Ceiling</a></li>
+            <li><a href="#government-loans">Gov Loans</a></li>
+            <li><a href="#fund-allocation">Fund Allocation</a></li>
+            <li><a href="#body-of-electives">Body of Electives</a></li>
+            <li><a href="#surprise-checkins">Audits & Check-Ins</a></li>
+            <li><a href="https://sangaia.org/services.html">All Ministries</a></li>
+        </ul>
+    </nav>
+
+    <div class="content-wrapper">
+
+        <!-- GHOST-WHITE & LIGHT GRAY PLATINUM HERO BANNER -->
+        <div class="treasury-hero-card" id="overview">
+            <div class="hero-text-col">
+                <span class="hero-badge">United Provinces of Sangaia &bull; Executive Branch</span>
+                <h1 class="hero-title">Ministry of the Treasury</h1>
+                <p class="hero-sub">
+                    Enforcing statutory debt ceiling limits, administering sovereign infrastructure loans, certifying federal budget allocations, and publishing transparent compensation and unannounced audit reports for the Body of Electives.
+                </p>
+                <div style="display: flex; gap: 12px; flex-wrap: wrap;">
+                    <a href="#debt-ceiling" class="sangaia-btn btn-charcoal"><span>Inspect Debt Ceiling &rarr;</span></a>
+                    <a href="#body-of-electives" class="sangaia-btn"><span>View Member Pay Reports</span></a>
+                    <a href="#fund-allocation" class="sangaia-btn"><span>Money Allocation Ledger</span></a>
+                </div>
+            </div>
+
+            <div style="text-align: center;">
+                <img src="../media/sangaia_seal.png" onerror="this.onerror=null; this.src='media/sangaia_seal.png';" alt="Seal of Sangaia" style="height: 110px; width: auto; filter: drop-shadow(0 4px 8px rgba(0,0,0,0.15));">
+                <div style="font-size: 0.78rem; font-weight: bold; text-transform: uppercase; letter-spacing: 1.5px; margin-top: 8px; color: var(--charcoal-medium);">Federal Fiscal & Bullion Authority</div>
+            </div>
+        </div>
+
+        <!-- STAT TICKERS -->
+        <div class="stat-ticker-grid">
+            <div class="stat-ticker-box blue-accent">
+                <div class="stat-label">Statutory Debt Ceiling</div>
+                <div class="stat-value">S$ 45.00 B</div>
+                <div class="stat-desc">Constitutional hard cap (25% GDP Limit)</div>
+            </div>
+
+            <div class="stat-ticker-box green-accent">
+                <div class="stat-label">Current Sovereign Debt</div>
+                <div class="stat-value" style="color: var(--surplus-green);">S$ 8.42 B</div>
+                <div class="stat-desc">18.7% of Ceiling &bull; 4.8% of National GDP</div>
+            </div>
+
+            <div class="stat-ticker-box">
+                <div class="stat-label">FY 2026 Fiscal Balance</div>
+                <div class="stat-value">+S$ 2.45 B</div>
+                <div class="stat-desc">Net surplus routed to Bullion Reserve</div>
+            </div>
+
+            <div class="stat-ticker-box">
+                <div class="stat-label">Electives Audit Compliance</div>
+                <div class="stat-value">100%</div>
+                <div class="stat-desc">All surprise check-ins logged & cleared</div>
+            </div>
+        </div>
+
+        <!-- SECTION 1: DEBT CEILING & CONSTITUTIONAL RULES -->
+        <div class="glass-panel" id="debt-ceiling">
+            <h2>
+                <span>National Debt Ceiling & Fiscal Restraint Charter</span>
+                <span class="badge badge-green">Healthy Solvency Ratio (18.7%)</span>
+            </h2>
+            <p>
+                Under the Sangaian Constitution, the United Provinces maintain a strict <strong>Zero Monetary Strings Attached</strong> doctrine. The federal debt limit is legally capped at <strong>S$ 45.00 Billion</strong> (and cannot exceed 25% of annual GDP). This permanent ceiling prevents deficit creep and ensures the state never passes bills to posterity marked as <em>"insufficient funds"</em>.
+            </p>
+
+            <!-- Visual Debt Meter -->
+            <div style="background: #ffffff; border: 1px solid var(--gray-border); border-radius: 8px; padding: 20px; margin: 20px 0;">
+                <div style="display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 6px;">
+                    <div>
+                        <span style="font-size: 0.8rem; font-weight: bold; color: var(--text-muted); text-transform: uppercase;">CURRENT SOVEREIGN OBLIGATIONS:</span><br>
+                        <span style="font-size: 1.5rem; font-weight: 800; color: var(--surplus-green);">S$ 8,420,000,000</span>
+                    </div>
+                    <div style="text-align: right;">
+                        <span style="font-size: 0.8rem; font-weight: bold; color: var(--text-muted); text-transform: uppercase;">STATUTORY HARD CEILING:</span><br>
+                        <span style="font-size: 1.5rem; font-weight: 800; color: var(--charcoal-dark);">S$ 45,000,000,000</span>
+                    </div>
+                </div>
+
+                <div class="meter-container">
+                    <div class="meter-fill" style="width: 18.7%;"></div>
+                </div>
+
+                <div class="meter-markers">
+                    <span>S$ 0 (Zero Debt)</span>
+                    <span style="color: var(--surplus-green);">Current: S$ 8.42 B (18.7%)</span>
+                    <span>Safety Margin: S$ 36.58 B (81.3% Free)</span>
+                    <span style="color: #c92a2a;">Hard Limit: S$ 45.00 B</span>
+                </div>
+            </div>
+
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px; margin-top: 20px;">
+                <div style="background: var(--ghost-white); border: 1px solid var(--gray-border); border-radius: 6px; padding: 16px;">
+                    <strong style="color: var(--charcoal-dark);">1. Hard 20% Tax Cap</strong>
+                    <p style="font-size: 0.85rem; color: #555; margin: 4px 0 0 0;">The government is constitutionally barred from taxing more than 20.0% of any citizen's earnings, requiring strict operational discipline.</p>
+                </div>
+                <div style="background: var(--ghost-white); border: 1px solid var(--gray-border); border-radius: 6px; padding: 16px;">
+                    <strong style="color: var(--charcoal-dark);">2. Unanimous Ceiling Assent</strong>
+                    <p style="font-size: 0.85rem; color: #555; margin: 4px 0 0 0;">Raising the debt ceiling requires unanimous assent from both the Aeretocrat and the Body of Electives, making debt inflation practically impossible.</p>
+                </div>
+                <div style="background: var(--ghost-white); border: 1px solid var(--gray-border); border-radius: 6px; padding: 16px;">
+                    <strong style="color: var(--charcoal-dark);">3. 100% Tangible Asset Backing</strong>
+                    <p style="font-size: 0.85rem; color: #555; margin: 4px 0 0 0;">All issued debt instruments must be collateralized by physical bullion reserves, sovereign maglev infrastructure, or maritime canal revenues.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- SECTION 2: GOVERNMENT LOANS -->
+        <div class="glass-panel" id="government-loans">
+            <h2>
+                <span>Government Loan Portfolios & Sovereign Credit Facilities</span>
+                <button type="button" class="sangaia-btn btn-charcoal" onclick="openLoanModal()">
+                    <span>Apply for Municipal / Public Credit &rarr;</span>
+                </button>
+            </h2>
+            <p>
+                The Ministry of the Treasury issues and services low-interest public development credit and zero-interest emergency municipal loans. All sovereign loans maintain zero default tolerances and transparent public repayment terms.
+            </p>
+
+            <div class="data-table-wrapper">
+                <table class="treasury-table">
+                    <thead>
+                        <tr>
+                            <th>Facility ID</th>
+                            <th>Debtor / Public Enterprise</th>
+                            <th>Principal Amount (S$)</th>
+                            <th>Interest Rate</th>
+                            <th>Maturity</th>
+                            <th>Status & Collateral</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>LOAN-MGL-2024-01</strong></td>
+                            <td>Nova Sangaia High-Speed Maglev Authority</td>
+                            <td><span style="font-weight: 800; color: var(--charcoal-dark);">S$ 2,800,000,000</span></td>
+                            <td>1.25% Fixed</td>
+                            <td>2039 (15-Yr)</td>
+                            <td><span class="badge badge-green">Performing (Backed by Maglev Fares)</span></td>
+                        </tr>
+                        <tr>
+                            <td><strong>LOAN-CAN-2023-04</strong></td>
+                            <td>Sangaian Maritime Canal Logistics Trust</td>
+                            <td><span style="font-weight: 800; color: var(--charcoal-dark);">S$ 1,950,000,000</span></td>
+                            <td>1.10% Fixed</td>
+                            <td>2035 (12-Yr)</td>
+                            <td><span class="badge badge-green">Performing (Canal Toll Sinking Fund)</span></td>
+                        </tr>
+                        <tr>
+                            <td><strong>LOAN-HYD-2025-02</strong></td>
+                            <td>Northern Highlands Hydroelectric Cooperative</td>
+                            <td><span style="font-weight: 800; color: var(--charcoal-dark);">S$ 1,400,000,000</span></td>
+                            <td>0.75% Concession</td>
+                            <td>2040 (15-Yr)</td>
+                            <td><span class="badge badge-green">Performing (Grid Power Off-take)</span></td>
+                        </tr>
+                        <tr>
+                            <td><strong>LOAN-MED-2025-08</strong></td>
+                            <td>Veridia Central Clinical Virology Center</td>
+                            <td><span style="font-weight: 800; color: var(--charcoal-dark);">S$ 650,000,000</span></td>
+                            <td>0.00% Sovereign</td>
+                            <td>2032 (7-Yr)</td>
+                            <td><span class="badge badge-green">State-Subsidized Medical Facility</span></td>
+                        </tr>
+                        <tr>
+                            <td><strong>LOAN-MUN-2026-01</strong></td>
+                            <td>Provincial Flood Defense Council (Maritime Coast)</td>
+                            <td><span style="font-weight: 800; color: var(--charcoal-dark);">S$ 320,000,000</span></td>
+                            <td>0.00% Zero-Int</td>
+                            <td>2036 (10-Yr)</td>
+                            <td><span class="badge badge-blue">Municipal Emergency Facility</span></td>
+                        </tr>
+                    </tbody>
+                    <tfoot>
+                        <tr style="background: var(--gray-light); font-weight: bold;">
+                            <td colspan="2">Total Active Sovereign Loan Portfolio</td>
+                            <td style="color: var(--charcoal-dark); font-size: 1.05rem;">S$ 7,120,000,000</td>
+                            <td colspan="3">0.0% Delinquency Rate &bull; 100% Performing</td>
+                        </tr>
+                    </tfoot>
+                </table>
+            </div>
+        </div>
+
+        <!-- SECTION 3: WHERE MONEY IS BEING ALLOCATED -->
+        <div class="glass-panel" id="fund-allocation">
+            <h2>
+                <span>Federal Money Allocation Ledger (FY 2026 Budget)</span>
+                <span class="badge badge-gray">Total Budget: S$ 38.50 Billion</span>
+            </h2>
+            <p>
+                Every Sangaian Dollar collected through customs, corporate royalties, and the capped 20% income tax is allocated across eight primary constitutional expenditure categories. Zero funds are diverted to unapproved private lobbying or unrecorded programs.
+            </p>
+
+            <div class="data-table-wrapper">
+                <table class="treasury-table">
+                    <thead>
+                        <tr>
+                            <th>Ministry / Allocation Domain</th>
+                            <th>Fiscal Allocation (S$)</th>
+                            <th>Share (%)</th>
+                            <th>Core Purpose & Statutory Objectives</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Ministry of Healthcare (mH)</strong></td>
+                            <td><span style="font-weight: 800; color: var(--charcoal-dark);">S$ 9,200,000,000</span></td>
+                            <td><span class="badge badge-blue">23.9%</span></td>
+                            <td>Universal free clinic visits, emergency paramedic fleet, DDCR disease surveillance, and hospital modernization.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Transit, Maglev & High-Voltage Grid (MtE/MiA)</strong></td>
+                            <td><span style="font-weight: 800; color: var(--charcoal-dark);">S$ 6,800,000,000</span></td>
+                            <td><span class="badge badge-blue">17.7%</span></td>
+                            <td>Inter-provincial high-speed maglev lines, canal locks maintenance, and hydroelectric clean-energy grid distribution.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Ministry of Defense & Civil Guard (MdA)</strong></td>
+                            <td><span style="font-weight: 800; color: var(--charcoal-dark);">S$ 5,400,000,000</span></td>
+                            <td><span class="badge badge-blue">14.0%</span></td>
+                            <td>Maritime canal sovereignty, coastal radar arrays, territorial airspace security, and disaster rescue brigades.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Provincial Fiscal Equalization Fund</strong></td>
+                            <td><span style="font-weight: 800; color: var(--charcoal-dark);">S$ 4,500,000,000</span></td>
+                            <td><span class="badge badge-blue">11.7%</span></td>
+                            <td>Direct revenue equalization distributed to Maritime Coast, Nova Sangaia, and Northern Highlands municipalities.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Ministry of Education (mE)</strong></td>
+                            <td><span style="font-weight: 800; color: var(--charcoal-dark);">S$ 4,250,000,000</span></td>
+                            <td><span class="badge badge-blue">11.0%</span></td>
+                            <td>100% free primary & secondary schooling, higher ed tuition grants, Stucal educational apps, and teacher dignity pay.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Ministry of Work (mW)</strong></td>
+                            <td><span style="font-weight: 800; color: var(--charcoal-dark);">S$ 3,800,000,000</span></td>
+                            <td><span class="badge badge-blue">9.9%</span></td>
+                            <td>Labor standards enforcement, vocational retraining grants (up to S$ 5k), and work permit regulatory verifications.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Sovereign Gold & Rainy-Day Reserve</strong></td>
+                            <td><span style="font-weight: 800; color: var(--surplus-green);">S$ 2,450,000,000</span></td>
+                            <td><span class="badge badge-green">6.3%</span></td>
+                            <td>Physical gold bullion acquisition, strategic energy reserves, and unallocated emergency liquidity.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Ministry of the Executive & Judiciary (MoEX)</strong></td>
+                            <td><span style="font-weight: 800; color: var(--charcoal-dark);">S$ 2,100,000,000</span></td>
+                            <td><span class="badge badge-blue">5.5%</span></td>
+                            <td>Administration of the Aeretocrat cabinet, independent magistrate courts, and Body of Electives secretariat.</td>
+                        </tr>
+                    </tbody>
+                    <tfoot>
+                        <tr style="background: var(--gray-light); font-weight: bold;">
+                            <td>Total Sovereign Federal Expenditures</td>
+                            <td style="color: var(--charcoal-dark); font-size: 1.05rem;">S$ 38,500,000,000</td>
+                            <td>100.0%</td>
+                            <td>100% Balanced Fiscal Execution &bull; Zero Deficit Financed</td>
+                        </tr>
+                    </tfoot>
+                </table>
+            </div>
+        </div>
+
+        <!-- SECTION 4: BODY OF ELECTIVES INDIVIDUAL REPORTS & PAY -->
+        <div class="glass-panel" id="body-of-electives">
+            <h2>
+                <span>Body of Electives: Individual Reports & Statutory Compensation</span>
+                <span class="badge badge-gray">Full Public Salary Disclosure</span>
+            </h2>
+            <p>
+                In Sangaia, democratic oversight is enforced by the **Body of Electives**—citizen representatives chosen directly by the people. They work alongside the Aeretocrat to inspect federal accounts, vote on legislative spending, and conduct <strong>random, unannounced check-ins</strong> at the Treasury. In accordance with anti-corruption laws, their exact compensation, expenses, and audit logs are published below.
+            </p>
+
+            <div class="electives-grid">
+                <!-- Member 1 -->
+                <div class="elective-card">
+                    <div>
+                        <div class="member-header">
+                            <div>
+                                <h3 class="member-name">Marcus Vance</h3>
+                                <div class="member-role">Veridia Central Province &bull; Chair of Fiscal Integrity</div>
+                            </div>
+                            <span class="badge badge-green">100% Attendance</span>
+                        </div>
+
+                        <div class="member-pay-box">
+                            <div>
+                                <div class="pay-caption">Annual Statutory Salary</div>
+                                <div class="pay-amount">S$ 82,500.00</div>
+                            </div>
+                            <div style="text-align: right;">
+                                <div class="pay-caption">Expense Allowance</div>
+                                <div style="font-weight: bold; color: var(--charcoal-dark);">S$ 4,200.00</div>
+                            </div>
+                        </div>
+
+                        <p class="member-report-snippet">
+                            <strong>Audit Report:</strong> Led 4 unannounced surprise check-ins at the Central Bullion Vault; confirmed physical vault audit with zero discrepancy; authored the 2026 Fiscal Overhead Reduction Resolution.
+                        </p>
+                    </div>
+
+                    <div>
+                        <button type="button" class="sangaia-btn" style="width: 100%; font-size: 0.85rem;" onclick="viewMemberDossier('Marcus Vance', 'Veridia Central', 'S$ 82,500.00', 'S$ 4,200.00', 'Chair of Fiscal Integrity & Audits', 'Conducted 4 surprise inspections at the Central Vault. Verified bullion weigh-ins and treasury ledger balance. Cleared Q1–Q3 expense vouchers with zero personal reimbursements requested.')">
+                            <span>View Full Transparency Dossier &rarr;</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Member 2 -->
+                <div class="elective-card">
+                    <div>
+                        <div class="member-header">
+                            <div>
+                                <h3 class="member-name">Elina Rostova</h3>
+                                <div class="member-role">Nova Sangaia Province &bull; Educational Appropriations</div>
+                            </div>
+                            <span class="badge badge-green">96% Attendance</span>
+                        </div>
+
+                        <div class="member-pay-box">
+                            <div>
+                                <div class="pay-caption">Annual Statutory Salary</div>
+                                <div class="pay-amount">S$ 79,000.00</div>
+                            </div>
+                            <div style="text-align: right;">
+                                <div class="pay-caption">Expense Allowance</div>
+                                <div style="font-weight: bold; color: var(--charcoal-dark);">S$ 3,800.00</div>
+                            </div>
+                        </div>
+
+                        <p class="member-report-snippet">
+                            <strong>Audit Report:</strong> Supervised the S$ 4.25B educational fund transfer; audited university grant disbursements for Nova Sangaia Tech; validated that 100% of public schools operate tuition-free.
+                        </p>
+                    </div>
+
+                    <div>
+                        <button type="button" class="sangaia-btn" style="width: 100%; font-size: 0.85rem;" onclick="viewMemberDossier('Elina Rostova', 'Nova Sangaia', 'S$ 79,000.00', 'S$ 3,800.00', 'Committee on Education & Research Grants', 'Performed forensic review of Nova Sangaia Tech maglev research grants. Confirmed 0% waste and certified that textbook stipends were paid directly to student wallets.')">
+                            <span>View Full Transparency Dossier &rarr;</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Member 3 -->
+                <div class="elective-card">
+                    <div>
+                        <div class="member-header">
+                            <div>
+                                <h3 class="member-name">Capt. Thaddeus Thorne</h3>
+                                <div class="member-role">Maritime Coast Province &bull; Port Logistics & Tolls</div>
+                            </div>
+                            <span class="badge badge-green">100% Attendance</span>
+                        </div>
+
+                        <div class="member-pay-box">
+                            <div>
+                                <div class="pay-caption">Annual Statutory Salary</div>
+                                <div class="pay-amount">S$ 79,000.00</div>
+                            </div>
+                            <div style="text-align: right;">
+                                <div class="pay-caption">Expense Allowance</div>
+                                <div style="font-weight: bold; color: var(--charcoal-dark);">S$ 4,100.00</div>
+                            </div>
+                        </div>
+
+                        <p class="member-report-snippet">
+                            <strong>Audit Report:</strong> Completed unannounced inspection of the Maritime Canal Customs & Toll Office; confirmed collection of S$ 1.95B in maritime transit fees with zero leakage into offshore entities.
+                        </p>
+                    </div>
+
+                    <div>
+                        <button type="button" class="sangaia-btn" style="width: 100%; font-size: 0.85rem;" onclick="viewMemberDossier('Capt. Thaddeus Thorne', 'Maritime Coast', 'S$ 79,000.00', 'S$ 4,100.00', 'Committee on Port Logistics & Maritime Revenue', 'Audited Canal Toll Revenue Accounts and naval drydock equipment purchases. Verified zero commercial conflicts of interest with foreign merchant carriers.')">
+                            <span>View Full Transparency Dossier &rarr;</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Member 4 -->
+                <div class="elective-card">
+                    <div>
+                        <div class="member-header">
+                            <div>
+                                <h3 class="member-name">Sonja Lindqvist</h3>
+                                <div class="member-role">Northern Highlands &bull; Sovereign Debt & Hydro Grid</div>
+                            </div>
+                            <span class="badge badge-green">96% Attendance</span>
+                        </div>
+
+                        <div class="member-pay-box">
+                            <div>
+                                <div class="pay-caption">Annual Statutory Salary</div>
+                                <div class="pay-amount">S$ 79,000.00</div>
+                            </div>
+                            <div style="text-align: right;">
+                                <div class="pay-caption">Expense Allowance</div>
+                                <div style="font-weight: bold; color: var(--charcoal-dark);">S$ 3,900.00</div>
+                            </div>
+                        </div>
+
+                        <p class="member-report-snippet">
+                            <strong>Audit Report:</strong> Reviewed the S$ 1.4B hydroelectric cooperative loan amortization; certified compliance with the 25% GDP constitutional debt limit; published provincial town-hall feedback.
+                        </p>
+                    </div>
+
+                    <div>
+                        <button type="button" class="sangaia-btn" style="width: 100%; font-size: 0.85rem;" onclick="viewMemberDossier('Sonja Lindqvist', 'Northern Highlands', 'S$ 79,000.00', 'S$ 3,900.00', 'Committee on Debt Ceiling & Energy Grid', 'Conducted surprise check-in on the Northern Highlands Hydroelectric bond book. Confirmed zero defaults and full adherence to environmental and fiscal standards.')">
+                            <span>View Full Transparency Dossier &rarr;</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Member 5 -->
+                <div class="elective-card">
+                    <div>
+                        <div class="member-header">
+                            <div>
+                                <h3 class="member-name">Dr. Alistair Sterling</h3>
+                                <div class="member-role">Veridia South &bull; Healthcare Appropriations</div>
+                            </div>
+                            <span class="badge badge-green">100% Attendance</span>
+                        </div>
+
+                        <div class="member-pay-box">
+                            <div>
+                                <div class="pay-caption">Annual Statutory Salary</div>
+                                <div class="pay-amount">S$ 79,000.00</div>
+                            </div>
+                            <div style="text-align: right;">
+                                <div class="pay-caption">Expense Allowance</div>
+                                <div style="font-weight: bold; color: var(--charcoal-dark);">S$ 3,600.00</div>
+                            </div>
+                        </div>
+
+                        <p class="member-report-snippet">
+                            <strong>Audit Report:</strong> Audited pharmaceutical procurement contracts for the Ministry of Healthcare; confirmed zero-profit cap on sovereign insulin and antibiotic distributions; approved S$ 9.2B health transfer.
+                        </p>
+                    </div>
+
+                    <div>
+                        <button type="button" class="sangaia-btn" style="width: 100%; font-size: 0.85rem;" onclick="viewMemberDossier('Dr. Alistair Sterling', 'Veridia South', 'S$ 79,000.00', 'S$ 3,600.00', 'Committee on Healthcare & Hospital Oversight', 'Led forensic review of clinical supplier pricing at Veridia Central Hospital. Successfully identified and removed duplicate administrative service charges.')">
+                            <span>View Full Transparency Dossier &rarr;</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Member 6 -->
+                <div class="elective-card">
+                    <div>
+                        <div class="member-header">
+                            <div>
+                                <h3 class="member-name">Kaelen Voss</h3>
+                                <div class="member-role">Federal Capital &bull; Secretary of the Body of Electives</div>
+                            </div>
+                            <span class="badge badge-green">100% Attendance</span>
+                        </div>
+
+                        <div class="member-pay-box">
+                            <div>
+                                <div class="pay-caption">Annual Statutory Salary</div>
+                                <div class="pay-amount">S$ 84,000.00</div>
+                            </div>
+                            <div style="text-align: right;">
+                                <div class="pay-caption">Expense Allowance</div>
+                                <div style="font-weight: bold; color: var(--charcoal-dark);">S$ 4,500.00</div>
+                            </div>
+                        </div>
+
+                        <p class="member-report-snippet">
+                            <strong>Audit Report:</strong> Compiled public compensation disclosures for all representatives; confirmed all members pay statutory federal income tax capped at 20%; manages the citizen whistleblower intake portal.
+                        </p>
+                    </div>
+
+                    <div>
+                        <button type="button" class="sangaia-btn" style="width: 100%; font-size: 0.85rem;" onclick="viewMemberDossier('Kaelen Voss', 'Federal Capital', 'S$ 84,000.00', 'S$ 4,500.00', 'Secretary of the Body of Electives', 'Maintains the official legislative voting register and the public transparency ledger. Validated that zero private contributions were accepted by any sitting member.')">
+                            <span>View Full Transparency Dossier &rarr;</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- SECTION 5: RANDOM UNANNOUNCED CHECK-INS & AUDITS -->
+        <div class="glass-panel" id="surprise-checkins">
+            <h2>
+                <span>Random Unannounced Check-Ins Log</span>
+                <span class="badge badge-green">Statutory Anti-Fraud Protocol</span>
+            </h2>
+            <p>
+                As detailed in the Sangaian Civic Service Statutes, members of the Body of Electives possess constitutional authority to execute unannounced, surprise audits on all Treasury vaults, ledger offices, and spending departments at any time.
+            </p>
+
+            <div class="data-table-wrapper">
+                <table class="treasury-table">
+                    <thead>
+                        <tr>
+                            <th>Date & Time</th>
+                            <th>Inspecting Elective</th>
+                            <th>Inspected Department / Facility</th>
+                            <th>Audit Scope</th>
+                            <th>Verification Finding</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>14 Oct 2026, 09:15</td>
+                            <td><strong>Marcus Vance</strong></td>
+                            <td>Central Bullion Vault (Veridia Deep Facility)</td>
+                            <td>Physical gold bullion bar weighing & serial verification</td>
+                            <td><span class="badge badge-green">100% Certified & Matched</span></td>
+                        </tr>
+                        <tr>
+                            <td>02 Oct 2026, 14:40</td>
+                            <td><strong>Capt. Thaddeus Thorne</strong></td>
+                            <td>Port of Veridia Customs Revenue Office</td>
+                            <td>Commercial ship docking fee receipts & currency intake</td>
+                            <td><span class="badge badge-green">Cleared (Zero Discrepancy)</span></td>
+                        </tr>
+                        <tr>
+                            <td>21 Sep 2026, 11:00</td>
+                            <td><strong>Dr. Alistair Sterling</strong></td>
+                            <td>DDCR Virology Procurement Directorate</td>
+                            <td>Medical equipment supply chain invoice reconciliations</td>
+                            <td><span class="badge badge-green">Cleared & Verified</span></td>
+                        </tr>
+                        <tr>
+                            <td>08 Sep 2026, 16:30</td>
+                            <td><strong>Sonja Lindqvist</strong></td>
+                            <td>Federal Debt Registry & Bond Archive</td>
+                            <td>Cross-check of statutory ceiling certificates</td>
+                            <td><span class="badge badge-green">Ceiling Capped at S$ 45.0B</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Whistleblower / Citizen Audit Report -->
+            <div style="background: var(--ghost-white); border: 1px solid var(--gray-border); border-radius: 8px; padding: 20px; margin-top: 20px;">
+                <h3 style="margin-top: 0; color: var(--charcoal-dark); font-size: 1.1rem;">Citizen Fiscal Inquiry & Anti-Fraud Submission</h3>
+                <p style="font-size: 0.86rem; color: #555; margin-bottom: 15px;">
+                    Citizens who detect suspected fiscal irregularities or misuse of public allocations may submit a direct, encrypted petition to the Body of Electives.
+                </p>
+                <form onsubmit="handleFraudReport(event)">
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 12px;">
+                        <input type="text" id="fraud-name" class="filter-input" placeholder="Citizen Legal Name or Sangaia ID (Optional for anonymous)">
+                        <input type="text" id="fraud-dept" class="filter-input" required placeholder="Concerned Department / Municipal Project *">
+                    </div>
+                    <textarea id="fraud-desc" class="filter-input" style="width: 100%; height: 80px; margin-bottom: 12px;" required placeholder="Detailed explanation of the fiscal inquiry, audit request, or discrepancy..."></textarea>
+                    <div style="text-align: right;">
+                        <button type="submit" class="sangaia-btn btn-charcoal">
+                            <span>Lodge Formal Inquiry with Body of Electives &rarr;</span>
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- MEMBER TRANSPARENCY DOSSIER MODAL -->
+    <div class="modal-overlay" id="dossier-modal">
+        <div class="modal-card">
+            <h3 style="color: var(--charcoal-dark); margin-top: 0;" id="dossier-name">Member Transparency Dossier</h3>
+            <div id="dossier-body" style="font-size: 0.95rem; color: #333; line-height: 1.6; margin: 15px 0;"></div>
+            <div style="text-align: right; margin-top: 20px;">
+                <button type="button" class="sangaia-btn" onclick="closeDossierModal()"><span>Close Dossier</span></button>
+            </div>
+        </div>
+    </div>
+
+    <!-- LOAN APPLICATION MODAL -->
+    <div class="modal-overlay" id="loan-modal">
+        <div class="modal-card">
+            <h3 style="color: var(--charcoal-dark); margin-top: 0;">Sovereign Public Loan Inquiry</h3>
+            <p style="font-size: 0.85rem; color: #666;">Filing directly with the Ministry of the Treasury Sovereign Credit Facility.</p>
+            
+            <form onsubmit="handleLoanSubmit(event)">
+                <div class="form-group" style="margin-bottom: 12px;">
+                    <label class="form-label" style="font-size: 0.78rem; font-weight: bold; color: var(--charcoal-dark); display: block; margin-bottom: 4px;">Public Entity / Municipal Authority *</label>
+                    <input type="text" id="loan-entity" class="filter-input" style="width: 100%;" required placeholder="e.g. Maritime Coastal Transit District">
+                </div>
+                <div class="form-group" style="margin-bottom: 12px;">
+                    <label class="form-label" style="font-size: 0.78rem; font-weight: bold; color: var(--charcoal-dark); display: block; margin-bottom: 4px;">Requested Principal Amount (in S$) *</label>
+                    <input type="number" id="loan-amount" class="filter-input" style="width: 100%;" required min="100000" step="10000" value="5000000">
+                </div>
+                <div class="form-group" style="margin-bottom: 12px;">
+                    <label class="form-label" style="font-size: 0.78rem; font-weight: bold; color: var(--charcoal-dark); display: block; margin-bottom: 4px;">Infrastructure Purpose & Collateral *</label>
+                    <textarea id="loan-purpose" class="filter-input" style="width: 100%; height: 70px;" required placeholder="Describe project feasibility, revenue source for amortization, and public benefits..."></textarea>
+                </div>
+                <div style="display: flex; justify-content: flex-end; gap: 10px; margin-top: 18px;">
+                    <button type="button" class="sangaia-btn" onclick="closeLoanModal()"><span>Cancel</span></button>
+                    <button type="submit" class="sangaia-btn btn-charcoal"><span>Submit Sovereign Loan Petition</span></button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- GENERAL NOTICE MODAL -->
+    <div class="modal-overlay" id="notice-modal">
+        <div class="modal-card">
+            <h3 style="color: var(--charcoal-dark); margin-top: 0;" id="notice-title">Notification</h3>
+            <div id="notice-body" style="font-size: 0.95rem; color: #333; line-height: 1.6; margin: 15px 0;"></div>
+            <div style="text-align: right; margin-top: 20px;">
+                <button type="button" class="sangaia-btn" onclick="closeNoticeModal()"><span>Close Window</span></button>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        &copy; 2026 United Provinces of Sangaia. All Rights Reserved.<br>
+        <span style="font-size: 0.85em; color: #6c757d;">Ministry of the Treasury &bull; Department of the Federal Budget, Bullion Registry & Fiscal Solvency</span>
+    </footer>
+</div>
+
+<!-- SCRIPTS -->
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="auth.js" onerror="this.onerror=null; this.src='../auth.js';"></script>
+
+<script>
+    // Dossier Modal
+    function viewMemberDossier(name, prov, salary, expense, committee, report) {
+        document.getElementById('dossier-name').textContent = "Transparency Dossier: " + name;
+        document.getElementById('dossier-body').innerHTML = `
+            <div style="background: #f8f9fa; border: 1px solid #ced4da; border-radius: 8px; padding: 16px; margin-bottom: 16px;">
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; font-size: 0.9rem;">
+                    <div><strong>Representative:</strong> ${name}</div>
+                    <div><strong>Constituency:</strong> ${prov} Province</div>
+                    <div><strong>Statutory Salary:</strong> <span style="color:#2b8a3e; font-weight:bold;">${salary}</span></div>
+                    <div><strong>Expense Allowance:</strong> ${expense}</div>
+                    <div><strong>Tax Paid (Max 20% Cap):</strong> Approx. S$ 16,500.00</div>
+                    <div><strong>Committee:</strong> ${committee}</div>
+                </div>
+            </div>
+
+            <h4 style="margin: 12px 0 6px 0; color: #212529;">Audit & Compliance Log</h4>
+            <p style="font-size: 0.88rem; color: #495057; line-height: 1.6;">${report}</p>
+
+            <h4 style="margin: 12px 0 6px 0; color: #212529;">Statutory Conflict of Interest Disclosure</h4>
+            <div style="background: #e7f5ff; border: 1px solid #a5d8ff; border-radius: 6px; padding: 12px; font-size: 0.85rem; color: #1864ab;">
+                <strong>Certification:</strong> Sitting Elective ${name} holds zero private foreign equity, zero corporate board seats, and has sworn full allegiance to the Aeretocratic Constitution.
+            </div>
+        `;
+        document.getElementById('dossier-modal').classList.add('show');
+    }
+
+    function closeDossierModal() {
+        document.getElementById('dossier-modal').classList.remove('show');
+    }
+
+    // Loan Modal
+    function openLoanModal() {
+        document.getElementById('loan-modal').classList.add('show');
+    }
+
+    function closeLoanModal() {
+        document.getElementById('loan-modal').classList.remove('show');
+    }
+
+    function handleLoanSubmit(e) {
+        e.preventDefault();
+        const entity = document.getElementById('loan-entity').value;
+        const amount = parseFloat(document.getElementById('loan-amount').value).toLocaleString('en-US');
+        closeLoanModal();
+
+        const ref = `SGN-LOAN-2026-${Math.random().toString(36).substring(2,7).toUpperCase()}`;
+
+        openNotice("Loan Petition Registered", `
+            <div style="background:#e8f5e9; border:1px solid #81c784; border-radius:6px; padding:15px; color:#1b5e20;">
+                <strong>Entity:</strong> ${entity}<br>
+                <strong>Requested Capital:</strong> S$ ${amount}<br>
+                <strong>Dossier Reference ID:</strong> <code>${ref}</code>
+            </div>
+            <p>Your credit petition has been submitted to the Treasury Sovereign Credit Committee. A preliminary feasibility hearing will be scheduled within 10 business days.</p>
+        `);
+    }
+
+    // Fraud Report
+    function handleFraudReport(e) {
+        e.preventDefault();
+        const dept = document.getElementById('fraud-dept').value;
+        const ref = `WHISTLE-2026-${Math.random().toString(36).substring(2,8).toUpperCase()}`;
+
+        openNotice("Encrypted Audit Petition Received", `
+            <div style="background:#f1f3f5; border:1px solid #ced4da; border-radius:6px; padding:15px; color:#212529;">
+                <strong>Concerned Domain:</strong> ${dept}<br>
+                <strong>Confidential Tracking Key:</strong> <code>${ref}</code>
+            </div>
+            <p>Your inquiry has been encrypted and routed directly to the Secretary of the Body of Electives for independent review during the next unannounced check-in cycle.</p>
+        `);
+        e.target.reset();
+    }
+
+    function openNotice(title, html) {
+        document.getElementById('notice-title').textContent = title;
+        document.getElementById('notice-body').innerHTML = html;
+        document.getElementById('notice-modal').classList.add('show');
+    }
+
+    function closeNoticeModal() {
+        document.getElementById('notice-modal').classList.remove('show');
+    }
+</script>
+</body>
+</html>
