@@ -90,7 +90,7 @@ def build_index():
 
         <div id="postsList">
             <div class="post-item">
-                <img class="post-avatar" src="/images/1.jpeg" alt="avatar" />
+                <img class="post-avatar" src="/images/default-wl.png" alt="avatar" width="44" height="44" style="width:44px; height:44px; border-radius:2px; object-fit:contain; background:#ffffff;" />
                 <div class="post-content-wrap">
                     <p><a href="/id.html" class="post-author">Jqackkk</a> says: "Coding"</p>
                     <div class="post-meta">3 hours ago &bull; Sangaia Sovereign Network</div>
@@ -98,7 +98,7 @@ def build_index():
             </div>
 
             <div class="post-item">
-                <img class="post-avatar" src="/images/1.jpeg" alt="avatar" />
+                <img class="post-avatar" src="/images/default-wl.png" alt="avatar" width="44" height="44" style="width:44px; height:44px; border-radius:2px; object-fit:contain; background:#ffffff;" />
                 <div class="post-content-wrap">
                     <p><a href="/id.html" class="post-author">Jqackkk</a> changed their profile picture</p>
                     <div class="post-meta">4 days ago</div>
@@ -106,7 +106,7 @@ def build_index():
             </div>
 
             <div class="post-item">
-                <img class="post-avatar" src="/images/1.jpeg" alt="avatar" />
+                <img class="post-avatar" src="/images/default-wl.png" alt="avatar" width="44" height="44" style="width:44px; height:44px; border-radius:2px; object-fit:contain; background:#ffffff;" />
                 <div class="post-content-wrap">
                     <p><a href="/id.html" class="post-author">Jqackkk</a> published <a href="/id.html">Sangaia ID</a> on <a href="/services.html">the Live Store</a></p>
                     <div class="post-meta">4 days ago</div>
@@ -971,8 +971,8 @@ def build_supporting_portals():
             </svg>
         </div>
         <div style="padding:16px; display:flex; gap:16px; align-items:center;">
-            <div class="ol-avatar lg" style="width:85px; height:85px;">
-                <img src="/images/1.jpeg" alt="Citizen Photo">
+            <div class="ol-avatar lg" style="width:85px; height:85px; background:#fff; border-radius:2px; display:flex; align-items:center; justify-content:center;">
+                <img src="/images/official.png" alt="Citizen Photo" width="75" height="75" style="width:75px; height:75px; object-fit:contain;">
                 <span class="ol-presence-dot"></span>
             </div>
             <div style="flex:1 1 auto; font-size:13px; line-height:1.5;">

@@ -201,11 +201,15 @@ a:hover {
 }
 
 .user-profile-menu img {
-  width: 28px;
-  height: 28px;
+  width: 28px !important;
+  height: 28px !important;
+  max-width: 28px !important;
+  max-height: 28px !important;
   border-radius: 2px;
   border: 1px solid rgba(255,255,255,0.6);
-  object-fit: cover;
+  object-fit: contain;
+  background: #ffffff;
+  display: block;
 }
 
 .user-profile-menu .user-dropdown {
@@ -491,11 +495,15 @@ a:hover {
 }
 
 .post-avatar {
-  width: 44px;
-  height: 44px;
-  object-fit: cover;
+  width: 44px !important;
+  height: 44px !important;
+  max-width: 44px !important;
+  max-height: 44px !important;
+  object-fit: contain;
   border-radius: 2px;
   flex-shrink: 0;
+  background: #ffffff;
+  display: block;
 }
 
 .post-content-wrap {

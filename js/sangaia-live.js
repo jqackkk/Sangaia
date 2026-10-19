@@ -18,7 +18,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const newPost = document.createElement('div');
             newPost.className = 'post-item';
             newPost.innerHTML = `
-                <img class="post-avatar" src="/images/1.jpeg" alt="avatar" />
+                <img class="post-avatar" src="/images/default-wl.png" alt="avatar" width="44" height="44" style="width:44px; height:44px; border-radius:2px; object-fit:contain; background:#ffffff;" />
                 <div class="post-content-wrap">
                     <p><a href="/id.html" class="post-author">Jqackkk</a> says: "${escapeHtml(text)}"</p>
                     <div class="post-meta">Just now &bull; Sangaia Sovereign Network</div>

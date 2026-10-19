@@ -9,10 +9,16 @@ Renders pages following the user's exact One Live template architecture:
 5. All 5 provinces: New Jasper, New Madison, Liveland, Sentinel, Columbia.
 6. Sangaian currency '$', temperature '°Пт', distance 'Мн'.
 7. Sangaian Cyrillic translations omitted for now as requested.
+8. Core CSS embedded directly in <style> to prevent unstyled/vertical rendering due to caching.
+9. No personal face images anywhere on the site.
 """
 
 import os
 import re
+
+CSS_PATH = os.path.join(os.path.dirname(__file__), "css", "sangaia-live.css")
+with open(CSS_PATH, "r", encoding="utf-8") as _f:
+    MASTER_EMBEDDED_CSS = _f.read()
 
 def generate_page(
     filename,
@@ -78,7 +84,10 @@ def generate_page(
   <title>{title} :: Sangaia Live</title>
   <link href="https://cdn.metroui.org.ua/4.5.12/icons.css" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
-  <link rel="stylesheet" href="/css/sangaia-live.css">
+  <style>
+{MASTER_EMBEDDED_CSS}
+  </style>
+  <link rel="stylesheet" href="/css/sangaia-live.css?v=20261019_v3">
   <script src="/js/sangaia-live.js" defer></script>
 </head>
 <body class="{theme_class}">
@@ -95,7 +104,7 @@ def generate_page(
           <button type="submit" aria-label="Search"><span class="mif-search"></span></button>
         </form>
         <div class="user-profile-menu" id="userProfileMenu">
-          <img src="/images/1.jpeg" alt="Avatar" />
+          <img src="/images/default-wl.png" alt="Avatar" width="28" height="28" style="width:28px; height:28px; border-radius:2px; object-fit:contain; background:#ffffff;" />
           <span>Jqackkk</span>
           <span class="mif-arrow-drop-down" style="font-size: 14px;"></span>
           <div class="user-dropdown">
@@ -194,10 +203,9 @@ def generate_page(
 </body>
 </html>
 """
-    # Write destination file
     os.makedirs(os.path.dirname(filename) if os.path.dirname(filename) else ".", exist_ok=True)
     with open(filename, "w", encoding="utf-8") as f:
         f.write(page_html)
 
 if __name__ == "__main__":
-    print("generate_all_sites module loaded successfully.")
+    print("generate_all_sites module loaded with embedded CSS.")

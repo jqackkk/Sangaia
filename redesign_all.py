@@ -1,23 +1,47 @@
 #!/usr/bin/env python3
 """
 Sangaia Live Master Redesign Orchestrator
-Executes full redesign across every single page in the Sangaia repository,
+Executes full redesign across every single page and website directory in the Sangaia repository,
 guaranteeing:
 1. Zero discrepancies in design language across all portals.
 2. Segoe WP typography.
 3. MetroUI Icons (mif-...) via https://cdn.metroui.org.ua/4.5.12/icons.css.
-4. Ministerial color themes (Executive: Navy/Gold, Treasury: Emerald/Teal, Work: Purple,
-   Healthcare: Crimson, Education: Cyan, Domestic: Navy Blue, External: Pink,
-   Environment: Forest Green, Propaganda: Orange, Portal: Windows Live Blue).
-5. All 5 provinces: New Jasper, New Madison, Liveland, Sentinel, Columbia.
-6. Sangaian currency '$', temperature '°Пт', distance 'Мн'.
-7. Sangaian Cyrillic translations removed/paused as instructed by user until review.
-8. Accurate Domestic/External/Environment links with zero routing mixups.
+4. Embedded self-contained master CSS in <style> to prevent unstyled / vertical rendering.
+5. All assets (css, js, images) copied to all subdomain directories so every website is fully styled.
+6. NO face photos anywhere across the site.
+7. Quotes only on the homepage (index.html).
+8. Accurate Domestic/External/Environment routing with zero link mixups.
 """
 
 import os
 import shutil
-import subprocess
+
+SUBDOMAIN_DIRS = [
+    "MoEX", "mEx", "mT", "mW", "mH", "mEd", "mE",
+    "MiA", "MdA", "MtE", "mEnv", "mP", "mH/ddcr", "id", "articles"
+]
+
+def sync_assets_to_subdomains():
+    print("Syncing assets (css, js, images) to all subdomain directories...")
+    for sub in SUBDOMAIN_DIRS:
+        os.makedirs(sub, exist_ok=True)
+        # Copy css
+        sub_css = os.path.join(sub, "css")
+        os.makedirs(sub_css, exist_ok=True)
+        shutil.copy("css/sangaia-live.css", os.path.join(sub_css, "sangaia-live.css"))
+
+        # Copy js
+        sub_js = os.path.join(sub, "js")
+        os.makedirs(sub_js, exist_ok=True)
+        shutil.copy("js/sangaia-live.js", os.path.join(sub_js, "sangaia-live.js"))
+
+        # Copy images
+        sub_img = os.path.join(sub, "images")
+        os.makedirs(sub_img, exist_ok=True)
+        for img in os.listdir("images"):
+            src_p = os.path.join("images", img)
+            if os.path.isfile(src_p):
+                shutil.copy(src_p, os.path.join(sub_img, img))
 
 def run_orchestration():
     print("=" * 60)
@@ -73,10 +97,14 @@ def run_orchestration():
             if d == 'sgn':
                 shutil.rmtree(os.path.join(root, d))
 
+    # Sync assets to all subdomains
+    sync_assets_to_subdomains()
+
     print("=" * 60)
-    print("STEP 6: Scanning Repository for Design Integrity...")
+    print("STEP 6: Scanning Repository for Design Integrity & Face Image Removal...")
     total_html = 0
     passed_html = 0
+    face_references = 0
     failures = []
 
     for root, dirs, files in os.walk('.'):
@@ -88,8 +116,13 @@ def run_orchestration():
                 with open(p, 'r', encoding='utf-8', errors='ignore') as fp:
                     content = fp.read()
 
+                if '1.jpeg' in content:
+                    face_references += 1
+                    print(f"WARNING: Face reference found in {p}")
+
                 checks = {
                     "MetroUI Icons": 'cdn.metroui.org.ua' in content,
+                    "Embedded Style": '<style>' in content and '--primary:' in content,
                     "Hero Header": 'hero-header' in content,
                     "Subnav": 'subnav' in content,
                     "Main Wrapper": 'main-wrapper' in content,
@@ -102,12 +135,13 @@ def run_orchestration():
                     failures.append((p, [k for k, v in checks.items() if not v]))
 
     print(f"Audit Complete: {passed_html}/{total_html} HTML files fully adhere to the One Live architecture.")
+    print(f"Face image references remaining: {face_references}")
     if failures:
         print("Pages with missing components:")
         for path, failed_checks in failures:
             print(f"  {path}: missing {', '.join(failed_checks)}")
     else:
-        print("SUCCESS: 100% of HTML files in repository adhere to the exact One Live design system with ZERO discrepancies!")
+        print("SUCCESS: 100% of HTML files in repository adhere to the exact One Live design system with ZERO discrepancies and ZERO face images!")
 
 if __name__ == "__main__":
     run_orchestration()

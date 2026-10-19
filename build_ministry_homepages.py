@@ -43,7 +43,7 @@ def build_executive():
 
         <div class="ol-feed-item">
             <div class="ol-feed-avatar">
-                <span class="ol-avatar sm"><img src="/images/1.jpeg" alt="Aeretocrat"><span class="ol-presence-dot"></span></span>
+                <span class="ol-avatar sm" style="width:32px; height:32px; display:inline-flex; align-items:center; justify-content:center; background:#fff; border-radius:2px;"><img src="/media/sangaia_seal.png" alt="Aeretocrat" width="28" height="28" style="width:28px; height:28px; object-fit:contain;"><span class="ol-presence-dot"></span></span>
             </div>
             <div class="ol-feed-body">
                 <div class="ol-feed-head">
@@ -57,7 +57,7 @@ def build_executive():
 
         <div class="ol-feed-item">
             <div class="ol-feed-avatar">
-                <span class="ol-avatar sm"><img src="/images/1.jpeg" alt="Aeretocrat"><span class="ol-presence-dot"></span></span>
+                <span class="ol-avatar sm" style="width:32px; height:32px; display:inline-flex; align-items:center; justify-content:center; background:#fff; border-radius:2px;"><img src="/media/sangaia_seal.png" alt="Aeretocrat" width="28" height="28" style="width:28px; height:28px; object-fit:contain;"><span class="ol-presence-dot"></span></span>
             </div>
             <div class="ol-feed-body">
                 <div class="ol-feed-head">
@@ -71,7 +71,7 @@ def build_executive():
 
         <div class="ol-feed-item">
             <div class="ol-feed-avatar">
-                <span class="ol-avatar sm"><img src="/images/1.jpeg" alt="Aeretocrat"><span class="ol-presence-dot"></span></span>
+                <span class="ol-avatar sm" style="width:32px; height:32px; display:inline-flex; align-items:center; justify-content:center; background:#fff; border-radius:2px;"><img src="/media/sangaia_seal.png" alt="Aeretocrat" width="28" height="28" style="width:28px; height:28px; object-fit:contain;"><span class="ol-presence-dot"></span></span>
             </div>
             <div class="ol-feed-body">
                 <div class="ol-feed-head">
