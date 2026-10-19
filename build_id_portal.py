@@ -1,0 +1,871 @@
+#!/usr/bin/env python3
+"""
+Sangaia ID Portal Generator
+Builds the Sangaia ID site (id.html & id/index.html) following the user's exact One Live 'People' layout:
+1. 210px left navigation column + 1fr main column.
+2. Segoe WP typography & MetroUI / FontAwesome icons.
+3. High-fidelity Sovereign Citizen Identity Card (SG-2026-F1E8).
+4. Instant interactive credential verification engine.
+5. Statutory civil entitlements & 5 Provinces registry.
+6. Exportable digital pass (JSON-LD) and verification QR generator.
+7. Docked messages / verification status pill at the bottom right.
+8. Zero personal face photos / unwanted clutter.
+"""
+
+import os
+
+def render_sangaia_id_html(is_subdomain=False):
+    root_prefix = "https://sangaia.org" if is_subdomain else ""
+    home_url = f"{root_prefix}/index.html"
+    id_url = "index.html" if is_subdomain else "/id.html"
+    citizenship_url = f"{root_prefix}/citizenship.html"
+    services_url = f"{root_prefix}/services.html"
+    units_url = f"{root_prefix}/units.html"
+    dashboard_url = f"{root_prefix}/dashboard.html"
+    government_url = f"{root_prefix}/government.html"
+    literacy_url = f"{root_prefix}/literacy_test.html"
+    app_url = f"{root_prefix}/application.html"
+
+    return f"""<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sangaia ID :: Citizen Directory &amp; Digital Credential</title>
+  <link href="https://cdn.metroui.org.ua/4.5.12/icons.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <style>
+    :root {{
+      --primary: #0078d4;
+      --bg: #f4f4f4;
+      --card-bg: #ffffff;
+      --border: #e2e2e2;
+      --border-dark: #cccccc;
+      --text-main: #201f1e;
+      --text-muted: #666666;
+      --text-light: #8a8886;
+      --btn-gray: #f3f3f3;
+      --btn-gray-border: #ababab;
+      --btn-gray-hover: #e8e8e8;
+    }}
+
+    * {{
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }}
+
+    body {{
+      font-family: 'Segoe WP', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: var(--bg);
+      color: var(--text-main);
+      font-size: 13.5px;
+      line-height: 1.4;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }}
+
+    a {{
+      color: var(--primary);
+      text-decoration: none;
+    }}
+
+    a:hover {{
+      text-decoration: underline;
+    }}
+
+    /* Top Hero Header */
+    .hero-header {{
+      position: relative;
+      background: linear-gradient(rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.5)),
+                  url('https://images.unsplash.com/photo-1519501025264-65ba15a82390?auto=format&fit=crop&w=1600&q=80') center/cover no-repeat;
+      color: #fff;
+      padding: 12px 48px 24px 48px;
+    }}
+
+    .top-bar {{
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 24px;
+    }}
+
+    .brand {{
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 22px;
+      font-weight: 600;
+      letter-spacing: -0.4px;
+      color: #fff;
+    }}
+
+    .brand a {{
+      color: #fff;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }}
+
+    .brand a:hover {{
+      text-decoration: none;
+      opacity: 0.95;
+    }}
+
+    .brand .mif-windows {{
+      font-size: 20px;
+    }}
+
+    .top-right {{
+      display: flex;
+      align-items: center;
+      gap: 18px;
+    }}
+
+    .search-box {{
+      display: flex;
+      align-items: center;
+      background: #fff;
+      border-radius: 2px;
+      overflow: hidden;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25);
+    }}
+
+    .search-box input {{
+      border: none;
+      outline: none;
+      padding: 6px 10px;
+      font-size: 12.5px;
+      width: 200px;
+      font-family: inherit;
+    }}
+
+    .search-box button {{
+      background: #f38b00;
+      border: none;
+      padding: 7px 11px;
+      color: #fff;
+      cursor: pointer;
+      font-size: 12px;
+    }}
+
+    .top-icons {{
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      color: #fff;
+      font-size: 15px;
+    }}
+
+    .top-icons span {{
+      cursor: pointer;
+      opacity: 0.9;
+    }}
+
+    .top-icons span:hover {{
+      opacity: 1;
+    }}
+
+    .user-profile-menu {{
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      cursor: pointer;
+      font-size: 13px;
+      font-weight: 500;
+      position: relative;
+      user-select: none;
+    }}
+
+    .user-profile-menu img {{
+      width: 28px;
+      height: 28px;
+      border-radius: 2px;
+      border: 1px solid rgba(255, 255, 255, 0.7);
+      object-fit: contain;
+      background: #ffffff;
+    }}
+
+    .user-dropdown {{
+      display: none;
+      position: absolute;
+      right: 0;
+      top: 36px;
+      background: #fff;
+      color: var(--text-main);
+      border: 1px solid var(--border);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+      border-radius: 2px;
+      width: 200px;
+      z-index: 1000;
+      padding: 8px 0;
+    }}
+
+    .user-profile-menu.open .user-dropdown {{
+      display: block;
+    }}
+
+    .user-dropdown-header {{
+      padding: 6px 14px;
+      font-size: 11px;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      font-weight: 700;
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 4px;
+    }}
+
+    .user-dropdown a {{
+      display: block;
+      padding: 6px 14px;
+      color: var(--text-main);
+      font-size: 13px;
+      text-decoration: none;
+    }}
+
+    .user-dropdown a:hover {{
+      background: #f3f3f3;
+      color: var(--primary);
+    }}
+
+    .hero-content h1 {{
+      font-size: 32px;
+      font-weight: 400;
+      letter-spacing: -0.5px;
+      line-height: 1.1;
+    }}
+
+    .hero-content p {{
+      font-size: 13px;
+      font-style: italic;
+      opacity: 0.9;
+      margin-top: 4px;
+    }}
+
+    /* Sub-Navigation Bar */
+    .subnav {{
+      background: #fff;
+      border-bottom: 1px solid var(--border);
+      padding: 0 48px;
+      display: flex;
+      gap: 28px;
+      overflow-x: auto;
+      scrollbar-width: thin;
+    }}
+
+    .subnav a {{
+      color: var(--text-main);
+      padding: 12px 2px;
+      font-size: 13.5px;
+      text-decoration: none;
+      display: inline-block;
+      position: relative;
+      white-space: nowrap;
+    }}
+
+    .subnav a.active {{
+      font-weight: 600;
+      border-bottom: 3px solid var(--primary);
+      color: var(--primary);
+    }}
+
+    .subnav a:hover:not(.active) {{
+      color: var(--primary);
+    }}
+
+    /* Main Container Layout */
+    .main-wrapper {{
+      max-width: 1280px;
+      width: 100%;
+      margin: 24px auto;
+      padding: 0 48px;
+      display: grid;
+      grid-template-columns: 210px 1fr;
+      gap: 32px;
+      flex: 1;
+    }}
+
+    /* Left Sidebar Navigation */
+    .side-nav-group {{
+      margin-bottom: 24px;
+    }}
+
+    .side-nav-group ul {{
+      list-style: none;
+    }}
+
+    .side-nav-group li {{
+      margin-bottom: 6px;
+    }}
+
+    .side-nav-group a {{
+      color: var(--text-main);
+      font-size: 13.5px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 4px 0 4px 10px;
+    }}
+
+    .side-nav-group a.active {{
+      font-weight: 600;
+      border-left: 3px solid #6b7782;
+      padding-left: 7px;
+    }}
+
+    .side-nav-group a:hover:not(.active) {{
+      color: var(--primary);
+    }}
+
+    .side-nav-heading {{
+      font-size: 11px;
+      font-weight: 700;
+      color: #999999;
+      letter-spacing: 0.6px;
+      margin-bottom: 10px;
+    }}
+
+    /* Cards */
+    .card {{
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 2px;
+      padding: 22px 26px;
+      margin-bottom: 20px;
+    }}
+
+    .card h2 {{
+      font-size: 16px;
+      font-weight: 500;
+      color: #444;
+      margin-bottom: 16px;
+    }}
+
+    /* Find People Form */
+    .input-find {{
+      width: 100%;
+      max-width: 380px;
+      border: 1px solid var(--border-dark);
+      border-radius: 2px;
+      padding: 7px 10px;
+      font-size: 13px;
+      outline: none;
+      display: block;
+      margin-bottom: 12px;
+      font-family: inherit;
+    }}
+
+    .input-find:focus {{
+      border-color: var(--primary);
+    }}
+
+    .import-row {{
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 12.5px;
+      color: var(--text-muted);
+    }}
+
+    .btn-neutral {{
+      background: var(--btn-gray);
+      border: 1px solid var(--btn-gray-border);
+      border-radius: 2px;
+      padding: 6px 14px;
+      font-size: 12.5px;
+      cursor: pointer;
+      color: var(--text-main);
+      font-family: inherit;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }}
+
+    .btn-neutral:hover {{
+      background: var(--btn-gray-hover);
+    }}
+
+    /* Empty States */
+    .empty-notice {{
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 80px;
+      color: var(--text-muted);
+      font-size: 13.5px;
+      text-align: center;
+      padding: 10px 0;
+    }}
+
+    /* Footer */
+    footer {{
+      background: transparent;
+      border-top: 1px solid var(--border);
+      padding: 24px 48px;
+      font-size: 12px;
+      color: var(--text-muted);
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      max-width: 1280px;
+      width: 100%;
+      margin: 0 auto;
+    }}
+
+    .footer-links {{
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      list-style: none;
+    }}
+
+    .footer-links a {{
+      color: var(--text-muted);
+    }}
+
+    .footer-links a:hover {{
+      color: var(--primary);
+    }}
+
+    /* Docked Floating Message Tab */
+    .messages-dock {{
+      position: fixed;
+      bottom: 0;
+      right: 28px;
+      background: #546573;
+      color: #fff;
+      padding: 7px 16px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 13px;
+      font-weight: 500;
+      border-top-left-radius: 3px;
+      border-top-right-radius: 3px;
+      cursor: pointer;
+      box-shadow: 0 -1px 4px rgba(0, 0, 0, 0.15);
+      z-index: 999;
+    }}
+
+    .messages-dock:hover {{
+      background: #465561;
+    }}
+
+    @media (max-width: 860px) {{
+      .main-wrapper {{
+        grid-template-columns: 1fr;
+        padding: 0 20px;
+      }}
+      .hero-header, .subnav, footer {{
+        padding-left: 20px;
+        padding-right: 20px;
+      }}
+      .subnav {{
+        overflow-x: auto;
+      }}
+    }}
+  </style>
+</head>
+<body>
+
+  <!-- Top Hero Header -->
+  <header class="hero-header">
+    <div class="top-bar">
+      <div class="brand">
+        <a href="{home_url}"><span class="mif-windows"></span> Sangaia ID</a>
+      </div>
+      <div class="top-right">
+        <form class="search-box" action="{services_url}" method="get">
+          <input type="text" name="q" placeholder="Search citizens &amp; credentials..." />
+          <button type="submit" aria-label="Search"><span class="mif-search"></span></button>
+        </form>
+        <div class="top-icons">
+          <span class="mif-bell" title="Notifications"></span>
+          <span class="mif-security" title="Sovereign Cryptographic Clearance Active"></span>
+        </div>
+        <div class="user-profile-menu" id="userProfileMenu">
+          <img src="/images/default-wl.png" alt="Avatar" width="28" height="28" />
+          <span>Jqackkk</span>
+          <span class="mif-arrow-drop-down" style="font-size: 14px;"></span>
+          <div class="user-dropdown">
+            <div class="user-dropdown-header">Citizen: SG-2026-F1E8</div>
+            <a href="{id_url}"><span class="mif-profile"></span> Sangaia ID Card</a>
+            <a href="{citizenship_url}"><span class="mif-checkmark"></span> Citizenship Status</a>
+            <a href="{units_url}"><span class="mif-compass"></span> Units &amp; Measures</a>
+            <a href="{dashboard_url}"><span class="mif-chart-bars"></span> Sovereign Registry</a>
+            <div style="border-top:1px solid #e1dfdd; margin:4px 0;"></div>
+            <a href="{home_url}"><span class="mif-home"></span> Federal Home</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="hero-content">
+      <h1>People &bull; Sangaia ID</h1>
+      <p>Official Sovereign Citizen Credential &bull; Cryptographic Identity &bull; 5 Provinces</p>
+    </div>
+  </header>
+
+  <!-- Horizontal Navigation Bar -->
+  <nav class="subnav">
+    <a href="{home_url}">Federal Home</a>
+    <a href="{id_url}" class="active">People &amp; ID</a>
+    <a href="{citizenship_url}">Citizenship</a>
+    <a href="{services_url}">Services</a>
+    <a href="{units_url}">Units (Мн • °Пт)</a>
+    <a href="{dashboard_url}">Registry Dashboard</a>
+    <a href="{government_url}">Government</a>
+  </nav>
+
+  <!-- Main Content Grid -->
+  <div class="main-wrapper">
+    <!-- Left Column Navigation -->
+    <aside>
+      <div class="side-nav-group">
+        <div class="side-nav-heading">IDENTITY SERVICES</div>
+        <ul>
+          <li><a href="#card" class="active" onclick="switchNav(this)"><span class="mif-profile"></span> My Citizen ID</a></li>
+          <li><a href="#verify" onclick="switchNav(this)"><span class="mif-security"></span> Verify Credential</a></li>
+          <li><a href="#entitlements" onclick="switchNav(this)"><span class="mif-shield"></span> Civil Entitlements</a></li>
+          <li><a href="#provinces" onclick="switchNav(this)"><span class="mif-map"></span> 5 Provinces Registry</a></li>
+          <li><a href="#records" onclick="switchNav(this)"><span class="mif-lock"></span> Cryptographic Ledger</a></li>
+        </ul>
+      </div>
+
+      <div class="side-nav-group">
+        <div class="side-nav-heading">RELATED PLACES</div>
+        <ul>
+          <li><a href="{citizenship_url}"><span class="mif-checkmark"></span> Citizenship Status</a></li>
+          <li><a href="{literacy_url}"><span class="mif-school"></span> Literacy Examination</a></li>
+          <li><a href="{app_url}"><span class="mif-file-text"></span> Civic Applications</a></li>
+          <li><a href="{dashboard_url}"><span class="mif-chart-bars"></span> Sovereign Dashboard</a></li>
+          <li><a href="{home_url}"><span class="mif-home"></span> Federal Home</a></li>
+        </ul>
+      </div>
+
+      <div class="side-nav-group">
+        <div class="side-nav-heading">SOVEREIGN STANDARDS</div>
+        <div style="font-size:12px; color:var(--text-muted); line-height:1.6; padding-left:10px;">
+          <div><strong>Provinces:</strong> 5 Autonomous</div>
+          <div><strong>Currency:</strong> $ (Sangaian Dollar)</div>
+          <div><strong>Standards:</strong> Панотерм (°Пт) &bull; Мономер (Мн)</div>
+          <div><strong>Authentication:</strong> Aeretocratic Seal</div>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Main Content Panels -->
+    <main>
+      <!-- Citizen ID Card Panel -->
+      <section class="card" id="card">
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:16px;">
+          <h2 style="margin-bottom:0;">Official Citizen Identity Credential</h2>
+          <span style="background:#eef9f2; color:#15803d; border:1px solid #bbf7d0; font-size:11px; font-weight:700; padding:3px 8px; border-radius:2px; text-transform:uppercase;">Statutory Verified</span>
+        </div>
+        
+        <!-- The Sangaia ID Card Graphic -->
+        <div style="max-width:540px; margin:0 auto 16px auto; background:#ffffff; border:2px solid #7fa8c0; border-radius:6px; box-shadow:0 6px 20px rgba(0,0,0,0.08); overflow:hidden;">
+            <div style="background:linear-gradient(135deg, #1e3a8a, #2563eb); color:#ffffff; padding:12px 18px; display:flex; justify-content:space-between; align-items:center;">
+                <div>
+                    <strong style="font-size:15px; letter-spacing:0.5px; display:block;">UNITED PROVINCES OF SANGAIA</strong>
+                    <div style="font-size:11px; color:#bfdbfe;">SOVEREIGN CITIZEN IDENTITY CARD &bull; AERETOCRACY OF SANGAIA</div>
+                </div>
+                <svg viewBox="0 0 90 90" width="24" height="24" fill="#ffffff">
+                    <rect x="0" y="0" width="41" height="41" rx="2"/>
+                    <rect x="49" y="0" width="41" height="41" rx="2"/>
+                    <rect x="0" y="49" width="41" height="41" rx="2"/>
+                    <rect x="49" y="49" width="41" height="41" rx="2"/>
+                </svg>
+            </div>
+            <div style="padding:18px; display:flex; gap:18px; align-items:center; background:#ffffff;">
+                <div style="width:85px; height:85px; background:#f8fafc; border:1px solid #cbd5e1; border-radius:4px; display:flex; align-items:center; justify-content:center; flex-shrink:0;">
+                    <img src="/images/official.png" alt="Citizen Photo" width="75" height="75" style="width:75px; height:75px; object-fit:contain;" />
+                </div>
+                <div style="flex:1 1 auto; font-size:13px; line-height:1.6;">
+                    <div><span style="color:#666;">Legal Name:</span> <strong style="color:#201f1e;">Jqackkk</strong></div>
+                    <div><span style="color:#666;">Citizen ID:</span> <strong style="font-family:monospace; color:#0078d4;">SG-2026-F1E8</strong></div>
+                    <div><span style="color:#666;">Territory:</span> <strong style="color:#201f1e;">New Jasper (Capital Shesk)</strong></div>
+                    <div><span style="color:#666;">Status:</span> <span style="background:#eef9f2; color:#15803d; border:1px solid #bbf7d0; font-size:10.5px; font-weight:700; padding:1px 6px; border-radius:2px;">VERIFIED CITIZEN</span></div>
+                    <div><span style="color:#666;">Coverage:</span> <strong style="color:#201f1e;">Tier 1 Universal Health &bull; Zero Copay</strong></div>
+                </div>
+            </div>
+            <div style="background:#f8fafc; border-top:1px solid #e2e8f0; padding:10px 18px; display:flex; justify-content:space-between; align-items:center; font-family:monospace; font-size:11px; color:#64748b;">
+                <span style="letter-spacing:2px;">||||| | |||| |||||| | ||||| ||| |||||||| | ||||</span>
+                <span style="color:#94a3b8; font-size:10px;">HASH: SG#9F8A-2026</span>
+            </div>
+        </div>
+
+        <div style="display:flex; flex-wrap:wrap; gap:10px; justify-content:center; margin-top:14px;">
+          <button type="button" class="btn-neutral" onclick="window.print()"><span class="mif-printer"></span> Print Official Credential</button>
+          <button type="button" class="btn-neutral" onclick="downloadCredential()"><span class="mif-download"></span> Export Digital Pass (JSON-LD)</button>
+          <button type="button" class="btn-neutral" onclick="toggleQrCode()"><span class="mif-qrcode"></span> View Verification QR</button>
+        </div>
+        <div id="qrBox" style="display:none; text-align:center; margin-top:14px; padding:14px; background:#f8fafc; border:1px dashed #cbd5e1; border-radius:4px;">
+          <div style="font-weight:600; color:#1e293b; margin-bottom:6px;">Cryptographic Quick-Response Pass</div>
+          <div style="display:inline-block; padding:10px; background:#fff; border:1px solid #e2e8f0; border-radius:4px;">
+            <svg viewBox="0 0 100 100" width="100" height="100" fill="#0f172a">
+              <rect x="10" y="10" width="25" height="25" rx="1"/>
+              <rect x="15" y="15" width="15" height="15" fill="#fff"/>
+              <rect x="18" y="18" width="9" height="9"/>
+              <rect x="65" y="10" width="25" height="25" rx="1"/>
+              <rect x="70" y="15" width="15" height="15" fill="#fff"/>
+              <rect x="73" y="18" width="9" height="9"/>
+              <rect x="10" y="65" width="25" height="25" rx="1"/>
+              <rect x="15" y="70" width="15" height="15" fill="#fff"/>
+              <rect x="18" y="73" width="9" height="9"/>
+              <rect x="45" y="15" width="10" height="10"/>
+              <rect x="45" y="35" width="10" height="20"/>
+              <rect x="40" y="65" width="20" height="10"/>
+              <rect x="65" y="45" width="15" height="10"/>
+              <rect x="70" y="65" width="20" height="20"/>
+              <rect x="75" y="70" width="10" height="10" fill="#fff"/>
+            </svg>
+          </div>
+          <div style="font-family:monospace; font-size:11px; color:#64748b; margin-top:6px;">TOKEN: urn:sangaia:id:SG-2026-F1E8</div>
+        </div>
+      </section>
+
+      <!-- Find & Verify Citizen Form Card -->
+      <section class="card" id="verify">
+        <h2>Verify citizen credentials</h2>
+        <input type="text" class="input-find" id="verifyInput" placeholder="Search for people or citizen ID (e.g. SG-2026-F1E8)" value="SG-2026-F1E8" />
+        <div class="import-row">
+          <button type="button" class="btn-neutral" id="verifyBtn" onclick="runVerification()"><span class="mif-search"></span> Verify Docket</button>
+          <span>Instant validation against the Sovereign Civil Records Ledger.</span>
+        </div>
+        <div id="verifyResults" style="display:none; margin-top:14px; padding:14px; background:#f0f9ff; border:1px solid #bae6fd; border-radius:2px; font-size:13px; line-height:1.5;"></div>
+      </section>
+
+      <!-- Civil Entitlements & Statutory Rights -->
+      <section class="card" id="entitlements">
+        <h2>Civil Entitlements &amp; Constitutional Rights</h2>
+        <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(230px, 1fr)); gap:12px; margin-top:10px;">
+          <div style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:3px; padding:12px;">
+            <strong style="color:#0078d4;"><span class="mif-medkit"></span> Universal Healthcare</strong>
+            <p style="font-size:12px; color:#555; margin-top:4px;">100% state-funded emergency, primary, specialist, dental, and pharmaceutical coverage with zero point-of-service copays.</p>
+          </div>
+          <div style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:3px; padding:12px;">
+            <strong style="color:#15803d;"><span class="mif-coins"></span> Living Wage Protection</strong>
+            <p style="font-size:12px; color:#555; margin-top:4px;">Guaranteed statutory wage floor of $25.00/hr ($1,000/week) with absolute prohibition on foreign debt bondage.</p>
+          </div>
+          <div style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:3px; padding:12px;">
+            <strong style="color:#b45309;"><span class="mif-school"></span> Tuition-Free Education</strong>
+            <p style="font-size:12px; color:#555; margin-top:4px;">Complete public funding from early childhood through secondary polytechnics and provincial university degrees.</p>
+          </div>
+          <div style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:3px; padding:12px;">
+            <strong style="color:#4f46e5;"><span class="mif-compass"></span> Sovereign Standards</strong>
+            <p style="font-size:12px; color:#555; margin-top:4px;">Harmonized base-10 Monomer distance (1 Мн = 2.5 cm) and Panotherm temperature (°Пт = 0.9 &times; °C) across all 5 territories.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Five Sovereign Provinces Registry -->
+      <section class="card" id="provinces">
+        <h2>Territorial Registries &bull; Five Sovereign Provinces</h2>
+        <div style="font-size:13px; color:#555; margin-bottom:12px;">
+          Every Sangaia ID credential is tethered to one of five sovereign provincial jurisdictions:
+        </div>
+        <table style="width:100%; border-collapse:collapse; font-size:12.5px;">
+          <thead>
+            <tr style="border-bottom:2px solid var(--border); text-align:left; color:#666;">
+              <th style="padding:6px 8px;">Province</th>
+              <th style="padding:6px 8px;">Capital</th>
+              <th style="padding:6px 8px;">Regional Bureau</th>
+              <th style="padding:6px 8px;">Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr style="border-bottom:1px solid #eee;">
+              <td style="padding:8px;"><strong>New Jasper</strong></td>
+              <td style="padding:8px;">Shesk</td>
+              <td style="padding:8px;">Capitol Civil Registrar</td>
+              <td style="padding:8px;"><span style="color:#15803d; font-weight:600;">Active</span></td>
+            </tr>
+            <tr style="border-bottom:1px solid #eee;">
+              <td style="padding:8px;"><strong>New Madison</strong></td>
+              <td style="padding:8px;">Madison City</td>
+              <td style="padding:8px;">Central Records Office</td>
+              <td style="padding:8px;"><span style="color:#15803d; font-weight:600;">Active</span></td>
+            </tr>
+            <tr style="border-bottom:1px solid #eee;">
+              <td style="padding:8px;"><strong>Liveland</strong></td>
+              <td style="padding:8px;">Oaks</td>
+              <td style="padding:8px;">Maritime Registry</td>
+              <td style="padding:8px;"><span style="color:#15803d; font-weight:600;">Active</span></td>
+            </tr>
+            <tr style="border-bottom:1px solid #eee;">
+              <td style="padding:8px;"><strong>Sentinel</strong></td>
+              <td style="padding:8px;">Sentinel Ridge</td>
+              <td style="padding:8px;">Highland Registry</td>
+              <td style="padding:8px;"><span style="color:#15803d; font-weight:600;">Active</span></td>
+            </tr>
+            <tr>
+              <td style="padding:8px;"><strong>Columbia</strong></td>
+              <td style="padding:8px;">Columbia City</td>
+              <td style="padding:8px;">Basin Civil Records</td>
+              <td style="padding:8px;"><span style="color:#15803d; font-weight:600;">Active</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <!-- Cryptographic Ledger & Audit Safeguards -->
+      <section class="card" id="records">
+        <h2>Cryptographic Ledger &amp; Privacy Safeguards</h2>
+        <div class="empty-notice" style="flex-direction:column; gap:6px; min-height:auto; text-align:left; align-items:flex-start;">
+          <div style="color:#201f1e; font-weight:500;">Zero Commercial Data Brokerage</div>
+          <p style="font-size:12.5px; color:var(--text-muted); line-height:1.5;">All Sangaia ID credentials are authenticated via sovereign cryptographic seals. Personal records are strictly protected under the Aeretocratic Privacy Charter and are never shared with foreign commercial entities or ad networks.</p>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <div>
+      &copy; 2026, The United Provinces of Sangaia &bull; Sovereign Identity Directorate &bull; The Aeretocracy.
+    </div>
+    <ul class="footer-links">
+      <li><a href="{home_url}">Federal Home</a></li>
+      <li><a href="{citizenship_url}">Citizenship Charter</a></li>
+      <li><a href="{services_url}">Public Services</a></li>
+      <li><a href="{units_url}">Sovereign Standards (Мн &bull; °Пт)</a></li>
+      <li><a href="{dashboard_url}">Registry Dashboard</a></li>
+      <li><a href="{government_url}">Constitution &amp; Virtues</a></li>
+    </ul>
+  </footer>
+
+  <!-- Docked Credential Status Tab -->
+  <div class="messages-dock" onclick="alert('Sangaia ID Credential Engine: SG-2026-F1E8 Active & Verified across all 5 provinces.')">
+    <span class="mif-security"></span> Credential Active: SG-2026-F1E8
+  </div>
+
+  <script>
+    // User profile dropdown toggle
+    const userProfileMenu = document.getElementById('userProfileMenu');
+    if (userProfileMenu) {{
+      userProfileMenu.addEventListener('click', (e) => {{
+        e.stopPropagation();
+        userProfileMenu.classList.toggle('open');
+      }});
+      document.addEventListener('click', () => {{
+        userProfileMenu.classList.remove('open');
+      }});
+    }}
+
+    // Sidebar navigation active state handler
+    function switchNav(el) {{
+      document.querySelectorAll('.side-nav-group a').forEach(a => a.classList.remove('active'));
+      el.classList.add('active');
+    }}
+
+    // Real-time Citizen Verification Engine
+    function runVerification() {{
+      const input = document.getElementById('verifyInput');
+      const val = (input ? input.value.trim() : '');
+      const results = document.getElementById('verifyResults');
+      if (!val) {{
+        alert('Please enter a citizen ID or name to verify.');
+        return;
+      }}
+      const isJack = val.toUpperCase().includes('SG-2026-F1E8') || val.toLowerCase().includes('jqackkk') || val.toLowerCase().includes('jack');
+      const token = isJack ? 'SG-2026-F1E8' : (val.toUpperCase().startsWith('SG-') ? val.toUpperCase() : 'SG-' + Math.floor(1000 + Math.random() * 9000) + '-V');
+      const name = isJack ? 'Jqackkk' : val;
+      const prov = isJack ? 'New Jasper (Capital Shesk)' : 'New Madison';
+
+      results.innerHTML = `
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
+          <strong style="color:#0284c7; font-size:14px;"><span class="mif-checkmark"></span> Cryptographic Verification Confirmed</strong>
+          <span style="background:#eef9f2; color:#15803d; border:1px solid #bbf7d0; font-size:11px; font-weight:700; padding:2px 8px; border-radius:2px;">OFFICIAL DOCKET ACTIVE</span>
+        </div>
+        <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(180px, 1fr)); gap:8px;">
+          <div><span style="color:#666;">Subject:</span> <strong>${{name}}</strong></div>
+          <div><span style="color:#666;">Citizen ID:</span> <strong style="font-family:monospace;">${{token}}</strong></div>
+          <div><span style="color:#666;">Jurisdiction:</span> <strong>${{prov}}</strong></div>
+          <div><span style="color:#666;">Healthcare:</span> <strong>Tier 1 Full Universal</strong></div>
+        </div>
+        <div style="font-family:monospace; font-size:11px; color:#0369a1; margin-top:8px; border-top:1px dashed #bae6fd; padding-top:6px;">
+          DOCKET HASH: SG#VERIFY-${{Math.floor(100000 + Math.random()*900000)}}-OK &bull; Signed by Sovereign Directorate
+        </div>
+      `;
+      results.style.display = 'block';
+    }}
+
+    // Search input enter key
+    const searchInput = document.getElementById('verifyInput');
+    if (searchInput) {{
+      searchInput.addEventListener('keydown', (e) => {{
+        if (e.key === 'Enter') {{
+          runVerification();
+        }}
+      }});
+    }}
+
+    // Export digital credential
+    function downloadCredential() {{
+      const credentialData = {{
+        "@context": "https://www.w3.org/2018/credentials/v1",
+        "id": "urn:sangaia:id:SG-2026-F1E8",
+        "type": ["VerifiableCredential", "SangaiaCitizenCredential"],
+        "issuer": "urn:sangaia:gov:identity-bureau",
+        "issuanceDate": "2026-10-19T00:00:00Z",
+        "credentialSubject": {{
+          "id": "SG-2026-F1E8",
+          "legalName": "Jqackkk",
+          "jurisdiction": "New Jasper",
+          "country": "The United Provinces of Sangaia",
+          "status": "Verified Citizen",
+          "healthcareCoverage": "Tier 1 Universal (Zero Copay)",
+          "wageFloorProtection": "$25.00/hr Statutory Living Wage",
+          "standards": {{
+            "currency": "$",
+            "temperature": "°Пт (Panotherm)",
+            "distance": "Мн (Monomer)"
+          }}
+        }},
+        "proof": {{
+          "type": "Ed25519Signature2020",
+          "created": "2026-10-19T00:00:00Z",
+          "verificationMethod": "urn:sangaia:keys:sec-2026",
+          "proofValue": "z3s9f8a2026sangaiaverifiedcitizensignature"
+        }}
+      }};
+      const blob = new Blob([JSON.stringify(credentialData, null, 2)], {{ type: 'application/json' }});
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = 'sangaia_citizen_credential_SG-2026-F1E8.json';
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
+    }}
+
+    // QR Code toggle
+    function toggleQrCode() {{
+      const qr = document.getElementById('qrBox');
+      if (qr) {{
+        qr.style.display = (qr.style.display === 'none' || qr.style.display === '') ? 'block' : 'none';
+      }}
+    }}
+  </script>
+</body>
+</html>"""
+
+def build_id_pages():
+    # 1. Build root id.html
+    root_html = render_sangaia_id_html(is_subdomain=False)
+    with open("id.html", "w", encoding="utf-8") as f:
+        f.write(root_html)
+
+    # 2. Build id/index.html
+    os.makedirs("id", exist_ok=True)
+    sub_html = render_sangaia_id_html(is_subdomain=True)
+    with open(os.path.join("id", "index.html"), "w", encoding="utf-8") as f:
+        f.write(sub_html)
+
+    print("Sangaia ID pages (id.html and id/index.html) successfully generated with One Live People layout!")
+
+if __name__ == "__main__":
+    build_id_pages()

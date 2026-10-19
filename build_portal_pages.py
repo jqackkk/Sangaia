@@ -18,6 +18,7 @@ Builds the core root pages in the One Live Wave 4 architecture:
 import os
 import shutil
 from generate_all_sites import generate_page
+from build_id_portal import build_id_pages
 
 # -----------------------------------------------------------------------------
 # 1. ROOT PORTAL HOME (index.html)
@@ -906,42 +907,8 @@ def build_supporting_portals():
     """
     generate_page("application.html", "Public Application Portal", theme, tab, "Civic & Civil Service Application Portal", "Online filing gateway for citizenship, civil service & cooperative grants", "Civic Registry", "Application Hub", "Submissions Open", [{"label": "Application Form", "url": "#overview", "active": True}], app_content, "", "", app_scripts)
 
-    # id.html
-    id_content = """
-    <div class="ol-card" style="max-width:520px; margin:0 auto; background:#ffffff; border:2px solid #7fa8c0; border-radius:6px; box-shadow:0 6px 20px rgba(0,0,0,0.1);">
-        <div style="background:linear-gradient(135deg, #1e3a8a, #2563eb); color:#ffffff; padding:12px 16px; border-radius:4px 4px 0 0; display:flex; justify-content:space-between; align-items:center;">
-            <div>
-                <strong style="font-size:15px; letter-spacing:0.5px;">UNITED PROVINCES OF SANGAIA</strong>
-                <div style="font-size:11px; color:#bfdbfe;">SOVEREIGN CITIZEN IDENTITY CARD</div>
-            </div>
-            <svg viewBox="0 0 90 90" width="24" height="24" fill="#ffffff">
-                <rect x="0" y="0" width="41" height="41" rx="2"/>
-                <rect x="49" y="0" width="41" height="41" rx="2"/>
-                <rect x="0" y="49" width="41" height="41" rx="2"/>
-                <rect x="49" y="49" width="41" height="41" rx="2"/>
-            </svg>
-        </div>
-        <div style="padding:16px; display:flex; gap:16px; align-items:center;">
-            <div class="ol-avatar lg" style="width:85px; height:85px; background:#fff; border-radius:2px; display:flex; align-items:center; justify-content:center;">
-                <img src="/images/official.png" alt="Citizen Photo" width="75" height="75" style="width:75px; height:75px; object-fit:contain;">
-                <span class="ol-presence-dot"></span>
-            </div>
-            <div style="flex:1 1 auto; font-size:13px; line-height:1.5;">
-                <div><span class="ol-muted">Legal Name:</span> <strong>Jqackkk</strong></div>
-                <div><span class="ol-muted">Citizen ID:</span> <strong style="font-family:monospace;">SG-2026-F1E8</strong></div>
-                <div><span class="ol-muted">Territory:</span> <strong>New Jasper (Capital Shesk)</strong></div>
-                <div><span class="ol-muted">Status:</span> <span class="ol-badge-tag ol-badge-success">VERIFIED CITIZEN</span></div>
-                <div><span class="ol-muted">Coverage:</span> <strong>Tier 1 Universal Health</strong></div>
-            </div>
-        </div>
-        <div style="background:#f8fafc; border-top:1px solid #e2e8f0; padding:10px 16px; font-family:monospace; font-size:11px; color:#64748b; letter-spacing:2px; text-align:center;">
-            ||||| | |||| |||||| | ||||| ||| |||||||| | ||||
-        </div>
-    </div>
-    """
-    generate_page("id.html", "Sangaia ID Digital Credential", theme, tab, "Sangaia ID Digital Identity Portal", "Official citizen identity credential and cryptographic verification", "Identity Bureau", "Credential Service", "Verified", [{"label": "Digital ID Card", "url": "#overview", "active": True}], id_content)
-    os.makedirs("id", exist_ok=True)
-    generate_page("id/index.html", "Sangaia ID Digital Credential", theme, tab, "Sangaia ID Digital Identity Portal", "Official citizen identity credential and cryptographic verification", "Identity Bureau", "Credential Service", "Verified", [{"label": "Digital ID Card", "url": "#overview", "active": True}], id_content)
+    # id.html & id/index.html with One Live People layout
+    build_id_pages()
 
     # literacy_test.html & literacy_exam_en.html
     exam_content = """
