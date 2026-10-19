@@ -1,0 +1,1486 @@
+<!DOCTYPE html>
+<html lang="sgn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Министро эк свои Эксэкуто & Офикио эк свои Арэтократ - Сонит Провиткия эк Сангаиа</title>
+    <style>
+
+        /* --- MINISTRY OF THE EXECUTIVE: NAVY & GOLD FRUTIGER AERO & SKEUOMORPHIC STYLES --- */
+        :root {
+            --navy-deep: #090d16;
+            --navy-dark: #0f172a;
+            --navy-primary: #1e3a8a;
+            --navy-medium: #1d4ed8;
+            --navy-light: #2563eb;
+            --navy-soft: #3b82f6;
+            --navy-pale: #eff6ff;
+            --navy-border: #93c5fd;
+            --gold-deep: #78350f;
+            --gold-dark: #92400e;
+            --gold-primary: #b45309;
+            --gold-vibrant: #d97706;
+            --gold-accent: #f59e0b;
+            --gold-light: #fbbf24;
+            --gold-pale: #fef3c7;
+            --gold-cream: #fffbeb;
+            --text-dark: #0f172a;
+            --text-muted: #334155;
+            --text-gold: #92400e;
+            --border-panel: #cbd5e1;
+            --border-gold: #fde68a;
+            --card-bg: #ffffff;
+            --badge-green: #15803d;
+            --badge-red: #b91c1c;
+        }
+
+        * { box-sizing: border-box; }
+
+        body {
+            background: #f8fafc radial-gradient(circle at 50% 0%, #ffffff 0%, #e2e8f0 100%) no-repeat fixed;
+            min-height: 100dvh;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            flex-direction: column;
+            margin: 0;
+            font-family: 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+
+        .main-container {
+            width: 100%;
+            margin: 0;
+            background: transparent;
+            padding: 0;
+            flex-grow: 1; 
+        }
+
+        /* --- GLOBAL METAL NAVIGATION HEADER --- */
+        #globalheader {
+            display: flex;
+            align-items: center;
+            position: relative;
+            width: 100%;
+            height: 38px;
+            background: linear-gradient(to bottom, #5e5e5e 0%, #3e3e3e 50%, #2d2d2d 51%, #1f1f1f 100%);
+            border-top: 1px solid #222;
+            border-bottom: 1px solid #000;
+            box-shadow: inset 0 1px 0 rgba(255,255,255,0.15), 0 2px 4px rgba(0,0,0,0.2);
+            font-size: 11px;
+            z-index: 100;
+        }
+
+        #globalnav {
+            flex-grow: 1;
+            margin: 0;
+            padding: 0;
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            height: 100%;
+        }
+
+        #globalnav li { position: relative; height: 100%; display: flex; align-items: center; }
+        #globalnav li::after {
+            content: ""; position: absolute; right: 0; width: 1px; height: 100%;
+            background: linear-gradient(to bottom, #333, #111); box-shadow: 1px 0 0 rgba(255,255,255,0.08);
+        }
+        #globalnav li:first-child::before {
+            content: ""; position: absolute; left: 0; width: 1px; height: 100%;
+            background: linear-gradient(to bottom, #333, #111); box-shadow: 1px 0 0 rgba(255,255,255,0.08);
+        }
+
+        #globalnav li a {
+            display: block; color: #e8e8e8; text-decoration: none; text-shadow: 0 -1px 0 rgba(0,0,0,0.8);
+            font-weight: bold; padding: 0 14px; line-height: 38px;
+            transition: text-shadow 0.2s ease, color 0.2s ease, background 0.2s ease;
+            white-space: nowrap;
+        }
+
+        #globalnav li a:hover {
+            color: #fff;
+            background: linear-gradient(rgba(255,255,255,0.05), rgba(255,255,255,0));
+            text-shadow: 0 0 8px rgba(255, 255, 255, 0.8), 0 -1px 0 rgba(0,0,0,0.8);
+        }
+        
+        #globalnav li a.active { color: #fff; background: rgba(0,0,0,0.25); box-shadow: inset 0 2px 5px rgba(0,0,0,0.3); }
+
+        /* --- SKEUOMORPHIC EXECUTIVE BUTTONS --- */
+        .sangaia-btn {
+            font-size: 0.88rem;
+            font-family: inherit;
+            height: 2.4em;
+            padding: 0 1.3em;
+            border-radius: 4px;
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s ease;
+            border: 1px solid #94a3b8;
+            background: linear-gradient(to bottom, #ffffff 0%, #f1f5f9 40%, #e2e8f0 100%);
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1), inset 0 1px 0 rgba(255,255,255,0.9);
+            color: #0f172a;
+            font-weight: bold;
+        }
+
+        .sangaia-btn:hover {
+            background: linear-gradient(to bottom, #ffffff 0%, #f8fafc 40%, #cbd5e1 100%);
+            box-shadow: 0 2px 6px rgba(15, 23, 42, 0.15), inset 0 1px 0 rgba(255,255,255,1);
+            color: #020617;
+        }
+
+        .sangaia-btn:active {
+            box-shadow: inset 0 2px 4px rgba(0,0,0,0.2);
+            transform: translateY(1px);
+        }
+
+        .sangaia-btn.btn-navy {
+            border: 1px solid #0f172a;
+            background: linear-gradient(to bottom, #2563eb 0%, #1e3a8a 50%, #0f172a 100%);
+            box-shadow: 0 2px 5px rgba(15, 23, 42, 0.35), inset 0 1px 0 rgba(255,255,255,0.35);
+            color: #ffffff;
+            text-shadow: 0 -1px 0 rgba(0,0,0,0.5);
+        }
+
+        .sangaia-btn.btn-navy:hover {
+            background: linear-gradient(to bottom, #3b82f6 0%, #1d4ed8 50%, #1e3a8a 100%);
+            box-shadow: 0 3px 8px rgba(30, 58, 138, 0.45), inset 0 1px 0 rgba(255,255,255,0.5);
+            color: #ffffff;
+        }
+
+        .sangaia-btn.btn-gold {
+            border: 1px solid #92400e;
+            background: linear-gradient(to bottom, #fde68a 0%, #f59e0b 50%, #d97706 100%);
+            box-shadow: 0 2px 5px rgba(180, 83, 9, 0.3), inset 0 1px 0 rgba(255,255,255,0.6);
+            color: #451a03;
+            text-shadow: 0 1px 0 rgba(255,255,255,0.4);
+            font-weight: 800;
+        }
+
+        .sangaia-btn.btn-gold:hover {
+            background: linear-gradient(to bottom, #fef08a 0%, #fbbf24 50%, #d97706 100%);
+            box-shadow: 0 3px 8px rgba(180, 83, 9, 0.45), inset 0 1px 0 rgba(255,255,255,0.8);
+            color: #291203;
+        }
+
+        /* --- CONTENT PANELS --- */
+        .content-wrapper {
+            padding: 30px;
+            width: 100%;
+            max-width: 1240px;
+            margin: 0 auto;
+            box-sizing: border-box;
+        }
+
+        .glass-panel {
+            background: linear-gradient(to bottom, #ffffff 0%, #f8fafc 100%);
+            border: 1px solid #e2e8f0;
+            border-radius: 10px;
+            padding: 26px;
+            margin-bottom: 25px;
+            box-shadow: 0 3px 14px rgba(15, 23, 42, 0.05), inset 0 1px 0 #ffffff;
+            position: relative;
+        }
+
+        .glass-panel.panel-gold-rim {
+            border-top: 3px solid #d97706;
+        }
+
+        .glass-panel h2 {
+            margin: 0 0 15px 0;
+            color: var(--navy-dark);
+            border-bottom: 2px solid #e2e8f0;
+            padding-bottom: 10px;
+            font-size: 1.45em;
+            letter-spacing: -0.3px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        /* --- HERO BANNER (NAVY & GOLD FRUTIGER AERO) --- */
+        .executive-hero-card {
+            background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 55%, #172554 100%);
+            color: #ffffff;
+            border-radius: 12px;
+            padding: 36px 32px;
+            margin-bottom: 30px;
+            box-shadow: 0 8px 30px rgba(15, 23, 42, 0.25), inset 0 1px 0 rgba(255,255,255,0.2);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 25px;
+            flex-wrap: wrap;
+            position: relative;
+            overflow: hidden;
+            border: 1px solid #3b82f6;
+        }
+
+        .executive-hero-card::after {
+            content: "";
+            position: absolute;
+            top: -50px; right: -50px; width: 220px; height: 220px;
+            background: radial-gradient(circle, rgba(245, 158, 11, 0.25) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .hero-text-col { max-width: 740px; position: relative; z-index: 2; }
+
+        .hero-badge {
+            display: inline-block;
+            background: linear-gradient(to bottom, #3b82f6 0%, #1d4ed8 100%);
+            color: #fef3c7;
+            border: 1px solid #f59e0b;
+            padding: 4px 14px;
+            border-radius: 20px;
+            font-size: 0.76rem;
+            font-weight: 800;
+            letter-spacing: 1.2px;
+            text-transform: uppercase;
+            margin-bottom: 14px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+        }
+
+        .hero-title {
+            margin: 0 0 10px 0;
+            font-size: 2.45rem;
+            color: #ffffff;
+            letter-spacing: -0.5px;
+            line-height: 1.15;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+        }
+
+        .hero-sub {
+            margin: 0 0 20px 0;
+            font-size: 1.05rem;
+            color: #cbd5e1;
+            line-height: 1.55;
+        }
+
+        .hero-motto-box {
+            background: rgba(15, 23, 42, 0.6);
+            border-left: 3px solid #f59e0b;
+            padding: 10px 16px;
+            border-radius: 0 6px 6px 0;
+            margin-bottom: 22px;
+            font-style: italic;
+            font-size: 0.92rem;
+            color: #fef3c7;
+            line-height: 1.45;
+        }
+
+        /* --- STATS COUNTERS GRID --- */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-bottom: 25px;
+        }
+
+        .stat-card {
+            background: #ffffff;
+            border: 1px solid #e2e8f0;
+            border-top: 3px solid #1e3a8a;
+            border-radius: 8px;
+            padding: 18px 20px;
+            box-shadow: 0 2px 8px rgba(15, 23, 42, 0.05);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .stat-card.stat-gold {
+            border-top-color: #d97706;
+        }
+
+        .stat-card .val {
+            font-size: 1.85rem;
+            font-weight: 800;
+            color: var(--navy-primary);
+            line-height: 1.1;
+            margin-bottom: 4px;
+        }
+
+        .stat-card.stat-gold .val {
+            color: #b45309;
+        }
+
+        .stat-card .lbl {
+            font-size: 0.8rem;
+            color: #64748b;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        /* --- BLOG / DISPATCHES CARDS --- */
+        .blog-filter-bar {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .blog-tabs {
+            display: flex;
+            gap: 6px;
+            flex-wrap: wrap;
+        }
+
+        .blog-tab-btn {
+            background: #f1f5f9;
+            border: 1px solid #cbd5e1;
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 0.82rem;
+            font-weight: bold;
+            color: #334155;
+            cursor: pointer;
+            transition: all 0.15s ease;
+        }
+
+        .blog-tab-btn:hover {
+            background: #e2e8f0;
+            color: #0f172a;
+        }
+
+        .blog-tab-btn.active {
+            background: linear-gradient(to bottom, #2563eb 0%, #1e3a8a 100%);
+            border-color: #0f172a;
+            color: #fff;
+            box-shadow: 0 2px 4px rgba(30, 58, 138, 0.3);
+        }
+
+        .blog-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+            gap: 20px;
+            margin-top: 10px;
+        }
+
+        .blog-card {
+            background: #ffffff;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            padding: 22px;
+            box-shadow: 0 2px 8px rgba(15, 23, 42, 0.05);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+            position: relative;
+        }
+
+        .blog-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 18px rgba(15, 23, 42, 0.1);
+            border-color: #93c5fd;
+        }
+
+        .blog-tag {
+            font-size: 0.72rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+            padding: 3px 8px;
+            border-radius: 4px;
+            display: inline-block;
+            margin-bottom: 10px;
+        }
+
+        .tag-philosophy { background: #eff6ff; color: #1e40af; border: 1px solid #bfdbfe; }
+        .tag-field { background: #f0fdf4; color: #166534; border: 1px solid #bbf7d0; }
+        .tag-economy { background: #fefce8; color: #854d0e; border: 1px solid #fef08a; }
+        .tag-civic { background: #fdf2f8; color: #9d174d; border: 1px solid #fbcfe8; }
+
+        .blog-title {
+            font-size: 1.25rem;
+            color: var(--navy-dark);
+            margin: 0 0 8px 0;
+            line-height: 1.35;
+            font-weight: bold;
+        }
+
+        .blog-meta {
+            font-size: 0.8rem;
+            color: #64748b;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .blog-snippet {
+            font-size: 0.9rem;
+            color: #334155;
+            line-height: 1.5;
+            margin-bottom: 18px;
+            flex-grow: 1;
+        }
+
+        .blog-footer {
+            border-top: 1px solid #f1f5f9;
+            padding-top: 14px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        /* --- MACROECONOMICS & SECTOR BARS --- */
+        .macro-row {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            margin-bottom: 25px;
+        }
+
+        .macro-card {
+            background: #ffffff;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.04);
+        }
+
+        .macro-card h3 {
+            margin: 0 0 12px 0;
+            color: var(--navy-primary);
+            font-size: 1.1rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .sector-bar-container {
+            margin-bottom: 14px;
+        }
+
+        .sector-bar-header {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.84rem;
+            font-weight: 600;
+            margin-bottom: 4px;
+            color: #1e293b;
+        }
+
+        .sector-bar-bg {
+            height: 12px;
+            background: #e2e8f0;
+            border-radius: 6px;
+            overflow: hidden;
+        }
+
+        .sector-bar-fill {
+            height: 100%;
+            border-radius: 6px;
+            transition: width 0.5s ease;
+        }
+
+        /* --- CONSTITUTION & VETO TABLES --- */
+        .table-responsive {
+            overflow-x: auto;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            background: #ffffff;
+        }
+
+        table.styled-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.88rem;
+            text-align: left;
+        }
+
+        table.styled-table th {
+            background: #f8fafc;
+            color: #1e293b;
+            padding: 12px 14px;
+            border-bottom: 2px solid #e2e8f0;
+            font-weight: 800;
+            text-transform: uppercase;
+            font-size: 0.78rem;
+            letter-spacing: 0.5px;
+        }
+
+        table.styled-table td {
+            padding: 12px 14px;
+            border-bottom: 1px solid #f1f5f9;
+            color: #334155;
+            vertical-align: top;
+        }
+
+        table.styled-table tr:hover {
+            background: #f8fafc;
+        }
+
+        .verdict-badge {
+            display: inline-block;
+            font-size: 0.74rem;
+            font-weight: 800;
+            padding: 3px 8px;
+            border-radius: 4px;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+        }
+
+        .verdict-assented { background: #dcfce7; color: #15803d; border: 1px solid #86efac; }
+        .verdict-vetoed { background: #fee2e2; color: #b91c1c; border: 1px solid #fca5a5; }
+
+        /* --- MEETINGS & CALENDAR GRID --- */
+        .meetings-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 18px;
+        }
+
+        .meeting-item {
+            background: #ffffff;
+            border: 1px solid #e2e8f0;
+            border-left: 4px solid var(--navy-primary);
+            border-radius: 6px;
+            padding: 16px 18px;
+            box-shadow: 0 1px 4px rgba(0,0,0,0.04);
+        }
+
+        .meeting-item.gold-edge {
+            border-left-color: #d97706;
+        }
+
+        .meeting-date {
+            font-size: 0.76rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #64748b;
+            margin-bottom: 4px;
+        }
+
+        .meeting-title {
+            font-size: 1.05rem;
+            color: var(--navy-dark);
+            margin: 0 0 6px 0;
+            font-weight: bold;
+        }
+
+        .meeting-desc {
+            font-size: 0.86rem;
+            color: #475569;
+            line-height: 1.45;
+            margin: 0 0 10px 0;
+        }
+
+        /* --- MODAL DIALOGS --- */
+        .modal-overlay {
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(15, 23, 42, 0.65);
+            backdrop-filter: blur(4px);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            padding: 20px;
+        }
+
+        .modal-overlay.show { display: flex; }
+
+        .modal-card {
+            background: #fff;
+            border-radius: 10px;
+            border: 1px solid #cbd5e1;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.35);
+            width: 100%;
+            max-width: 650px;
+            max-height: 90vh;
+            overflow-y: auto;
+            padding: 28px;
+            position: relative;
+        }
+
+        .modal-card.modal-article {
+            max-width: 780px;
+        }
+
+        .modal-close-btn {
+            position: absolute;
+            top: 16px;
+            right: 18px;
+            background: #f1f5f9;
+            border: none;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-weight: bold;
+            color: #475569;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-close-btn:hover { background: #e2e8f0; color: #000; }
+
+        .form-group {
+            margin-bottom: 14px;
+        }
+
+        .form-label {
+            display: block;
+            font-size: 0.84rem;
+            font-weight: bold;
+            color: var(--navy-dark);
+            margin-bottom: 4px;
+        }
+
+        .form-input, .form-select, .form-textarea {
+            width: 100%;
+            padding: 8px 12px;
+            border: 1px solid #cbd5e1;
+            border-radius: 6px;
+            font-family: inherit;
+            font-size: 0.9rem;
+            box-sizing: border-box;
+        }
+
+        .form-input:focus, .form-select:focus, .form-textarea:focus {
+            outline: none;
+            border-color: #2563eb;
+            box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.2);
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            margin-top: 50px;
+            padding: 25px 20px;
+            text-align: center;
+            font-size: 0.82rem;
+            color: #64748b;
+            border-top: 1px solid #e2e8f0;
+            background: #ffffff;
+            width: 100%;
+        }
+
+        footer a { color: var(--navy-primary); text-decoration: none; font-weight: bold; }
+        footer a:hover { text-decoration: underline; }
+
+        @media (max-width: 768px) {
+            .content-wrapper { padding: 15px; }
+            .hero-title { font-size: 1.85rem; }
+        }
+    
+    </style>
+</head>
+<body>
+
+<div class="main-container">
+
+    <!-- GLOBAL NAVIGATION HEADER -->
+    <nav id="globalheader">
+        <div style="position: absolute; left: 15px; display: flex; align-items: center; height: 100%;">
+            <a href="index.html"><img src="../media/nav_logo.png" onerror="this.onerror=null; this.src='media/nav_logo.png';" style="height: 22px; width: auto;" alt="Logo"></a>
+        </div>
+        <div style="position: absolute; right: 15px; display: flex; align-items: center; gap: 15px; height: 100%; z-index: 100;">
+            <div id="auth-widget">
+                <a href="id.html" style="color: #bbb; text-decoration: none; font-size: 11px; font-weight: bold; letter-spacing: 0.5px; padding: 3px 8px; border: 1px solid #444; border-radius: 4px; background: linear-gradient(to bottom, #555, #333); box-shadow: 0 1px 2px rgba(0,0,0,0.3); transition: all 0.2s ease;">Сангаиа ИД</a>
+            </div>
+            <a href="../executive.html" style="color: #bbb; text-decoration: none; font-size: 11px; font-weight: bold; letter-spacing: 0.5px; padding: 3px 8px; border: 1px solid #444; border-radius: 4px; background: linear-gradient(to bottom, #555, #333); box-shadow: 0 1px 2px rgba(0,0,0,0.3); transition: all 0.2s ease;">English</a>
+        </div>
+        <ul id="globalnav">
+            <li><a href="index.html">Домо</a></li>
+            <li><a href="#overview">Обзор</a></li>
+            <li><a href="#aeretocrat-journal">Арэтократ'с Диспачи</a></li>
+            <li><a href="#macroeconomics">Экономиа & ГДП</a></li>
+            <li><a href="#national-budget">Фэдэро Бугэтио</a></li>
+            <li><a href="#constitutional-framework">Своротицания</a></li>
+            <li><a href="#executive-calendar">Эксэкуто Калэндарио</a></li>
+            <li><a href="services.html">Холо Министро</a></li>
+        </ul>
+    </nav>
+
+    <div class="content-wrapper">
+
+        <!-- EXECUTIVE NAVY & GOLD HERO BANNER -->
+        <div class="executive-hero-card" id="overview">
+            <div class="hero-text-col">
+                <span class="hero-badge">Эксэкуто Бранко • Офикио эк свои Арэтократ</span>
+                <h1 class="hero-title">Министро эк свои Эксэкуто</h1>
+                <p class="hero-sub">Кустодо эк свои Своротицания эк Сангаиа. Мануго морало арэтиа маги куамо политикиа динамиа, сэкуро зэро-дэбито экономиа, опэро свои супрэмо прохибо (вэто), инкаи сэрво Провиткия хармониа.</p>
+                <div class="hero-motto-box">"Вэро дукиа эст свои дискиплина ад фортис свои лэксо этон куам ид лимито уна'с ипсо динамиа. Сонтаволя оико ми про свои проксимо элэктио, ала про свои проксимо цэнтури."</div>
+                <div style="display: flex; gap: 12px; flex-wrap: wrap;">
+                    <a href="#aeretocrat-journal" class="sangaia-btn btn-gold"><span>Лэго Арэтократ'с Диспачи &rarr;</span></a>
+                    <a href="#macroeconomics" class="sangaia-btn btn-navy"><span>Инспэкто Бугэтио & ГДП</span></a>
+                    <button class="sangaia-btn" onclick="openPetitionModal()"><span>Субмито Цивико Пэтитио</span></button>
+                </div>
+            </div>
+
+            <div style="text-align: center; position: relative; z-index: 2;">
+                <img src="../media/sangaia_seal.png" onerror="this.onerror=null; this.src='media/sangaia_seal.png';" alt="Seal of Sangaia" style="height: 120px; width: auto; filter: drop-shadow(0 4px 14px rgba(245,158,11,0.4));">
+                <div style="font-size: 0.78rem; font-weight: bold; text-transform: uppercase; letter-spacing: 1.5px; margin-top: 10px; color: #fde68a;">
+                    Офикио эк свои Арэтократ
+                </div>
+            </div>
+        </div>
+
+        <!-- KEY STATS COUNTERS -->
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="val">S$ 48.65 B</div>
+                <div class="lbl">ГДП Тото Экономиа (+3.8%)</div>
+            </div>
+            <div class="stat-card">
+                <div class="val">S$ 41,200</div>
+                <div class="lbl">ГДП Пэр Капита (Виво Стандарто)</div>
+            </div>
+            <div class="stat-card stat-gold">
+                <div class="val">S$ 0.00</div>
+                <div class="lbl">Шэно Дэбито (Зэро Губэрно Дэбито)</div>
+            </div>
+            <div class="stat-card">
+                <div class="val">S$ 14.85 B</div>
+                <div class="lbl">Фэдэро Бугэтио (+S$ 420M Плус)</div>
+            </div>
+        </div>
+
+        <!-- SECTION: THE AERETOCRAT'S PERSONAL BLOG (DISPATCHES) -->
+        <div class="glass-panel panel-gold-rim" id="aeretocrat-journal">
+            <h2>
+                <span>Диспачи апо свои Арэтократ</span>
+                <button class="sangaia-btn btn-gold" onclick="openQuestionModal()" style="font-size: 0.82rem; height: 2.1em;">
+                    <span>Куэстио ад свои Арэтократ</span>
+                </button>
+            </h2>
+            <p style="font-size: 0.92rem; color: #475569; margin-bottom: 18px;">Пэрсонало эсэ, философико диалого, инкаи локало виа нотэ скрибо дирэкто паро свои Арэтократ.</p>
+
+            <div class="blog-filter-bar">
+                <div class="blog-tabs">
+                    <button class="blog-tab-btn active" onclick="filterBlog('all', this)">Холо Диспачи</button>
+                    <button class="blog-tab-btn" onclick="filterBlog('philosophy', this)">Своротицания Философиа</button>
+                    <button class="blog-tab-btn" onclick="filterBlog('field', this)">Локало Виа Нотэ</button>
+                    <button class="blog-tab-btn" onclick="filterBlog('economy', this)">Экономиа Прагма</button>
+                    <button class="blog-tab-btn" onclick="filterBlog('civic', this)">Цивико Арэтиа</button>
+                </div>
+                <div style="font-size: 0.8rem; color: #64748b; font-style: italic;">
+                    Вэро каламо эк свои Арэтократ
+                </div>
+            </div>
+
+            <div class="blog-grid" id="blog-posts-grid">
+                
+            <div class="blog-card" data-category="philosophy">
+                <div>
+                    <span class="blog-tag tag-philosophy">Своротицания Философиа</span>
+                    <h3 class="blog-title">Свои Парадоксо эк Прохибо: Кур свои Кустодо Мусто Ми Скрибо Лэксо</h3>
+                    <div class="blog-meta">
+                        <span>🗓️ February 16, 2026</span>
+                        <span>⏱️ 6 мин лэго</span>
+                        <span>✍️ Арэтократ</span>
+                    </div>
+                    <div class="blog-snippet">
+                        Куам уна эксэкуто тэнэо каламо ад скрибо лэксо инкаи гладио ад фортис ид, дэмократиа эст уна фалу. Кур свои Сангаиа Карта лимито свои Арэтократ ад соларо прохибо.
+                    </div>
+                </div>
+                <div class="blog-footer">
+                    <span style="font-size: 0.76rem; color: #64748b; font-style: italic;">Официало Диспачо</span>
+                    <button class="sangaia-btn btn-navy" onclick="openDispatchModal('disp1')" style="height: 2em; font-size: 0.82rem;">
+                        <span>Лэго Холо Диспачо &rarr;</span>
+                    </button>
+                </div>
+            </div>
+        
+            <div class="blog-card" data-category="field">
+                <div>
+                    <span class="blog-tag tag-field">Локало Виа Нотэ</span>
+                    <h3 class="blog-title">Амбуло свои Силэнтио Пини: Локало Нотэ апо Окхавэн Лигно Гилда</h3>
+                    <div class="blog-meta">
+                        <span>🗓️ February 04, 2026</span>
+                        <span>⏱️ 8 мин лэго</span>
+                        <span>✍️ Арэтократ</span>
+                    </div>
+                    <div class="blog-snippet">
+                        Уна сэптима ин свои ниватио Алто Провиткия син официало аутомэтико. Франго пано куно хиэмо фабро, инспэкто калоро комбустибило, инкаи вэрифико экклэсиа рико-рэдивидо.
+                    </div>
+                </div>
+                <div class="blog-footer">
+                    <span style="font-size: 0.76rem; color: #64748b; font-style: italic;">Официало Диспачо</span>
+                    <button class="sangaia-btn btn-navy" onclick="openDispatchModal('disp2')" style="height: 2em; font-size: 0.82rem;">
+                        <span>Лэго Холо Диспачо &rarr;</span>
+                    </button>
+                </div>
+            </div>
+        
+            <div class="blog-card" data-category="economy">
+                <div>
+                    <span class="blog-tag tag-economy">Экономиа Прагма</span>
+                    <h3 class="blog-title">Свои Аргэнто Анкора: Кур Сонтаволя Рэфузо Губэрно Дэбито & Банкари</h3>
+                    <div class="blog-meta">
+                        <span>🗓️ January 22, 2026</span>
+                        <span>⏱️ 10 мин лэго</span>
+                        <span>✍️ Арэтократ</span>
+                    </div>
+                    <div class="blog-snippet">
+                        Эксэгесис цирку монэтаро сувэрэнита: комо глобало фиат дэбито сэрвито инфанто ми наско, инкаи кур ностэр балансо S$ 14.85B бугэтио сэкуро тус пэкуниа.
+                    </div>
+                </div>
+                <div class="blog-footer">
+                    <span style="font-size: 0.76rem; color: #64748b; font-style: italic;">Официало Диспачо</span>
+                    <button class="sangaia-btn btn-navy" onclick="openDispatchModal('disp3')" style="height: 2em; font-size: 0.82rem;">
+                        <span>Лэго Холо Диспачо &rarr;</span>
+                    </button>
+                </div>
+            </div>
+        
+            <div class="blog-card" data-category="civic">
+                <div>
+                    <span class="blog-tag tag-civic">Цивико Арэтиа</span>
+                    <h3 class="blog-title">Арэтэ Антэо Кратос: Свои Граэко Фундамэнто эк Сангаиа</h3>
+                    <div class="blog-meta">
+                        <span>🗓️ January 08, 2026</span>
+                        <span>⏱️ 7 мин лэго</span>
+                        <span>✍️ Арэтократ</span>
+                    </div>
+                    <div class="blog-snippet">
+                        Инспэкто ностэр титуло: Арэтэ (вуртэс, морало арэтиа) мусто антэо инкаи лимито Кратос (динамиа, импэрио). Свои трагико лэктио эк цивилизатио ти амо динамиа ала пэрдо каракто.
+                    </div>
+                </div>
+                <div class="blog-footer">
+                    <span style="font-size: 0.76rem; color: #64748b; font-style: italic;">Официало Диспачо</span>
+                    <button class="sangaia-btn btn-navy" onclick="openDispatchModal('disp4')" style="height: 2em; font-size: 0.82rem;">
+                        <span>Лэго Холо Диспачо &rarr;</span>
+                    </button>
+                </div>
+            </div>
+        
+            <div class="blog-card" data-category="philosophy">
+                <div>
+                    <span class="blog-tag tag-philosophy">Своротицания Философиа</span>
+                    <h3 class="blog-title">Сэптэм Дио эк Скрутинио: Делибэратио Супра Цэлэрита</h3>
+                    <div class="blog-meta">
+                        <span>🗓️ December 28, 2025</span>
+                        <span>⏱️ 5 мин лэго</span>
+                        <span>✍️ Арэтократ</span>
+                    </div>
+                    <div class="blog-snippet">
+                        Кур шэно лэксо пасо паро свои Корпо эк Элэкто мусто сэдэо супэр свои Арэтократ табула про сэптэм дио антэо апробо вэл прохибо, элимино ноктэ омнибус лэксо.
+                    </div>
+                </div>
+                <div class="blog-footer">
+                    <span style="font-size: 0.76rem; color: #64748b; font-style: italic;">Официало Диспачо</span>
+                    <button class="sangaia-btn btn-navy" onclick="openDispatchModal('disp5')" style="height: 2em; font-size: 0.82rem;">
+                        <span>Лэго Холо Диспачо &rarr;</span>
+                    </button>
+                </div>
+            </div>
+        
+            </div>
+        </div>
+
+        <!-- SECTION: MACROECONOMIC TELEMETRY & GDP -->
+        <div class="glass-panel" id="macroeconomics">
+            <h2>
+                <span>Макро-Экономиа Тэлэмэтриа & ГДП Дистрибутио</span>
+                <span style="font-size: 0.8rem; font-weight: normal; color: #64748b;">FY 2026 Sovereign Audit</span>
+            </h2>
+            <p style="font-size: 0.92rem; color: #475569; margin-bottom: 20px;">Экономиа силуа, сэкторо ГДП балансо, инкаи сонит рэсурсо сувэрэнита.</p>
+
+            <div class="macro-row">
+                <!-- SECTORAL GDP BREAKDOWN -->
+                <div class="macro-card">
+                    <h3>
+                        <span>ГДП паро Сэкторо</span>
+                        <span style="font-size: 0.82rem; color: var(--navy-primary); font-weight: bold;">S$ 48.65B Total</span>
+                    </h3>
+                    <div class="sector-bar-container">
+                        <div class="sector-bar-header">
+                            <span>Экологико Инжэниа & Тэк</span>
+                            <span>26.0% (S$ 12.65B)</span>
+                        </div>
+                        <div class="sector-bar-bg"><div class="sector-bar-fill" style="width: 26%; background: #2563eb;"></div></div>
+                    </div>
+
+                    <div class="sector-bar-container">
+                        <div class="sector-bar-header">
+                            <span>Цивико, Салутиа & Эдукатио</span>
+                            <span>24.0% (S$ 11.68B)</span>
+                        </div>
+                        <div class="sector-bar-bg"><div class="sector-bar-fill" style="width: 24%; background: #0284c7;"></div></div>
+                    </div>
+
+                    <div class="sector-bar-container">
+                        <div class="sector-bar-header">
+                            <span>Сустэнабило Силва & Агрикултура</span>
+                            <span>22.0% (S$ 10.70B)</span>
+                        </div>
+                        <div class="sector-bar-bg"><div class="sector-bar-fill" style="width: 22%; background: #16a34a;"></div></div>
+                    </div>
+
+                    <div class="sector-bar-container">
+                        <div class="sector-bar-header">
+                            <span>Марино Мэрко & Пискато</span>
+                            <span>18.0% (S$ 8.76B)</span>
+                        </div>
+                        <div class="sector-bar-bg"><div class="sector-bar-fill" style="width: 18%; background: #0d9488;"></div></div>
+                    </div>
+
+                    <div class="sector-bar-container">
+                        <div class="sector-bar-header">
+                            <span>Культура, Арти & Фабро</span>
+                            <span>10.0% (S$ 4.86B)</span>
+                        </div>
+                        <div class="sector-bar-bg"><div class="sector-bar-fill" style="width: 10%; background: #d97706;"></div></div>
+                    </div>
+                </div>
+
+                <!-- SOVEREIGN MONETARY HEALTH -->
+                <div class="macro-card">
+                    <h3>
+                        <span>Монэтаро Сувэрэнита</span>
+                        <span class="verdict-badge verdict-assented">100% СЭКУРО</span>
+                    </h3>
+                    <div style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 6px; padding: 12px; margin-bottom: 12px;">
+                        <div style="font-size: 0.8rem; color: #64748b; text-transform: uppercase;">Инфлатио Рэйтио</div>
+                        <div style="font-size: 1.5rem; font-weight: 800; color: #15803d;">1.4%</div>
+                        <div style="font-size: 0.78rem; color: #64748b;">Анкоро паро Аргэнто Рэзэрво & Коммодити</div>
+                    </div>
+                    <div style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 6px; padding: 12px; margin-bottom: 12px;">
+                        <div style="font-size: 0.8rem; color: #64748b; text-transform: uppercase;">Фориэро Губэрно Дэбито</div>
+                        <div style="font-size: 1.5rem; font-weight: 800; color: #b45309;">S$ 0.00 (Zero Debt)</div>
+                        <div style="font-size: 0.78rem; color: #64748b;">Абсолюто Своротицания прохибо эк фориэро крэдито</div>
+                    </div>
+                    <div style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 6px; padding: 12px;">
+                        <div style="font-size: 0.8rem; color: #64748b; text-transform: uppercase;">Сэкуро Рэзэрво Плус</div>
+                        <div style="font-size: 1.5rem; font-weight: 800; color: #1e40af;">+S$ 420.5 Million</div>
+                        <div style="font-size: 0.78rem; color: #64748b;">Фискало плус сэкуро про кэламо & эмэрго</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- SECTION: NATIONAL BUDGET LEDGER -->
+        <div class="glass-panel" id="national-budget">
+            <h2>
+                <span>Ануо Милус Дио-Дэкум-Сэкс Фэдэро Бугэтио Леджер</span>
+                <span style="font-size: 0.8rem; font-weight: normal; color: #64748b;">S$ 14,850,000,000 Authorized Outlays</span>
+            </h2>
+            <p style="font-size: 0.92rem; color: #475569; margin-bottom: 20px;">Эксэкуто супэрвидо эк фэдэро дапано, капитал рэзэрво, инкаи S$ 420.5M Сэкуро Плус.</p>
+
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 15px; margin-bottom: 20px;">
+                <div style="background: #fff; border: 1px solid #e2e8f0; border-radius: 8px; padding: 16px;">
+                    <div style="display: flex; justify-content: space-between; font-weight: bold; margin-bottom: 4px;">
+                        <span>🏥 Салутиа-Кура & Клиника</span>
+                        <span style="color: #2563eb;">S$ 3.85 B (25.9%)</span>
+                    </div>
+                    <p style="font-size: 0.82rem; color: #64748b; margin: 0;">Universal healthcare, emergency ambulances, pharmaceuticals, and epidemic telemetry.</p>
+                </div>
+
+                <div style="background: #fff; border: 1px solid #e2e8f0; border-radius: 8px; padding: 16px;">
+                    <div style="display: flex; justify-content: space-between; font-weight: bold; margin-bottom: 4px;">
+                        <span>🎓 Эдукатио & Стукал Рэти</span>
+                        <span style="color: #0284c7;">S$ 3.20 B (21.5%)</span>
+                    </div>
+                    <p style="font-size: 0.82rem; color: #64748b; margin: 0;">Tuition-free secondary & university education, teacher salaries, and digital Stucal terminals.</p>
+                </div>
+
+                <div style="background: #fff; border: 1px solid #e2e8f0; border-radius: 8px; padding: 16px;">
+                    <div style="display: flex; justify-content: space-between; font-weight: bold; margin-bottom: 4px;">
+                        <span>🚆 Инфраструктура, Виа & Порто</span>
+                        <span style="color: #16a34a;">S$ 2.75 B (18.5%)</span>
+                    </div>
+                    <p style="font-size: 0.82rem; color: #64748b; margin: 0;">Toll-free inter-provincial highway maintenance, high-speed rail, and harbor upgrades.</p>
+                </div>
+
+                <div style="background: #fff; border: 1px solid #e2e8f0; border-radius: 8px; padding: 16px;">
+                    <div style="display: flex; justify-content: space-between; font-weight: bold; margin-bottom: 4px;">
+                        <span>🌲 Биомо Сэрво & Амбиэто</span>
+                        <span style="color: #0d9488;">S$ 2.10 B (14.1%)</span>
+                    </div>
+                    <p style="font-size: 0.82rem; color: #64748b; margin: 0;">Cloud forest reforestation, marine coral sanctuaries, wildlife rescues, and flood defense.</p>
+                </div>
+
+                <div style="background: #fff; border: 1px solid #e2e8f0; border-radius: 8px; padding: 16px;">
+                    <div style="display: flex; justify-content: space-between; font-weight: bold; margin-bottom: 4px;">
+                        <span>🛡️ Тэрриторало Дэфэнсо & Салво</span>
+                        <span style="color: #d97706;">S$ 1.50 B (10.1%)</span>
+                    </div>
+                    <p style="font-size: 0.82rem; color: #64748b; margin: 0;">Sovereign defense corps, search-and-rescue marine cutters, and alpine emergency stations.</p>
+                </div>
+
+                <div style="background: #fff; border: 1px solid #e2e8f0; border-radius: 8px; padding: 16px;">
+                    <div style="display: flex; justify-content: space-between; font-weight: bold; margin-bottom: 4px;">
+                        <span>⚖️ Губэрно, Жудико & Корпо эк Элэкто</span>
+                        <span style="color: #475569;">S$ 1.03 B (6.9%)</span>
+                    </div>
+                    <p style="font-size: 0.82rem; color: #64748b; margin: 0;">Independent magistrate courts, Electives public secretariat, and random anti-fraud audits.</p>
+                </div>
+
+                <div style="background: #fff; border: 1px solid #fed7aa; border-radius: 8px; padding: 16px; background: #fffbeb;">
+                    <div style="display: flex; justify-content: space-between; font-weight: bold; margin-bottom: 4px;">
+                        <span>💰 Сэкуро Плус Рэзэрво</span>
+                        <span style="color: #b45309;">S$ 0.42 B (2.8%)</span>
+                    </div>
+                    <p style="font-size: 0.82rem; color: #78350f; margin: 0;">Unallocated liquid cash surplus held directly in the Treasury for crisis response.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- SECTION: CONSTITUTIONAL FRAMEWORK & VETO LEDGER -->
+        <div class="glass-panel" id="constitutional-framework">
+            <h2>
+                <span>Своротицания Кустодо & Эксэкуто Прохибо Леджер</span>
+                <span style="font-size: 0.8rem; font-weight: normal; color: #64748b;">Article II Executive Powers</span>
+            </h2>
+            <p style="font-size: 0.92rem; color: #475569; margin-bottom: 20px;">Свои три-партито структуро эк Сангаиа: кур свои Арэтократ тэнэо прохибо (вэто) ала динам ми скрибо ново лэксо.</p>
+
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 15px; margin-bottom: 25px;">
+                <div style="background: #fff; border: 1px solid #e2e8f0; border-left: 4px solid var(--navy-primary); border-radius: 6px; padding: 16px;">
+                    <h4 style="margin: 0 0 6px 0; color: var(--navy-dark); font-size: 1rem;">1. Прохибо Дэфэнсо (Вэто)</h4>
+                    <p style="font-size: 0.86rem; color: #475569; margin: 0; line-height: 1.45;">
+                        Свои Арэтократ тэнэо абсолюто прохибо анти шэно лэксо ти виоло ностэр конститутио рэгканон вэл зэро-дэбито прагма.
+                    </p>
+                </div>
+
+                <div style="background: #fff; border: 1px solid #e2e8f0; border-left: 4px solid #16a34a; border-radius: 6px; padding: 16px;">
+                    <h4 style="margin: 0 0 6px 0; color: var(--navy-dark); font-size: 1rem;">2. Провиткия Арбитро</h4>
+                    <p style="font-size: 0.86rem; color: #475569; margin: 0; line-height: 1.45;">
+                        Рэзолво диспуто цирку аква, лигно, вэл мэрко интэр Провиткия син комэрциало фаворитизм.
+                    </p>
+                </div>
+
+                <div style="background: #fff; border: 1px solid #e2e8f0; border-left: 4px solid #d97706; border-radius: 6px; padding: 16px;">
+                    <h4 style="margin: 0 0 6px 0; color: var(--navy-dark); font-size: 1rem;">3. Импэрато эк Дэфэнсо</h4>
+                    <p style="font-size: 0.86rem; color: #475569; margin: 0; line-height: 1.45;">
+                        Командэ свои Сангаиа Дэфэнсо Корпо инкаи Марино Салво син шэно экспансио вэл импэриало бэло.
+                    </p>
+                </div>
+            </div>
+
+            <!-- VETO LEDGER TABLE -->
+            <h3 style="font-size: 1.15rem; color: var(--navy-dark); margin: 0 0 12px 0;">
+                Эксэкуто Прохибо & Апробо Леджер
+            </h3>
+            <div class="table-responsive">
+                <table class="styled-table">
+                    <thead>
+                        <tr>
+                            <th>Акт Номэро</th>
+                            <th>Титуло</th>
+                            <th>Дио</th>
+                            <th>Рэзидо</th>
+                            <th>Своротицания Клаузула</th>
+                            <th>Жудико Ратио</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        
+            <tr>
+                <td style="font-weight: bold; color: var(--navy-primary);">Act 2026-11</td>
+                <td style="font-weight: 600;">Привато Виа Вэктигало & Концэсио Лэксо</td>
+                <td>2026-02-11</td>
+                <td><span class="verdict-badge verdict-vetoed">ПРОХИБО (ВЭТО)</span></td>
+                <td style="font-size: 0.82rem; color: #78350f;"><strong>Article I, Section 4 (Universal Free Infrastructure)</strong></td>
+                <td style="font-size: 0.84rem; line-height: 1.4;">Публико виа конструо куно цивико лаборо динам ми эсэ вэндо ад привато комэрцио про вэктигало. Либэро виагио эст сакро.</td>
+            </tr>
+        
+            <tr>
+                <td style="font-weight: bold; color: var(--navy-primary);">Act 2026-10</td>
+                <td style="font-weight: 600;">Стукал Публико Эдукатио Дигитало Инфраструктура Аэрарио</td>
+                <td>2026-02-05</td>
+                <td><span class="verdict-badge verdict-assented">АПРОБО (СИГНО)</span></td>
+                <td style="font-size: 0.82rem; color: #78350f;"><strong>Article III, Section 2 (Educational Endowment)</strong></td>
+                <td style="font-size: 0.84rem; line-height: 1.4;">Алоко S$ 85M апо сэкуро плус про студиозо компюто инкаи офлайн Стукал эмито ин Алто скола.</td>
+            </tr>
+        
+            <tr>
+                <td style="font-weight: bold; color: var(--navy-primary);">Act 2026-09</td>
+                <td style="font-weight: 600;">Комэрциало Лоби Эксэмптио & Консилио Лэксо</td>
+                <td>2026-01-28</td>
+                <td><span class="verdict-badge verdict-vetoed">ПРОХИБО (ВЭТО)</span></td>
+                <td style="font-size: 0.82rem; color: #78350f;"><strong>Article V, Section 1 (Zero Corporate Lobbying Rule)</strong></td>
+                <td style="font-size: 0.84rem; line-height: 1.4;">Пропоно пэрмито комэрциало лоби ад финансио консультанто комитэ. Прохибо суб абсолюто анти-лобинг муро.</td>
+            </tr>
+        
+            <tr>
+                <td style="font-weight: bold; color: var(--navy-primary);">Act 2026-08</td>
+                <td style="font-weight: 600;">Костало Марино Корало Санктуарио Экспансио Акт</td>
+                <td>2026-01-14</td>
+                <td><span class="verdict-badge verdict-assented">АПРОБО (СИГНО)</span></td>
+                <td style="font-size: 0.82rem; color: #78350f;"><strong>Article IV, Section 5 (Inter-Provincial Biome Preservation)</strong></td>
+                <td style="font-size: 0.84rem; line-height: 1.4;">Экспандо салво марино зона суб Окидэнтало Архипэлаго паро 14,000 км², протэкто локало пискато.</td>
+            </tr>
+        
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- SECTION: EXECUTIVE MEETINGS & CALENDAR -->
+        <div class="glass-panel" id="executive-calendar">
+            <h2>
+                <span>Эксэкуто Консилио Калэндарио & Кабино Проседо</span>
+                <button class="sangaia-btn btn-navy" onclick="openHearingModal()" style="font-size: 0.82rem; height: 2.1em;">
+                    <span>Пэтитио про Эксэкуто Аудито</span>
+                </button>
+            </h2>
+            <p style="font-size: 0.92rem; color: #475569; margin-bottom: 20px;">Официало проседо эк Консилио эк Министро, Провиткия Губэрнаторо Сумито, инкаи Апэрта Цивикано Аудиэнто.</p>
+
+            <div class="meetings-grid">
+                
+            <div class="meeting-item ">
+                <div class="meeting-date">🗓️ Feb 24, 2026 • 10:00 AM</div>
+                <div style="font-size: 0.74rem; font-weight: 800; color: var(--gold-dark); text-transform: uppercase; margin-bottom: 4px;">Консилио эк Министро (Кабино)</div>
+                <h4 class="meeting-title">Q1 Провиткия Мэрко Балансо & Биомо Дэфэнсо Леджер</h4>
+                <div style="font-size: 0.8rem; color: #64748b; margin-bottom: 8px;">📍 Кабино Авла, Эксэкуто Палатио, Цэнтрало Капитало</div>
+                <p class="meeting-desc">Три-мэнсо кабино сэсио рэвисо домо мэрко плус, лигно колго сэкуро, инкаи Аэрарио инспэктио аудито.</p>
+            </div>
+        
+            <div class="meeting-item gold-edge">
+                <div class="meeting-date">🗓️ Feb 27, 2026 • 02:00 PM</div>
+                <div style="font-size: 0.74rem; font-weight: 800; color: var(--gold-dark); text-transform: uppercase; margin-bottom: 4px;">Спикэро Парламэнто Диалого</div>
+                <h4 class="meeting-title">Куно Рэвисо эк Вэрно Лэксо Проекто</h4>
+                <div style="font-size: 0.8rem; color: #64748b; margin-bottom: 8px;">📍 Арэтократико Библиотэка эк Своротицания</div>
+                <p class="meeting-desc">Сэптимано консультатио интэр Арэтократ инкаи Спикэро эк Корпо эк Элэкто ад дэтэкто анти-конститутио конфликто.</p>
+            </div>
+        
+            <div class="meeting-item ">
+                <div class="meeting-date">🗓️ Mar 05, 2026 • 09:30 AM</div>
+                <div style="font-size: 0.74rem; font-weight: 800; color: var(--gold-dark); text-transform: uppercase; margin-bottom: 4px;">Провиткия Губэрнаторо Конфэрэнсо</div>
+                <h4 class="meeting-title">Ануо Провиткия Финансио Хармониа & Транзито Пакто</h4>
+                <div style="font-size: 0.8rem; color: #64748b; margin-bottom: 8px;">📍 Камера эк Провиткия, Порто Сангаиа</div>
+                <p class="meeting-desc">Алто конфэрэнсо куно Губэрнаторо эк Костало, Алто, Цэнтрало & Инсуло про ратификатио эк нави инкаи виа финансио.</p>
+            </div>
+        
+            <div class="meeting-item gold-edge">
+                <div class="meeting-date">🗓️ Mar 12, 2026 • 01:00 PM</div>
+                <div style="font-size: 0.74rem; font-weight: 800; color: var(--gold-dark); text-transform: uppercase; margin-bottom: 4px;">Свои Апэрта Порта: Цивикано Аудиэнто</div>
+                <h4 class="meeting-title">Дирэкто Публико Пэтитио & Цивикано Грава Асэмблиа</h4>
+                <div style="font-size: 0.8rem; color: #64748b; margin-bottom: 8px;">📍 Публико Атриум, Офикио эк свои Арэтократ</div>
+                <p class="meeting-desc">Дэкум-дуо цивикано элиго паро сорто праэсто локало прагма, агрикултура пэтитио, вэл грава дирэкто ад свои Арэтократ.</p>
+            </div>
+        
+            </div>
+        </div>
+
+    </div>
+
+    <!-- FOOTER -->
+    <footer>
+        © Дио Милус Дио Дэкум Сэкс Сонит Провиткия эк Сангаиа. Холо Жусо Сэрво.<br><span style='font-size: 0.8em; color: #888;'>Динамиа паро Арэтократико Рэгканон</span><br>
+        <div style="margin-top: 10px; display: flex; justify-content: center; gap: 15px; flex-wrap: wrap; font-size: 0.8rem;">
+            <a href="https://executive.sangaia.org/sgn/index.html" style="font-weight: 900; color: #1e3a8a;">Министро эк свои Эксэкуто</a>
+            <a href="https://work.sangaia.org/sgn/index.html">Министро эк Лабориа</a>
+            <a href="https://education.sangaia.org/sgn/index.html">Министро эк Эдукатио</a>
+            <a href="https://treasury.sangaia.org/sgn/index.html">Министро эк Аэрарио</a>
+            <a href="https://environment.sangaia.org/sgn/index.html">Министро эк Амбиэто</a>
+            <a href="https://domesticaffairs.sangaia.org/sgn/index.html">Министро эк Домэстико</a>
+            <a href="https://externalaffairs.sangaia.org/sgn/index.html">Министро эк Экстэрно</a>
+            <a href="https://propaganda.sangaia.org/sgn/index.html">Министро эк Пропаго</a>
+        </div>
+    </footer>
+
+</div>
+
+<!-- MODAL: FULL DISPATCH READER -->
+<div class="modal-overlay" id="dispatch-modal">
+    <div class="modal-card modal-article">
+        <button class="modal-close-btn" onclick="closeDispatchModal()">&times;</button>
+        <div style="font-size: 0.78rem; font-weight: bold; color: var(--gold-dark); text-transform: uppercase; letter-spacing: 1px;" id="disp-meta-top">
+            AERETOCRATIC DISPATCH
+        </div>
+        <h2 id="disp-title" style="margin: 8px 0 10px 0; color: var(--navy-dark); font-size: 1.65rem; line-height: 1.25; border-bottom: 2px solid #e2e8f0; padding-bottom: 12px;"></h2>
+        <div style="display: flex; gap: 15px; font-size: 0.82rem; color: #64748b; margin-bottom: 20px;">
+            <span id="disp-date"></span>
+            <span id="disp-author">By the Aeretocrat</span>
+            <span id="disp-time"></span>
+        </div>
+        <div id="disp-content" style="font-size: 0.95rem; color: #1e293b; line-height: 1.7; font-family: Georgia, serif;">
+            <!-- Article body -->
+        </div>
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 25px; border-top: 1px solid #e2e8f0; padding-top: 15px;">
+            <span style="font-size: 0.78rem; color: #64748b; font-style: italic;">Официало Своротицания Архиво</span>
+            <button class="sangaia-btn btn-navy" onclick="closeDispatchModal()">Клаузо Диспачо</button>
+        </div>
+    </div>
+</div>
+
+<!-- MODAL: SUBMIT QUESTION TO AERETOCRAT -->
+<div class="modal-overlay" id="question-modal">
+    <div class="modal-card">
+        <button class="modal-close-btn" onclick="closeQuestionModal()">&times;</button>
+        <h3 style="margin-top: 0; color: var(--navy-dark);">
+            Куэстио ад свои Арэтократ
+        </h3>
+        <p style="font-size: 0.86rem; color: #64748b; margin-bottom: 18px;">
+            Тус куэстио волу эсэ лэго паро свои Арэтократ ин сум сэптимано скрутинио.
+        </p>
+        <form onsubmit="handleQuestionSubmit(event)">
+            <div class="form-group">
+                <label class="form-label">Холо Номэн</label>
+                <input type="text" class="form-input" id="q-name" required placeholder="Marcus Vance">
+            </div>
+            <div class="form-group">
+                <label class="form-label">Сангаиа ИД Номэро</label>
+                <input type="text" class="form-input" id="q-id" required placeholder="SNG-2026-XXXXX">
+            </div>
+            <div class="form-group">
+                <label class="form-label">Провиткия</label>
+                <select class="form-select" id="q-prov">
+                    <option value="Coastal Province">Coastal Province</option>
+                    <option value="Highlands Province">Highlands Province</option>
+                    <option value="Central Province">Central Province</option>
+                    <option value="Island Province">Island Province</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label class="form-label">Тус Куэстио вэл Пэтитио</label>
+                <textarea class="form-textarea" id="q-text" rows="4" required placeholder="Скрибо тус куэстио цирку лэксо, экономиа, вэл арэтиа..." ></textarea>
+            </div>
+            <div style="display: flex; justify-content: flex-end; gap: 10px; margin-top: 20px;">
+                <button type="button" class="sangaia-btn" onclick="closeQuestionModal()">Канцэло</button>
+                <button type="submit" class="sangaia-btn btn-gold">Субмито Куэстио</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<!-- MODAL: REQUEST EXECUTIVE HEARING / PETITION -->
+<div class="modal-overlay" id="hearing-modal">
+    <div class="modal-card">
+        <button class="modal-close-btn" onclick="closeHearingModal()">&times;</button>
+        <h3 style="margin-top: 0; color: var(--navy-dark);">
+            Пэтитио про Эксэкуто Аудито
+        </h3>
+        <p style="font-size: 0.86rem; color: #64748b; margin-bottom: 18px;">
+            Аплико про Апэрта Порта сэсио вэл оффициало Провиткия грава аудиэнто.
+        </p>
+        <form onsubmit="handleHearingSubmit(event)">
+            <div class="form-group">
+                <label class="form-label">Пэтитиоро вэл Органисм</label>
+                <input type="text" class="form-input" id="h-name" required placeholder="Highland Timber Guild Assembly">
+            </div>
+            <div class="form-group">
+                <label class="form-label">Аудиэнто Катэгориа</label>
+                <select class="form-select" id="h-cat">
+                    <option value="Open Door Citizen Hearing (Lottery Registration)">Open Door Citizen Hearing (Lottery Registration)</option>
+                    <option value="Inter-Provincial Resource Arbitration">Inter-Provincial Resource Arbitration</option>
+                    <option value="Constitutional Clause Challenge">Constitutional Clause Challenge</option>
+                    <option value="Emergency Relief Deputation">Emergency Relief Deputation</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label class="form-label">Прэсис эк Грава вэл Пэтитио</label>
+                <textarea class="form-textarea" id="h-summary" rows="4" required placeholder="Дэскрибо тус прагма..." ></textarea>
+            </div>
+            <div style="display: flex; justify-content: flex-end; gap: 10px; margin-top: 20px;">
+                <button type="button" class="sangaia-btn" onclick="closeHearingModal()">Канцэло</button>
+                <button type="submit" class="sangaia-btn btn-navy">Субмито Пэтитио</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<!-- MODAL: UNIVERSAL NOTICE -->
+<div class="modal-overlay" id="notice-modal">
+    <div class="modal-card" style="max-width: 520px;">
+        <button class="modal-close-btn" onclick="closeNoticeModal()">&times;</button>
+        <h3 id="notice-title" style="margin-top: 0; color: var(--navy-dark);">Notice</h3>
+        <div id="notice-body" style="font-size: 0.92rem; color: #1e293b; margin: 15px 0;"></div>
+        <div style="display: flex; justify-content: flex-end; margin-top: 15px;">
+            <button class="sangaia-btn btn-navy" onclick="closeNoticeModal()">ОК</button>
+        </div>
+    </div>
+</div>
+
+<script src="../auth.js" onerror="this.onerror=null; this.src='auth.js';"></script>
+<script>
+    // --- DISPATCHES DATABASE ---
+    const dispatchesDB = {
+        "disp1": {
+                "id": "disp1",
+                "category": "philosophy",
+                "cat_tag": "tag-philosophy",
+                "title_en": "The Paradox of the Veto: Why the Guardian Must Never Write the Law",
+                "title_sgn": "\u0421\u0432\u043e\u0438 \u041f\u0430\u0440\u0430\u0434\u043e\u043a\u0441\u043e \u044d\u043a \u041f\u0440\u043e\u0445\u0438\u0431\u043e: \u041a\u0443\u0440 \u0441\u0432\u043e\u0438 \u041a\u0443\u0441\u0442\u043e\u0434\u043e \u041c\u0443\u0441\u0442\u043e \u041c\u0438 \u0421\u043a\u0440\u0438\u0431\u043e \u041b\u044d\u043a\u0441\u043e",
+                "date": "February 16, 2026",
+                "read_time_en": "6 min read",
+                "read_time_sgn": "6 \u043c\u0438\u043d \u043b\u044d\u0433\u043e",
+                "snippet_en": "The moment an executive holds both the pen to write the law and the sword to enforce it, democracy is an illusion. Why the Sangaian Charter strictly limits the Aeretocrat to negative constitutional review.",
+                "snippet_sgn": "\u041a\u0443\u0430\u043c \u0443\u043d\u0430 \u044d\u043a\u0441\u044d\u043a\u0443\u0442\u043e \u0442\u044d\u043d\u044d\u043e \u043a\u0430\u043b\u0430\u043c\u043e \u0430\u0434 \u0441\u043a\u0440\u0438\u0431\u043e \u043b\u044d\u043a\u0441\u043e \u0438\u043d\u043a\u0430\u0438 \u0433\u043b\u0430\u0434\u0438\u043e \u0430\u0434 \u0444\u043e\u0440\u0442\u0438\u0441 \u0438\u0434, \u0434\u044d\u043c\u043e\u043a\u0440\u0430\u0442\u0438\u0430 \u044d\u0441\u0442 \u0443\u043d\u0430 \u0444\u0430\u043b\u0443. \u041a\u0443\u0440 \u0441\u0432\u043e\u0438 \u0421\u0430\u043d\u0433\u0430\u0438\u0430 \u041a\u0430\u0440\u0442\u0430 \u043b\u0438\u043c\u0438\u0442\u043e \u0441\u0432\u043e\u0438 \u0410\u0440\u044d\u0442\u043e\u043a\u0440\u0430\u0442 \u0430\u0434 \u0441\u043e\u043b\u0430\u0440\u043e \u043f\u0440\u043e\u0445\u0438\u0431\u043e.",
+                "full_en": "\n                <p>In classical political philosophy, men have always sought the philosopher-king: a leader of boundless wisdom who would decree justice from on high. History, however, has proven that kings are mortal and power is corrosive. When one individual possesses the power to initiate statutes, allocate funds, and command troops, the law ceases to be an objective moral anchor and becomes merely the will of the ruler.</p>\n                \n                <p>When the Sangaian Constitutional Charter was conceived, we chose a deliberate, sacred paradox. The Aeretocrat is granted immense negative power\u2014the absolute authority to veto any act of the Body of Electives that violates the fundamental rights of our people or threatens the debt-free sovereignty of our currency. Yet, simultaneously, the Aeretocrat is denied the power to write a single sentence of binding statutory law.</p>\n\n                <p>Why must this firewall remain absolute? Because the guardian who writes the law is inherently tempted to design rules that favor his own office. By confining the Executive to defense, arbitration, and constitutional veto, the law remains the genuine product of the citizens elected in the provinces. When I review a bill on my desk, I do not ask: <em>'Does this advance my political ambition?'</em> I am forbidden from having an agenda. I ask only one question: <em>'Does this violate the supreme virtue of our Constitution?'</em></p>\n\n                <p>Restraint is not weakness; it is the ultimate expression of moral strength. True leadership is the discipline to enforce the law even when it limits one's own power.</p>\n            ",
+                "full_sgn": "\n                <p>\u0418\u043d \u043a\u043b\u0430\u0441\u0438\u043a\u043e \u043f\u043e\u043b\u0438\u0442\u0438\u043a\u0438\u0430 \u0444\u0438\u043b\u043e\u0441\u043e\u0444\u0438\u0430, \u0441\u044f\u043d\u0438 \u0441\u044d\u043c\u043f\u044d\u0440 \u0441\u043a\u044d\u0440\u043e \u0441\u0432\u043e\u0438 \u0444\u0438\u043b\u043e\u0441\u043e\u0444\u043e-\u0440\u044d\u043a\u0441\u043e: \u0443\u043d\u0430 \u0434\u0443\u043a\u0441\u043e \u043a\u0443\u043d\u043e \u0441\u0430\u043f\u044d\u043d\u0441\u043e \u0442\u0438 \u0432\u043e\u043b\u0443 \u0434\u044d\u043a\u0440\u0438\u0442\u043e \u0436\u0443\u0441\u0442\u0438\u0430 \u0430\u043f\u043e \u0430\u043b\u0442\u043e. \u0410\u043b\u0430 \u0438\u0441\u0442\u043e\u0440\u0438\u0430 \u044d\u0445\u043e \u043f\u0440\u043e\u0431\u043e \u0442\u0438 \u0440\u044d\u043a\u0441\u043e \u044d\u0441\u0442 \u043c\u043e\u0440\u0442\u0430\u043b\u043e \u0438\u043d\u043a\u0430\u0438 \u0434\u0438\u043d\u0430\u043c\u0438\u0430 \u043a\u043e\u0440\u043e\u0434\u043e. \u041a\u0443\u0430\u043c \u0443\u043d\u0430 \u0438\u043d\u0434\u0438\u0432\u0443\u0434\u0443\u043e \u0442\u044d\u043d\u044d\u043e \u0434\u0438\u043d\u0430\u043c\u0438\u0430 \u0430\u0434 \u0438\u043d\u043a\u0438\u043f\u0438\u043e \u043b\u044d\u043a\u0441\u043e, \u0430\u043b\u043e\u043a\u043e \u043f\u044d\u043a\u0443\u043d\u0438\u0430, \u0438\u043d\u043a\u0430\u0438 \u043a\u043e\u043c\u0430\u043d\u0434\u044d \u043c\u0438\u043b\u0438\u0442\u0430\u0440\u0438, \u0441\u0432\u043e\u0438 \u043b\u044d\u043a\u0441\u043e \u0441\u044d\u0441\u043e \u0430\u0434 \u044d\u0441\u044d \u043e\u0431\u0436\u044d\u043a\u0442\u0438\u0432\u043e \u043c\u043e\u0440\u0430\u043b\u043e \u0430\u043d\u043a\u043e\u0440\u0430.</p>\n\n                <p>\u041a\u0443\u0430\u043c \u0441\u0432\u043e\u0438 \u0421\u0430\u043d\u0433\u0430\u0438\u0430 \u0421\u0432\u043e\u0440\u043e\u0442\u0438\u0446\u0430\u043d\u0438\u044f \u044d\u0441\u044d \u043a\u043e\u043d\u0441\u0438\u043f\u0438\u043e, \u0441\u043e\u043d\u0442\u0430\u0432\u043e\u043b\u044f \u044d\u043b\u0438\u0433\u043e \u0443\u043d\u0430 \u0441\u043e\u0440\u043e \u043f\u0430\u0440\u0430\u0434\u043e\u043a\u0441\u043e. \u0421\u0432\u043e\u0438 \u0410\u0440\u044d\u0442\u043e\u043a\u0440\u0430\u0442 \u044d\u0445\u043e \u0433\u0440\u0430\u043d\u0442\u043e \u0438\u043c\u044d\u043d\u0441\u043e \u043d\u044d\u0433\u0430\u0442\u0438\u0432\u043e \u0434\u0438\u043d\u0430\u043c\u0438\u0430\u2014\u0441\u0432\u043e\u0438 \u0430\u0431\u0441\u043e\u043b\u044e\u0442\u043e \u0430\u0443\u0442\u043e\u0440\u0438\u0442\u0430 \u0430\u0434 \u043f\u0440\u043e\u0445\u0438\u0431\u043e \u0448\u044d\u043d\u043e \u043b\u044d\u043a\u0441\u043e \u044d\u043a \u0441\u0432\u043e\u0438 \u041a\u043e\u0440\u043f\u043e \u044d\u043a \u042d\u043b\u044d\u043a\u0442\u043e \u0442\u0438 \u0432\u0438\u043e\u043b\u043e \u0441\u0432\u043e\u0438 \u043f\u0440\u043e\u0442\u043e \u0436\u0443\u0441\u043e \u044d\u043a \u043d\u043e\u0441\u0442\u044d\u0440 \u0441\u044f\u043d\u0438 \u0432\u044d\u043b \u043c\u044d\u043d\u0430\u0441\u043e \u0441\u0432\u043e\u0438 \u0437\u044d\u0440\u043e-\u0434\u044d\u0431\u0438\u0442\u043e \u0441\u0443\u0432\u044d\u0440\u044d\u043d\u0438\u0442\u0430. \u0410\u043b\u0430, \u043a\u043e\u043d\u0442\u044d\u043c\u043f\u043e\u0440\u0430\u043d\u043e, \u0441\u0432\u043e\u0438 \u0410\u0440\u044d\u0442\u043e\u043a\u0440\u0430\u0442 \u044d\u0441\u0442 \u043d\u044d\u0433\u043e \u0441\u0432\u043e\u0438 \u0434\u0438\u043d\u0430\u043c\u0438\u0430 \u0430\u0434 \u0441\u043a\u0440\u0438\u0431\u043e \u044d\u0442\u043e\u043d \u0443\u043d\u0443\u0441 \u0441\u044d\u043d\u0442\u044d\u043d\u0441\u043e \u044d\u043a \u043b\u044d\u043a\u0441\u043e.</p>\n\n                <p>\u041a\u0443\u0440 \u0445\u043e\u043a \u043c\u0443\u0440\u043e \u043c\u0443\u0441\u0442\u043e \u044d\u0441\u044d \u0430\u0431\u0441\u043e\u043b\u044e\u0442\u043e? \u041a\u0443\u0440 \u0441\u0432\u043e\u0438 \u043a\u0443\u0441\u0442\u043e\u0434\u043e \u0442\u0438 \u0441\u043a\u0440\u0438\u0431\u043e \u043b\u044d\u043a\u0441\u043e \u044d\u0441\u0442 \u0442\u044d\u043d\u0442\u0430\u0442\u043e \u0430\u0434 \u0444\u043e\u0440\u043c\u043e \u0440\u044d\u0433\u043b\u0430 \u0442\u0438 \u0444\u0430\u0432\u043e\u0440\u043e \u0441\u0443\u043c \u0438\u043f\u0441\u043e \u043e\u0444\u0438\u043a\u0438\u043e. \u041f\u0430\u0440\u043e \u043b\u0438\u043c\u0438\u0442\u043e \u0441\u0432\u043e\u0438 \u042d\u043a\u0441\u044d\u043a\u0443\u0442\u043e \u0430\u0434 \u0434\u044d\u0444\u044d\u043d\u0441\u043e, \u0430\u0440\u0431\u0438\u0442\u0440\u043e, \u0438\u043d\u043a\u0430\u0438 \u043f\u0440\u043e\u0445\u0438\u0431\u043e, \u0441\u0432\u043e\u0438 \u043b\u044d\u043a\u0441\u043e \u0441\u044d\u0440\u0432\u043e \u0441\u0432\u043e\u0438 \u043f\u0443\u0440\u043e \u043f\u0440\u043e\u0434\u0443\u0441\u0442\u043e \u044d\u043a \u0446\u0438\u0432\u0438\u043a\u0430\u043d\u043e. \u041a\u0443\u0430\u043c \u044d\u0433\u043e \u0438\u043d\u0441\u043f\u044d\u043a\u0442\u043e \u0443\u043d\u0430 \u043b\u044d\u043a\u0441\u043e, \u044d\u0433\u043e \u043c\u0438 \u043a\u0443\u044d\u0441\u0442\u0438\u043e: <em>'\u0410\u0441 \u0445\u043e\u043a \u0430\u0443\u0433\u043c\u044d\u043d\u0442\u043e \u043c\u044d\u0443\u0441 \u0434\u0438\u043d\u0430\u043c\u0438\u0430?'</em> \u042d\u0433\u043e \u044d\u0445\u043e \u0436\u0443\u0440\u043e \u0430\u0434 \u043c\u0438 \u044d\u0445\u043e \u0448\u044d\u043d\u043e \u0430\u0433\u044d\u043d\u0434\u0430. \u042d\u0433\u043e \u043a\u0443\u044d\u0441\u0442\u0438\u043e \u0441\u043e\u043b\u0430\u0440\u043e: <em>'\u0410\u0441 \u0445\u043e\u043a \u0432\u0438\u043e\u043b\u043e \u0441\u0432\u043e\u0438 \u0441\u0443\u043f\u0440\u044d\u043c\u043e \u0430\u0440\u044d\u0442\u0438\u0430 \u044d\u043a \u043d\u043e\u0441\u0442\u044d\u0440 \u0421\u0432\u043e\u0440\u043e\u0442\u0438\u0446\u0430\u043d\u0438\u044f?'</em></p>\n            "
+        },
+        "disp2": {
+                "id": "disp2",
+                "category": "field",
+                "cat_tag": "tag-field",
+                "title_en": "Walking the Silent Pines: Field Notes from Oakhaven's Timber Guilds",
+                "title_sgn": "\u0410\u043c\u0431\u0443\u043b\u043e \u0441\u0432\u043e\u0438 \u0421\u0438\u043b\u044d\u043d\u0442\u0438\u043e \u041f\u0438\u043d\u0438: \u041b\u043e\u043a\u0430\u043b\u043e \u041d\u043e\u0442\u044d \u0430\u043f\u043e \u041e\u043a\u0445\u0430\u0432\u044d\u043d \u041b\u0438\u0433\u043d\u043e \u0413\u0438\u043b\u0434\u0430",
+                "date": "February 04, 2026",
+                "read_time_en": "8 min read",
+                "read_time_sgn": "8 \u043c\u0438\u043d \u043b\u044d\u0433\u043e",
+                "snippet_en": "A week spent in the snow-draped Highlands without official motorcades. Breaking bread with winter timber artisans, reviewing heating fuel reserves, and verifying church wealth redistribution in the alpine valleys.",
+                "snippet_sgn": "\u0423\u043d\u0430 \u0441\u044d\u043f\u0442\u0438\u043c\u0430 \u0438\u043d \u0441\u0432\u043e\u0438 \u043d\u0438\u0432\u0430\u0442\u0438\u043e \u0410\u043b\u0442\u043e \u041f\u0440\u043e\u0432\u0438\u0442\u043a\u0438\u044f \u0441\u0438\u043d \u043e\u0444\u0438\u0446\u0438\u0430\u043b\u043e \u0430\u0443\u0442\u043e\u043c\u044d\u0442\u0438\u043a\u043e. \u0424\u0440\u0430\u043d\u0433\u043e \u043f\u0430\u043d\u043e \u043a\u0443\u043d\u043e \u0445\u0438\u044d\u043c\u043e \u0444\u0430\u0431\u0440\u043e, \u0438\u043d\u0441\u043f\u044d\u043a\u0442\u043e \u043a\u0430\u043b\u043e\u0440\u043e \u043a\u043e\u043c\u0431\u0443\u0441\u0442\u0438\u0431\u0438\u043b\u043e, \u0438\u043d\u043a\u0430\u0438 \u0432\u044d\u0440\u0438\u0444\u0438\u043a\u043e \u044d\u043a\u043a\u043b\u044d\u0441\u0438\u0430 \u0440\u0438\u043a\u043e-\u0440\u044d\u0434\u0438\u0432\u0438\u0434\u043e.",
+                "full_en": "\n                <p>Last week, I set aside the executive seal and journeyed north into the Highlands Province. The snow was knee-deep across the ridges above Oakhaven, where the Guild of Forest Keepers practices sustainable winter harvesting. In Sangaia, an executive who remains locked inside the Capital becomes deaf to the heartbeat of the land.</p>\n\n                <p>I sat beside the great iron stove at the Guild Lodge with Master Carpenter Eamon and five young apprentices. We discussed the provincial timber quota, which had been reduced by 4% this season under the Ministry of Environment\u2019s biome protection act. In other nations, such cuts provoke fury between commerce and conservation. But here, because the profits of the timber go directly into local healthcare, timber pensions, and alpine rescue shelters, the workers understood the virtue of conservation.</p>\n\n                <p>Later that evening, I made an unannounced visit to the Highland Fellowship of the Silent Pines, an audited religious congregation. I inspected their ledger alongside their community elder. Of their S$ 315,000 in annual tithes, exactly 92.4% had gone into low-income winter heating subsidies and warm clothing for mountain children. That is the soul of our Republic: spirituality expressed not as personal luxury or gold-plated monuments, but as warm fires in the homes of the vulnerable.</p>\n            ",
+                "full_sgn": "\n                <p>\u041f\u0440\u0430\u044d\u0442\u044d\u0440\u0438\u0442\u043e \u0441\u044d\u043f\u0442\u0438\u043c\u0430, \u044d\u0433\u043e \u0441\u044d\u043f\u043e\u0440\u043e \u0441\u0432\u043e\u0438 \u044d\u043a\u0441\u044d\u043a\u0443\u0442\u043e \u0441\u044d\u0430\u043b\u043e \u0438\u043d\u043a\u0430\u0438 \u0432\u0438\u0430\u0433\u0438\u043e \u0431\u043e\u0440\u044d\u0430\u043b\u043e \u0438\u043d \u0441\u0432\u043e\u0438 \u0410\u043b\u0442\u043e \u041f\u0440\u043e\u0432\u0438\u0442\u043a\u0438\u044f. \u0421\u0432\u043e\u0438 \u043d\u0438\u0432\u043e \u044d\u0441\u044d \u043f\u0440\u043e\u0444\u0443\u043d\u0434\u043e \u0441\u0443\u043f\u044d\u0440 \u0441\u0432\u043e\u0438 \u0441\u043a\u043e\u043f\u0443\u043b\u043e \u0441\u0443\u043f\u0440\u0430 \u041e\u043a\u0445\u0430\u0432\u044d\u043d, \u044d\u043a\u0438 \u0441\u0432\u043e\u0438 \u0413\u0438\u043b\u0434\u0430 \u044d\u043a \u0421\u0438\u043b\u0432\u0430 \u041a\u0443\u0441\u0442\u043e\u0434\u043e\u0441 \u043f\u0440\u0430\u043a\u0442\u043e \u0441\u0443\u0441\u0442\u044d\u043d\u0430\u0431\u0438\u043b\u043e \u0445\u0438\u044d\u043c\u043e \u043a\u043e\u043b\u0433\u043e. \u0418\u043d \u0421\u0430\u043d\u0433\u0430\u0438\u0430, \u0443\u043d\u0430 \u044d\u043a\u0441\u044d\u043a\u0443\u0442\u043e \u0442\u0438 \u043c\u0430\u043d\u0443\u0433\u043e \u043a\u043a\u043b\u0430\u0443\u0437\u043e \u0438\u043d \u041a\u0430\u043f\u0438\u0442\u0430\u043b\u043e \u0444\u0438\u043d\u043e \u0441\u0443\u0440\u0434\u043e \u0430\u0434 \u0441\u0432\u043e\u0438 \u043a\u043e\u0440 \u044d\u043a \u0441\u0432\u043e\u0438 \u0442\u044d\u0440\u0440\u0430.</p>\n\n                <p>\u042d\u0433\u043e \u0441\u044d\u0434\u044d\u043e \u043f\u0440\u043e\u043a\u0441\u0438\u043c\u043e \u0441\u0432\u043e\u0438 \u0444\u044d\u0440\u043e \u0444\u043e\u043a\u043e \u043a\u0443\u043d\u043e \u041c\u0430\u0433\u0438\u0441\u0442\u0440\u043e \u0424\u0430\u0431\u0440\u043e \u042d\u0430\u043c\u043e\u043d \u0438\u043d\u043a\u0430\u0438 \u043f\u044d\u043d\u0442\u0443\u0441 \u0436\u0443\u0432\u044d\u043d\u0438\u0441 \u0441\u0442\u0443\u0434\u0438\u043e\u0437\u043e. \u0421\u043e\u043d\u0442\u0430\u0432\u043e\u043b\u044f \u0434\u0438\u0430\u043b\u043e\u0433\u043e \u0446\u0438\u0440\u043a\u0443 \u0441\u0432\u043e\u0438 \u043f\u0440\u043e\u0432\u0438\u0442\u043a\u0438\u044f \u043b\u0438\u0433\u043d\u043e \u043a\u0443\u043e\u0442\u0430, \u0442\u0438 \u044d\u0441\u044d \u0440\u044d\u0434\u0443\u0441\u043e \u043f\u0430\u0440\u043e 4% \u0441\u0443\u0431 \u0441\u0432\u043e\u0438 \u041c\u0438\u043d\u0438\u0441\u0442\u0440\u043e \u044d\u043a \u0410\u043c\u0431\u0438\u044d\u0442\u043e \u0431\u0438\u043e\u043c\u043e \u0430\u043a\u0442. \u0418\u043d \u0448\u044d\u043d\u043e \u043d\u0430\u0442\u0438\u043e, \u0445\u043e\u043a \u043f\u0440\u043e\u0434\u0438\u0433\u043e \u0444\u0443\u0440\u0438\u043e \u0438\u043d\u0442\u044d\u0440 \u043c\u044d\u0440\u043a\u043e \u0438\u043d\u043a\u0430\u0438 \u043a\u043e\u043d\u0441\u044d\u0440\u0432\u043e. \u0410\u043b\u0430 \u044d\u043a\u0438, \u043a\u0443\u0440 \u0441\u0432\u043e\u0438 \u043f\u043b\u0443\u0441 \u0438\u0440\u043e \u0434\u0438\u0440\u044d\u043a\u0442\u043e \u0430\u0434 \u0441\u0430\u043b\u0443\u0442\u0438\u0430-\u043a\u0443\u0440\u0430, \u043f\u044d\u043d\u0441\u0438\u043e, \u0438\u043d\u043a\u0430\u0438 \u0441\u0430\u043b\u0432\u043e \u0430\u0441\u044e\u043b\u043e, \u0441\u0432\u043e\u0438 \u043b\u0430\u0431\u043e\u0440\u0430\u043d\u043e \u0441\u0430\u043f\u043e \u0441\u0432\u043e\u0438 \u0430\u0440\u044d\u0442\u0438\u0430 \u044d\u043a \u043a\u043e\u043d\u0441\u044d\u0440\u0432\u043e.</p>\n\n                <p>\u0412\u044d\u0441\u043f\u044d\u0440\u043e, \u044d\u0433\u043e \u0432\u0438\u0437\u043e \u0441\u0432\u043e\u0438 \u0410\u043b\u0442\u043e \u0424\u044d\u043b\u043e\u0448\u0438\u043f \u044d\u043a \u0421\u0438\u043b\u044d\u043d\u0442\u0438\u043e \u041f\u0438\u043d\u0438, \u0443\u043d\u0430 \u0430\u0443\u0434\u0438\u0442\u043e \u044d\u043a\u043a\u043b\u044d\u0441\u0438\u0430. \u042d\u0433\u043e \u0438\u043d\u0441\u043f\u044d\u043a\u0442\u043e \u0441\u0443\u043c \u043b\u0435\u0434\u0436\u0435\u0440: \u0430\u043f\u043e \u0441\u0443\u043c S$ 315,000 \u0430\u043d\u0443\u043e \u0434\u0430\u043f\u0430\u043d\u043e, \u044d\u043a\u0437\u0430\u043a\u0442\u043e 92.4% \u044d\u0441\u044d \u0438\u0440\u043e \u0430\u0434 \u0445\u0438\u044d\u043c\u043e \u043a\u0430\u043b\u043e\u0440\u043e \u0441\u0443\u0431\u0441\u0438\u0434\u0438\u0430 \u0438\u043d\u043a\u0430\u0438 \u0432\u044d\u0441\u0442\u0438\u0441 \u043f\u0440\u043e \u043c\u043e\u043d\u0442\u0430\u043d\u0430 \u0438\u043d\u0444\u0430\u043d\u0442\u043e. \u0425\u043e\u043a \u044d\u0441\u0442 \u0441\u0432\u043e\u0438 \u0430\u043d\u0438\u043c\u0430 \u044d\u043a \u043d\u043e\u0441\u0442\u044d\u0440 \u0420\u044d\u043f\u0443\u0431\u043b\u0438\u043a\u043e: \u0441\u043f\u0438\u0440\u0438\u0442\u0443\u0430\u043b\u0438\u0442\u0430 \u043f\u0440\u0430\u043a\u0442\u043e \u043c\u0438 \u0441\u0438\u043c\u0438\u043b\u0438 \u043b\u0443\u043a\u0441\u043e, \u0430\u043b\u0430 \u0441\u0438\u043c\u0438\u043b\u0438 \u043a\u0430\u043b\u043e\u0440\u043e \u0444\u043e\u043a\u043e \u0438\u043d \u0434\u043e\u043c\u043e \u044d\u043a \u0441\u044f\u043d\u0438.</p>\n            "
+        },
+        "disp3": {
+                "id": "disp3",
+                "category": "economy",
+                "cat_tag": "tag-economy",
+                "title_en": "The Silver Anchor: Why We Refuse Sovereign Debt and International Bankers",
+                "title_sgn": "\u0421\u0432\u043e\u0438 \u0410\u0440\u0433\u044d\u043d\u0442\u043e \u0410\u043d\u043a\u043e\u0440\u0430: \u041a\u0443\u0440 \u0421\u043e\u043d\u0442\u0430\u0432\u043e\u043b\u044f \u0420\u044d\u0444\u0443\u0437\u043e \u0413\u0443\u0431\u044d\u0440\u043d\u043e \u0414\u044d\u0431\u0438\u0442\u043e & \u0411\u0430\u043d\u043a\u0430\u0440\u0438",
+                "date": "January 22, 2026",
+                "read_time_en": "10 min read",
+                "read_time_sgn": "10 \u043c\u0438\u043d \u043b\u044d\u0433\u043e",
+                "snippet_en": "An exegesis on monetary independence: how global fractional reserve fiat enslaves unborn generations, and why our balanced S$ 14.85B budget protects the purchasing power of every working citizen.",
+                "snippet_sgn": "\u042d\u043a\u0441\u044d\u0433\u0435\u0441\u0438\u0441 \u0446\u0438\u0440\u043a\u0443 \u043c\u043e\u043d\u044d\u0442\u0430\u0440\u043e \u0441\u0443\u0432\u044d\u0440\u044d\u043d\u0438\u0442\u0430: \u043a\u043e\u043c\u043e \u0433\u043b\u043e\u0431\u0430\u043b\u043e \u0444\u0438\u0430\u0442 \u0434\u044d\u0431\u0438\u0442\u043e \u0441\u044d\u0440\u0432\u0438\u0442\u043e \u0438\u043d\u0444\u0430\u043d\u0442\u043e \u043c\u0438 \u043d\u0430\u0441\u043a\u043e, \u0438\u043d\u043a\u0430\u0438 \u043a\u0443\u0440 \u043d\u043e\u0441\u0442\u044d\u0440 \u0431\u0430\u043b\u0430\u043d\u0441\u043e S$ 14.85B \u0431\u0443\u0433\u044d\u0442\u0438\u043e \u0441\u044d\u043a\u0443\u0440\u043e \u0442\u0443\u0441 \u043f\u044d\u043a\u0443\u043d\u0438\u0430.",
+                "full_en": "\n                <p>Throughout the 20th and 21st centuries, sovereign states traded their freedom for easy credit. They issued trillions in fiat debt, borrowing from transnational syndicates to fund political vanity projects. The inevitable consequence has always been the debasement of the working man's wages, hyperinflation, and the surrender of sovereign domestic policy to foreign creditors.</p>\n\n                <p>In Sangaia, we made a sovereign covenant codified in Article V of the Constitution: the Republic shall never incur foreign sovereign debt. When the international monetary missions visited Port Sangaia offering multi-billion dollar infrastructure credit lines, the Ministry of the Executive rejected them unconditionally.</p>\n\n                <p>We build our bridges, lay our fiber optics, and fund our public hospitals from the wealth we actually create: our sustainable timber, our clean fisheries, our green maritime engineering, and our resource royalties. Our FY 2026 budget of S$ 14.85 Billion is not only fully balanced\u2014it leaves a surplus of S$ 420.5 Million in our Sovereign Resilience Reserve. When you hold a Sangaian Dollar, you hold real labor and real silver-indexed value, not the IOUs of bankrupt empires.</p>\n            ",
+                "full_sgn": "\n                <p>\u0418\u043d \u0445\u043e\u043b\u043e \u0446\u044d\u043d\u0442\u0443\u0440\u0438, \u043d\u0430\u0442\u0438\u043e\u0441 \u043c\u044d\u0440\u043a\u043e \u0441\u0443\u043c \u043b\u0438\u0431\u044d\u0440\u0442\u0430 \u043f\u0440\u043e \u0444\u0430\u043a\u0438\u043b\u043e \u043a\u0440\u044d\u0434\u0438\u0442\u043e. \u0418\u043b\u0438 \u044d\u043c\u0438\u0442\u043e \u0442\u0440\u0438\u043b\u0438\u043e\u043d\u043e \u0444\u0438\u0430\u0442 \u0434\u044d\u0431\u0438\u0442\u043e \u0430\u043f\u043e \u0442\u0440\u0430\u043d\u0441-\u043d\u0430\u0442\u0438\u043e \u0431\u0430\u043d\u043a\u0430\u0440\u0438 \u043f\u0440\u043e \u043f\u043e\u043b\u0438\u0442\u0438\u043a\u0438\u0430 \u043b\u0443\u043a\u0441\u043e. \u0421\u0432\u043e\u0438 \u043a\u043e\u043d\u0441\u044d\u043a\u0443\u044d\u043d\u0442\u043e \u0441\u044d\u043c\u043f\u044d\u0440 \u044d\u0441\u044d \u0441\u0432\u043e\u0438 \u0434\u044d\u0441\u0442\u0440\u0443\u0442\u043e \u044d\u043a \u043b\u0430\u0431\u043e\u0440\u0430\u043d\u043e'\u0441 \u043f\u044d\u043a\u0443\u043d\u0438\u0430, \u0438\u043d\u0444\u043b\u0430\u0442\u0438\u043e, \u0438\u043d\u043a\u0430\u0438 \u0441\u044d\u0440\u0432\u0438\u0442\u043e \u0430\u0434 \u0448\u044d\u043d\u043e \u043a\u0440\u044d\u0434\u0438\u0442\u043e\u0440\u043e.</p>\n\n                <p>\u0418\u043d \u0421\u0430\u043d\u0433\u0430\u0438\u0430, \u0441\u043e\u043d\u0442\u0430\u0432\u043e\u043b\u044f \u0444\u0430\u043a\u0438\u043e \u0443\u043d\u0430 \u0441\u043e\u0440\u043e \u043f\u0430\u043a\u0442\u043e \u0441\u0443\u0431 \u0410\u0440\u0442\u0438\u043a\u0443\u043b\u043e V \u044d\u043a \u0421\u0432\u043e\u0440\u043e\u0442\u0438\u0446\u0430\u043d\u0438\u044f: \u0441\u0432\u043e\u0438 \u0420\u044d\u043f\u0443\u0431\u043b\u0438\u043a\u043e \u043d\u0443\u043d\u043a\u0443\u0430\u043c \u0432\u043e\u043b\u0443 \u0434\u044d\u0431\u0438\u0442\u043e \u0448\u044d\u043d\u043e \u0444\u043e\u0440\u0438\u044d\u0440\u043e \u043f\u044d\u043a\u0443\u043d\u0438\u0430. \u041a\u0443\u0430\u043c \u0441\u0432\u043e\u0438 \u0438\u043d\u0442\u044d\u0440-\u043d\u0430\u0442\u0438\u043e \u043a\u0440\u044d\u0434\u0438\u0442\u043e\u0440\u043e \u0432\u0438\u0437\u043e \u041f\u043e\u0440\u0442\u043e \u0421\u0430\u043d\u0433\u0430\u0438\u0430 \u043a\u0443\u043d\u043e \u0431\u0438\u043b\u0438\u043e\u043d\u043e \u0434\u043e\u043b\u043b\u0430\u0440\u043e \u043f\u0440\u0430\u0433\u043c\u0430, \u0441\u0432\u043e\u0438 \u041c\u0438\u043d\u0438\u0441\u0442\u0440\u043e \u044d\u043a \u0441\u0432\u043e\u0438 \u042d\u043a\u0441\u044d\u043a\u0443\u0442\u043e \u0440\u044d\u0444\u0443\u0437\u043e \u0438\u043b\u0438 \u0441\u0438\u043d \u043a\u043e\u043d\u0434\u0438\u0442\u0438\u043e.</p>\n\n                <p>\u0421\u043e\u043d\u0442\u0430\u0432\u043e\u043b\u044f \u043a\u043e\u043d\u0441\u0442\u0440\u0443\u043e \u043d\u043e\u0441\u0442\u044d\u0440 \u043f\u043e\u043d\u0442\u043e, \u043e\u043f\u044d\u0440\u043e \u043d\u043e\u0441\u0442\u044d\u0440 \u0444\u0438\u0431\u0440\u0430 \u0440\u044d\u0442\u0438, \u0438\u043d\u043a\u0430\u0438 \u0444\u0438\u043d\u0430\u043d\u0441\u0438\u043e \u043d\u043e\u0441\u0442\u044d\u0440 \u0445\u043e\u0441\u043f\u0438\u0442\u0430\u043b\u043e \u0430\u043f\u043e \u0441\u0432\u043e\u0438 \u0432\u044d\u0440\u043e \u0431\u043e\u0433\u0430\u0442\u0441\u0442\u0432\u043e \u0442\u0438 \u0441\u043e\u043d\u0442\u0430\u0432\u043e\u043b\u044f \u043f\u0440\u0430\u043a\u0442\u043e: \u0441\u0443\u0441\u0442\u044d\u043d\u0430\u0431\u0438\u043b\u043e \u043b\u0438\u0433\u043d\u043e, \u043c\u0430\u0440\u0438\u043d\u043e \u043f\u0438\u0441\u043a\u0430\u0442\u043e, \u0438\u043d\u043a\u0430\u0438 \u0438\u043d\u0436\u044d\u043d\u0438\u0430. \u041d\u043e\u0441\u0442\u044d\u0440 \u0431\u0443\u0433\u044d\u0442\u0438\u043e \u044d\u043a S$ 14.85 \u0411\u0438\u043b\u0438\u043e\u043d\u043e \u044d\u0441\u0442 \u043c\u0438 \u0441\u043e\u043b\u0430\u0440\u043e \u0431\u0430\u043b\u0430\u043d\u0441\u043e\u2014\u0438\u0434 \u044d\u0445\u043e S$ 420.5 \u041c\u0438\u043b\u0438\u043e\u043d\u043e \u043f\u043b\u0443\u0441 \u0438\u043d \u043d\u043e\u0441\u0442\u044d\u0440 \u0421\u044d\u043a\u0443\u0440\u043e \u0420\u044d\u0437\u044d\u0440\u0432\u043e. \u041a\u0443\u0430\u043c \u0442\u0443 \u0442\u044d\u043d\u044d\u043e \u0443\u043d\u0430 \u0421\u0430\u043d\u0433\u0430\u0438\u0430 \u0414\u043e\u043b\u043b\u0430\u0440\u043e, \u0442\u0443 \u0442\u044d\u043d\u044d\u043e \u0432\u044d\u0440\u043e \u043b\u0430\u0431\u043e\u0440\u043e \u0438\u043d\u043a\u0430\u0438 \u0430\u0440\u0433\u044d\u043d\u0442\u043e \u0432\u0430\u043b\u043e\u0440\u043e.</p>\n            "
+        },
+        "disp4": {
+                "id": "disp4",
+                "category": "civic",
+                "cat_tag": "tag-civic",
+                "title_en": "Arete Before Kratos: The Forgotten Greek Foundation of Sangaia",
+                "title_sgn": "\u0410\u0440\u044d\u0442\u044d \u0410\u043d\u0442\u044d\u043e \u041a\u0440\u0430\u0442\u043e\u0441: \u0421\u0432\u043e\u0438 \u0413\u0440\u0430\u044d\u043a\u043e \u0424\u0443\u043d\u0434\u0430\u043c\u044d\u043d\u0442\u043e \u044d\u043a \u0421\u0430\u043d\u0433\u0430\u0438\u0430",
+                "date": "January 08, 2026",
+                "read_time_en": "7 min read",
+                "read_time_sgn": "7 \u043c\u0438\u043d \u043b\u044d\u0433\u043e",
+                "snippet_en": "Examining our foundational title: Arete (virtue, moral excellence) must precede and constrain Kratos (might, rule). The tragic lesson of civilizations that exalted power while abandoning character.",
+                "snippet_sgn": "\u0418\u043d\u0441\u043f\u044d\u043a\u0442\u043e \u043d\u043e\u0441\u0442\u044d\u0440 \u0442\u0438\u0442\u0443\u043b\u043e: \u0410\u0440\u044d\u0442\u044d (\u0432\u0443\u0440\u0442\u044d\u0441, \u043c\u043e\u0440\u0430\u043b\u043e \u0430\u0440\u044d\u0442\u0438\u0430) \u043c\u0443\u0441\u0442\u043e \u0430\u043d\u0442\u044d\u043e \u0438\u043d\u043a\u0430\u0438 \u043b\u0438\u043c\u0438\u0442\u043e \u041a\u0440\u0430\u0442\u043e\u0441 (\u0434\u0438\u043d\u0430\u043c\u0438\u0430, \u0438\u043c\u043f\u044d\u0440\u0438\u043e). \u0421\u0432\u043e\u0438 \u0442\u0440\u0430\u0433\u0438\u043a\u043e \u043b\u044d\u043a\u0442\u0438\u043e \u044d\u043a \u0446\u0438\u0432\u0438\u043b\u0438\u0437\u0430\u0442\u0438\u043e \u0442\u0438 \u0430\u043c\u043e \u0434\u0438\u043d\u0430\u043c\u0438\u0430 \u0430\u043b\u0430 \u043f\u044d\u0440\u0434\u043e \u043a\u0430\u0440\u0430\u043a\u0442\u043e.",
+                "full_en": "\n                <p>The ancient Hellenes gave the world two words that echo down the corridors of our Republic: <em>Arete</em>, meaning the highest potential of virtue, moral balance, and excellence of character; and <em>Kratos</em>, meaning power, authority, and the strength to rule.</p>\n\n                <p>Most modern political entities are obsessed with <em>kratos</em> alone. They build electoral machines to capture power, devise marketing strategies to retain power, and leverage judicial appointments to protect power. Yet power unguided by virtue is indistinguishable from organized banditry. It degenerates into factional warfare where the loudest demagogues plunder the state treasury.</p>\n\n                <p>In Sangaia, we inverted this hierarchy. The Aeretocrat is called not because he seeks dominion, but because he has demonstrated adherence to virtue. Every decision rendered in this office\u2014every veto, every inter-provincial arbitration, every diplomatic treaty\u2014must meet the standard of Arete. If an action increases our state power but degrades the honesty, charity, or self-reliance of our citizens, it is unconstitutional. We choose virtue first, knowing that enduring strength is its inevitable fruit.</p>\n            ",
+                "full_sgn": "\n                <p>\u0421\u0432\u043e\u0438 \u0430\u043d\u0442\u0438\u043a\u0443\u043e \u0425\u044d\u043b\u044d\u043d\u0435\u0441 \u0434\u043e\u043d\u043e \u0430\u0434 \u0441\u0432\u043e\u0438 \u043c\u0443\u043d\u0434\u043e \u0434\u0443\u043e \u0432\u043e\u043a\u043e: <em>\u0410\u0440\u044d\u0442\u044d</em>, \u0442\u0438 \u0441\u0438\u0433\u043d\u0438\u0444\u0438\u043a\u043e \u0441\u0432\u043e\u0438 \u0441\u0443\u043f\u0440\u044d\u043c\u043e \u0432\u0443\u0440\u0442\u044d\u0441, \u043c\u043e\u0440\u0430\u043b\u043e \u0431\u0430\u043b\u0430\u043d\u0441\u043e, \u0438\u043d\u043a\u0430\u0438 \u044d\u043a\u0437\u044d\u043c\u043f\u043b\u044d \u043a\u0430\u0440\u0430\u043a\u0442\u043e; \u0438\u043d\u043a\u0430\u0438 <em>\u041a\u0440\u0430\u0442\u043e\u0441</em>, \u0442\u0438 \u0441\u0438\u0433\u043d\u0438\u0444\u0438\u043a\u043e \u0434\u0438\u043d\u0430\u043c\u0438\u0430, \u0430\u0443\u0442\u043e\u0440\u0438\u0442\u0430, \u0438\u043d\u043a\u0430\u0438 \u0438\u043c\u043f\u044d\u0440\u0438\u043e.</p>\n\n                <p>\u041f\u043e\u043b\u0438 \u043c\u043e\u0434\u044d\u0440\u043e \u043d\u0430\u0442\u0438\u043e\u0441 \u044d\u0441\u0442 \u043c\u0430\u043d\u0438\u0430\u043a\u043e \u043a\u0443\u043d\u043e \u0441\u043e\u043b\u0430\u0440\u043e <em>\u043a\u0440\u0430\u0442\u043e\u0441</em>. \u0418\u043b\u0438 \u043a\u043e\u043d\u0441\u0442\u0440\u0443\u043e \u044d\u043b\u044d\u043a\u0442\u043e \u043c\u0430\u043a\u0438\u043d\u0430 \u0430\u0434 \u043a\u0430\u043f\u0442\u043e \u0434\u0438\u043d\u0430\u043c\u0438\u0430, \u0438\u043d\u043a\u0430\u0438 \u0443\u0441\u043e \u0441\u0443\u0434 \u0430\u0434 \u043f\u0440\u043e\u0442\u044d\u043a\u0442\u043e \u0434\u0438\u043d\u0430\u043c\u0438\u0430. \u0410\u043b\u0430 \u0434\u0438\u043d\u0430\u043c\u0438\u0430 \u0441\u0438\u043d \u0430\u0440\u044d\u0442\u044d \u044d\u0441\u0442 \u0441\u0438\u043c\u0438\u043b\u0438 \u0431\u0430\u043d\u0434\u0438\u0442\u0438\u0437\u043c. \u0418\u0434 \u0434\u044d\u0433\u044d\u043d\u044d\u0440\u043e \u0438\u043d \u0444\u0430\u043a\u0442\u043e \u0431\u044d\u043b\u043e \u044d\u043a\u0438 \u0434\u044d\u043c\u0430\u0433\u043e\u0433\u043e \u0444\u0443\u0440\u043e \u0441\u0432\u043e\u0438 \u0433\u0443\u0431\u044d\u0440\u043d\u043e \u0430\u044d\u0440\u0430\u0440\u0438\u043e.</p>\n\n                <p>\u0418\u043d \u0421\u0430\u043d\u0433\u0430\u0438\u0430, \u0441\u043e\u043d\u0442\u0430\u0432\u043e\u043b\u044f \u0438\u043d\u0432\u044d\u0440\u0442\u043e \u0445\u043e\u043a \u043e\u0440\u0434\u043e. \u0421\u0432\u043e\u0438 \u0410\u0440\u044d\u0442\u043e\u043a\u0440\u0430\u0442 \u044d\u0441\u0442 \u0432\u043e\u043a\u043e \u043c\u0438 \u043f\u0440\u043e \u0441\u043a\u044d\u0440\u043e \u0438\u043c\u043f\u044d\u0440\u0438\u043e, \u0430\u043b\u0430 \u043f\u0440\u043e \u0441\u0443\u043c \u0432\u0443\u0440\u0442\u044d\u0441. \u0428\u044d\u043d\u043e \u0440\u044d\u0437\u0438\u0434\u043e \u0438\u043d \u0445\u043e\u043a \u043e\u0444\u0438\u043a\u0438\u043e\u2014\u0448\u044d\u043d\u043e \u043f\u0440\u043e\u0445\u0438\u0431\u043e, \u0448\u044d\u043d\u043e \u0430\u0440\u0431\u0438\u0442\u0440\u043e, \u0448\u044d\u043d\u043e \u0442\u0440\u0430\u043a\u0442\u0430\u0442\u043e\u2014\u043c\u0443\u0441\u0442\u043e \u043a\u043e\u043c\u043f\u043b\u0438\u043e \u043a\u0443\u043d\u043e \u0410\u0440\u044d\u0442\u044d. \u042d\u0430\u043d \u0443\u043d\u0430 \u0430\u043a\u0442 \u0430\u0443\u0433\u043c\u044d\u043d\u0442\u043e \u0433\u0443\u0431\u044d\u0440\u043d\u043e \u0434\u0438\u043d\u0430\u043c\u0438\u0430 \u0430\u043b\u0430 \u0434\u044d\u0441\u0442\u0440\u0443\u0442\u043e \u0445\u043e\u043d\u044d\u0441\u0442\u0438\u0430 \u0432\u044d\u043b \u043a\u0430\u0440\u0438\u0442\u0430 \u044d\u043a \u0446\u0438\u0432\u0438\u043a\u0430\u043d\u043e, \u0438\u0434 \u044d\u0441\u0442 \u0430\u043d\u0442\u0438-\u043a\u043e\u043d\u0441\u0442\u0438\u0442\u0443\u0442\u0438\u043e. \u0421\u043e\u043d\u0442\u0430\u0432\u043e\u043b\u044f \u044d\u043b\u0438\u0433\u043e \u0430\u0440\u044d\u0442\u0438\u0430 \u043f\u0440\u043e\u0442\u043e, \u0441\u0430\u043f\u043e \u0442\u0438 \u0444\u043e\u0440\u0442\u0438\u0441 \u044d\u0441\u0442 \u0441\u0443\u043c \u0444\u0440\u0443\u043a\u0442\u043e.</p>\n            "
+        },
+        "disp5": {
+                "id": "disp5",
+                "category": "philosophy",
+                "cat_tag": "tag-philosophy",
+                "title_en": "Seven Days of Scrutiny: On Deliberation over Haste",
+                "title_sgn": "\u0421\u044d\u043f\u0442\u044d\u043c \u0414\u0438\u043e \u044d\u043a \u0421\u043a\u0440\u0443\u0442\u0438\u043d\u0438\u043e: \u0414\u0435\u043b\u0438\u0431\u044d\u0440\u0430\u0442\u0438\u043e \u0421\u0443\u043f\u0440\u0430 \u0426\u044d\u043b\u044d\u0440\u0438\u0442\u0430",
+                "date": "December 28, 2025",
+                "read_time_en": "5 min read",
+                "read_time_sgn": "5 \u043c\u0438\u043d \u043b\u044d\u0433\u043e",
+                "snippet_en": "Why every piece of legislation passed by the Body of Electives must rest on the Aeretocrat's desk for exactly seven days before assent or veto, banishing midnight backroom legislation forever.",
+                "snippet_sgn": "\u041a\u0443\u0440 \u0448\u044d\u043d\u043e \u043b\u044d\u043a\u0441\u043e \u043f\u0430\u0441\u043e \u043f\u0430\u0440\u043e \u0441\u0432\u043e\u0438 \u041a\u043e\u0440\u043f\u043e \u044d\u043a \u042d\u043b\u044d\u043a\u0442\u043e \u043c\u0443\u0441\u0442\u043e \u0441\u044d\u0434\u044d\u043e \u0441\u0443\u043f\u044d\u0440 \u0441\u0432\u043e\u0438 \u0410\u0440\u044d\u0442\u043e\u043a\u0440\u0430\u0442 \u0442\u0430\u0431\u0443\u043b\u0430 \u043f\u0440\u043e \u0441\u044d\u043f\u0442\u044d\u043c \u0434\u0438\u043e \u0430\u043d\u0442\u044d\u043e \u0430\u043f\u0440\u043e\u0431\u043e \u0432\u044d\u043b \u043f\u0440\u043e\u0445\u0438\u0431\u043e, \u044d\u043b\u0438\u043c\u0438\u043d\u043e \u043d\u043e\u043a\u0442\u044d \u043e\u043c\u043d\u0438\u0431\u0443\u0441 \u043b\u044d\u043a\u0441\u043e.",
+                "full_en": "\n                <p>In hasty governments, omnibus legislation numbering thousands of pages is passed at two in the morning, unread by the very representatives who cast their votes. Special interests slip in subsidies, exemptions, and loopholes while the populace sleeps. This is not governance; it is legislative fraud.</p>\n\n                <p>Under our constitutional protocol, when a bill passes the Body of Electives, it enters the 'Seven Solar Days of Public Silence.' During these seven days, the full text is published in both Sangaian Cyrillic and English across all public broadcast systems and digital channels. The Aeretocrat cannot sign or veto it before this period expires.</p>\n\n                <p>I spend these seven days reading every line, cross-referencing statutory precedent, and reading citizen letters delivered by post or through the digital portal. If a bill cannot survive seven days of sober public sunlight, it has no place in the laws of Sangaia.</p>\n            ",
+                "full_sgn": "\n                <p>\u0418\u043d \u0446\u044d\u043b\u044d\u0440\u043e \u0433\u0443\u0431\u044d\u0440\u043d\u043e, \u043e\u043c\u043d\u0438\u0431\u0443\u0441 \u043b\u044d\u043a\u0441\u043e \u043a\u0443\u043d\u043e \u043c\u0438\u043b\u0438\u0430 \u043f\u0430\u0433\u0438\u043d\u0430 \u044d\u0441\u0442 \u043f\u0430\u0441\u043e \u0430\u0434 \u0434\u0443\u043e \u043e\u0440\u0430 \u043d\u043e\u043a\u0442\u044d, \u043c\u0438 \u043b\u044d\u0433\u043e \u043f\u0430\u0440\u043e \u0441\u0432\u043e\u0438 \u044d\u043b\u044d\u043a\u0442\u0438\u0432\u043e \u0441\u044f\u043d\u0438. \u041a\u043e\u043c\u044d\u0440\u0446\u0438\u0430\u043b\u043e \u043b\u043e\u0431\u0438 \u0430\u0434\u0434\u043e \u0441\u0443\u0431\u0441\u0438\u0434\u0438\u0430 \u0438\u043d\u043a\u0430\u0438 \u0444\u043e\u0441\u0441\u0430 \u043a\u0443\u0430\u043c \u0441\u0432\u043e\u0438 \u043f\u043e\u043f\u0443\u043b\u043e \u0434\u043e\u0440\u043c\u0438\u043e. \u0425\u043e\u043a \u043c\u0438 \u044d\u0441\u0442 \u0433\u0443\u0431\u044d\u0440\u043d\u043e; \u0445\u043e\u043a \u044d\u0441\u0442 \u043b\u044d\u043a\u0441\u043e \u0444\u0440\u0430\u0443\u0434\u043e.</p>\n\n                <p>\u0421\u0443\u0431 \u043d\u043e\u0441\u0442\u044d\u0440 \u0421\u0432\u043e\u0440\u043e\u0442\u0438\u0446\u0430\u043d\u0438\u044f \u043f\u0440\u043e\u0442\u043e\u043a\u043e\u043b\u043e, \u043a\u0443\u0430\u043c \u0443\u043d\u0430 \u043b\u044d\u043a\u0441\u043e \u043f\u0430\u0441\u043e \u0441\u0432\u043e\u0438 \u041a\u043e\u0440\u043f\u043e \u044d\u043a \u042d\u043b\u044d\u043a\u0442\u043e, \u0438\u0434 \u0438\u043d\u0442\u0440\u043e \u0441\u0432\u043e\u0438 '\u0421\u044d\u043f\u0442\u044d\u043c \u0421\u043e\u043b\u0430\u0440\u043e \u0414\u0438\u043e \u044d\u043a \u041f\u0443\u0431\u043b\u0438\u043a\u043e \u0421\u0438\u043b\u044d\u043d\u0442\u0438\u043e.' \u0414\u0443\u0440\u0430\u043d\u0442\u044d \u0445\u043e\u043a \u0441\u044d\u043f\u0442\u044d\u043c \u0434\u0438\u043e, \u0441\u0432\u043e\u0438 \u0442\u043e\u0442\u043e \u0442\u044d\u043a\u0441\u0442\u043e \u044d\u0441\u0442 \u043f\u0443\u0431\u043b\u0438\u043a\u043e \u0438\u043d \u0421\u0430\u043d\u0433\u0430\u0438\u0430\u043d \u0438\u043d\u043a\u0430\u0438 \u0410\u043d\u0433\u043b\u0438\u043a\u043e \u0441\u0443\u0431 \u0445\u043e\u043b\u043e \u043a\u0430\u043d\u0430\u043b\u0438. \u0421\u0432\u043e\u0438 \u0410\u0440\u044d\u0442\u043e\u043a\u0440\u0430\u0442 \u0434\u0438\u043d\u0430\u043c \u043c\u0438 \u0441\u0438\u0433\u043d\u043e \u0432\u044d\u043b \u043f\u0440\u043e\u0445\u0438\u0431\u043e \u0430\u043d\u0442\u044d\u043e \u0445\u043e\u043a \u0442\u044d\u043c\u043f\u0443\u0441 \u043f\u0430\u0441\u043e.</p>\n\n                <p>\u042d\u0433\u043e \u0443\u0441\u043e \u0445\u043e\u043a \u0441\u044d\u043f\u0442\u044d\u043c \u0434\u0438\u043e \u0430\u0434 \u043b\u044d\u0433\u043e \u0448\u044d\u043d\u043e \u043b\u0438\u043d\u044d\u0430, \u043a\u043e\u043c\u043f\u043e\u0440\u043e \u043a\u0443\u043d\u043e \u0421\u0432\u043e\u0440\u043e\u0442\u0438\u0446\u0430\u043d\u0438\u044f, \u0438\u043d\u043a\u0430\u0438 \u043b\u044d\u0433\u043e \u0446\u0438\u0432\u0438\u043a\u0430\u043d\u043e \u044d\u043f\u0438\u0441\u0442\u043e\u043b\u0430. \u042d\u0430\u043d \u0443\u043d\u0430 \u043b\u044d\u043a\u0441\u043e \u0434\u0438\u043d\u0430\u043c \u043c\u0438 \u0432\u0438\u0432\u043e \u0441\u0443\u0431 \u0441\u044d\u043f\u0442\u044d\u043c \u0434\u0438\u043e \u044d\u043a \u0441\u043e\u043b\u0430\u0440\u043e \u043b\u0443\u043a\u0441, \u0438\u0434 \u044d\u0445\u043e \u0437\u044d\u0440\u043e \u043b\u043e\u043a\u0443\u0441 \u0438\u043d \u043d\u043e\u0441\u0442\u044d\u0440 \u0421\u0430\u043d\u0433\u0430\u0438\u0430 \u043b\u044d\u043a\u0441\u043e.</p>\n            "
+        }
+};
+
+    function filterBlog(category, btn) {
+        document.querySelectorAll('.blog-tabs .blog-tab-btn').forEach(b => b.classList.remove('active'));
+        if (btn) btn.classList.add('active');
+
+        const cards = document.querySelectorAll('#blog-posts-grid .blog-card');
+        cards.forEach(card => {
+            const cardCat = card.getAttribute('data-category');
+            if (category === 'all' || cardCat === category) {
+                card.style.display = 'flex';
+            } else {
+                card.style.display = 'none';
+            }
+        });
+    }
+
+    function openDispatchModal(dispId) {
+        const d = dispatchesDB[dispId];
+        if (!d) return;
+
+        const isSgn = "sgn" === 'sgn';
+        document.getElementById('disp-title').textContent = isSgn ? d.title_sgn : d.title_en;
+        document.getElementById('disp-date').textContent = d.date;
+        document.getElementById('disp-time').textContent = isSgn ? d.read_time_sgn : d.read_time_en;
+        document.getElementById('disp-content').innerHTML = isSgn ? d.full_sgn : d.full_en;
+
+        document.getElementById('dispatch-modal').classList.add('show');
+    }
+
+    function closeDispatchModal() {
+        document.getElementById('dispatch-modal').classList.remove('show');
+    }
+
+    function openQuestionModal() {
+        document.getElementById('question-modal').classList.add('show');
+    }
+    function closeQuestionModal() {
+        document.getElementById('question-modal').classList.remove('show');
+    }
+
+    function handleQuestionSubmit(e) {
+        e.preventDefault();
+        const name = document.getElementById('q-name').value;
+        const prov = document.getElementById('q-prov').value;
+        closeQuestionModal();
+
+        const token = `INQ-AER-${Math.random().toString(36).substring(2,7).toUpperCase()}`;
+        openNotice(
+            "Куэстио Трэгистро",
+            `
+            <div style="background:#eff6ff; border:1px solid #bfdbfe; border-radius:6px; padding:15px; color:#1e3a8a;">
+                <strong>Цивикано:</strong> ${name}<br>
+                <strong>Провиткия:</strong> ${prov}<br>
+                <strong>Токэн Ключ:</strong> <code>${token}</code>
+            </div>
+            <p style="margin-top:12px;">Тус куэстио эст транзмито ад свои Секретариато эк свои Арэтократ. Шэно сэптима, свои Арэтократ рэспонсо ад сэлекто куэстиос ин сум Диспачи.</p>
+            `
+        );
+        e.target.reset();
+    }
+
+    function openHearingModal() {
+        document.getElementById('hearing-modal').classList.add('show');
+    }
+    function closeHearingModal() {
+        document.getElementById('hearing-modal').classList.remove('show');
+    }
+
+    function handleHearingSubmit(e) {
+        e.preventDefault();
+        const name = document.getElementById('h-name').value;
+        const cat = document.getElementById('h-cat').value;
+        closeHearingModal();
+
+        const docket = `PET-EXEC-2026-${Math.random().toString(36).substring(2,7).toUpperCase()}`;
+        openNotice(
+            "Пэтитио Оффициало Диспачо",
+            `
+            <div style="background:#eff6ff; border:1px solid #bfdbfe; border-radius:6px; padding:15px; color:#1e3a8a;">
+                <strong>Пэтитиоро:</strong> ${name}<br>
+                <strong>Катэгориа:</strong> ${cat}<br>
+                <strong>Докэт Номэро:</strong> <code>${docket}</code>
+            </div>
+            <p style="margin-top:12px;">Тус пэтитио эст локо суб свои Артикуло II эксэкуто докэт. Уна аудиэнто скэдуло волу эсэ эмито ин тус Сангаиа ИД ин 14 соларо дио.</p>
+            `
+        );
+        e.target.reset();
+    }
+
+    function openPetitionModal() {
+        openHearingModal();
+    }
+
+    function openNotice(title, html) {
+        document.getElementById('notice-title').textContent = title;
+        document.getElementById('notice-body').innerHTML = html;
+        document.getElementById('notice-modal').classList.add('show');
+    }
+    function closeNoticeModal() {
+        document.getElementById('notice-modal').classList.remove('show');
+    }
+</script>
+</body>
+</html>
+    
