@@ -184,7 +184,7 @@ MINISTRIES = {
                         "title_en": "Live Debt Tracker & Bond Yield Telemetry",
                         "title_sgn": "Виво Дэбито & Бондо Рэйтио Тэлэмэтриа",
                         "desc_en": "Real-time verification of Sangaia's 100% solvency ($0 foreign debt) alongside 10-year domestic bond yields (3.2% silver-backed).",
-                        "desc_sgn": "Виво пробо эк 100% сонита (S$ 0 фориэро дэбито) инкаи 10-анно бондо рэйтио.",
+                        "desc_sgn": "Виво пробо эк 100% сонита ($ 0 фориэро дэбито) инкаи 10-анно бондо рэйтио.",
                         "action_en": "View Debt & Yields",
                         "action_sgn": "Визо Бондо Тэлэмэтриа",
                         "modal": "debtscreen"
@@ -325,7 +325,7 @@ MINISTRIES = {
                         "title_en": "National Public Job Board",
                         "title_sgn": "Натио Публико Лаборо Табула",
                         "desc_en": "Searchable registry of verified openings across public administration, green engineering, timber crafts, and health networks.",
-                        "desc_sgn": "Скэро лаборо ин губэрно, инжэниа, лигно фабро, инкаи хоспитало куно S$ пэкуниа.",
+                        "desc_sgn": "Скэро лаборо ин губэрно, инжэниа, лигно фабро, инкаи хоспитало куно $ пэкуниа.",
                         "action_en": "Search Job Board",
                         "action_sgn": "Скэро Лаборо",
                         "modal": "jobs"

@@ -186,3 +186,4 @@ for fpath in env_files:
         with open(fpath, 'w', encoding='utf-8') as f:
             f.write(content)
         print(f'Updated weather in {fpath}')
+

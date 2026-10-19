@@ -108,10 +108,11 @@ MODAL_CONFIGS = {
         "fields": [
             {"name": "citizen_id", "label_en": "Citizen Sangaia ID", "label_sgn": "Цивикано Сангайа ИД", "type": "text", "placeholder_en": "e.g., SNG-88942-A", "placeholder_sgn": "наприм., SNG-88942-A"},
             {"name": "province", "label_en": "Home Province", "label_sgn": "Провинциа", "type": "select", "options": [
-                {"val": "capitol", "en": "Capitol Federal District", "sgn": "Капитоло Федерало Дистрикто"},
-                {"val": "montana", "en": "Northern Highland Province", "sgn": "Нордо Алпино Провинциа"},
-                {"val": "costa", "en": "Azure Maritime Province", "sgn": "Азуро Маритимо Провинциа"},
-                {"val": "valle", "en": "Emerald Valley Agricultural Province", "sgn": "Эмэральдо Вале Провинциа"}
+                {"val": "new_jasper", "en": "New Jasper Province", "sgn": "Ново Јаспэр Провинциа"},
+                {"val": "new_madison", "en": "New Madison Province", "sgn": "Ново Мадисон Провинциа"},
+                {"val": "liveland", "en": "Liveland Province", "sgn": "Ливланд Провинциа"},
+                {"val": "sentinel", "en": "Sentinel Province", "sgn": "Сэнтинэл Провинциа"},
+                {"val": "columbia", "en": "Columbia Province", "sgn": "Колумбиа Провинциа"}
             ]},
             {"name": "subject", "label_en": "Petition Subject", "label_sgn": "Пэтитио Тэма", "type": "text", "placeholder_en": "Brief title of proposal or grievance", "placeholder_sgn": "Титуло эк пропоситио"},
             {"name": "details", "label_en": "Detailed Petition & Statutory Rationale", "label_sgn": "Дэталадо Пэтитио & Ратио", "type": "textarea", "placeholder_en": "State the constitutional, ethical, or communal justification for action...", "placeholder_sgn": "Скрибо конституционало ратио..."}
@@ -145,7 +146,7 @@ MODAL_CONFIGS = {
         "title_sgn": "Национало Прогрэсо Тэлэмэтриа & Сувэрэно КПИ",
         "metrics": [
             {"name_en": "GDP Growth Rate (Real)", "name_sgn": "ГДП Крэсцито (Реало)", "val": "+4.18%", "sub_en": "Zero inflationary distortion", "sub_sgn": "Син-инфлатио дистортио"},
-            {"name_en": "Sovereign External Debt", "name_sgn": "Сувэрэно Экстэрнало Дэбито", "val": "S$ 0.00", "sub_en": "Constitutional 0% debt ceiling met", "sub_sgn": "Конституционало 0% цэлинг"},
+            {"name_en": "Sovereign External Debt", "name_sgn": "Сувэрэно Экстэрнало Дэбито", "val": "$ 0.00", "sub_en": "Constitutional 0% debt ceiling met", "sub_sgn": "Конституционало 0% цэлинг"},
             {"name_en": "Universal Healthcare Coverage", "name_sgn": "Универсало Салуто Кувэрта", "val": "99.82%", "sub_en": "Zero citizen out-of-pocket medical debt", "sub_sgn": "0 цивикано мэдикало дэбито"},
             {"name_en": "Protected Biome Canopy Cover", "name_sgn": "Протэктадо Биом Сильва", "val": "88.64%", "sub_en": "Forest preservation & renewal index", "sub_sgn": "Сильва салво & рэнэвадо индэксо"}
         ],
@@ -197,7 +198,7 @@ MODAL_CONFIGS = {
         "title_en": "Interactive Individual & Corporate Tax Calculator",
         "title_sgn": "Интерактиво Цивикано & Корпоративо Такса Калкулаторо",
         "fields": [
-            {"name": "income", "label_en": "Annual Gross Income / Net Profit (S$)", "label_sgn": "Ануало Гросо Инкомо (S$)", "type": "number", "default": 48000},
+            {"name": "income", "label_en": "Annual Gross Income / Net Profit ($)", "label_sgn": "Ануало Гросо Инкомо ($)", "type": "number", "default": 48000},
             {"name": "bracket", "label_en": "Filing Classification", "label_sgn": "Такса Класификатио", "type": "select", "options": [
                 {"val": "individual", "en": "Citizen Individual (Standard Sangaia Allowance)", "sgn": "Цивикано Индивидуало"},
                 {"val": "artisan", "en": "Artisan Cooperative / Family Enterprise", "sgn": "Артизано Коопэративо / Фамилиа"},
@@ -232,7 +233,7 @@ MODAL_CONFIGS = {
         "title_sgn": "Элэктронико Такса Апэло & Диспуто Субмисио",
         "fields": [
             {"name": "assessment_no", "label_en": "Notice of Assessment #", "label_sgn": "Такса Нотициа Номэро", "type": "text", "placeholder_en": "e.g., ASM-2026-4412", "placeholder_sgn": "наприм., ASM-2026-4412"},
-            {"name": "disputed_amount", "label_en": "Disputed Amount (S$)", "label_sgn": "Диспутадо Сума (S$)", "type": "number", "placeholder_en": "1200", "placeholder_sgn": "1200"},
+            {"name": "disputed_amount", "label_en": "Disputed Amount ($)", "label_sgn": "Диспутадо Сума ($)", "type": "number", "placeholder_en": "1200", "placeholder_sgn": "1200"},
             {"name": "appeal_reason", "label_en": "Statutory Ground for Appeal", "label_sgn": "Кауза эк Апэло", "type": "textarea", "placeholder_en": "Specify miscalculation, exemption eligibility, or cooperative credit...", "placeholder_sgn": "Скрибо кауза эк апэло..."}
         ],
         "action_en": "File Electronic Tax Appeal",
@@ -245,7 +246,7 @@ MODAL_CONFIGS = {
         "title_en": "Live Sovereign Debt Tracker & Bond Yield Telemetry",
         "title_sgn": "Ливо Сувэрэно Дэбито Тракэро & Бондо Тэлэмэтриа",
         "metrics": [
-            {"name_en": "Sovereign Debt Outstanding", "name_sgn": "Сувэрэно Дэбито Тотало", "val": "S$ 0.00", "sub_en": "Debt Ceiling: S$ 0.00 (Article III)", "sub_sgn": "Дэбито Цэлинг: S$ 0.00 (Артикло III)"},
+            {"name_en": "Sovereign Debt Outstanding", "name_sgn": "Сувэрэно Дэбито Тотало", "val": "$ 0.00", "sub_en": "Debt Ceiling: $ 0.00 (Article III)", "sub_sgn": "Дэбито Цэлинг: $ 0.00 (Артикло III)"},
             {"name_en": "10-Year Citizen Development Bond", "name_sgn": "10-Ано Цивикано Дэвэлопо Бондо", "val": "3.24%", "sub_en": "100% asset-backed infrastructure coupon", "sub_sgn": "100% акордо-гаранто купон"},
             {"name_en": "Statutory Cash Reserve Ratio", "name_sgn": "Статуторо Каша Рэзэрва Ратио", "val": "148.5%", "sub_en": "Supreme liquidity surplus in treasury vaults", "sub_sgn": "Сувэрэно ликвидито сурплус"},
             {"name_en": "National Inflation Rate (CPI)", "name_sgn": "Национало Инфлатио Индэксо", "val": "0.12%", "sub_en": "Hard commodity-weighted price index", "sub_sgn": "Стабило праисо индэксо"}
@@ -266,7 +267,7 @@ MODAL_CONFIGS = {
                 {"val": "b_hydro", "en": "Series XII: Geothermal & Hydro Micro-Grids (3.40% Coupon, 10 Yr)", "sgn": "Сэриа XII: Гэотэрмало & Хидро (3.40%, 10 Ан)"},
                 {"val": "b_agri", "en": "Series VII: Regenerative Silviculture & Agro-Forestry (3.10% Coupon, 3 Yr)", "sgn": "Сэриа VII: Сильва & Агро-Форест (3.10%, 3 Ан)"}
             ]},
-            {"name": "amount", "label_en": "Subscription Amount (S$)", "label_sgn": "Субскриптио Сума (S$)", "type": "number", "placeholder_en": "5000", "placeholder_sgn": "5000"}
+            {"name": "amount", "label_en": "Subscription Amount ($)", "label_sgn": "Субскриптио Сума ($)", "type": "number", "placeholder_en": "5000", "placeholder_sgn": "5000"}
         ],
         "action_en": "Execute Sovereign Bond Subscription",
         "action_sgn": "Исполнито Бондо Субскриптио",
@@ -304,12 +305,12 @@ MODAL_CONFIGS = {
         "action_en": "Query Open Government Tenders",
         "action_sgn": "Скэро Апэрто Тэндэры",
         "sample_results_en": [
-            {"ref": "TND-2026-902", "date": "Closes 30 Nov 2026", "title": "Magnetic Levitation Rail Bridge Over Azure Fjord", "desc": "Statutory ceiling: S$ 14,200,000. Open to domestic worker cooperatives and qualified engineering consortiums."},
-            {"ref": "TND-2026-884", "date": "Closes 15 Nov 2026", "title": "50,000 Next-Gen High-Efficiency Solar Roof Assemblies", "desc": "Statutory ceiling: S$ 6,800,000. Priority given to regional provincial fabricators."}
+            {"ref": "TND-2026-902", "date": "Closes 30 Nov 2026", "title": "Magnetic Levitation Rail Bridge Over Azure Fjord", "desc": "Statutory ceiling: $ 14,200,000. Open to domestic worker cooperatives and qualified engineering consortiums."},
+            {"ref": "TND-2026-884", "date": "Closes 15 Nov 2026", "title": "50,000 Next-Gen High-Efficiency Solar Roof Assemblies", "desc": "Statutory ceiling: $ 6,800,000. Priority given to regional provincial fabricators."}
         ],
         "sample_results_sgn": [
-            {"ref": "TND-2026-902", "date": "Клаудо 30 Нов 2026", "title": "Магнэтико Транзито Понто супра Азуро Фиордо", "desc": "Статуторо цэлинг: S$ 14,200,000. Апэрто про домистико коопэративо."},
-            {"ref": "TND-2026-884", "date": "Клаудо 15 Нов 2026", "title": "50,000 Соларо Тэкто Матэриало про Школа", "desc": "Статуторо цэлинг: S$ 6,800,000. Приоритето про провинциало фабрика."}
+            {"ref": "TND-2026-902", "date": "Клаудо 30 Нов 2026", "title": "Магнэтико Транзито Понто супра Азуро Фиордо", "desc": "Статуторо цэлинг: $ 14,200,000. Апэрто про домистико коопэративо."},
+            {"ref": "TND-2026-884", "date": "Клаудо 15 Нов 2026", "title": "50,000 Соларо Тэкто Матэриало про Школа", "desc": "Статуторо цэлинг: $ 6,800,000. Приоритето про провинциало фабрика."}
         ]
     },
     "auditledger": {
@@ -342,7 +343,7 @@ MODAL_CONFIGS = {
                 {"val": "operational", "en": "Operational & Essential Equipment", "sgn": "Оперативо & Эккипаж"},
                 {"val": "research", "en": "Scientific & Ecological Conservation Grant", "sgn": "Сциэнциа & Биом Гранто"}
             ]},
-            {"name": "amount", "label_en": "Requested Allocation (S$)", "label_sgn": "Пэтито Сума (S$)", "type": "number", "placeholder_en": "240000", "placeholder_sgn": "240000"}
+            {"name": "amount", "label_en": "Requested Allocation ($)", "label_sgn": "Пэтито Сума ($)", "type": "number", "placeholder_en": "240000", "placeholder_sgn": "240000"}
         ],
         "action_en": "Submit Statutory Budget Request",
         "action_sgn": "Субмито Бюджет Пэтитио",
@@ -408,21 +409,23 @@ MODAL_CONFIGS = {
         "fields": [
             {"name": "skill", "label_en": "Vocation / Skill Area", "label_sgn": "Профэсио / Скил Спацио", "type": "text", "placeholder_en": "e.g., railway, agronomist, nurse, forestry", "placeholder_sgn": "наприм., транзито, агроном, инфирмаро"},
             {"name": "province", "label_en": "Preferred Province", "label_sgn": "Провинциа", "type": "select", "options": [
-                {"val": "all", "en": "All Provinces (Relocation Allowance Available)", "sgn": "Холо Провинциа"},
-                {"val": "capitol", "en": "Capitol Federal District", "sgn": "Капитоло Федерало"},
-                {"val": "montana", "en": "Northern Highland Province", "sgn": "Нордо Алпино"},
-                {"val": "costa", "en": "Azure Maritime Province", "sgn": "Азуро Маритимо"}
+                {"val": "all", "en": "All 5 Provinces (Relocation Allowance Available)", "sgn": "Холо 5 Провинциа"},
+                {"val": "new_jasper", "en": "New Jasper (Shesk Central)", "sgn": "Ново Јаспэр (Шэск)"},
+                {"val": "new_madison", "en": "New Madison (Madison City)", "sgn": "Ново Мадисон (Мадисон)"},
+                {"val": "liveland", "en": "Liveland (Oaks Agricultural Hub)", "sgn": "Ливланд (Оакс)"},
+                {"val": "sentinel", "en": "Sentinel (Alpine Ecological Reserve)", "sgn": "Сэнтинэл (Алпино)"},
+                {"val": "columbia", "en": "Columbia (Maritime Harbor)", "sgn": "Колумбиа (Харбор)"}
             ]}
         ],
         "action_en": "Search Public Openings",
         "action_sgn": "Скэро Лаборо Вакансиа",
         "sample_results_en": [
-            {"ref": "JOB-2026-118", "date": "Pay: S$ 4,800/mo", "title": "Senior High-Speed Rail Systems Technician", "desc": "Capitol Central Depot. Statutory pension, comprehensive family healthcare, and housing allowance included."},
-            {"ref": "JOB-2026-094", "date": "Pay: S$ 4,200/mo", "title": "Regenerative Forest Ranger & Alpine Warden", "desc": "Northern High Ridge Reserve. Autonomous lodge accommodation, research stipend, and winter gear provided."}
+            {"ref": "JOB-2026-118", "date": "Pay: $ 4,800/mo", "title": "Senior High-Speed Rail Systems Technician", "desc": "Capitol Central Depot. Statutory pension, comprehensive family healthcare, and housing allowance included."},
+            {"ref": "JOB-2026-094", "date": "Pay: $ 4,200/mo", "title": "Regenerative Forest Ranger & Alpine Warden", "desc": "Northern High Ridge Reserve. Autonomous lodge accommodation, research stipend, and winter gear provided."}
         ],
         "sample_results_sgn": [
-            {"ref": "JOB-2026-118", "date": "Пага: S$ 4,800/м", "title": "Сэниор Магнэтико Транзито Тэкнико", "desc": "Капитоло Дэпо. Статуторо пэнсио, 100% салуто кувэрта, инкаи хабитатио."},
-            {"ref": "JOB-2026-094", "date": "Пага: S$ 4,200/м", "title": "Биом Вардэно & Алпино Сильва Офицэро", "desc": "Нордо Алпино Рэзэрва. Локало хабитатио, сциэнциа стипэнд, инкаи эккипаж."}
+            {"ref": "JOB-2026-118", "date": "Пага: $ 4,800/м", "title": "Сэниор Магнэтико Транзито Тэкнико", "desc": "Капитоло Дэпо. Статуторо пэнсио, 100% салуто кувэрта, инкаи хабитатио."},
+            {"ref": "JOB-2026-094", "date": "Пага: $ 4,200/м", "title": "Биом Вардэно & Алпино Сильва Офицэро", "desc": "Нордо Алпино Рэзэрва. Локало хабитатио, сциэнциа стипэнд, инкаи эккипаж."}
         ]
     },
     "unemployment": {
@@ -431,7 +434,7 @@ MODAL_CONFIGS = {
         "title_en": "Unemployment Benefit & Transitional Security Calculator",
         "title_sgn": "Транзитио Секурита & Бэнэфито Калкулаторо",
         "fields": [
-            {"name": "last_wage", "label_en": "Previous Monthly Base Pay (S$)", "label_sgn": "Превио Менсио Пага (S$)", "type": "number", "default": 3600},
+            {"name": "last_wage", "label_en": "Previous Monthly Base Pay ($)", "label_sgn": "Превио Менсио Пага ($)", "type": "number", "default": 3600},
             {"name": "dependents", "label_en": "Number of Dependents in Household", "label_sgn": "Нумеро эк Фамилиа Депендэнти", "type": "number", "default": 1}
         ],
         "action_en": "Calculate Guaranteed Transitional Stipend",
@@ -522,10 +525,12 @@ MODAL_CONFIGS = {
         "title_sgn": "Примаро Салуто Клинико & Мэдико Дирэкторио",
         "fields": [
             {"name": "province", "label_en": "Province / District", "label_sgn": "Провинциа / Дистрикто", "type": "select", "options": [
-                {"val": "all", "en": "All Provincial Polyclinics", "sgn": "Холо Поликлиника"},
-                {"val": "capitol", "en": "Capitol General Medical Center", "sgn": "Капитоло Генерало Мэдико"},
-                {"val": "montana", "en": "Highland Alpine Community Clinic", "sgn": "Алпино Комунитиа Клиника"},
-                {"val": "costa", "en": "Azure Coast Regional Hospital", "sgn": "Азуро Коста Рэгионало"}
+                {"val": "all", "en": "All 5 Provincial Hospitals & Polyclinics", "sgn": "Холо 5 Провинциало Клиника"},
+                {"val": "new_jasper", "en": "Watson Healthcare / New Jasper Hospital (Shesk)", "sgn": "Ново Јаспэр Хоспитало (Шэск)"},
+                {"val": "new_madison", "en": "New Madison Hospital (Madison City)", "sgn": "Ново Мадисон Хоспитало (Мадисон)"},
+                {"val": "liveland", "en": "Suwannee Emergency Hospital (Oaks, Liveland)", "sgn": "Суванни ЕР Хоспитало (Оакс, Ливланд)"},
+                {"val": "sentinel", "en": "Sentinel Regional Trauma Center", "sgn": "Сэнтинэл Рэгионало Травма"},
+                {"val": "columbia", "en": "Columbia Maritime Regional Medical Center", "sgn": "Колумбиа Маритимо Генерало"}
             ]}
         ],
         "action_en": "Search Available Doctors & Clinics",
@@ -550,12 +555,12 @@ MODAL_CONFIGS = {
         "action_en": "Lookup Coverage & Co-Pay",
         "action_sgn": "Инспэкто Кувэрта & Ко-Пэй",
         "sample_results_en": [
-            {"ref": "Rx-901", "date": "Co-Pay: S$ 0.00", "title": "Human Biosimilar Insulin (All Formats)", "desc": "Classification: Essential Life-Support Therapeutic. 100% subsidized by federal sovereign healthcare fund."},
-            {"ref": "Rx-412", "date": "Co-Pay: S$ 0.00", "title": "Broad-Spectrum Antibiotics (Amoxicillin / Clavulanate)", "desc": "Classification: Tier 1 Essential Anti-Infective. Available at all licensed community pharmacies."}
+            {"ref": "Rx-901", "date": "Co-Pay: $ 0.00", "title": "Human Biosimilar Insulin (All Formats)", "desc": "Classification: Essential Life-Support Therapeutic. 100% subsidized by federal sovereign healthcare fund."},
+            {"ref": "Rx-412", "date": "Co-Pay: $ 0.00", "title": "Broad-Spectrum Antibiotics (Amoxicillin / Clavulanate)", "desc": "Classification: Tier 1 Essential Anti-Infective. Available at all licensed community pharmacies."}
         ],
         "sample_results_sgn": [
-            {"ref": "Rx-901", "date": "Ко-Пэй: S$ 0.00", "title": "Хумано Биосимиларо Инсулин (Холо Формато)", "desc": "Класификатио: Эсэнциало Салуто Тэрапи. 100% субсидиадо эк федерало фондо."},
-            {"ref": "Rx-412", "date": "Ко-Пэй: S$ 0.00", "title": "Антибиотико (Амоксицилин / Клавуланат)", "desc": "Класификатио: Градо 1 Эсэнциало Анти-Инфэктиво. Либэро ин холо фармациа."}
+            {"ref": "Rx-901", "date": "Ко-Пэй: $ 0.00", "title": "Хумано Биосимиларо Инсулин (Холо Формато)", "desc": "Класификатио: Эсэнциало Салуто Тэрапи. 100% субсидиадо эк федерало фондо."},
+            {"ref": "Rx-412", "date": "Ко-Пэй: $ 0.00", "title": "Антибиотико (Амоксицилин / Клавуланат)", "desc": "Класификатио: Градо 1 Эсэнциало Анти-Инфэктиво. Либэро ин холо фармациа."}
         ]
     },
     "ercapacity": {
@@ -672,9 +677,9 @@ MODAL_CONFIGS = {
             {"name": "student_id", "label_en": "Student Sangaia ID", "label_sgn": "Студент Сангайа ИД", "type": "text", "placeholder_en": "e.g., SNG-99120-STU", "placeholder_sgn": "наприм., SNG-99120-STU"},
             {"name": "university", "label_en": "Enrolled University / Institute", "label_sgn": "Унивэрсито / Институто", "type": "text", "placeholder_en": "e.g., National University of Sangaia", "placeholder_sgn": "наприм., Национало Унивэрсито"},
             {"name": "grant_type", "label_en": "Statutory Grant Tier", "label_sgn": "Гранто Катэгорио", "type": "select", "options": [
-                {"val": "living", "en": "Monthly Living Cost Stipend (S$ 1,400/mo non-repayable)", "sgn": "Вита Стипэнд (S$ 1,400/м либэро)"},
-                {"val": "research", "en": "STEM / Ecological Field Research Grant (S$ 8,000/yr)", "sgn": "Сциэнциа & Биом Гранто (S$ 8,000/ан)"},
-                {"val": "equipment", "en": "Advanced Tech & Computing Allowance (S$ 2,500 one-off)", "sgn": "Компуторо & Эккипаж (S$ 2,500)"}
+                {"val": "living", "en": "Monthly Living Cost Stipend ($ 1,400/mo non-repayable)", "sgn": "Вита Стипэнд ($ 1,400/м либэро)"},
+                {"val": "research", "en": "STEM / Ecological Field Research Grant ($ 8,000/yr)", "sgn": "Сциэнциа & Биом Гранто ($ 8,000/ан)"},
+                {"val": "equipment", "en": "Advanced Tech & Computing Allowance ($ 2,500 one-off)", "sgn": "Компуторо & Эккипаж ($ 2,500)"}
             ]}
         ],
         "action_en": "Issue Non-Repayable Grant Certificate",
@@ -687,8 +692,8 @@ MODAL_CONFIGS = {
         "title_en": "Zero-Interest Student Debt Servicing Calculator",
         "title_sgn": "Син-Интересо Студент Дэбито Калкулаторо",
         "fields": [
-            {"name": "prior_debt", "label_en": "Foreign / Prior Student Balance (S$)", "label_sgn": "Экстэрнало Студент Дэбито (S$)", "type": "number", "default": 12000},
-            {"name": "income", "label_en": "Monthly Net Earnings (S$)", "label_sgn": "Менсио Саларио (S$)", "type": "number", "default": 3200}
+            {"name": "prior_debt", "label_en": "Foreign / Prior Student Balance ($)", "label_sgn": "Экстэрнало Студент Дэбито ($)", "type": "number", "default": 12000},
+            {"name": "income", "label_en": "Monthly Net Earnings ($)", "label_sgn": "Менсио Саларио ($)", "type": "number", "default": 3200}
         ],
         "action_en": "Compute Statutory Zero-Interest Paydown Schedule",
         "action_sgn": "Калкуло Син-Интересо План",
@@ -730,7 +735,7 @@ MODAL_CONFIGS = {
                 {"val": "lab", "en": "Advanced Robotics & Chemistry Lab Upgrade", "sgn": "Роботикс & Химиа Лабораторио"},
                 {"val": "hvac", "en": "HEPA Air Filtration & Clean Heat Pumps", "sgn": "ХЕПА Аэро Фильтратио & Тэрмало"}
             ]},
-            {"name": "cost", "label_en": "Estimated Capital Cost (S$)", "label_sgn": "Естимадо Капитало Дапано (S$)", "type": "number", "placeholder_en": "180000", "placeholder_sgn": "180000"}
+            {"name": "cost", "label_en": "Estimated Capital Cost ($)", "label_sgn": "Естимадо Капитало Дапано ($)", "type": "number", "placeholder_en": "180000", "placeholder_sgn": "180000"}
         ],
         "action_en": "File Facility Grant Docket",
         "action_sgn": "Субмито Фасилитатио Гранто",
@@ -785,9 +790,9 @@ MODAL_CONFIGS = {
         "title_en": "Live Highway Cameras & Road Hazard Map",
         "title_sgn": "Ливо Виа Камера & Хазардо Карто",
         "metrics": [
-            {"name_en": "Route 1: Trans-Sangaia Spine", "name_sgn": "Маршруто 1: Транз-Сангайа", "val": "Clear & Dry (110 km/h)", "sub_en": "Cameras 1-14 active • 0 obstructions", "sub_sgn": "Камера 1-14 ливо • 0 блокадо"},
-            {"name_en": "Alpine Pass Highway 4", "name_sgn": "Алпино Пасо Виа 4", "val": "Light Snow (60 km/h)", "sub_en": "Heated asphalt active • Chains recommended", "sub_sgn": "Тэрмало асфалто активо"},
-            {"name_en": "Coastal Maritime Expressway 101", "name_sgn": "Азуро Коста Виа 101", "val": "Clear & Ocean Breeze", "sub_en": "Speed: 100 km/h • 0 incidents", "sub_sgn": "Спидо: 100 км/х • 0 инцидэнто"}
+            {"name_en": "Highway S-1: Jasper-Madison Arterial", "name_sgn": "Виа С-1: Јаспэр-Мадисон", "val": "Clear & Dry (74 Кмн/h / 110 km/h)", "sub_en": "Shesk &harr; Madison City • 0 obstructions", "sub_sgn": "Шэск &harr; Мадисон • 0 блокадо"},
+            {"name_en": "Highway S-2: Liveland Trunk", "name_sgn": "Виа С-2: Ливланд Транзито", "val": "Clear & Shaded (60 Кмн/h / 90 km/h)", "sub_en": "Oaks &harr; Shesk Corridor", "sub_sgn": "Оакс &harr; Шэск Коридоро"},
+            {"name_en": "Highway S-3: Sentinel Alpine Pass", "name_sgn": "Виа С-3: Сэнтинэл Пасо", "val": "Clear & Dry (40 Кмн/h / 60 km/h)", "sub_en": "Heated roadbeds active • Sentinel Ridge", "sub_sgn": "Тэрмало виа • Сэнтинэл Ридж"}
         ],
         "action_en": "Refresh Live Roadway Feeds",
         "action_sgn": "Рэфрэско Виа Камера",
@@ -800,7 +805,7 @@ MODAL_CONFIGS = {
         "title_sgn": "Аввтоматико Транспондэро & Транзито Пасо",
         "fields": [
             {"name": "vehicle_plate", "label_en": "Vehicle License Plate # or Pass ID", "label_sgn": "Ауто Таблицо вэл Пасо ИД", "type": "text", "placeholder_en": "e.g., SNG-CAP-4091", "placeholder_sgn": "наприм., SNG-CAP-4091"},
-            {"name": "recharge_amount", "label_en": "Top-Up Balance in S$ (0% Commute Fee Policy)", "label_sgn": "Рэкарга Сума ин S$", "type": "number", "default": 50}
+            {"name": "recharge_amount", "label_en": "Top-Up Balance in $ (0% Commute Fee Policy)", "label_sgn": "Рэкарга Сума ин $", "type": "number", "default": 50}
         ],
         "action_en": "Link Transponder & Update Balance",
         "action_sgn": "Конэкто Транспондэро & Активо",
@@ -879,16 +884,18 @@ MODAL_CONFIGS = {
         "title_sgn": "Интер-Провинциало Карго Манифэсто Портало",
         "fields": [
             {"name": "origin_prov", "label_en": "Origin Province", "label_sgn": "Оригино Провинциа", "type": "select", "options": [
-                {"val": "capitol", "en": "Capitol Federal District", "sgn": "Капитоло Федерало"},
-                {"val": "montana", "en": "Northern Highland Province", "sgn": "Нордо Алпино"},
-                {"val": "costa", "en": "Azure Maritime Province", "sgn": "Азуро Маритимо"},
-                {"val": "valle", "en": "Emerald Valley Agricultural Province", "sgn": "Эмэральдо Вале"}
+                {"val": "new_jasper", "en": "New Jasper Province (Shesk)", "sgn": "Ново Јаспэр (Шэск)"},
+                {"val": "new_madison", "en": "New Madison Province (Madison City)", "sgn": "Ново Мадисон (Мадисон)"},
+                {"val": "liveland", "en": "Liveland Province (Oaks)", "sgn": "Ливланд (Оакс)"},
+                {"val": "sentinel", "en": "Sentinel Province (Sentinel Ridge)", "sgn": "Сэнтинэл (Сэнтинэл)"},
+                {"val": "columbia", "en": "Columbia Province (Columbia City)", "sgn": "Колумбиа (Колумбиа)"}
             ]},
             {"name": "dest_prov", "label_en": "Destination Province", "label_sgn": "Дэстинатио Провинциа", "type": "select", "options": [
-                {"val": "costa", "en": "Azure Maritime Province", "sgn": "Азуро Маритимо"},
-                {"val": "valle", "en": "Emerald Valley Agricultural Province", "sgn": "Эмэральдо Вале"},
-                {"val": "capitol", "en": "Capitol Federal District", "sgn": "Капитоло Федерало"},
-                {"val": "montana", "en": "Northern Highland Province", "sgn": "Нордо Алпино"}
+                {"val": "columbia", "en": "Columbia Province (Columbia City)", "sgn": "Колумбиа (Колумбиа)"},
+                {"val": "new_jasper", "en": "New Jasper Province (Shesk)", "sgn": "Ново Јаспэр (Шэск)"},
+                {"val": "new_madison", "en": "New Madison Province (Madison City)", "sgn": "Ново Мадисон (Мадисон)"},
+                {"val": "liveland", "en": "Liveland Province (Oaks)", "sgn": "Ливланд (Оакс)"},
+                {"val": "sentinel", "en": "Sentinel Province (Sentinel Ridge)", "sgn": "Сэнтинэл (Сэнтинэл)"}
             ]},
             {"name": "commodity", "label_en": "Cargo Description & Weight (Tonnes)", "label_sgn": "Карго Дэтало & Пондо (Тон)", "type": "text", "placeholder_en": "e.g., 40 Tonnes Hydroponic Wheat, Clean Batteries", "placeholder_sgn": "наприм., 40 Тон Грано, Батэриа"}
         ],
@@ -902,7 +909,7 @@ MODAL_CONFIGS = {
         "title_en": "Internal Trade & Jurisdiction Boundary Map",
         "title_sgn": "Интерно Трэйд & Граница Карто",
         "metrics": [
-            {"name_en": "Internal Tariff Rate", "name_sgn": "Интерно Тарифо Градо", "val": "0.00% Statutory", "sub_en": "Article IV: Absolute freedom of domestic goods", "sub_sgn": "Артикло IV: Либэро трэйд ин Сангайа"},
+            {"name_en": "Internal Tariff Rate", "name_sgn": "Интерно Тарифо Градо", "val": "0.00% Statutory", "sub_en": "Article IV: 0% tariffs across New Jasper, New Madison, Liveland, Sentinel, Columbia", "sub_sgn": "Артикло IV: 0% тарифо транз Ново Јаспэр, Ново Мадисон, Ливланд, Сэнтинэл, Колумбиа"},
             {"name_en": "Average Inter-Provincial Transit Time", "name_sgn": "Мэдиа Карго Тэмпоро", "val": "4.2 Hours", "sub_en": "Direct zero-checkpoint green lanes", "sub_sgn": "Прямо виридо коридоро"},
             {"name_en": "Active Domestic Freight Volume", "name_sgn": "Активо Домистико Карго", "val": "184,000 Tonnes/Day", "sub_en": "84% transported via clean electrified rail", "sub_sgn": "84% виа элэктрико транзито"}
         ],
@@ -1064,7 +1071,7 @@ MODAL_CONFIGS = {
                 {"val": "luxury", "en": "Non-Essential Consumer Luxury (12% Sovereign Tariff)", "sgn": "Луксусо Продукто (12% Тарифо)"},
                 {"val": "raw", "en": "Certified Sustainable Raw Timber / Ore (3% Duty)", "sgn": "Биом-Салво Сильва & Минерало (3%)"}
             ]},
-            {"name": "cif_value", "label_en": "Declared Customs Value in S$ (CIF)", "label_sgn": "Дэкларадо Валорэ ин S$ (ЦИФ)", "type": "number", "default": 10000}
+            {"name": "cif_value", "label_en": "Declared Customs Value in $ (CIF)", "label_sgn": "Дэкларадо Валорэ ин $ (ЦИФ)", "type": "number", "default": 10000}
         ],
         "action_en": "Calculate Statutory Customs Duty & Offsets",
         "action_sgn": "Калкуло Тарифо & Офсэт",
@@ -1103,7 +1110,7 @@ MODAL_CONFIGS = {
                 {"val": "agro", "en": "Regenerative Agro-Forestry & Organic Orchards", "sgn": "Агро-Форест & Органик"},
                 {"val": "rail", "en": "Inter-City Magnetic Levitation Line Expansion", "sgn": "Магнэтико Транзито Экспансио"}
             ]},
-            {"name": "capital", "label_en": "Proposed Direct Capital Injection (S$)", "label_sgn": "Капитало Сума ин S$", "type": "number", "placeholder_en": "5000000", "placeholder_sgn": "5000000"}
+            {"name": "capital", "label_en": "Proposed Direct Capital Injection ($)", "label_sgn": "Капитало Сума ин $", "type": "number", "placeholder_en": "5000000", "placeholder_sgn": "5000000"}
         ],
         "action_en": "Submit Ethical Investment Dossier for Cabinet Review",
         "action_sgn": "Субмито Инвэститио Досиэ",
@@ -1222,9 +1229,9 @@ MODAL_CONFIGS = {
         "title_en": "Live Air & Watershed Quality Sensor Network",
         "title_sgn": "Ливо Аэро & Аква Калита Сэнсоро Грид",
         "metrics": [
-            {"name_en": "Capitol District PM2.5", "name_sgn": "Капитоло Дистрикто ПМ2.5", "val": "4.2 µg/m³", "sub_en": "Pristine WHO Class 1 clean air", "sub_sgn": "Пуро ВХО Класо 1 аэро"},
-            {"name_en": "Northern High Ridge Ozone", "name_sgn": "Нордо Алпино Озоно", "val": "0.018 ppm", "sub_en": "Ultra-clean natural atmospheric purity", "sub_sgn": "Ултра-пуро атмосфэра"},
-            {"name_en": "Azure Coastal Dissolved Oxygen", "name_sgn": "Азуро Коста Оксигэн ин Аква", "val": "9.8 mg/L", "sub_en": "Super-oxygenated marine vitality", "sub_sgn": "Оптимо марино виталито"}
+            {"name_en": "New Jasper (Shesk Basin) PM2.5", "name_sgn": "Ново Јаспэр (Шэск) ПМ2.5", "val": "4.2 µg/m³", "sub_en": "Pristine WHO Class 1 clean air", "sub_sgn": "Пуро ВХО Класо 1 аэро"},
+            {"name_en": "Sentinel Ridge Ozone", "name_sgn": "Сэнтинэл Ридж Озоно", "val": "0.018 ppm", "sub_en": "Ultra-clean alpine air purity", "sub_sgn": "Ултра-пуро алпино аэро"},
+            {"name_en": "Columbia Maritime Basin Oxygen", "name_sgn": "Колумбиа Оксигэн ин Аква", "val": "9.8 mg/L", "sub_en": "Super-oxygenated freshwater & marine vitality", "sub_sgn": "Оптимо марино & аква виталито"}
         ],
         "action_en": "Poll Sensor Grid Stations",
         "action_sgn": "Инспэкто Сэнсоро Грид",
@@ -1418,12 +1425,12 @@ MODAL_CONFIGS = {
         "action_en": "Inspect Financial Audit Ledger",
         "action_sgn": "Инспэкто Фискало Аудито",
         "sample_results_en": [
-            {"ref": "REL-AUD-04", "date": "FY 2026 Audit: PASSED", "title": "Chapel of St. Julian the Hospitaller (Capitol)", "desc": "Total Tithes Collected: S$ 184,000 • Community Redistribution: S$ 168,200 (91.4% returned to public soup kitchen and unhoused shelter). Approved by Treasury."},
-            {"ref": "REL-AUD-11", "date": "FY 2026 Audit: PASSED", "title": "Azure Coastal Interfaith Contemplative Fellowship", "desc": "Total Tithes Collected: S$ 92,000 • Community Redistribution: S$ 81,400 (88.5% returned to marine cleanup and elderly care). Approved by Treasury."}
+            {"ref": "REL-AUD-04", "date": "FY 2026 Audit: PASSED", "title": "Chapel of St. Julian the Hospitaller (Capitol)", "desc": "Total Tithes Collected: $ 184,000 • Community Redistribution: $ 168,200 (91.4% returned to public soup kitchen and unhoused shelter). Approved by Treasury."},
+            {"ref": "REL-AUD-11", "date": "FY 2026 Audit: PASSED", "title": "Azure Coastal Interfaith Contemplative Fellowship", "desc": "Total Tithes Collected: $ 92,000 • Community Redistribution: $ 81,400 (88.5% returned to marine cleanup and elderly care). Approved by Treasury."}
         ],
         "sample_results_sgn": [
-            {"ref": "REL-AUD-04", "date": "Аудито 2026: ПРОБАДО", "title": "Капэла эк Санто Јулиан Хоспиталэро (Капитоло)", "desc": "Тотало Даро: S$ 184,000 • Комунитиа Дапано: S$ 168,200 (91.4% ад фуд-кучина & салво домо). Пробадо эк Трэзоро."},
-            {"ref": "REL-AUD-11", "date": "Аудито 2026: ПРОБАДО", "title": "Азуро Маритимо Интер-Крэдо Комунитиа", "desc": "Тотало Даро: S$ 92,000 • Комунитиа Дапано: S$ 81,400 (88.5% ад марино салво & сэниор). Пробадо эк Трэзоро."}
+            {"ref": "REL-AUD-04", "date": "Аудито 2026: ПРОБАДО", "title": "Капэла эк Санто Јулиан Хоспиталэро (Капитоло)", "desc": "Тотало Даро: $ 184,000 • Комунитиа Дапано: $ 168,200 (91.4% ад фуд-кучина & салво домо). Пробадо эк Трэзоро."},
+            {"ref": "REL-AUD-11", "date": "Аудито 2026: ПРОБАДО", "title": "Азуро Маритимо Интер-Крэдо Комунитиа", "desc": "Тотало Даро: $ 92,000 • Комунитиа Дапано: $ 81,400 (88.5% ад марино салво & сэниор). Пробадо эк Трэзоро."}
         ]
     },
     "interfaithcal": {
@@ -2414,11 +2421,11 @@ def get_page_js(lang, ui):
                         const netPay = income - totalTax;
                         customOutput = `
                             <div style="background:#ffffff; border:1px solid #cbd5e1; border-radius:6px; padding:12px; font-size:0.88rem; display:flex; flex-direction:column; gap:4px;">
-                                <div><strong>${{CURRENT_LANG === 'sgn' ? 'Гросо Инкомо' : 'Gross Annual Income'}}:</strong> S$ ${{income.toLocaleString()}}</div>
-                                <div><strong>${{CURRENT_LANG === 'sgn' ? 'Базо Такса (10%)' : 'Base Statutory Tax (10%)'}}:</strong> S$ ${{baseTax.toLocaleString()}}</div>
-                                <div><strong>${{CURRENT_LANG === 'sgn' ? 'Солидарито Леви' : 'Solidarity Levy'}}:</strong> S$ 0.00 (Zero Deficit Rule)</div>
+                                <div><strong>${{CURRENT_LANG === 'sgn' ? 'Гросо Инкомо' : 'Gross Annual Income'}}:</strong> $ ${{income.toLocaleString()}}</div>
+                                <div><strong>${{CURRENT_LANG === 'sgn' ? 'Базо Такса (10%)' : 'Base Statutory Tax (10%)'}}:</strong> $ ${{baseTax.toLocaleString()}}</div>
+                                <div><strong>${{CURRENT_LANG === 'sgn' ? 'Солидарито Леви' : 'Solidarity Levy'}}:</strong> $ 0.00 (Zero Deficit Rule)</div>
                                 <div style="border-top:1px dashed #cbd5e1; margin-top:4px; padding-top:4px; color:var(--theme-primary); font-weight:bold;">
-                                    ${{CURRENT_LANG === 'sgn' ? 'Нэтоо Саларио' : 'Net Take-Home'}}: S$ ${{netPay.toLocaleString()}}
+                                    ${{CURRENT_LANG === 'sgn' ? 'Нэтоо Саларио' : 'Net Take-Home'}}: $ ${{netPay.toLocaleString()}}
                                 </div>
                             </div>
                         `;
@@ -2429,7 +2436,7 @@ def get_page_js(lang, ui):
                         customOutput = `
                             <div style="background:#ffffff; border:1px solid #cbd5e1; border-radius:6px; padding:12px; font-size:0.88rem;">
                                 <strong>${{CURRENT_LANG === 'sgn' ? 'Гарантадо Менсио Стипэнд' : 'Statutory Guaranteed Monthly Stipend'}}:</strong> 
-                                <span style="font-size:1.1rem; color:#15803d; font-weight:bold;">S$ ${{stipend.toFixed(2)}} / mo</span>
+                                <span style="font-size:1.1rem; color:#15803d; font-weight:bold;">$ ${{stipend.toFixed(2)}} / mo</span>
                                 <div style="font-size:0.75rem; color:#64748b; margin-top:4px;">${{CURRENT_LANG === 'sgn' ? '100% покритие на медицински услуги включено' : '100% universal healthcare and transit pass included.'}}</div>
                             </div>
                         `;
@@ -2439,7 +2446,7 @@ def get_page_js(lang, ui):
                         customOutput = `
                             <div style="background:#ffffff; border:1px solid #cbd5e1; border-radius:6px; padding:12px; font-size:0.88rem;">
                                 <strong>${{CURRENT_LANG === 'sgn' ? 'Мито & Тарифо' : 'Calculated Import Duty'}}:</strong> 
-                                <span style="font-size:1.1rem; color:#15803d; font-weight:bold;">S$ 0.00</span>
+                                <span style="font-size:1.1rem; color:#15803d; font-weight:bold;">$ 0.00</span>
                                 <div style="font-size:0.75rem; color:#64748b; margin-top:4px;">${{CURRENT_LANG === 'sgn' ? '0% тарифо съгласно Конституция на Сангайа' : 'Eligible for 0% statutory clean transit / essential good exemption.'}}</div>
                             </div>
                         `;
@@ -2456,7 +2463,7 @@ def get_page_js(lang, ui):
                             <div style="background:#ffffff; border:1px solid #cbd5e1; border-radius:6px; padding:12px; font-size:0.88rem;">
                                 <strong>${{CURRENT_LANG === 'sgn' ? 'Лихва (Интересо)' : 'Statutory Interest Rate'}}:</strong> 
                                 <span style="font-size:1.1rem; color:#15803d; font-weight:bold;">0.00% (Article V Cap)</span>
-                                <div style="font-size:0.75rem; color:#64748b; margin-top:4px;">${{CURRENT_LANG === 'sgn' ? 'Месечна вноска: S$ 120.00 фиксирана' : 'Monthly income-contingent paydown: S$ 120.00 fixed, zero interest compounding.'}}</div>
+                                <div style="font-size:0.75rem; color:#64748b; margin-top:4px;">${{CURRENT_LANG === 'sgn' ? 'Месечна вноска: $ 120.00 фиксирана' : 'Monthly income-contingent paydown: $ 120.00 fixed, zero interest compounding.'}}</div>
                             </div>
                         `;
                     }}

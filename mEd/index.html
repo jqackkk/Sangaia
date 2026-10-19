@@ -591,7 +591,7 @@
 
             <div class="stat-ticker-box yellow-accent">
                 <div class="stat-label">Federal Education Budget</div>
-                <div class="stat-value">S$ 4.25 B</div>
+                <div class="stat-value">$ 4.25 B</div>
                 <div class="stat-desc">Annual statutory provincial allocation</div>
             </div>
 
@@ -870,7 +870,7 @@
                     <thead>
                         <tr>
                             <th>Budget Allocation Category</th>
-                            <th>Fiscal Allocation (S$)</th>
+                            <th>Fiscal Allocation ($)</th>
                             <th>% Share</th>
                             <th>Statutory Objective & Beneficiaries</th>
                         </tr>
@@ -878,31 +878,31 @@
                     <tbody>
                         <tr>
                             <td><strong>Universal Free Primary & Secondary Instruction</strong></td>
-                            <td><span style="font-weight: 800; color: #00838f;">S$ 1,600,000,000</span></td>
+                            <td><span style="font-weight: 800; color: #00838f;">$ 1,600,000,000</span></td>
                             <td><span class="badge badge-blue">37.6%</span></td>
                             <td>Free textbooks, digital learning tablets, zero-cost classroom facilities for 120,000+ primary/secondary youths.</td>
                         </tr>
                         <tr>
                             <td><strong>Higher Education & Polytechnic Grants</strong></td>
-                            <td><span style="font-weight: 800; color: #00838f;">S$ 1,150,000,000</span></td>
+                            <td><span style="font-weight: 800; color: #00838f;">$ 1,150,000,000</span></td>
                             <td><span class="badge badge-blue">27.1%</span></td>
                             <td>State-subsidized university tuition, vocational apprenticeships, and student housing allowances.</td>
                         </tr>
                         <tr>
                             <td><strong>Faculty Compensation & Dignity Standard</strong></td>
-                            <td><span style="font-weight: 800; color: #00838f;">S$ 780,000,000</span></td>
+                            <td><span style="font-weight: 800; color: #00838f;">$ 780,000,000</span></td>
                             <td><span class="badge badge-blue">18.4%</span></td>
                             <td>Competitive sovereign salaries for over 18,500 certified educators, professors, and lab researchers.</td>
                         </tr>
                         <tr>
                             <td><strong>Scientific Laboratories & Sovereign Research</strong></td>
-                            <td><span style="font-weight: 800; color: #00838f;">S$ 450,000,000</span></td>
+                            <td><span style="font-weight: 800; color: #00838f;">$ 450,000,000</span></td>
                             <td><span class="badge badge-blue">10.6%</span></td>
                             <td>Pathogen research virology labs (DDCR partnership), maglev transit physics, and zero-knowledge cryptography centers.</td>
                         </tr>
                         <tr>
                             <td><strong>Student Maglev Transit & Nutritional Support</strong></td>
-                            <td><span style="font-weight: 800; color: #00838f;">S$ 270,000,000</span></td>
+                            <td><span style="font-weight: 800; color: #00838f;">$ 270,000,000</span></td>
                             <td><span class="badge badge-blue">6.3%</span></td>
                             <td>Free inter-provincial high-speed maglev commuter passes for enrolled students and balanced daily school meals.</td>
                         </tr>
@@ -910,7 +910,7 @@
                     <tfoot>
                         <tr style="background: #e0f7fa; font-weight: bold;">
                             <td>Total Sovereign Educational Allocation</td>
-                            <td style="color: #006064; font-size: 1.05rem;">S$ 4,250,000,000</td>
+                            <td style="color: #006064; font-size: 1.05rem;">$ 4,250,000,000</td>
                             <td>100.0%</td>
                             <td>Fully funded from national surplus & 20% capped sovereign revenue.</td>
                         </tr>
@@ -936,7 +936,7 @@
                     </div>
                     <div style="background: white; border: 1px solid #fbc02d; border-radius: 6px; padding: 10px 18px;">
                         <span style="font-size: 0.78rem; color: #666; font-weight: bold;">ESTIMATED ANNUAL STATE STIPEND:</span><br>
-                        <span id="grant-result" style="font-size: 1.4rem; font-weight: 800; color: #2e7d32;">S$ 6,400.00 / yr</span>
+                        <span id="grant-result" style="font-size: 1.4rem; font-weight: 800; color: #2e7d32;">$ 6,400.00 / yr</span>
                         <span style="font-size: 0.75rem; color: #7e57c2; margin-left: 8px;">(Direct Deposit to Sangaia ID Wallet)</span>
                     </div>
                 </div>
@@ -1099,7 +1099,7 @@
             institution: "University of Veridia",
             duration: "4 Years",
             credits: "128 Credits",
-            tuition: "State Subsidized (S$ 0)"
+            tuition: "State Subsidized ($ 0)"
         },
         {
             title: "M.D. in General Medicine & Surgery",
@@ -1115,7 +1115,7 @@
             institution: "Nova Sangaia Tech",
             duration: "4 Years",
             credits: "132 Credits",
-            tuition: "State Subsidized (S$ 0)"
+            tuition: "State Subsidized ($ 0)"
         },
         {
             title: "B.Sc. in Maritime Navigation & Port Logistics",
@@ -1123,7 +1123,7 @@
             institution: "Sangaian Maritime Academy",
             duration: "3.5 Years",
             credits: "118 Credits",
-            tuition: "State Subsidized (S$ 0)"
+            tuition: "State Subsidized ($ 0)"
         },
         {
             title: "M.Sc. in Epidemiological Modeling & Virology",
@@ -1139,7 +1139,7 @@
             institution: "Northern Highlands Polytechnic",
             duration: "2 Years",
             credits: "60 Credits",
-            tuition: "Apprentice Wage + S$ 0 Tuition"
+            tuition: "Apprentice Wage + $ 0 Tuition"
         }
     ];
 
@@ -1457,10 +1457,10 @@
     function calculateGrant() {
         const lvl = document.getElementById('grant-level').value;
         const res = document.getElementById('grant-result');
-        if (lvl === 'undergrad') res.textContent = "S$ 6,400.00 / yr";
-        else if (lvl === 'vocational') res.textContent = "S$ 5,200.00 / yr";
-        else if (lvl === 'graduate') res.textContent = "S$ 14,800.00 / yr";
-        else if (lvl === 'secondary') res.textContent = "S$ 1,800.00 / yr";
+        if (lvl === 'undergrad') res.textContent = "$ 6,400.00 / yr";
+        else if (lvl === 'vocational') res.textContent = "$ 5,200.00 / yr";
+        else if (lvl === 'graduate') res.textContent = "$ 14,800.00 / yr";
+        else if (lvl === 'secondary') res.textContent = "$ 1,800.00 / yr";
     }
 
     // --- NOTICE MODAL ---
