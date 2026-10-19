@@ -35,7 +35,7 @@ def build_index():
         {"label": "provincial showcase", "url": "#showcase", "active": False},
         {"label": "the aeretocracy", "url": "#aeretocracy", "active": False},
         {"label": "9 federal ministries", "url": "#ministries", "active": False},
-        {"label": "5 sovereign provinces", "url": "#provinces", "active": False},
+        {"label": "units (мн • °пт)", "url": "#units", "active": False},
         {"label": "government structure", "url": "/government.html", "active": False},
         {"label": "citizenship application", "url": "/citizenship.html", "active": False}
     ]
@@ -158,6 +158,114 @@ def build_index():
             </div>
         </div>
     </div>
+
+    <!-- Sovereign Weights & Measures Directorate (Units Tab) -->
+    <div class="ol-card" id="units">
+        <div class="ol-card-title">
+            <span>sovereign weights &amp; measures directorate</span>
+            <span class="ol-badge-tag ol-badge-success">official standards active</span>
+        </div>
+        <p>Sangaia standardizes upon sovereign, base-10 human-scaled measurements: <strong>панотерм (&deg;пт)</strong> for temperature and <strong>мономер (мн)</strong> for distance. Both eliminate awkward imperial math while integrating cleanly with scientific metric conversions.</p>
+
+        <!-- Panotherm Temperature Converter -->
+        <div style="background:#f8fafc; border:1px solid #e1dfdd; border-radius:2px; padding:14px; margin-top:12px;">
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px; flex-wrap:wrap; gap:6px;">
+                <strong style="color:var(--text-main); font-size:13px;">1. temperature standard &bull; панотерм (&deg;пт)</strong>
+                <span class="ol-badge-tag ol-badge-success">&deg;пт = 0.9 &times; &deg;c = 0.5 &times; (&deg;f - 32)</span>
+            </div>
+            <p class="ol-small" style="color:var(--text-muted); margin-bottom:10px;">effortless mental conversions: <strong>from fahrenheit</strong>: drop 32, then cut in half (86&deg;f &rarr; 54 &rarr; <strong>27&deg;пт</strong>). <strong>from celsius</strong>: subtract 10% (30&deg;c - 3 = <strong>27&deg;пт</strong>).</p>
+
+            <div style="display:flex; flex-wrap:wrap; gap:12px;">
+                <div style="flex:1 1 140px;">
+                    <label class="form-label" style="display:block; font-size:11px; font-weight:600; color:var(--text-muted); margin-bottom:4px;">панотерм (&deg;пт)</label>
+                    <input type="number" class="ol-input" id="inPt" value="27" step="any" style="width:100%; padding:6px 10px; border:1px solid var(--border-dark); border-radius:2px; font-size:16px; font-weight:700; color:#15803d; font-family:inherit;">
+                </div>
+                <div style="flex:1 1 140px;">
+                    <label class="form-label" style="display:block; font-size:11px; font-weight:600; color:var(--text-muted); margin-bottom:4px;">celsius (&deg;c)</label>
+                    <input type="number" class="ol-input" id="inC" value="30" step="any" style="width:100%; padding:6px 10px; border:1px solid var(--border-dark); border-radius:2px; font-size:16px; font-weight:700; font-family:inherit;">
+                </div>
+                <div style="flex:1 1 140px;">
+                    <label class="form-label" style="display:block; font-size:11px; font-weight:600; color:var(--text-muted); margin-bottom:4px;">fahrenheit (&deg;f)</label>
+                    <input type="number" class="ol-input" id="inF" value="86" step="any" style="width:100%; padding:6px 10px; border:1px solid var(--border-dark); border-radius:2px; font-size:16px; font-weight:700; font-family:inherit;">
+                </div>
+            </div>
+            <div style="margin-top:10px; padding-top:8px; border-top:1px dashed #cbd5e1; font-size:12px; color:var(--text-muted);" id="tempMentalText">
+                &bull; <strong>from fahrenheit (86&deg;f)</strong>: drop 32 (54), then cut in half &rarr; <strong>27&deg;пт</strong>.<br>
+                &bull; <strong>from celsius (30&deg;c)</strong>: subtract 10% (-3) &rarr; <strong>27&deg;пт</strong>.
+            </div>
+        </div>
+
+        <!-- Monomer Distance Converter -->
+        <div style="background:#f0f9ff; border:1px solid #bae6fd; border-radius:2px; padding:14px; margin-top:14px;">
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px; flex-wrap:wrap; gap:6px;">
+                <strong style="color:var(--text-main); font-size:13px;">2. distance system &bull; мономер (мн)</strong>
+                <span class="ol-badge-tag ol-badge-success">1 monomer = exactly 2.5 cm</span>
+            </div>
+            <p class="ol-small" style="color:var(--text-muted); margin-bottom:10px;">the mathematical sweet spot: defined as exactly 2.5 cm (98.4% identical to an inch), monomer scales cleanly into base-10 units while eliminating awkward imperial math.</p>
+
+            <div style="display:flex; flex-wrap:wrap; gap:12px;">
+                <div style="flex:2 1 200px;">
+                    <label class="form-label" style="display:block; font-size:11px; font-weight:600; color:var(--text-muted); margin-bottom:4px;">input value:</label>
+                    <input type="number" class="ol-input" id="distVal" value="10" step="any" style="width:100%; padding:6px 10px; border:1px solid var(--border-dark); border-radius:2px; font-size:16px; font-weight:700; color:#0369a1; font-family:inherit;">
+                </div>
+                <div style="flex:1 1 180px;">
+                    <label class="form-label" style="display:block; font-size:11px; font-weight:600; color:var(--text-muted); margin-bottom:4px;">selected unit:</label>
+                    <select class="ol-select" id="distUnit" style="width:100%; padding:6px 10px; border:1px solid var(--border-dark); border-radius:2px; font-size:13px; font-family:inherit; background:#fff;">
+                        <option value="mn" selected>мономер (мн - 2.5 cm)</option>
+                        <option value="dmn">декамер (дмн - 10 мн / 25 cm)</option>
+                        <option value="trideka">тридека (3дмн - 30 мн / 75 cm)</option>
+                        <option value="kvadrodeka">квадродека (4дмн - 40 мн / 1 m)</option>
+                        <option value="kmn">киломер (кмн - 60,000 мн / 1.5 km)</option>
+                        <option value="cm">centimeters (cm)</option>
+                        <option value="m">meters (m)</option>
+                        <option value="in">inches (in)</option>
+                        <option value="ft">feet (ft)</option>
+                        <option value="mi">miles (mi)</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- Dynamic Output Grid -->
+            <div class="ol-grid-3" id="distOutputGrid" style="margin-top:14px;">
+                <!-- Populated via JS -->
+            </div>
+
+            <div style="margin-top:12px; padding-top:8px; border-top:1px dashed #cbd5e1; font-size:12px; color:var(--text-muted);" id="distMentalText">
+                &bull; <strong>monomers to centimeters</strong>: multiply by 2.5 (10 мн &times; 2.5 = <strong>25 cm</strong>).<br>
+                &bull; <strong>kilomers to miles</strong>: drop last three zeros and divide by 6 (60,000 мн &rarr; 60 &divide; 6 = <strong>1.0 mile</strong>).
+            </div>
+        </div>
+
+        <!-- Master Scaling Table -->
+        <div style="margin-top:14px;">
+            <div class="ol-card-title">
+                <span>sovereign distance master scaling table</span>
+                <span class="ol-badge-tag">statutory schedule a</span>
+            </div>
+            <div style="overflow-x:auto;">
+                <table class="ol-table" style="width:100%; border-collapse:collapse; font-size:12px; margin-top:6px;">
+                    <thead>
+                        <tr style="background:#f8fafc; border-bottom:2px solid var(--border);">
+                            <th style="padding:6px 10px; text-align:left;">imperial / metric unit</th>
+                            <th style="padding:6px 10px; text-align:left;">exact conversion</th>
+                            <th style="padding:6px 10px; text-align:left;">cyrillic name</th>
+                            <th style="padding:6px 10px; text-align:left;">symbol</th>
+                            <th style="padding:6px 10px; text-align:left;">monomer value</th>
+                            <th style="padding:6px 10px; text-align:left;">human visual reference</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr style="border-bottom:1px solid var(--border);"><td style="padding:6px 10px;">1 centimeter</td><td style="padding:6px 10px;">0.4 мн</td><td style="padding:6px 10px;">децимн (decimn)</td><td style="padding:6px 10px;"><strong>дмн</strong></td><td style="padding:6px 10px;">0.4 мн</td><td style="padding:6px 10px;">width of a fingernail</td></tr>
+                        <tr style="border-bottom:1px solid var(--border);"><td style="padding:6px 10px;">1 inch</td><td style="padding:6px 10px;">1.016 мн (1:1 everyday)</td><td style="padding:6px 10px;">мономер (monomer)</td><td style="padding:6px 10px;"><strong>мн</strong></td><td style="padding:6px 10px;">1 мн</td><td style="padding:6px 10px;">knuckle of a thumb</td></tr>
+                        <tr style="border-bottom:1px solid var(--border);"><td style="padding:6px 10px;">1 foot</td><td style="padding:6px 10px;">12.19 мн (10 мн base)</td><td style="padding:6px 10px;">декамер (dekamer)</td><td style="padding:6px 10px;"><strong>дмн</strong></td><td style="padding:6px 10px;">10 мн</td><td style="padding:6px 10px;">length of a human foot</td></tr>
+                        <tr style="border-bottom:1px solid var(--border);"><td style="padding:6px 10px;">1 yard</td><td style="padding:6px 10px;">36.57 мн (30 мн base)</td><td style="padding:6px 10px;">тридека (trideka)</td><td style="padding:6px 10px;"><strong>3дмн</strong></td><td style="padding:6px 10px;">30 мн</td><td style="padding:6px 10px;">one large stride</td></tr>
+                        <tr style="border-bottom:1px solid var(--border);"><td style="padding:6px 10px;">1 meter</td><td style="padding:6px 10px;">40 мн</td><td style="padding:6px 10px;">квадродека (kvadrodeka)</td><td style="padding:6px 10px;"><strong>4дмн</strong></td><td style="padding:6px 10px;">40 мн</td><td style="padding:6px 10px;">guitar length</td></tr>
+                        <tr><td style="padding:6px 10px;">1 mile</td><td style="padding:6px 10px;">63,360 мн (60,000 base)</td><td style="padding:6px 10px;">киломер (kilomer)</td><td style="padding:6px 10px;"><strong>кмн</strong></td><td style="padding:6px 10px;">60,000 мн</td><td style="padding:6px 10px;">15-minute brisk walk</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
     """
 
     sidebar_right = """
@@ -173,7 +281,7 @@ def build_index():
         <h3>sovereign measurement</h3>
         <p class="ol-small ol-muted">Sangaia standardizes upon base-10 Monomer distance (Мн) and Panotherm temperature (&deg;Пт).</p>
         <div class="ol-mt-10">
-            <a href="/units.html" class="ol-btn ol-btn-sm" style="width:100%; text-align:center;">open units calculator</a>
+            <a href="#units" class="ol-btn ol-btn-sm" style="width:100%; text-align:center;">open units calculator</a>
         </div>
     </div>
     """
@@ -184,247 +292,31 @@ def build_index():
         ("showcase", "5 provinces", "#showcase"),
         ("aeretocracy", "the aeretocracy", "#aeretocracy"),
         ("ministries", "9 ministries", "#ministries"),
+        ("units", "units (мн • °пт)", "#units"),
         ("services", "services", "/services.html"),
-        ("units", "units (мн • °пт)", "/units.html"),
     ]
     generate_page("index.html", title, theme, tab, hero_title, hero_sub, "sovereign republic of sangaia", "federal executive gateway", "live infrastructure", sidebar_links, main_content, sidebar_right, custom_nav_tabs=federal_nav_tabs)
 
 # -----------------------------------------------------------------------------
-# 2. SOVEREIGN WEIGHTS & MEASURES (units.html)
+# 2. SOVEREIGN WEIGHTS & MEASURES (units.html redirect)
 # -----------------------------------------------------------------------------
 def build_units():
-    title = "Sovereign Weights & Measures System"
-    theme = "theme-education"
-    tab = "units"
-    hero_title = "sovereign weights & measures directorate"
-    hero_sub = "Official standard systems: The Панотерм (°Пт) & Мономер (Мн) • Base-10 scaling with human dimensions"
-
-    sidebar_links = [
-        {"label": "Overview & Mandate", "url": "#overview", "active": True},
-        {"label": "Temperature: Панотерм (°Пт)", "url": "#temp-converter", "active": False},
-        {"label": "Distance: Мономер (Мн)", "url": "#dist-converter", "active": False},
-        {"label": "Conversion Reference Tables", "url": "#tables", "active": False},
-        {"label": "Mathematical Principles", "url": "#principles", "active": False}
-    ]
-
-    main_content = """
-
-    <!-- Panotherm Temperature Converter -->
-    <div class="card" id="overview"><a id="temp-converter"></a>
-        <div class="ol-card-title">
-            <span>1. Temperature Standard &bull; The Панотерм (&deg;Пт)</span>
-            <span class="ol-badge-tag ol-badge-success">&deg;Пт = 0.9 &times; &deg;C = 0.5 &times; (&deg;F - 32)</span>
-        </div>
-        <p class="ol-small">Effortless mental conversions: <strong>From Fahrenheit</strong>: Drop 32, then cut in half (86&deg;F &rarr; 54 &rarr; <strong>27&deg;Пт</strong>). <strong>From Celsius</strong>: Subtract 10% (30&deg;C - 3 = <strong>27&deg;Пт</strong>).</p>
-
-        <div style="background:#f0fdf4; border:1px solid #bbf7d0; border-radius:3px; padding:14px; margin-top:10px;">
-            <div style="display:flex; flex-wrap:wrap; gap:12px;">
-                <div style="flex:1 1 140px;">
-                    <label class="form-label">Панотерм (&deg;Пт)</label>
-                    <input type="number" class="ol-input" id="inPt" value="27" step="any" style="font-size:16px; font-weight:700; color:#15803d;">
-                </div>
-                <div style="flex:1 1 140px;">
-                    <label class="form-label">Celsius (&deg;C)</label>
-                    <input type="number" class="ol-input" id="inC" value="30" step="any" style="font-size:16px; font-weight:700;">
-                </div>
-                <div style="flex:1 1 140px;">
-                    <label class="form-label">Fahrenheit (&deg;F)</label>
-                    <input type="number" class="ol-input" id="inF" value="86" step="any" style="font-size:16px; font-weight:700;">
-                </div>
-            </div>
-            <div style="margin-top:10px; padding-top:8px; border-top:1px dashed #cbd5e1;" class="ol-small" id="tempMentalText">
-                • <strong>From Fahrenheit (86&deg;F)</strong>: Drop 32 (54), then cut in half &rarr; <strong>27&deg;Пт</strong>.<br>
-                • <strong>From Celsius (30&deg;C)</strong>: Subtract 10% (-3) &rarr; <strong>27&deg;Пт</strong>.
-            </div>
-        </div>
-    </div>
-
-    <!-- Monomer Distance Converter -->
-    <div class="ol-card" id="dist-converter">
-        <div class="ol-card-title">
-            <span>2. Universal Distance System &bull; The Мономер (Мн)</span>
-            <span class="ol-badge-tag ol-badge-success">1 Monomer = Exactly 2.5 cm</span>
-        </div>
-        <p class="ol-small">The Mathematical Sweet Spot: Defined as exactly 2.5 cm (98.4% identical to an inch), Monomer scales cleanly into base-10 units while eliminating awkward imperial math (12 inches, 5,280 feet).</p>
-
-        <div style="background:#f0f9ff; border:1px solid #bae6fd; border-radius:3px; padding:14px; margin-top:10px;">
-            <div style="display:flex; flex-wrap:wrap; gap:12px;">
-                <div style="flex:2 1 200px;">
-                    <label class="form-label">Input Value:</label>
-                    <input type="number" class="ol-input" id="distVal" value="10" step="any" style="font-size:16px; font-weight:700; color:#0369a1;">
-                </div>
-                <div style="flex:1 1 180px;">
-                    <label class="form-label">Selected Unit:</label>
-                    <select class="ol-select" id="distUnit" style="font-size:13.5px;">
-                        <option value="mn" selected>Мономер (Мн - 2.5 cm)</option>
-                        <option value="dmn">Декамер (Дмн - 10 Мн / 25 cm)</option>
-                        <option value="trideka">Тридека (3Дмн - 30 Мн / 75 cm)</option>
-                        <option value="kvadrodeka">Квадродека (4Дмн - 40 Мн / 1 m)</option>
-                        <option value="kmn">Киломер (Кмн - 60,000 Мн / 1.5 km)</option>
-                        <option value="cm">Centimeters (cm)</option>
-                        <option value="m">Meters (m)</option>
-                        <option value="in">Inches (in)</option>
-                        <option value="ft">Feet (ft)</option>
-                        <option value="mi">Miles (mi)</option>
-                    </select>
-                </div>
-            </div>
-
-            <!-- Dynamic Output Grid -->
-            <div class="ol-grid-3" id="distOutputGrid" style="margin-top:14px;">
-                <!-- Populated via JS -->
-            </div>
-
-            <div style="margin-top:12px; padding-top:8px; border-top:1px dashed #cbd5e1;" class="ol-small" id="distMentalText">
-                • <strong>Monomers to Centimeters</strong>: Multiply by 2.5 (10 Мн &times; 2.5 = <strong>25 cm</strong>).<br>
-                • <strong>Kilomers to Miles</strong>: Drop last three zeros and divide by 6 (60,000 Мн &rarr; 60 &divide; 6 = <strong>1.0 mile</strong>).
-            </div>
-        </div>
-    </div>
-
-    <!-- Official Distance Table -->
-    <div class="ol-card" id="tables">
-        <div class="ol-card-title">
-            <span>Sovereign Distance Master Scaling Table</span>
-            <span class="ol-badge-tag">Statutory Schedule A</span>
-        </div>
-        <table class="ol-table">
-            <thead>
-                <tr>
-                    <th>Imperial / Metric Unit</th>
-                    <th>Exact Conversion</th>
-                    <th>New Cyrillic Name</th>
-                    <th>Symbol</th>
-                    <th>Monomer Value</th>
-                    <th>Human Visual Reference</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr><td>1 Centimeter</td><td>0.4 Мн</td><td>Децимн (Decimn)</td><td><strong>дмн</strong></td><td>0.4 Мн</td><td>Width of a fingernail</td></tr>
-                <tr><td>1 Inch</td><td>1.016 Мн (1:1 everyday)</td><td>Мономер (Monomer)</td><td><strong>Мн</strong></td><td>1 Мн</td><td>Knuckle of a thumb</td></tr>
-                <tr><td>1 Foot</td><td>12.19 Мн (10 Мн base)</td><td>Декамер (Dekamer)</td><td><strong>Дмн</strong></td><td>10 Мн</td><td>Length of a human foot</td></tr>
-                <tr><td>1 Yard</td><td>36.57 Мн (30 Мн base)</td><td>Тридека (Trideka)</td><td><strong>3Дмн</strong></td><td>30 Мн</td><td>One large stride</td></tr>
-                <tr><td>1 Meter</td><td>40 Мн</td><td>Квадродека (Kvadrodeka)</td><td><strong>4Дмн</strong></td><td>40 Мн</td><td>Guitar length</td></tr>
-                <tr><td>1 Mile</td><td>63,360 Мн (60,000 base)</td><td>Киломер (Kilomer)</td><td><strong>Кмн</strong></td><td>60,000 Мн</td><td>15-minute brisk walk</td></tr>
-            </tbody>
-        </table>
-    </div>
-    """
-
-    sidebar_right = """
-    <div class="ol-sidebox">
-        <h3>Standardization Decree</h3>
-        <p class="ol-small ol-muted">Decreed under Executive Order 103 for educational curricula, engineering tolerances, and road signage nationwide.</p>
-    </div>
-    """
-
-    scripts = """
-    <script>
-    document.addEventListener('DOMContentLoaded', () => {
-        // Temperature Engine
-        const inPt = document.getElementById('inPt');
-        const inC = document.getElementById('inC');
-        const inF = document.getElementById('inF');
-        const tempText = document.getElementById('tempMentalText');
-
-        function updateTemp(c, source) {
-            const pt = c * 0.9;
-            const f = c * 1.8 + 32;
-
-            if (source !== 'pt') inPt.value = (Math.round(pt * 10) / 10).toFixed(1).replace('.0','');
-            if (source !== 'c') inC.value = (Math.round(c * 10) / 10).toFixed(1).replace('.0','');
-            if (source !== 'f') inF.value = (Math.round(f * 10) / 10).toFixed(1).replace('.0','');
-
-            const ptR = Math.round(pt);
-            const fR = Math.round(f);
-            const cR = Math.round(c);
-            tempText.innerHTML = `• <strong>From Fahrenheit (${fR}&deg;F)</strong>: Drop 32 (${fR - 32}), cut in half &rarr; <strong>${ptR}&deg;Пт</strong>.<br>• <strong>From Celsius (${cR}&deg;C)</strong>: Subtract 10% (-${(cR*0.1).toFixed(1)}) &rarr; <strong>${ptR}&deg;Пт</strong>.`;
-        }
-
-        inPt.addEventListener('input', () => {
-            const v = parseFloat(inPt.value);
-            if (!isNaN(v)) updateTemp(v / 0.9, 'pt');
-        });
-        inC.addEventListener('input', () => {
-            const v = parseFloat(inC.value);
-            if (!isNaN(v)) updateTemp(v, 'c');
-        });
-        inF.addEventListener('input', () => {
-            const v = parseFloat(inF.value);
-            if (!isNaN(v)) updateTemp((v - 32) / 1.8, 'f');
-        });
-
-        // Distance Engine
-        const distVal = document.getElementById('distVal');
-        const distUnit = document.getElementById('distUnit');
-        const grid = document.getElementById('distOutputGrid');
-        const distText = document.getElementById('distMentalText');
-
-        const toMn = {
-            'mn': 1.0, 'dmn': 10.0, 'trideka': 30.0, 'kvadrodeka': 40.0, 'kmn': 60000.0,
-            'cm': 0.4, 'm': 40.0, 'in': 1.016, 'ft': 12.192, 'mi': 64373.76
-        };
-
-        function updateDist() {
-            const v = parseFloat(distVal.value) || 0;
-            const u = distUnit.value;
-            const mn = v * (toMn[u] || 1.0);
-
-            const dmn = mn / 10.0;
-            const tri = mn / 30.0;
-            const kva = mn / 40.0;
-            const kmn = mn / 60000.0;
-
-            const cm = mn * 2.5;
-            const m = cm / 100.0;
-            const inches = cm / 2.54;
-            const feet = inches / 12.0;
-            const miles = feet / 5280.0;
-
-            function fmt(n) {
-                if (n === 0) return '0';
-                if (Math.abs(n) >= 1000) return n.toLocaleString('en-US', { maximumFractionDigits: 2 });
-                return (Math.round(n * 1000) / 1000).toString();
-            }
-
-            grid.innerHTML = `
-                <div class="ol-metric-box">
-                    <div class="ol-metric-val">${fmt(mn)} Мн</div>
-                    <div class="ol-metric-lbl">Мономер (Knuckle ~1 in)</div>
-                </div>
-                <div class="ol-metric-box">
-                    <div class="ol-metric-val">${fmt(dmn)} Дмн</div>
-                    <div class="ol-metric-lbl">Декамер (Foot ~1 ft)</div>
-                </div>
-                <div class="ol-metric-box">
-                    <div class="ol-metric-val">${fmt(tri)} 3Дмн</div>
-                    <div class="ol-metric-lbl">Тридека (Stride ~1 yd)</div>
-                </div>
-                <div class="ol-metric-box">
-                    <div class="ol-metric-val">${fmt(kva)} 4Дмн</div>
-                    <div class="ol-metric-lbl">Квадродека (Exactly 1.0 m)</div>
-                </div>
-                <div class="ol-metric-box">
-                    <div class="ol-metric-val">${fmt(kmn)} Кмн</div>
-                    <div class="ol-metric-lbl">Киломер (Walk ~1 mi)</div>
-                </div>
-                <div class="ol-metric-box" style="background:#f1f5f9;">
-                    <div class="ol-metric-val" style="font-size:18px; color:#334155;">${fmt(cm)} cm / ${fmt(feet)} ft</div>
-                    <div class="ol-metric-lbl">Legacy Metric / Imperial</div>
-                </div>
-            `;
-
-            distText.innerHTML = `• <strong>Monomers to Centimeters</strong>: Multiply by 2.5 (${fmt(mn)} Мн &times; 2.5 = <strong>${fmt(cm)} cm</strong>).<br>• <strong>Kilomers to Miles</strong>: Drop last three zeros and divide by 6 (${fmt(kmn*60000)} Мн &rarr; ${fmt(kmn*60)} &divide; 6 = <strong>${fmt(kmn*10)} mi</strong>).`;
-        }
-
-        distVal.addEventListener('input', updateDist);
-        distUnit.addEventListener('change', updateDist);
-        updateDist();
-    });
-    </script>
-    """
-
-    generate_page("units.html", title, theme, tab, hero_title, hero_sub, "Weights & Measures Bureau", "Standards Authority", "Standards Active", sidebar_links, main_content, sidebar_right, "", scripts)
+    # units.html redirects to index.html#units
+    redirect_html = """<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="refresh" content="0; url=/index.html#units" />
+  <title>redirecting to sovereign units :: sangaia live</title>
+  <script>window.location.replace('/index.html#units');</script>
+</head>
+<body style="font-family:'Segoe WP', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background:#f3f3f3; color:#201f1e; text-align:center; padding-top:60px;">
+  <p style="text-transform:lowercase; font-size:14px;">redirecting to <a href="/index.html#units" style="color:#0078d4;">sangaia.org/index.html#units</a>...</p>
+</body>
+</html>
+"""
+    with open("units.html", "w", encoding="utf-8") as f:
+        f.write(redirect_html)
 
 # -----------------------------------------------------------------------------
 # 3. DIRECTORY OF ALL SERVICES (services.html)

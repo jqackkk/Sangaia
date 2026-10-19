@@ -23,7 +23,36 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // 3. Interactive Unit Converter Setup (Панотерм & Мономер)
     setupUnitConverters();
+
+    // 4. Sub-Navigation Tab State Handling
+    setupSubnavTabs();
 });
+
+// Sub-Navigation Tab State Handling
+function setupSubnavTabs() {
+    function updateActiveTab() {
+        const hash = window.location.hash;
+        if (!hash) return;
+        const subnavLinks = document.querySelectorAll('.subnav a');
+        subnavLinks.forEach(link => {
+            const href = link.getAttribute('href');
+            if (href === hash || (href && href.endsWith(hash))) {
+                subnavLinks.forEach(l => l.classList.remove('active'));
+                link.classList.add('active');
+            }
+        });
+    }
+
+    document.querySelectorAll('.subnav a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function() {
+            document.querySelectorAll('.subnav a').forEach(a => a.classList.remove('active'));
+            this.classList.add('active');
+        });
+    });
+
+    window.addEventListener('hashchange', updateActiveTab);
+    updateActiveTab();
+}
 
 // Utility to escape HTML
 function escapeHtml(str) {
@@ -61,7 +90,115 @@ function setupModalSystem() {
 
 // Sovereign Unit Converters (Панотерм & Мономер)
 function setupUnitConverters() {
-    // Temperature: °Пт = 0.9 * °C = 0.5 * (°F - 32)
+    // 1. Rich Temperature Engine: inPt, inC, inF
+    const inPt = document.getElementById('inPt');
+    const inC = document.getElementById('inC');
+    const inF = document.getElementById('inF');
+    const tempText = document.getElementById('tempMentalText');
+
+    if (inPt && inC && inF) {
+        function updateTemp(c, source) {
+            const pt = c * 0.9;
+            const f = c * 1.8 + 32;
+
+            if (source !== 'pt') inPt.value = (Math.round(pt * 10) / 10).toFixed(1).replace('.0','');
+            if (source !== 'c') inC.value = (Math.round(c * 10) / 10).toFixed(1).replace('.0','');
+            if (source !== 'f') inF.value = (Math.round(f * 10) / 10).toFixed(1).replace('.0','');
+
+            const ptR = Math.round(pt);
+            const fR = Math.round(f);
+            const cR = Math.round(c);
+            if (tempText) {
+                tempText.innerHTML = `• <strong>from fahrenheit (${fR}&deg;f)</strong>: drop 32 (${fR - 32}), cut in half &rarr; <strong>${ptR}&deg;пт</strong>.<br>• <strong>from celsius (${cR}&deg;c)</strong>: subtract 10% (-${(cR*0.1).toFixed(1)}) &rarr; <strong>${ptR}&deg;пт</strong>.`;
+            }
+        }
+
+        inPt.addEventListener('input', () => {
+            const v = parseFloat(inPt.value);
+            if (!isNaN(v)) updateTemp(v / 0.9, 'pt');
+        });
+        inC.addEventListener('input', () => {
+            const v = parseFloat(inC.value);
+            if (!isNaN(v)) updateTemp(v, 'c');
+        });
+        inF.addEventListener('input', () => {
+            const v = parseFloat(inF.value);
+            if (!isNaN(v)) updateTemp((v - 32) / 1.8, 'f');
+        });
+    }
+
+    // 2. Rich Distance Engine: distVal, distUnit, distOutputGrid, distMentalText
+    const distVal = document.getElementById('distVal');
+    const distUnit = document.getElementById('distUnit');
+    const grid = document.getElementById('distOutputGrid');
+    const distText = document.getElementById('distMentalText');
+
+    if (distVal && distUnit && grid) {
+        const toMn = {
+            'mn': 1.0, 'dmn': 10.0, 'trideka': 30.0, 'kvadrodeka': 40.0, 'kmn': 60000.0,
+            'cm': 0.4, 'm': 40.0, 'in': 1.016, 'ft': 12.192, 'mi': 64373.76
+        };
+
+        function updateDist() {
+            const v = parseFloat(distVal.value) || 0;
+            const u = distUnit.value;
+            const mn = v * (toMn[u] || 1.0);
+
+            const dmn = mn / 10.0;
+            const tri = mn / 30.0;
+            const kva = mn / 40.0;
+            const kmn = mn / 60000.0;
+
+            const cm = mn * 2.5;
+            const m = cm / 100.0;
+            const inches = cm / 2.54;
+            const feet = inches / 12.0;
+            const miles = feet / 5280.0;
+
+            function fmt(n) {
+                if (n === 0) return '0';
+                if (Math.abs(n) >= 1000) return n.toLocaleString('en-US', { maximumFractionDigits: 2 });
+                return (Math.round(n * 1000) / 1000).toString();
+            }
+
+            grid.innerHTML = `
+                <div class="ol-metric-box">
+                    <div class="ol-metric-val">${fmt(mn)} мн</div>
+                    <div class="ol-metric-lbl">мономер (knuckle ~1 in)</div>
+                </div>
+                <div class="ol-metric-box">
+                    <div class="ol-metric-val">${fmt(dmn)} дмн</div>
+                    <div class="ol-metric-lbl">декамер (foot ~1 ft)</div>
+                </div>
+                <div class="ol-metric-box">
+                    <div class="ol-metric-val">${fmt(tri)} 3дмн</div>
+                    <div class="ol-metric-lbl">тридека (stride ~1 yd)</div>
+                </div>
+                <div class="ol-metric-box">
+                    <div class="ol-metric-val">${fmt(kva)} 4дмн</div>
+                    <div class="ol-metric-lbl">квадродека (exactly 1.0 m)</div>
+                </div>
+                <div class="ol-metric-box">
+                    <div class="ol-metric-val">${fmt(kmn)} кмн</div>
+                    <div class="ol-metric-lbl">киломер (walk ~1 mi)</div>
+                </div>
+                <div class="ol-metric-box" style="background:#f1f5f9;">
+                    <div class="ol-metric-val" style="font-size:18px; color:#334155;">${fmt(cm)} cm / ${fmt(feet)} ft</div>
+                    <div class="ol-metric-lbl">legacy metric / imperial</div>
+                </div>
+            `;
+
+            if (distText) {
+                distText.innerHTML = `• <strong>monomers to centimeters</strong>: multiply by 2.5 (${fmt(mn)} мн &times; 2.5 = <strong>${fmt(cm)} cm</strong>).<br>• <strong>kilomers to miles</strong>: drop last three zeros and divide by 6 (${fmt(kmn*60000)} мн &rarr; ${fmt(kmn*60)} &divide; 6 = <strong>${fmt(kmn*10)} mi</strong>).`;
+            }
+        }
+
+        distVal.addEventListener('input', updateDist);
+        distUnit.addEventListener('change', updateDist);
+        updateDist();
+    }
+
+    // 3. Fallback / Sidebar Temperature: calc-pt, calc-c, calc-f
     const ptInput = document.getElementById('calc-pt');
     const cInput = document.getElementById('calc-c');
     const fInput = document.getElementById('calc-f');
@@ -91,7 +228,7 @@ function setupUnitConverters() {
         });
     }
 
-    // Distance: 1 Мн = 2.5 cm, 10 Мн = 1 Дмн, 30 Мн = 1 3Дмн, 40 Мн = 1 4Дмн, 60,000 Мн = 1 Кмн
+    // 4. Fallback / Sidebar Distance: calc-mn, calc-cm, etc.
     const mnInput = document.getElementById('calc-mn');
     const cmInput = document.getElementById('calc-cm');
     const inInput = document.getElementById('calc-in');
@@ -118,3 +255,4 @@ function setupUnitConverters() {
         });
     }
 }
+

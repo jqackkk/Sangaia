@@ -82,6 +82,14 @@ body.theme-default {
 }
 
 /* Global Reset */
+html {
+  scroll-behavior: smooth;
+}
+
+[id] {
+  scroll-margin-top: 16px;
+}
+
 * {
   box-sizing: border-box;
   margin: 0;

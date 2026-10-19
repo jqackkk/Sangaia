@@ -79,11 +79,11 @@ def generate_page(
         nav_tabs = [
             ("home", "home", "/index.html"),
             ("overview", "overview", "/index.html#overview"),
-            ("provinces", "5 provinces", "/index.html#provinces"),
+            ("provinces", "5 provinces", "/index.html#showcase"),
             ("aeretocracy", "the aeretocracy", "/index.html#aeretocracy"),
             ("ministries", "9 ministries", "/index.html#ministries"),
             ("services", "services", "/services.html"),
-            ("units", "units (мн • °пт)", "/units.html"),
+            ("units", "units (мн • °пт)", "/index.html#units"),
         ]
 
     subnav_html = ""
@@ -160,7 +160,7 @@ def generate_page(
             <div class="user-dropdown-header">citizen: sg-2026-f1e8</div>
             <a href="/id.html"><span class="mif-profile"></span> sangaia id card</a>
             <a href="/citizenship.html"><span class="mif-checkmark"></span> citizenship status</a>
-            <a href="/units.html"><span class="mif-compass"></span> units &amp; measures</a>
+            <a href="/index.html#units"><span class="mif-compass"></span> units &amp; measures</a>
             <a href="/dashboard.html"><span class="mif-chart-bars"></span> sovereign registry</a>
             <div style="border-top:1px solid #e1dfdd; margin:4px 0;"></div>
             <a href="/index.html"><span class="mif-home"></span> federal home</a>
