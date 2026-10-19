@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="sgn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Сангаиан Литераци Тэсто - Министриа эк Доместико Аффаиро</title>
+    <style>
+        /* --- FRUTIGER AERO / SKEUOMORPHIC STYLES --- */
+        :root {
+            --glass-blue: rgba(220, 245, 255, 0.85);
+            --gloss-highlight: rgba(255, 255, 255, 0.9);
+            --primary-red: #c62828;
+            --ocean-blue: #0077be;
+            --text-dark: #2c3e50;
+        }
+
+        body {
+            background: #ffffff;
+            min-height: 100dvh;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            flex-direction: column;
+            margin: 0;
+            font-family: 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+            color: var(--text-dark);
+        }
+
+        .main-container { width: 100%; margin: 0; flex-grow: 1; }
+
+        #globalheader {
+            display: flex;
+            align-items: center;
+            position: relative;
+            width: 100%;
+            height: 38px;
+            background: linear-gradient(to bottom, #5e5e5e 0%, #3e3e3e 50%, #2d2d2d 51%, #1f1f1f 100%);
+            border-top: 1px solid #222;
+            border-bottom: 1px solid #000;
+            box-shadow: inset 0 1px 0 rgba(255,255,255,0.15), 0 2px 4px rgba(0,0,0,0.2);
+            font-size: 11px;
+            z-index: 99;
+        }
+
+        #globalnav {
+            flex-grow: 1;
+            margin: 0;
+            padding: 0;
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            height: 100%;
+        }
+
+        #globalnav li { position: relative; height: 100%; display: flex; align-items: center; }
+        #globalnav li a {
+            display: block; color: #e8e8e8; text-decoration: none; text-shadow: 0 -1px 0 rgba(0,0,0,0.8);
+            font-weight: bold; padding: 0 24px; line-height: 38px;
+        }
+        #globalnav li a.active { color: #fff; background: rgba(0,0,0,0.2); }
+
+        .sangaia-btn {
+            font-size: 0.95rem; font-family: "myriad-pro", "Segoe UI", sans-serif; height: 2.5em;
+            padding: 0 1.5em; border-radius: 5px; position: relative; overflow: hidden;
+            cursor: pointer; text-decoration: none; display: inline-flex;
+            align-items: center; justify-content: center; margin: 6px; 
+            box-sizing: border-box;
+            background: linear-gradient(to bottom, #e53935 0%, #c62828 100%);
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            border: 1px solid #b71c1c; color: white; font-weight: bold;
+        }
+
+        .sangaia-btn.secondary {
+            background: linear-gradient(to bottom, #fcfcfc 0%, #e0e0e0 100%);
+            border: 1px solid #bbb; color: #333; text-shadow: 0 1px 0 #fff;
+        }
+
+        .content-wrapper { padding: 35px 20px; width: 100%; max-width: 900px; margin: 0 auto; box-sizing: border-box; }
+
+        .glass-panel {
+            background: linear-gradient(to bottom, #fcfcfc 0%, #f4f6f8 100%);
+            border: 1px solid #d5dbe0; border-radius: 10px; padding: 35px; margin-bottom: 25px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+        }
+
+        footer { text-align: center; padding: 25px; font-size: 0.9em; background: rgba(255,255,255,0.7); margin-top: auto; }
+    </style>
+</head>
+<body>
+<div class="main-container">
+    <nav id="globalheader">
+        <div style="position: absolute; left: 15px; display: flex; align-items: center; height: 100%;">
+            <img src="../media/nav_logo.png" onerror="this.src='https://sangaia.org/media/nav_logo.png';" style="height: 20px; width: auto;" alt="Logo">
+        </div>
+        <div style="position: absolute; right: 15px; display: flex; align-items: center; gap: 15px; height: 100%; z-index: 100;">
+            <div id="auth-widget"><a href="dashboard.html" style="color: #bbb; text-decoration: none; font-size: 11px; font-weight: bold; letter-spacing: 0.5px; padding: 3px 8px; border: 1px solid #444; border-radius: 4px; background: linear-gradient(to bottom, #555, #333); box-shadow: 0 1px 2px rgba(0,0,0,0.3); transition: all 0.2s ease;">Sign In / Register</a></div>
+            <a href="../literacy_exam_en.html" style="color: #bbb; text-decoration: none; font-size: 11px; font-weight: bold; letter-spacing: 0.5px; padding: 3px 8px; border: 1px solid #444; border-radius: 4px; background: linear-gradient(to bottom, #555, #333); box-shadow: 0 1px 2px rgba(0,0,0,0.3); transition: all 0.2s ease;">English Exam</a>
+        </div>
+        <ul id="globalnav">
+            <li><a href="index.html">Домо</a></li>
+            <li><a href="government.html">Говэрно</a></li>
+            <li><a href="citizenship.html" class="active">Цивитас</a></li>
+            <li><a href="services.html">Сэрвицио</a></li>
+            <li><a href="about.html">Около</a></li>
+        </ul>
+    </nav>
+
+    <div class="content-wrapper">
+        <div class="glass-panel" style="text-align: center;">
+            <img src="../media/sangaia_seal.png" onerror="this.src='https://sangaia.org/media/sangaia_seal.png';" alt="Seal of Sangaia" style="width: 80px; height: auto; margin-bottom: 10px;">
+            <div style="font-size: 0.82em; font-weight: bold; color: #c62828; text-transform: uppercase; letter-spacing: 1.5px;">Министриа эк Доместико Аффаиро &bull; Натио Колегио эк Эдукацио</div>
+            <h1 style="margin: 10px 0; color: #b71c1c;">Сангаиан Литераци Тэсто (Сэссио)</h1>
+            <p style="font-size: 1.05em; color: #555; max-width: 650px; margin: 0 auto 25px auto; line-height: 1.6;">
+                Официало экзаминато ин Сангаиан лингва инкаи Кирилица алфабэто. Ис сэссио эст мануго пэр Натио Колегио эк Эдукацио.
+            </p>
+
+            <div style="background: #fff; border: 1px solid #e0e0e0; border-radius: 8px; padding: 25px; text-align: left; max-width: 600px; margin: 0 auto 30px auto; font-size: 0.95em; line-height: 1.8;">
+                <h3 style="margin-top: 0; color: #333;">Экзаминато Информацио:</h3>
+                <ul style="margin: 0; padding-left: 20px;">
+                    <li><strong>Тэмпус:</strong> 2.5 Орас (150 Минуто)</li>
+                    <li><strong>Прагма Нумэро:</strong> 175 Куэстио</li>
+                    <li><strong>Модуло 1:</strong> Тэксто Анализ инкаи Конституцио Докумэнто</li>
+                    <li><strong>Модуло 2:</strong> Лексикон, Градуато Вэрбо инкаи Синонимо</li>
+                    <li><strong>Модуло 3:</strong> Кирилица Грамматика инкаи Морфолоджиа</li>
+                    <li><strong>Модуло 4:</strong> Контэкто Дропдовн Таблица</li>
+                    <li><strong>Модуло 5:</strong> Матрикс инкаи Логика Вэлификацио</li>
+                </ul>
+            </div>
+
+            <div style="display: flex; justify-content: center; gap: 15px; flex-wrap: wrap;">
+                <a href="literacy_test.html" class="sangaia-btn secondary"><span>&larr; Рэвэрто ад Портало</span></a>
+                <a href="../literacy_exam_en.html" class="sangaia-btn"><span>Take English Exam Instead &rarr;</span></a>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        &copy; Дио Милус Дио Дэкум Сэкс Сонит Провиткия эк Сангаиа. Холо Жусо Сэрво.<br>
+        <span style="font-size: 0.8em; color: #888;">Министриа эк Доместико Аффаиро &bull; Натио Колегио эк Эдукацио</span>
+    </footer>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="../auth.js"></script>
+</body>
+</html>
