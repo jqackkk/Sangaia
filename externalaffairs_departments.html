@@ -249,7 +249,7 @@ a:hover {
   padding: 6px 14px;
   font-size: 11px;
   color: var(--text-muted);
-  text-transform: uppercase;
+  text-transform: lowercase;
   font-weight: 700;
   border-bottom: 1px solid var(--border);
   margin-bottom: 4px;
@@ -443,7 +443,7 @@ a:hover {
   font-weight: 600;
   padding: 2px 7px;
   border-radius: 2px;
-  text-transform: uppercase;
+  text-transform: lowercase;
   letter-spacing: 0.3px;
 }
 
@@ -655,7 +655,7 @@ a:hover {
 
 .metric-box .metric-lbl {
   font-size: 11px;
-  text-transform: uppercase;
+  text-transform: lowercase;
   color: var(--text-muted);
   font-weight: 600;
 }
@@ -822,7 +822,7 @@ a:hover {
 .ol-btn-primary { background: var(--primary); color: #fff; border-color: transparent; }
 .ol-btn-primary:hover { filter: brightness(0.92); color: #fff; }
 .ol-btn-sm { padding: 4px 8px; font-size: 11.5px; }
-.ol-badge-tag { display: inline-block; font-size: 11px; font-weight: 600; padding: 2px 7px; border-radius: 2px; text-transform: uppercase; letter-spacing: 0.3px; background: #e0f2fe; color: #0369a1; border: 1px solid #bae6fd; }
+.ol-badge-tag { display: inline-block; font-size: 11px; font-weight: 600; padding: 2px 7px; border-radius: 2px; text-transform: lowercase; letter-spacing: 0.3px; background: #e0f2fe; color: #0369a1; border: 1px solid #bae6fd; }
 .ol-badge-success { background: #dcfce7; color: #15803d; border: 1px solid #bbf7d0; }
 .ol-grid-2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 12px; }
 .ol-grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px; }
@@ -838,7 +838,7 @@ a:hover {
 .ol-mt-10 { margin-top: 10px; }
 .modal-telemetry-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 10px; margin-top: 10px; }
 .telemetry-card { background: #f8fafc; border: 1px solid var(--border); border-radius: 2px; padding: 8px; text-align: center; }
-.telemetry-name { font-size: 11px; color: var(--text-muted); text-transform: uppercase; font-weight: 600; }
+.telemetry-name { font-size: 11px; color: var(--text-muted); text-transform: lowercase; font-weight: 600; }
 .telemetry-val { font-size: 18px; font-weight: 700; color: var(--primary); margin: 2px 0; }
 .telemetry-sub { font-size: 11px; color: var(--text-light); }
 .modal-results-box { display: none; background: #f0fdf4; border: 1px solid #bbf7d0; border-radius: 2px; padding: 12px; margin: 12px 18px; font-size: 12.5px; }
@@ -858,8 +858,51 @@ a:hover {
   }
 }
 
+/* ==========================================================================
+   Metro All-Lowercase Typography for Headings, Titles & Navigation
+   ========================================================================== */
+h1, h2, h3, h4, h5, h6,
+.brand a,
+.brand span,
+.hero-content h1,
+.subnav a,
+.sidebar h3,
+.sidebar h4,
+.card h1,
+.card h2,
+.card h3,
+.card h4,
+.ol-card-title,
+.ol-card-title span,
+.sovereign-card h3,
+.docket-entry-title,
+.docket-entry-header strong,
+.sidebar-nav-list a,
+.side-nav-item,
+.side-nav-group-title,
+.side-nav-heading,
+.side-nav-group a,
+.ol-title-link,
+.dept-title,
+.dept-tool-item h4,
+.data-table th,
+.ol-table th,
+th,
+.badge,
+.ol-badge-tag,
+.btn,
+.ol-btn,
+button,
+.telemetry-name,
+.metric-lbl,
+.user-dropdown a,
+.user-dropdown-header,
+.ol-proclamation-card div:first-child {
+  text-transform: lowercase;
+}
+
   </style>
-  <link rel="stylesheet" href="/css/sangaia-live.css?v=20261019_v4">
+  <link rel="stylesheet" href="/css/sangaia-live.css?v=20261019_v5">
   <script src="/js/sangaia-live.js" defer></script>
 </head>
 <body class="theme-externalaffairs">
@@ -868,25 +911,25 @@ a:hover {
   <header class="hero-header">
     <div class="top-bar">
       <div class="brand">
-        <a href="/index.html"><span class="mif-windows"></span> Sangaia Live</a>
+        <a href="/index.html"><span class="mif-windows"></span> sangaia live</a>
       </div>
       <div class="top-right">
         <form class="search-box" action="/services.html" method="get">
-          <input type="text" name="q" placeholder="Search services, laws &amp; gazette" />
+          <input type="text" name="q" placeholder="search services, laws &amp; gazette" />
           <button type="submit" aria-label="Search"><span class="mif-search"></span></button>
         </form>
         <div class="user-profile-menu" id="userProfileMenu">
           <img src="/images/default-wl.png" alt="Avatar" width="28" height="28" style="width:28px; height:28px; border-radius:2px; object-fit:contain; background:#ffffff;" />
-          <span>Jqackkk</span>
+          <span>jqackkk</span>
           <span class="mif-arrow-drop-down" style="font-size: 14px;"></span>
           <div class="user-dropdown">
-            <div class="user-dropdown-header">Citizen: SG-2026-F1E8</div>
-            <a href="/id.html"><span class="mif-profile"></span> Sangaia ID Card</a>
-            <a href="/citizenship.html"><span class="mif-checkmark"></span> Citizenship Status</a>
-            <a href="/units.html"><span class="mif-compass"></span> Units &amp; Measures</a>
-            <a href="/dashboard.html"><span class="mif-chart-bars"></span> Sovereign Registry</a>
+            <div class="user-dropdown-header">citizen: sg-2026-f1e8</div>
+            <a href="/id.html"><span class="mif-profile"></span> sangaia id card</a>
+            <a href="/citizenship.html"><span class="mif-checkmark"></span> citizenship status</a>
+            <a href="/units.html"><span class="mif-compass"></span> units &amp; measures</a>
+            <a href="/dashboard.html"><span class="mif-chart-bars"></span> sovereign registry</a>
             <div style="border-top:1px solid #e1dfdd; margin:4px 0;"></div>
-            <a href="/index.html"><span class="mif-home"></span> Federal Home</a>
+            <a href="/index.html"><span class="mif-home"></span> federal home</a>
           </div>
         </div>
       </div>
@@ -899,13 +942,13 @@ a:hover {
 
   <!-- Navigation Bar -->
   <nav class="subnav">
-    <a href="/externalaffairs.html">External Home</a>
-    <a href="/externalaffairs_departments.html" class="active">Departments</a>
-    <a href="/externalaffairs.html#travel-advisories">Travel Advisories</a>
-    <a href="/externalaffairs.html#treaties">Treaties Archive</a>
-    <a href="/externalaffairs.html#embassies">Global Embassies</a>
-    <a href="/externalaffairs.html#visa-services">Visa Services</a>
-    <a href="/index.html">← Federal Portal</a>
+    <a href="/externalaffairs.html">external home</a>
+    <a href="/externalaffairs_departments.html" class="active">departments</a>
+    <a href="/externalaffairs.html#travel-advisories">travel advisories</a>
+    <a href="/externalaffairs.html#treaties">treaties archive</a>
+    <a href="/externalaffairs.html#embassies">global embassies</a>
+    <a href="/externalaffairs.html#visa-services">visa services</a>
+    <a href="/index.html">← federal portal</a>
   </nav>
 
   <!-- Content Grid -->
@@ -1113,13 +1156,13 @@ a:hover {
 
 
       <div class="card" style="font-size: 12px; line-height: 1.6;">
-        <h3 style="color: var(--text-main); margin-bottom: 6px;">Official Government Seal</h3>
-        <p style="color: var(--text-muted); margin-bottom: 8px;">United Provinces of Sangaia &bull; Sovereign Constitutional Gateway</p>
+        <h3 style="color: var(--text-main); margin-bottom: 6px;">official government seal</h3>
+        <p style="color: var(--text-muted); margin-bottom: 8px;">united provinces of sangaia &bull; sovereign constitutional gateway</p>
         <div style="display: flex; flex-direction: column; gap: 4px; color: var(--text-muted);">
-          <div><strong style="color: var(--text-main);">Jurisdiction:</strong> 5 Provinces (New Jasper, New Madison, Liveland, Sentinel, Columbia)</div>
-          <div><strong style="color: var(--text-main);">Currency:</strong> $ (Sangaian Dollar)</div>
-          <div><strong style="color: var(--text-main);">Standards:</strong> Панотерм (°Пт) &bull; Мономер (Мн)</div>
-          <div><strong style="color: var(--text-main);">Classification:</strong> Verified Official Portal</div>
+          <div><strong style="color: var(--text-main);">jurisdiction:</strong> 5 provinces (new jasper, new madison, liveland, sentinel, columbia)</div>
+          <div><strong style="color: var(--text-main);">currency:</strong> $ (sangaian dollar)</div>
+          <div><strong style="color: var(--text-main);">standards:</strong> панотерм (°пт) &bull; мономер (мн)</div>
+          <div><strong style="color: var(--text-main);">classification:</strong> verified official portal</div>
         </div>
       </div>
 

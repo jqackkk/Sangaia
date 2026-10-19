@@ -36,7 +36,7 @@ HEALTHCARE_NAV_TABS_SUBDOMAIN = [
 def build_hospitals_page():
     title = "5-Province Hospital Emergency Network & Regional Medical Centers"
     theme = "theme-healthcare"
-    hero_title = "Hospital Emergency Network & Regional Medical Centers"
+    hero_title = "hospital emergency network & regional medical centers"
     hero_sub = "Level 1 trauma care, acute intensive triage, and regional medical facilities across all 5 sovereign provinces"
 
     sidebar_links = [
@@ -194,7 +194,7 @@ def build_hospitals_page():
 def build_services_page():
     title = "Comprehensive Medical Services & The Sangaian Health Charter"
     theme = "theme-healthcare"
-    hero_title = "Comprehensive Medical Services"
+    hero_title = "comprehensive medical services"
     hero_sub = "Guaranteed universal coverage, zero out-of-pocket fees, preventative care, and specialized surgery"
 
     sidebar_links = [
@@ -314,7 +314,7 @@ def build_services_page():
 def build_research_page():
     title = "Medical Research, Clinical Trials & DDCR Liaison"
     theme = "theme-healthcare"
-    hero_title = "Medical Research & Development Directorate"
+    hero_title = "medical research & development directorate"
     hero_sub = "Ethical clinical trials, open-access biomedical literature, non-commercial patents & disease surveillance"
 
     sidebar_links = [
@@ -400,7 +400,7 @@ def build_research_page():
 def build_support_page():
     title = "Patient Support, Citizen Advocacy & Healthcare FAQ"
     theme = "theme-healthcare"
-    hero_title = "Patient Support & Citizen Advocacy"
+    hero_title = "patient support & citizen advocacy"
     hero_sub = "24/7 medical advice hotline, patient rights, hospital navigator, and comprehensive healthcare FAQ"
 
     sidebar_links = [

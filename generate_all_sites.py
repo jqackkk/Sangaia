@@ -22,15 +22,15 @@ with open(CSS_PATH, "r", encoding="utf-8") as _f:
     MASTER_EMBEDDED_CSS = _f.read()
 
 THEME_MINISTRY_MAP = {
-    "theme-executive": ("Ministry of the Executive", "executive.html"),
-    "theme-treasury": ("Ministry of the Treasury", "treasury.html"),
-    "theme-work": ("Ministry of Work", "work.html"),
-    "theme-healthcare": ("Ministry of Healthcare", "healthcare.html"),
-    "theme-education": ("Ministry of Education", "education.html"),
-    "theme-domestic": ("Ministry of Domestic Affairs", "domesticaffairs.html"),
-    "theme-external": ("Ministry of External Affairs", "externalaffairs.html"),
-    "theme-environment": ("Ministry of the Environment", "environment.html"),
-    "theme-propaganda": ("Ministry of Propaganda", "propaganda.html"),
+    "theme-executive": ("ministry of the executive", "executive.html"),
+    "theme-treasury": ("ministry of the treasury", "treasury.html"),
+    "theme-work": ("ministry of work", "work.html"),
+    "theme-healthcare": ("ministry of healthcare", "healthcare.html"),
+    "theme-education": ("ministry of education", "education.html"),
+    "theme-domestic": ("ministry of domestic affairs", "domesticaffairs.html"),
+    "theme-external": ("ministry of external affairs", "externalaffairs.html"),
+    "theme-environment": ("ministry of the environment", "environment.html"),
+    "theme-propaganda": ("ministry of propaganda", "propaganda.html"),
 }
 MINISTRY_SUBDIRS = {"MoEX", "mEx", "mT", "mW", "mH", "mEd", "mE", "MdA", "MiA", "MtE", "mEnv", "mP"}
 
@@ -61,7 +61,7 @@ def generate_page(
         if theme_class in THEME_MINISTRY_MAP:
             brand_text = THEME_MINISTRY_MAP[theme_class][0]
         else:
-            brand_text = "Sangaia Live"
+            brand_text = "sangaia live"
 
     if brand_url is None:
         if theme_class in THEME_MINISTRY_MAP:
@@ -77,13 +77,13 @@ def generate_page(
         nav_tabs = custom_nav_tabs
     else:
         nav_tabs = [
-            ("home", "Home", "/index.html"),
-            ("overview", "Overview", "/index.html#overview"),
-            ("provinces", "5 Provinces", "/index.html#provinces"),
-            ("aeretocracy", "Aeretocracy", "/index.html#aeretocracy"),
-            ("ministries", "9 Ministries", "/index.html#ministries"),
-            ("services", "Services", "/services.html"),
-            ("units", "Units (Мн • °Пт)", "/units.html"),
+            ("home", "home", "/index.html"),
+            ("overview", "overview", "/index.html#overview"),
+            ("provinces", "5 provinces", "/index.html#provinces"),
+            ("aeretocracy", "the aeretocracy", "/index.html#aeretocracy"),
+            ("ministries", "9 ministries", "/index.html#ministries"),
+            ("services", "services", "/services.html"),
+            ("units", "units (мн • °пт)", "/units.html"),
         ]
 
     subnav_html = ""
@@ -103,8 +103,8 @@ def generate_page(
 
         sidebar_nav_html = f"""
       <div class="card">
-        <h3>{sidebar_title or 'Directory & Navigation'}</h3>
-        <p style="color: var(--text-muted); font-size: 12px; margin-bottom: 8px;">{sidebar_subtitle or 'Official Portals'}</p>
+        <h3>{sidebar_title or 'directory & navigation'}</h3>
+        <p style="color: var(--text-muted); font-size: 12px; margin-bottom: 8px;">{sidebar_subtitle or 'official portals'}</p>
         <ul class="sidebar-nav-list">
           {links_rendered}
         </ul>
@@ -114,13 +114,13 @@ def generate_page(
     if sidebar_info_html is None:
         sidebar_info_html = """
       <div class="card" style="font-size: 12px; line-height: 1.6;">
-        <h3 style="color: var(--text-main); margin-bottom: 6px;">Official Government Seal</h3>
-        <p style="color: var(--text-muted); margin-bottom: 8px;">United Provinces of Sangaia &bull; Sovereign Constitutional Gateway</p>
+        <h3 style="color: var(--text-main); margin-bottom: 6px;">official government seal</h3>
+        <p style="color: var(--text-muted); margin-bottom: 8px;">united provinces of sangaia &bull; sovereign constitutional gateway</p>
         <div style="display: flex; flex-direction: column; gap: 4px; color: var(--text-muted);">
-          <div><strong style="color: var(--text-main);">Jurisdiction:</strong> 5 Provinces (New Jasper, New Madison, Liveland, Sentinel, Columbia)</div>
-          <div><strong style="color: var(--text-main);">Currency:</strong> $ (Sangaian Dollar)</div>
-          <div><strong style="color: var(--text-main);">Standards:</strong> Панотерм (°Пт) &bull; Мономер (Мн)</div>
-          <div><strong style="color: var(--text-main);">Classification:</strong> Verified Official Portal</div>
+          <div><strong style="color: var(--text-main);">jurisdiction:</strong> 5 provinces (new jasper, new madison, liveland, sentinel, columbia)</div>
+          <div><strong style="color: var(--text-main);">currency:</strong> $ (sangaian dollar)</div>
+          <div><strong style="color: var(--text-main);">standards:</strong> панотерм (°пт) &bull; мономер (мн)</div>
+          <div><strong style="color: var(--text-main);">classification:</strong> verified official portal</div>
         </div>
       </div>
 """
@@ -136,7 +136,7 @@ def generate_page(
   <style>
 {MASTER_EMBEDDED_CSS}
   </style>
-  <link rel="stylesheet" href="/css/sangaia-live.css?v=20261019_v4">
+  <link rel="stylesheet" href="/css/sangaia-live.css?v=20261019_v5">
   <script src="/js/sangaia-live.js" defer></script>
 </head>
 <body class="{theme_class}">
@@ -149,21 +149,21 @@ def generate_page(
       </div>
       <div class="top-right">
         <form class="search-box" action="/services.html" method="get">
-          <input type="text" name="q" placeholder="Search services, laws &amp; gazette" />
+          <input type="text" name="q" placeholder="search services, laws &amp; gazette" />
           <button type="submit" aria-label="Search"><span class="mif-search"></span></button>
         </form>
         <div class="user-profile-menu" id="userProfileMenu">
           <img src="/images/default-wl.png" alt="Avatar" width="28" height="28" style="width:28px; height:28px; border-radius:2px; object-fit:contain; background:#ffffff;" />
-          <span>Jqackkk</span>
+          <span>jqackkk</span>
           <span class="mif-arrow-drop-down" style="font-size: 14px;"></span>
           <div class="user-dropdown">
-            <div class="user-dropdown-header">Citizen: SG-2026-F1E8</div>
-            <a href="/id.html"><span class="mif-profile"></span> Sangaia ID Card</a>
-            <a href="/citizenship.html"><span class="mif-checkmark"></span> Citizenship Status</a>
-            <a href="/units.html"><span class="mif-compass"></span> Units &amp; Measures</a>
-            <a href="/dashboard.html"><span class="mif-chart-bars"></span> Sovereign Registry</a>
+            <div class="user-dropdown-header">citizen: sg-2026-f1e8</div>
+            <a href="/id.html"><span class="mif-profile"></span> sangaia id card</a>
+            <a href="/citizenship.html"><span class="mif-checkmark"></span> citizenship status</a>
+            <a href="/units.html"><span class="mif-compass"></span> units &amp; measures</a>
+            <a href="/dashboard.html"><span class="mif-chart-bars"></span> sovereign registry</a>
             <div style="border-top:1px solid #e1dfdd; margin:4px 0;"></div>
-            <a href="/index.html"><span class="mif-home"></span> Federal Home</a>
+            <a href="/index.html"><span class="mif-home"></span> federal home</a>
           </div>
         </div>
       </div>

@@ -27,47 +27,47 @@ def build_index():
     title = "Sangaia Live Sovereign Portal"
     theme = "theme-federal"
     tab = "home"
-    hero_title = "The United Provinces of Sangaia"
-    hero_sub = "Official Sovereign Gateway &bull; The Aeretocracy &bull; One Live Wave 4 Infrastructure"
+    hero_title = "the united provinces of sangaia"
+    hero_sub = "official sovereign gateway &bull; the aeretocracy &bull; one live wave 4 infrastructure"
 
     sidebar_links = [
-        {"label": "Sovereign Overview", "url": "#overview", "active": True},
-        {"label": "Provincial Showcase", "url": "#showcase", "active": False},
-        {"label": "The Aeretocracy", "url": "#aeretocracy", "active": False},
-        {"label": "9 Federal Ministries", "url": "#ministries", "active": False},
-        {"label": "5 Sovereign Provinces", "url": "#provinces", "active": False},
-        {"label": "Government Structure", "url": "/government.html", "active": False},
-        {"label": "Citizenship Application", "url": "/citizenship.html", "active": False}
+        {"label": "sovereign overview", "url": "#overview", "active": True},
+        {"label": "provincial showcase", "url": "#showcase", "active": False},
+        {"label": "the aeretocracy", "url": "#aeretocracy", "active": False},
+        {"label": "9 federal ministries", "url": "#ministries", "active": False},
+        {"label": "5 sovereign provinces", "url": "#provinces", "active": False},
+        {"label": "government structure", "url": "/government.html", "active": False},
+        {"label": "citizenship application", "url": "/citizenship.html", "active": False}
     ]
 
     main_content = """
     <div class="ol-proclamation-card" id="overview">
-        <div style="font-weight:600; color:var(--primary); margin-bottom:4px;">Federal Gateway Proclamation</div>
-        <div>Welcome to Sangaia Live: The unified sovereign gateway for all public services, interprovincial coordination, and constitutional identity across the five united provinces.</div>
+        <div style="font-weight:600; color:var(--primary); margin-bottom:4px;">federal gateway proclamation</div>
+        <div>welcome to sangaia live: the unified sovereign gateway for all public services, interprovincial coordination, and constitutional identity across the five united provinces.</div>
     </div>
 
     <!-- Official Republic Overview Card -->
     <div class="ol-card">
         <div class="ol-card-title">
-            <span>Executive Federal Overview</span>
-            <span class="ol-badge-tag ol-badge-success">Constitutional Republic</span>
+            <span>executive federal overview</span>
+            <span class="ol-badge-tag ol-badge-success">constitutional republic</span>
         </div>
         <p>Sangaia is a sovereign constitutional republic operating under the Aeretocracy. Sangaia unites five autonomous provinces—<strong>New Jasper, New Madison, Liveland, Sentinel, and Columbia</strong>—providing universal public services, guaranteed living wages ($25.00/hr floor), zero foreign sovereign debt, and tuition-free education and healthcare.</p>
         <div class="ol-grid-3" style="margin-top:12px;">
             <div style="background:#f8fafc; border:1px solid #e1dfdd; border-radius:2px; padding:10px; text-align:center;">
-                <div style="font-size:11px; color:#605e5c; text-transform:uppercase; font-weight:600;">Sovereign Currency</div>
-                <div style="font-size:18px; font-weight:700; color:#0078d4; margin:4px 0;">$ (Dollar)</div>
-                <div style="font-size:11px; color:#8a8886;">Zero Foreign Debt</div>
+                <div style="font-size:11px; color:#605e5c; text-transform:lowercase; font-weight:600;">sovereign currency</div>
+                <div style="font-size:18px; font-weight:700; color:#0078d4; margin:4px 0;">$ (dollar)</div>
+                <div style="font-size:11px; color:#8a8886;">zero foreign debt</div>
             </div>
             <div style="background:#f8fafc; border:1px solid #e1dfdd; border-radius:2px; padding:10px; text-align:center;">
-                <div style="font-size:11px; color:#605e5c; text-transform:uppercase; font-weight:600;">Temperature Standard</div>
-                <div style="font-size:18px; font-weight:700; color:#0078d4; margin:4px 0;">Панотерм (°Пт)</div>
-                <div style="font-size:11px; color:#8a8886;">°Пт = 0.5 &times; (°F - 32)</div>
+                <div style="font-size:11px; color:#605e5c; text-transform:lowercase; font-weight:600;">temperature standard</div>
+                <div style="font-size:18px; font-weight:700; color:#0078d4; margin:4px 0;">панотерм (°пт)</div>
+                <div style="font-size:11px; color:#8a8886;">°пт = 0.5 &times; (°f - 32)</div>
             </div>
             <div style="background:#f8fafc; border:1px solid #e1dfdd; border-radius:2px; padding:10px; text-align:center;">
-                <div style="font-size:11px; color:#605e5c; text-transform:uppercase; font-weight:600;">Distance Standard</div>
-                <div style="font-size:18px; font-weight:700; color:#0078d4; margin:4px 0;">Мономер (Мн)</div>
-                <div style="font-size:11px; color:#8a8886;">1 Мн = 2.5 cm</div>
+                <div style="font-size:11px; color:#605e5c; text-transform:lowercase; font-weight:600;">distance standard</div>
+                <div style="font-size:18px; font-weight:700; color:#0078d4; margin:4px 0;">мономер (мн)</div>
+                <div style="font-size:11px; color:#8a8886;">1 мн = 2.5 cm</div>
             </div>
         </div>
     </div>
@@ -77,9 +77,9 @@ def build_index():
         <div style="position:relative; height:240px; background:#2a3b4c; overflow:hidden;">
             <img src="/images/plants_banner.jpg" alt="Sangaia Landscape" style="width:100%; height:100%; object-fit:cover; opacity:0.9;">
             <div style="position:absolute; bottom:0; left:0; right:0; padding:16px 20px; background:linear-gradient(transparent, rgba(15,23,42,0.85)); color:#ffffff;">
-                <span class="ol-badge-tag" style="background:#0284c7; color:#fff; border-color:#38bdf8; margin-bottom:6px;">SOVEREIGN SHOWCASE</span>
-                <h2 style="color:#ffffff; font-size:22px; margin:0;">Pristine Biomes of the Five Provinces</h2>
-                <p class="ol-small" style="color:#e2e8f0; margin:4px 0 0;">New Jasper &bull; New Madison &bull; Liveland &bull; Sentinel &bull; Columbia</p>
+                <span class="ol-badge-tag" style="background:#0284c7; color:#fff; border-color:#38bdf8; margin-bottom:6px;">sovereign showcase</span>
+                <h2 style="color:#ffffff; font-size:22px; margin:0;">pristine biomes of the five provinces</h2>
+                <p class="ol-small" style="color:#e2e8f0; margin:4px 0 0;">new jasper &bull; new madison &bull; liveland &bull; sentinel &bull; columbia</p>
             </div>
         </div>
     </div>
@@ -87,8 +87,8 @@ def build_index():
     <!-- Republic Vision Card -->
     <div class="ol-card">
         <div class="ol-card-title">
-            <span>Better for Everyone. Including You.</span>
-            <span class="ol-badge-tag ol-badge-success">Constitutional Republic</span>
+            <span>better for everyone. including you.</span>
+            <span class="ol-badge-tag ol-badge-success">constitutional republic</span>
         </div>
         <p>Sangaia is established to resolve the failures of legacy commercial republics. Offering accessible land, guaranteed living wages ($25.00/hr floor), zero foreign sovereign debt, and free universal healthcare and education, Sangaia is united across five distinct provincial territories designed for clarity, virtue, and prosperity.</p>
         <p>Sangaia strives to advance civic virtue and public dignity each day, inviting every citizen and prospective migrant to contribute to our shared Commonwealth.</p>
@@ -97,8 +97,8 @@ def build_index():
     <!-- The Aeretocracy Framework Card -->
     <div class="ol-card" id="aeretocracy">
         <div class="ol-card-title">
-            <span>Reinvented Politics. Constitutionally Ruled.</span>
-            <a class="ol-title-link" href="/government.html">Learn About Government &rarr;</a>
+            <span>reinvented politics. constitutionally ruled.</span>
+            <a class="ol-title-link" href="/government.html">learn about government &rarr;</a>
         </div>
         <p>Sangaia has pioneered a constitutional form of government: <strong>The Aeretocracy</strong>. Unlike legacy states trapped in corporate lobbying or authoritarian party warfare, our system eliminates political parties in favor of institutional virtues, merit-based public exams, and transparent council governance.</p>
         <p>Sangaia provides familiar republican liberties with ironclad constitutional protections: <strong>It is structured so that no official—not even the Aeretocrat—can break the law</strong>.</p>
@@ -107,54 +107,54 @@ def build_index():
     <!-- 9 Federal Ministries Grid -->
     <div class="ol-card" id="ministries">
         <div class="ol-card-title">
-            <span>The Nine Federal Ministries of Sangaia</span>
-            <a class="ol-title-link" href="/services.html">View All 72+ Services &rarr;</a>
+            <span>the nine federal ministries of sangaia</span>
+            <a class="ol-title-link" href="/services.html">view all 72+ services &rarr;</a>
         </div>
         <div class="ol-grid-3">
             <div class="ol-card" style="margin-bottom:0; background:#fbfcfd;">
-                <strong style="color:#1e3a8a;">🏛️ Executive</strong>
+                <strong style="color:#1e3a8a;">🏛️ executive</strong>
                 <p class="ol-small ol-muted" style="margin:4px 0 8px;">Aeretocrat's Journal, Cabinet, National Budget &amp; Decrees.</p>
-                <a href="/executive.html" class="ol-btn ol-btn-sm" style="width:100%; text-align:center;">Portal &rarr;</a>
+                <a href="/executive.html" class="ol-btn ol-btn-sm" style="width:100%; text-align:center;">portal &rarr;</a>
             </div>
             <div class="ol-card" style="margin-bottom:0; background:#fbfcfd;">
-                <strong style="color:#0f766e;">💰 Treasury</strong>
+                <strong style="color:#0f766e;">💰 treasury</strong>
                 <p class="ol-small ol-muted" style="margin:4px 0 8px;">Zero Debt, Solidarity Loans, Tax Code &amp; Audits.</p>
-                <a href="/treasury.html" class="ol-btn ol-btn-sm" style="width:100%; text-align:center;">Portal &rarr;</a>
+                <a href="/treasury.html" class="ol-btn ol-btn-sm" style="width:100%; text-align:center;">portal &rarr;</a>
             </div>
             <div class="ol-card" style="margin-bottom:0; background:#fbfcfd;">
-                <strong style="color:#6b21a8;">⚒️ Work</strong>
+                <strong style="color:#6b21a8;">⚒️ work</strong>
                 <p class="ol-small ol-muted" style="margin:4px 0 8px;">Living Wage ($25/hr), Job Board &amp; Guild Rights.</p>
-                <a href="/work.html" class="ol-btn ol-btn-sm" style="width:100%; text-align:center;">Portal &rarr;</a>
+                <a href="/work.html" class="ol-btn ol-btn-sm" style="width:100%; text-align:center;">portal &rarr;</a>
             </div>
             <div class="ol-card" style="margin-bottom:0; background:#fbfcfd;">
-                <strong style="color:#b91c1c;">🏥 Healthcare</strong>
+                <strong style="color:#b91c1c;">🏥 healthcare</strong>
                 <p class="ol-small ol-muted" style="margin:4px 0 8px;">100% Free Universal Healthcare &amp; ER Capacity.</p>
-                <a href="/healthcare.html" class="ol-btn ol-btn-sm" style="width:100%; text-align:center;">Portal &rarr;</a>
+                <a href="/healthcare.html" class="ol-btn ol-btn-sm" style="width:100%; text-align:center;">portal &rarr;</a>
             </div>
             <div class="ol-card" style="margin-bottom:0; background:#fbfcfd;">
-                <strong style="color:#0284c7;">🎓 Education</strong>
+                <strong style="color:#0284c7;">🎓 education</strong>
                 <p class="ol-small ol-muted" style="margin:4px 0 8px;">Tuition-Free Universities, Textbooks &amp; Teachers.</p>
-                <a href="/education.html" class="ol-btn ol-btn-sm" style="width:100%; text-align:center;">Portal &rarr;</a>
+                <a href="/education.html" class="ol-btn ol-btn-sm" style="width:100%; text-align:center;">portal &rarr;</a>
             </div>
             <div class="ol-card" style="margin-bottom:0; background:#fbfcfd;">
-                <strong style="color:#1e293b;">🏢 Domestic Affairs</strong>
+                <strong style="color:#1e293b;">🏢 domestic affairs</strong>
                 <p class="ol-small ol-muted" style="margin:4px 0 8px;">Provincial Relations, Trade, DMV &amp; Highways.</p>
-                <a href="/domesticaffairs.html" class="ol-btn ol-btn-sm" style="width:100%; text-align:center;">Portal &rarr;</a>
+                <a href="/domesticaffairs.html" class="ol-btn ol-btn-sm" style="width:100%; text-align:center;">portal &rarr;</a>
             </div>
             <div class="ol-card" style="margin-bottom:0; background:#fbfcfd;">
-                <strong style="color:#db2777;">🌐 External Affairs</strong>
+                <strong style="color:#db2777;">🌐 external affairs</strong>
                 <p class="ol-small ol-muted" style="margin:4px 0 8px;">Worldwide Travel Advisories, Treaties &amp; Embassies.</p>
-                <a href="/externalaffairs.html" class="ol-btn ol-btn-sm" style="width:100%; text-align:center;">Portal &rarr;</a>
+                <a href="/externalaffairs.html" class="ol-btn ol-btn-sm" style="width:100%; text-align:center;">portal &rarr;</a>
             </div>
             <div class="ol-card" style="margin-bottom:0; background:#fbfcfd;">
-                <strong style="color:#15803d;">🌲 Environment</strong>
+                <strong style="color:#15803d;">🌲 environment</strong>
                 <p class="ol-small ol-muted" style="margin:4px 0 8px;">Weather in &deg;Пт, Biome Funds &amp; 3.4M Trees Planted.</p>
-                <a href="/environment.html" class="ol-btn ol-btn-sm" style="width:100%; text-align:center;">Portal &rarr;</a>
+                <a href="/environment.html" class="ol-btn ol-btn-sm" style="width:100%; text-align:center;">portal &rarr;</a>
             </div>
             <div class="ol-card" style="margin-bottom:0; background:#fbfcfd;">
-                <strong style="color:#ea580c;">📻 Propaganda</strong>
+                <strong style="color:#ea580c;">📻 propaganda</strong>
                 <p class="ol-small ol-muted" style="margin:4px 0 8px;">State TV, Live Radio Stream, Press &amp; Churches.</p>
-                <a href="/propaganda.html" class="ol-btn ol-btn-sm" style="width:100%; text-align:center;">Portal &rarr;</a>
+                <a href="/propaganda.html" class="ol-btn ol-btn-sm" style="width:100%; text-align:center;">portal &rarr;</a>
             </div>
         </div>
     </div>
@@ -162,32 +162,32 @@ def build_index():
 
     sidebar_right = """
     <div class="ol-sidebox">
-        <h3>Digital Citizenship</h3>
+        <h3>digital citizenship</h3>
         <p class="ol-small ol-muted">Equal opportunity civic naturalization for all who seek virtue, work, and community.</p>
         <div class="ol-mt-10">
-            <a href="/citizenship.html" class="ol-btn ol-btn-primary ol-btn-sm" style="width:100%; text-align:center;">Citizenship Charter</a>
-            <a href="/application.html" class="ol-btn ol-btn-sm" style="width:100%; text-align:center; margin-top:6px;">Apply for Citizenship</a>
+            <a href="/citizenship.html" class="ol-btn ol-btn-primary ol-btn-sm" style="width:100%; text-align:center;">citizenship charter</a>
+            <a href="/application.html" class="ol-btn ol-btn-sm" style="width:100%; text-align:center; margin-top:6px;">apply for citizenship</a>
         </div>
     </div>
     <div class="ol-sidebox">
-        <h3>Sovereign Measurement</h3>
+        <h3>sovereign measurement</h3>
         <p class="ol-small ol-muted">Sangaia standardizes upon base-10 Monomer distance (Мн) and Panotherm temperature (&deg;Пт).</p>
         <div class="ol-mt-10">
-            <a href="/units.html" class="ol-btn ol-btn-sm" style="width:100%; text-align:center;">Open Units Calculator</a>
+            <a href="/units.html" class="ol-btn ol-btn-sm" style="width:100%; text-align:center;">open units calculator</a>
         </div>
     </div>
     """
 
     federal_nav_tabs = [
-        ("home", "Federal Home", "/index.html"),
-        ("overview", "Overview", "#overview"),
-        ("showcase", "5 Provinces", "#showcase"),
-        ("aeretocracy", "The Aeretocracy", "#aeretocracy"),
-        ("ministries", "9 Ministries", "#ministries"),
-        ("services", "Services", "/services.html"),
-        ("units", "Units (Мн • °Пт)", "/units.html"),
+        ("home", "federal home", "/index.html"),
+        ("overview", "overview", "#overview"),
+        ("showcase", "5 provinces", "#showcase"),
+        ("aeretocracy", "the aeretocracy", "#aeretocracy"),
+        ("ministries", "9 ministries", "#ministries"),
+        ("services", "services", "/services.html"),
+        ("units", "units (мн • °пт)", "/units.html"),
     ]
-    generate_page("index.html", title, theme, tab, hero_title, hero_sub, "Sovereign Republic of Sangaia", "Federal Executive Gateway", "Live Infrastructure", sidebar_links, main_content, sidebar_right, custom_nav_tabs=federal_nav_tabs)
+    generate_page("index.html", title, theme, tab, hero_title, hero_sub, "sovereign republic of sangaia", "federal executive gateway", "live infrastructure", sidebar_links, main_content, sidebar_right, custom_nav_tabs=federal_nav_tabs)
 
 # -----------------------------------------------------------------------------
 # 2. SOVEREIGN WEIGHTS & MEASURES (units.html)
@@ -196,7 +196,7 @@ def build_units():
     title = "Sovereign Weights & Measures System"
     theme = "theme-education"
     tab = "units"
-    hero_title = "Sovereign Weights & Measures Directorate"
+    hero_title = "sovereign weights & measures directorate"
     hero_sub = "Official standard systems: The Панотерм (°Пт) & Мономер (Мн) • Base-10 scaling with human dimensions"
 
     sidebar_links = [
@@ -433,7 +433,7 @@ def build_services():
     title = "Sovereign Services Directory"
     theme = "theme-federal"
     tab = "services"
-    hero_title = "Directory of Government Services & Online Tools"
+    hero_title = "directory of government services & online tools"
     hero_sub = "Searchable registry of all 72+ statutory citizen portals across the 9 Federal Ministries"
 
     sidebar_links = [
@@ -585,7 +585,7 @@ def build_citizenship():
     title = "Sovereign Citizenship"
     theme = "theme-federal"
     tab = "home"
-    hero_title = "Citizenship & Civic Rights of Sangaia"
+    hero_title = "citizenship & civic rights of sangaia"
     hero_sub = "Equal opportunity naturalization, charter of liberties, civic responsibilities & the oath"
 
     sidebar_links = [
@@ -764,7 +764,7 @@ def build_societal_press():
     title = "State Gazette & Societal Press"
     theme = "theme-federal"
     tab = "home"
-    hero_title = "The State Gazette &amp; Societal Press"
+    hero_title = "the state gazette &amp; societal press"
     hero_sub = "Official public gazette, executive decrees, circulars, statutory regulations & open government archives"
 
     sidebar_links = [

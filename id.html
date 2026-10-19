@@ -183,7 +183,7 @@
       padding: 6px 14px;
       font-size: 11px;
       color: var(--text-muted);
-      text-transform: uppercase;
+      text-transform: lowercase;
       font-weight: 700;
       border-bottom: 1px solid var(--border);
       margin-bottom: 4px;
@@ -414,6 +414,22 @@
         overflow-x: auto;
       }
     }
+
+    /* All-Lowercase Metro Typography */
+    .brand a,
+    .brand span,
+    .hero-content h1,
+    .subnav a,
+    .side-nav-heading,
+    .side-nav-group a,
+    .card h2,
+    .btn-neutral,
+    .btn-primary,
+    button,
+    .user-dropdown a,
+    .user-dropdown-header {
+      text-transform: lowercase;
+    }
   </style>
 </head>
 <body>
@@ -422,11 +438,11 @@
   <header class="hero-header">
     <div class="top-bar">
       <div class="brand">
-        <a href="/index.html"><span class="mif-windows"></span> Sangaia ID</a>
+        <a href="/index.html"><span class="mif-windows"></span> sangaia id</a>
       </div>
       <div class="top-right">
         <form class="search-box" action="/services.html" method="get">
-          <input type="text" name="q" placeholder="Search citizens &amp; credentials..." />
+          <input type="text" name="q" placeholder="search citizens &amp; credentials..." />
           <button type="submit" aria-label="Search"><span class="mif-search"></span></button>
         </form>
         <div class="top-icons">
@@ -435,35 +451,35 @@
         </div>
         <div class="user-profile-menu" id="userProfileMenu">
           <img src="/images/default-wl.png" alt="Avatar" width="28" height="28" />
-          <span>Jqackkk</span>
+          <span>jqackkk</span>
           <span class="mif-arrow-drop-down" style="font-size: 14px;"></span>
           <div class="user-dropdown">
-            <div class="user-dropdown-header">Citizen: SG-2026-F1E8</div>
-            <a href="/id.html"><span class="mif-profile"></span> Sangaia ID Card</a>
-            <a href="/citizenship.html"><span class="mif-checkmark"></span> Citizenship Status</a>
-            <a href="/units.html"><span class="mif-compass"></span> Units &amp; Measures</a>
-            <a href="/dashboard.html"><span class="mif-chart-bars"></span> Sovereign Registry</a>
+            <div class="user-dropdown-header">citizen: sg-2026-f1e8</div>
+            <a href="/id.html"><span class="mif-profile"></span> sangaia id card</a>
+            <a href="/citizenship.html"><span class="mif-checkmark"></span> citizenship status</a>
+            <a href="/units.html"><span class="mif-compass"></span> units &amp; measures</a>
+            <a href="/dashboard.html"><span class="mif-chart-bars"></span> sovereign registry</a>
             <div style="border-top:1px solid #e1dfdd; margin:4px 0;"></div>
-            <a href="/index.html"><span class="mif-home"></span> Federal Home</a>
+            <a href="/index.html"><span class="mif-home"></span> federal home</a>
           </div>
         </div>
       </div>
     </div>
     <div class="hero-content">
-      <h1>People &bull; Sangaia ID</h1>
-      <p>Official Sovereign Citizen Credential &bull; Cryptographic Identity &bull; 5 Provinces</p>
+      <h1>people &bull; sangaia id</h1>
+      <p>official sovereign citizen credential &bull; cryptographic identity &bull; 5 provinces</p>
     </div>
   </header>
 
   <!-- Horizontal Navigation Bar -->
   <nav class="subnav">
-    <a href="/index.html">Federal Home</a>
-    <a href="/id.html" class="active">People &amp; ID</a>
-    <a href="/citizenship.html">Citizenship</a>
-    <a href="/services.html">Services</a>
-    <a href="/units.html">Units (Мн • °Пт)</a>
-    <a href="/dashboard.html">Registry Dashboard</a>
-    <a href="/government.html">Government</a>
+    <a href="/index.html">federal home</a>
+    <a href="/id.html" class="active">people &amp; id</a>
+    <a href="/citizenship.html">citizenship</a>
+    <a href="/services.html">services</a>
+    <a href="/units.html">units (мн • °пт)</a>
+    <a href="/dashboard.html">registry dashboard</a>
+    <a href="/government.html">government</a>
   </nav>
 
   <!-- Main Content Grid -->
@@ -471,24 +487,24 @@
     <!-- Left Column Navigation -->
     <aside>
       <div class="side-nav-group">
-        <div class="side-nav-heading">IDENTITY SERVICES</div>
+        <div class="side-nav-heading">identity services</div>
         <ul>
-          <li><a href="#card" class="active" onclick="switchNav(this)"><span class="mif-profile"></span> My Citizen ID</a></li>
-          <li><a href="#verify" onclick="switchNav(this)"><span class="mif-security"></span> Verify Credential</a></li>
-          <li><a href="#entitlements" onclick="switchNav(this)"><span class="mif-shield"></span> Civil Entitlements</a></li>
-          <li><a href="#provinces" onclick="switchNav(this)"><span class="mif-map"></span> 5 Provinces Registry</a></li>
-          <li><a href="#records" onclick="switchNav(this)"><span class="mif-lock"></span> Cryptographic Ledger</a></li>
+          <li><a href="#card" class="active" onclick="switchNav(this)"><span class="mif-profile"></span> my citizen id</a></li>
+          <li><a href="#verify" onclick="switchNav(this)"><span class="mif-security"></span> verify credential</a></li>
+          <li><a href="#entitlements" onclick="switchNav(this)"><span class="mif-shield"></span> civil entitlements</a></li>
+          <li><a href="#provinces" onclick="switchNav(this)"><span class="mif-map"></span> 5 provinces registry</a></li>
+          <li><a href="#records" onclick="switchNav(this)"><span class="mif-lock"></span> cryptographic ledger</a></li>
         </ul>
       </div>
 
       <div class="side-nav-group">
-        <div class="side-nav-heading">RELATED PLACES</div>
+        <div class="side-nav-heading">related places</div>
         <ul>
-          <li><a href="/citizenship.html"><span class="mif-checkmark"></span> Citizenship Status</a></li>
-          <li><a href="/literacy_test.html"><span class="mif-school"></span> Literacy Examination</a></li>
-          <li><a href="/application.html"><span class="mif-file-text"></span> Civic Applications</a></li>
-          <li><a href="/dashboard.html"><span class="mif-chart-bars"></span> Sovereign Dashboard</a></li>
-          <li><a href="/index.html"><span class="mif-home"></span> Federal Home</a></li>
+          <li><a href="/citizenship.html"><span class="mif-checkmark"></span> citizenship status</a></li>
+          <li><a href="/literacy_test.html"><span class="mif-school"></span> literacy examination</a></li>
+          <li><a href="/application.html"><span class="mif-file-text"></span> civic applications</a></li>
+          <li><a href="/dashboard.html"><span class="mif-chart-bars"></span> sovereign dashboard</a></li>
+          <li><a href="/index.html"><span class="mif-home"></span> federal home</a></li>
         </ul>
       </div>
 

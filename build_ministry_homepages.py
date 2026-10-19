@@ -19,7 +19,7 @@ def build_executive():
     title = "Ministry of the Executive & Office of the Aeretocrat"
     theme = "theme-executive"
     tab = "executive"
-    hero_title = "Office of the Aeretocrat & Ministry of the Executive"
+    hero_title = "office of the aeretocrat & ministry of the executive"
     hero_sub = "Whole-of-government administration, the Cabinet, constitutional decrees & the Aeretocrat's Journal"
 
     sidebar_links = [
@@ -344,7 +344,7 @@ def build_treasury():
     title = "Ministry of the Treasury"
     theme = "theme-treasury"
     tab = "treasury"
-    hero_title = "Ministry of the Treasury"
+    hero_title = "ministry of the treasury"
     hero_sub = "Statutory fiscal solvency, sovereign debt management, taxation, infrastructure bonds & audit ledgers"
 
     sidebar_links = [
@@ -551,7 +551,7 @@ def build_work():
     title = "Ministry of Work"
     theme = "theme-work"
     tab = "work"
-    hero_title = "Ministry of Work"
+    hero_title = "ministry of work"
     hero_sub = "Labor protections, living wage standards, national job placement & worker guilds"
 
     sidebar_links = [
@@ -873,7 +873,7 @@ def build_healthcare():
     title = "Ministry of Healthcare"
     theme = "theme-healthcare"
     tab = "healthcare"
-    hero_title = "Ministry of Healthcare"
+    hero_title = "ministry of healthcare"
     hero_sub = "Universal state-sponsored health coverage, hospital emergency room triage & public disease control"
 
     sidebar_links = [
@@ -1042,7 +1042,7 @@ def build_education():
     title = "Ministry of Education"
     theme = "theme-education"
     tab = "education"
-    hero_title = "Ministry of Education"
+    hero_title = "ministry of education"
     hero_sub = "Universal public instruction, open digital textbook repositories, teacher certifications & higher ed grants"
 
     sidebar_links = [
@@ -1181,7 +1181,7 @@ def build_domestic():
     title = "Ministry of Domestic Affairs"
     theme = "theme-domestic"
     tab = "domestic"
-    hero_title = "Ministry of Domestic Affairs"
+    hero_title = "ministry of domestic affairs"
     hero_sub = "Provincial relations, interstate trade, federal-provincial coordination, road & highway services"
 
     sidebar_links = [
@@ -1340,7 +1340,7 @@ def build_external():
     title = "Ministry of External Affairs"
     theme = "theme-external"
     tab = "external"
-    hero_title = "Ministry of External Affairs"
+    hero_title = "ministry of external affairs"
     hero_sub = "Global travel advisories for all nations, sovereign treaties, embassies & diplomatic protocol"
 
     sidebar_links = [
@@ -1493,7 +1493,7 @@ def build_environment():
     title = "Ministry of the Environment"
     theme = "theme-environment"
     tab = "environment"
-    hero_title = "Ministry of the Environment"
+    hero_title = "ministry of the environment"
     hero_sub = "Atmospheric telemetry (°Пт), biome funding, wildlife intervention, food availability & conservation"
 
     sidebar_links = [
@@ -1734,7 +1734,7 @@ def build_propaganda():
     title = "Ministry of Propaganda"
     theme = "theme-propaganda"
     tab = "propaganda"
-    hero_title = "Ministry of Propaganda & Public Information"
+    hero_title = "ministry of propaganda & public information"
     hero_sub = "Civic broadcasting, live streaming radio, reporter integrity standards & recognized churches"
 
     sidebar_links = [

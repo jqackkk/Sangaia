@@ -240,7 +240,7 @@ a:hover {
   padding: 6px 14px;
   font-size: 11px;
   color: var(--text-muted);
-  text-transform: uppercase;
+  text-transform: lowercase;
   font-weight: 700;
   border-bottom: 1px solid var(--border);
   margin-bottom: 4px;
@@ -434,7 +434,7 @@ a:hover {
   font-weight: 600;
   padding: 2px 7px;
   border-radius: 2px;
-  text-transform: uppercase;
+  text-transform: lowercase;
   letter-spacing: 0.3px;
 }
 
@@ -646,7 +646,7 @@ a:hover {
 
 .metric-box .metric-lbl {
   font-size: 11px;
-  text-transform: uppercase;
+  text-transform: lowercase;
   color: var(--text-muted);
   font-weight: 600;
 }
@@ -813,7 +813,7 @@ a:hover {
 .ol-btn-primary { background: var(--primary); color: #fff; border-color: transparent; }
 .ol-btn-primary:hover { filter: brightness(0.92); color: #fff; }
 .ol-btn-sm { padding: 4px 8px; font-size: 11.5px; }
-.ol-badge-tag { display: inline-block; font-size: 11px; font-weight: 600; padding: 2px 7px; border-radius: 2px; text-transform: uppercase; letter-spacing: 0.3px; background: #e0f2fe; color: #0369a1; border: 1px solid #bae6fd; }
+.ol-badge-tag { display: inline-block; font-size: 11px; font-weight: 600; padding: 2px 7px; border-radius: 2px; text-transform: lowercase; letter-spacing: 0.3px; background: #e0f2fe; color: #0369a1; border: 1px solid #bae6fd; }
 .ol-badge-success { background: #dcfce7; color: #15803d; border: 1px solid #bbf7d0; }
 .ol-grid-2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 12px; }
 .ol-grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px; }
@@ -829,7 +829,7 @@ a:hover {
 .ol-mt-10 { margin-top: 10px; }
 .modal-telemetry-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 10px; margin-top: 10px; }
 .telemetry-card { background: #f8fafc; border: 1px solid var(--border); border-radius: 2px; padding: 8px; text-align: center; }
-.telemetry-name { font-size: 11px; color: var(--text-muted); text-transform: uppercase; font-weight: 600; }
+.telemetry-name { font-size: 11px; color: var(--text-muted); text-transform: lowercase; font-weight: 600; }
 .telemetry-val { font-size: 18px; font-weight: 700; color: var(--primary); margin: 2px 0; }
 .telemetry-sub { font-size: 11px; color: var(--text-light); }
 .modal-results-box { display: none; background: #f0fdf4; border: 1px solid #bbf7d0; border-radius: 2px; padding: 12px; margin: 12px 18px; font-size: 12.5px; }
@@ -847,4 +847,47 @@ a:hover {
   .hero-header {
     padding: 16px 20px 20px 20px;
   }
+}
+
+/* ==========================================================================
+   Metro All-Lowercase Typography for Headings, Titles & Navigation
+   ========================================================================== */
+h1, h2, h3, h4, h5, h6,
+.brand a,
+.brand span,
+.hero-content h1,
+.subnav a,
+.sidebar h3,
+.sidebar h4,
+.card h1,
+.card h2,
+.card h3,
+.card h4,
+.ol-card-title,
+.ol-card-title span,
+.sovereign-card h3,
+.docket-entry-title,
+.docket-entry-header strong,
+.sidebar-nav-list a,
+.side-nav-item,
+.side-nav-group-title,
+.side-nav-heading,
+.side-nav-group a,
+.ol-title-link,
+.dept-title,
+.dept-tool-item h4,
+.data-table th,
+.ol-table th,
+th,
+.badge,
+.ol-badge-tag,
+.btn,
+.ol-btn,
+button,
+.telemetry-name,
+.metric-lbl,
+.user-dropdown a,
+.user-dropdown-header,
+.ol-proclamation-card div:first-child {
+  text-transform: lowercase;
 }
