@@ -754,14 +754,14 @@
                     <div class="weather-temp-box">
                         <div class="weather-icon-large" id="weather-icon">⛅</div>
                         <div style="display: flex; align-items: baseline;">
-                            <span class="weather-degrees" id="weather-temp">21</span>
-                            <span class="weather-unit-toggle" onclick="toggleTempUnit()" id="weather-unit">°C</span>
+                            <span class="weather-degrees" id="weather-temp">19</span>
+                            <span class="weather-unit-toggle" onclick="toggleTempUnit()" id="weather-unit" title="Click to cycle °Пт / °C / °F">°Пт</span>
                         </div>
                     </div>
 
                     <div>
                         <div class="weather-condition-text" id="weather-condition-desc">Partly Cloudy & Pleasant</div>
-                        <div style="font-size: 0.88rem; color: #557257;" id="weather-feels">Feels like 21°C &bull; Optimal Ambient Humidity</div>
+                        <div style="font-size: 0.88rem; color: #557257;" id="weather-feels">Feels like 19°Пт (21°C / 70°F) &bull; Панотерм Scale</div>
                     </div>
 
                     <div class="weather-submetrics">
@@ -1234,7 +1234,7 @@
 <script>
     // --- LIVE WEATHER TELEMETRY ENGINE (Open-Meteo & Geolocation) ---
     let currentTempC = 21;
-    let isFahrenheit = false;
+    let currentUnitMode = 'Pt'; // 'Pt' (Панотерм), 'C' (Celsius), 'F' (Fahrenheit)
 
     const provincialStations = {
         veridia: {
@@ -1313,9 +1313,20 @@
         const container = document.getElementById('forecast-container');
         if (!container) return;
         container.innerHTML = list.map(item => {
-            const max = isFahrenheit ? Math.round(item.max * 9/5 + 32) : Math.round(item.max);
-            const min = isFahrenheit ? Math.round(item.min * 9/5 + 32) : Math.round(item.min);
-            const unit = isFahrenheit ? "°F" : "°";
+            let max, min, unit;
+            if (currentUnitMode === 'Pt') {
+                max = Math.round(item.max * 0.9);
+                min = Math.round(item.min * 0.9);
+                unit = "°Пт";
+            } else if (currentUnitMode === 'F') {
+                max = Math.round(item.max * 9/5 + 32);
+                min = Math.round(item.min * 9/5 + 32);
+                unit = "°F";
+            } else {
+                max = Math.round(item.max);
+                min = Math.round(item.min);
+                unit = "°C";
+            }
             return `
                 <div class="forecast-day-box">
                     <div class="forecast-day-name">${item.day}</div>
@@ -1332,27 +1343,66 @@
         document.getElementById('weather-condition-desc').textContent = condText;
         document.getElementById('weather-icon').textContent = icon;
         document.getElementById('weather-humidity').textContent = hum;
-        document.getElementById('weather-wind').textContent = wind;
+        
+        // Convert wind to Sangaian Kilomer/h (1 Кмн = 1.5 km)
+        const windNum = parseInt(wind) || 12;
+        const windKmn = Math.round(windNum / 1.5);
+        document.getElementById('weather-wind').textContent = `${windKmn} Кмн/h (${windNum} km/h)`;
         document.getElementById('weather-aqi').textContent = aqi;
         document.getElementById('weather-precip').textContent = precip;
 
-        const dispTemp = isFahrenheit ? Math.round(tempC * 9/5 + 32) : Math.round(tempC);
-        const dispFeels = isFahrenheit ? Math.round(feelsC * 9/5 + 32) : Math.round(feelsC);
-        const unit = isFahrenheit ? "°F" : "°C";
+        let dispTemp, dispFeels, unit, subtext;
+        if (currentUnitMode === 'Pt') {
+            dispTemp = Math.round(tempC * 0.9);
+            dispFeels = Math.round(feelsC * 0.9);
+            unit = "°Пт";
+            subtext = `Feels like ${dispFeels}°Пт (${Math.round(feelsC)}°C / ${Math.round(feelsC * 9/5 + 32)}°F) &bull; Панотерм Scale`;
+        } else if (currentUnitMode === 'F') {
+            dispTemp = Math.round(tempC * 9/5 + 32);
+            dispFeels = Math.round(feelsC * 9/5 + 32);
+            unit = "°F";
+            subtext = `Feels like ${dispFeels}°F (${Math.round(tempC * 0.9)}°Пт) &bull; Fahrenheit Scale`;
+        } else {
+            dispTemp = Math.round(tempC);
+            dispFeels = Math.round(feelsC);
+            unit = "°C";
+            subtext = `Feels like ${dispFeels}°C (${Math.round(tempC * 0.9)}°Пт) &bull; Celsius Scale`;
+        }
 
         document.getElementById('weather-temp').textContent = dispTemp;
         document.getElementById('weather-unit').textContent = unit;
-        document.getElementById('weather-feels').innerHTML = `Feels like ${dispFeels}${unit} &bull; Optimal Ambient Humidity`;
+        document.getElementById('weather-feels').innerHTML = subtext;
 
         if (forecast) renderForecast(forecast);
     }
 
     function toggleTempUnit() {
-        isFahrenheit = !isFahrenheit;
-        const station = document.getElementById('weather-station-name').textContent;
-        const temp = isFahrenheit ? Math.round(currentTempC * 9/5 + 32) : Math.round(currentTempC);
+        if (currentUnitMode === 'Pt') {
+            currentUnitMode = 'C';
+        } else if (currentUnitMode === 'C') {
+            currentUnitMode = 'F';
+        } else {
+            currentUnitMode = 'Pt';
+        }
+        
+        let temp, unit, feels;
+        if (currentUnitMode === 'Pt') {
+            temp = Math.round(currentTempC * 0.9);
+            unit = "°Пт";
+            feels = `Feels like ${temp}°Пт (${Math.round(currentTempC)}°C) &bull; Панотерм Scale`;
+        } else if (currentUnitMode === 'F') {
+            temp = Math.round(currentTempC * 9/5 + 32);
+            unit = "°F";
+            feels = `Feels like ${temp}°F (${Math.round(currentTempC * 0.9)}°Пт) &bull; Fahrenheit Scale`;
+        } else {
+            temp = Math.round(currentTempC);
+            unit = "°C";
+            feels = `Feels like ${temp}°C (${Math.round(currentTempC * 0.9)}°Пт) &bull; Celsius Scale`;
+        }
+
         document.getElementById('weather-temp').textContent = temp;
-        document.getElementById('weather-unit').textContent = isFahrenheit ? "°F" : "°C";
+        document.getElementById('weather-unit').textContent = unit;
+        document.getElementById('weather-feels').innerHTML = feels;
         
         // Re-render forecast with updated unit
         const activePill = document.querySelector('.station-pill.active');
