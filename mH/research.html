@@ -2,254 +2,343 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Research - Ministry of Healthcare</title>
-    <style>
-        /* --- FRUTIGER AERO / SKEUOMORPHIC STYLES --- */
-        :root {
-            --glass-blue: rgba(220, 245, 255, 0.85);
-            --gloss-highlight: rgba(255, 255, 255, 0.9);
-            --ocean-blue: #c62828;
-            --fresh-green: #0277bd;
-            --text-dark: #2c3e50;
-            --text-light: #ffffff;
-        }
-
-        body {
-            background: #ffffff;
-            min-height: 100dvh;
-            width: 100%;
-            display: flex;
-            align-items: center;
-            justify-content: flex-start;
-            flex-direction: column;
-            margin: 0;
-            font-family: 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-            color: var(--text-dark);
-        }
-
-        .main-container {
-            width: 100%;
-            margin: 0;
-            background: transparent;
-            padding: 0;
-            flex-grow: 1; 
-        }
-
-        
-
-        
-
-        h1 { margin: 0; font-size: 2.5em; letter-spacing: -1px; }
-        
-
-        #globalheader {
-            display: flex;
-            align-items: center;
-            position: relative;
-            width: 100%;
-            height: 38px;
-            background: linear-gradient(to bottom, #5e5e5e 0%, #3e3e3e 50%, #2d2d2d 51%, #1f1f1f 100%);
-            border-top: 1px solid #222;
-            border-bottom: 1px solid #000;
-            box-shadow: inset 0 1px 0 rgba(255,255,255,0.15), 0 2px 4px rgba(0,0,0,0.2);
-            font-size: 11px;
-            position: relative;
-            z-index: 99;
-        }
-
-        #globalnav {
-            flex-grow: 1;
-            margin: 0;
-            padding: 0;
-            list-style: none;
-            display: flex;
-            justify-content: center;
-            height: 100%;
-        }
-
-        #globalnav li { position: relative; height: 100%; display: flex; align-items: center; }
-        #globalnav li::after {
-            content: ""; position: absolute; right: 0; width: 1px; height: 100%;
-            background: linear-gradient(to bottom, #333, #111); box-shadow: 1px 0 0 rgba(255,255,255,0.08);
-        }
-        #globalnav li:first-child::before {
-            content: ""; position: absolute; left: 0; width: 1px; height: 100%;
-            background: linear-gradient(to bottom, #333, #111); box-shadow: 1px 0 0 rgba(255,255,255,0.08);
-        }
-
-        #globalnav li a {
-            display: block; color: #e8e8e8; text-decoration: none; text-shadow: 0 -1px 0 rgba(0,0,0,0.8);
-            font-weight: bold; padding: 0 24px; line-height: 38px;
-            transition: text-shadow 0.2s ease, color 0.2s ease, background 0.2s ease, box-shadow 0.2s ease;
-        }
-
-        #globalnav li a:hover {
-            color: #fff;
-            background: linear-gradient(rgba(255,255,255,0.05), rgba(255,255,255,0));
-            text-shadow: 0 0 8px rgba(255, 255, 255, 0.8), 0 -1px 0 rgba(0,0,0,0.8);
-        }
-        
-        #globalnav li a.active { color: #fff; background: rgba(0,0,0,0.2); box-shadow: inset 0 2px 5px rgba(0,0,0,0.3); }
-
-        .sangaia-btn {
-            font-size: 0.9rem; font-family: "myriad-pro", "Segoe UI", sans-serif; height: 2.5em;
-            padding: 0 1em; width: 15em; border-radius: 3px; position: relative; overflow: hidden;
-            cursor: pointer;  text-decoration: none; display: inline-flex;
-            align-items: center; justify-content: center; margin: 5px; 
-            
-             
-             box-sizing: border-box;
-        background: linear-gradient(to bottom, #e53935 0%, #c62828 100%); box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1); border: 1px solid #b71c1c; color: white;}
-
-        
-
-        
-
-        .sangaia-btn:hover { background: linear-gradient(to bottom, #ef5350 0%, #d32f2f 100%); }
-        .sangaia-btn span { position: relative; z-index: 3; font-weight: 600; text-shadow: 0 1px 1px rgba(0,0,0,0.3); }
-
-        .sangaia-btn.active, .sangaia-btn:active {
-            
-             
-             
-        background: linear-gradient(to bottom, #b71c1c 0%, #7f0000 100%); box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.2); border: 1px solid #7f0000; color: white;}
-
-        .sangaia-btn.active span, .sangaia-btn:active span { text-shadow: 0 1px 2px rgba(0, 0, 0, 0.4); }
-
-        .content-wrapper { padding: 30px; width: 100%; box-sizing: border-box; }
-
-        .glass-panel {
-            background: linear-gradient(to bottom, #fcfcfc 0%, #f1f1f1 100%);
-            border: 1px solid #ddd; border-radius: 8px; padding: 20px; margin-bottom: 25px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.05), inset 0 1px 0 #fff; position: relative;
-        }
-
-        .glass-panel h2 { margin: 0 0 15px; color: #c62828; border-bottom: 1px solid #eee; padding-bottom: 10px; font-size: 1.4em; }
-        
-        /* --- 3D FLIP CAROUSEL STYLES --- */
-        .carousel-container {
-            width: 100%;
-            max-width: 1200px;
-            height: 300px;
-            margin: 0 auto 25px auto;
-            perspective: 1000px;
-            border-radius: 8px;
-            border: 1px solid #ddd;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.05), inset 0 1px 0 #fff;
-            background: #fff;
-            overflow: hidden; /* Ensures images don't spill out during flip */
-        }
-
-        .carousel-track {
-            width: 100%;
-            height: 100%;
-            position: relative;
-            transform-style: preserve-3d;
-            transition: transform 1s cubic-bezier(0.645, 0.045, 0.355, 1); /* Smooth "Apple-like" easing */
-        }
-
-        .carousel-slide {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            backface-visibility: hidden;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .carousel-slide img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            object-position: bottom;
-        }
-
-        /* We structure the slides as faces of a vertical prism/cube.
-           Since we have 4 slides, we can treat them like a 4-sided spinner.
-           Height is 300px.
-           TranslateZ = 300px / 2 = 150px.
-        */
-        .slide-1 { transform: rotateX(0deg) translateZ(150px); }
-        .slide-2 { transform: rotateX(-90deg) translateZ(150px); }
-        .slide-3 { transform: rotateX(-180deg) translateZ(150px); }
-        .slide-4 { transform: rotateX(-270deg) translateZ(150px); }
-
-        .content-grid { display: grid; grid-template-columns: 1fr; gap: 20px; max-width: 1200px; margin: 0 auto; }
-        @media (min-width: 768px) { .content-grid { grid-template-columns: 2fr 1fr; } }
-
-        footer { text-align: center; padding: 20px; font-size: 0.9em; background: rgba(255,255,255,0.6); margin-top: auto; }
-        p { line-height: 1.6; margin: 0 0 15px; }
-    </style>
+    <title>Ministry of Healthcare :: Sangaia Live</title>
+    <link rel="stylesheet" href="/css/sangaia-live.css">
+    <script src="/js/sangaia-live.js" defer></script>
 </head>
-<body>
-<div class="main-container">
-    
-    <nav id="globalheader">
-        <div style="position: absolute; left: 15px; display: flex; align-items: center; height: 100%;">
-            <img src="https://sangaia.org/media/mh_logo.png" onerror="this.onerror=null; this.src='media/mh_logo.png';" style="height: 24px; width: auto;" alt="Logo">
-        </div>
-        <div style="position: absolute; right: 15px; display: flex; align-items: center; gap: 15px; height: 100%; z-index: 100;">
-            <div id="auth-widget"><a href="https://sangaia.org/id.html" style="color: #bbb; text-decoration: none; font-size: 11px; font-weight: bold; letter-spacing: 0.5px; padding: 3px 8px; border: 1px solid #444; border-radius: 4px; background: linear-gradient(to bottom, #555, #333); box-shadow: 0 1px 2px rgba(0,0,0,0.3); transition: all 0.2s ease;" onmouseover="this.style.color='#fff'; this.style.borderColor='#666';" onmouseout="this.style.color='#bbb'; this.style.borderColor='#444';">Sangaia ID</a></div>
-            <a href="sgn/research.html" style="color: #bbb; text-decoration: none; font-size: 11px; font-weight: bold; letter-spacing: 0.5px; padding: 3px 8px; border: 1px solid #444; border-radius: 4px; background: linear-gradient(to bottom, #555, #333); box-shadow: 0 1px 2px rgba(0,0,0,0.3); transition: all 0.2s ease;" onmouseover="this.style.color='#fff'; this.style.borderColor='#666';" onmouseout="this.style.color='#bbb'; this.style.borderColor='#444';">English</a>
-        </div>
-                <ul id="globalnav">
-            <li><a href="index.html">Home</a></li>
-            <li><a href="departments.html">Departments</a></li>
-            <li><a href="services.html">Services</a></li>
-            <li><a href="hospitals.html">Hospitals</a></li>
-            <li><a href="research.html" class="active">Research</a></li>
-            <li><a href="support.html">Support</a></li>
-        </ul>
-    </nav>
-    
-    <div class="content-wrapper">
-        <div class="content-grid">
-            <div class="main-col">
-                <div class="glass-panel">
-                    <h2>Medical Research & Development</h2>
-                    <p>The Ministry of Healthcare invests heavily in the future of medicine. We prioritize ethical research and the rapid deployment of life-saving pharmaceutical innovations to our hospital networks.</p>
-                </div>
-                <div class="glass-panel" style="background: linear-gradient(to bottom, #ffffff 0%, #f4f4f4 100%);">
-                    <h2 style="color: #c0392b;">Department of Disease Control & Research (DDCR)</h2>
-                    <p style="color: #333;">Looking for specific health topics, guidelines, or research data? The DDCR covers an extensive array of health topics, outbreaks, and public medical records.</p>
-                    <div style="text-align: left; margin-top: 15px;">
-                        <a href="ddcr/index.html" class="sangaia-btn"><span>Visit the DDCR</span></a>
+<body class="theme-healthcare">
+
+<!-- Top Live Mast Banner -->
+<div class="wl-mast">
+    <div class="ol-container wl-mast-inner">
+        <div class="ol-header-top">
+            <div class="ol-logo">
+                <a href="/index.html" aria-label="Sangaia Live Sovereign Portal">
+                    <svg viewBox="0 0 90 90" width="22" height="22" fill="currentColor">
+                        <rect x="0" y="0" width="41" height="41" rx="2"/>
+                        <rect x="49" y="0" width="41" height="41" rx="2"/>
+                        <rect x="0" y="49" width="41" height="41" rx="2"/>
+                        <rect x="49" y="49" width="41" height="41" rx="2"/>
+                    </svg>
+                    <span><b>Sangaia</b> Live</span>
+                </a>
+            </div>
+            <div class="ol-header-tools">
+                <form class="ol-search" id="headerSearchForm" action="/services.html" method="get">
+                    <input type="text" id="headerSearch" name="q" placeholder="Search government &amp; services" aria-label="Search">
+                    <button type="submit" class="ol-search-bing" aria-label="Search">&#x1F50E;</button>
+                </form>
+                
+                <a class="ol-icon-btn" href="/services.html" title="Notifications">
+                    <svg width="16" height="16" viewBox="0 0 16 16"><path fill="currentColor" d="M8 1.5c-2.4 0-4 1.9-4 4.2v3L2.7 11c-.3.4 0 1 .5 1h9.6c.5 0 .8-.6.5-1L12 8.7v-3c0-2.3-1.6-4.2-4-4.2zm0 13c1 0 1.8-.7 2-1.5H6c.2.8 1 1.5 2 1.5z"/></svg>
+                    <span class="ol-badge">3</span>
+                </a>
+                <a class="ol-icon-btn" href="/services.html" title="Citizen Messages">
+                    <svg width="16" height="16" viewBox="0 0 16 16"><path fill="currentColor" d="M2 3h12c.6 0 1 .4 1 1v7c0 .6-.4 1-1 1H9l-3.4 2.6c-.4.3-.9 0-.9-.5V12H2c-.6 0-1-.4-1-1V4c0-.6.4-1 1-1z"/></svg>
+                    <span class="ol-badge">1</span>
+                </a>
+                <div class="ol-me">
+                    <div class="ol-me-chip" id="meChip">
+                        <span class="ol-avatar sm">
+                            <img src="/images/1.jpeg" alt="Citizen Profile">
+                            <span class="ol-presence-dot"></span>
+                        </span>
+                        <span class="ol-me-name">Jqackkk</span>
+                        <span class="ol-me-caret">&#9660;</span>
+                    </div>
+                    <div class="ol-me-menu" id="meMenu" style="display:none; position:absolute; right:0; top:36px; background:#fff; border:1px solid #dfe3e7; border-radius:3px; box-shadow:0 2px 8px rgba(0,0,0,0.15); width:180px; z-index:1000; padding:6px 0;">
+                        <div style="padding:4px 12px; font-size:11px; font-weight:700; color:#64748b; text-transform:uppercase;">Citizen ID: SG-2026-F1E8</div>
+                        <a href="/id.html" style="display:block; padding:5px 12px; color:#2a2a2a; font-size:13px;">Sangaia ID Card</a>
+                        <a href="/citizenship.html" style="display:block; padding:5px 12px; color:#2a2a2a; font-size:13px;">Citizenship Status</a>
+                        <a href="/units.html" style="display:block; padding:5px 12px; color:#2a2a2a; font-size:13px;">Units &amp; Measures</a>
+                        <div style="border-top:1px solid #edf0f3; margin:4px 0;"></div>
+                        <a href="/index.html" style="display:block; padding:5px 12px; color:#2a2a2a; font-size:13px;">Federal Home</a>
                     </div>
                 </div>
             </div>
-            <div class="sidebar-col">
-                <div class="glass-panel" style="background: linear-gradient(to bottom, #ffebee 0%, #ffcdd2 100%);">
-                    <h2>Emergency</h2>
-                    <p>Need immediate medical assistance? Dial 9-1-1 or find the nearest provincial hospital.</p>
-                    <div style="text-align: center;">
-                        <a href="hospitals.html" class="sangaia-btn"><span>Find a Hospital</span></a>
-                    </div>
-                </div>
+        </div>
+
+        <div class="ol-band">
+            <div class="ol-band-inner">
+                <h1>Ministry of Healthcare</h1>
+                <p class="ol-band-sub">Universal state-sponsored health coverage, hospital emergency room triage & public disease control</p>
             </div>
         </div>
     </div>
-    <footer>
-        &copy; 2026 United Provinces of Sangaia. All Rights Reserved.<br>
-        <span style="font-size: 0.8em; color: #888;">Ministry of Healthcare</span>
-    </footer>
 </div>
 
-<script>
-    // --- VERTICAL FLIP LOGIC ---
-    let currentRotation = 0;
-    const track = document.getElementById('track');
+<!-- Main Top Nav Tabs (One Live Bar) -->
+<div class="wl-tabs">
+    <div class="ol-container wl-tabs-inner">
+        <ul class="ol-nav" id="primaryNav">
+            <li><a href="/index.html">Home</a></li>
+            <li><a href="/executive.html">Executive</a></li>
+            <li><a href="/treasury.html">Treasury</a></li>
+            <li><a href="/work.html">Work</a></li>
+            <li class="ol-current"><a href="/healthcare.html">Healthcare</a></li>
+            <li><a href="/education.html">Education</a></li>
+            <li><a href="/domesticaffairs.html">Domestic</a></li>
+            <li><a href="/externalaffairs.html">External</a></li>
+            <li><a href="/environment.html">Environment</a></li>
+            <li><a href="/propaganda.html">Propaganda</a></li>
+            <li><a href="/services.html">Services</a></li>
+            <li><a href="/units.html">Units (Мн • °Пт)</a></li>
+            
+        </ul>
+    </div>
+</div>
+
+<!-- Main Content Grid -->
+<div class="ol-container ol-main">
+    <div class="ol-with-sidebar">
+        <!-- Left Sidebar Navigation -->
+        <div class="ol-sidebar-nav">
+            <div class="ol-card ol-profile-card" style="text-align: center;">
+                <span class="ol-avatar lg">
+                    <img src="/images/1.jpeg" alt="Emblem">
+                    <span class="ol-presence-dot"></span>
+                </span>
+                <div class="ol-mt-10">
+                    <strong>Ministry of Healthcare</strong><br>
+                    <span class="ol-muted ol-small">Universal Health Authority</span><br>
+                    <span class="ol-small" style="color:var(--ol-accent); font-weight:600;">Clinics Operational</span>
+                </div>
+            </div>
+
+            <span class="ol-sidenav-label">Portal Navigation</span>
+            <ul class="ol-sidenav">
+                <li><a href="#overview" class="sel">Overview & Universal Care</a></li>
+<li><a href="#coverage">Universal Coverage Screening</a></li>
+<li><a href="#hospitals">Hospital ER Capacity</a></li>
+<li><a href="#cdc">Disease Control Telemetry</a></li>
+<li><a href="#ambulance">Ambulance Dispatch</a></li>
+<li><a href="/healthcare_departments.html">Departments Portal →</a></li>
+
+            </ul>
+
+            <span class="ol-sidenav-label">Federal Network</span>
+            <ul class="ol-sidenav">
+                <li><a href="/index.html">Federal Home</a></li>
+                <li><a href="/services.html">All Services</a></li>
+                <li><a href="/units.html">Units (Мн &bull; &deg;Пт)</a></li>
+                <li><a href="/societal_press.html">Societal Press</a></li>
+            </ul>
+        </div>
+
+        <!-- Center Content -->
+        <div class="ol-content">
+            
+    <div class="ol-status-bubble" id="overview">
+        &ldquo;Healthcare is a fundamental human right. In Sangaia, medical treatment is 100% universal and free at the point of service for every resident citizen.&rdquo;
+        <div class="ol-status-date">Surgeon General of Sangaia &bull; Updated Today</div>
+    </div>
+
+    <!-- Universal Coverage Screening -->
+    <div class="ol-card" id="coverage">
+        <div class="ol-card-title">
+            <span>Universal Healthcare Coverage &amp; Digital Insurance Verification</span>
+            <span class="ol-badge-tag ol-badge-success">Zero Out-of-Pocket Fees</span>
+        </div>
+        <p class="ol-small">Every registered Sangaia ID holder is automatically enrolled into Tier 1 Universal Comprehensive Care, covering hospitalization, dental surgery, psychological therapy, and prescription drugs.</p>
+        <div class="ol-grid-3" style="margin-top:10px;">
+            <div class="ol-metric-box">
+                <div class="ol-metric-val">$ 0.00</div>
+                <div class="ol-metric-lbl">Copay at Point of Care</div>
+            </div>
+            <div class="ol-metric-box">
+                <div class="ol-metric-val">100%</div>
+                <div class="ol-metric-lbl">Subsidized Generic Rx</div>
+            </div>
+            <div class="ol-metric-box">
+                <div class="ol-metric-val">5 Provinces</div>
+                <div class="ol-metric-lbl">Unified Digital Charting</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Live Hospital ER Capacity Metrics Across the 5 Provinces -->
+    <div class="ol-card" id="hospitals">
+        <div class="ol-card-title">
+            <span>Live Hospital Emergency Room Capacity Across the 5 Provinces</span>
+            <span class="ol-badge-tag ol-badge-success">Live Triage Network</span>
+        </div>
+        <p class="ol-small ol-muted">Real-time telemetry of regional trauma centers across all 5 Sovereign Provinces.</p>
+        <table class="ol-table">
+            <thead>
+                <tr>
+                    <th>Provincial Medical Center</th>
+                    <th>Territory</th>
+                    <th>ICU Beds Free</th>
+                    <th>Avg Triage Wait</th>
+                    <th>Trauma Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td>Shesk Sovereign University Hospital</td><td>New Jasper</td><td>24 / 80 Free</td><td>12 min</td><td><span class="ol-badge-tag ol-badge-success">Operational</span></td></tr>
+                <tr><td>Madison Valley Regional Trauma Center</td><td>New Madison</td><td>18 / 60 Free</td><td>15 min</td><td><span class="ol-badge-tag ol-badge-success">Operational</span></td></tr>
+                <tr><td>Oaks Coastal Marine Hospital</td><td>Liveland</td><td>32 / 70 Free</td><td>8 min</td><td><span class="ol-badge-tag ol-badge-success">Operational</span></td></tr>
+                <tr><td>Sentinel Ridge Highland Clinic</td><td>Sentinel</td><td>14 / 40 Free</td><td>10 min</td><td><span class="ol-badge-tag ol-badge-success">Operational</span></td></tr>
+                <tr><td>Columbia City Metropolitan Health Hub</td><td>Columbia</td><td>28 / 65 Free</td><td>14 min</td><td><span class="ol-badge-tag ol-badge-success">Operational</span></td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Disease Control & CDC Research -->
+    <div class="ol-card" id="cdc">
+        <div class="ol-card-title">
+            <span>National Disease Control Telemetry &amp; Public Hygiene</span>
+            <span class="ol-badge-tag ol-badge-success">Epidemic Index: LOW</span>
+        </div>
+        <div class="ol-grid-2" style="margin-top:10px;">
+            <div style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:3px; padding:12px;">
+                <strong>Water Quality &amp; Pathogen Screening:</strong>
+                <div class="ol-small" style="margin-top:4px;">Municipal water testing conducted daily across all 5 provincial aquifers: 100% compliant with zero toxic chemical runoff.</div>
+            </div>
+            <div style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:3px; padding:12px;">
+                <strong>Respiratory &amp; Viral Surveillance:</strong>
+                <div class="ol-small" style="margin-top:4px;">Automated clinical monitoring shows seasonal influenza transmission at baseline levels. Emergency vaccination supply at 140% statutory threshold.</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Paramedic & Emergency Ambulance Network -->
+    <div class="ol-card" id="ambulance">
+        <div class="ol-card-title">
+            <span>Paramedic Network &amp; Non-Emergency Medical Transport</span>
+            <button type="button" class="ol-btn ol-btn-sm" onclick="openAmbulanceModal()">Book Medical Transport</button>
+        </div>
+        <p class="ol-small">In life-threatening emergencies, dial <strong>9-1-1</strong>. For scheduled clinical transfers, dialysis transit, and mobility assistance, citizens may book state-funded transports.</p>
+    </div>
     
-    // Rotate 90 degrees every 4 seconds
-    setInterval(() => {
-        currentRotation += 90;
-        track.style.transform = `rotateX(${currentRotation}deg)`;
-    }, 4000); 
-</script>
+        </div>
+
+        <!-- Right Sidebar (Telemetry & Quick Actions) -->
+        <div class="ol-sidebar">
+            <div class="ol-note">Official Government of the Sovereign Republic of Sangaia. All administrative systems active.</div>
+
+            <div class="ol-sidebox">
+                <h3>Sovereign Telemetry</h3>
+                <div style="font-size:12.5px; line-height:1.6;">
+                    <div><strong>Currency:</strong> Sangaian Dollar ($)</div>
+                    <div><strong>Standard Temp:</strong> 22.5&deg;Пт (25&deg;C / 77&deg;F)</div>
+                    <div><strong>Standard Metric:</strong> 1 Мн = 2.5 cm</div>
+                    <div><strong>Active Provinces:</strong> 5 Territories</div>
+                </div>
+            </div>
+
+            <div class="ol-sidebox">
+                <h3>Provincial Weather (&deg;Пт)</h3>
+                <table class="ol-table" style="font-size:12px; margin:0;">
+                    <tr><td>New Jasper</td><td style="text-align:right;"><strong>20.5&deg;Пт</strong> (Sunny)</td></tr>
+                    <tr><td>New Madison</td><td style="text-align:right;"><strong>22.0&deg;Пт</strong> (Clear)</td></tr>
+                    <tr><td>Liveland</td><td style="text-align:right;"><strong>19.8&deg;Пт</strong> (Breezy)</td></tr>
+                    <tr><td>Sentinel</td><td style="text-align:right;"><strong>16.2&deg;Пт</strong> (Cool)</td></tr>
+                    <tr><td>Columbia</td><td style="text-align:right;"><strong>23.4&deg;Пт</strong> (Mild)</td></tr>
+                </table>
+            </div>
+
+            
+    <div class="ol-sidebox">
+        <h3>Healthcare Services</h3>
+        <p class="ol-small ol-muted">Check prescription benefit claims, digital card enrollment, hospital licensing, and non-emergency transports.</p>
+        <div class="ol-mt-10">
+            <a href="/healthcare_departments.html" class="ol-btn ol-btn-primary ol-btn-sm" style="width:100%; text-align:center;">Launch Healthcare Departments</a>
+        </div>
+    </div>
+    
+        </div>
+    </div>
+</div>
 
 
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-<script src="https://sangaia.org/auth.js"></script>
+    <!-- Ambulance Booking Modal -->
+    <div class="ol-modal-overlay" id="ambModal">
+        <div class="ol-modal-dialog">
+            <div class="ol-modal-head">
+                <span class="ol-modal-title">Book Non-Emergency Medical Transport</span>
+                <button type="button" class="ol-modal-close" onclick="closeModal('ambModal')">&times;</button>
+            </div>
+            <div class="form-group">
+                <label class="form-label">Patient Legal Name</label>
+                <input type="text" class="ol-input" id="amb-name" placeholder="Patient Name">
+            </div>
+            <div class="form-group">
+                <label class="form-label">Sangaia ID Number</label>
+                <input type="text" class="ol-input" id="amb-id" placeholder="SG-XXXX-XXXX">
+            </div>
+            <div class="form-group">
+                <label class="form-label">Pick-up Province &amp; Address</label>
+                <input type="text" class="ol-input" id="amb-addr" placeholder="Address">
+            </div>
+            <div class="form-group">
+                <label class="form-label">Destination Medical Center</label>
+                <select class="ol-select" id="amb-dest">
+                    <option>Shesk Sovereign University Hospital</option>
+                    <option>Madison Valley Trauma Center</option>
+                    <option>Oaks Coastal Marine Hospital</option>
+                    <option>Sentinel Ridge Highland Clinic</option>
+                    <option>Columbia City Health Hub</option>
+                </select>
+            </div>
+            <div class="modal-results-box" id="ambResults"></div>
+            <div class="ol-modal-foot">
+                <button type="button" class="ol-btn" onclick="closeModal('ambModal')">Cancel</button>
+                <button type="button" class="ol-btn ol-btn-primary" onclick="submitAmb()">Confirm Dispatch</button>
+            </div>
+        </div>
+    </div>
+    
+
+<!-- Floating Citizen Dock -->
+<div class="ol-dock">
+    <button type="button" class="ol-dock-tab" id="olDockMessages">
+        <svg width="15" height="15" viewBox="0 0 16 16"><path fill="currentColor" d="M2 3h12c.6 0 1 .4 1 1v7c0 .6-.4 1-1 1H9l-3.4 2.6c-.4.3-.9 0-.9-.5V12H2c-.6 0-1-.4-1-1V4c0-.6.4-1 1-1z"/></svg>
+        <span>Live Citizen Support</span>
+    </button>
+    <div class="ol-dock-list" id="olDockList">
+        <div class="ol-dock-list-head">
+            <span>Sangaia Citizen Assistance</span>
+            <a href="javascript:void(0)" id="olDockListClose" style="color:#64748b; font-size:16px;">&times;</a>
+        </div>
+        <div class="ol-dock-list-body">
+            <a class="ol-dock-item" href="/services.html"><strong>Online Inquiries:</strong> File petition or request</a>
+            <a class="ol-dock-item" href="/units.html"><strong>Unit Calculations:</strong> Monomer &amp; Panotherm</a>
+            <a class="ol-dock-item" href="/citizenship.html"><strong>Citizenship Registry:</strong> Check docket status</a>
+            <a class="ol-dock-item" href="/id.html"><strong>Sangaia ID:</strong> Digital identity card</a>
+        </div>
+    </div>
+</div>
+
+<!-- Footer -->
+<div class="ol-footer">
+    <div class="ol-container ol-footer-inner">
+        <p class="ol-footer-copy">&copy; 2026 Sovereign Republic of Sangaia. One Live Wave 4 Infrastructure.</p>
+        <ul class="ol-footer-links">
+            <li><a href="/index.html">Home</a></li>
+            <li><a href="/government.html">Government Structure</a></li>
+            <li><a href="/services.html">Services</a></li>
+            <li><a href="/societal_press.html">Gazette</a></li>
+            <li><a href="/units.html">Units System</a></li>
+            <li><a href="/about.html">About Sangaia</a></li>
+        </ul>
+    </div>
+</div>
+
+
+    <script>
+    function openAmbulanceModal() { document.getElementById('ambModal').classList.add('active'); }
+    function closeModal(id) { document.getElementById(id).classList.remove('active'); }
+
+    function submitAmb() {
+        const res = document.getElementById('ambResults');
+        const token = 'MED-DISP-' + Math.floor(100000 + Math.random() * 900000);
+        res.innerHTML = `<strong>Transport Dispatch Confirmed:</strong> Confirmation Code: <span style="font-family:monospace;">${token}</span>. Fully subsidized under Universal Healthcare.`;
+        res.classList.add('active');
+    }
+    </script>
+    
+
 </body>
 </html>

@@ -2,1177 +2,329 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ministry of External Affairs - United Provinces of Sangaia</title>
-    <style>
-        /* --- MINISTRY OF EXTERNAL AFFAIRS: PINK FRUTIGER AERO & SKEUOMORPHIC STYLES --- */
-        :root {
-            --rose-deep: #880e4f;
-            --rose-primary: #ad1457;
-            --rose-bold: #c2185b;
-            --rose-vibrant: #d81b60;
-            --pink-bright: #e91e63;
-            --pink-light: #ec407a;
-            --pink-soft: #f48fb1;
-            --pink-pale: #fce4ec;
-            --pink-glass: #fff0f5;
-            --pink-glow: #f8bbd0;
-            --gold-accent: #c2410c;
-            --charcoal-dark: #2d0a1b;
-            --text-dark: #3b0a24;
-            --text-muted: #6b3952;
-            --border-pink: #f48fb1;
-            --border-dark: #c2185b;
-            --card-bg: #ffffff;
-            --level-1: #15803d;
-            --level-2: #ca8a04;
-            --level-3: #ea580c;
-            --level-4: #b91c1c;
-        }
-
-        * { box-sizing: border-box; }
-
-        body {
-            background: #fff5f8 radial-gradient(circle at 50% 0%, #ffffff 0%, #fce7f0 100%) no-repeat fixed;
-            min-height: 100dvh;
-            width: 100%;
-            display: flex;
-            align-items: center;
-            justify-content: flex-start;
-            flex-direction: column;
-            margin: 0;
-            font-family: 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-            color: var(--text-dark);
-            line-height: 1.6;
-        }
-
-        .main-container {
-            width: 100%;
-            margin: 0;
-            background: transparent;
-            padding: 0;
-            flex-grow: 1; 
-        }
-
-        /* --- GLOBAL METAL NAVIGATION HEADER --- */
-        #globalheader {
-            display: flex;
-            align-items: center;
-            position: relative;
-            width: 100%;
-            height: 38px;
-            background: linear-gradient(to bottom, #5e5e5e 0%, #3e3e3e 50%, #2d2d2d 51%, #1f1f1f 100%);
-            border-top: 1px solid #222;
-            border-bottom: 1px solid #000;
-            box-shadow: inset 0 1px 0 rgba(255,255,255,0.15), 0 2px 4px rgba(0,0,0,0.2);
-            font-size: 11px;
-            z-index: 100;
-        }
-
-        #globalnav {
-            flex-grow: 1;
-            margin: 0;
-            padding: 0;
-            list-style: none;
-            display: flex;
-            justify-content: center;
-            height: 100%;
-        }
-
-        #globalnav li { position: relative; height: 100%; display: flex; align-items: center; }
-        #globalnav li::after {
-            content: ""; position: absolute; right: 0; width: 1px; height: 100%;
-            background: linear-gradient(to bottom, #333, #111); box-shadow: 1px 0 0 rgba(255,255,255,0.08);
-        }
-        #globalnav li:first-child::before {
-            content: ""; position: absolute; left: 0; width: 1px; height: 100%;
-            background: linear-gradient(to bottom, #333, #111); box-shadow: 1px 0 0 rgba(255,255,255,0.08);
-        }
-
-        #globalnav li a {
-            display: block; color: #e8e8e8; text-decoration: none; text-shadow: 0 -1px 0 rgba(0,0,0,0.8);
-            font-weight: bold; padding: 0 16px; line-height: 38px;
-            transition: text-shadow 0.2s ease, color 0.2s ease, background 0.2s ease;
-            white-space: nowrap;
-        }
-
-        #globalnav li a:hover {
-            color: #fff;
-            background: linear-gradient(rgba(255,255,255,0.05), rgba(255,255,255,0));
-            text-shadow: 0 0 8px rgba(255, 255, 255, 0.8), 0 -1px 0 rgba(0,0,0,0.8);
-        }
-        
-        #globalnav li a.active { color: #fff; background: rgba(0,0,0,0.25); box-shadow: inset 0 2px 5px rgba(0,0,0,0.3); }
-
-        /* --- SKEUOMORPHIC PINK & ROSE BUTTONS --- */
-        .sangaia-btn {
-            font-size: 0.88rem;
-            font-family: inherit;
-            height: 2.4em;
-            padding: 0 1.3em;
-            border-radius: 4px;
-            position: relative;
-            overflow: hidden;
-            cursor: pointer;
-            text-decoration: none;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            box-sizing: border-box;
-            background: linear-gradient(to bottom, #ffffff 0%, #fff0f5 50%, #f8bbd0 100%);
-            box-shadow: 0 2px 5px rgba(136, 14, 79, 0.1), inset 0 1px 0 #ffffff;
-            border: 1px solid var(--border-pink);
-            color: var(--rose-deep);
-            font-weight: bold;
-            transition: all 0.2s ease;
-            text-shadow: 0 1px 0 #ffffff;
-        }
-
-        .sangaia-btn:hover {
-            background: linear-gradient(to bottom, #ffffff 0%, #fdf2f8 50%, #fce4ec 100%);
-            box-shadow: 0 3px 8px rgba(136, 14, 79, 0.15), inset 0 1px 0 #ffffff;
-            transform: translateY(-1px);
-        }
-
-        .sangaia-btn:active {
-            transform: translateY(1px);
-            background: linear-gradient(to bottom, #f8bbd0 0%, #f48fb1 100%);
-            box-shadow: inset 0 2px 4px rgba(0,0,0,0.15);
-        }
-
-        /* Pink Rose Primary Button */
-        .sangaia-btn.btn-pink {
-            background: linear-gradient(to bottom, #ec407a 0%, #d81b60 50%, #ad1457 100%);
-            border-color: #880e4f;
-            color: #ffffff;
-            text-shadow: 0 -1px 0 rgba(0,0,0,0.5);
-            box-shadow: 0 2px 5px rgba(136, 14, 79, 0.25), inset 0 1px 0 rgba(255,255,255,0.3);
-        }
-
-        .sangaia-btn.btn-pink:hover {
-            background: linear-gradient(to bottom, #f06292 0%, #e91e63 50%, #c2185b 100%);
-            box-shadow: 0 3px 8px rgba(136, 14, 79, 0.3), inset 0 1px 0 rgba(255,255,255,0.4);
-            color: #ffffff;
-        }
-
-        /* --- CONTENT PANELS --- */
-        .content-wrapper {
-            padding: 30px;
-            width: 100%;
-            max-width: 1200px;
-            margin: 0 auto;
-            box-sizing: border-box;
-        }
-
-        .glass-panel {
-            background: linear-gradient(to bottom, #ffffff 0%, #fff8fa 100%);
-            border: 1px solid #fbcfe8;
-            border-radius: 10px;
-            padding: 26px;
-            margin-bottom: 25px;
-            box-shadow: 0 3px 12px rgba(173, 20, 87, 0.05), inset 0 1px 0 #ffffff;
-            position: relative;
-        }
-
-        .glass-panel h2 {
-            margin: 0 0 15px 0;
-            color: var(--rose-deep);
-            border-bottom: 2px solid #fce7f3;
-            padding-bottom: 10px;
-            font-size: 1.45em;
-            letter-spacing: -0.3px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            flex-wrap: wrap;
-            gap: 10px;
-        }
-
-        /* --- HERO BANNER (PINK FRUTIGER AERO) --- */
-        .pink-hero-card {
-            background: linear-gradient(135deg, #ffffff 0%, #fdf2f8 40%, #fce4ec 100%);
-            color: var(--text-dark);
-            border-radius: 12px;
-            padding: 35px 30px;
-            margin-bottom: 30px;
-            box-shadow: 0 6px 22px rgba(173, 20, 87, 0.12), inset 0 1px 0 #ffffff;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 25px;
-            flex-wrap: wrap;
-            position: relative;
-            overflow: hidden;
-            border: 1px solid var(--border-pink);
-        }
-
-        .hero-text-col { max-width: 680px; }
-
-        .hero-badge {
-            display: inline-block;
-            background: linear-gradient(to bottom, #ffffff 0%, #fce4ec 100%);
-            color: var(--rose-deep);
-            border: 1px solid var(--border-pink);
-            padding: 4px 12px;
-            border-radius: 20px;
-            font-size: 0.76rem;
-            font-weight: bold;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-            margin-bottom: 12px;
-            box-shadow: 0 1px 3px rgba(136,14,79,0.08);
-        }
-
-        .hero-title {
-            font-size: 2.2rem;
-            margin: 0 0 12px 0;
-            letter-spacing: -0.5px;
-            line-height: 1.2;
-            color: var(--rose-deep);
-            text-shadow: 0 1px 0 rgba(255,255,255,0.8);
-        }
-
-        .hero-sub {
-            font-size: 1.05rem;
-            color: var(--text-muted);
-            line-height: 1.6;
-            margin-bottom: 22px;
-        }
-
-        /* Stat Tickers */
-        .stat-ticker-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 15px;
-            margin-bottom: 30px;
-        }
-
-        .stat-ticker-box {
-            background: #ffffff;
-            border: 1px solid #fbcfe8;
-            border-radius: 8px;
-            padding: 16px 20px;
-            box-shadow: 0 2px 6px rgba(173, 20, 87, 0.04);
-            border-top: 4px solid var(--rose-bold);
-        }
-
-        .stat-ticker-box.pink-accent { border-top-color: var(--pink-bright); }
-        .stat-ticker-box.deep-accent { border-top-color: var(--rose-deep); }
-
-        .stat-label {
-            font-size: 0.78rem;
-            font-weight: 700;
-            color: var(--text-muted);
-            text-transform: uppercase;
-            letter-spacing: 0.6px;
-            margin-bottom: 4px;
-        }
-
-        .stat-value {
-            font-size: 1.6rem;
-            font-weight: 800;
-            color: var(--rose-deep);
-        }
-
-        .stat-desc {
-            font-size: 0.8rem;
-            color: #834e68;
-            margin-top: 4px;
-        }
-
-        /* Search & Filter Bar */
-        .filter-bar {
-            display: flex;
-            gap: 12px;
-            flex-wrap: wrap;
-            margin-bottom: 20px;
-            align-items: center;
-            background: #ffffff;
-            padding: 14px 18px;
-            border-radius: 8px;
-            border: 1px solid #fbcfe8;
-        }
-
-        .filter-input {
-            padding: 8px 12px;
-            border: 1px solid #fbcfe8;
-            border-radius: 5px;
-            font-family: inherit;
-            font-size: 0.88rem;
-            background: #ffffff;
-            color: #333;
-        }
-
-        .filter-input:focus {
-            outline: none;
-            border-color: var(--pink-bright);
-            box-shadow: 0 0 0 3px rgba(233, 30, 99, 0.15);
-        }
-
-        /* Travel Advisory Grid */
-        .advisory-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
-            gap: 16px;
-            margin-top: 15px;
-            max-height: 520px;
-            overflow-y: auto;
-            padding-right: 6px;
-        }
-
-        .advisory-card {
-            background: #ffffff;
-            border: 1px solid #fce7f3;
-            border-radius: 8px;
-            padding: 16px;
-            box-shadow: 0 2px 6px rgba(0,0,0,0.03);
-            border-left: 5px solid #16a34a;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            transition: all 0.2s ease;
-            cursor: pointer;
-        }
-
-        .advisory-card:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 14px rgba(173, 20, 87, 0.08);
-            border-color: var(--pink-soft);
-        }
-
-        .advisory-card.lvl-1 { border-left-color: var(--level-1); }
-        .advisory-card.lvl-2 { border-left-color: var(--level-2); }
-        .advisory-card.lvl-3 { border-left-color: var(--level-3); }
-        .advisory-card.lvl-4 { border-left-color: var(--level-4); }
-
-        .advisory-country-name {
-            font-size: 1.1rem;
-            font-weight: bold;
-            color: var(--rose-deep);
-            margin: 0 0 4px 0;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-        }
-
-        /* Tables */
-        .data-table-wrapper {
-            overflow-x: auto;
-            margin: 15px 0;
-        }
-
-        .pink-table {
-            width: 100%;
-            border-collapse: collapse;
-            font-size: 0.92rem;
-            background: #ffffff;
-        }
-
-        .pink-table th, .pink-table td {
-            padding: 12px 16px;
-            border: 1px solid #fbcfe8;
-            text-align: left;
-        }
-
-        .pink-table th {
-            background: linear-gradient(to bottom, #ffffff 0%, #fdf2f8 100%);
-            color: var(--rose-deep);
-            font-weight: bold;
-            font-size: 0.84rem;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-
-        .pink-table tr:nth-child(even) { background: #fffbfd; }
-        .pink-table tr:hover { background: #fdf2f8; }
-
-        /* Badges */
-        .badge {
-            font-size: 0.75rem;
-            font-weight: bold;
-            padding: 3px 8px;
-            border-radius: 12px;
-            display: inline-block;
-            text-transform: uppercase;
-        }
-
-        .badge-lvl1 { background: #dcfce7; color: #15803d; border: 1px solid #bbf7d0; }
-        .badge-lvl2 { background: #fef9c3; color: #a16207; border: 1px solid #fef08a; }
-        .badge-lvl3 { background: #ffedd5; color: #c2410c; border: 1px solid #fed7aa; }
-        .badge-lvl4 { background: #fee2e2; color: #b91c1c; border: 1px solid #fecaca; }
-        .badge-pink { background: #fce7f3; color: #be185d; border: 1px solid #fbcfe8; }
-
-        /* Filter Pills */
-        .pill-group {
-            display: flex;
-            gap: 6px;
-            flex-wrap: wrap;
-        }
-
-        .filter-pill {
-            font-size: 0.8rem;
-            font-weight: bold;
-            padding: 4px 10px;
-            border-radius: 16px;
-            border: 1px solid #fbcfe8;
-            background: #ffffff;
-            color: var(--rose-deep);
-            cursor: pointer;
-            transition: all 0.2s ease;
-        }
-
-        .filter-pill:hover, .filter-pill.active {
-            background: var(--pink-bright);
-            color: #ffffff;
-            border-color: var(--pink-bright);
-        }
-
-        /* Modals */
-        .modal-overlay {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(45, 10, 27, 0.6);
-            backdrop-filter: blur(4px);
-            z-index: 1000;
-            align-items: center;
-            justify-content: center;
-            padding: 20px;
-        }
-
-        .modal-overlay.show { display: flex; }
-
-        .modal-card {
-            background: #ffffff;
-            border-radius: 10px;
-            max-width: 640px;
-            width: 100%;
-            max-height: 90vh;
-            overflow-y: auto;
-            padding: 30px;
-            box-shadow: 0 10px 30px rgba(136, 14, 79, 0.3);
-            border-top: 6px solid var(--rose-bold);
-            animation: modalFadeIn 0.25s ease;
-        }
-
-        @keyframes modalFadeIn {
-            from { opacity: 0; transform: scale(0.96); }
-            to { opacity: 1; transform: scale(1); }
-        }
-
-        footer {
-            text-align: center;
-            padding: 25px;
-            font-size: 0.9em;
-            background: rgba(255, 255, 255, 0.7);
-            border-top: 1px solid #fbcfe8;
-            margin-top: auto;
-            width: 100%;
-            color: var(--text-muted);
-        }
-    </style>
+    <title>Ministry of External Affairs :: Sangaia Live</title>
+    <link rel="stylesheet" href="/css/sangaia-live.css">
+    <script src="/js/sangaia-live.js" defer></script>
 </head>
-<body>
+<body class="theme-external">
 
-<div class="main-container">
-
-    <!-- GLOBAL NAVIGATION HEADER -->
-    <nav id="globalheader">
-        <div style="position: absolute; left: 15px; display: flex; align-items: center; height: 100%;">
-            <a href="https://sangaia.org/index.html"><img src="../media/nav_logo.png" onerror="this.onerror=null; this.src='media/nav_logo.png';" style="height: 22px; width: auto;" alt="Logo"></a>
-        </div>
-        <div style="position: absolute; right: 15px; display: flex; align-items: center; gap: 15px; height: 100%; z-index: 100;">
-            <div id="auth-widget">
-                <a href="https://sangaia.org/id.html" style="color: #bbb; text-decoration: none; font-size: 11px; font-weight: bold; letter-spacing: 0.5px; padding: 3px 8px; border: 1px solid #444; border-radius: 4px; background: linear-gradient(to bottom, #555, #333); box-shadow: 0 1px 2px rgba(0,0,0,0.3); transition: all 0.2s ease;">Sangaia ID</a>
+<!-- Top Live Mast Banner -->
+<div class="wl-mast">
+    <div class="ol-container wl-mast-inner">
+        <div class="ol-header-top">
+            <div class="ol-logo">
+                <a href="/index.html" aria-label="Sangaia Live Sovereign Portal">
+                    <svg viewBox="0 0 90 90" width="22" height="22" fill="currentColor">
+                        <rect x="0" y="0" width="41" height="41" rx="2"/>
+                        <rect x="49" y="0" width="41" height="41" rx="2"/>
+                        <rect x="0" y="49" width="41" height="41" rx="2"/>
+                        <rect x="49" y="49" width="41" height="41" rx="2"/>
+                    </svg>
+                    <span><b>Sangaia</b> Live</span>
+                </a>
             </div>
-            <a href="sgn/index.html" style="color: #bbb; text-decoration: none; font-size: 11px; font-weight: bold; letter-spacing: 0.5px; padding: 3px 8px; border: 1px solid #444; border-radius: 4px; background: linear-gradient(to bottom, #555, #333); box-shadow: 0 1px 2px rgba(0,0,0,0.3); transition: all 0.2s ease;">Сангаиан</a>
-        </div>
-        <ul id="globalnav">
-            <li><a href="https://sangaia.org/index.html">Home</a></li>
-            <li><a href="departments.html">Departments</a></li>
-            <li><a href="#overview">Overview</a></li>
-            <li><a href="#travel-advisories">Travel Advisories</a></li>
-            <li><a href="#treaties">Treaties & Accords</a></li>
-            <li><a href="#embassies">Embassies & Consulates</a></li>
-            <li><a href="#visa-services">Visa Services</a></li>
-            <li><a href="https://sangaia.org/services.html">All Ministries</a></li>
-        </ul>
-    </nav>
-
-    <div class="content-wrapper">
-
-        <!-- PINK FRUTIGER AERO HERO BANNER -->
-        <div class="pink-hero-card" id="overview">
-            <div class="hero-text-col">
-                <span class="hero-badge">United Provinces of Sangaia &bull; Executive Branch</span>
-                <h1 class="hero-title">Ministry of External Affairs</h1>
-                <p class="hero-sub">Guiding sovereign international diplomacy, publishing worldwide travel security advisories, safeguarding active and historical treaties, and facilitating 24/7 global consular and embassy availability.</p>
-                <div style="display: flex; gap: 12px; flex-wrap: wrap;">
-                    <a href="#travel-advisories" class="sangaia-btn btn-pink"><span>Search Travel Advisories &rarr;</span></a>
-                    <a href="#treaties" class="sangaia-btn"><span>Treaties & Accords Archive</span></a>
-                    <a href="#embassies" class="sangaia-btn"><span>Embassy Availability & Visas</span></a>
-                </div>
-            </div>
-
-            <div style="text-align: center;">
-                <img src="../media/sangaia_seal.png" onerror="this.onerror=null; this.src='media/sangaia_seal.png';" alt="Seal of Sangaia" style="height: 110px; width: auto; filter: drop-shadow(0 4px 8px rgba(136,14,79,0.25));">
-                <div style="font-size: 0.78rem; font-weight: bold; text-transform: uppercase; letter-spacing: 1.5px; margin-top: 8px; color: var(--rose-deep);">Federal Foreign & Diplomatic Missions Authority</div>
-            </div>
-        </div>
-
-        <!-- STAT TICKERS -->
-        <div class="stat-ticker-grid">
-            <div class="stat-ticker-box">
-                <div class="stat-label">Global Diplomatic Missions</div>
-                <div class="stat-value">38 Missions</div>
-                <div class="stat-desc">Resident embassies & consulates abroad</div>
-            </div>
-
-            <div class="stat-ticker-box pink-accent">
-                <div class="stat-label">Passport Mobility Index</div>
-                <div class="stat-value" style="color: var(--pink-bright);">184 Nations</div>
-                <div class="stat-desc">Visa-free or visa-on-arrival access</div>
-            </div>
-
-            <div class="stat-ticker-box deep-accent">
-                <div class="stat-label">Ratified Sovereign Treaties</div>
-                <div class="stat-value">64 Accords</div>
-                <div class="stat-desc">Active bilateral & multilateral treaties</div>
-            </div>
-
-            <div class="stat-ticker-box">
-                <div class="stat-label">Consular Emergency Response</div>
-                <div class="stat-value">&lt; 15 Min</div>
-                <div class="stat-desc">24/7 emergency dispatch for citizens abroad</div>
-            </div>
-        </div>
-
-        <!-- SECTION 1: WORLDWIDE TRAVEL ADVISORIES -->
-        <div class="glass-panel" id="travel-advisories">
-            <h2>
-                <span>Worldwide Travel Advisories & Security Notices</span>
-                <span class="badge badge-pink">Updated Live</span>
-            </h2>
-            <p>
-                Official diplomatic travel advisories issued by the Ministry of External Affairs for every worldwide nation. Inspect real-time risk tiers, entry requirements, and emergency consular stations.
-            </p>
-
-            <!-- Search & Filters -->
-            <div class="filter-bar">
-                <div style="flex-grow: 1; min-width: 220px;">
-                    <input type="text" id="adv-search" class="filter-input" style="width: 100%;" placeholder="Search by nation name or keyword (e.g. Japan, France, Brazil)..." oninput="filterAdvisories()">
-                </div>
-                <div class="pill-group" id="region-pills">
-                    <span class="filter-pill active" onclick="setRegionFilter('all')">All Regions</span>
-                    <span class="filter-pill" onclick="setRegionFilter('europe')">Europe</span>
-                    <span class="filter-pill" onclick="setRegionFilter('americas')">Americas</span>
-                    <span class="filter-pill" onclick="setRegionFilter('asia')">Asia-Pacific</span>
-                    <span class="filter-pill" onclick="setRegionFilter('mideast')">Middle East</span>
-                    <span class="filter-pill" onclick="setRegionFilter('africa')">Africa</span>
-                </div>
-                <div class="pill-group" id="level-pills">
-                    <span class="filter-pill active" onclick="setLevelFilter('all')">All Levels</span>
-                    <span class="filter-pill" onclick="setLevelFilter('1')">Level 1 (Normal)</span>
-                    <span class="filter-pill" onclick="setLevelFilter('2')">Level 2 (Caution)</span>
-                    <span class="filter-pill" onclick="setLevelFilter('3')">Level 3 (Reconsider)</span>
-                    <span class="filter-pill" onclick="setLevelFilter('4')">Level 4 (Do Not Travel)</span>
-                </div>
-            </div>
-
-            <!-- Country Advisory Cards Grid -->
-            <div class="advisory-grid" id="advisories-container">
-                <!-- Populated by JS -->
-            </div>
-        </div>
-
-        <!-- SECTION 2: ACTIVE & PAST TREATIES -->
-        <div class="glass-panel" id="treaties">
-            <h2>
-                <span>Active & Historical International Treaties Archive</span>
-                <button type="button" class="sangaia-btn btn-pink" onclick="openTreatyModal()">
-                    <span>Request Treaty Certified Copy &rarr;</span>
-                </button>
-            </h2>
-            <p>
-                Certified public register of all international covenants, multilateral conventions, and historical peace accords ratified by the Aeretocrat and the Body of Electives.
-            </p>
-
-            <div style="margin-bottom: 15px;">
-                <div class="pill-group">
-                    <span class="filter-pill active" id="tab-active-treaties" onclick="switchTreatyTab('active')">Active Bilateral & Multilateral Accords</span>
-                    <span class="filter-pill" id="tab-past-treaties" onclick="switchTreatyTab('past')">Historical & Superseded Treaties</span>
-                </div>
-            </div>
-
-            <div class="data-table-wrapper" id="active-treaties-table">
-                <table class="pink-table">
-                    <thead>
-                        <tr>
-                            <th>Treaty Title & Reference</th>
-                            <th>Partner Nations / Parties</th>
-                            <th>Ratification Date</th>
-                            <th>Scope & Statutory Objectives</th>
-                            <th>Status</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td><strong>Veridia Maritime Navigation & Sovereign Canal Accord</strong><br><span style="font-size:0.75rem; color:#834e68;">Ref: SGN-TRT-2024-01</span></td>
-                            <td>28 Maritime Signatories (incl. UK, Norway, Singapore, Japan)</td>
-                            <td>12 March 2024</td>
-                            <td>Guarantees free non-discriminatory navigation for peaceful commercial vessels transiting the Sangaian Canal Locks.</td>
-                            <td><span class="badge badge-lvl1">Active & In Force</span></td>
-                        </tr>
-                        <tr>
-                            <td><strong>Universal Extradition & Anti-Corruption Protocol</strong><br><span style="font-size:0.75rem; color:#834e68;">Ref: SGN-TRT-2023-08</span></td>
-                            <td>Bilateral with Switzerland, Canada, Austria, New Zealand</td>
-                            <td>19 October 2023</td>
-                            <td>Criminal extradition framework excluding political offenses; guarantees zero foreign tax evasion shelter in Sangaia.</td>
-                            <td><span class="badge badge-lvl1">Active & In Force</span></td>
-                        </tr>
-                        <tr>
-                            <td><strong>Nordic Clean Energy & Cold-Climate Tech Sharing Pact</strong><br><span style="font-size:0.75rem; color:#834e68;">Ref: SGN-TRT-2025-03</span></td>
-                            <td>Kingdom of Norway, Republic of Iceland, Finland</td>
-                            <td>14 January 2025</td>
-                            <td>Joint engineering research on high-efficiency sub-zero hydroelectric turbines and permafrost preservation.</td>
-                            <td><span class="badge badge-lvl1">Active & In Force</span></td>
-                        </tr>
-                        <tr>
-                            <td><strong>Sangaian Sovereign Free Trade Agreement (TUPOS-FTA)</strong><br><span style="font-size:0.75rem; color:#834e68;">Ref: SGN-TRT-2022-11</span></td>
-                            <td>14 Global Trade Partners</td>
-                            <td>08 August 2022</td>
-                            <td>Reciprocal zero-tariff trade on agricultural grains, timber, clean micro-electronics, and pharmaceutical supplies.</td>
-                            <td><span class="badge badge-lvl1">Active & In Force</span></td>
-                        </tr>
-                        <tr>
-                            <td><strong>Pacific High-Seas Kelp & Marine Biosphere Conservation Pact</strong><br><span style="font-size:0.75rem; color:#834e68;">Ref: SGN-TRT-2024-09</span></td>
-                            <td>Multilateral Environmental Convention</td>
-                            <td>22 September 2024</td>
-                            <td>Establishes binding international quotas preventing commercial trawling across migratory sea otter and osprey belts.</td>
-                            <td><span class="badge badge-lvl1">Active & In Force</span></td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-
-            <div class="data-table-wrapper" id="past-treaties-table" style="display: none;">
-                <table class="pink-table">
-                    <thead>
-                        <tr>
-                            <th>Historical Treaty</th>
-                            <th>Original Parties</th>
-                            <th>Active Period</th>
-                            <th>Historical Context & Resolution</th>
-                            <th>Status</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td><strong>Treaty of Hornet's Point (Independence & Boundary Accord)</strong><br><span style="font-size:0.75rem; color:#834e68;">Ref: SGN-HIST-2018-01</span></td>
-                            <td>Founding Provincial Assembly & International Mediators</td>
-                            <td>2018 &ndash; Permanent</td>
-                            <td>Concluded the Sangaian independence movement; established territorial borders and constitutional self-rule.</td>
-                            <td><span class="badge badge-pink">Foundational (Historical)</span></td>
-                        </tr>
-                        <tr>
-                            <td><strong>The Armistice of Old Veridia</strong><br><span style="font-size:0.75rem; color:#834e68;">Ref: SGN-HIST-2016-04</span></td>
-                            <td>Provincial Councils of Veridia & Highlands</td>
-                            <td>2016 &ndash; 2018</td>
-                            <td>Ceasefire agreement ending border resource clashes; superseded by the Constitution of the United Provinces.</td>
-                            <td><span class="badge badge-lvl2">Superseded by Constitution</span></td>
-                        </tr>
-                        <tr>
-                            <td><strong>Colonial Customs & Tariff Convention</strong><br><span style="font-size:0.75rem; color:#834e68;">Ref: SGN-HIST-2014-02</span></td>
-                            <td>Former Colonial Administration</td>
-                            <td>2014 &ndash; 2019</td>
-                            <td>Imposed foreign colonial export duties; formally abolished upon ratification of the Sovereign Free Trade Charter.</td>
-                            <td><span class="badge badge-lvl4">Dissolved & Repealed</span></td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
-
-        <!-- SECTION 3: EMBASSY AVAILABILITY & CONSULAR SERVICES -->
-        <div class="glass-panel" id="embassies">
-            <h2>
-                <span>Embassy Availability & Diplomatic Mission Directory</span>
-                <button type="button" class="sangaia-btn btn-pink" onclick="openVisaModal()">
-                    <span>Book Consular Appointment / Visa &rarr;</span>
-                </button>
-            </h2>
-            <p>
-                Directory of resident Sangaian missions worldwide and accredited foreign embassies located in the Federal Diplomatic Quarter (Veridia City). Consular appointments are bookable online.
-            </p>
-
-            <h3 style="color: var(--rose-deep); margin-top: 20px; font-size: 1.15rem;">
-                Sangaian Embassies & Consulates Abroad
-            </h3>
-
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 16px; margin: 15px 0;">
-                <div style="background: #ffffff; border: 1px solid #fbcfe8; border-radius: 8px; padding: 18px; border-top: 4px solid var(--rose-bold);">
-                    <div style="display: flex; justify-content: space-between; align-items: flex-start;">
-                        <h4 style="margin: 0; color: var(--rose-deep);">Embassy to Switzerland & the UN</h4>
-                        <span class="badge badge-lvl1">Open Today</span>
+            <div class="ol-header-tools">
+                <form class="ol-search" id="headerSearchForm" action="/services.html" method="get">
+                    <input type="text" id="headerSearch" name="q" placeholder="Search government &amp; services" aria-label="Search">
+                    <button type="submit" class="ol-search-bing" aria-label="Search">&#x1F50E;</button>
+                </form>
+                
+                <a class="ol-icon-btn" href="/services.html" title="Notifications">
+                    <svg width="16" height="16" viewBox="0 0 16 16"><path fill="currentColor" d="M8 1.5c-2.4 0-4 1.9-4 4.2v3L2.7 11c-.3.4 0 1 .5 1h9.6c.5 0 .8-.6.5-1L12 8.7v-3c0-2.3-1.6-4.2-4-4.2zm0 13c1 0 1.8-.7 2-1.5H6c.2.8 1 1.5 2 1.5z"/></svg>
+                    <span class="ol-badge">3</span>
+                </a>
+                <a class="ol-icon-btn" href="/services.html" title="Citizen Messages">
+                    <svg width="16" height="16" viewBox="0 0 16 16"><path fill="currentColor" d="M2 3h12c.6 0 1 .4 1 1v7c0 .6-.4 1-1 1H9l-3.4 2.6c-.4.3-.9 0-.9-.5V12H2c-.6 0-1-.4-1-1V4c0-.6.4-1 1-1z"/></svg>
+                    <span class="ol-badge">1</span>
+                </a>
+                <div class="ol-me">
+                    <div class="ol-me-chip" id="meChip">
+                        <span class="ol-avatar sm">
+                            <img src="/images/1.jpeg" alt="Citizen Profile">
+                            <span class="ol-presence-dot"></span>
+                        </span>
+                        <span class="ol-me-name">Jqackkk</span>
+                        <span class="ol-me-caret">&#9660;</span>
                     </div>
-                    <p style="font-size: 0.86rem; color: #475569; margin: 8px 0;">
-                        <strong>Head of Mission:</strong> Ambassador Clara von Bern<br>
-                        <strong>Address:</strong> Rue de Varembé 14, 1202 Geneva, Switzerland<br>
-                        <strong>Hours:</strong> Mon&ndash;Fri 09:00&ndash;16:30 CET<br>
-                        <strong>Services:</strong> Visas, Passport Renewals, Citizen Repatriation
-                    </p>
-                    <div style="font-size: 0.8rem; font-weight: bold; color: var(--pink-bright);">24/7 Hotline: +41 22 799 4400</div>
-                </div>
-
-                <div style="background: #ffffff; border: 1px solid #fbcfe8; border-radius: 8px; padding: 18px; border-top: 4px solid var(--rose-bold);">
-                    <div style="display: flex; justify-content: space-between; align-items: flex-start;">
-                        <h4 style="margin: 0; color: var(--rose-deep);">Embassy to Japan & East Asia</h4>
-                        <span class="badge badge-lvl1">Open Today</span>
+                    <div class="ol-me-menu" id="meMenu" style="display:none; position:absolute; right:0; top:36px; background:#fff; border:1px solid #dfe3e7; border-radius:3px; box-shadow:0 2px 8px rgba(0,0,0,0.15); width:180px; z-index:1000; padding:6px 0;">
+                        <div style="padding:4px 12px; font-size:11px; font-weight:700; color:#64748b; text-transform:uppercase;">Citizen ID: SG-2026-F1E8</div>
+                        <a href="/id.html" style="display:block; padding:5px 12px; color:#2a2a2a; font-size:13px;">Sangaia ID Card</a>
+                        <a href="/citizenship.html" style="display:block; padding:5px 12px; color:#2a2a2a; font-size:13px;">Citizenship Status</a>
+                        <a href="/units.html" style="display:block; padding:5px 12px; color:#2a2a2a; font-size:13px;">Units &amp; Measures</a>
+                        <div style="border-top:1px solid #edf0f3; margin:4px 0;"></div>
+                        <a href="/index.html" style="display:block; padding:5px 12px; color:#2a2a2a; font-size:13px;">Federal Home</a>
                     </div>
-                    <p style="font-size: 0.86rem; color: #475569; margin: 8px 0;">
-                        <strong>Head of Mission:</strong> Ambassador Kenji Takahashi<br>
-                        <strong>Address:</strong> Minato City, Roppongi 5-11, Tokyo, Japan<br>
-                        <strong>Hours:</strong> Mon&ndash;Fri 09:00&ndash;17:00 JST<br>
-                        <strong>Services:</strong> Visas, Commercial Freight Clearances, Notarials
-                    </p>
-                    <div style="font-size: 0.8rem; font-weight: bold; color: var(--pink-bright);">24/7 Hotline: +81 3 5555 0180</div>
                 </div>
-
-                <div style="background: #ffffff; border: 1px solid #fbcfe8; border-radius: 8px; padding: 18px; border-top: 4px solid var(--rose-bold);">
-                    <div style="display: flex; justify-content: space-between; align-items: flex-start;">
-                        <h4 style="margin: 0; color: var(--rose-deep);">Embassy to the United Kingdom</h4>
-                        <span class="badge badge-lvl1">Open Today</span>
-                    </div>
-                    <p style="font-size: 0.86rem; color: #475569; margin: 8px 0;">
-                        <strong>Head of Mission:</strong> Ambassador Arthur Pendelton<br>
-                        <strong>Address:</strong> 34 Belgrave Square, London SW1X 8QB, UK<br>
-                        <strong>Hours:</strong> Mon&ndash;Fri 09:00&ndash;16:30 GMT<br>
-                        <strong>Services:</strong> Passport Renewal, Student Visas, Legal Authentication
-                    </p>
-                    <div style="font-size: 0.8rem; font-weight: bold; color: var(--pink-bright);">24/7 Hotline: +44 20 7946 0992</div>
-                </div>
-
-                <div style="background: #ffffff; border: 1px solid #fbcfe8; border-radius: 8px; padding: 18px; border-top: 4px solid var(--rose-bold);">
-                    <div style="display: flex; justify-content: space-between; align-items: flex-start;">
-                        <h4 style="margin: 0; color: var(--rose-deep);">Embassy to the United States & Canada</h4>
-                        <span class="badge badge-lvl1">Open Today</span>
-                    </div>
-                    <p style="font-size: 0.86rem; color: #475569; margin: 8px 0;">
-                        <strong>Head of Mission:</strong> Ambassador Sarah Montgomery<br>
-                        <strong>Address:</strong> 2201 Massachusetts Ave NW, Washington D.C., USA<br>
-                        <strong>Hours:</strong> Mon&ndash;Fri 09:00&ndash;17:00 EST<br>
-                        <strong>Services:</strong> Visas, Citizen Emergency Relief, Trade Liaison
-                    </p>
-                    <div style="font-size: 0.8rem; font-weight: bold; color: var(--pink-bright);">24/7 Hotline: +1 202 555 0174</div>
-                </div>
-            </div>
-
-            <!-- Foreign Embassies in Sangaia -->
-            <h3 style="color: var(--rose-deep); margin-top: 25px; font-size: 1.15rem;" id="visa-services">
-                Foreign Diplomatic Missions in Sangaia (Federal Capital Enclave)
-            </h3>
-
-            <div class="data-table-wrapper">
-                <table class="pink-table">
-                    <thead>
-                        <tr>
-                            <th>Accredited Foreign Embassy</th>
-                            <th>Ambassador / Plenipotentiary</th>
-                            <th>Enclave Address in Veridia</th>
-                            <th>Operating Schedule</th>
-                            <th>Citizen Inquiries & Visas</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td><strong>Embassy of the Swiss Confederation</strong></td>
-                            <td>H.E. Markus Hodel</td>
-                            <td>Diplomatic Ring 4, Veridia City</td>
-                            <td>Mon&ndash;Fri 09:30&ndash;15:30</td>
-                            <td><span class="badge badge-lvl1">Full Consular & Schengen Visas</span></td>
-                        </tr>
-                        <tr>
-                            <td><strong>Embassy of Japan</strong></td>
-                            <td>H.E. Yoko Tanaka</td>
-                            <td>Diplomatic Ring 8, Veridia City</td>
-                            <td>Mon&ndash;Fri 09:00&ndash;16:00</td>
-                            <td><span class="badge badge-lvl1">Full Consular & Cultural Exchange</span></td>
-                        </tr>
-                        <tr>
-                            <td><strong>Embassy of Canada</strong></td>
-                            <td>H.E. David Campbell</td>
-                            <td>Diplomatic Ring 12, Veridia City</td>
-                            <td>Mon&ndash;Fri 09:00&ndash;15:30</td>
-                            <td><span class="badge badge-lvl1">Full Consular & Trade Promotion</span></td>
-                        </tr>
-                        <tr>
-                            <td><strong>Embassy of the Kingdom of Norway</strong></td>
-                            <td>H.E. Solveig Lind</td>
-                            <td>Diplomatic Ring 15, Veridia City</td>
-                            <td>Mon&ndash;Fri 10:00&ndash;15:00</td>
-                            <td><span class="badge badge-lvl1">Full Consular & Energy Coordination</span></td>
-                        </tr>
-                        <tr>
-                            <td><strong>Embassy of the Republic of Singapore</strong></td>
-                            <td>H.E. Lim Wei Kiat</td>
-                            <td>Diplomatic Ring 19, Veridia City</td>
-                            <td>Mon&ndash;Fri 09:00&ndash;16:30</td>
-                            <td><span class="badge badge-lvl1">Full Consular & Maritime Logistics</span></td>
-                        </tr>
-                    </tbody>
-                </table>
             </div>
         </div>
 
-    </div>
-
-    <!-- MODAL 1: TRAVEL ADVISORY DETAIL -->
-    <div class="modal-overlay" id="advisory-modal">
-        <div class="modal-card">
-            <h3 style="color: var(--rose-deep); margin-top: 0;" id="adv-modal-title">Nation Travel Advisory</h3>
-            <div id="adv-modal-badge" style="margin-bottom: 12px;"></div>
-            <div id="adv-modal-body" style="font-size: 0.95rem; color: #333; line-height: 1.6; margin: 15px 0;"></div>
-            <div style="text-align: right; margin-top: 20px;">
-                <button type="button" class="sangaia-btn" onclick="closeAdvisoryModal()"><span>Close Window</span></button>
+        <div class="ol-band">
+            <div class="ol-band-inner">
+                <h1>Ministry of External Affairs</h1>
+                <p class="ol-band-sub">Global travel advisories for all nations, sovereign treaties, embassies & diplomatic protocol</p>
             </div>
         </div>
     </div>
-
-    <!-- MODAL 2: VISA & CONSULAR BOOKING -->
-    <div class="modal-overlay" id="visa-modal">
-        <div class="modal-card">
-            <h3 style="color: var(--rose-deep); margin-top: 0;">Book Diplomatic Consular Appointment</h3>
-            <p style="font-size: 0.85rem; color: #6b3952;">Official scheduling with the Sangaian Consular Service Division.</p>
-            <form onsubmit="handleVisaSubmit(event)">
-                <div style="margin-bottom: 12px;">
-                    <label style="font-size: 0.78rem; font-weight: bold; color: var(--rose-deep); display: block; margin-bottom: 4px;">Applicant Legal Name or Sangaia ID *</label>
-                    <input type="text" id="visa-name" class="filter-input" style="width: 100%;" required placeholder="Legal Name or Sangaia ID">
-                </div>
-                <div style="margin-bottom: 12px;">
-                    <label style="font-size: 0.78rem; font-weight: bold; color: var(--rose-deep); display: block; margin-bottom: 4px;">Consular Service Category *</label>
-                    <select id="visa-service" class="filter-input" style="width: 100%;" required>
-                        <option value="Sangaian Citizen Passport Renewal Abroad">Sangaian Citizen Passport Renewal Abroad</option>
-                        <option value="Foreign National Entry / Tourism Visa Application">Foreign National Entry / Tourism Visa Application</option>
-                        <option value="Diplomatic & Trade Accreditation">Diplomatic & Trade Accreditation</option>
-                        <option value="Legal Document Authentication & Apostille">Legal Document Authentication & Apostille</option>
-                        <option value="Emergency Citizen Repatriation Relief">Emergency Citizen Repatriation Relief</option>
-                    </select>
-                </div>
-                <div style="margin-bottom: 12px;">
-                    <label style="font-size: 0.78rem; font-weight: bold; color: var(--rose-deep); display: block; margin-bottom: 4px;">Target Embassy / Mission Location *</label>
-                    <input type="text" id="visa-location" class="filter-input" style="width: 100%;" required placeholder="e.g. Geneva, Tokyo, London, or Federal Capital Veridia">
-                </div>
-                <div style="margin-bottom: 12px;">
-                    <label style="font-size: 0.78rem; font-weight: bold; color: var(--rose-deep); display: block; margin-bottom: 4px;">Appointment Date & Specific Requirements *</label>
-                    <textarea id="visa-details" class="filter-input" style="width: 100%; height: 75px;" required placeholder="State preferred date, travel itinerary, urgent medical or legal circumstances..."></textarea>
-                </div>
-                <div style="display: flex; justify-content: flex-end; gap: 10px; margin-top: 18px;">
-                    <button type="button" class="sangaia-btn" onclick="closeVisaModal()"><span>Cancel</span></button>
-                    <button type="submit" class="sangaia-btn btn-pink"><span>Confirm Consular Booking</span></button>
-                </div>
-            </form>
-        </div>
-    </div>
-
-    <!-- MODAL 3: TREATY REQUEST -->
-    <div class="modal-overlay" id="treaty-modal">
-        <div class="modal-card">
-            <h3 style="color: var(--rose-deep); margin-top: 0;">Request Certified Treaty Instrument</h3>
-            <p style="font-size: 0.85rem; color: #6b3952;">Direct archival request from the Federal Diplomatic Registry.</p>
-            <form onsubmit="handleTreatySubmit(event)">
-                <div style="margin-bottom: 12px;">
-                    <label style="font-size: 0.78rem; font-weight: bold; color: var(--rose-deep); display: block; margin-bottom: 4px;">Applicant or Academic Institution *</label>
-                    <input type="text" id="trt-name" class="filter-input" style="width: 100%;" required placeholder="Name, University, or Legal Counsel">
-                </div>
-                <div style="margin-bottom: 12px;">
-                    <label style="font-size: 0.78rem; font-weight: bold; color: var(--rose-deep); display: block; margin-bottom: 4px;">Treaty Title or Reference ID *</label>
-                    <input type="text" id="trt-title" class="filter-input" style="width: 100%;" required placeholder="e.g. SGN-TRT-2024-01 Maritime Navigation Accord">
-                </div>
-                <div style="margin-bottom: 12px;">
-                    <label style="font-size: 0.78rem; font-weight: bold; color: var(--rose-deep); display: block; margin-bottom: 4px;">Purpose of Archival Research *</label>
-                    <textarea id="trt-reason" class="filter-input" style="width: 100%; height: 75px;" required placeholder="State legal research, academic publication, commercial trade verification..."></textarea>
-                </div>
-                <div style="display: flex; justify-content: flex-end; gap: 10px; margin-top: 18px;">
-                    <button type="button" class="sangaia-btn" onclick="closeTreatyModal()"><span>Cancel</span></button>
-                    <button type="submit" class="sangaia-btn btn-pink"><span>Issue Certified Archival Instrument</span></button>
-                </div>
-            </form>
-        </div>
-    </div>
-
-    <!-- GENERAL NOTICE MODAL -->
-    <div class="modal-overlay" id="notice-modal">
-        <div class="modal-card">
-            <h3 style="color: var(--rose-deep); margin-top: 0;" id="notice-title">Notification</h3>
-            <div id="notice-body" style="font-size: 0.95rem; color: #333; line-height: 1.6; margin: 15px 0;"></div>
-            <div style="text-align: right; margin-top: 20px;">
-                <button type="button" class="sangaia-btn" onclick="closeNoticeModal()"><span>Close Window</span></button>
-            </div>
-        </div>
-    </div>
-
-    <footer>
-        &copy; 2026 United Provinces of Sangaia. All Rights Reserved.<br>
-        <span style="font-size: 0.85em; color: var(--text-muted);">
-            Ministry of External Affairs &bull; Department of Sovereign Diplomacy, Treaties & Consular Protection
-        </span>
-    </footer>
 </div>
 
-<!-- SCRIPTS -->
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-<script src="auth.js" onerror="this.onerror=null; this.src='../auth.js';"></script>
+<!-- Main Top Nav Tabs (One Live Bar) -->
+<div class="wl-tabs">
+    <div class="ol-container wl-tabs-inner">
+        <ul class="ol-nav" id="primaryNav">
+            <li><a href="/index.html">Home</a></li>
+            <li><a href="/executive.html">Executive</a></li>
+            <li><a href="/treasury.html">Treasury</a></li>
+            <li><a href="/work.html">Work</a></li>
+            <li><a href="/healthcare.html">Healthcare</a></li>
+            <li><a href="/education.html">Education</a></li>
+            <li><a href="/domesticaffairs.html">Domestic</a></li>
+            <li class="ol-current"><a href="/externalaffairs.html">External</a></li>
+            <li><a href="/environment.html">Environment</a></li>
+            <li><a href="/propaganda.html">Propaganda</a></li>
+            <li><a href="/services.html">Services</a></li>
+            <li><a href="/units.html">Units (Мн • °Пт)</a></li>
+            
+        </ul>
+    </div>
+</div>
 
-<script>
-    // --- COMPREHENSIVE WORLDWIDE TRAVEL ADVISORIES DATABASE ---
-    const worldwideAdvisories = [
-        // Level 1: Normal Precautions
-        { name: "Japan", region: "asia", level: 1, flag: "🇯🇵", desc: "Exercise normal precautions. Comprehensive public safety, low crime rates, pristine transit infrastructure. Sangaian citizens receive 90-day visa waiver." },
-        { name: "Switzerland", region: "europe", level: 1, flag: "🇨🇭", desc: "Exercise normal precautions. Excellent medical facilities and sovereign banking reciprocity with Sangaia. Full bilateral consular support in Bern and Geneva." },
-        { name: "Norway", region: "europe", level: 1, flag: "🇳🇴", desc: "Exercise normal precautions. Peaceful maritime and energy relations with Sangaia. Rapid emergency consular mutual assistance treaty active." },
-        { name: "New Zealand", region: "asia", level: 1, flag: "🇳🇿", desc: "Exercise normal precautions. Pristine environmental biosecurity rules. Visa-free access for 90 days for Sangaia passport holders." },
-        { name: "Iceland", region: "europe", level: 1, flag: "🇮🇸", desc: "Exercise normal precautions. Geothermal cooperation partner. Respect volcanic alerts and winter alpine road signage." },
-        { name: "Singapore", region: "asia", level: 1, flag: "🇸🇬", desc: "Exercise normal precautions. Zero-tariff trade partner. Strict compliance with local municipal laws required." },
-        { name: "Canada", region: "americas", level: 1, flag: "🇨🇦", desc: "Exercise normal precautions. Bilateral free trade accord active. Full consular presence in Ottawa and Vancouver." },
-        { name: "South Korea", region: "asia", level: 1, flag: "🇰🇷", desc: "Exercise normal precautions. High-tech trade hub. Robust emergency infrastructure and seamless electronic travel clearance." },
-        { name: "Finland", region: "europe", level: 1, flag: "🇫🇮", desc: "Exercise normal precautions. High safety standards and cold-climate technology exchange treaties active." },
-        { name: "Australia", region: "asia", level: 1, flag: "🇦🇺", desc: "Exercise normal precautions. Comprehensive reciprocal consular assistance. Adhere strictly to marine wildlife conservation zones." },
-        { name: "Portugal", region: "europe", level: 1, flag: "🇵🇹", desc: "Exercise normal precautions. Stable maritime nation with visa-waiver reciprocity." },
-        { name: "Austria", region: "europe", level: 1, flag: "🇦🇹", desc: "Exercise normal precautions. European diplomatic hub with reciprocal consular protections." },
-
-        // Level 2: Exercise Increased Caution
-        { name: "United Kingdom", region: "europe", level: 2, flag: "🇬🇧", desc: "Exercise increased caution due to transport strikes and occasional urban civil protests. London Embassy fully staffed." },
-        { name: "France", region: "europe", level: 2, flag: "🇫🇷", desc: "Exercise increased caution due to periodic transport demonstrations and elevated pickpocketing in tourist sectors." },
-        { name: "Germany", region: "europe", level: 2, flag: "🇩🇪", desc: "Exercise increased caution due to transport infrastructure maintenance and potential aviation union actions." },
-        { name: "Italy", region: "europe", level: 2, flag: "🇮🇹", desc: "Exercise increased caution due to petty property crime in major historical centers and peak seasonal heat waves." },
-        { name: "Spain", region: "europe", level: 2, flag: "🇪🇸", desc: "Exercise increased caution due to pickpocketing in coastal resorts and urban transit hubs." },
-        { name: "Brazil", region: "americas", level: 2, flag: "🇧🇷", desc: "Exercise increased caution due to street crime in urban metropolises. Avoid unescorted night travel outside diplomatic zones." },
-        { name: "Mexico", region: "americas", level: 2, flag: "🇲🇽", desc: "Exercise increased caution in tourist corridors; avoid non-essential highway travel in certain border states." },
-        { name: "South Africa", region: "africa", level: 2, flag: "🇿🇦", desc: "Exercise increased caution due to localized crime and intermittent electrical grid load-shedding schedules." },
-        { name: "Thailand", region: "asia", level: 2, flag: "🇹🇭", desc: "Exercise increased caution due to localized civil demonstrations and seasonal monsoon flooding in southern provinces." },
-        { name: "India", region: "asia", level: 2, flag: "🇮🇳", desc: "Exercise increased caution due to severe urban traffic, atmospheric seasonal smog, and remote border restrictions." },
-        { name: "Peru", region: "americas", level: 2, flag: "🇵🇪", desc: "Exercise increased caution due to periodic regional transit roadblocks and high-altitude health advisories." },
-        { name: "Morocco", region: "africa", level: 2, flag: "🇲🇦", desc: "Exercise increased caution in desert border frontiers; urban coastal corridors remain secure and welcoming." },
-        { name: "Kenya", region: "africa", level: 2, flag: "🇰🇪", desc: "Exercise increased caution in northern border zones; wildlife safari national parks operate under heavy ranger security." },
-
-        // Level 3: Reconsider Travel
-        { name: "Colombia", region: "americas", level: 3, flag: "🇨🇴", desc: "Reconsider travel to rural border provinces due to armed cartel activity. Major cities require strict pre-vetted transport." },
-        { name: "Egypt", region: "mideast", level: 3, flag: "🇪🇬", desc: "Reconsider travel to North Sinai and western desert borders due to military security checkpoints." },
-        { name: "Pakistan", region: "asia", level: 3, flag: "🇵🇰", desc: "Reconsider travel due to border security skirmishes and civil unrest in non-urban districts." },
-        { name: "Nigeria", region: "africa", level: 3, flag: "🇳🇬", desc: "Reconsider travel due to regional insurgent activity in northeastern states and maritime piracy off the delta." },
-        { name: "Honduras", region: "americas", level: 3, flag: "🇭🇳", desc: "Reconsider travel due to high violent crime rates and gang extortion networks outside secure resort enclaves." },
-        { name: "Chad", region: "africa", level: 3, flag: "🇹🇩", desc: "Reconsider travel due to political instability and armed checkpoint restrictions across remote desert routes." },
-        { name: "Turkey (Syrian Border)", region: "mideast", level: 3, flag: "🇹🇷", desc: "Reconsider travel within 30 km of the southern Syrian frontier due to military conflict exclusion zones." },
-
-        // Level 4: Do Not Travel
-        { name: "North Korea", region: "asia", level: 4, flag: "🇰🇵", desc: "DO NOT TRAVEL. Critical risk of arbitrary arrest, total lack of diplomatic consular access, and strict exit bans." },
-        { name: "Syria", region: "mideast", level: 4, flag: "🇸🇾", desc: "DO NOT TRAVEL. Active military armed conflict, aerial bombardments, and non-operational consular infrastructure." },
-        { name: "Yemen", region: "mideast", level: 4, flag: "🇾🇪", desc: "DO NOT TRAVEL. Severe humanitarian crisis, active maritime missile attacks, and no commercial repatriation routes." },
-        { name: "Somalia", region: "africa", level: 4, flag: "🇸🇴", desc: "DO NOT TRAVEL. Extreme risk of terrorism, piracy in coastal waters, and lack of recognized civil law enforcement." },
-        { name: "South Sudan", region: "africa", level: 4, flag: "🇸🇸", desc: "DO NOT TRAVEL. Widespread armed conflict, severe food insecurity, and armed checkpoints targeting foreign nationals." },
-        { name: "Haiti", region: "americas", level: 4, flag: "🇭🇹", desc: "DO NOT TRAVEL. Critical state of gang territorial control, collapse of civil services, and port/airport blockades." },
-        { name: "Afghanistan", region: "asia", level: 4, flag: "🇦🇫", desc: "DO NOT TRAVEL. Severe risk of detention, zero recognized diplomatic ties, and extreme civil rights crackdowns." },
-        { name: "Russia", region: "europe", level: 4, flag: "🇷🇺", desc: "DO NOT TRAVEL. International sanctions, risk of arbitrary detention of foreign nationals, and restricted financial networks." },
-        { name: "Iran", region: "mideast", level: 4, flag: "🇮🇷", desc: "DO NOT TRAVEL. High risk of arbitrary questioning, detention, and lack of neutral consular protections." },
-        { name: "Libya", region: "africa", level: 4, flag: "🇱🇾", desc: "DO NOT TRAVEL. Armed militia clashes, military airport closures, and absence of unified central government." }
-    ];
-
-    let currentRegion = 'all';
-    let currentLevel = 'all';
-
-    function renderAdvisories(list) {
-        const container = document.getElementById('advisories-container');
-        if (!container) return;
-
-        if (list.length === 0) {
-            container.innerHTML = `<div style="grid-column: 1/-1; text-align: center; padding: 30px; color: #834e68;">No nations match the specified search or filter criteria.</div>`;
-            return;
-        }
-
-        container.innerHTML = list.map(item => {
-            let lvlClass = `lvl-${item.level}`;
-            let badgeClass = `badge-lvl${item.level}`;
-            let lvlText = `Level ${item.level}`;
-            if (item.level === 1) lvlText = "Level 1: Normal";
-            else if (item.level === 2) lvlText = "Level 2: Caution";
-            else if (item.level === 3) lvlText = "Level 3: Reconsider";
-            else if (item.level === 4) lvlText = "Level 4: Do Not Travel";
-
-            return `
-                <div class="advisory-card ${lvlClass}" onclick="viewAdvisoryDossier('${item.name}', ${item.level}, '${item.flag}', '${item.desc.replace(/'/g, "\\'")}')">
-                    <div>
-                        <div class="advisory-country-name">
-                            <span>${item.flag} ${item.name}</span>
-                            <span class="badge ${badgeClass}">${lvlText}</span>
-                        </div>
-                        <p style="font-size: 0.85rem; color: #475569; margin: 6px 0 0 0; line-height: 1.5;">
-                            ${item.desc.substring(0, 115)}...
-                        </p>
-                    </div>
-                    <div style="margin-top: 10px; font-size: 0.78rem; font-weight: bold; color: var(--pink-bright);">
-                        View Security Brief & Consular Stations &rarr;
-                    </div>
+<!-- Main Content Grid -->
+<div class="ol-container ol-main">
+    <div class="ol-with-sidebar">
+        <!-- Left Sidebar Navigation -->
+        <div class="ol-sidebar-nav">
+            <div class="ol-card ol-profile-card" style="text-align: center;">
+                <span class="ol-avatar lg">
+                    <img src="/images/1.jpeg" alt="Emblem">
+                    <span class="ol-presence-dot"></span>
+                </span>
+                <div class="ol-mt-10">
+                    <strong>Ministry of External Affairs</strong><br>
+                    <span class="ol-muted ol-small">Foreign Service & Diplomatic Corp</span><br>
+                    <span class="ol-small" style="color:var(--ol-accent); font-weight:600;">Missions Active</span>
                 </div>
-            `;
-        }).join('');
-    }
+            </div>
 
-    function filterAdvisories() {
-        const q = (document.getElementById('adv-search').value || '').toLowerCase();
+            <span class="ol-sidenav-label">Portal Navigation</span>
+            <ul class="ol-sidenav">
+                <li><a href="#overview" class="sel">Overview & Neutrality</a></li>
+<li><a href="#travel">Worldwide Travel Advisories</a></li>
+<li><a href="#treaties">Sovereign Treaties & Accords</a></li>
+<li><a href="#embassies">Embassies & Consulates</a></li>
+<li><a href="#protocol">Diplomatic Protocol</a></li>
+<li><a href="/externalaffairs_departments.html">Departments Portal →</a></li>
 
-        const filtered = worldwideAdvisories.filter(item => {
-            const matchQuery = item.name.toLowerCase().includes(q) || item.desc.toLowerCase().includes(q);
-            const matchRegion = (currentRegion === 'all' || item.region === currentRegion);
-            const matchLevel = (currentLevel === 'all' || item.level.toString() === currentLevel);
-            return matchQuery && matchRegion && matchLevel;
+            </ul>
+
+            <span class="ol-sidenav-label">Federal Network</span>
+            <ul class="ol-sidenav">
+                <li><a href="/index.html">Federal Home</a></li>
+                <li><a href="/services.html">All Services</a></li>
+                <li><a href="/units.html">Units (Мн &bull; &deg;Пт)</a></li>
+                <li><a href="/societal_press.html">Societal Press</a></li>
+            </ul>
+        </div>
+
+        <!-- Center Content -->
+        <div class="ol-content">
+            
+    <div class="ol-status-bubble" id="overview">
+        &ldquo;Sangaia conducts foreign relations upon principles of strict armed neutrality, reciprocal trade, and universal respect for national sovereignty.&rdquo;
+        <div class="ol-status-date">Ministry of External Affairs &bull; Updated Today</div>
+    </div>
+
+    <!-- Travel Advisories for Every Worldwide Nation -->
+    <div class="ol-card" id="travel">
+        <div class="ol-card-title">
+            <span>Global Travel Advisories &bull; Worldwide Nation Directory</span>
+            <span class="ol-badge-tag ol-badge-success">Consular Telemetry Live</span>
+        </div>
+        <p class="ol-small">Official risk assessments and travel guidance issued by the Sangaian Consular Service for all recognized nations worldwide.</p>
+        <div style="margin-bottom:12px;">
+            <input type="text" class="ol-input" id="countrySearch" placeholder="Type country name (e.g., France, Japan, Switzerland, Canada)..." oninput="filterCountries()">
+        </div>
+        <div style="max-height:300px; overflow-y:auto; border:1px solid #dfe3e7; border-radius:3px;">
+            <table class="ol-table" id="countryTable" style="margin:0;">
+                <thead>
+                    <tr><th>Nation</th><th>Advisory Tier</th><th>Sangaia Embassy Status</th><th>Entry Conditions</th></tr>
+                </thead>
+                <tbody>
+                    <tr class="country-row"><td>Switzerland</td><td><span class="ol-badge-tag ol-badge-success">Level 1: Normal Caution</span></td><td>Bern Embassy &bull; Fully Operational</td><td>Visa-free 90 Days</td></tr>
+                    <tr class="country-row"><td>Japan</td><td><span class="ol-badge-tag ol-badge-success">Level 1: Normal Caution</span></td><td>Tokyo Embassy &bull; Fully Operational</td><td>Visa-free 90 Days</td></tr>
+                    <tr class="country-row"><td>Norway</td><td><span class="ol-badge-tag ol-badge-success">Level 1: Normal Caution</span></td><td>Oslo Embassy &bull; Fully Operational</td><td>Visa-free 90 Days</td></tr>
+                    <tr class="country-row"><td>Canada</td><td><span class="ol-badge-tag ol-badge-success">Level 1: Normal Caution</span></td><td>Ottawa Embassy &bull; Fully Operational</td><td>Visa-free 90 Days</td></tr>
+                    <tr class="country-row"><td>United Kingdom</td><td><span class="ol-badge-tag ol-badge-success">Level 1: Normal Caution</span></td><td>London Embassy &bull; Fully Operational</td><td>Visa-free 90 Days</td></tr>
+                    <tr class="country-row"><td>United States</td><td><span class="ol-badge-tag ol-badge-warning">Level 2: Exercise Caution</span></td><td>Washington Embassy &bull; Operational</td><td>Electronic Visa Clearance</td></tr>
+                    <tr class="country-row"><td>Germany</td><td><span class="ol-badge-tag ol-badge-success">Level 1: Normal Caution</span></td><td>Berlin Embassy &bull; Fully Operational</td><td>Visa-free 90 Days</td></tr>
+                    <tr class="country-row"><td>France</td><td><span class="ol-badge-tag ol-badge-success">Level 1: Normal Caution</span></td><td>Paris Embassy &bull; Fully Operational</td><td>Visa-free 90 Days</td></tr>
+                    <tr class="country-row"><td>Australia</td><td><span class="ol-badge-tag ol-badge-success">Level 1: Normal Caution</span></td><td>Canberra Embassy &bull; Fully Operational</td><td>Visa-free 90 Days</td></tr>
+                    <tr class="country-row"><td>New Zealand</td><td><span class="ol-badge-tag ol-badge-success">Level 1: Normal Caution</span></td><td>Wellington Embassy &bull; Fully Operational</td><td>Visa-free 90 Days</td></tr>
+                    <tr class="country-row"><td>Brazil</td><td><span class="ol-badge-tag ol-badge-warning">Level 2: Exercise Caution</span></td><td>Brasília Embassy &bull; Operational</td><td>Consular Visa Required</td></tr>
+                    <tr class="country-row"><td>South Africa</td><td><span class="ol-badge-tag ol-badge-warning">Level 2: Exercise Caution</span></td><td>Pretoria Embassy &bull; Operational</td><td>Consular Visa Required</td></tr>
+                    <tr class="country-row"><td>Ukraine</td><td><span class="ol-badge-tag ol-badge-danger">Level 4: Do Not Travel</span></td><td>Operations Remote / Warsaw Hub</td><td>Emergency Consular Only</td></tr>
+                    <tr class="country-row"><td>Syria</td><td><span class="ol-badge-tag ol-badge-danger">Level 4: Do Not Travel</span></td><td>Operations Suspended</td><td>Strict Travel Warning</td></tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- Active & Past Sovereign Treaties -->
+    <div class="ol-card" id="treaties">
+        <div class="ol-card-title">
+            <span>Sovereign Treaties &amp; International Accords Registry</span>
+            <span class="ol-badge-tag">Ratified by Aeretocrat</span>
+        </div>
+        <table class="ol-table">
+            <thead>
+                <tr><th>Treaty Accord Title</th><th>Signatory Parties</th><th>Ratification</th><th>Scope of Accord</th></tr>
+            </thead>
+            <tbody>
+                <tr><td>Geneva Maritime Passage Accord</td><td>Sangaia, Nordic &amp; Alpine States</td><td>Ratified 2024</td><td>Protection of commercial shipping and neutral ports</td></tr>
+                <tr><td>Bilateral Clean Energy &amp; Battery Pact</td><td>Sangaia &amp; Pacific Alliance</td><td>Ratified 2025</td><td>Zero-tariff exchange of geothermal and lithium components</td></tr>
+                <tr><td>Universal Diplomatic Immunity Treaty</td><td>International Red Cross &amp; Neutral Nations</td><td>Ratified 2024</td><td>Absolute protection of medical delegates and neutral attaches</td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Embassies & Consular Directory -->
+    <div class="ol-card" id="embassies">
+        <div class="ol-card-title">
+            <span>Embassy &amp; Consular Availability</span>
+            <button type="button" class="ol-btn ol-btn-sm" onclick="openConsularModal()">Register Citizen Travel</button>
+        </div>
+        <p class="ol-small">Sangaia maintains 48 diplomatic missions and 112 consular posts worldwide to assist Sangaian citizens abroad with emergency passports, legal aid, and evacuation services.</p>
+    </div>
+    
+        </div>
+
+        <!-- Right Sidebar (Telemetry & Quick Actions) -->
+        <div class="ol-sidebar">
+            <div class="ol-note">Official Government of the Sovereign Republic of Sangaia. All administrative systems active.</div>
+
+            <div class="ol-sidebox">
+                <h3>Sovereign Telemetry</h3>
+                <div style="font-size:12.5px; line-height:1.6;">
+                    <div><strong>Currency:</strong> Sangaian Dollar ($)</div>
+                    <div><strong>Standard Temp:</strong> 22.5&deg;Пт (25&deg;C / 77&deg;F)</div>
+                    <div><strong>Standard Metric:</strong> 1 Мн = 2.5 cm</div>
+                    <div><strong>Active Provinces:</strong> 5 Territories</div>
+                </div>
+            </div>
+
+            <div class="ol-sidebox">
+                <h3>Provincial Weather (&deg;Пт)</h3>
+                <table class="ol-table" style="font-size:12px; margin:0;">
+                    <tr><td>New Jasper</td><td style="text-align:right;"><strong>20.5&deg;Пт</strong> (Sunny)</td></tr>
+                    <tr><td>New Madison</td><td style="text-align:right;"><strong>22.0&deg;Пт</strong> (Clear)</td></tr>
+                    <tr><td>Liveland</td><td style="text-align:right;"><strong>19.8&deg;Пт</strong> (Breezy)</td></tr>
+                    <tr><td>Sentinel</td><td style="text-align:right;"><strong>16.2&deg;Пт</strong> (Cool)</td></tr>
+                    <tr><td>Columbia</td><td style="text-align:right;"><strong>23.4&deg;Пт</strong> (Mild)</td></tr>
+                </table>
+            </div>
+
+            
+    <div class="ol-sidebox">
+        <h3>External Affairs</h3>
+        <p class="ol-small ol-muted">Manages diplomatic missions, international treaties, global commerce agreements, and consular services.</p>
+        <div class="ol-mt-10">
+            <a href="/externalaffairs_departments.html" class="ol-btn ol-btn-primary ol-btn-sm" style="width:100%; text-align:center;">Launch External Departments</a>
+        </div>
+    </div>
+    
+        </div>
+    </div>
+</div>
+
+
+    <!-- Consular Register Modal -->
+    <div class="ol-modal-overlay" id="consularModal">
+        <div class="ol-modal-dialog">
+            <div class="ol-modal-head">
+                <span class="ol-modal-title">Register International Travel with Consular Service</span>
+                <button type="button" class="ol-modal-close" onclick="closeModal('consularModal')">&times;</button>
+            </div>
+            <div class="form-group">
+                <label class="form-label">Citizen Legal Name</label>
+                <input type="text" class="ol-input" id="c-name" placeholder="Name as on Passport">
+            </div>
+            <div class="form-group">
+                <label class="form-label">Sangaia Passport Number</label>
+                <input type="text" class="ol-input" id="c-pass" placeholder="SG-P-XXXXXXX">
+            </div>
+            <div class="form-group">
+                <label class="form-label">Destination Country</label>
+                <input type="text" class="ol-input" id="c-dest" placeholder="e.g., Switzerland, Japan, Norway">
+            </div>
+            <div class="form-group">
+                <label class="form-label">Dates of Travel</label>
+                <input type="text" class="ol-input" id="c-dates" placeholder="Departure - Return">
+            </div>
+            <div class="modal-results-box" id="cResults"></div>
+            <div class="ol-modal-foot">
+                <button type="button" class="ol-btn" onclick="closeModal('consularModal')">Cancel</button>
+                <button type="button" class="ol-btn ol-btn-primary" onclick="submitConsular()">Register Travel Itinerary</button>
+            </div>
+        </div>
+    </div>
+    
+
+<!-- Floating Citizen Dock -->
+<div class="ol-dock">
+    <button type="button" class="ol-dock-tab" id="olDockMessages">
+        <svg width="15" height="15" viewBox="0 0 16 16"><path fill="currentColor" d="M2 3h12c.6 0 1 .4 1 1v7c0 .6-.4 1-1 1H9l-3.4 2.6c-.4.3-.9 0-.9-.5V12H2c-.6 0-1-.4-1-1V4c0-.6.4-1 1-1z"/></svg>
+        <span>Live Citizen Support</span>
+    </button>
+    <div class="ol-dock-list" id="olDockList">
+        <div class="ol-dock-list-head">
+            <span>Sangaia Citizen Assistance</span>
+            <a href="javascript:void(0)" id="olDockListClose" style="color:#64748b; font-size:16px;">&times;</a>
+        </div>
+        <div class="ol-dock-list-body">
+            <a class="ol-dock-item" href="/services.html"><strong>Online Inquiries:</strong> File petition or request</a>
+            <a class="ol-dock-item" href="/units.html"><strong>Unit Calculations:</strong> Monomer &amp; Panotherm</a>
+            <a class="ol-dock-item" href="/citizenship.html"><strong>Citizenship Registry:</strong> Check docket status</a>
+            <a class="ol-dock-item" href="/id.html"><strong>Sangaia ID:</strong> Digital identity card</a>
+        </div>
+    </div>
+</div>
+
+<!-- Footer -->
+<div class="ol-footer">
+    <div class="ol-container ol-footer-inner">
+        <p class="ol-footer-copy">&copy; 2026 Sovereign Republic of Sangaia. One Live Wave 4 Infrastructure.</p>
+        <ul class="ol-footer-links">
+            <li><a href="/index.html">Home</a></li>
+            <li><a href="/government.html">Government Structure</a></li>
+            <li><a href="/services.html">Services</a></li>
+            <li><a href="/societal_press.html">Gazette</a></li>
+            <li><a href="/units.html">Units System</a></li>
+            <li><a href="/about.html">About Sangaia</a></li>
+        </ul>
+    </div>
+</div>
+
+
+    <script>
+    function filterCountries() {
+        const q = (document.getElementById('countrySearch').value || '').toLowerCase();
+        document.querySelectorAll('.country-row').forEach(row => {
+            row.style.display = row.innerText.toLowerCase().includes(q) ? '' : 'none';
         });
-
-        renderAdvisories(filtered);
     }
 
-    function setRegionFilter(reg) {
-        currentRegion = reg;
-        document.querySelectorAll('#region-pills .filter-pill').forEach(el => el.classList.remove('active'));
-        const target = Array.from(document.querySelectorAll('#region-pills .filter-pill')).find(el => el.getAttribute('onclick').includes(reg));
-        if (target) target.classList.add('active');
-        filterAdvisories();
+    function openConsularModal() { document.getElementById('consularModal').classList.add('active'); }
+    function closeModal(id) { document.getElementById(id).classList.remove('active'); }
+
+    function submitConsular() {
+        const res = document.getElementById('cResults');
+        const token = 'CONS-REG-' + Math.floor(100000 + Math.random() * 900000);
+        res.innerHTML = `<strong>Travel Registered:</strong> Itinerary Token: <span style="font-family:monospace;">${token}</span>. Nearest Embassy notified.`;
+        res.classList.add('active');
     }
+    </script>
+    
 
-    function setLevelFilter(lvl) {
-        currentLevel = lvl;
-        document.querySelectorAll('#level-pills .filter-pill').forEach(el => el.classList.remove('active'));
-        const target = Array.from(document.querySelectorAll('#level-pills .filter-pill')).find(el => el.getAttribute('onclick').includes(lvl));
-        if (target) target.classList.add('active');
-        filterAdvisories();
-    }
-
-    function viewAdvisoryDossier(name, level, flag, desc) {
-        let lvlText = "Level 1 &ndash; Exercise Normal Precautions";
-        let badgeColor = "#15803d";
-        let bgBox = "#dcfce7";
-
-        if (level === 2) {
-            lvlText = "Level 2 &ndash; Exercise Increased Caution";
-            badgeColor = "#a16207";
-            bgBox = "#fef9c3";
-        } else if (level === 3) {
-            lvlText = "Level 3 &ndash; Reconsider Travel";
-            badgeColor = "#c2410c";
-            bgBox = "#ffedd5";
-        } else if (level === 4) {
-            lvlText = "Level 4 &ndash; DO NOT TRAVEL";
-            badgeColor = "#b91c1c";
-            bgBox = "#fee2e2";
-        }
-
-        document.getElementById('adv-modal-title').textContent = `${flag} Travel Advisory: ${name}`;
-        document.getElementById('adv-modal-badge').innerHTML = `
-            <div style="background: ${bgBox}; border-left: 4px solid ${badgeColor}; padding: 10px 14px; border-radius: 4px; font-weight: bold; color: ${badgeColor};">
-                ${lvlText}
-            </div>
-        `;
-
-        document.getElementById('adv-modal-body').innerHTML = `
-            <p style="font-size: 0.95rem; color: #1e293b; line-height: 1.6;">${desc}</p>
-
-            <h4 style="margin: 14px 0 6px 0; color: #880e4f;">Sangaian Passport & Entry Protocol</h4>
-            <div style="background: #fff0f5; border: 1px solid #fbcfe8; border-radius: 6px; padding: 12px; font-size: 0.88rem; color: #4a0e2e;">
-                <strong>Visa Regulations:</strong> Sangaian citizens holding biometric passports are granted reciprocal diplomatic protections. Ensure passport maintains at least 6 months validity from departure date.
-            </div>
-
-            <h4 style="margin: 14px 0 6px 0; color: #880e4f;">Consular Assistance Dispatch</h4>
-            <p style="font-size: 0.86rem; color: #475569; line-height: 1.5;">
-                In the event of an arrest, natural disaster, medical emergency, or loss of passport documents, contact the Global Consular Assistance Desk immediately via international toll-free line: <strong>+1 800 555 SGN-AID</strong> or submit an emergency relief dispatch petition.
-            </p>
-        `;
-
-        document.getElementById('advisory-modal').classList.add('show');
-    }
-
-    function closeAdvisoryModal() {
-        document.getElementById('advisory-modal').classList.remove('show');
-    }
-
-    // Initial render
-    renderAdvisories(worldwideAdvisories);
-
-    // --- TREATY TABS ---
-    function switchTreatyTab(tab) {
-        if (tab === 'active') {
-            document.getElementById('tab-active-treaties').classList.add('active');
-            document.getElementById('tab-past-treaties').classList.remove('active');
-            document.getElementById('active-treaties-table').style.display = 'block';
-            document.getElementById('past-treaties-table').style.display = 'none';
-        } else {
-            document.getElementById('tab-active-treaties').classList.remove('active');
-            document.getElementById('tab-past-treaties').classList.add('active');
-            document.getElementById('active-treaties-table').style.display = 'none';
-            document.getElementById('past-treaties-table').style.display = 'block';
-        }
-    }
-
-    // --- MODALS & FORMS ---
-    function openVisaModal() {
-        document.getElementById('visa-modal').classList.add('show');
-    }
-    function closeVisaModal() {
-        document.getElementById('visa-modal').classList.remove('show');
-    }
-
-    function handleVisaSubmit(e) {
-        e.preventDefault();
-        const name = document.getElementById('visa-name').value;
-        const serv = document.getElementById('visa-service').value;
-        const loc = document.getElementById('visa-location').value;
-        closeVisaModal();
-
-        const ticket = `VISA-APPT-2026-${Math.random().toString(36).substring(2,7).toUpperCase()}`;
-        openNotice("Diplomatic Consular Appointment Booked", `
-            <div style="background:#fce7f3; border:1px solid #fbcfe8; border-radius:6px; padding:15px; color:#880e4f;">
-                <strong>Applicant:</strong> ${name}<br>
-                <strong>Service Category:</strong> ${serv}<br>
-                <strong>Mission Location:</strong> ${loc}<br>
-                <strong>Appointment Confirmation Key:</strong> <code>${ticket}</code>
-            </div>
-            <p>Your consular hearing has been confirmed. Please bring your Sangaia ID or national passport with two biological standard photos to your appointment window.</p>
-        `);
-        e.target.reset();
-    }
-
-    function openTreatyModal() {
-        document.getElementById('treaty-modal').classList.add('show');
-    }
-    function closeTreatyModal() {
-        document.getElementById('treaty-modal').classList.remove('show');
-    }
-
-    function handleTreatySubmit(e) {
-        e.preventDefault();
-        const trt = document.getElementById('trt-title').value;
-        closeTreatyModal();
-
-        const ref = `ARCHIVE-TRT-${Math.random().toString(36).substring(2,8).toUpperCase()}`;
-        openNotice("Certified Archival Instrument Dispatched", `
-            <div style="background:#fff0f5; border:1px solid #fbcfe8; border-radius:6px; padding:15px; color:#ad1457;">
-                <strong>Requested Instrument:</strong> ${trt}<br>
-                <strong>Archival Certification ID:</strong> <code>${ref}</code>
-            </div>
-            <p>A digitally signed, legally certified instrument of ratification has been routed to your registered Sangaia ID address.</p>
-        `);
-        e.target.reset();
-    }
-
-    function openNotice(title, html) {
-        document.getElementById('notice-title').textContent = title;
-        document.getElementById('notice-body').innerHTML = html;
-        document.getElementById('notice-modal').classList.add('show');
-    }
-    function closeNoticeModal() {
-        document.getElementById('notice-modal').classList.remove('show');
-    }
-</script>
 </body>
 </html>

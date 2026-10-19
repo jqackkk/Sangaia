@@ -2,331 +2,248 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Government - The United Provinces of Sangaia</title>
-    <!-- Same styles as index.html -->
-    <style>
-        /* --- FRUTIGER AERO / SKEUOMORPHIC STYLES --- */
-        
-        :root {
-            --glass-blue: rgba(220, 245, 255, 0.85);
-            --gloss-highlight: rgba(255, 255, 255, 0.9);
-            --ocean-blue: #0077be;
-            --fresh-green: #7cba01;
-            --text-dark: #2c3e50;
-            --text-light: #ffffff;
-        }
-
-        body {
-            background: #ffffff;
-            min-height: 100dvh;
-            width: 100%;
-            display: flex;
-            align-items: center;
-            justify-content: flex-start;
-            flex-direction: column;
-            margin: 0;
-            font-family: 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-            color: var(--text-dark);
-        }
-
-        .main-container {
-            width: 100%;
-            margin: 0;
-            background: transparent;
-            border: none;
-            border-radius: 0;
-            box-shadow: none;
-            padding: 0;
-            flex-grow: 1;
-        }
-
-        
-
-        
-
-        h1 {
-            margin: 0;
-            font-size: 2.5em;
-            letter-spacing: -1px;
-        }
-
-        
-
-        /* --- APPLE 2012 METAL NAV STYLES --- */
-        #globalheader {
-            display: flex;
-            align-items: center;
-            position: relative;
-            width: 100%;
-            height: 38px;
-            margin: 0;
-            border-radius: 0;
-            background: linear-gradient(to bottom, #5e5e5e 0%, #3e3e3e 50%, #2d2d2d 51%, #1f1f1f 100%);
-            border-top: 1px solid #222;
-            border-bottom: 1px solid #000;
-            box-shadow: inset 0 1px 0 rgba(255,255,255,0.15), 0 2px 4px rgba(0,0,0,0.2);
-            font-size: 11px;
-            position: relative;
-            z-index: 99;
-        }
-
-        #globalnav {
-            flex-grow: 1;
-            margin: 0;
-            padding: 0;
-            list-style: none;
-            display: flex;
-            justify-content: center;
-            align-items: stretch;
-            height: 100%;
-            width: 100%;
-        }
-
-        #globalnav li {
-            position: relative;
-            height: 100%;
-            display: flex;
-            align-items: center;
-        }
-        #globalnav li::after {
-            content: "";
-            position: absolute;
-            right: 0;
-            top: 0;
-            bottom: 0;
-            width: 1px;
-            background: linear-gradient(to bottom, #333, #111);
-            box-shadow: 1px 0 0 rgba(255,255,255,0.08);
-            z-index: 1;
-        }
-        #globalnav li:first-child::before {
-            content: "";
-            position: absolute;
-            left: 0;
-            top: 0;
-            bottom: 0;
-            width: 1px;
-            background: linear-gradient(to bottom, #333, #111);
-            box-shadow: 1px 0 0 rgba(255,255,255,0.08);
-            z-index: 1;
-        }
-        #globalnav li:last-child::after {
-            display: block;
-        }
-
-        #globalnav li a {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            height: 100%;
-            min-height: 38px;
-            box-sizing: border-box;
-            color: #e8e8e8;
-            text-decoration: none;
-            text-shadow: 0 -1px 0 rgba(0,0,0,0.8);
-            font-weight: bold;
-            padding: 0 24px;
-            line-height: 38px;
-            white-space: nowrap;
-            position: relative;
-            z-index: 2;
-            transition: text-shadow 0.2s ease, color 0.2s ease, background 0.2s ease, box-shadow 0.2s ease;
-        }
-
-        #globalnav li a:hover {
-            color: #fff;
-            background: linear-gradient(rgba(255,255,255,0.05), rgba(255,255,255,0));
-            text-shadow: 0 0 8px rgba(255, 255, 255, 0.8), 0 -1px 0 rgba(0,0,0,0.8);
-        }
-        
-        #globalnav li a.active { color: #fff; background: rgba(0,0,0,0.2); box-shadow: inset 0 2px 5px rgba(0,0,0,0.3); }
-
-        /* --- BUTTON STYLES --- */
-        .sangaia-btn {
-            font-size: 0.9rem;
-            font-family: "myriad-pro", "Segoe UI", system-ui, sans-serif;
-            height: 2.5em;
-            padding: 0 1em;
-            width: 15em; 
-            border-radius: 3px;
-            position: relative;
-            overflow: hidden;
-            cursor: pointer;
-            outline: none;
-            
-            text-decoration: none;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            margin: 5px;
-            
-            box-sizing: border-box; 
-            
-             
-            
-        background: linear-gradient(to bottom, #76b500 0%, #5e9100 100%); box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1); border: 1px solid #4a7200; color: white;}
-
-        
-
-        
-
-        .sangaia-btn span { position: relative; z-index: 3; font-weight: 600; text-shadow: 0 1px 1px rgba(0,0,0,0.3); }
-
-        .sangaia-btn:hover { background: linear-gradient(to bottom, #88cc00 0%, #70a800 100%); filter: none; }
-
-        .sangaia-btn.active, .sangaia-btn:active {
-            
-             
-            
-            
-        background: linear-gradient(to bottom, #4f7a00 0%, #3e6000 100%); box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.2); border: 1px solid #324c00; color: white;}
-
-        .sangaia-btn.active span, .sangaia-btn:active span { text-shadow: 0 1px 2px rgba(0, 0, 0, 0.4); }
-
-        /* --- CONTENT AREA --- */
-        .content-wrapper {
-            background: transparent;
-            padding: 30px;
-            min-height: 400px;
-            border-radius: 0;
-            box-shadow: none;
-            width: 100%;
-            box-sizing: border-box;
-        }
-
-        .glass-panel {
-            background: linear-gradient(to bottom, #fcfcfc 0%, #f1f1f1 100%);
-            border: 1px solid #ddd;
-            border-radius: 8px;
-            padding: 20px;
-            margin-bottom: 25px;
-            box-shadow: 
-                0 2px 4px rgba(0,0,0,0.05),
-                inset 0 1px 0 #fff;
-            position: relative;
-        }
-
-        .glass-panel h2 {
-            margin-top: 0;
-            color: #006699;
-            border-bottom: 1px solid #eee;
-            padding-bottom: 10px;
-            margin-bottom: 15px; 
-            font-size: 1.4em;
-        }
-
-        .glass-panel p {
-            margin-top: 0;
-        }
-
-        .content-grid {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 20px;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        @media (min-width: 768px) {
-            .content-grid {
-                grid-template-columns: 2fr 1fr;
-        }
-
-        footer {
-            text-align: center;
-            padding: 20px;
-            color: #555;
-            font-size: 0.9em;
-            text-shadow: 0 1px 0 rgba(255,255,255,0.5);
-            background: rgba(255,255,255,0.6);
-            width: 100%;
-            margin-top: auto;
-        }
-        
-        p { line-height: 1.6; margin-bottom: 15px; }
-    </style>
+    <title>Government Structure & The Aeretocracy :: Sangaia Live</title>
+    <link rel="stylesheet" href="/css/sangaia-live.css">
+    <script src="/js/sangaia-live.js" defer></script>
 </head>
-<body>
+<body class="theme-federal">
 
-<div class="main-container">
-    
-    
-
-    <nav id="globalheader">
-        <div style="position: absolute; left: 15px; display: flex; align-items: center; height: 100%;">
-            <img src="media/nav_logo.png" style="height: 24px; width: auto;" alt="Logo">
+<!-- Top Live Mast Banner -->
+<div class="wl-mast">
+    <div class="ol-container wl-mast-inner">
+        <div class="ol-header-top">
+            <div class="ol-logo">
+                <a href="/index.html" aria-label="Sangaia Live Sovereign Portal">
+                    <svg viewBox="0 0 90 90" width="22" height="22" fill="currentColor">
+                        <rect x="0" y="0" width="41" height="41" rx="2"/>
+                        <rect x="49" y="0" width="41" height="41" rx="2"/>
+                        <rect x="0" y="49" width="41" height="41" rx="2"/>
+                        <rect x="49" y="49" width="41" height="41" rx="2"/>
+                    </svg>
+                    <span><b>Sangaia</b> Live</span>
+                </a>
+            </div>
+            <div class="ol-header-tools">
+                <form class="ol-search" id="headerSearchForm" action="/services.html" method="get">
+                    <input type="text" id="headerSearch" name="q" placeholder="Search government &amp; services" aria-label="Search">
+                    <button type="submit" class="ol-search-bing" aria-label="Search">&#x1F50E;</button>
+                </form>
+                
+                <a class="ol-icon-btn" href="/services.html" title="Notifications">
+                    <svg width="16" height="16" viewBox="0 0 16 16"><path fill="currentColor" d="M8 1.5c-2.4 0-4 1.9-4 4.2v3L2.7 11c-.3.4 0 1 .5 1h9.6c.5 0 .8-.6.5-1L12 8.7v-3c0-2.3-1.6-4.2-4-4.2zm0 13c1 0 1.8-.7 2-1.5H6c.2.8 1 1.5 2 1.5z"/></svg>
+                    <span class="ol-badge">3</span>
+                </a>
+                <a class="ol-icon-btn" href="/services.html" title="Citizen Messages">
+                    <svg width="16" height="16" viewBox="0 0 16 16"><path fill="currentColor" d="M2 3h12c.6 0 1 .4 1 1v7c0 .6-.4 1-1 1H9l-3.4 2.6c-.4.3-.9 0-.9-.5V12H2c-.6 0-1-.4-1-1V4c0-.6.4-1 1-1z"/></svg>
+                    <span class="ol-badge">1</span>
+                </a>
+                <div class="ol-me">
+                    <div class="ol-me-chip" id="meChip">
+                        <span class="ol-avatar sm">
+                            <img src="/images/1.jpeg" alt="Citizen Profile">
+                            <span class="ol-presence-dot"></span>
+                        </span>
+                        <span class="ol-me-name">Jqackkk</span>
+                        <span class="ol-me-caret">&#9660;</span>
+                    </div>
+                    <div class="ol-me-menu" id="meMenu" style="display:none; position:absolute; right:0; top:36px; background:#fff; border:1px solid #dfe3e7; border-radius:3px; box-shadow:0 2px 8px rgba(0,0,0,0.15); width:180px; z-index:1000; padding:6px 0;">
+                        <div style="padding:4px 12px; font-size:11px; font-weight:700; color:#64748b; text-transform:uppercase;">Citizen ID: SG-2026-F1E8</div>
+                        <a href="/id.html" style="display:block; padding:5px 12px; color:#2a2a2a; font-size:13px;">Sangaia ID Card</a>
+                        <a href="/citizenship.html" style="display:block; padding:5px 12px; color:#2a2a2a; font-size:13px;">Citizenship Status</a>
+                        <a href="/units.html" style="display:block; padding:5px 12px; color:#2a2a2a; font-size:13px;">Units &amp; Measures</a>
+                        <div style="border-top:1px solid #edf0f3; margin:4px 0;"></div>
+                        <a href="/index.html" style="display:block; padding:5px 12px; color:#2a2a2a; font-size:13px;">Federal Home</a>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div style="position: absolute; right: 15px; display: flex; align-items: center; gap: 15px; height: 100%; z-index: 100;">
-            <div id="auth-widget"><a href="id.html" style="color: #bbb; text-decoration: none; font-size: 11px; font-weight: bold; letter-spacing: 0.5px; padding: 3px 8px; border: 1px solid #444; border-radius: 4px; background: linear-gradient(to bottom, #555, #333); box-shadow: 0 1px 2px rgba(0,0,0,0.3); transition: all 0.2s ease;" onmouseover="this.style.color='#fff'; this.style.borderColor='#666';" onmouseout="this.style.color='#bbb'; this.style.borderColor='#444';">Sangaia ID</a></div>
-            <a href="sgn/government.html" style="color: #bbb; text-decoration: none; font-size: 11px; font-weight: bold; letter-spacing: 0.5px; padding: 3px 8px; border: 1px solid #444; border-radius: 4px; background: linear-gradient(to bottom, #555, #333); box-shadow: 0 1px 2px rgba(0,0,0,0.3); transition: all 0.2s ease;" onmouseover="this.style.color='#fff'; this.style.borderColor='#666';" onmouseout="this.style.color='#bbb'; this.style.borderColor='#444';">English</a>
-        </div>
-                <ul id="globalnav">
-            <li><a href="index.html">Home</a></li>
-            <li><a href="government.html" class="active">Government</a></li>
-            <li><a href="citizenship.html">Citizenship</a></li>
-            <li><a href="services.html">Services</a></li>
-            <li><a href="about.html">About the Aeretocrat</a></li>
-            <li><a href="societal_press.html">Societal Press</a></li>
-        </ul>
-    </nav>
 
-    <div class="content-wrapper">
-        <div class="content-grid">
+        <div class="ol-band">
+            <div class="ol-band-inner">
+                <h1>Constitutional Structure of the Republic</h1>
+                <p class="ol-band-sub">Separation of Virtues &bull; The Aeretocrat, Council of Magistrates & 5 Sovereign Provinces</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Main Top Nav Tabs (One Live Bar) -->
+<div class="wl-tabs">
+    <div class="ol-container wl-tabs-inner">
+        <ul class="ol-nav" id="primaryNav">
+            <li class="ol-current"><a href="/index.html">Home</a></li>
+            <li><a href="/executive.html">Executive</a></li>
+            <li><a href="/treasury.html">Treasury</a></li>
+            <li><a href="/work.html">Work</a></li>
+            <li><a href="/healthcare.html">Healthcare</a></li>
+            <li><a href="/education.html">Education</a></li>
+            <li><a href="/domesticaffairs.html">Domestic</a></li>
+            <li><a href="/externalaffairs.html">External</a></li>
+            <li><a href="/environment.html">Environment</a></li>
+            <li><a href="/propaganda.html">Propaganda</a></li>
+            <li><a href="/services.html">Services</a></li>
+            <li><a href="/units.html">Units (Мн • °Пт)</a></li>
             
-            <div class="main-col">
-                <div class="glass-panel">
-                    <h2>The Aeretocracy</h2>
-                    <p>You might hear the word "Aeretocracy" and think it sounds complicated. But the idea behind it is actually very simple. It’s about common sense and good leadership. In a lot of places, the people in charge get there just because they have a lot of money or because they are good at making speeches. In Sangaia, we do things differently. An Aeretocracy means "Rule by the Best." We believe the government should be run like a well-oiled machine, led by people who have actually proven they are smart, capable, and honest.</p>
-                    
-                    <h3>One Strong Leader</h3>
-                    <p>Imagine a ship in a storm. You can’t have everyone arguing over which way to turn the wheel; you need one Captain to make the tough calls right then and there. In our government, we have one main leader (called the Aeretocrat). However, this doesn't mean he is a bully. It means he has the power to get things done quickly without all the red tape and stalling you see in other governments.</p>
-                
-                    <h3>A Complete Rulebook</h3>
-                    <p>Even the Captain has to follow the rules. We have a Constitution—a written contract that protects your rights. The leader cannot just do whatever he wants. He has to stick to the rulebook. This protects your freedom and makes sure nobody gets too much power.</p>
+        </ul>
+    </div>
+</div>
 
-                    <h3>Dictated by You</h3>
-                    <p>Just because there is one leader doesn't mean you don't have a say. We have a group called the Body of Electives. These are folks chosen—by the people—to represent you. They work with the leader to make sure the government is doing what is best for the people.</p>
-
-                    <h3>Earning Your Keep</h3>
-                    <p>In Sangaia, being a citizen is a privilege, not a handout. We believe you should care about your country enough to learn about it. To become a voting citizen, you have to pass a test to show you understand how things work. It’s like getting a driver’s license: You have to prove you know the rules of the road before you get the keys. This ensures that the people making decisions are educated and informed.</p>
-
-                    <h3>Zero Monetary Strings Attached</h3>
-                    <p>We believe that if you work hard for your money, you should keep it. We have a strict rule that the government can never take more than 20% of what you earn. Furthermore, we don't spend money we don't have. We keep the government debt limit low so we don't pass bills on to our posterity that they will always have to return marked as "insufficient funds". </p>
-
-                    <h3>The Bottom Line</h3>
-                    <p>An Aeretocracy is a government that mixes the strength of a single leader with the freedom of the people. It is built for folks who want a government that is efficient, fair, and respects hard work.</p>
-                
+<!-- Main Content Grid -->
+<div class="ol-container ol-main">
+    <div class="ol-with-sidebar">
+        <!-- Left Sidebar Navigation -->
+        <div class="ol-sidebar-nav">
+            <div class="ol-card ol-profile-card" style="text-align: center;">
+                <span class="ol-avatar lg">
+                    <img src="/images/1.jpeg" alt="Emblem">
+                    <span class="ol-presence-dot"></span>
+                </span>
+                <div class="ol-mt-10">
+                    <strong>Constitutional Council</strong><br>
+                    <span class="ol-muted ol-small">Aeretocratic Governance</span><br>
+                    <span class="ol-small" style="color:var(--ol-accent); font-weight:600;">Constitution Active</span>
                 </div>
             </div>
 
-            <div class="sidebar-col">
-                <div class="glass-panel" style="background: linear-gradient(to bottom, #e3f2fd 0%, #bbdefb 100%);">
-                    <h2>Official Documents</h2>
-                    <ul style="padding-left: 20px; color: #006699;">
-                        <li><a href="TUPOS V.pdf" download="TUPOS V.pdf" style="color: #006699; text-decoration: none;">The Constitution</a></li>
-                        <li><a href="Sangaia-map.png" download="Sangaia-map.png" style="color: #006699; text-decoration: none;">Provincial Map</a></li>
-                    </ul>
-                </div>
-                <div class="glass-panel">
-                    <h2>Quick Facts</h2>
-                    <p style="font-size: 0.9em;">The Sangaian Government, <strong>in 2030</strong>, will make the move to embrace the Sangaian language, and will <strong>no longer be English-first</strong>. You can learn Sangaian swiftly from the <strong>Ministry of Education</strong>.</p>
-                    <p style="font-size: 0.9em;">The Sangaian Government itself <strong>didn't exist</strong> until <strong>late 2024</strong>, despite the fact that Sangaia itself has existed since <strong>mid 2020</strong>; constant revolutions prevented a safe chance for setup and establishment.</p>
-                </div>
-            </div>
+            <span class="ol-sidenav-label">Portal Navigation</span>
+            <ul class="ol-sidenav">
+                <li><a href="#overview" class="sel">Constitutional Structure</a></li>
+<li><a href="#aeretocrat">The Aeretocrat</a></li>
+<li><a href="#virtues">Separation of Virtues</a></li>
+<li><a href="#provinces">The 5 Provinces</a></li>
+<li><a href="#cabinet">Cabinet of Ministers</a></li>
 
+            </ul>
+
+            <span class="ol-sidenav-label">Federal Network</span>
+            <ul class="ol-sidenav">
+                <li><a href="/index.html">Federal Home</a></li>
+                <li><a href="/services.html">All Services</a></li>
+                <li><a href="/units.html">Units (Мн &bull; &deg;Пт)</a></li>
+                <li><a href="/societal_press.html">Societal Press</a></li>
+            </ul>
+        </div>
+
+        <!-- Center Content -->
+        <div class="ol-content">
+            
+    <div class="ol-status-bubble" id="overview">
+        &ldquo;The Aeretocracy combines democratic republican representation with strict meritocratic and constitutional virtue.&rdquo;
+        <div class="ol-status-date">Constitutional Registry &bull; Verified Law</div>
+    </div>
+
+    <div class="ol-card" id="virtues">
+        <div class="ol-card-title">
+            <span>Separation of Virtues &bull; The Four Constitutional Branches</span>
+            <span class="ol-badge-tag ol-badge-success">Unalterable Law</span>
+        </div>
+        <div class="ol-grid-2">
+            <div style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:3px; padding:12px;">
+                <strong style="color:#1e3a8a;">1. The Executive Council &amp; Aeretocrat:</strong>
+                <p class="ol-small" style="margin:4px 0;">Headed by the Aeretocrat as Supreme Executive Magistrate. Administers federal decree enforcement, foreign treaties, and whole-of-government synchronization.</p>
+            </div>
+            <div style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:3px; padding:12px;">
+                <strong style="color:#0f766e;">2. The Council of Fiscal Rectitude:</strong>
+                <p class="ol-small" style="margin:4px 0;">Treasury magistrates with independent prosecutorial powers to block unconstitutional sovereign debt or predatory financial legislation.</p>
+            </div>
+            <div style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:3px; padding:12px;">
+                <strong style="color:#1e293b;">3. The Federal Council of Governors:</strong>
+                <p class="ol-small" style="margin:4px 0;">Elected executive governors of New Jasper, New Madison, Liveland, Sentinel, and Columbia coordinating interstate commerce and transport.</p>
+            </div>
+            <div style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:3px; padding:12px;">
+                <strong style="color:#b91c1c;">4. The High Magistrates of Virtue:</strong>
+                <p class="ol-small" style="margin:4px 0;">Senior constitutional jurists reviewing civil rights, ensuring zero corruption, and adjudicating interprovincial legal accords.</p>
+            </div>
         </div>
     </div>
 
-    <footer>
-        &copy; 2026 United Provinces of Sangaia. All Rights Reserved.<br>
-        <span style="font-size: 0.8em; color: #888;">Powered by Aeretocratic Principles</span>
-    </footer>
+    <div class="ol-card" id="provinces">
+        <div class="ol-card-title">
+            <span>The Five Sovereign Provinces</span>
+            <span class="ol-badge-tag">Self-Governing Republics</span>
+        </div>
+        <p class="ol-small">Sangaia comprises five sovereign provinces, each with a regional assembly, distinct economic specializations, and full cultural liberties:</p>
+        <ul style="font-size:13.5px; line-height:1.7;">
+            <li><strong>New Jasper (Shesk):</strong> Seat of federal government, sovereign technology, and legal jurisprudence.</li>
+            <li><strong>New Madison (Madison City):</strong> Agricultural breadbasket, renewable biofuels, and educational institutes.</li>
+            <li><strong>Liveland (Oaks):</strong> Maritime trade, oceanic fisheries, coastal tourism, and tidal energy.</li>
+            <li><strong>Sentinel (Sentinel Ridge):</strong> Alpine mineral stewardship, geothermal energy, and forestry reserves.</li>
+            <li><strong>Columbia (Columbia City):</strong> Cultural humanities, aerospace engineering, and fine arts.</li>
+        </ul>
+    </div>
+    
+        </div>
 
+        <!-- Right Sidebar (Telemetry & Quick Actions) -->
+        <div class="ol-sidebar">
+            <div class="ol-note">Official Government of the Sovereign Republic of Sangaia. All administrative systems active.</div>
+
+            <div class="ol-sidebox">
+                <h3>Sovereign Telemetry</h3>
+                <div style="font-size:12.5px; line-height:1.6;">
+                    <div><strong>Currency:</strong> Sangaian Dollar ($)</div>
+                    <div><strong>Standard Temp:</strong> 22.5&deg;Пт (25&deg;C / 77&deg;F)</div>
+                    <div><strong>Standard Metric:</strong> 1 Мн = 2.5 cm</div>
+                    <div><strong>Active Provinces:</strong> 5 Territories</div>
+                </div>
+            </div>
+
+            <div class="ol-sidebox">
+                <h3>Provincial Weather (&deg;Пт)</h3>
+                <table class="ol-table" style="font-size:12px; margin:0;">
+                    <tr><td>New Jasper</td><td style="text-align:right;"><strong>20.5&deg;Пт</strong> (Sunny)</td></tr>
+                    <tr><td>New Madison</td><td style="text-align:right;"><strong>22.0&deg;Пт</strong> (Clear)</td></tr>
+                    <tr><td>Liveland</td><td style="text-align:right;"><strong>19.8&deg;Пт</strong> (Breezy)</td></tr>
+                    <tr><td>Sentinel</td><td style="text-align:right;"><strong>16.2&deg;Пт</strong> (Cool)</td></tr>
+                    <tr><td>Columbia</td><td style="text-align:right;"><strong>23.4&deg;Пт</strong> (Mild)</td></tr>
+                </table>
+            </div>
+
+            
+        </div>
+    </div>
 </div>
 
 
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-<script src="auth.js"></script>
+
+<!-- Floating Citizen Dock -->
+<div class="ol-dock">
+    <button type="button" class="ol-dock-tab" id="olDockMessages">
+        <svg width="15" height="15" viewBox="0 0 16 16"><path fill="currentColor" d="M2 3h12c.6 0 1 .4 1 1v7c0 .6-.4 1-1 1H9l-3.4 2.6c-.4.3-.9 0-.9-.5V12H2c-.6 0-1-.4-1-1V4c0-.6.4-1 1-1z"/></svg>
+        <span>Live Citizen Support</span>
+    </button>
+    <div class="ol-dock-list" id="olDockList">
+        <div class="ol-dock-list-head">
+            <span>Sangaia Citizen Assistance</span>
+            <a href="javascript:void(0)" id="olDockListClose" style="color:#64748b; font-size:16px;">&times;</a>
+        </div>
+        <div class="ol-dock-list-body">
+            <a class="ol-dock-item" href="/services.html"><strong>Online Inquiries:</strong> File petition or request</a>
+            <a class="ol-dock-item" href="/units.html"><strong>Unit Calculations:</strong> Monomer &amp; Panotherm</a>
+            <a class="ol-dock-item" href="/citizenship.html"><strong>Citizenship Registry:</strong> Check docket status</a>
+            <a class="ol-dock-item" href="/id.html"><strong>Sangaia ID:</strong> Digital identity card</a>
+        </div>
+    </div>
+</div>
+
+<!-- Footer -->
+<div class="ol-footer">
+    <div class="ol-container ol-footer-inner">
+        <p class="ol-footer-copy">&copy; 2026 Sovereign Republic of Sangaia. One Live Wave 4 Infrastructure.</p>
+        <ul class="ol-footer-links">
+            <li><a href="/index.html">Home</a></li>
+            <li><a href="/government.html">Government Structure</a></li>
+            <li><a href="/services.html">Services</a></li>
+            <li><a href="/societal_press.html">Gazette</a></li>
+            <li><a href="/units.html">Units System</a></li>
+            <li><a href="/about.html">About Sangaia</a></li>
+        </ul>
+    </div>
+</div>
+
+
+
 </body>
 </html>

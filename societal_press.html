@@ -2,314 +2,235 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Societal Press - The United Provinces of Sangaia</title>
-    <style>
-        /* --- FRUTIGER AERO / SKEUOMORPHIC STYLES --- */
-        :root {
-            --glass-blue: rgba(220, 245, 255, 0.85);
-            --gloss-highlight: rgba(255, 255, 255, 0.9);
-            --ocean-blue: #0077be;
-            --fresh-green: #7cba01;
-            --text-dark: #2c3e50;
-            --text-light: #ffffff;
-        }
-
-        body {
-            background: #ffffff;
-            min-height: 100dvh;
-            width: 100%;
-            display: flex;
-            align-items: center;
-            justify-content: flex-start;
-            flex-direction: column;
-            margin: 0;
-            font-family: 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-            color: var(--text-dark);
-        }
-
-        .main-container { width: 100%; margin: 0; background: transparent; border: none; border-radius: 0; box-shadow: none; padding: 0; flex-grow: 1; display: flex; flex-direction: column; }
-
-        
-
-        
-
-        h1 { margin: 0; font-size: 2.5em; letter-spacing: -1px; }
-        
-
-        /* --- APPLE 2012 METAL NAV STYLES --- */
-        #globalheader {
-            display: flex;
-            align-items: center;
-            position: relative;
-            width: 100%;
-            height: 38px;
-            background: linear-gradient(to bottom, #5e5e5e 0%, #3e3e3e 50%, #2d2d2d 51%, #1f1f1f 100%);
-            border-top: 1px solid #222;
-            border-bottom: 1px solid #000;
-            box-shadow: inset 0 1px 0 rgba(255,255,255,0.15), 0 2px 4px rgba(0,0,0,0.2);
-            font-size: 11px;
-            position: relative;
-            z-index: 99;
-        }
-
-        #globalnav {
-            flex-grow: 1;
-            margin: 0;
-            padding: 0;
-            list-style: none;
-            display: flex;
-            justify-content: center;
-            height: 100%;
-        }
-
-        #globalnav li { position: relative; height: 100%; display: flex; align-items: center; }
-        #globalnav li::after {
-            content: ""; position: absolute; right: 0; width: 1px; height: 100%;
-            background: linear-gradient(to bottom, #333, #111); box-shadow: 1px 0 0 rgba(255,255,255,0.08);
-        }
-        #globalnav li:first-child::before {
-            content: ""; position: absolute; left: 0; width: 1px; height: 100%;
-            background: linear-gradient(to bottom, #333, #111); box-shadow: 1px 0 0 rgba(255,255,255,0.08);
-        }
-
-        #globalnav li a {
-            display: block; color: #e8e8e8; text-decoration: none; text-shadow: 0 -1px 0 rgba(0,0,0,0.8);
-            font-weight: bold; padding: 0 24px; line-height: 38px;
-            transition: text-shadow 0.2s ease, color 0.2s ease, background 0.2s ease, box-shadow 0.2s ease;
-        }
-
-        #globalnav li a:hover {
-            color: #fff;
-            background: linear-gradient(rgba(255,255,255,0.05), rgba(255,255,255,0));
-            text-shadow: 0 0 8px rgba(255, 255, 255, 0.8), 0 -1px 0 rgba(0,0,0,0.8);
-        }
-        
-        #globalnav li a.active { color: #fff; background: rgba(0,0,0,0.2); box-shadow: inset 0 2px 5px rgba(0,0,0,0.3); }
-
-        /* --- BUTTON STYLES --- */
-        .sangaia-btn {
-            font-size: 0.9rem; font-family: "myriad-pro", "Segoe UI", system-ui, sans-serif; height: 2.5em; padding: 0 1em; width: auto; min-width: 12em;
-            border-radius: 3px; position: relative; overflow: hidden; cursor: pointer; outline: none;  text-decoration: none; display: inline-flex; align-items: center; justify-content: center; margin: 5px;  box-sizing: border-box; 
-            
-              
-        background: linear-gradient(to bottom, #76b500 0%, #5e9100 100%); box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1); border: 1px solid #4a7200; color: white;}
-        
-        
-        .sangaia-btn span { position: relative; z-index: 3; font-weight: 600; text-shadow: 0 1px 1px rgba(0,0,0,0.3); }
-        .sangaia-btn:hover { background: linear-gradient(to bottom, #88cc00 0%, #70a800 100%); filter: none; }
-
-        .sangaia-btn.active, .sangaia-btn:active {
-            
-             
-             
-        background: linear-gradient(to bottom, #4f7a00 0%, #3e6000 100%); box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.2); border: 1px solid #324c00; color: white;}
-        .sangaia-btn.active span, .sangaia-btn:active span { text-shadow: 0 1px 2px rgba(0, 0, 0, 0.4); }
-
-        /* --- CONTENT AREA --- */
-        .content-wrapper { padding: 30px; min-height: 400px; width: 100%; box-sizing: border-box; flex-grow: 1; }
-
-        .glass-panel {
-            background: linear-gradient(to bottom, #fcfcfc 0%, #f1f1f1 100%);
-            border: 1px solid #ddd; border-radius: 8px; padding: 20px; margin-bottom: 25px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.05), inset 0 1px 0 #fff; position: relative;
-        }
-        .glass-panel h2 { margin-top: 0; color: #006699; border-bottom: 1px solid #eee; padding-bottom: 10px; margin-bottom: 15px; font-size: 1.4em; }
-
-        /* --- BLOG GRID --- */
-        .article-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 25px; margin-top: 20px; }
-        .article-card { background: rgba(255,255,255,0.9); border: 1px solid #ccc; border-radius: 6px; padding: 20px; box-shadow: 0 2px 5px rgba(0,0,0,0.05);  }
-        .article-card h3 { margin: 0 0 10px 0; color: #006699; font-family: 'Times New Roman', Times, serif; font-size: 1.5em; font-style: italic; }
-        .article-card .date { font-size: 0.85em; color: #888; font-weight: bold; margin-bottom: 15px; display: block; }
-        .article-card p { font-size: 0.95em; color: #555; line-height: 1.5; margin-bottom: 20px; }
-
-        /* --- ARTICLE VIEWER & TEMPLATE STYLES --- */
-        #article-viewer { display: none; width: 100%; max-width: 1000px; margin: 0 auto; }
-        .viewer-controls { margin-bottom: 20px; }
-        
-        .article-paper {
-            background: #ffffff;
-            border: 1px solid #ccc;
-            border-radius: 8px;
-            padding: 50px 60px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
-            position: relative;
-        }
-
-        /* DYNAMIC ARTICLE TYPOGRAPHY */
-        .article-content .article-title {
-            font-family: 'Times New Roman', Times, serif;
-            font-weight: bold;
-            font-style: italic;
-            font-size: 2.8em;
-            text-align: left;
-            color: #111;
-            margin-top: 0;
-            border-bottom: 2px solid #006699;
-            padding-bottom: 10px;
-            margin-bottom: 30px;
-        }
-
-        .article-content h1, 
-        .article-content h2, 
-        .article-content h3, 
-        .article-content h4 {
-            font-family: 'Times New Roman', Times, serif;
-            font-weight: normal;
-            font-style: normal;
-            color: #006699;
-            margin-top: 1.5em;
-        }
-
-        .article-content p, 
-        .article-content li {
-            font-family: 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-            font-size: 1.05em;
-            line-height: 1.7;
-            color: #222;
-        }
-
-        .article-content .article-image {
-            float: right;
-            margin: 10px 0 25px 25px;
-            max-width: 45%;
-            border-radius: 6px;
-        }
-        
-        /* Clearfix for floating images */
-        .article-content::after { content: ""; display: table; clear: both; }
-
-        footer { text-align: center; padding: 20px; color: #555; font-size: 0.9em; text-shadow: 0 1px 0 rgba(255,255,255,0.5); background: rgba(255,255,255,0.6); width: 100%; margin-top: auto; }
-    </style>
+    <title>State Gazette & Societal Press :: Sangaia Live</title>
+    <link rel="stylesheet" href="/css/sangaia-live.css">
+    <script src="/js/sangaia-live.js" defer></script>
 </head>
-<body>
+<body class="theme-federal">
 
-<div class="main-container">
-    
-    
-
-    <nav id="globalheader">
-        <div style="position: absolute; left: 15px; display: flex; align-items: center; height: 100%;">
-            <img src="media/nav_logo.png" style="height: 24px; width: auto;" alt="Logo">
-        </div>
-        <div style="position: absolute; right: 15px; display: flex; align-items: center; gap: 15px; height: 100%; z-index: 100;">
-            <div id="auth-widget"><a href="id.html" style="color: #bbb; text-decoration: none; font-size: 11px; font-weight: bold; letter-spacing: 0.5px; padding: 3px 8px; border: 1px solid #444; border-radius: 4px; background: linear-gradient(to bottom, #555, #333); box-shadow: 0 1px 2px rgba(0,0,0,0.3); transition: all 0.2s ease;" onmouseover="this.style.color='#fff'; this.style.borderColor='#666';" onmouseout="this.style.color='#bbb'; this.style.borderColor='#444';">Sangaia ID</a></div>
-            <a href="sgn/societal_press.html" style="color: #bbb; text-decoration: none; font-size: 11px; font-weight: bold; letter-spacing: 0.5px; padding: 3px 8px; border: 1px solid #444; border-radius: 4px; background: linear-gradient(to bottom, #555, #333); box-shadow: 0 1px 2px rgba(0,0,0,0.3); transition: all 0.2s ease;" onmouseover="this.style.color='#fff'; this.style.borderColor='#666';" onmouseout="this.style.color='#bbb'; this.style.borderColor='#444';">English</a>
-        </div>
-                <ul id="globalnav">
-            <li><a href="index.html">Home</a></li>
-            <li><a href="government.html">Government</a></li>
-            <li><a href="citizenship.html">Citizenship</a></li>
-            <li><a href="services.html">Services</a></li>
-            <li><a href="about.html">About the Aeretocrat</a></li>
-            <li><a href="societal_press.html" class="active">Societal Press</a></li>
-        </ul>
-    </nav>
-
-    <div class="content-wrapper">
-        
-        <!-- BLOG INDEX VIEW -->
-        <div id="blog-index" style="max-width: 1200px; margin: 0 auto;">
-            <div class="glass-panel">
-                <h2>Latest Publications</h2>
-                <p>Stay informed with official briefings, civic updates, and statements direct from the Ministries.</p>
+<!-- Top Live Mast Banner -->
+<div class="wl-mast">
+    <div class="ol-container wl-mast-inner">
+        <div class="ol-header-top">
+            <div class="ol-logo">
+                <a href="/index.html" aria-label="Sangaia Live Sovereign Portal">
+                    <svg viewBox="0 0 90 90" width="22" height="22" fill="currentColor">
+                        <rect x="0" y="0" width="41" height="41" rx="2"/>
+                        <rect x="49" y="0" width="41" height="41" rx="2"/>
+                        <rect x="0" y="49" width="41" height="41" rx="2"/>
+                        <rect x="49" y="49" width="41" height="41" rx="2"/>
+                    </svg>
+                    <span><b>Sangaia</b> Live</span>
+                </a>
+            </div>
+            <div class="ol-header-tools">
+                <form class="ol-search" id="headerSearchForm" action="/services.html" method="get">
+                    <input type="text" id="headerSearch" name="q" placeholder="Search government &amp; services" aria-label="Search">
+                    <button type="submit" class="ol-search-bing" aria-label="Search">&#x1F50E;</button>
+                </form>
                 
-                <div class="article-grid">
-                    
-                    <!-- Article Card 1 -->
-                    <div class="article-card">
-                        <h3>Provincial Review: Half-Year Address</h3>
-                        <span class="date">July 3rd, 2026 | Ministry of the Executive</span>
-                        <p>The Societal Press deliversa summary of the quarterly review on the status of provincial budgets, inter-provincial trade, and civic milestones, outlined by the Aeretocrat.</p>
-                        <button class="sangaia-btn" onclick="openArticle('state_of_provinces.html')" style="width: 100%; margin:0;"><span>Read Article</span></button>
+                <a class="ol-icon-btn" href="/services.html" title="Notifications">
+                    <svg width="16" height="16" viewBox="0 0 16 16"><path fill="currentColor" d="M8 1.5c-2.4 0-4 1.9-4 4.2v3L2.7 11c-.3.4 0 1 .5 1h9.6c.5 0 .8-.6.5-1L12 8.7v-3c0-2.3-1.6-4.2-4-4.2zm0 13c1 0 1.8-.7 2-1.5H6c.2.8 1 1.5 2 1.5z"/></svg>
+                    <span class="ol-badge">3</span>
+                </a>
+                <a class="ol-icon-btn" href="/services.html" title="Citizen Messages">
+                    <svg width="16" height="16" viewBox="0 0 16 16"><path fill="currentColor" d="M2 3h12c.6 0 1 .4 1 1v7c0 .6-.4 1-1 1H9l-3.4 2.6c-.4.3-.9 0-.9-.5V12H2c-.6 0-1-.4-1-1V4c0-.6.4-1 1-1z"/></svg>
+                    <span class="ol-badge">1</span>
+                </a>
+                <div class="ol-me">
+                    <div class="ol-me-chip" id="meChip">
+                        <span class="ol-avatar sm">
+                            <img src="/images/1.jpeg" alt="Citizen Profile">
+                            <span class="ol-presence-dot"></span>
+                        </span>
+                        <span class="ol-me-name">Jqackkk</span>
+                        <span class="ol-me-caret">&#9660;</span>
                     </div>
-
-                    <!-- Article Card 2 -->
-                    <div class="article-card">
-                        <h3>New Digital Transit Systems</h3>
-                        <span class="date">September 28, 2026 | Ministry of Domestic Affairs</span>
-                        <p>An overview of the newly digitized railway schedules and how citizens can link their MoE IDs for discounted fares.</p>
-                        <button class="sangaia-btn" onclick="openArticle('transit_update.html')" style="width: 100%; margin:0;"><span>Read Article</span></button>
+                    <div class="ol-me-menu" id="meMenu" style="display:none; position:absolute; right:0; top:36px; background:#fff; border:1px solid #dfe3e7; border-radius:3px; box-shadow:0 2px 8px rgba(0,0,0,0.15); width:180px; z-index:1000; padding:6px 0;">
+                        <div style="padding:4px 12px; font-size:11px; font-weight:700; color:#64748b; text-transform:uppercase;">Citizen ID: SG-2026-F1E8</div>
+                        <a href="/id.html" style="display:block; padding:5px 12px; color:#2a2a2a; font-size:13px;">Sangaia ID Card</a>
+                        <a href="/citizenship.html" style="display:block; padding:5px 12px; color:#2a2a2a; font-size:13px;">Citizenship Status</a>
+                        <a href="/units.html" style="display:block; padding:5px 12px; color:#2a2a2a; font-size:13px;">Units &amp; Measures</a>
+                        <div style="border-top:1px solid #edf0f3; margin:4px 0;"></div>
+                        <a href="/index.html" style="display:block; padding:5px 12px; color:#2a2a2a; font-size:13px;">Federal Home</a>
                     </div>
-                    
-                    <!-- Example Template Card -->
-                    <div class="article-card">
-                        <h3>Example Article Format</h3>
-                        <span class="date">Example Date | Author</span>
-                        <p>Click here to view what the layout of a standard Sangaian Press article looks like in the viewer.</p>
-                        <!-- Notice how this points to the exact filename in the 'articles' folder -->
-                        <button class="sangaia-btn" onclick="openArticle('example_article.html')" style="width: 100%; margin:0;"><span>Read Article</span></button>
-                    </div>
-
                 </div>
             </div>
         </div>
 
-        <!-- ARTICLE VIEWER (Hidden by default) -->
-        <div id="article-viewer">
-            <div class="viewer-controls">
-                <button class="sangaia-btn" onclick="closeArticle()" style="margin:0;"><span>&larr; Back to Press Hub</span></button>
-            </div>
-            
-            <div class="article-paper">
-                <!-- Fetched HTML goes here -->
-                <div id="article-content-area" class="article-content">
-                    <!-- Loading text -->
-                </div>
+        <div class="ol-band">
+            <div class="ol-band-inner">
+                <h1>The State Gazette &amp; Societal Press</h1>
+                <p class="ol-band-sub">Official public gazette, executive decrees, circulars, statutory regulations & open government archives</p>
             </div>
         </div>
-
     </div>
-
-    <footer>
-        &copy; 2026 United Provinces of Sangaia. All Rights Reserved.<br>
-        <span style="font-size: 0.8em; color: #888;">Powered by Aeretocratic Principles</span>
-    </footer>
-
 </div>
 
-<!-- FETCH LOGIC -->
-<script>
-    async function openArticle(filename) {
-        const indexView = document.getElementById('blog-index');
-        const viewerView = document.getElementById('article-viewer');
-        const contentArea = document.getElementById('article-content-area');
-        
-        // Show loading state and swap views
-        contentArea.innerHTML = '<div style="text-align:center; padding: 50px; color:#888; font-style: italic;">Fetching publication...</div>';
-        indexView.style.display = 'none';
-        viewerView.style.display = 'block';
+<!-- Main Top Nav Tabs (One Live Bar) -->
+<div class="wl-tabs">
+    <div class="ol-container wl-tabs-inner">
+        <ul class="ol-nav" id="primaryNav">
+            <li class="ol-current"><a href="/index.html">Home</a></li>
+            <li><a href="/executive.html">Executive</a></li>
+            <li><a href="/treasury.html">Treasury</a></li>
+            <li><a href="/work.html">Work</a></li>
+            <li><a href="/healthcare.html">Healthcare</a></li>
+            <li><a href="/education.html">Education</a></li>
+            <li><a href="/domesticaffairs.html">Domestic</a></li>
+            <li><a href="/externalaffairs.html">External</a></li>
+            <li><a href="/environment.html">Environment</a></li>
+            <li><a href="/propaganda.html">Propaganda</a></li>
+            <li><a href="/services.html">Services</a></li>
+            <li><a href="/units.html">Units (Мн • °Пт)</a></li>
+            
+        </ul>
+    </div>
+</div>
 
-        // Fetch the file from the "articles" folder on GitHub
-        try {
-            const response = await fetch(`articles/${filename}`);
-            if (!response.ok) throw new Error('Article not found');
-            const html = await response.text();
-            
-            // Inject the pure HTML into the paper container
-            contentArea.innerHTML = html;
-            
-            // Scroll to the top of the article
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        } catch (error) {
-            console.error(error);
-            contentArea.innerHTML = `
-                <div style="text-align:center; color:#c0392b; padding: 50px; border: 2px dashed #ef9a9a; border-radius: 8px; background: #ffebee;">
-                    <h3 style="margin-top:0;">File Not Found</h3>
-                    <p style="margin-bottom:0;">Ensure you have uploaded the file <strong>${filename}</strong> to the <strong>articles/</strong> folder in your GitHub repository.</p>
+<!-- Main Content Grid -->
+<div class="ol-container ol-main">
+    <div class="ol-with-sidebar">
+        <!-- Left Sidebar Navigation -->
+        <div class="ol-sidebar-nav">
+            <div class="ol-card ol-profile-card" style="text-align: center;">
+                <span class="ol-avatar lg">
+                    <img src="/images/1.jpeg" alt="Emblem">
+                    <span class="ol-presence-dot"></span>
+                </span>
+                <div class="ol-mt-10">
+                    <strong>State Gazette Directorate</strong><br>
+                    <span class="ol-muted ol-small">Public Record Authority</span><br>
+                    <span class="ol-small" style="color:var(--ol-accent); font-weight:600;">Gazette Online</span>
                 </div>
-            `;
-        }
+            </div>
 
-    function closeArticle() {
-        document.getElementById('article-viewer').style.display = 'none';
-        document.getElementById('blog-index').style.display = 'block';
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
-</script>
+            <span class="ol-sidenav-label">Portal Navigation</span>
+            <ul class="ol-sidenav">
+                <li><a href="#overview" class="sel">Latest Decrees</a></li>
+<li><a href="#circulars">Executive Circulars</a></li>
+<li><a href="#archives">Regulatory Archives</a></li>
+<li><a href="#transcripts">Public Hearing Transcripts</a></li>
+
+            </ul>
+
+            <span class="ol-sidenav-label">Federal Network</span>
+            <ul class="ol-sidenav">
+                <li><a href="/index.html">Federal Home</a></li>
+                <li><a href="/services.html">All Services</a></li>
+                <li><a href="/units.html">Units (Мн &bull; &deg;Пт)</a></li>
+                <li><a href="/societal_press.html">Societal Press</a></li>
+            </ul>
+        </div>
+
+        <!-- Center Content -->
+        <div class="ol-content">
+            
+    <div class="ol-status-bubble" id="overview">
+        &ldquo;Statutory public record: All laws, executive orders, and judicial decrees must be published openly in the Gazette before taking legal force.&rdquo;
+        <div class="ol-status-date">Official Gazette Volume XII &bull; Published Today</div>
+    </div>
+
+    <div class="ol-card">
+        <div class="ol-card-title">
+            <span>Recent Official Executive Decrees</span>
+            <span class="ol-badge-tag ol-badge-success">Enacted Law</span>
+        </div>
+        <div class="ol-feed-item">
+            <div class="ol-feed-body">
+                <strong style="color:#1e3a8a;">Decree No. 104-B: Mandatory 85% Wealth Redistribution for Religious Tithes</strong>
+                <div class="ol-small" style="margin:4px 0 6px;">Enacts strict statutory accounting for all recognized chapels. Tithes must be returned directly to public kitchens, youth education, and community aid.</div>
+                <div class="ol-feed-age">Published October 19, 2026 &bull; Promulgated by the Aeretocrat</div>
+            </div>
+        </div>
+        <div class="ol-feed-item">
+            <div class="ol-feed-body">
+                <strong style="color:#15803d;">Decree No. 103-A: Universal Standard Units Adoption (Панотерм &amp; Мономер)</strong>
+                <div class="ol-small" style="margin:4px 0 6px;">Mandates base-10 Monomer scaling (1 Мн = 2.5 cm) and Panotherm (&deg;Пт = 0.9 &times; &deg;C) across all five provincial school boards and public signage.</div>
+                <div class="ol-feed-age">Published October 15, 2026 &bull; Promulgated by the Aeretocrat</div>
+            </div>
+        </div>
+        <div class="ol-feed-item">
+            <div class="ol-feed-body">
+                <strong style="color:#0f766e;">Decree No. 102-F: Zero Out-of-Pocket Point-of-Service Healthcare Affirmation</strong>
+                <div class="ol-small" style="margin:4px 0 6px;">Reaffirms constitutional prohibition against any emergency room, clinic, or pharmacy levying copays upon Sangaian ID holders.</div>
+                <div class="ol-feed-age">Published October 10, 2026 &bull; Promulgated by the Aeretocrat</div>
+            </div>
+        </div>
+    </div>
+    
+        </div>
+
+        <!-- Right Sidebar (Telemetry & Quick Actions) -->
+        <div class="ol-sidebar">
+            <div class="ol-note">Official Government of the Sovereign Republic of Sangaia. All administrative systems active.</div>
+
+            <div class="ol-sidebox">
+                <h3>Sovereign Telemetry</h3>
+                <div style="font-size:12.5px; line-height:1.6;">
+                    <div><strong>Currency:</strong> Sangaian Dollar ($)</div>
+                    <div><strong>Standard Temp:</strong> 22.5&deg;Пт (25&deg;C / 77&deg;F)</div>
+                    <div><strong>Standard Metric:</strong> 1 Мн = 2.5 cm</div>
+                    <div><strong>Active Provinces:</strong> 5 Territories</div>
+                </div>
+            </div>
+
+            <div class="ol-sidebox">
+                <h3>Provincial Weather (&deg;Пт)</h3>
+                <table class="ol-table" style="font-size:12px; margin:0;">
+                    <tr><td>New Jasper</td><td style="text-align:right;"><strong>20.5&deg;Пт</strong> (Sunny)</td></tr>
+                    <tr><td>New Madison</td><td style="text-align:right;"><strong>22.0&deg;Пт</strong> (Clear)</td></tr>
+                    <tr><td>Liveland</td><td style="text-align:right;"><strong>19.8&deg;Пт</strong> (Breezy)</td></tr>
+                    <tr><td>Sentinel</td><td style="text-align:right;"><strong>16.2&deg;Пт</strong> (Cool)</td></tr>
+                    <tr><td>Columbia</td><td style="text-align:right;"><strong>23.4&deg;Пт</strong> (Mild)</td></tr>
+                </table>
+            </div>
+
+            
+        </div>
+    </div>
+</div>
 
 
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-<script src="auth.js"></script>
+
+<!-- Floating Citizen Dock -->
+<div class="ol-dock">
+    <button type="button" class="ol-dock-tab" id="olDockMessages">
+        <svg width="15" height="15" viewBox="0 0 16 16"><path fill="currentColor" d="M2 3h12c.6 0 1 .4 1 1v7c0 .6-.4 1-1 1H9l-3.4 2.6c-.4.3-.9 0-.9-.5V12H2c-.6 0-1-.4-1-1V4c0-.6.4-1 1-1z"/></svg>
+        <span>Live Citizen Support</span>
+    </button>
+    <div class="ol-dock-list" id="olDockList">
+        <div class="ol-dock-list-head">
+            <span>Sangaia Citizen Assistance</span>
+            <a href="javascript:void(0)" id="olDockListClose" style="color:#64748b; font-size:16px;">&times;</a>
+        </div>
+        <div class="ol-dock-list-body">
+            <a class="ol-dock-item" href="/services.html"><strong>Online Inquiries:</strong> File petition or request</a>
+            <a class="ol-dock-item" href="/units.html"><strong>Unit Calculations:</strong> Monomer &amp; Panotherm</a>
+            <a class="ol-dock-item" href="/citizenship.html"><strong>Citizenship Registry:</strong> Check docket status</a>
+            <a class="ol-dock-item" href="/id.html"><strong>Sangaia ID:</strong> Digital identity card</a>
+        </div>
+    </div>
+</div>
+
+<!-- Footer -->
+<div class="ol-footer">
+    <div class="ol-container ol-footer-inner">
+        <p class="ol-footer-copy">&copy; 2026 Sovereign Republic of Sangaia. One Live Wave 4 Infrastructure.</p>
+        <ul class="ol-footer-links">
+            <li><a href="/index.html">Home</a></li>
+            <li><a href="/government.html">Government Structure</a></li>
+            <li><a href="/services.html">Services</a></li>
+            <li><a href="/societal_press.html">Gazette</a></li>
+            <li><a href="/units.html">Units System</a></li>
+            <li><a href="/about.html">About Sangaia</a></li>
+        </ul>
+    </div>
+</div>
+
+
+
 </body>
 </html>

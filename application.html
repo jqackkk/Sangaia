@@ -2,548 +2,246 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Citizenship Application - Sangaia</title>
-    <style>
-        /* --- FRUTIGER AERO / SKEUOMORPHIC STYLES --- */
-        :root {
-            --glass-blue: rgba(220, 245, 255, 0.85);
-            --gloss-highlight: rgba(255, 255, 255, 0.9);
-            --ocean-blue: #0077be;
-            --fresh-green: #7cba01;
-            --text-dark: #2c3e50;
-            --text-light: #ffffff;
-        }
-
-        body {
-            background: #ffffff;
-            min-height: 100dvh;
-            width: 100%;
-            display: flex;
-            align-items: center;
-            justify-content: flex-start;
-            flex-direction: column;
-            margin: 0;
-            font-family: 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-            color: var(--text-dark);
-        }
-
-        .main-container {
-            width: 100%;
-            margin: 0;
-            background: transparent;
-            padding: 0;
-            flex-grow: 1; 
-        }
-
-        
-
-        
-
-        h1 { margin: 0; font-size: 2.5em; letter-spacing: -1px; }
-        
-
-        #globalheader {
-            display: flex;
-            align-items: center;
-            position: relative;
-            width: 100%;
-            height: 38px;
-            background: linear-gradient(to bottom, #5e5e5e 0%, #3e3e3e 50%, #2d2d2d 51%, #1f1f1f 100%);
-            border-top: 1px solid #222;
-            border-bottom: 1px solid #000;
-            box-shadow: inset 0 1px 0 rgba(255,255,255,0.15), 0 2px 4px rgba(0,0,0,0.2);
-            font-size: 11px;
-            position: relative;
-            z-index: 99;
-        }
-
-        #globalnav {
-            flex-grow: 1;
-            margin: 0;
-            padding: 0;
-            list-style: none;
-            display: flex;
-            justify-content: center;
-            height: 100%;
-        }
-
-        #globalnav li { position: relative; height: 100%; display: flex; align-items: center; }
-        #globalnav li::after {
-            content: ""; position: absolute; right: 0; width: 1px; height: 100%;
-            background: linear-gradient(to bottom, #333, #111); box-shadow: 1px 0 0 rgba(255,255,255,0.08);
-        }
-        #globalnav li:first-child::before {
-            content: ""; position: absolute; left: 0; width: 1px; height: 100%;
-            background: linear-gradient(to bottom, #333, #111); box-shadow: 1px 0 0 rgba(255,255,255,0.08);
-        }
-
-        #globalnav li a {
-            display: block; color: #e8e8e8; text-decoration: none; text-shadow: 0 -1px 0 rgba(0,0,0,0.8);
-            font-weight: bold; padding: 0 24px; line-height: 38px;
-            transition: text-shadow 0.2s ease, color 0.2s ease, background 0.2s ease, box-shadow 0.2s ease;
-        }
-
-        #globalnav li a:hover {
-            color: #fff;
-            background: linear-gradient(rgba(255,255,255,0.05), rgba(255,255,255,0));
-            text-shadow: 0 0 8px rgba(255, 255, 255, 0.8), 0 -1px 0 rgba(0,0,0,0.8);
-        }
-        
-        #globalnav li a.active { color: #fff; background: rgba(0,0,0,0.2); box-shadow: inset 0 2px 5px rgba(0,0,0,0.3); }
-
-        .sangaia-btn {
-            font-size: 0.9rem; font-family: "myriad-pro", "Segoe UI", sans-serif; height: 2.5em;
-            padding: 0 1em; width: 15em; border-radius: 3px; position: relative; overflow: hidden;
-            cursor: pointer;  text-decoration: none; display: inline-flex;
-            align-items: center; justify-content: center; margin: 5px; 
-            
-             
-             box-sizing: border-box;
-        background: linear-gradient(to bottom, #76b500 0%, #5e9100 100%); box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1); border: 1px solid #4a7200; color: white;}
-
-        
-
-        
-
-        .sangaia-btn:hover { background: linear-gradient(to bottom, #88cc00 0%, #70a800 100%); }
-        .sangaia-btn span { position: relative; z-index: 3; font-weight: 600; text-shadow: 0 1px 1px rgba(0,0,0,0.3); }
-
-        .sangaia-btn.active, .sangaia-btn:active {
-            
-             
-             
-        background: linear-gradient(to bottom, #4f7a00 0%, #3e6000 100%); box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.2); border: 1px solid #324c00; color: white;}
-
-        .sangaia-btn.active span, .sangaia-btn:active span { text-shadow: 0 1px 2px rgba(0, 0, 0, 0.4); }
-
-        .content-wrapper { padding: 30px; width: 100%; box-sizing: border-box; }
-
-        .glass-panel {
-            background: linear-gradient(to bottom, #fcfcfc 0%, #f1f1f1 100%);
-            border: 1px solid #ddd; border-radius: 8px; padding: 20px; margin-bottom: 25px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.05), inset 0 1px 0 #fff; position: relative;
-        }
-
-        .glass-panel h2 { margin: 0 0 15px; color: #006699; border-bottom: 1px solid #eee; padding-bottom: 10px; font-size: 1.4em; }
-        
-        /* --- 3D FLIP CAROUSEL STYLES --- */
-        .carousel-container {
-            width: 100%;
-            max-width: 1200px;
-            height: 300px;
-            margin: 0 auto 25px auto;
-            perspective: 1000px;
-            border-radius: 8px;
-            border: 1px solid #ddd;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.05), inset 0 1px 0 #fff;
-            background: #fff;
-            overflow: hidden; /* Ensures images don't spill out during flip */
-        }
-
-        .carousel-track {
-            width: 100%;
-            height: 100%;
-            position: relative;
-            transform-style: preserve-3d;
-            transition: transform 1s cubic-bezier(0.645, 0.045, 0.355, 1); /* Smooth "Apple-like" easing */
-        }
-
-        .carousel-slide {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            backface-visibility: hidden;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .carousel-slide img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            object-position: bottom;
-        }
-
-        /* We structure the slides as faces of a vertical prism/cube.
-           Since we have 4 slides, we can treat them like a 4-sided spinner.
-           Height is 300px.
-           TranslateZ = 300px / 2 = 150px.
-        */
-        .slide-1 { transform: rotateX(0deg) translateZ(150px); }
-        .slide-2 { transform: rotateX(-90deg) translateZ(150px); }
-        .slide-3 { transform: rotateX(-180deg) translateZ(150px); }
-        .slide-4 { transform: rotateX(-270deg) translateZ(150px); }
-
-        .content-grid { display: grid; grid-template-columns: 1fr; gap: 20px; max-width: 1200px; margin: 0 auto; }
-        @media (min-width: 768px) { .content-grid { grid-template-columns: 2fr 1fr; } }
-
-        footer { text-align: center; padding: 20px; font-size: 0.9em; background: rgba(255,255,255,0.6); margin-top: auto; }
-        p { line-height: 1.6; margin: 0 0 15px; }
-    </style>
+    <title>Public Application Portal :: Sangaia Live</title>
+    <link rel="stylesheet" href="/css/sangaia-live.css">
+    <script src="/js/sangaia-live.js" defer></script>
 </head>
-<body>
-<div class="main-container">
-    
-    <nav id="globalheader">
-        <div style="position: absolute; left: 15px; display: flex; align-items: center; height: 100%;">
-            <img src="media/nav_logo.png" style="height: 24px; width: auto;" alt="Logo">
-        </div>
-        <div style="position: absolute; right: 15px; display: flex; align-items: center; gap: 15px; height: 100%; z-index: 100;">
-            <div id="auth-widget"><a href="id.html" style="color: #bbb; text-decoration: none; font-size: 11px; font-weight: bold; letter-spacing: 0.5px; padding: 3px 8px; border: 1px solid #444; border-radius: 4px; background: linear-gradient(to bottom, #555, #333); box-shadow: 0 1px 2px rgba(0,0,0,0.3); transition: all 0.2s ease;" onmouseover="this.style.color='#fff'; this.style.borderColor='#666';" onmouseout="this.style.color='#bbb'; this.style.borderColor='#444';">Sangaia ID</a></div>
-            <a href="sgn/application.html" style="color: #bbb; text-decoration: none; font-size: 11px; font-weight: bold; letter-spacing: 0.5px; padding: 3px 8px; border: 1px solid #444; border-radius: 4px; background: linear-gradient(to bottom, #555, #333); box-shadow: 0 1px 2px rgba(0,0,0,0.3); transition: all 0.2s ease;" onmouseover="this.style.color='#fff'; this.style.borderColor='#666';" onmouseout="this.style.color='#bbb'; this.style.borderColor='#444';">English</a>
-        </div>
-                <ul id="globalnav">
-            <li><a href="index.html">Home</a></li>
-            <li><a href="government.html">Government</a></li>
-            <li><a href="citizenship.html" class="active">Citizenship</a></li>
-            <li><a href="services.html">Services</a></li>
-            <li><a href="about.html">About the Aeretocrat</a></li>
-            <li><a href="societal_press.html">Societal Press</a></li>
-        </ul>
-    </nav>
-    <div class="content-wrapper">
-        
-        
+<body class="theme-federal">
 
-        
-<div class="glass-panel" style="max-width: 800px; margin: 0 auto; text-align: left;">
-    <h2 style="text-align: center; border-bottom: none; margin-bottom: 5px;">Citizenship Application & Test</h2>
-    <p style="text-align: center; color: #666; margin-bottom: 15px;">Please fill out the form below accurately. This application serves as both your formal request for naturalization and your citizenship test.</p>
-    
-    <div style="background-color: #fff3cd; color: #856404; padding: 15px; border-radius: 4px; margin-bottom: 20px; font-size: 0.95em; border: 1px solid #ffeeba;">
-        <strong>Notice:</strong> AI-generated responses are strictly unacceptable and will result in the immediate invalidation of your application. All answers must be your own.
-        <br><br>
-        <span style="color: #d9534f; font-weight: bold;">* Indicates a required question</span>
+<!-- Top Live Mast Banner -->
+<div class="wl-mast">
+    <div class="ol-container wl-mast-inner">
+        <div class="ol-header-top">
+            <div class="ol-logo">
+                <a href="/index.html" aria-label="Sangaia Live Sovereign Portal">
+                    <svg viewBox="0 0 90 90" width="22" height="22" fill="currentColor">
+                        <rect x="0" y="0" width="41" height="41" rx="2"/>
+                        <rect x="49" y="0" width="41" height="41" rx="2"/>
+                        <rect x="0" y="49" width="41" height="41" rx="2"/>
+                        <rect x="49" y="49" width="41" height="41" rx="2"/>
+                    </svg>
+                    <span><b>Sangaia</b> Live</span>
+                </a>
+            </div>
+            <div class="ol-header-tools">
+                <form class="ol-search" id="headerSearchForm" action="/services.html" method="get">
+                    <input type="text" id="headerSearch" name="q" placeholder="Search government &amp; services" aria-label="Search">
+                    <button type="submit" class="ol-search-bing" aria-label="Search">&#x1F50E;</button>
+                </form>
+                
+                <a class="ol-icon-btn" href="/services.html" title="Notifications">
+                    <svg width="16" height="16" viewBox="0 0 16 16"><path fill="currentColor" d="M8 1.5c-2.4 0-4 1.9-4 4.2v3L2.7 11c-.3.4 0 1 .5 1h9.6c.5 0 .8-.6.5-1L12 8.7v-3c0-2.3-1.6-4.2-4-4.2zm0 13c1 0 1.8-.7 2-1.5H6c.2.8 1 1.5 2 1.5z"/></svg>
+                    <span class="ol-badge">3</span>
+                </a>
+                <a class="ol-icon-btn" href="/services.html" title="Citizen Messages">
+                    <svg width="16" height="16" viewBox="0 0 16 16"><path fill="currentColor" d="M2 3h12c.6 0 1 .4 1 1v7c0 .6-.4 1-1 1H9l-3.4 2.6c-.4.3-.9 0-.9-.5V12H2c-.6 0-1-.4-1-1V4c0-.6.4-1 1-1z"/></svg>
+                    <span class="ol-badge">1</span>
+                </a>
+                <div class="ol-me">
+                    <div class="ol-me-chip" id="meChip">
+                        <span class="ol-avatar sm">
+                            <img src="/images/1.jpeg" alt="Citizen Profile">
+                            <span class="ol-presence-dot"></span>
+                        </span>
+                        <span class="ol-me-name">Jqackkk</span>
+                        <span class="ol-me-caret">&#9660;</span>
+                    </div>
+                    <div class="ol-me-menu" id="meMenu" style="display:none; position:absolute; right:0; top:36px; background:#fff; border:1px solid #dfe3e7; border-radius:3px; box-shadow:0 2px 8px rgba(0,0,0,0.15); width:180px; z-index:1000; padding:6px 0;">
+                        <div style="padding:4px 12px; font-size:11px; font-weight:700; color:#64748b; text-transform:uppercase;">Citizen ID: SG-2026-F1E8</div>
+                        <a href="/id.html" style="display:block; padding:5px 12px; color:#2a2a2a; font-size:13px;">Sangaia ID Card</a>
+                        <a href="/citizenship.html" style="display:block; padding:5px 12px; color:#2a2a2a; font-size:13px;">Citizenship Status</a>
+                        <a href="/units.html" style="display:block; padding:5px 12px; color:#2a2a2a; font-size:13px;">Units &amp; Measures</a>
+                        <div style="border-top:1px solid #edf0f3; margin:4px 0;"></div>
+                        <a href="/index.html" style="display:block; padding:5px 12px; color:#2a2a2a; font-size:13px;">Federal Home</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="ol-band">
+            <div class="ol-band-inner">
+                <h1>Civic & Civil Service Application Portal</h1>
+                <p class="ol-band-sub">Online filing gateway for citizenship, civil service & cooperative grants</p>
+            </div>
+        </div>
     </div>
+</div>
 
-    <form action="https://formspree.io/f/xppqqzzn" method="POST" style="display: flex; flex-direction: column; gap: 20px;">
-        
-        <!-- SECTION 1 - ABOUT YOU -->
-        <div style="background: rgba(0,0,0,0.02); padding: 20px; border-radius: 8px; border: 1px solid #eee;">
-            <h3 style="margin-top: 0; color: #0077be; font-size: 1.2em;">Section 1 - About You</h3>
-            <p style="font-size: 0.9em; margin-bottom: 20px; color: #666;">You will answer questions about yourself. All of this is secure, and your information is private. We ask that you input your Email below so we can send you your results. If you don't, we won't know how to relay this information back to you. We will ignore all submissions without an Email Address attached to them.</p>
+<!-- Main Top Nav Tabs (One Live Bar) -->
+<div class="wl-tabs">
+    <div class="ol-container wl-tabs-inner">
+        <ul class="ol-nav" id="primaryNav">
+            <li class="ol-current"><a href="/index.html">Home</a></li>
+            <li><a href="/executive.html">Executive</a></li>
+            <li><a href="/treasury.html">Treasury</a></li>
+            <li><a href="/work.html">Work</a></li>
+            <li><a href="/healthcare.html">Healthcare</a></li>
+            <li><a href="/education.html">Education</a></li>
+            <li><a href="/domesticaffairs.html">Domestic</a></li>
+            <li><a href="/externalaffairs.html">External</a></li>
+            <li><a href="/environment.html">Environment</a></li>
+            <li><a href="/propaganda.html">Propaganda</a></li>
+            <li><a href="/services.html">Services</a></li>
+            <li><a href="/units.html">Units (Мн • °Пт)</a></li>
             
-            <label style="font-weight: bold; display: block; margin-bottom: 5px;">1. Email *</label>
-            <input type="email" name="email" required style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box; margin-bottom: 15px;">
-            
-            <label style="font-weight: bold; display: block; margin-bottom: 5px;">2. What is the current date you are taking this test? *</label>
-            <p style="margin: 0 0 5px 0; font-size: 0.85em; color: #888;">Example: January 7, 2019</p>
-            <input type="text" name="date_taken" required style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box; margin-bottom: 15px;">
-            
-            <label style="font-weight: bold; display: block; margin-bottom: 5px;">3. What is your name? *</label>
-            <p style="margin: 0 0 5px 0; font-size: 0.85em; color: #888;">First/Middle (If applicable)/Last</p>
-            <input type="text" name="name" required style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box; margin-bottom: 15px;">
-            
-            <label style="font-weight: bold; display: block; margin-bottom: 5px;">4. Are you currently employed? *</label>
-            <div style="margin-bottom: 15px;">
-                <label style="display: block; margin-bottom: 5px;"><input type="radio" name="employed" value="Yes" required> Yes</label>
-                <label style="display: block; margin-bottom: 5px;"><input type="radio" name="employed" value="No" required> No</label>
-                <label style="display: block; margin-bottom: 5px;"><input type="radio" name="employed" value="Self-Employed" required> Self-Employed</label>
+        </ul>
+    </div>
+</div>
+
+<!-- Main Content Grid -->
+<div class="ol-container ol-main">
+    <div class="ol-with-sidebar">
+        <!-- Left Sidebar Navigation -->
+        <div class="ol-sidebar-nav">
+            <div class="ol-card ol-profile-card" style="text-align: center;">
+                <span class="ol-avatar lg">
+                    <img src="/images/1.jpeg" alt="Emblem">
+                    <span class="ol-presence-dot"></span>
+                </span>
+                <div class="ol-mt-10">
+                    <strong>Civic Registry</strong><br>
+                    <span class="ol-muted ol-small">Application Hub</span><br>
+                    <span class="ol-small" style="color:var(--ol-accent); font-weight:600;">Submissions Open</span>
+                </div>
             </div>
 
-            <label style="font-weight: bold; display: block; margin-bottom: 5px;">5. If you're employed, what is your yearly salary?</label>
-            <div style="margin-bottom: 15px;">
-                <label style="display: block; margin-bottom: 5px;"><input type="radio" name="salary" value="Under $10,000"> Under $10,000</label>
-                <label style="display: block; margin-bottom: 5px;"><input type="radio" name="salary" value="$10,000 to $25,000"> $10,000 to $25,000</label>
-                <label style="display: block; margin-bottom: 5px;"><input type="radio" name="salary" value="$25,000 to $50,000"> $25,000 to $50,000</label>
-                <label style="display: block; margin-bottom: 5px;"><input type="radio" name="salary" value="$50,000 to $75,000"> $50,000 to $75,000</label>
-                <label style="display: block; margin-bottom: 5px;"><input type="radio" name="salary" value="$75,000 to $100,000"> $75,000 to $100,000</label>
-                <label style="display: block; margin-bottom: 5px;"><input type="radio" name="salary" value="Over $100,000"> Over $100,000</label>
-            </div>
+            <span class="ol-sidenav-label">Portal Navigation</span>
+            <ul class="ol-sidenav">
+                <li><a href="#overview" class="sel">Application Form</a></li>
 
-            <label style="font-weight: bold; display: block; margin-bottom: 5px;">6. What is your age? *</label>
-            <div style="margin-bottom: 15px;">
-                <label style="display: block; margin-bottom: 5px;"><input type="radio" name="age" value="Under 13" required> Under 13</label>
-                <label style="display: block; margin-bottom: 5px;"><input type="radio" name="age" value="13 to 18" required> 13 to 18</label>
-                <label style="display: block; margin-bottom: 5px;"><input type="radio" name="age" value="18 to 25" required> 18 to 25</label>
-                <label style="display: block; margin-bottom: 5px;"><input type="radio" name="age" value="25 to 35" required> 25 to 35</label>
-                <label style="display: block; margin-bottom: 5px;"><input type="radio" name="age" value="35 to 45" required> 35 to 45</label>
-                <label style="display: block; margin-bottom: 5px;"><input type="radio" name="age" value="45 to 55" required> 45 to 55</label>
-                <label style="display: block; margin-bottom: 5px;"><input type="radio" name="age" value="55 to 65" required> 55 to 65</label>
-                <label style="display: block; margin-bottom: 5px;"><input type="radio" name="age" value="65 to 75" required> 65 to 75</label>
-                <label style="display: block; margin-bottom: 5px;"><input type="radio" name="age" value="above 75" required> above 75</label>
-            </div>
+            </ul>
 
-            <label style="font-weight: bold; display: block; margin-bottom: 5px;">7. Do you have a criminal history? *</label>
-            <div style="margin-bottom: 15px;">
-                <label style="display: block; margin-bottom: 5px;"><input type="radio" name="criminal_history" value="Yes" required> Yes</label>
-                <label style="display: block; margin-bottom: 5px;"><input type="radio" name="criminal_history" value="No" required> No</label>
-            </div>
-
-            <label style="font-weight: bold; display: block; margin-bottom: 5px;">8. Have you ever been tried in a court of law? *</label>
-            <div style="margin-bottom: 15px;">
-                <label style="display: block; margin-bottom: 5px;"><input type="radio" name="tried_in_court" value="Yes" required> Yes</label>
-                <label style="display: block; margin-bottom: 5px;"><input type="radio" name="tried_in_court" value="No" required> No</label>
-            </div>
-
-            <label style="font-weight: bold; display: block; margin-bottom: 5px;">9. If tried, what were you tried for?</label>
-            <p style="margin: 0 0 5px 0; font-size: 0.85em; color: #888;">Only type here if you selected Yes on the previous question. Do not share all the details of your case, or whether you were convicted. Describe exactly what you were tried for.</p>
-            <textarea name="tried_reason" rows="3" style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box; resize: vertical; margin-bottom: 15px;"></textarea>
-
-            <label style="font-weight: bold; display: block; margin-bottom: 5px;">10. Have you ever been convicted in a court of law? *</label>
-            <div style="margin-bottom: 15px;">
-                <label style="display: block; margin-bottom: 5px;"><input type="radio" name="convicted" value="Yes" required> Yes</label>
-                <label style="display: block; margin-bottom: 5px;"><input type="radio" name="convicted" value="No" required> No</label>
-            </div>
-
-            <label style="font-weight: bold; display: block; margin-bottom: 5px;">11. If convicted, what were you convicted of?</label>
-            <p style="margin: 0 0 5px 0; font-size: 0.85em; color: #888;">Only type here if you selected Yes on the previous question. Do not share all the details of your case. List everything you were convicted of.</p>
-            <textarea name="convicted_reason" rows="3" style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box; resize: vertical; margin-bottom: 15px;"></textarea>
-
-            <label style="font-weight: bold; display: block; margin-bottom: 5px;">12. Do you have any children? *</label>
-            <div style="margin-bottom: 15px;">
-                <label style="display: block; margin-bottom: 5px;"><input type="radio" name="has_children" value="Yes" required> Yes</label>
-                <label style="display: block; margin-bottom: 5px;"><input type="radio" name="has_children" value="No" required> No</label>
-            </div>
-
-            <label style="font-weight: bold; display: block; margin-bottom: 5px;">13. If you have children, how many do you have?</label>
-            <p style="margin: 0 0 5px 0; font-size: 0.85em; color: #888;">Only check here if you selected Yes on the previous question.</p>
-            <div style="margin-bottom: 15px;">
-                <label style="display: block; margin-bottom: 5px;"><input type="checkbox" name="num_children" value="1"> 1</label>
-                <label style="display: block; margin-bottom: 5px;"><input type="checkbox" name="num_children" value="2"> 2</label>
-                <label style="display: block; margin-bottom: 5px;"><input type="checkbox" name="num_children" value="3"> 3</label>
-                <label style="display: block; margin-bottom: 5px;"><input type="checkbox" name="num_children" value="4"> 4</label>
-                <label style="display: block; margin-bottom: 5px;"><input type="checkbox" name="num_children" value="5"> 5</label>
-                <label style="display: block; margin-bottom: 5px;"><input type="checkbox" name="num_children" value="Over 5"> Over 5</label>
-            </div>
-
-            <label style="font-weight: bold; display: block; margin-bottom: 5px;">14. What are their ages?</label>
-            <p style="margin: 0 0 5px 0; font-size: 0.85em; color: #888;">Only type here if you selected Yes on the previous question.</p>
-            <textarea name="children_ages" rows="2" style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box; resize: vertical; margin-bottom: 15px;"></textarea>
-
-            <label style="font-weight: bold; display: block; margin-bottom: 5px;">15. Do you have any family who are current citizens of the United Provinces of Sangaia? *</label>
-            <div style="margin-bottom: 15px;">
-                <label style="display: block; margin-bottom: 5px;"><input type="radio" name="family_citizens" value="Yes" required> Yes</label>
-                <label style="display: block; margin-bottom: 5px;"><input type="radio" name="family_citizens" value="No" required> No</label>
-            </div>
-
-            <label style="font-weight: bold; display: block; margin-bottom: 5px;">16. If you have any family, what are their names, and the province they live in?</label>
-            <p style="margin: 0 0 5px 0; font-size: 0.85em; color: #888;">Only type here if you selected Yes on the previous question.</p>
-            <textarea name="family_details" rows="3" style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box; resize: vertical; margin-bottom: 15px;"></textarea>
-
-            <label style="font-weight: bold; display: block; margin-bottom: 5px;">17. Have you been living in the United Provinces of Sangaia under a VISA? *</label>
-            <div style="margin-bottom: 15px;">
-                <label style="display: block; margin-bottom: 5px;"><input type="radio" name="under_visa" value="Yes" required> Yes</label>
-                <label style="display: block; margin-bottom: 5px;"><input type="radio" name="under_visa" value="No" required> No</label>
-            </div>
-
-            <label style="font-weight: bold; display: block; margin-bottom: 5px;">18. If so, how long have you been here for?</label>
-            <p style="margin: 0 0 5px 0; font-size: 0.85em; color: #888;">Only type here if you selected Yes on the previous question.</p>
-            <input type="text" name="visa_duration" style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box; margin-bottom: 15px;">
-
-            <label style="font-weight: bold; display: block; margin-bottom: 5px;">19. Do you have any degrees? *</label>
-            <div style="margin-bottom: 15px;">
-                <label style="display: block; margin-bottom: 5px;"><input type="radio" name="has_degrees" value="Yes" required> Yes</label>
-                <label style="display: block; margin-bottom: 5px;"><input type="radio" name="has_degrees" value="No" required> No</label>
-            </div>
-
-            <label style="font-weight: bold; display: block; margin-bottom: 5px;">20. If so, what are you degreed in?</label>
-            <p style="margin: 0 0 5px 0; font-size: 0.85em; color: #888;">Only type here if you selected Yes on the previous question.</p>
-            <input type="text" name="degrees" style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box; margin-bottom: 15px;">
-
-            <label style="font-weight: bold; display: block; margin-bottom: 5px;">21. Do you have any certifications? *</label>
-            <div style="margin-bottom: 15px;">
-                <label style="display: block; margin-bottom: 5px;"><input type="radio" name="has_certifications" value="Yes" required> Yes</label>
-                <label style="display: block; margin-bottom: 5px;"><input type="radio" name="has_certifications" value="No" required> No</label>
-            </div>
-
-            <label style="font-weight: bold; display: block; margin-bottom: 5px;">22. If so, what are you certified in?</label>
-            <p style="margin: 0 0 5px 0; font-size: 0.85em; color: #888;">Only type here if you selected Yes on the previous question.</p>
-            <textarea name="certifications" rows="2" style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box; resize: vertical; margin-bottom: 15px;"></textarea>
-
-            <label style="font-weight: bold; display: block; margin-bottom: 5px;">23. What languages do you speak? *</label>
-            <input type="text" name="languages" required style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box; margin-bottom: 15px;">
-
-            <label style="font-weight: bold; display: block; margin-bottom: 5px;">24. Where are you immigrating from, if applicable?</label>
-            <p style="margin: 0 0 5px 0; font-size: 0.85em; color: #888;">Only answer this if you plan on leaving your current country to live permanently in Sangaia.</p>
-            <input type="text" name="immigrating_from" style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box; margin-bottom: 15px;">
+            <span class="ol-sidenav-label">Federal Network</span>
+            <ul class="ol-sidenav">
+                <li><a href="/index.html">Federal Home</a></li>
+                <li><a href="/services.html">All Services</a></li>
+                <li><a href="/units.html">Units (Мн &bull; &deg;Пт)</a></li>
+                <li><a href="/societal_press.html">Societal Press</a></li>
+            </ul>
         </div>
 
-        <!-- THE CONSTITUTION -->
-        <div style="background: rgba(0,0,0,0.02); padding: 20px; border-radius: 8px; border: 1px solid #eee;">
-            <h3 style="margin-top: 0; color: #0077be; font-size: 1.2em;">The Constitution</h3>
-            <p style="font-size: 0.9em; margin-bottom: 20px; color: #666;">You will answer questions about The Sangaian Constitution.</p>
+        <!-- Center Content -->
+        <div class="ol-content">
             
-            <label style="font-weight: bold; display: block; margin-bottom: 5px;">25. Do you feel confident enough about the constitution to answer the following questions? *</label>
-            <div style="margin-bottom: 15px;">
-                <label style="display: block; margin-bottom: 5px;"><input type="radio" name="confident_constitution" value="Yes" required> Yes (Skip to question 26)</label>
-                <label style="display: block; margin-bottom: 5px;"><input type="radio" name="confident_constitution" value="No" required> No (Skip to question 32)</label>
-            </div>
-
-            <label style="font-weight: bold; display: block; margin-bottom: 5px;">26. How many articles are in The Sangaian Constitution? *</label>
-            <div style="margin-bottom: 15px;">
-                <label style="display: block; margin-bottom: 5px;"><input type="radio" name="num_articles" value="4"> 4</label>
-                <label style="display: block; margin-bottom: 5px;"><input type="radio" name="num_articles" value="7"> 7</label>
-                <label style="display: block; margin-bottom: 5px;"><input type="radio" name="num_articles" value="8"> 8</label>
-                <label style="display: block; margin-bottom: 5px;"><input type="radio" name="num_articles" value="10"> 10</label>
-                <label style="display: block; margin-bottom: 5px;"><input type="radio" name="num_articles" value="I don't know."> I don't know.</label>
-            </div>
-
-            <label style="font-weight: bold; display: block; margin-bottom: 5px;">27. Who ratified The Constitution? *</label>
-            <div style="margin-bottom: 15px;">
-                <label style="display: block; margin-bottom: 5px;"><input type="radio" name="ratified_constitution" value="Jack Davenport"> Jack Davenport</label>
-                <label style="display: block; margin-bottom: 5px;"><input type="radio" name="ratified_constitution" value="Celinda Salah"> Celinda Salah</label>
-                <label style="display: block; margin-bottom: 5px;"><input type="radio" name="ratified_constitution" value="Clement Bryce"> Clement Bryce</label>
-                <label style="display: block; margin-bottom: 5px;"><input type="radio" name="ratified_constitution" value="I don't know."> I don't know.</label>
-            </div>
-
-            <label style="font-weight: bold; display: block; margin-bottom: 5px;">28. Who runs The Government? *</label>
-            <div style="margin-bottom: 15px;">
-                <label style="display: block; margin-bottom: 5px;"><input type="radio" name="runs_government" value="The President"> The President</label>
-                <label style="display: block; margin-bottom: 5px;"><input type="radio" name="runs_government" value="The Dictator"> The Dictator</label>
-                <label style="display: block; margin-bottom: 5px;"><input type="radio" name="runs_government" value="The Commander-in-Chief"> The Commander-in-Chief</label>
-                <label style="display: block; margin-bottom: 5px;"><input type="radio" name="runs_government" value="The Leader"> The Leader</label>
-            </div>
-
-            <label style="font-weight: bold; display: block; margin-bottom: 5px;">29. Who votes on Legislation? *</label>
-            <div style="margin-bottom: 15px;">
-                <label style="display: block; margin-bottom: 5px;"><input type="radio" name="votes_legislation" value="The Legislature"> The Legislature</label>
-                <label style="display: block; margin-bottom: 5px;"><input type="radio" name="votes_legislation" value="The Body of Electives"> The Body of Electives</label>
-                <label style="display: block; margin-bottom: 5px;"><input type="radio" name="votes_legislation" value="Congress"> Congress</label>
-            </div>
-
-            <label style="font-weight: bold; display: block; margin-bottom: 5px;">30. Do we have a Judicial System? *</label>
-            <div style="margin-bottom: 15px;">
-                <label style="display: block; margin-bottom: 5px;"><input type="radio" name="judicial_system" value="Yes"> Yes</label>
-                <label style="display: block; margin-bottom: 5px;"><input type="radio" name="judicial_system" value="No"> No</label>
-            </div>
-
-            <label style="font-weight: bold; display: block; margin-bottom: 5px;">31. Name one article from The Constitution. *</label>
-            <input type="text" name="name_article" style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box; margin-bottom: 15px;">
+    <div class="ol-status-bubble" id="overview">
+        &ldquo;Public service, civil registry, and citizenship applications portal.&rdquo;
+        <div class="ol-status-date">Civic Registry Bureau</div>
+    </div>
+    <div class="ol-card">
+        <div class="ol-card-title">
+            <span>Submit Official Civic Application</span>
+            <span class="ol-badge-tag">Encrypted Docket</span>
         </div>
-
-        <!-- HEALTHCARE -->
-        <div style="background: rgba(0,0,0,0.02); padding: 20px; border-radius: 8px; border: 1px solid #eee;">
-            <h3 style="margin-top: 0; color: #0077be; font-size: 1.2em;">Healthcare</h3>
-            <p style="font-size: 0.9em; margin-bottom: 20px; color: #666;">You will answer questions about healthcare.</p>
-            
-            <label style="font-weight: bold; display: block; margin-bottom: 5px;">32. Do we have State-Provided Healthcare? *</label>
-            <div style="margin-bottom: 15px;">
-                <label style="display: block; margin-bottom: 5px;"><input type="radio" name="state_healthcare" value="Yes" required> Yes</label>
-                <label style="display: block; margin-bottom: 5px;"><input type="radio" name="state_healthcare" value="No" required> No</label>
-            </div>
-
-            <label style="font-weight: bold; display: block; margin-bottom: 5px;">33. Have you applied for Healthcare? *</label>
-            <div style="margin-bottom: 15px;">
-                <label style="display: block; margin-bottom: 5px;"><input type="radio" name="applied_healthcare" value="Yes" required> Yes</label>
-                <label style="display: block; margin-bottom: 5px;"><input type="radio" name="applied_healthcare" value="No" required> No</label>
-            </div>
-
-            <label style="font-weight: bold; display: block; margin-bottom: 5px;">34. Do you have any mental conditions? *</label>
-            <div style="margin-bottom: 15px;">
-                <label style="display: block; margin-bottom: 5px;"><input type="radio" name="mental_conditions" value="Yes" required> Yes</label>
-                <label style="display: block; margin-bottom: 5px;"><input type="radio" name="mental_conditions" value="No" required> No</label>
-            </div>
-
-            <label style="font-weight: bold; display: block; margin-bottom: 5px;">35. If so, what are they?</label>
-            <p style="margin: 0 0 5px 0; font-size: 0.85em; color: #888;">Only type here if you selected Yes on the previous question.</p>
-            <input type="text" name="mental_conditions_details" style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box; margin-bottom: 15px;">
-
-            <label style="font-weight: bold; display: block; margin-bottom: 5px;">36. Do you have a basic understanding of how Sangaian Healthcare works? *</label>
-            <div style="margin-bottom: 15px;">
-                <label style="display: block; margin-bottom: 5px;"><input type="radio" name="healthcare_understanding" value="Yes" required> Yes</label>
-                <label style="display: block; margin-bottom: 5px;"><input type="radio" name="healthcare_understanding" value="No" required> No</label>
-            </div>
-
-            <label style="font-weight: bold; display: block; margin-bottom: 5px;">37. What do Sangaians refer to their doctor as? *</label>
-            <div style="margin-bottom: 15px;">
-                <label style="display: block; margin-bottom: 5px;"><input type="radio" name="doctor_reference" value="A GP (General Practitioner)" required> A GP (General Practitioner)</label>
-                <label style="display: block; margin-bottom: 5px;"><input type="radio" name="doctor_reference" value="A GD (General Doctor)" required> A GD (General Doctor)</label>
-                <label style="display: block; margin-bottom: 5px;"><input type="radio" name="doctor_reference" value="A PCD (Primary Care Doctor)" required> A PCD (Primary Care Doctor)</label>
-            </div>
-
-            <label style="font-weight: bold; display: block; margin-bottom: 5px;">38. Have you ever received Sangaian Healthcare? *</label>
-            <div style="margin-bottom: 15px;">
-                <label style="display: block; margin-bottom: 5px;"><input type="radio" name="received_healthcare" value="Yes" required> Yes</label>
-                <label style="display: block; margin-bottom: 5px;"><input type="radio" name="received_healthcare" value="No" required> No</label>
-            </div>
-
-            <label style="font-weight: bold; display: block; margin-bottom: 5px;">39. If you have, why?</label>
-            <p style="margin: 0 0 5px 0; font-size: 0.85em; color: #888;">Only type here if you selected Yes on the previous question. Do not share all the details of your visit.</p>
-            <input type="text" name="healthcare_visit_reason" style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box; margin-bottom: 15px;">
-
-            <label style="font-weight: bold; display: block; margin-bottom: 5px;">40. How often do you visit your doctor? *</label>
-            <p style="margin: 0 0 5px 0; font-size: 0.85em; color: #888;">1 = Very rarely, 10 = Very often</p>
-            <div style="display: flex; gap: 10px; margin-bottom: 15px; flex-wrap: wrap; align-items: center;">
-                <span>Very rarely</span>
-                <label><input type="radio" name="doctor_visit_freq" value="1" required> 1</label>
-                <label><input type="radio" name="doctor_visit_freq" value="2" required> 2</label>
-                <label><input type="radio" name="doctor_visit_freq" value="3" required> 3</label>
-                <label><input type="radio" name="doctor_visit_freq" value="4" required> 4</label>
-                <label><input type="radio" name="doctor_visit_freq" value="5" required> 5</label>
-                <label><input type="radio" name="doctor_visit_freq" value="6" required> 6</label>
-                <label><input type="radio" name="doctor_visit_freq" value="7" required> 7</label>
-                <label><input type="radio" name="doctor_visit_freq" value="8" required> 8</label>
-                <label><input type="radio" name="doctor_visit_freq" value="9" required> 9</label>
-                <label><input type="radio" name="doctor_visit_freq" value="10" required> 10</label>
-                <span>Very often</span>
-            </div>
-
-            <label style="font-weight: bold; display: block; margin-bottom: 5px;">41. Does Sangaia offer Healthcare Insurance Plans? *</label>
-            <div style="margin-bottom: 15px;">
-                <label style="display: block; margin-bottom: 5px;"><input type="radio" name="healthcare_insurance" value="Yes" required> Yes</label>
-                <label style="display: block; margin-bottom: 5px;"><input type="radio" name="healthcare_insurance" value="No" required> No</label>
-            </div>
+        <div class="form-group">
+            <label class="form-label">Full Legal Name</label>
+            <input type="text" class="ol-input" id="app-name" placeholder="Applicant Legal Name">
         </div>
-
-        <!-- REVIEW -->
-        <div style="background: rgba(0,0,0,0.02); padding: 20px; border-radius: 8px; border: 1px solid #eee;">
-            <h3 style="margin-top: 0; color: #0077be; font-size: 1.2em;">Review</h3>
-            <p style="font-size: 0.9em; margin-bottom: 20px; color: #666;">You will answer some final review questions.</p>
-            
-            <label style="font-weight: bold; display: block; margin-bottom: 5px;">42. Do you understand your application may be invalidated should you not have entered your Email? *</label>
-            <div style="margin-bottom: 15px;">
-                <label style="display: block; margin-bottom: 5px;"><input type="radio" name="understand_email" value="Yes" required> Yes</label>
-            </div>
-
-            <label style="font-weight: bold; display: block; margin-bottom: 5px;">43. Do you understand that you may be subject to further questioning? *</label>
-            <div style="margin-bottom: 15px;">
-                <label style="display: block; margin-bottom: 5px;"><input type="radio" name="understand_questioning" value="Yes" required> Yes</label>
-            </div>
-
-            <label style="font-weight: bold; display: block; margin-bottom: 5px;">44. Do you acknowledge that The Constitution is the ultimate and supreme law of the land? *</label>
-            <div style="margin-bottom: 15px;">
-                <label style="display: block; margin-bottom: 5px;"><input type="radio" name="acknowledge_constitution" value="Yes" required> Yes</label>
-            </div>
-
-            <label style="font-weight: bold; display: block; margin-bottom: 5px;">45. Have you completed an English or Sangaian literacy test? *</label>
-            <p style="margin: 0 0 5px 0; font-size: 0.85em; color: #888;">If you have, please select which one you have taken from the dropdown.</p>
-            <select name="literacy_test" required style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box; margin-bottom: 15px;">
-                <option value="" disabled selected>Select an option...</option>
-                <option value="English Literacy Test">English Literacy Test</option>
-                <option value="Sangaian Literacy Test">Sangaian Literacy Test</option>
-                <option value="Both">Both</option>
-                <option value="Neither">Neither</option>
+        <div class="form-group">
+            <label class="form-label">Application Category</label>
+            <select class="ol-select" id="app-cat">
+                <option>Citizenship Naturalization</option>
+                <option>Public Service &amp; Civil Bureau Apprenticeship</option>
+                <option>Cooperative Enterprise Charter</option>
+                <option>Environmental Land Stewardship Grant</option>
             </select>
         </div>
-
-        <button type="submit" class="sangaia-btn" style="width: 100%; font-size: 1.1em; padding: 15px; height: auto;"><span>Submit Citizenship Application</span></button>
-    </form>
-</div>
-
+        <div class="form-group">
+            <label class="form-label">Selected Province of Residence</label>
+            <select class="ol-select" id="app-prov">
+                <option>New Jasper</option><option>New Madison</option><option>Liveland</option><option>Sentinel</option><option>Columbia</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label class="form-label">Applicant Statement &amp; Intent</label>
+            <textarea class="ol-textarea" id="app-stmt" rows="4" placeholder="Detail your background, civic commitment, or project goals..."></textarea>
+        </div>
+        <div class="modal-results-box" id="appResults"></div>
+        <div class="ol-mt-10">
+            <button type="button" class="ol-btn ol-btn-primary" onclick="submitApp()">Submit Official Application</button>
+        </div>
     </div>
-    <footer>
-        &copy; 2026 United Provinces of Sangaia. All Rights Reserved.<br>
-        <span style="font-size: 0.8em; color: #888;">Powered by Aeretocratic Principles</span>
-    </footer>
+    
+        </div>
+
+        <!-- Right Sidebar (Telemetry & Quick Actions) -->
+        <div class="ol-sidebar">
+            <div class="ol-note">Official Government of the Sovereign Republic of Sangaia. All administrative systems active.</div>
+
+            <div class="ol-sidebox">
+                <h3>Sovereign Telemetry</h3>
+                <div style="font-size:12.5px; line-height:1.6;">
+                    <div><strong>Currency:</strong> Sangaian Dollar ($)</div>
+                    <div><strong>Standard Temp:</strong> 22.5&deg;Пт (25&deg;C / 77&deg;F)</div>
+                    <div><strong>Standard Metric:</strong> 1 Мн = 2.5 cm</div>
+                    <div><strong>Active Provinces:</strong> 5 Territories</div>
+                </div>
+            </div>
+
+            <div class="ol-sidebox">
+                <h3>Provincial Weather (&deg;Пт)</h3>
+                <table class="ol-table" style="font-size:12px; margin:0;">
+                    <tr><td>New Jasper</td><td style="text-align:right;"><strong>20.5&deg;Пт</strong> (Sunny)</td></tr>
+                    <tr><td>New Madison</td><td style="text-align:right;"><strong>22.0&deg;Пт</strong> (Clear)</td></tr>
+                    <tr><td>Liveland</td><td style="text-align:right;"><strong>19.8&deg;Пт</strong> (Breezy)</td></tr>
+                    <tr><td>Sentinel</td><td style="text-align:right;"><strong>16.2&deg;Пт</strong> (Cool)</td></tr>
+                    <tr><td>Columbia</td><td style="text-align:right;"><strong>23.4&deg;Пт</strong> (Mild)</td></tr>
+                </table>
+            </div>
+
+            
+        </div>
+    </div>
 </div>
 
-<script>
-    // --- VERTICAL FLIP LOGIC ---
-    let currentRotation = 0;
-    const track = document.getElementById('track');
+
+
+<!-- Floating Citizen Dock -->
+<div class="ol-dock">
+    <button type="button" class="ol-dock-tab" id="olDockMessages">
+        <svg width="15" height="15" viewBox="0 0 16 16"><path fill="currentColor" d="M2 3h12c.6 0 1 .4 1 1v7c0 .6-.4 1-1 1H9l-3.4 2.6c-.4.3-.9 0-.9-.5V12H2c-.6 0-1-.4-1-1V4c0-.6.4-1 1-1z"/></svg>
+        <span>Live Citizen Support</span>
+    </button>
+    <div class="ol-dock-list" id="olDockList">
+        <div class="ol-dock-list-head">
+            <span>Sangaia Citizen Assistance</span>
+            <a href="javascript:void(0)" id="olDockListClose" style="color:#64748b; font-size:16px;">&times;</a>
+        </div>
+        <div class="ol-dock-list-body">
+            <a class="ol-dock-item" href="/services.html"><strong>Online Inquiries:</strong> File petition or request</a>
+            <a class="ol-dock-item" href="/units.html"><strong>Unit Calculations:</strong> Monomer &amp; Panotherm</a>
+            <a class="ol-dock-item" href="/citizenship.html"><strong>Citizenship Registry:</strong> Check docket status</a>
+            <a class="ol-dock-item" href="/id.html"><strong>Sangaia ID:</strong> Digital identity card</a>
+        </div>
+    </div>
+</div>
+
+<!-- Footer -->
+<div class="ol-footer">
+    <div class="ol-container ol-footer-inner">
+        <p class="ol-footer-copy">&copy; 2026 Sovereign Republic of Sangaia. One Live Wave 4 Infrastructure.</p>
+        <ul class="ol-footer-links">
+            <li><a href="/index.html">Home</a></li>
+            <li><a href="/government.html">Government Structure</a></li>
+            <li><a href="/services.html">Services</a></li>
+            <li><a href="/societal_press.html">Gazette</a></li>
+            <li><a href="/units.html">Units System</a></li>
+            <li><a href="/about.html">About Sangaia</a></li>
+        </ul>
+    </div>
+</div>
+
+
+    <script>
+    function submitApp() {
+        const token = 'APP-' + Math.floor(100000 + Math.random() * 900000);
+        const res = document.getElementById('appResults');
+        res.innerHTML = `<strong>Application Recorded:</strong> Tracking Code: <span style="font-family:monospace;">${token}</span>. Placed on Civic Registry Docket.`;
+        res.classList.add('active');
+    }
+    </script>
     
-    // Rotate 90 degrees every 4 seconds
-    setInterval(() => {
-        currentRotation += 90;
-        track.style.transform = `rotateX(${currentRotation}deg)`;
-    }, 4000); 
-</script>
 
-
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-<script src="auth.js"></script>
 </body>
 </html>

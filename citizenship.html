@@ -2,461 +2,253 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Citizenship - The United Provinces of Sangaia</title>
-    <!-- Same styles as index.html -->
-    <style>
-        /* --- FRUTIGER AERO / SKEUOMORPHIC STYLES --- */
-        
-        :root {
-            --glass-blue: rgba(220, 245, 255, 0.85);
-            --gloss-highlight: rgba(255, 255, 255, 0.9);
-            --ocean-blue: #0077be;
-            --fresh-green: #7cba01;
-            --text-dark: #2c3e50;
-            --text-light: #ffffff;
-        }
-
-        body {
-            background: #ffffff;
-            min-height: 100dvh;
-            width: 100%;
-            display: flex;
-            align-items: center;
-            justify-content: flex-start;
-            flex-direction: column;
-            margin: 0;
-            font-family: 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-            color: var(--text-dark);
-        }
-
-        .main-container {
-            width: 100%;
-            margin: 0;
-            background: transparent;
-            border: none;
-            border-radius: 0;
-            box-shadow: none;
-            padding: 0;
-            flex-grow: 1;
-        }
-
-        
-
-        
-
-        h1 {
-            margin: 0;
-            font-size: 2.5em;
-            letter-spacing: -1px;
-        }
-
-        
-
-        /* --- APPLE 2012 METAL NAV STYLES --- */
-        #globalheader {
-            display: flex;
-            align-items: center;
-            position: relative;
-            width: 100%;
-            height: 38px;
-            margin: 0;
-            border-radius: 0;
-            background: linear-gradient(to bottom, #5e5e5e 0%, #3e3e3e 50%, #2d2d2d 51%, #1f1f1f 100%);
-            border-top: 1px solid #222;
-            border-bottom: 1px solid #000;
-            box-shadow: inset 0 1px 0 rgba(255,255,255,0.15), 0 2px 4px rgba(0,0,0,0.2);
-            font-size: 11px;
-            position: relative;
-            z-index: 99;
-        }
-
-        #globalnav {
-            flex-grow: 1;
-            margin: 0;
-            padding: 0;
-            list-style: none;
-            display: flex;
-            justify-content: center;
-            align-items: stretch;
-            height: 100%;
-            width: 100%;
-        }
-
-        #globalnav li {
-            position: relative;
-            height: 100%;
-            display: flex;
-            align-items: center;
-        }
-        #globalnav li::after {
-            content: "";
-            position: absolute;
-            right: 0;
-            top: 0;
-            bottom: 0;
-            width: 1px;
-            background: linear-gradient(to bottom, #333, #111);
-            box-shadow: 1px 0 0 rgba(255,255,255,0.08);
-            z-index: 1;
-        }
-        #globalnav li:first-child::before {
-            content: "";
-            position: absolute;
-            left: 0;
-            top: 0;
-            bottom: 0;
-            width: 1px;
-            background: linear-gradient(to bottom, #333, #111);
-            box-shadow: 1px 0 0 rgba(255,255,255,0.08);
-            z-index: 1;
-        }
-        #globalnav li:last-child::after {
-            display: block;
-        }
-
-        #globalnav li a {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            height: 100%;
-            min-height: 38px;
-            box-sizing: border-box;
-            color: #e8e8e8;
-            text-decoration: none;
-            text-shadow: 0 -1px 0 rgba(0,0,0,0.8);
-            font-weight: bold;
-            padding: 0 24px;
-            line-height: 38px;
-            white-space: nowrap;
-            position: relative;
-            z-index: 2;
-            transition: text-shadow 0.2s ease, color 0.2s ease, background 0.2s ease, box-shadow 0.2s ease;
-        }
-
-        #globalnav li a:hover {
-            color: #fff;
-            background: linear-gradient(rgba(255,255,255,0.05), rgba(255,255,255,0));
-            text-shadow: 0 0 8px rgba(255, 255, 255, 0.8), 0 -1px 0 rgba(0,0,0,0.8);
-        }
-        
-        #globalnav li a.active { color: #fff; background: rgba(0,0,0,0.2); box-shadow: inset 0 2px 5px rgba(0,0,0,0.3); }
-
-        /* --- BUTTON STYLES --- */
-        .sangaia-btn {
-            font-size: 0.9rem;
-            font-family: "myriad-pro", "Segoe UI", system-ui, sans-serif;
-            height: 2.5em;
-            padding: 0 1em;
-            width: 15em; 
-            border-radius: 3px;
-            position: relative;
-            overflow: hidden;
-            cursor: pointer;
-            outline: none;
-            
-            text-decoration: none;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            margin: 5px;
-            
-            box-sizing: border-box; 
-            
-             
-            
-        background: linear-gradient(to bottom, #76b500 0%, #5e9100 100%); box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1); border: 1px solid #4a7200; color: white;}
-
-        
-
-        
-
-        .sangaia-btn span { position: relative; z-index: 3; font-weight: 600; text-shadow: 0 1px 1px rgba(0,0,0,0.3); }
-
-        .sangaia-btn:hover { background: linear-gradient(to bottom, #88cc00 0%, #70a800 100%); filter: none; }
-
-        .sangaia-btn.active, .sangaia-btn:active {
-            
-             
-            
-            
-        background: linear-gradient(to bottom, #4f7a00 0%, #3e6000 100%); box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.2); border: 1px solid #324c00; color: white;}
-
-        .sangaia-btn.active span, .sangaia-btn:active span { text-shadow: 0 1px 2px rgba(0, 0, 0, 0.4); }
-
-        /* --- CONTENT AREA --- */
-        .content-wrapper {
-            background: transparent;
-            padding: 30px;
-            min-height: 400px;
-            border-radius: 0;
-            box-shadow: none;
-            width: 100%;
-            box-sizing: border-box;
-        }
-
-        .glass-panel {
-            background: linear-gradient(to bottom, #fcfcfc 0%, #f1f1f1 100%);
-            border: 1px solid #ddd;
-            border-radius: 8px;
-            padding: 20px;
-            margin-bottom: 25px;
-            box-shadow: 
-                0 2px 4px rgba(0,0,0,0.05),
-                inset 0 1px 0 #fff;
-            position: relative;
-        }
-
-        .glass-panel h2 {
-            margin-top: 0;
-            color: #006699;
-            border-bottom: 1px solid #eee;
-            padding-bottom: 10px;
-            margin-bottom: 15px; 
-            font-size: 1.4em;
-        }
-
-        .glass-panel p {
-            margin-top: 0;
-        }
-
-        .content-grid {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 20px;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        @media (min-width: 768px) {
-            .content-grid {
-                grid-template-columns: 2fr 1fr;
-        }
-
-        footer {
-            text-align: center;
-            padding: 20px;
-            color: #555;
-            font-size: 0.9em;
-            text-shadow: 0 1px 0 rgba(255,255,255,0.5);
-            background: rgba(255,255,255,0.6);
-            width: 100%;
-            margin-top: auto;
-        }
-        
-        p { line-height: 1.6; margin-bottom: 15px; }
-
-        /* STATUS BOX STYLES */
-        #status-result {
-            margin-top: 15px;
-            padding: 10px;
-            border-radius: 3px;
-            border: 1px solid #ccc;
-            background: #f9f9f9;
-            display: none; /* Hidden by default */
-        }
-        #status-result.success { background: #e8f5e9; border-color: #a5d6a7; color: #2e7d32; }
-        #status-result.pending { background: #fff3e0; border-color: #ffe0b2; color: #ef6c00; }
-        #status-result.error { background: #ffebee; border-color: #ef9a9a; color: #c62828; }
-
-    </style>
+    <title>Sovereign Citizenship :: Sangaia Live</title>
+    <link rel="stylesheet" href="/css/sangaia-live.css">
+    <script src="/js/sangaia-live.js" defer></script>
 </head>
-<body>
+<body class="theme-federal">
 
-<div class="main-container">
-    
-    
-
-    <nav id="globalheader">
-        <div style="position: absolute; left: 15px; display: flex; align-items: center; height: 100%;">
-            <img src="media/nav_logo.png" style="height: 24px; width: auto;" alt="Logo">
-        </div>
-        <div style="position: absolute; right: 15px; display: flex; align-items: center; gap: 15px; height: 100%; z-index: 100;">
-            <div id="auth-widget"><a href="id.html" style="color: #bbb; text-decoration: none; font-size: 11px; font-weight: bold; letter-spacing: 0.5px; padding: 3px 8px; border: 1px solid #444; border-radius: 4px; background: linear-gradient(to bottom, #555, #333); box-shadow: 0 1px 2px rgba(0,0,0,0.3); transition: all 0.2s ease;" onmouseover="this.style.color='#fff'; this.style.borderColor='#666';" onmouseout="this.style.color='#bbb'; this.style.borderColor='#444';">Sangaia ID</a></div>
-            <a href="sgn/citizenship.html" style="color: #bbb; text-decoration: none; font-size: 11px; font-weight: bold; letter-spacing: 0.5px; padding: 3px 8px; border: 1px solid #444; border-radius: 4px; background: linear-gradient(to bottom, #555, #333); box-shadow: 0 1px 2px rgba(0,0,0,0.3); transition: all 0.2s ease;" onmouseover="this.style.color='#fff'; this.style.borderColor='#666';" onmouseout="this.style.color='#bbb'; this.style.borderColor='#444';">English</a>
-        </div>
-                <ul id="globalnav">
-            <li><a href="index.html">Home</a></li>
-            <li><a href="government.html">Government</a></li>
-            <li><a href="citizenship.html" class="active">Citizenship</a></li>
-            <li><a href="services.html">Services</a></li>
-            <li><a href="about.html">About the Aeretocrat</a></li>
-            <li><a href="societal_press.html">Societal Press</a></li>
-        </ul>
-    </nav>
-
-    <div class="content-wrapper">
-        <div class="content-grid">
-            
-            <div class="main-col">
-                <div class="glass-panel">
-                    <h2>Unbiased & Open to All</h2>
-                    <p>
-                        Sangaia fundamentally rejects the arbitrary classifications used by other nations to divide people. We do not filter applicants based on race, sex, sexual orientation, marital status, or lineage.
-                    </p>
-                    
-                    <h3>Pathways to Citizenship</h3>
-                    <div style="margin-top: 20px; display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
-                        <div style="background: rgba(0,0,0,0.03); padding: 10px; border-radius: 6px;">
-                            <strong>1. Birthright</strong><br>
-                            <span style="font-size:0.9em">Be born on Sangaian Land.</span>
-                        </div>
-                        <div style="background: rgba(0,0,0,0.03); padding: 10px; border-radius: 6px;">
-                            <strong>2. Parentage</strong><br>
-                            <span style="font-size:0.9em">Have Sangaian Parents or Parents with Sangaian Citizenship.</span>
-                        </div>
-                        <div style="background: rgba(0,0,0,0.03); padding: 10px; border-radius: 6px;">
-                            <strong>3. Naturalization</strong><br>
-                            <span style="font-size:0.9em">Pass the Citizenship test and the Literacy test to become naturalized.</span>
-                        </div>
-                        <div style="background: rgba(0,0,0,0.03); padding: 10px; border-radius: 6px;">
-                            <strong>4. Sponsorship</strong><br>
-                            <span style="font-size:0.9em">Direct Aeretocratic Sponsorship.</span>
-                        </div>
+<!-- Top Live Mast Banner -->
+<div class="wl-mast">
+    <div class="ol-container wl-mast-inner">
+        <div class="ol-header-top">
+            <div class="ol-logo">
+                <a href="/index.html" aria-label="Sangaia Live Sovereign Portal">
+                    <svg viewBox="0 0 90 90" width="22" height="22" fill="currentColor">
+                        <rect x="0" y="0" width="41" height="41" rx="2"/>
+                        <rect x="49" y="0" width="41" height="41" rx="2"/>
+                        <rect x="0" y="49" width="41" height="41" rx="2"/>
+                        <rect x="49" y="49" width="41" height="41" rx="2"/>
+                    </svg>
+                    <span><b>Sangaia</b> Live</span>
+                </a>
+            </div>
+            <div class="ol-header-tools">
+                <form class="ol-search" id="headerSearchForm" action="/services.html" method="get">
+                    <input type="text" id="headerSearch" name="q" placeholder="Search government &amp; services" aria-label="Search">
+                    <button type="submit" class="ol-search-bing" aria-label="Search">&#x1F50E;</button>
+                </form>
+                
+                <a class="ol-icon-btn" href="/services.html" title="Notifications">
+                    <svg width="16" height="16" viewBox="0 0 16 16"><path fill="currentColor" d="M8 1.5c-2.4 0-4 1.9-4 4.2v3L2.7 11c-.3.4 0 1 .5 1h9.6c.5 0 .8-.6.5-1L12 8.7v-3c0-2.3-1.6-4.2-4-4.2zm0 13c1 0 1.8-.7 2-1.5H6c.2.8 1 1.5 2 1.5z"/></svg>
+                    <span class="ol-badge">3</span>
+                </a>
+                <a class="ol-icon-btn" href="/services.html" title="Citizen Messages">
+                    <svg width="16" height="16" viewBox="0 0 16 16"><path fill="currentColor" d="M2 3h12c.6 0 1 .4 1 1v7c0 .6-.4 1-1 1H9l-3.4 2.6c-.4.3-.9 0-.9-.5V12H2c-.6 0-1-.4-1-1V4c0-.6.4-1 1-1z"/></svg>
+                    <span class="ol-badge">1</span>
+                </a>
+                <div class="ol-me">
+                    <div class="ol-me-chip" id="meChip">
+                        <span class="ol-avatar sm">
+                            <img src="/images/1.jpeg" alt="Citizen Profile">
+                            <span class="ol-presence-dot"></span>
+                        </span>
+                        <span class="ol-me-name">Jqackkk</span>
+                        <span class="ol-me-caret">&#9660;</span>
+                    </div>
+                    <div class="ol-me-menu" id="meMenu" style="display:none; position:absolute; right:0; top:36px; background:#fff; border:1px solid #dfe3e7; border-radius:3px; box-shadow:0 2px 8px rgba(0,0,0,0.15); width:180px; z-index:1000; padding:6px 0;">
+                        <div style="padding:4px 12px; font-size:11px; font-weight:700; color:#64748b; text-transform:uppercase;">Citizen ID: SG-2026-F1E8</div>
+                        <a href="/id.html" style="display:block; padding:5px 12px; color:#2a2a2a; font-size:13px;">Sangaia ID Card</a>
+                        <a href="/citizenship.html" style="display:block; padding:5px 12px; color:#2a2a2a; font-size:13px;">Citizenship Status</a>
+                        <a href="/units.html" style="display:block; padding:5px 12px; color:#2a2a2a; font-size:13px;">Units &amp; Measures</a>
+                        <div style="border-top:1px solid #edf0f3; margin:4px 0;"></div>
+                        <a href="/index.html" style="display:block; padding:5px 12px; color:#2a2a2a; font-size:13px;">Federal Home</a>
                     </div>
                 </div>
-
-                <div class="glass-panel">
-                    <h2>Test Prep - Citizenship</h2>
-                    <p>You can easily prepare for the citizenship test. Here's what we reccomend you do:</p>
-                    <ul style="padding-left: 20px; color: rgba(33,47,62);">
-                    <li>Study the constitution of Sangaia thoroughly.</li>
-                    <li>Ensure you remember the terminology used in the constitution.</li>
-                    <li>Memorize the numbers provided in the constitution that detail amounts of civic employees.</li>
-                    <li>Don't second-guess yourself.</li>
-                    <ul/>
-                </div>
-
-                <div class="glass-panel">
-                    <h2>Test Prep - Literacy</h2>
-                    <p>Words are hard, but not when you know the context. Here's what we reccomend you do:</p>
-                    <ul style="padding-left: 20px; color: rgba(33,47,62);">
-                    <li>Study the sentence structure of your language choice thoroughly.</li>
-                    <li>Memorize verbage and how to address people based on status (if applicable).</li>
-                    <li>If you do not remember the meaning of a word, break it down into its root word.</li>
-                    <li>Think about how your 70-year-old teacher would say it.</li>
-                    <ul/>
-                </div>
-                
-                <div class="glass-panel">
-                     <h2>What to do next</h2>
-                     <p>After submitting your application, your file will undergo a rigorous review by the Ministry of Domestic Affairs. Please follow these next steps:</p>
-                     
-                     <div style="margin-top: 15px;">
-                        <div style="margin-bottom: 12px; padding-bottom: 12px; border-bottom: 1px solid #eee;">
-                            <strong>1. Await Digital Confirmation</strong><br>
-                            <span style="font-size: 0.9em; color: #555;">You will receive a confirmation packet via secure email within 48 hours containing your unique tracking ID.</span>
-                        </div>
-                        
-                        <div style="margin-bottom: 12px; padding-bottom: 12px; border-bottom: 1px solid #eee;">
-                            <strong>2. Prepare Verification Documents</strong><br>
-                            <span style="font-size: 0.9em; color: #555;">Gather your birth certificate, identification, and any other documents that may be requested by the clerk.</span>
-                        </div>
-                        
-                        <div>
-                            <strong>3. Track Your Progress</strong><br>
-                            <span style="font-size: 0.9em; color: #555;">Still curious? Enter the ID provided in your confirmation email to check your status.</span>
-                            
-                            <div style="margin-top: 10px;">
-                                <!-- ADDED IDs HERE -->
-                                <input type="text" id="tracking-input" placeholder="Enter Application ID" style="padding: 8px; width: 60%; border: 1px solid #ccc; border-radius: 4px;">
-                                <button class="sangaia-btn" id="tracking-btn" style="width: auto; height: 2em; font-size: 0.8em; vertical-align: middle;"><span>Track</span></button>
-                            </div>
-                            <!-- ADDED RESULT CONTAINER -->
-                            <div id="status-result"></div>
-                        </div>
-                     </div>
-                </div>
             </div>
+        </div>
 
-            <div class="sidebar-col">
-                <div class="glass-panel">
-                    <h2>Why Sangaia?</h2>
-                    <ul style="padding-left: 20px; color: #006699;">
-                        <li>No Income Taxes</li>
-                        <li>Free University</li>
-                        <li>Well-Paying Jobs</li>
-                        <li>Strong and Reliable Currency</li>
-                        <li>Strict 1-Person-1-Vote Policy</li>
-                        <li>Growing and Charitable Community</li>
-                    </ul>
-                </div>
-
-                <div class="glass-panel">
-                    <h2>Forms</h2>
-                        <a href="application.html" target="_blank" class="sangaia-btn" style="font-size: 0.9rem; width: 100%;"><span>Take the Citizenship Application & Quiz</span></a>
-                        <a href="literacy_test.html" class="sangaia-btn" style="font-size: 0.9rem; width: 100%; margin-top: 8px;"><span>Official Literacy Examination</span></a>
-                </div>
-
-                 <div class="glass-panel">
-                    <h2>Quick Facts</h2>
-                    <p style="font-size: 0.9em;">You <strong>must</strong> complete any literacy test provided by the Sangaian Government to gain citizenship. Any literacy test that claims to certify Sangaian Language or English literacy that is not from this site is <strong>illegitimate</strong>.</p>
-                    <p style="font-size: 0.9em;">You could just check the json file in the github project to find out what step of the citizenship process you're in, but it's way more fun to view it on this page.</p>
-                    <p style="font-size: 0.9em;">As soon as you get citizenship, you can <strong>vote in any upcoming election</strong> if you are of the age of majority as referenced in the Constitution. You do not need to apply for anything; it does all the work for you!</p>
-                    <p style="font-size: 0.9em;">You do <strong>not</strong> need to be fluent in Sangaian to gain citizenship. As long as you can read, write, and speak a sufficient amount of <strong>any official language</strong> declared by the Constitution, you're good to go.</p>
-                </div>
-                </div>
+        <div class="ol-band">
+            <div class="ol-band-inner">
+                <h1>Citizenship & Civic Rights of Sangaia</h1>
+                <p class="ol-band-sub">Equal opportunity naturalization, charter of liberties, civic responsibilities & the oath</p>
             </div>
-
         </div>
     </div>
-
-    <footer>
-        &copy; 2026 United Provinces of Sangaia. All Rights Reserved.<br>
-        <span style="font-size: 0.8em; color: #888;">Powered by Aeretocratic Principles</span>
-    </footer>
-
 </div>
 
-<!-- SCRIPT TO FETCH STATUS -->
-<script>
-    document.getElementById('tracking-btn').addEventListener('click', function() {
-        const inputId = document.getElementById('tracking-input').value.trim();
-        const resultDiv = document.getElementById('status-result');
-        
-        if (!inputId) {
-            alert("Please enter a Tracking ID.");
-            return;
-        }
+<!-- Main Top Nav Tabs (One Live Bar) -->
+<div class="wl-tabs">
+    <div class="ol-container wl-tabs-inner">
+        <ul class="ol-nav" id="primaryNav">
+            <li class="ol-current"><a href="/index.html">Home</a></li>
+            <li><a href="/executive.html">Executive</a></li>
+            <li><a href="/treasury.html">Treasury</a></li>
+            <li><a href="/work.html">Work</a></li>
+            <li><a href="/healthcare.html">Healthcare</a></li>
+            <li><a href="/education.html">Education</a></li>
+            <li><a href="/domesticaffairs.html">Domestic</a></li>
+            <li><a href="/externalaffairs.html">External</a></li>
+            <li><a href="/environment.html">Environment</a></li>
+            <li><a href="/propaganda.html">Propaganda</a></li>
+            <li><a href="/services.html">Services</a></li>
+            <li><a href="/units.html">Units (Мн • °Пт)</a></li>
+            
+        </ul>
+    </div>
+</div>
 
-        resultDiv.style.display = 'block';
-        resultDiv.innerHTML = "Searching records...";
-        resultDiv.className = ""; // Reset class
+<!-- Main Content Grid -->
+<div class="ol-container ol-main">
+    <div class="ol-with-sidebar">
+        <!-- Left Sidebar Navigation -->
+        <div class="ol-sidebar-nav">
+            <div class="ol-card ol-profile-card" style="text-align: center;">
+                <span class="ol-avatar lg">
+                    <img src="/images/1.jpeg" alt="Emblem">
+                    <span class="ol-presence-dot"></span>
+                </span>
+                <div class="ol-mt-10">
+                    <strong>Civic Registry Bureau</strong><br>
+                    <span class="ol-muted ol-small">Citizenship & Naturalization</span><br>
+                    <span class="ol-small" style="color:var(--ol-accent); font-weight:600;">Registry Active</span>
+                </div>
+            </div>
 
-        // Fetch the JSON file
-        fetch('status.json')
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error("Database file not found.");
-                }
-                return response.json();
-            })
-            .then(data => {
-                if (data[inputId]) {
-                    // ID Found
-                    const record = data[inputId];
-                    resultDiv.innerHTML = `<strong>Status: ${record.status}</strong><br>${record.message}`;
-                    
-                    // Simple color mapping
-                    if (record.color === 'green') resultDiv.className = 'success';
-                    else if (record.color === 'orange') resultDiv.className = 'pending';
-                    else resultDiv.className = 'error';
-                } else {
-                    // ID Not Found
-                    resultDiv.innerHTML = "<strong>Record Not Found</strong><br>Please check your ID and try again.";
-                    resultDiv.className = 'error';
-                }
-            })
-            .catch(error => {
-                resultDiv.innerHTML = "<strong>System Error</strong><br>Could not connect to the citizen database.";
-                resultDiv.className = 'error';
-                console.error(error);
-            });
-    });
-</script>
+            <span class="ol-sidenav-label">Portal Navigation</span>
+            <ul class="ol-sidenav">
+                <li><a href="#overview" class="sel">Overview & Charter</a></li>
+<li><a href="#eligibility">Eligibility Tiers</a></li>
+<li><a href="/literacy_test.html">Civic Literacy Exam</a></li>
+<li><a href="/application.html">Online Application</a></li>
+<li><a href="/id.html">Sangaia ID Portal</a></li>
+
+            </ul>
+
+            <span class="ol-sidenav-label">Federal Network</span>
+            <ul class="ol-sidenav">
+                <li><a href="/index.html">Federal Home</a></li>
+                <li><a href="/services.html">All Services</a></li>
+                <li><a href="/units.html">Units (Мн &bull; &deg;Пт)</a></li>
+                <li><a href="/societal_press.html">Societal Press</a></li>
+            </ul>
+        </div>
+
+        <!-- Center Content -->
+        <div class="ol-content">
+            
+    <div class="ol-status-bubble" id="overview">
+        &ldquo;Sovereign citizenship in Sangaia is rooted in virtue, civic participation, and equal protection of the laws. We welcome all who respect republican liberties.&rdquo;
+        <div class="ol-status-date">Civic Registry Bureau &bull; Applications Open</div>
+    </div>
+
+    <div class="ol-card" id="charter">
+        <div class="ol-card-title">
+            <span>The Sangaian Charter of Fundamental Liberties</span>
+            <span class="ol-badge-tag ol-badge-success">Constitutional Guarantees</span>
+        </div>
+        <ul style="line-height:1.7; font-size:13.5px;">
+            <li><strong>Inviolability of Bodily Integrity &amp; Care:</strong> Universal healthcare is constitutionally protected with zero out-of-pocket costs at point of service.</li>
+            <li><strong>Freedom of Conscience &amp; Speech:</strong> Complete freedom of expression, journalism shield rights, and peaceful religious assembly.</li>
+            <li><strong>Protection Against Sovereign Indebtedness:</strong> Freedom from predatory state debt and compound interest banking structures.</li>
+            <li><strong>Right to Labor &amp; Fair Compensation:</strong> Every worker is guaranteed a statutory living wage of at least $25.00/hr and guild representation.</li>
+        </ul>
+    </div>
+
+    <div class="ol-card" id="eligibility">
+        <div class="ol-card-title">
+            <span>Naturalization &amp; Eligibility Tiers</span>
+            <a class="ol-title-link" href="/application.html">Apply Online &rarr;</a>
+        </div>
+        <div class="ol-grid-3">
+            <div class="ol-card" style="margin-bottom:0; background:#fbfcfd;">
+                <strong>Birthright Status</strong>
+                <p class="ol-small ol-muted" style="margin:4px 0 8px;">Conferred automatically to children born to Sangaian citizens or within the Five Provinces.</p>
+                <span class="ol-badge-tag ol-badge-success">Immediate</span>
+            </div>
+            <div class="ol-card" style="margin-bottom:0; background:#fbfcfd;">
+                <strong>Resident Naturalization</strong>
+                <p class="ol-small ol-muted" style="margin:4px 0 8px;">Available to foreign professionals after 24 months continuous residence and civic examination.</p>
+                <a href="/literacy_test.html" class="ol-btn ol-btn-sm" style="width:100%; text-align:center; margin-top:4px;">Take Exam</a>
+            </div>
+            <div class="ol-card" style="margin-bottom:0; background:#fbfcfd;">
+                <strong>Sovereign Merit Grant</strong>
+                <p class="ol-small ol-muted" style="margin:4px 0 8px;">Awarded directly by the Aeretocrat to scientists, artists, and humanitarians of global distinction.</p>
+                <span class="ol-badge-tag">Council Review</span>
+            </div>
+        </div>
+    </div>
+    
+        </div>
+
+        <!-- Right Sidebar (Telemetry & Quick Actions) -->
+        <div class="ol-sidebar">
+            <div class="ol-note">Official Government of the Sovereign Republic of Sangaia. All administrative systems active.</div>
+
+            <div class="ol-sidebox">
+                <h3>Sovereign Telemetry</h3>
+                <div style="font-size:12.5px; line-height:1.6;">
+                    <div><strong>Currency:</strong> Sangaian Dollar ($)</div>
+                    <div><strong>Standard Temp:</strong> 22.5&deg;Пт (25&deg;C / 77&deg;F)</div>
+                    <div><strong>Standard Metric:</strong> 1 Мн = 2.5 cm</div>
+                    <div><strong>Active Provinces:</strong> 5 Territories</div>
+                </div>
+            </div>
+
+            <div class="ol-sidebox">
+                <h3>Provincial Weather (&deg;Пт)</h3>
+                <table class="ol-table" style="font-size:12px; margin:0;">
+                    <tr><td>New Jasper</td><td style="text-align:right;"><strong>20.5&deg;Пт</strong> (Sunny)</td></tr>
+                    <tr><td>New Madison</td><td style="text-align:right;"><strong>22.0&deg;Пт</strong> (Clear)</td></tr>
+                    <tr><td>Liveland</td><td style="text-align:right;"><strong>19.8&deg;Пт</strong> (Breezy)</td></tr>
+                    <tr><td>Sentinel</td><td style="text-align:right;"><strong>16.2&deg;Пт</strong> (Cool)</td></tr>
+                    <tr><td>Columbia</td><td style="text-align:right;"><strong>23.4&deg;Пт</strong> (Mild)</td></tr>
+                </table>
+            </div>
+
+            
+    <div class="ol-sidebox">
+        <h3>Begin Naturalization</h3>
+        <p class="ol-small ol-muted">Complete the online examination and submit your civic petition to the Ministry of the Executive.</p>
+        <div class="ol-mt-10">
+            <a href="/application.html" class="ol-btn ol-btn-primary ol-btn-sm" style="width:100%; text-align:center;">File Application</a>
+        </div>
+    </div>
+    
+        </div>
+    </div>
+</div>
 
 
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-<script src="auth.js"></script>
+
+<!-- Floating Citizen Dock -->
+<div class="ol-dock">
+    <button type="button" class="ol-dock-tab" id="olDockMessages">
+        <svg width="15" height="15" viewBox="0 0 16 16"><path fill="currentColor" d="M2 3h12c.6 0 1 .4 1 1v7c0 .6-.4 1-1 1H9l-3.4 2.6c-.4.3-.9 0-.9-.5V12H2c-.6 0-1-.4-1-1V4c0-.6.4-1 1-1z"/></svg>
+        <span>Live Citizen Support</span>
+    </button>
+    <div class="ol-dock-list" id="olDockList">
+        <div class="ol-dock-list-head">
+            <span>Sangaia Citizen Assistance</span>
+            <a href="javascript:void(0)" id="olDockListClose" style="color:#64748b; font-size:16px;">&times;</a>
+        </div>
+        <div class="ol-dock-list-body">
+            <a class="ol-dock-item" href="/services.html"><strong>Online Inquiries:</strong> File petition or request</a>
+            <a class="ol-dock-item" href="/units.html"><strong>Unit Calculations:</strong> Monomer &amp; Panotherm</a>
+            <a class="ol-dock-item" href="/citizenship.html"><strong>Citizenship Registry:</strong> Check docket status</a>
+            <a class="ol-dock-item" href="/id.html"><strong>Sangaia ID:</strong> Digital identity card</a>
+        </div>
+    </div>
+</div>
+
+<!-- Footer -->
+<div class="ol-footer">
+    <div class="ol-container ol-footer-inner">
+        <p class="ol-footer-copy">&copy; 2026 Sovereign Republic of Sangaia. One Live Wave 4 Infrastructure.</p>
+        <ul class="ol-footer-links">
+            <li><a href="/index.html">Home</a></li>
+            <li><a href="/government.html">Government Structure</a></li>
+            <li><a href="/services.html">Services</a></li>
+            <li><a href="/societal_press.html">Gazette</a></li>
+            <li><a href="/units.html">Units System</a></li>
+            <li><a href="/about.html">About Sangaia</a></li>
+        </ul>
+    </div>
+</div>
+
+
+
 </body>
 </html>

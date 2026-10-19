@@ -2,1053 +2,335 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ministry of Domestic Affairs - United Provinces of Sangaia</title>
-    <style>
-        /* --- MINISTRY OF DOMESTIC AFFAIRS: NAVY BLUE FRUTIGER AERO & SKEUOMORPHIC STYLES --- */
-        :root {
-            --navy-midnight: #0a192f;
-            --navy-deep: #0d2346;
-            --navy-primary: #102a54;
-            --navy-border: #1b3a6b;
-            --navy-royal: #1d4ed8;
-            --navy-bright: #2563eb;
-            --navy-accent: #3b82f6;
-            --navy-pale: #e0e9f8;
-            --navy-glass: #f0f4fb;
-            --navy-glow: #bfdbfe;
-            --silver-metal: #cbd5e1;
-            --text-dark: #0f172a;
-            --text-navy: #1e3a8a;
-            --text-muted: #475569;
-            --card-bg: #ffffff;
-            --gold-accent: #d97706;
-            --fresh-green: #16a34a;
-        }
-
-        * { box-sizing: border-box; }
-
-        body {
-            background: #f1f5fa radial-gradient(circle at 50% 0%, #ffffff 0%, #e2eaf5 100%) no-repeat fixed;
-            min-height: 100dvh;
-            width: 100%;
-            display: flex;
-            align-items: center;
-            justify-content: flex-start;
-            flex-direction: column;
-            margin: 0;
-            font-family: 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-            color: var(--text-dark);
-            line-height: 1.6;
-        }
-
-        .main-container {
-            width: 100%;
-            margin: 0;
-            background: transparent;
-            padding: 0;
-            flex-grow: 1; 
-        }
-
-        /* --- GLOBAL METAL NAVIGATION HEADER --- */
-        #globalheader {
-            display: flex;
-            align-items: center;
-            position: relative;
-            width: 100%;
-            height: 38px;
-            background: linear-gradient(to bottom, #5e5e5e 0%, #3e3e3e 50%, #2d2d2d 51%, #1f1f1f 100%);
-            border-top: 1px solid #222;
-            border-bottom: 1px solid #000;
-            box-shadow: inset 0 1px 0 rgba(255,255,255,0.15), 0 2px 4px rgba(0,0,0,0.2);
-            font-size: 11px;
-            z-index: 100;
-        }
-
-        #globalnav {
-            flex-grow: 1;
-            margin: 0;
-            padding: 0;
-            list-style: none;
-            display: flex;
-            justify-content: center;
-            height: 100%;
-        }
-
-        #globalnav li { position: relative; height: 100%; display: flex; align-items: center; }
-        #globalnav li::after {
-            content: ""; position: absolute; right: 0; width: 1px; height: 100%;
-            background: linear-gradient(to bottom, #333, #111); box-shadow: 1px 0 0 rgba(255,255,255,0.08);
-        }
-        #globalnav li:first-child::before {
-            content: ""; position: absolute; left: 0; width: 1px; height: 100%;
-            background: linear-gradient(to bottom, #333, #111); box-shadow: 1px 0 0 rgba(255,255,255,0.08);
-        }
-
-        #globalnav li a {
-            display: block; color: #e8e8e8; text-decoration: none; text-shadow: 0 -1px 0 rgba(0,0,0,0.8);
-            font-weight: bold; padding: 0 16px; line-height: 38px;
-            transition: text-shadow 0.2s ease, color 0.2s ease, background 0.2s ease;
-            white-space: nowrap;
-        }
-
-        #globalnav li a:hover {
-            color: #fff;
-            background: linear-gradient(rgba(255,255,255,0.05), rgba(255,255,255,0));
-            text-shadow: 0 0 8px rgba(255, 255, 255, 0.8), 0 -1px 0 rgba(0,0,0,0.8);
-        }
-        
-        #globalnav li a.active { color: #fff; background: rgba(0,0,0,0.25); box-shadow: inset 0 2px 5px rgba(0,0,0,0.3); }
-
-        /* --- SKEUOMORPHIC NAVY & ROYAL BUTTONS --- */
-        .sangaia-btn {
-            font-size: 0.88rem;
-            font-family: inherit;
-            height: 2.4em;
-            padding: 0 1.3em;
-            border-radius: 4px;
-            position: relative;
-            overflow: hidden;
-            cursor: pointer;
-            text-decoration: none;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            box-sizing: border-box;
-            background: linear-gradient(to bottom, #ffffff 0%, #f0f4fa 50%, #dbe4f0 100%);
-            box-shadow: 0 2px 5px rgba(10, 25, 47, 0.1), inset 0 1px 0 #ffffff;
-            border: 1px solid #94a3b8;
-            color: var(--navy-midnight);
-            font-weight: bold;
-            transition: all 0.2s ease;
-            text-shadow: 0 1px 0 #ffffff;
-        }
-
-        .sangaia-btn:hover {
-            background: linear-gradient(to bottom, #ffffff 0%, #f8fafc 50%, #e2eaf5 100%);
-            box-shadow: 0 3px 8px rgba(10, 25, 47, 0.15), inset 0 1px 0 #ffffff;
-            transform: translateY(-1px);
-        }
-
-        .sangaia-btn:active {
-            transform: translateY(1px);
-            background: linear-gradient(to bottom, #dbe4f0 0%, #cbd5e1 100%);
-            box-shadow: inset 0 2px 4px rgba(0,0,0,0.15);
-        }
-
-        /* Navy Primary Button */
-        .sangaia-btn.btn-navy {
-            background: linear-gradient(to bottom, #2563eb 0%, #1d4ed8 50%, #102a54 100%);
-            border-color: #0d2346;
-            color: #ffffff;
-            text-shadow: 0 -1px 0 rgba(0,0,0,0.6);
-            box-shadow: 0 2px 5px rgba(10, 25, 47, 0.3), inset 0 1px 0 rgba(255,255,255,0.3);
-        }
-
-        .sangaia-btn.btn-navy:hover {
-            background: linear-gradient(to bottom, #3b82f6 0%, #2563eb 50%, #1b3a6b 100%);
-            box-shadow: 0 3px 8px rgba(10, 25, 47, 0.35), inset 0 1px 0 rgba(255,255,255,0.4);
-            color: #ffffff;
-        }
-
-        /* Royal Accent Button */
-        .sangaia-btn.btn-royal {
-            background: linear-gradient(to bottom, #0284c7 0%, #0369a1 50%, #0c4a6e 100%);
-            border-color: #082f49;
-            color: #ffffff;
-            text-shadow: 0 -1px 0 rgba(0,0,0,0.4);
-        }
-
-        /* --- CONTENT PANELS --- */
-        .content-wrapper {
-            padding: 30px;
-            width: 100%;
-            max-width: 1200px;
-            margin: 0 auto;
-            box-sizing: border-box;
-        }
-
-        .glass-panel {
-            background: linear-gradient(to bottom, #ffffff 0%, #f9fbfe 100%);
-            border: 1px solid #bfdbfe;
-            border-radius: 10px;
-            padding: 26px;
-            margin-bottom: 25px;
-            box-shadow: 0 3px 12px rgba(10, 25, 47, 0.05), inset 0 1px 0 #ffffff;
-            position: relative;
-        }
-
-        .glass-panel h2 {
-            margin: 0 0 15px 0;
-            color: var(--navy-midnight);
-            border-bottom: 2px solid #e2e8f0;
-            padding-bottom: 10px;
-            font-size: 1.45em;
-            letter-spacing: -0.3px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            flex-wrap: wrap;
-            gap: 10px;
-        }
-
-        /* --- HERO BANNER (NAVY BLUE FRUTIGER AERO) --- */
-        .navy-hero-card {
-            background: linear-gradient(135deg, #ffffff 0%, #edf4fc 40%, #d8e5f7 100%);
-            color: var(--text-dark);
-            border-radius: 12px;
-            padding: 35px 30px;
-            margin-bottom: 30px;
-            box-shadow: 0 6px 22px rgba(13, 35, 70, 0.12), inset 0 1px 0 #ffffff;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 25px;
-            flex-wrap: wrap;
-            position: relative;
-            overflow: hidden;
-            border: 1px solid #93c5fd;
-        }
-
-        .hero-text-col { max-width: 680px; }
-
-        .hero-badge {
-            display: inline-block;
-            background: linear-gradient(to bottom, #ffffff 0%, #e2eaf5 100%);
-            color: var(--navy-midnight);
-            border: 1px solid #93c5fd;
-            padding: 4px 12px;
-            border-radius: 20px;
-            font-size: 0.76rem;
-            font-weight: bold;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-            margin-bottom: 12px;
-            box-shadow: 0 1px 3px rgba(13,35,70,0.1);
-        }
-
-        .hero-title {
-            font-size: 2.2rem;
-            margin: 0 0 12px 0;
-            letter-spacing: -0.5px;
-            line-height: 1.2;
-            color: var(--navy-midnight);
-            text-shadow: 0 1px 0 rgba(255,255,255,0.8);
-        }
-
-        .hero-sub {
-            font-size: 1.05rem;
-            color: var(--text-muted);
-            line-height: 1.6;
-            margin-bottom: 22px;
-        }
-
-        /* Stat Tickers */
-        .stat-ticker-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 15px;
-            margin-bottom: 30px;
-        }
-
-        .stat-ticker-box {
-            background: #ffffff;
-            border: 1px solid #cbd5e1;
-            border-radius: 8px;
-            padding: 16px 20px;
-            box-shadow: 0 2px 6px rgba(10, 25, 47, 0.04);
-            border-top: 4px solid var(--navy-primary);
-        }
-
-        .stat-ticker-box.royal-accent { border-top-color: var(--navy-bright); }
-        .stat-ticker-box.green-accent { border-top-color: var(--fresh-green); }
-        .stat-ticker-box.gold-accent { border-top-color: var(--gold-accent); }
-
-        .stat-label {
-            font-size: 0.78rem;
-            font-weight: 700;
-            color: var(--text-muted);
-            text-transform: uppercase;
-            letter-spacing: 0.6px;
-            margin-bottom: 4px;
-        }
-
-        .stat-value {
-            font-size: 1.6rem;
-            font-weight: 800;
-            color: var(--navy-midnight);
-        }
-
-        .stat-desc {
-            font-size: 0.8rem;
-            color: #64748b;
-            margin-top: 4px;
-        }
-
-        /* --- FEATURE CARDS & GRIDS --- */
-        .feature-grid-3 {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 20px;
-            margin-top: 15px;
-        }
-
-        .feature-card {
-            background: #ffffff;
-            border: 1px solid #cbd5e1;
-            border-radius: 8px;
-            padding: 22px;
-            box-shadow: 0 2px 8px rgba(10,25,47,0.04);
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            border-top: 4px solid var(--navy-primary);
-            transition: all 0.2s ease;
-        }
-
-        .feature-card:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 16px rgba(10,25,47,0.08);
-            border-top-color: var(--navy-bright);
-        }
-
-        .feature-card h3 {
-            margin: 0 0 8px 0;
-            font-size: 1.15rem;
-            color: var(--navy-midnight);
-        }
-
-        /* Traffic Status Cards */
-        .traffic-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-            gap: 16px;
-            margin: 15px 0;
-        }
-
-        .traffic-card {
-            background: #ffffff;
-            border: 1px solid #e2e8f0;
-            border-radius: 8px;
-            padding: 16px 20px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            box-shadow: 0 2px 6px rgba(0,0,0,0.03);
-            border-left: 5px solid #16a34a;
-        }
-
-        .traffic-card.caution { border-left-color: #f59e0b; }
-        .traffic-card.heavy { border-left-color: #ef4444; }
-
-        .route-badge {
-            font-size: 0.85rem;
-            font-weight: 800;
-            color: #ffffff;
-            background: var(--navy-midnight);
-            padding: 4px 10px;
-            border-radius: 4px;
-            display: inline-block;
-            margin-bottom: 4px;
-            letter-spacing: 0.5px;
-        }
-
-        /* Tables */
-        .data-table-wrapper {
-            overflow-x: auto;
-            margin: 15px 0;
-        }
-
-        .navy-table {
-            width: 100%;
-            border-collapse: collapse;
-            font-size: 0.92rem;
-            background: #ffffff;
-        }
-
-        .navy-table th, .navy-table td {
-            padding: 12px 16px;
-            border: 1px solid #cbd5e1;
-            text-align: left;
-        }
-
-        .navy-table th {
-            background: linear-gradient(to bottom, #ffffff 0%, #e8eef8 100%);
-            color: var(--navy-midnight);
-            font-weight: bold;
-            font-size: 0.84rem;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-
-        .navy-table tr:nth-child(even) { background: #f8fafc; }
-        .navy-table tr:hover { background: #f0f4fa; }
-
-        /* Badges */
-        .badge {
-            font-size: 0.75rem;
-            font-weight: bold;
-            padding: 3px 8px;
-            border-radius: 12px;
-            display: inline-block;
-            text-transform: uppercase;
-        }
-
-        .badge-navy { background: #dbeafe; color: #1e40af; border: 1px solid #bfdbfe; }
-        .badge-green { background: #dcfce7; color: #15803d; border: 1px solid #bbf7d0; }
-        .badge-amber { background: #fef3c7; color: #b45309; border: 1px solid #fde68a; }
-        .badge-gray { background: #f1f5f9; color: #475569; border: 1px solid #e2e8f0; }
-
-        /* Inputs */
-        .filter-input {
-            padding: 8px 12px;
-            border: 1px solid #cbd5e1;
-            border-radius: 5px;
-            font-family: inherit;
-            font-size: 0.88rem;
-            background: #ffffff;
-            color: #333;
-        }
-
-        .filter-input:focus {
-            outline: none;
-            border-color: var(--navy-bright);
-            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
-        }
-
-        /* Modals */
-        .modal-overlay {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(10, 25, 47, 0.6);
-            backdrop-filter: blur(4px);
-            z-index: 1000;
-            align-items: center;
-            justify-content: center;
-            padding: 20px;
-        }
-
-        .modal-overlay.show { display: flex; }
-
-        .modal-card {
-            background: #ffffff;
-            border-radius: 10px;
-            max-width: 640px;
-            width: 100%;
-            max-height: 90vh;
-            overflow-y: auto;
-            padding: 30px;
-            box-shadow: 0 10px 30px rgba(10,25,47,0.3);
-            border-top: 6px solid var(--navy-midnight);
-            animation: modalFadeIn 0.25s ease;
-        }
-
-        @keyframes modalFadeIn {
-            from { opacity: 0; transform: scale(0.96); }
-            to { opacity: 1; transform: scale(1); }
-        }
-
-        footer {
-            text-align: center;
-            padding: 25px;
-            font-size: 0.9em;
-            background: rgba(255, 255, 255, 0.7);
-            border-top: 1px solid #cbd5e1;
-            margin-top: auto;
-            width: 100%;
-            color: var(--text-muted);
-        }
-    </style>
+    <title>Ministry of Domestic Affairs :: Sangaia Live</title>
+    <link rel="stylesheet" href="/css/sangaia-live.css">
+    <script src="/js/sangaia-live.js" defer></script>
 </head>
-<body>
+<body class="theme-domestic">
 
-<div class="main-container">
-
-    <!-- GLOBAL NAVIGATION HEADER -->
-    <nav id="globalheader">
-        <div style="position: absolute; left: 15px; display: flex; align-items: center; height: 100%;">
-            <a href="https://sangaia.org/index.html"><img src="../media/nav_logo.png" onerror="this.onerror=null; this.src='media/nav_logo.png';" style="height: 22px; width: auto;" alt="Logo"></a>
-        </div>
-        <div style="position: absolute; right: 15px; display: flex; align-items: center; gap: 15px; height: 100%; z-index: 100;">
-            <div id="auth-widget">
-                <a href="https://sangaia.org/id.html" style="color: #bbb; text-decoration: none; font-size: 11px; font-weight: bold; letter-spacing: 0.5px; padding: 3px 8px; border: 1px solid #444; border-radius: 4px; background: linear-gradient(to bottom, #555, #333); box-shadow: 0 1px 2px rgba(0,0,0,0.3); transition: all 0.2s ease;">Sangaia ID</a>
+<!-- Top Live Mast Banner -->
+<div class="wl-mast">
+    <div class="ol-container wl-mast-inner">
+        <div class="ol-header-top">
+            <div class="ol-logo">
+                <a href="/index.html" aria-label="Sangaia Live Sovereign Portal">
+                    <svg viewBox="0 0 90 90" width="22" height="22" fill="currentColor">
+                        <rect x="0" y="0" width="41" height="41" rx="2"/>
+                        <rect x="49" y="0" width="41" height="41" rx="2"/>
+                        <rect x="0" y="49" width="41" height="41" rx="2"/>
+                        <rect x="49" y="49" width="41" height="41" rx="2"/>
+                    </svg>
+                    <span><b>Sangaia</b> Live</span>
+                </a>
             </div>
-            <a href="sgn/index.html" style="color: #bbb; text-decoration: none; font-size: 11px; font-weight: bold; letter-spacing: 0.5px; padding: 3px 8px; border: 1px solid #444; border-radius: 4px; background: linear-gradient(to bottom, #555, #333); box-shadow: 0 1px 2px rgba(0,0,0,0.3); transition: all 0.2s ease;">Сангаиан</a>
-        </div>
-        <ul id="globalnav">
-            <li><a href="https://sangaia.org/index.html">Home</a></li>
-            <li><a href="departments.html">Departments</a></li>
-            <li><a href="#overview">Overview</a></li>
-            <li><a href="#provincial-relations">Provincial Relations</a></li>
-            <li><a href="#provincial-trade">Internal Trade</a></li>
-            <li><a href="#federal-interactions">Federal Relations</a></li>
-            <li><a href="#traffic-roads">Traffic & Highways</a></li>
-            <li><a href="https://sangaia.org/services.html">All Ministries</a></li>
-        </ul>
-    </nav>
-
-    <div class="content-wrapper">
-
-        <!-- NAVY BLUE FRUTIGER AERO HERO BANNER -->
-        <div class="navy-hero-card" id="overview">
-            <div class="hero-text-col">
-                <span class="hero-badge">United Provinces of Sangaia &bull; Executive Branch</span>
-                <h1 class="hero-title">Ministry of Domestic Affairs</h1>
-                <p class="hero-sub">Fostering inter-provincial harmony, guaranteeing tariff-free internal commerce, harmonizing federal-provincial governance accords, and overseeing the national highway and roadway safety infrastructure.</p>
-                <div style="display: flex; gap: 12px; flex-wrap: wrap;">
-                    <a href="#provincial-relations" class="sangaia-btn btn-navy"><span>Council of Governors &rarr;</span></a>
-                    <a href="#provincial-trade" class="sangaia-btn"><span>Domestic Trade Common Market</span></a>
-                    <a href="#traffic-roads" class="sangaia-btn btn-royal"><span>Highway Telemetry & Traffic</span></a>
-                </div>
-            </div>
-
-            <div style="text-align: center;">
-                <img src="../media/sangaia_seal.png" onerror="this.onerror=null; this.src='media/sangaia_seal.png';" alt="Seal of Sangaia" style="height: 110px; width: auto; filter: drop-shadow(0 4px 8px rgba(10,25,47,0.3));">
-                <div style="font-size: 0.78rem; font-weight: bold; text-transform: uppercase; letter-spacing: 1.5px; margin-top: 8px; color: var(--navy-midnight);">Federal Domestic & Provincial Coordination Authority</div>
-            </div>
-        </div>
-
-        <!-- STAT TICKERS -->
-        <div class="stat-ticker-grid">
-            <div class="stat-ticker-box royal-accent">
-                <div class="stat-label">Annual Domestic Commerce</div>
-                <div class="stat-value">$ 48.20 B</div>
-                <div class="stat-desc">0% internal tariffs, 100% free movement</div>
-            </div>
-
-            <div class="stat-ticker-box green-accent">
-                <div class="stat-label">Inter-Provincial Concordat</div>
-                <div class="stat-value" style="color: var(--fresh-green);">100%</div>
-                <div class="stat-desc">All 5 provinces in unanimous accord</div>
-            </div>
-
-            <div class="stat-ticker-box gold-accent">
-                <div class="stat-label">Paved Highway Arteries</div>
-                <div class="stat-value" style="color: var(--gold-accent);">14,850 km</div>
-                <div class="stat-desc">99.4% optimal surface smoothness</div>
-            </div>
-
-            <div class="stat-ticker-box">
-                <div class="stat-label">Freight Border Clearance</div>
-                <div class="stat-value">&lt; 4 Min</div>
-                <div class="stat-desc">Automated weight-in-motion corridors</div>
-            </div>
-        </div>
-
-                <!-- SECTION 1: PROVINCIAL RELATIONS & COUNCIL OF GOVERNORS -->
-        <div class="glass-panel" id="provincial-relations">
-            <h2>
-                <span>Provincial Relations & Council of Governors</span>
-                <button type="button" class="sangaia-btn btn-navy" onclick="openPetitionModal()">
-                    <span>Petition Provincial Council &rarr;</span>
-                </button>
-            </h2>
-            <p>
-                In the United Provinces of Sangaia, democratic balance requires close inter-provincial harmony. The Council of Governors convenes quarterly to resolve boundary alignment, oversee shared watershed stewardship, and uphold mutual legal recognition across all 5 sovereign provinces: <strong>New Jasper, New Madison, Liveland, Sentinel, and Columbia</strong>.
-            </p>
-
-            <div class="feature-grid-3">
-                <div class="feature-card">
-                    <div>
-                        <span class="badge badge-navy" style="margin-bottom: 8px;">Provincial Seat</span>
-                        <h3>New Jasper Province</h3>
-                        <p style="font-size: 0.88rem; color: #475569;">
-                            <strong>Governor:</strong> Hon. Arthur Vance<br>
-                            <strong>Administrative Capital:</strong> Shesk<br>
-                            <strong>Focus:</strong> Central administrative hub, federal assembly liaison, advanced rail freight logistics, and pharmaceutical reserves.
-                        </p>
+            <div class="ol-header-tools">
+                <form class="ol-search" id="headerSearchForm" action="/services.html" method="get">
+                    <input type="text" id="headerSearch" name="q" placeholder="Search government &amp; services" aria-label="Search">
+                    <button type="submit" class="ol-search-bing" aria-label="Search">&#x1F50E;</button>
+                </form>
+                
+                <a class="ol-icon-btn" href="/services.html" title="Notifications">
+                    <svg width="16" height="16" viewBox="0 0 16 16"><path fill="currentColor" d="M8 1.5c-2.4 0-4 1.9-4 4.2v3L2.7 11c-.3.4 0 1 .5 1h9.6c.5 0 .8-.6.5-1L12 8.7v-3c0-2.3-1.6-4.2-4-4.2zm0 13c1 0 1.8-.7 2-1.5H6c.2.8 1 1.5 2 1.5z"/></svg>
+                    <span class="ol-badge">3</span>
+                </a>
+                <a class="ol-icon-btn" href="/services.html" title="Citizen Messages">
+                    <svg width="16" height="16" viewBox="0 0 16 16"><path fill="currentColor" d="M2 3h12c.6 0 1 .4 1 1v7c0 .6-.4 1-1 1H9l-3.4 2.6c-.4.3-.9 0-.9-.5V12H2c-.6 0-1-.4-1-1V4c0-.6.4-1 1-1z"/></svg>
+                    <span class="ol-badge">1</span>
+                </a>
+                <div class="ol-me">
+                    <div class="ol-me-chip" id="meChip">
+                        <span class="ol-avatar sm">
+                            <img src="/images/1.jpeg" alt="Citizen Profile">
+                            <span class="ol-presence-dot"></span>
+                        </span>
+                        <span class="ol-me-name">Jqackkk</span>
+                        <span class="ol-me-caret">&#9660;</span>
                     </div>
-                    <div style="background: #f1f5f9; border-radius: 6px; padding: 10px; font-size: 0.82rem; font-weight: bold; color: var(--navy-midnight);">
-                        Harmony Accord: Fully Ratified &bull; 0 Pending Border Disputes
-                    </div>
-                </div>
-
-                <div class="feature-card">
-                    <div>
-                        <span class="badge badge-navy" style="margin-bottom: 8px;">Provincial Seat</span>
-                        <h3>New Madison Province</h3>
-                        <p style="font-size: 0.88rem; color: #475569;">
-                            <strong>Governor:</strong> Dr. Henrik Zhao<br>
-                            <strong>Administrative Capital:</strong> Madison City<br>
-                            <strong>Focus:</strong> Clean tech research, microelectronics, educational university consortiums, and automated maglev transit.
-                        </p>
-                    </div>
-                    <div style="background: #f1f5f9; border-radius: 6px; padding: 10px; font-size: 0.82rem; font-weight: bold; color: var(--navy-midnight);">
-                        Harmony Accord: Fully Ratified &bull; Interstate Power Sharing Accord
-                    </div>
-                </div>
-
-                <div class="feature-card">
-                    <div>
-                        <span class="badge badge-navy" style="margin-bottom: 8px;">Provincial Seat</span>
-                        <h3>Liveland Province</h3>
-                        <p style="font-size: 0.88rem; color: #475569;">
-                            <strong>Governor:</strong> Mateo Alvarez<br>
-                            <strong>Administrative Capital:</strong> Oaks<br>
-                            <strong>Focus:</strong> Regenerative agro-forestry, hydroponic grain reserves, organic orchards, and pasture dairy cooperatives.
-                        </p>
-                    </div>
-                    <div style="background: #f1f5f9; border-radius: 6px; padding: 10px; font-size: 0.82rem; font-weight: bold; color: var(--navy-midnight);">
-                        Harmony Accord: Fully Ratified &bull; Agricultural Common Market Protocol
-                    </div>
-                </div>
-
-                <div class="feature-card">
-                    <div>
-                        <span class="badge badge-navy" style="margin-bottom: 8px;">Provincial Seat</span>
-                        <h3>Sentinel Province</h3>
-                        <p style="font-size: 0.88rem; color: #475569;">
-                            <strong>Governor:</strong> Astrid Solberg<br>
-                            <strong>Administrative Capital:</strong> Sentinel Ridge<br>
-                            <strong>Focus:</strong> Alpine ecological preserves, watershed guardians, hydro & geothermal microgrids, and wilderness stewardship.
-                        </p>
-                    </div>
-                    <div style="background: #f1f5f9; border-radius: 6px; padding: 10px; font-size: 0.82rem; font-weight: bold; color: var(--navy-midnight);">
-                        Harmony Accord: Fully Ratified &bull; Trans-Provincial Watershed Accord
-                    </div>
-                </div>
-
-                <div class="feature-card">
-                    <div>
-                        <span class="badge badge-navy" style="margin-bottom: 8px;">Provincial Seat</span>
-                        <h3>Columbia Province</h3>
-                        <p style="font-size: 0.88rem; color: #475569;">
-                            <strong>Governor:</strong> Capt. Ronald Sterling<br>
-                            <strong>Administrative Capital:</strong> Columbia City<br>
-                            <strong>Focus:</strong> Deepwater container logistics, canal lock operations, maritime fisheries management, and coastal renewable fleets.
-                        </p>
-                    </div>
-                    <div style="background: #f1f5f9; border-radius: 6px; padding: 10px; font-size: 0.82rem; font-weight: bold; color: var(--navy-midnight);">
-                        Harmony Accord: Fully Ratified &bull; Port Fee Equalization Certified
-                    </div>
-                </div>
-
-                <div class="feature-card" style="border-top-color: var(--gold-accent);">
-                    <div>
-                        <span class="badge badge-amber" style="margin-bottom: 8px;">Arbitration Tribunal</span>
-                        <h3>Inter-Provincial Dispute Court</h3>
-                        <p style="font-size: 0.88rem; color: #475569;">
-                            <strong>Chief Magistrate:</strong> Justice Valerie Thorne<br>
-                            <strong>Location:</strong> Federal Arbitration Chamber, Shesk<br>
-                            <strong>Jurisdiction:</strong> Binding arbitration for contract disputes between municipal authorities.
-                        </p>
-                    </div>
-                    <div style="background: #fffbeb; border-radius: 6px; padding: 10px; font-size: 0.82rem; font-weight: bold; color: var(--gold-accent);">
-                        Case Backlog: 0 &bull; Average Resolution Time: 14 Days
+                    <div class="ol-me-menu" id="meMenu" style="display:none; position:absolute; right:0; top:36px; background:#fff; border:1px solid #dfe3e7; border-radius:3px; box-shadow:0 2px 8px rgba(0,0,0,0.15); width:180px; z-index:1000; padding:6px 0;">
+                        <div style="padding:4px 12px; font-size:11px; font-weight:700; color:#64748b; text-transform:uppercase;">Citizen ID: SG-2026-F1E8</div>
+                        <a href="/id.html" style="display:block; padding:5px 12px; color:#2a2a2a; font-size:13px;">Sangaia ID Card</a>
+                        <a href="/citizenship.html" style="display:block; padding:5px 12px; color:#2a2a2a; font-size:13px;">Citizenship Status</a>
+                        <a href="/units.html" style="display:block; padding:5px 12px; color:#2a2a2a; font-size:13px;">Units &amp; Measures</a>
+                        <div style="border-top:1px solid #edf0f3; margin:4px 0;"></div>
+                        <a href="/index.html" style="display:block; padding:5px 12px; color:#2a2a2a; font-size:13px;">Federal Home</a>
                     </div>
                 </div>
             </div>
         </div>
 
-
-        <div class="glass-panel" id="provincial-trade">
-            <h2>
-                <span>Provincial Trade & The Sangaian Internal Common Market</span>
-                <button type="button" class="sangaia-btn btn-navy" onclick="openManifestModal()">
-                    <span>Register Freight Manifest &rarr;</span>
-                </button>
-            </h2>
-            <p>
-                The Sangaian Constitution explicitly prohibits inter-provincial trade tariffs, quotas, or transport embargoes. Over $ 48.2 Billion in annual domestic commerce flows freely across rail, maglev, and highway freight corridors.
-            </p>
-
-            <div class="data-table-wrapper">
-                <table class="navy-table">
-                    <thead>
-                        <tr>
-                            <th>Origin Province</th>
-                            <th>Key Domestic Exports</th>
-                            <th>Primary Destination</th>
-                            <th>Annual Volume ($)</th>
-                            <th>Regulatory Clearance</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td><strong>Veridia Central</strong></td>
-                            <td>Hard red wheat, clinical pharmaceuticals, agricultural harvesters</td>
-                            <td>All Provinces (National Supply)</td>
-                            <td><span style="font-weight: 800; color: var(--navy-midnight);">$ 14,200,000,000</span></td>
-                            <td><span class="badge badge-green">100% Tariff-Free & Inspected</span></td>
-                        </tr>
-                        <tr>
-                            <td><strong>Maritime Coast</strong></td>
-                            <td>Seafood, marine aquaculture, container logistics, industrial salt</td>
-                            <td>Veridia Central & Northern Highlands</td>
-                            <td><span style="font-weight: 800; color: var(--navy-midnight);">$ 11,800,000,000</span></td>
-                            <td><span class="badge badge-green">100% Tariff-Free & Inspected</span></td>
-                        </tr>
-                        <tr>
-                            <td><strong>Northern Highlands</strong></td>
-                            <td>Hydro-electric power, boreal timber, structural granite, minerals</td>
-                            <td>Nova Sangaia & Maritime Coast</td>
-                            <td><span style="font-weight: 800; color: var(--navy-midnight);">$ 9,600,000,000</span></td>
-                            <td><span class="badge badge-green">100% Tariff-Free & Inspected</span></td>
-                        </tr>
-                        <tr>
-                            <td><strong>Nova Sangaia</strong></td>
-                            <td>Microprocessors, maglev rolling stock, financial services, software</td>
-                            <td>All Provinces (National Grid)</td>
-                            <td><span style="font-weight: 800; color: var(--navy-midnight);">$ 8,100,000,000</span></td>
-                            <td><span class="badge badge-green">100% Tariff-Free & Inspected</span></td>
-                        </tr>
-                        <tr>
-                            <td><strong>Southern Meadows</strong></td>
-                            <td>Pasture dairy, organic beef, apples, textiles, wool, bio-fuels</td>
-                            <td>Nova Sangaia & Veridia Central</td>
-                            <td><span style="font-weight: 800; color: var(--navy-midnight);">$ 4,500,000,000</span></td>
-                            <td><span class="badge badge-green">100% Tariff-Free & Inspected</span></td>
-                        </tr>
-                    </tbody>
-                    <tfoot>
-                        <tr style="background: #e8eef8; font-weight: bold;">
-                            <td>Total Internal Common Market</td>
-                            <td colspan="2">Seamless Cross-Border Movement of Goods & Food</td>
-                            <td style="color: var(--navy-midnight); font-size: 1.05rem;">$ 48,200,000,000</td>
-                            <td>0% Import Duties Enforced</td>
-                        </tr>
-                    </tfoot>
-                </table>
-            </div>
-        </div>
-
-        <!-- SECTION 3: FEDERAL INTERACTIONS & CO-GOVERNANCE -->
-        <div class="glass-panel" id="federal-interactions">
-            <h2>
-                <span>Federal Interactions & Co-Governance Accord</span>
-                <span class="badge badge-navy">Constitutional Competence Charter</span>
-            </h2>
-            <p>
-                Governance in Sangaia is defined by clear constitutional boundaries: the federal branch manages defense, currency, and cross-border transport, while provinces retain complete authority over municipal policing, zoning, and primary clinics.
-            </p>
-
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px; margin: 20px 0;">
-                <div style="background: var(--navy-glass); border: 1px solid #bfdbfe; border-radius: 8px; padding: 18px;">
-                    <strong style="color: var(--navy-midnight); font-size: 1.05rem;">1. Exclusive Federal Domain</strong>
-                    <ul style="padding-left: 20px; font-size: 0.88rem; color: #475569; margin: 8px 0 0 0;">
-                        <li>National defense & territorial airspace security (MdA)</li>
-                        <li>Sovereign currency & constitutional debt ceiling (mT)</li>
-                        <li>High-speed inter-provincial maglev tracks & canals</li>
-                        <li>Foreign treaties & diplomatic embassies</li>
-                    </ul>
-                </div>
-
-                <div style="background: var(--navy-glass); border: 1px solid #bfdbfe; border-radius: 8px; padding: 18px;">
-                    <strong style="color: var(--navy-midnight); font-size: 1.05rem;">2. Provincial Jurisdiction</strong>
-                    <ul style="padding-left: 20px; font-size: 0.88rem; color: #475569; margin: 8px 0 0 0;">
-                        <li>Municipal police departments & civil peacekeepers</li>
-                        <li>Primary & secondary public school administrations</li>
-                        <li>Local zoning, building codes & commercial permits</li>
-                        <li>Provincial parks & local road resurfacing</li>
-                    </ul>
-                </div>
-
-                <div style="background: var(--navy-glass); border: 1px solid #bfdbfe; border-radius: 8px; padding: 18px;">
-                    <strong style="color: var(--navy-midnight); font-size: 1.05rem;">3. Shared Constitutional Powers</strong>
-                    <ul style="padding-left: 20px; font-size: 0.88rem; color: #475569; margin: 8px 0 0 0;">
-                        <li>Environmental protection & clean water enforcement</li>
-                        <li>Emergency healthcare hospital coordination (mH)</li>
-                        <li>Highway highway patrol & weight-station licensing</li>
-                        <li>Disaster emergency response & flood brigades</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-
-        <!-- SECTION 4: TRAFFIC & ROAD SERVICES -->
-        <div class="glass-panel" id="traffic-roads">
-            <h2>
-                <span>National Traffic & Roadway Infrastructure Services</span>
-                <button type="button" class="sangaia-btn btn-navy" onclick="openHazardModal()">
-                    <span>Report Highway Hazard &rarr;</span>
-                </button>
-            </h2>
-            <p>
-                The Ministry of Domestic Affairs operates the Federal Highway Administration, maintaining 14,850 kilometers of paved inter-provincial highways with zero-pothole warranties, intelligent de-icing arrays, and free 24/7 roadside motorist assistance.
-            </p>
-
-            <h3 style="color: var(--navy-midnight); margin: 20px 0 10px 0; font-size: 1.1rem;">
-                Live Highway Arteries & Roadway Telemetry
-            </h3>
-
-                        <div class="traffic-grid">
-                <div class="traffic-card">
-                    <div>
-                        <span class="route-badge">HIGHWAY S-1</span>
-                        <div style="font-weight: bold; color: var(--navy-midnight);">Jasper-Madison Arterial</div>
-                        <div style="font-size: 0.82rem; color: #64748b;">Shesk &harr; Madison City (96 Кмн / 144 km)</div>
-                    </div>
-                    <div style="text-align: right;">
-                        <span class="badge badge-green">Clear &bull; 74 Кмн/h (110 km/h)</span>
-                        <div style="font-size: 0.78rem; color: #64748b; margin-top: 4px;">Pavement Dry</div>
-                    </div>
-                </div>
-
-                <div class="traffic-card">
-                    <div>
-                        <span class="route-badge" style="background: #15803d;">HIGHWAY S-2</span>
-                        <div style="font-weight: bold; color: var(--navy-midnight);">Liveland Trunk Highway</div>
-                        <div style="font-size: 0.82rem; color: #64748b;">Oaks &harr; Shesk (72 Кмн / 108 km)</div>
-                    </div>
-                    <div style="text-align: right;">
-                        <span class="badge badge-green">Clear &bull; 66 Кмн/h (100 km/h)</span>
-                        <div style="font-size: 0.78rem; color: #64748b; margin-top: 4px;">Optimal Visibility</div>
-                    </div>
-                </div>
-
-                <div class="traffic-card caution">
-                    <div>
-                        <span class="route-badge" style="background: #0284c7;">HIGHWAY S-3</span>
-                        <div style="font-weight: bold; color: var(--navy-midnight);">Sentinel Alpine Ridge Pass</div>
-                        <div style="font-size: 0.82rem; color: #64748b;">Sentinel Ridge Corridor (120 Кмн / 180 km)</div>
-                    </div>
-                    <div style="text-align: right;">
-                        <span class="badge badge-amber">Caution &bull; Heated Asphalt Active</span>
-                        <div style="font-size: 0.78rem; color: #64748b; margin-top: 4px;">Plows Deployed</div>
-                    </div>
-                </div>
-
-                <div class="traffic-card">
-                    <div>
-                        <span class="route-badge" style="background: #0c4a6e;">HIGHWAY S-4</span>
-                        <div style="font-weight: bold; color: var(--navy-midnight);">Columbia Coastal Expressway</div>
-                        <div style="font-size: 0.82rem; color: #64748b;">Columbia City &harr; Oaks (140 Кмн / 210 km)</div>
-                    </div>
-                    <div style="text-align: right;">
-                        <span class="badge badge-green">Flowing &bull; 68 Кмн/h (102 km/h)</span>
-                        <div style="font-size: 0.78rem; color: #64748b; margin-top: 4px;">Smart Signals Active</div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Road Services Directory -->
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px; margin-top: 25px;">
-                <div style="background: #ffffff; border: 1px solid #cbd5e1; border-radius: 8px; padding: 18px; border-top: 4px solid var(--navy-primary);">
-                    <h4 style="margin: 0 0 6px 0; color: var(--navy-midnight);">Commercial Oversize Permits</h4>
-                    <p style="font-size: 0.86rem; color: #475569; margin: 0 0 10px 0;">Automated digital permits for heavy modular equipment and wind turbine transit.</p>
-                    <a href="#traffic-roads" class="sangaia-btn" style="font-size: 0.8rem;" onclick="openNotice('Commercial Permit Portal', 'Commercial oversize load clearances are synchronized instantly with Sangaia ID and Highway Patrol telemetry.')">
-                        <span>Check Permit Rules &rarr;</span>
-                    </a>
-                </div>
-
-                <div style="background: #ffffff; border: 1px solid #cbd5e1; border-radius: 8px; padding: 18px; border-top: 4px solid var(--navy-primary);">
-                    <h4 style="margin: 0 0 6px 0; color: var(--navy-midnight);">24/7 Motorist Assistance Patrol</h4>
-                    <p style="font-size: 0.86rem; color: #475569; margin: 0 0 10px 0;">Free roadside assistance (fuel delivery, tire changes, towing) on all national highways.</p>
-                    <span style="font-size: 0.84rem; font-weight: bold; color: var(--navy-bright);">Dial 9-1-1 or #ROAD from any highway mobile</span>
-                </div>
-
-                <div style="background: #ffffff; border: 1px solid #cbd5e1; border-radius: 8px; padding: 18px; border-top: 4px solid var(--navy-primary);">
-                    <h4 style="margin: 0 0 6px 0; color: var(--navy-midnight);">Universal Driver's License Reciprocity</h4>
-                    <p style="font-size: 0.86rem; color: #475569; margin: 0 0 10px 0;">All provincial licenses operate interchangeably with zero relicensing fees when moving.</p>
-                    <span class="badge badge-green">100% Reciprocity Across All 5 Provinces</span>
-                </div>
-            </div>
-        </div>
-
-    </div>
-
-    <!-- MODAL 1: COUNCIL PETITION -->
-    <div class="modal-overlay" id="petition-modal">
-        <div class="modal-card">
-            <h3 style="color: var(--navy-midnight); margin-top: 0;">Petition the Council of Provincial Governors</h3>
-            <p style="font-size: 0.85rem; color: #475569;">
-                Filing formal representations or inter-provincial arbitration requests.
-            </p>
-            <form onsubmit="handlePetitionSubmit(event)">
-                <div style="margin-bottom: 12px;">
-                    <label style="font-size: 0.78rem; font-weight: bold; color: var(--navy-midnight); display: block; margin-bottom: 4px;">Applicant Name or Sangaia ID *</label>
-                    <input type="text" id="pet-name" class="filter-input" style="width: 100%;" required placeholder="Legal Name or Sangaia ID">
-                </div>
-                <div style="margin-bottom: 12px;">
-                    <label style="font-size: 0.78rem; font-weight: bold; color: var(--navy-midnight); display: block; margin-bottom: 4px;">Concerned Provinces *</label>
-                    <select id="pet-provinces" class="filter-input" style="width: 100%;" required>
-                        <option value="All Provinces (National Policy)">All Provinces (National Policy)</option>
-                        <option value="Veridia Central & Nova Sangaia">Veridia Central & Nova Sangaia</option>
-                        <option value="Maritime Coast & Northern Highlands">Maritime Coast & Northern Highlands</option>
-                        <option value="Southern Meadows & Veridia Central">Southern Meadows & Veridia Central</option>
-                    </select>
-                </div>
-                <div style="margin-bottom: 12px;">
-                    <label style="font-size: 0.78rem; font-weight: bold; color: var(--navy-midnight); display: block; margin-bottom: 4px;">Subject & Policy Proposition *</label>
-                    <textarea id="pet-desc" class="filter-input" style="width: 100%; height: 75px;" required placeholder="Describe policy resolution, border issue, or common market inquiry..."></textarea>
-                </div>
-                <div style="display: flex; justify-content: flex-end; gap: 10px; margin-top: 18px;">
-                    <button type="button" class="sangaia-btn" onclick="closePetitionModal()"><span>Cancel</span></button>
-                    <button type="submit" class="sangaia-btn btn-navy"><span>Lodge Petition with Council</span></button>
-                </div>
-            </form>
-        </div>
-    </div>
-
-    <!-- MODAL 2: FREIGHT MANIFEST REGISTRATION -->
-    <div class="modal-overlay" id="manifest-modal">
-        <div class="modal-card">
-            <h3 style="color: var(--navy-midnight); margin-top: 0;">Inter-Provincial Freight Manifest Registration</h3>
-            <p style="font-size: 0.85rem; color: #475569;">Official clearance for commercial cargo carriers under the Sangaian Common Market.</p>
-            <form onsubmit="handleManifestSubmit(event)">
-                <div style="margin-bottom: 12px;">
-                    <label style="font-size: 0.78rem; font-weight: bold; color: var(--navy-midnight); display: block; margin-bottom: 4px;">Carrier Enterprise / Transport Cooperative *</label>
-                    <input type="text" id="man-carrier" class="filter-input" style="width: 100%;" required placeholder="e.g. Sangaia Trans-Continental Haulers">
-                </div>
-                <div style="margin-bottom: 12px;">
-                    <label style="font-size: 0.78rem; font-weight: bold; color: var(--navy-midnight); display: block; margin-bottom: 4px;">Commodity Category & Tonnage *</label>
-                    <input type="text" id="man-cargo" class="filter-input" style="width: 100%;" required placeholder="e.g. 40 Metric Tons Hard Red Winter Wheat">
-                </div>
-                <div style="margin-bottom: 12px;">
-                    <label style="font-size: 0.78rem; font-weight: bold; color: var(--navy-midnight); display: block; margin-bottom: 4px;">Route & Transit Corridor *</label>
-                    <input type="text" id="man-route" class="filter-input" style="width: 100%;" required placeholder="e.g. Veridia Central to Hornet's Point via Highway S-1">
-                </div>
-                <div style="display: flex; justify-content: flex-end; gap: 10px; margin-top: 18px;">
-                    <button type="button" class="sangaia-btn" onclick="closeManifestModal()"><span>Cancel</span></button>
-                    <button type="submit" class="sangaia-btn btn-navy"><span>Issue RFID Transit Clearance</span></button>
-                </div>
-            </form>
-        </div>
-    </div>
-
-    <!-- MODAL 3: HIGHWAY HAZARD REPORT -->
-    <div class="modal-overlay" id="hazard-modal">
-        <div class="modal-card">
-            <h3 style="color: var(--navy-midnight); margin-top: 0;">Report Highway Hazard or Roadway Incident</h3>
-            <p style="font-size: 0.85rem; color: #475569;">Direct dispatch to the Federal Highway Patrol and Roadway Repair Directorate.</p>
-            <form onsubmit="handleHazardSubmit(event)">
-                <div style="margin-bottom: 12px;">
-                    <label style="font-size: 0.78rem; font-weight: bold; color: var(--navy-midnight); display: block; margin-bottom: 4px;">Highway / Mile Marker Location *</label>
-                    <input type="text" id="haz-location" class="filter-input" style="width: 100%;" required placeholder="e.g. Highway S-2, Mile Marker 42 (Highlands Pass)">
-                </div>
-                <div style="margin-bottom: 12px;">
-                    <label style="font-size: 0.78rem; font-weight: bold; color: var(--navy-midnight); display: block; margin-bottom: 4px;">Hazard Description *</label>
-                    <select id="haz-type" class="filter-input" style="width: 100%;" required>
-                        <option value="Road Debris / Fallen Rock">Road Debris / Fallen Rock</option>
-                        <option value="Disabled Commercial Vehicle">Disabled Commercial Vehicle</option>
-                        <option value="Snow / Ice Accumulation">Snow / Ice Accumulation</option>
-                        <option value="Signal / Guardrail Damage">Signal / Guardrail Damage</option>
-                    </select>
-                </div>
-                <div style="margin-bottom: 12px;">
-                    <label style="font-size: 0.78rem; font-weight: bold; color: var(--navy-midnight); display: block; margin-bottom: 4px;">Additional Details *</label>
-                    <textarea id="haz-desc" class="filter-input" style="width: 100%; height: 75px;" required placeholder="Describe lane blockage, severity, immediate safety requirements..."></textarea>
-                </div>
-                <div style="display: flex; justify-content: flex-end; gap: 10px; margin-top: 18px;">
-                    <button type="button" class="sangaia-btn" onclick="closeHazardModal()"><span>Cancel</span></button>
-                    <button type="submit" class="sangaia-btn btn-navy"><span>Transmit to Highway Patrol</span></button>
-                </div>
-            </form>
-        </div>
-    </div>
-
-    <!-- GENERAL NOTICE MODAL -->
-    <div class="modal-overlay" id="notice-modal">
-        <div class="modal-card">
-            <h3 style="color: var(--navy-midnight); margin-top: 0;" id="notice-title">Notification</h3>
-            <div id="notice-body" style="font-size: 0.95rem; color: #333; line-height: 1.6; margin: 15px 0;"></div>
-            <div style="text-align: right; margin-top: 20px;">
-                <button type="button" class="sangaia-btn" onclick="closeNoticeModal()"><span>Close Window</span></button>
+        <div class="ol-band">
+            <div class="ol-band-inner">
+                <h1>Ministry of Domestic Affairs</h1>
+                <p class="ol-band-sub">Provincial relations, interstate trade, federal-provincial coordination, road & highway services</p>
             </div>
         </div>
     </div>
-
-    <footer>
-        &copy; 2026 United Provinces of Sangaia. All Rights Reserved.<br>
-        <span style="font-size: 0.85em; color: var(--text-muted);">
-            Ministry of Domestic Affairs &bull; Department of Provincial Coordination, Internal Commerce & Highway Administration
-        </span>
-    </footer>
 </div>
 
-<!-- SCRIPTS -->
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-<script src="auth.js" onerror="this.onerror=null; this.src='../auth.js';"></script>
+<!-- Main Top Nav Tabs (One Live Bar) -->
+<div class="wl-tabs">
+    <div class="ol-container wl-tabs-inner">
+        <ul class="ol-nav" id="primaryNav">
+            <li><a href="/index.html">Home</a></li>
+            <li><a href="/executive.html">Executive</a></li>
+            <li><a href="/treasury.html">Treasury</a></li>
+            <li><a href="/work.html">Work</a></li>
+            <li><a href="/healthcare.html">Healthcare</a></li>
+            <li><a href="/education.html">Education</a></li>
+            <li class="ol-current"><a href="/domesticaffairs.html">Domestic</a></li>
+            <li><a href="/externalaffairs.html">External</a></li>
+            <li><a href="/environment.html">Environment</a></li>
+            <li><a href="/propaganda.html">Propaganda</a></li>
+            <li><a href="/services.html">Services</a></li>
+            <li><a href="/units.html">Units (Мн • °Пт)</a></li>
+            
+        </ul>
+    </div>
+</div>
 
-<script>
-    // --- MODALS & FORMS ---
-    function openPetitionModal() {
-        document.getElementById('petition-modal').classList.add('show');
-    }
-    function closePetitionModal() {
-        document.getElementById('petition-modal').classList.remove('show');
-    }
-
-    function handlePetitionSubmit(e) {
-        e.preventDefault();
-        const name = document.getElementById('pet-name').value;
-        const prov = document.getElementById('pet-provinces').value;
-        closePetitionModal();
-
-        const ticket = `PET-COUNCIL-2026-${Math.random().toString(36).substring(2,7).toUpperCase()}`;
-        openNotice("Council Petition Registered", `
-            <div style="background:#dbeafe; border:1px solid #bfdbfe; border-radius:6px; padding:15px; color:#1e40af;">
-                <strong>Applicant:</strong> ${name}<br>
-                <strong>Jurisdiction:</strong> ${prov}<br>
-                <strong>Dossier Reference ID:</strong> <code>${ticket}</code>
+<!-- Main Content Grid -->
+<div class="ol-container ol-main">
+    <div class="ol-with-sidebar">
+        <!-- Left Sidebar Navigation -->
+        <div class="ol-sidebar-nav">
+            <div class="ol-card ol-profile-card" style="text-align: center;">
+                <span class="ol-avatar lg">
+                    <img src="/images/1.jpeg" alt="Emblem">
+                    <span class="ol-presence-dot"></span>
+                </span>
+                <div class="ol-mt-10">
+                    <strong>Ministry of Domestic Affairs</strong><br>
+                    <span class="ol-muted ol-small">Internal Governance Authority</span><br>
+                    <span class="ol-small" style="color:var(--ol-accent); font-weight:600;">Pacts Verified</span>
+                </div>
             </div>
-            <p>Your representation has been submitted to the Secretariat of the Council of Provincial Governors. It will be scheduled on the formal docket for the upcoming quarterly assembly.</p>
-        `);
-        e.target.reset();
-    }
 
-    function openManifestModal() {
-        document.getElementById('manifest-modal').classList.add('show');
-    }
-    function closeManifestModal() {
-        document.getElementById('manifest-modal').classList.remove('show');
-    }
+            <span class="ol-sidenav-label">Portal Navigation</span>
+            <ul class="ol-sidenav">
+                <li><a href="#overview" class="sel">Overview & Provincial Pacts</a></li>
+<li><a href="#provinces">5 Sovereign Provinces</a></li>
+<li><a href="#trade">Interstate Trade Registry</a></li>
+<li><a href="#federal">Federal Interactions Gateway</a></li>
+<li><a href="#transit">Roads & Traffic Services</a></li>
+<li><a href="/domesticaffairs_departments.html">Departments Portal →</a></li>
 
-    function handleManifestSubmit(e) {
-        e.preventDefault();
-        const carrier = document.getElementById('man-carrier').value;
-        const cargo = document.getElementById('man-cargo').value;
-        closeManifestModal();
+            </ul>
 
-        const rfid = `RFID-TRADE-2026-${Math.random().toString(36).substring(2,8).toUpperCase()}`;
-        openNotice("RFID Freight Clearance Issued", `
-            <div style="background:#dcfce7; border:1px solid #bbf7d0; border-radius:6px; padding:15px; color:#15803d;">
-                <strong>Carrier:</strong> ${carrier}<br>
-                <strong>Cargo:</strong> ${cargo}<br>
-                <strong>Automated RFID Transit Key:</strong> <code>${rfid}</code>
+            <span class="ol-sidenav-label">Federal Network</span>
+            <ul class="ol-sidenav">
+                <li><a href="/index.html">Federal Home</a></li>
+                <li><a href="/services.html">All Services</a></li>
+                <li><a href="/units.html">Units (Мн &bull; &deg;Пт)</a></li>
+                <li><a href="/societal_press.html">Societal Press</a></li>
+            </ul>
+        </div>
+
+        <!-- Center Content -->
+        <div class="ol-content">
+            
+    <div class="ol-status-bubble" id="overview">
+        &ldquo;Coordinating harmony, fair trade, and robust infrastructure across the 5 Sovereign Provinces: New Jasper, New Madison, Liveland, Sentinel, and Columbia.&rdquo;
+        <div class="ol-status-date">Ministry of Domestic Affairs &bull; Updated Today</div>
+    </div>
+
+    <!-- The 5 Sovereign Provinces -->
+    <div class="ol-card" id="provinces">
+        <div class="ol-card-title">
+            <span>The Five Sovereign Provinces of Sangaia</span>
+            <span class="ol-badge-tag ol-badge-success">Interstate Harmony Pact Active</span>
+        </div>
+        <p class="ol-small">Each province exercises constitutional autonomy under republican principles while coordinating through the Federal Council of Governors.</p>
+        <table class="ol-table">
+            <thead>
+                <tr><th>Province</th><th>Capital</th><th>Population</th><th>Major Economic Role</th><th>Provincial Governor</th></tr>
+            </thead>
+            <tbody>
+                <tr><td>New Jasper</td><td>Shesk</td><td>2,410,000</td><td>National Governance &amp; High Technology</td><td>Gov. Alistair Sterling</td></tr>
+                <tr><td>New Madison</td><td>Madison City</td><td>1,980,000</td><td>Agricultural Breadbasket &amp; Green Energy</td><td>Gov. Miriam Thorne</td></tr>
+                <tr><td>Liveland</td><td>Oaks</td><td>1,650,000</td><td>Maritime Logistics &amp; Fisheries</td><td>Gov. Jonas Vance</td></tr>
+                <tr><td>Sentinel</td><td>Sentinel Ridge</td><td>890,000</td><td>Geothermal Power &amp; Mineral Stewardship</td><td>Gov. Clara Lindqvist</td></tr>
+                <tr><td>Columbia</td><td>Columbia City</td><td>940,000</td><td>Aerospace, Cultural Arts &amp; Education</td><td>Gov. Derek Morales</td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Interprovincial Trade & Resource Flows -->
+    <div class="ol-card" id="trade">
+        <div class="ol-card-title">
+            <span>Interprovincial Trade &amp; Resource Distribution</span>
+            <span class="ol-badge-tag">Tariff-Free Internal Market</span>
+        </div>
+        <p class="ol-small">Under the Interstate Commerce Covenant, all commerce moving between the five provinces is 100% exempt from internal tariffs, inspections, and discriminatory restrictions.</p>
+        <div class="ol-grid-3" style="margin-top:10px;">
+            <div class="ol-metric-box">
+                <div class="ol-metric-val">$ 18.2 B</div>
+                <div class="ol-metric-lbl">Monthly Internal Trade</div>
             </div>
-            <p>Your commercial consignment is cleared for 100% tariff-free transit across all provincial boundaries. Automated weigh-in sensors will log your pass without vehicle stoppage.</p>
-        `);
-        e.target.reset();
-    }
-
-    function openHazardModal() {
-        document.getElementById('hazard-modal').classList.add('show');
-    }
-    function closeHazardModal() {
-        document.getElementById('hazard-modal').classList.remove('show');
-    }
-
-    function handleHazardSubmit(e) {
-        e.preventDefault();
-        const loc = document.getElementById('haz-location').value;
-        const type = document.getElementById('haz-type').value;
-        closeHazardModal();
-
-        const dispatchId = `HWY-DISP-${Math.random().toString(36).substring(2,7).toUpperCase()}`;
-        openNotice("Highway Patrol Dispatched", `
-            <div style="background:#fef3c7; border:1px solid #fde68a; border-radius:6px; padding:15px; color:#92400e;">
-                <strong>Location:</strong> ${loc}<br>
-                <strong>Incident Type:</strong> ${type}<br>
-                <strong>Patrol Dispatch Key:</strong> <code>${dispatchId}</code>
+            <div class="ol-metric-box">
+                <div class="ol-metric-val">100%</div>
+                <div class="ol-metric-lbl">Clean Freight Electrification</div>
             </div>
-            <p>The nearest Highway Patrol unit and maintenance crew have been routed to the coordinates. Digital overhead signage on the corridor has been updated with warning advisories.</p>
-        `);
-        e.target.reset();
-    }
+            <div class="ol-metric-box">
+                <div class="ol-metric-val">0.0%</div>
+                <div class="ol-metric-lbl">Internal Tariff Rate</div>
+            </div>
+        </div>
+    </div>
 
-    function openNotice(title, html) {
-        document.getElementById('notice-title').textContent = title;
-        document.getElementById('notice-body').innerHTML = html;
-        document.getElementById('notice-modal').classList.add('show');
+    <!-- Roadways & Traffic Telemetry -->
+    <div class="ol-card" id="transit">
+        <div class="ol-card-title">
+            <span>National Highway &amp; Roadway Status Dashboard</span>
+            <span class="ol-badge-tag ol-badge-success">Measured in Monomers &amp; Kilomers (Кмн)</span>
+        </div>
+        <p class="ol-small ol-muted">Live highway maintenance and traffic status across the federal transit arterial network.</p>
+        <table class="ol-table">
+            <thead>
+                <tr><th>Interstate Highway</th><th>Route Corridors</th><th>Length in Kilomers (Кмн)</th><th>Transit Condition</th></tr>
+            </thead>
+            <tbody>
+                <tr><td>Route 1 (Coastal Highway)</td><td>Shesk (NJ) &rarr; Oaks (LV)</td><td>320 Кмн (19,200,000 Мн)</td><td><span class="ol-badge-tag ol-badge-success">Clear &bull; Optimal</span></td></tr>
+                <tr><td>Route 4 (Trans-Sangaia Arterial)</td><td>Madison City (NM) &rarr; Shesk (NJ)</td><td>245 Кмн (14,700,000 Мн)</td><td><span class="ol-badge-tag ol-badge-success">Clear &bull; Optimal</span></td></tr>
+                <tr><td>Route 8 (Highland Ridge Pass)</td><td>Sentinel Ridge (ST) &rarr; Columbia (CO)</td><td>180 Кмн (10,800,000 Мн)</td><td><span class="ol-badge-tag ol-badge-warning">Maintenance Crew Active</span></td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Federal Interactions Gateway -->
+    <div class="ol-card" id="federal">
+        <div class="ol-card-title">
+            <span>Federal-Provincial Administrative Gateway</span>
+            <button type="button" class="ol-btn ol-btn-sm" onclick="openPactModal()">Submit Intergovernmental Petition</button>
+        </div>
+        <p class="ol-small">Municipalities and provincial assemblies coordinate directly with the Ministry for federal grants, disaster mitigation, and interprovincial infrastructure harmonization.</p>
+    </div>
+    
+        </div>
+
+        <!-- Right Sidebar (Telemetry & Quick Actions) -->
+        <div class="ol-sidebar">
+            <div class="ol-note">Official Government of the Sovereign Republic of Sangaia. All administrative systems active.</div>
+
+            <div class="ol-sidebox">
+                <h3>Sovereign Telemetry</h3>
+                <div style="font-size:12.5px; line-height:1.6;">
+                    <div><strong>Currency:</strong> Sangaian Dollar ($)</div>
+                    <div><strong>Standard Temp:</strong> 22.5&deg;Пт (25&deg;C / 77&deg;F)</div>
+                    <div><strong>Standard Metric:</strong> 1 Мн = 2.5 cm</div>
+                    <div><strong>Active Provinces:</strong> 5 Territories</div>
+                </div>
+            </div>
+
+            <div class="ol-sidebox">
+                <h3>Provincial Weather (&deg;Пт)</h3>
+                <table class="ol-table" style="font-size:12px; margin:0;">
+                    <tr><td>New Jasper</td><td style="text-align:right;"><strong>20.5&deg;Пт</strong> (Sunny)</td></tr>
+                    <tr><td>New Madison</td><td style="text-align:right;"><strong>22.0&deg;Пт</strong> (Clear)</td></tr>
+                    <tr><td>Liveland</td><td style="text-align:right;"><strong>19.8&deg;Пт</strong> (Breezy)</td></tr>
+                    <tr><td>Sentinel</td><td style="text-align:right;"><strong>16.2&deg;Пт</strong> (Cool)</td></tr>
+                    <tr><td>Columbia</td><td style="text-align:right;"><strong>23.4&deg;Пт</strong> (Mild)</td></tr>
+                </table>
+            </div>
+
+            
+    <div class="ol-sidebox">
+        <h3>Domestic Affairs</h3>
+        <p class="ol-small ol-muted">Coordinates provincial relations, interprovincial commerce, DMV licensing, and federal road networks.</p>
+        <div class="ol-mt-10">
+            <a href="/domesticaffairs_departments.html" class="ol-btn ol-btn-primary ol-btn-sm" style="width:100%; text-align:center;">Launch Domestic Departments</a>
+        </div>
+    </div>
+    
+        </div>
+    </div>
+</div>
+
+
+    <!-- Intergovernmental Petition Modal -->
+    <div class="ol-modal-overlay" id="pactModal">
+        <div class="ol-modal-dialog">
+            <div class="ol-modal-head">
+                <span class="ol-modal-title">Submit Intergovernmental Administrative Petition</span>
+                <button type="button" class="ol-modal-close" onclick="closeModal('pactModal')">&times;</button>
+            </div>
+            <div class="form-group">
+                <label class="form-label">Sponsoring Municipality or Province</label>
+                <select class="ol-select" id="pact-prov">
+                    <option>New Jasper</option><option>New Madison</option><option>Liveland</option><option>Sentinel</option><option>Columbia</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label class="form-label">Coordination Topic</label>
+                <select class="ol-select" id="pact-topic">
+                    <option>Interprovincial Transit Coordination</option>
+                    <option>Watershed &amp; Environmental Stewardship</option>
+                    <option>Emergency Mutual Aid Accord</option>
+                    <option>Municipal Resource Grant</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label class="form-label">Petition Narrative</label>
+                <textarea class="ol-textarea" id="pact-desc" rows="4" placeholder="Detail the petition..."></textarea>
+            </div>
+            <div class="modal-results-box" id="pactResults"></div>
+            <div class="ol-modal-foot">
+                <button type="button" class="ol-btn" onclick="closeModal('pactModal')">Cancel</button>
+                <button type="button" class="ol-btn ol-btn-primary" onclick="submitPact()">Submit to Council of Governors</button>
+            </div>
+        </div>
+    </div>
+    
+
+<!-- Floating Citizen Dock -->
+<div class="ol-dock">
+    <button type="button" class="ol-dock-tab" id="olDockMessages">
+        <svg width="15" height="15" viewBox="0 0 16 16"><path fill="currentColor" d="M2 3h12c.6 0 1 .4 1 1v7c0 .6-.4 1-1 1H9l-3.4 2.6c-.4.3-.9 0-.9-.5V12H2c-.6 0-1-.4-1-1V4c0-.6.4-1 1-1z"/></svg>
+        <span>Live Citizen Support</span>
+    </button>
+    <div class="ol-dock-list" id="olDockList">
+        <div class="ol-dock-list-head">
+            <span>Sangaia Citizen Assistance</span>
+            <a href="javascript:void(0)" id="olDockListClose" style="color:#64748b; font-size:16px;">&times;</a>
+        </div>
+        <div class="ol-dock-list-body">
+            <a class="ol-dock-item" href="/services.html"><strong>Online Inquiries:</strong> File petition or request</a>
+            <a class="ol-dock-item" href="/units.html"><strong>Unit Calculations:</strong> Monomer &amp; Panotherm</a>
+            <a class="ol-dock-item" href="/citizenship.html"><strong>Citizenship Registry:</strong> Check docket status</a>
+            <a class="ol-dock-item" href="/id.html"><strong>Sangaia ID:</strong> Digital identity card</a>
+        </div>
+    </div>
+</div>
+
+<!-- Footer -->
+<div class="ol-footer">
+    <div class="ol-container ol-footer-inner">
+        <p class="ol-footer-copy">&copy; 2026 Sovereign Republic of Sangaia. One Live Wave 4 Infrastructure.</p>
+        <ul class="ol-footer-links">
+            <li><a href="/index.html">Home</a></li>
+            <li><a href="/government.html">Government Structure</a></li>
+            <li><a href="/services.html">Services</a></li>
+            <li><a href="/societal_press.html">Gazette</a></li>
+            <li><a href="/units.html">Units System</a></li>
+            <li><a href="/about.html">About Sangaia</a></li>
+        </ul>
+    </div>
+</div>
+
+
+    <script>
+    function openPactModal() { document.getElementById('pactModal').classList.add('active'); }
+    function closeModal(id) { document.getElementById(id).classList.remove('active'); }
+
+    function submitPact() {
+        const res = document.getElementById('pactResults');
+        const token = 'DOM-PACT-' + Math.floor(100000 + Math.random() * 900000);
+        res.innerHTML = `<strong>Petition Docketed:</strong> Tracking Token: <span style="font-family:monospace;">${token}</span>. Placed on Federal Council agenda.`;
+        res.classList.add('active');
     }
-    function closeNoticeModal() {
-        document.getElementById('notice-modal').classList.remove('show');
-    }
-</script>
+    </script>
+    
+
 </body>
 </html>

@@ -2,1035 +2,498 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ministry of Work - United Provinces of Sangaia</title>
-    <style>
-        /* --- MINISTRY OF WORK: PURPLE FRUTIGER AERO & SKEUOMORPHIC STYLES --- */
-        :root {
-            --glass-purple: rgba(243, 229, 245, 0.88);
-            --gloss-highlight: rgba(255, 255, 255, 0.9);
-            --purple-primary: #512da8;
-            --purple-dark: #311b92;
-            --purple-light: #7e57c2;
-            --purple-accent: #9c27b0;
-            --purple-border: #4a148c;
-            --fresh-green: #2e7d32;
-            --text-dark: #212121;
-            --text-muted: #555555;
-            --text-light: #ffffff;
-        }
-
-        * { box-sizing: border-box; }
-
-        body {
-            background: #ffffff radial-gradient(circle at 50% 0%, #f3e5f5 0%, #ede7f6 100%) no-repeat fixed;
-            min-height: 100dvh;
-            width: 100%;
-            display: flex;
-            align-items: center;
-            justify-content: flex-start;
-            flex-direction: column;
-            margin: 0;
-            font-family: 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-            color: var(--text-dark);
-            line-height: 1.6;
-        }
-
-        .main-container {
-            width: 100%;
-            margin: 0;
-            background: transparent;
-            padding: 0;
-            flex-grow: 1; 
-        }
-
-        /* --- GLOBAL METAL NAVIGATION HEADER --- */
-        #globalheader {
-            display: flex;
-            align-items: center;
-            position: relative;
-            width: 100%;
-            height: 38px;
-            background: linear-gradient(to bottom, #5e5e5e 0%, #3e3e3e 50%, #2d2d2d 51%, #1f1f1f 100%);
-            border-top: 1px solid #222;
-            border-bottom: 1px solid #000;
-            box-shadow: inset 0 1px 0 rgba(255,255,255,0.15), 0 2px 4px rgba(0,0,0,0.2);
-            font-size: 11px;
-            z-index: 100;
-        }
-
-        #globalnav {
-            flex-grow: 1;
-            margin: 0;
-            padding: 0;
-            list-style: none;
-            display: flex;
-            justify-content: center;
-            height: 100%;
-        }
-
-        #globalnav li { position: relative; height: 100%; display: flex; align-items: center; }
-        #globalnav li::after {
-            content: ""; position: absolute; right: 0; width: 1px; height: 100%;
-            background: linear-gradient(to bottom, #333, #111); box-shadow: 1px 0 0 rgba(255,255,255,0.08);
-        }
-        #globalnav li:first-child::before {
-            content: ""; position: absolute; left: 0; width: 1px; height: 100%;
-            background: linear-gradient(to bottom, #333, #111); box-shadow: 1px 0 0 rgba(255,255,255,0.08);
-        }
-
-        #globalnav li a {
-            display: block; color: #e8e8e8; text-decoration: none; text-shadow: 0 -1px 0 rgba(0,0,0,0.8);
-            font-weight: bold; padding: 0 20px; line-height: 38px;
-            transition: text-shadow 0.2s ease, color 0.2s ease, background 0.2s ease;
-        }
-
-        #globalnav li a:hover {
-            color: #fff;
-            background: linear-gradient(rgba(255,255,255,0.05), rgba(255,255,255,0));
-            text-shadow: 0 0 8px rgba(255, 255, 255, 0.8), 0 -1px 0 rgba(0,0,0,0.8);
-        }
-        
-        #globalnav li a.active { color: #fff; background: rgba(0,0,0,0.25); box-shadow: inset 0 2px 5px rgba(0,0,0,0.3); }
-
-        /* --- SKEUOMORPHIC PURPLE BUTTONS --- */
-        .sangaia-btn {
-            font-size: 0.9rem;
-            font-family: inherit;
-            height: 2.4em;
-            padding: 0 1.3em;
-            border-radius: 4px;
-            position: relative;
-            overflow: hidden;
-            cursor: pointer;
-            text-decoration: none;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            box-sizing: border-box;
-            background: linear-gradient(to bottom, #8e24aa 0%, #6a1b9a 50%, #4a148c 100%);
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.25), inset 0 1px 0 rgba(255,255,255,0.4);
-            border: 1px solid var(--purple-border);
-            color: white;
-            font-weight: bold;
-            transition: all 0.2s ease;
-            text-shadow: 0 -1px 0 rgba(0,0,0,0.4);
-        }
-
-        .sangaia-btn:hover {
-            background: linear-gradient(to bottom, #ab47bc 0%, #7b1fa2 50%, #512da8 100%);
-            box-shadow: 0 3px 8px rgba(106, 27, 154, 0.4), inset 0 1px 0 rgba(255,255,255,0.6);
-            transform: translateY(-1px);
-        }
-
-        .sangaia-btn:active {
-            transform: translateY(1px);
-            background: linear-gradient(to bottom, #4a148c 0%, #311b92 100%);
-            box-shadow: inset 0 2px 4px rgba(0,0,0,0.3);
-        }
-
-        .sangaia-btn.btn-secondary {
-            background: linear-gradient(to bottom, #ffffff 0%, #f3e5f5 100%);
-            border-color: #ba68c8;
-            color: var(--purple-dark);
-            text-shadow: 0 1px 0 #fff;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.1), inset 0 1px 0 #fff;
-        }
-
-        .sangaia-btn.btn-secondary:hover {
-            background: linear-gradient(to bottom, #fcfaff 0%, #e1bee7 100%);
-            color: var(--purple-primary);
-        }
-
-        /* --- CONTENT PANELS --- */
-        .content-wrapper {
-            padding: 30px;
-            width: 100%;
-            max-width: 1200px;
-            margin: 0 auto;
-            box-sizing: border-box;
-        }
-
-        .glass-panel {
-            background: linear-gradient(to bottom, #ffffff 0%, #fbf9fc 100%);
-            border: 1px solid #d1c4e9;
-            border-radius: 10px;
-            padding: 26px;
-            margin-bottom: 25px;
-            box-shadow: 0 3px 12px rgba(74, 20, 140, 0.06), inset 0 1px 0 #ffffff;
-            position: relative;
-        }
-
-        .glass-panel h2 {
-            margin: 0 0 15px 0;
-            color: var(--purple-primary);
-            border-bottom: 2px solid #ede7f6;
-            padding-bottom: 10px;
-            font-size: 1.45em;
-            letter-spacing: -0.3px;
-        }
-
-        /* --- HERO BANNER --- */
-        .work-hero-card {
-            background: linear-gradient(135deg, #4a148c 0%, #6a1b9a 50%, #311b92 100%);
-            color: white;
-            border-radius: 12px;
-            padding: 35px 30px;
-            margin-bottom: 30px;
-            box-shadow: 0 6px 20px rgba(74, 20, 140, 0.25), inset 0 1px 0 rgba(255,255,255,0.3);
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 25px;
-            flex-wrap: wrap;
-        }
-
-        .hero-text-col { max-width: 680px; }
-
-        .hero-badge {
-            display: inline-block;
-            background: rgba(255, 255, 255, 0.18);
-            border: 1px solid rgba(255, 255, 255, 0.35);
-            padding: 4px 12px;
-            border-radius: 20px;
-            font-size: 0.78rem;
-            font-weight: bold;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-            margin-bottom: 12px;
-        }
-
-        .hero-title {
-            font-size: 2.2rem;
-            margin: 0 0 12px 0;
-            letter-spacing: -0.5px;
-            line-height: 1.2;
-            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
-        }
-
-        .hero-sub {
-            font-size: 1.05rem;
-            opacity: 0.92;
-            line-height: 1.6;
-            margin-bottom: 22px;
-        }
-
-        .stat-ticker-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 15px;
-            margin-bottom: 30px;
-        }
-
-        .stat-ticker-box {
-            background: #ffffff;
-            border: 1px solid #d1c4e9;
-            border-radius: 8px;
-            padding: 16px 20px;
-            box-shadow: 0 2px 6px rgba(74, 20, 140, 0.05);
-            border-top: 4px solid var(--purple-primary);
-        }
-
-        .stat-label {
-            font-size: 0.78rem;
-            font-weight: 700;
-            color: #7e57c2;
-            text-transform: uppercase;
-            letter-spacing: 0.6px;
-            margin-bottom: 4px;
-        }
-
-        .stat-value {
-            font-size: 1.6rem;
-            font-weight: 800;
-            color: var(--purple-dark);
-        }
-
-        .stat-desc {
-            font-size: 0.8rem;
-            color: #666;
-            margin-top: 4px;
-        }
-
-        .data-table-wrapper { overflow-x: auto; margin: 15px 0; }
-        .work-table { width: 100%; border-collapse: collapse; font-size: 0.92rem; background: #ffffff; }
-        .work-table th, .work-table td { padding: 12px 16px; border: 1px solid #e1bee7; text-align: left; }
-        .work-table th {
-            background: linear-gradient(to bottom, #ede7f6 0%, #e1bee7 100%);
-            color: var(--purple-dark);
-            font-weight: bold;
-            font-size: 0.85rem;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-        .work-table tr:nth-child(even) { background: #faf7fc; }
-        .work-table tr:hover { background: #f3e5f5; }
-
-        .salary-badge {
-            font-weight: bold;
-            color: #2e7d32;
-            background: #e8f5e9;
-            padding: 3px 8px;
-            border-radius: 4px;
-            font-size: 0.88rem;
-            display: inline-block;
-        }
-
-        .need-badge {
-            font-size: 0.75rem;
-            font-weight: bold;
-            padding: 3px 8px;
-            border-radius: 12px;
-            display: inline-block;
-            text-transform: uppercase;
-        }
-
-        .need-critical { background: #ffebee; color: #c62828; border: 1px solid #ef9a9a; }
-        .need-high { background: #fff8e1; color: #f57f17; border: 1px solid #ffe082; }
-        .need-steady { background: #e8f5e9; color: #2e7d32; border: 1px solid #a5d6a7; }
-
-        .filter-bar {
-            display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 20px; align-items: center;
-            background: #f8f5fb; padding: 14px 18px; border-radius: 8px; border: 1px solid #e1bee7;
-        }
-        .filter-select, .filter-input {
-            padding: 8px 12px; border: 1px solid #ce93d8; border-radius: 5px; font-family: inherit; font-size: 0.88rem; background: #ffffff; color: #333;
-        }
-        .jobs-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 18px; }
-        .job-card {
-            background: #ffffff; border: 1px solid #e1bee7; border-radius: 8px; padding: 20px;
-            box-shadow: 0 2px 6px rgba(0,0,0,0.03); display: flex; flex-direction: column; justify-content: space-between;
-            transition: all 0.2s ease; border-left: 4px solid var(--purple-primary);
-        }
-        .job-card:hover { transform: translateY(-2px); box-shadow: 0 6px 16px rgba(106, 27, 154, 0.12); }
-        .job-card-header { display: flex; justify-content: space-between; align-items: flex-start; gap: 10px; margin-bottom: 8px; }
-        .job-title { font-size: 1.15rem; font-weight: bold; color: var(--purple-dark); margin: 0; }
-        .job-tags { display: flex; gap: 6px; flex-wrap: wrap; margin: 8px 0 12px 0; }
-        .job-tag { font-size: 0.75rem; padding: 2px 8px; border-radius: 4px; background: #ede7f6; color: var(--purple-primary); font-weight: 600; }
-        .job-salary-line { font-size: 1.05rem; font-weight: 800; color: #2e7d32; margin-bottom: 10px; }
-        .job-desc { font-size: 0.88rem; color: #555; line-height: 1.5; margin-bottom: 16px; flex-grow: 1; }
-
-        .app-form-grid { display: grid; grid-template-columns: 1fr; gap: 16px; }
-        @media (min-width: 600px) {
-            .app-form-grid { grid-template-columns: 1fr 1fr; }
-            .col-span-2 { grid-column: span 2; }
-        }
-        .form-label { display: block; font-size: 0.82rem; font-weight: bold; color: var(--purple-dark); margin-bottom: 5px; text-transform: uppercase; letter-spacing: 0.5px; }
-        .form-control { width: 100%; padding: 10px 12px; border: 1px solid #ce93d8; border-radius: 5px; font-family: inherit; font-size: 0.92rem; background: #ffffff; color: #333; }
-
-        .modal-overlay {
-            display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0, 0, 0, 0.5); backdrop-filter: blur(4px); z-index: 1000;
-            align-items: center; justify-content: center; padding: 20px;
-        }
-        .modal-overlay.show { display: flex; }
-        .modal-card {
-            background: #ffffff; border-radius: 10px; max-width: 600px; width: 100%; max-height: 90vh;
-            overflow-y: auto; padding: 30px; box-shadow: 0 10px 30px rgba(0,0,0,0.3); border-top: 6px solid var(--purple-primary);
-        }
-
-        footer {
-            text-align: center; padding: 25px; font-size: 0.9em; background: rgba(255, 255, 255, 0.7);
-            border-top: 1px solid #e1bee7; margin-top: auto; width: 100%; color: #666;
-        }
-    </style>
+    <title>Ministry of Work :: Sangaia Live</title>
+    <link rel="stylesheet" href="/css/sangaia-live.css">
+    <script src="/js/sangaia-live.js" defer></script>
 </head>
-<body>
+<body class="theme-work">
 
-<div class="main-container">
-
-    <!-- GLOBAL NAVIGATION HEADER -->
-    <nav id="globalheader">
-        <div style="position: absolute; left: 15px; display: flex; align-items: center; height: 100%;">
-            <img src="media/nav_logo.png" style="height: 22px; width: auto;" alt="Logo">
-        </div>
-        <div style="position: absolute; right: 15px; display: flex; align-items: center; gap: 15px; height: 100%; z-index: 100;">
-            <div id="auth-widget">
-                <a href="id.html" style="color: #bbb; text-decoration: none; font-size: 11px; font-weight: bold; letter-spacing: 0.5px; padding: 3px 8px; border: 1px solid #444; border-radius: 4px; background: linear-gradient(to bottom, #555, #333); box-shadow: 0 1px 2px rgba(0,0,0,0.3); transition: all 0.2s ease;">Sangaia ID</a>
+<!-- Top Live Mast Banner -->
+<div class="wl-mast">
+    <div class="ol-container wl-mast-inner">
+        <div class="ol-header-top">
+            <div class="ol-logo">
+                <a href="/index.html" aria-label="Sangaia Live Sovereign Portal">
+                    <svg viewBox="0 0 90 90" width="22" height="22" fill="currentColor">
+                        <rect x="0" y="0" width="41" height="41" rx="2"/>
+                        <rect x="49" y="0" width="41" height="41" rx="2"/>
+                        <rect x="0" y="49" width="41" height="41" rx="2"/>
+                        <rect x="49" y="49" width="41" height="41" rx="2"/>
+                    </svg>
+                    <span><b>Sangaia</b> Live</span>
+                </a>
             </div>
-            <a href="sgn/work.html" style="color: #bbb; text-decoration: none; font-size: 11px; font-weight: bold; letter-spacing: 0.5px; padding: 3px 8px; border: 1px solid #444; border-radius: 4px; background: linear-gradient(to bottom, #555, #333); box-shadow: 0 1px 2px rgba(0,0,0,0.3); transition: all 0.2s ease;">Сангаиан</a>
+            <div class="ol-header-tools">
+                <form class="ol-search" id="headerSearchForm" action="/services.html" method="get">
+                    <input type="text" id="headerSearch" name="q" placeholder="Search government &amp; services" aria-label="Search">
+                    <button type="submit" class="ol-search-bing" aria-label="Search">&#x1F50E;</button>
+                </form>
+                
+                <a class="ol-icon-btn" href="/services.html" title="Notifications">
+                    <svg width="16" height="16" viewBox="0 0 16 16"><path fill="currentColor" d="M8 1.5c-2.4 0-4 1.9-4 4.2v3L2.7 11c-.3.4 0 1 .5 1h9.6c.5 0 .8-.6.5-1L12 8.7v-3c0-2.3-1.6-4.2-4-4.2zm0 13c1 0 1.8-.7 2-1.5H6c.2.8 1 1.5 2 1.5z"/></svg>
+                    <span class="ol-badge">3</span>
+                </a>
+                <a class="ol-icon-btn" href="/services.html" title="Citizen Messages">
+                    <svg width="16" height="16" viewBox="0 0 16 16"><path fill="currentColor" d="M2 3h12c.6 0 1 .4 1 1v7c0 .6-.4 1-1 1H9l-3.4 2.6c-.4.3-.9 0-.9-.5V12H2c-.6 0-1-.4-1-1V4c0-.6.4-1 1-1z"/></svg>
+                    <span class="ol-badge">1</span>
+                </a>
+                <div class="ol-me">
+                    <div class="ol-me-chip" id="meChip">
+                        <span class="ol-avatar sm">
+                            <img src="/images/1.jpeg" alt="Citizen Profile">
+                            <span class="ol-presence-dot"></span>
+                        </span>
+                        <span class="ol-me-name">Jqackkk</span>
+                        <span class="ol-me-caret">&#9660;</span>
+                    </div>
+                    <div class="ol-me-menu" id="meMenu" style="display:none; position:absolute; right:0; top:36px; background:#fff; border:1px solid #dfe3e7; border-radius:3px; box-shadow:0 2px 8px rgba(0,0,0,0.15); width:180px; z-index:1000; padding:6px 0;">
+                        <div style="padding:4px 12px; font-size:11px; font-weight:700; color:#64748b; text-transform:uppercase;">Citizen ID: SG-2026-F1E8</div>
+                        <a href="/id.html" style="display:block; padding:5px 12px; color:#2a2a2a; font-size:13px;">Sangaia ID Card</a>
+                        <a href="/citizenship.html" style="display:block; padding:5px 12px; color:#2a2a2a; font-size:13px;">Citizenship Status</a>
+                        <a href="/units.html" style="display:block; padding:5px 12px; color:#2a2a2a; font-size:13px;">Units &amp; Measures</a>
+                        <div style="border-top:1px solid #edf0f3; margin:4px 0;"></div>
+                        <a href="/index.html" style="display:block; padding:5px 12px; color:#2a2a2a; font-size:13px;">Federal Home</a>
+                    </div>
+                </div>
+            </div>
         </div>
-        <ul id="globalnav">
-            <li><a href="index.html">Home</a></li>
-            <li><a href="work_departments.html">Departments</a></li>
-            <li><a href="#overview">Overview</a></li>
-            <li><a href="#pay-standards">Wage Standards ($)</a></li>
-            <li><a href="#job-needs">Labor Needs</a></li>
-            <li><a href="#job-openings">Job Market</a></li>
-            <li><a href="#work-permits" class="active">Work Permits</a></li>
-            <li><a href="#applications">Applications</a></li>
-            <li><a href="services.html">All Ministries</a></li>
+
+        <div class="ol-band">
+            <div class="ol-band-inner">
+                <h1>Ministry of Work</h1>
+                <p class="ol-band-sub">Labor protections, living wage standards, national job placement & worker guilds</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Main Top Nav Tabs (One Live Bar) -->
+<div class="wl-tabs">
+    <div class="ol-container wl-tabs-inner">
+        <ul class="ol-nav" id="primaryNav">
+            <li><a href="/index.html">Home</a></li>
+            <li><a href="/executive.html">Executive</a></li>
+            <li><a href="/treasury.html">Treasury</a></li>
+            <li class="ol-current"><a href="/work.html">Work</a></li>
+            <li><a href="/healthcare.html">Healthcare</a></li>
+            <li><a href="/education.html">Education</a></li>
+            <li><a href="/domesticaffairs.html">Domestic</a></li>
+            <li><a href="/externalaffairs.html">External</a></li>
+            <li><a href="/environment.html">Environment</a></li>
+            <li><a href="/propaganda.html">Propaganda</a></li>
+            <li><a href="/services.html">Services</a></li>
+            <li><a href="/units.html">Units (Мн • °Пт)</a></li>
+            
         </ul>
-    </nav>
+    </div>
+</div>
 
-    <div class="content-wrapper">
-
-        <!-- PURPLE HERO BANNER -->
-        <div class="work-hero-card" id="overview">
-            <div class="hero-text-col">
-                <span class="hero-badge">United Provinces of Sangaia &bull; Executive Branch</span>
-                <h1 class="hero-title">Ministry of Work</h1>
-                <p class="hero-sub">
-                    Overseeing national labor rights, competitive compensation in Sangaian Dollars, statutory employment standards, work permit authorizations, and provincial workplace development.
-                </p>
-                <div style="display: flex; gap: 12px; flex-wrap: wrap;">
-                    <a href="#work-permits" class="sangaia-btn"><span>Apply for a Work Permit &rarr;</span></a>
-                    <a href="#job-openings" class="sangaia-btn btn-secondary"><span>Browse Job Openings</span></a>
+<!-- Main Content Grid -->
+<div class="ol-container ol-main">
+    <div class="ol-with-sidebar">
+        <!-- Left Sidebar Navigation -->
+        <div class="ol-sidebar-nav">
+            <div class="ol-card ol-profile-card" style="text-align: center;">
+                <span class="ol-avatar lg">
+                    <img src="/images/1.jpeg" alt="Emblem">
+                    <span class="ol-presence-dot"></span>
+                </span>
+                <div class="ol-mt-10">
+                    <strong>Ministry of Work</strong><br>
+                    <span class="ol-muted ol-small">Labor Standards Authority</span><br>
+                    <span class="ol-small" style="color:var(--ol-accent); font-weight:600;">Standards Active</span>
                 </div>
             </div>
 
-            <div style="text-align: center;">
-                <img src="media/sangaia_seal.png" alt="Seal of Sangaia" style="height: 110px; width: auto; filter: drop-shadow(0 4px 8px rgba(0,0,0,0.3));">
-                <div style="font-size: 0.78rem; font-weight: bold; text-transform: uppercase; letter-spacing: 1.5px; margin-top: 8px; opacity: 0.85;">Federal Labor Registry</div>
-            </div>
+            <span class="ol-sidenav-label">Portal Navigation</span>
+            <ul class="ol-sidenav">
+                <li><a href="#overview" class="sel">Overview & Labor Standards</a></li>
+<li><a href="#pay-standards">Wage Calculator</a></li>
+<li><a href="#job-needs">National Job Needs</a></li>
+<li><a href="#job-openings">Official Job Board</a></li>
+<li><a href="#work-permits">Work Permits & Visas</a></li>
+<li><a href="#whistleblower">Guilds & Whistleblowers</a></li>
+<li><a href="/work_departments.html">Departments Portal →</a></li>
+
+            </ul>
+
+            <span class="ol-sidenav-label">Federal Network</span>
+            <ul class="ol-sidenav">
+                <li><a href="/index.html">Federal Home</a></li>
+                <li><a href="/services.html">All Services</a></li>
+                <li><a href="/units.html">Units (Мн &bull; &deg;Пт)</a></li>
+                <li><a href="/societal_press.html">Societal Press</a></li>
+            </ul>
         </div>
 
-        <!-- STAT TICKERS -->
-        <div class="stat-ticker-grid">
-            <div class="stat-ticker-box">
-                <div class="stat-label">National Average Salary</div>
-                <div class="stat-value">$ 68,450</div>
-                <div class="stat-desc">Per year across all provincial sectors</div>
-            </div>
+        <!-- Center Content -->
+        <div class="ol-content">
+            
+    <div class="ol-status-bubble" id="overview">
+        &ldquo;Labor is the bedrock of sovereign prosperity. Every full-time worker in Sangaia is guaranteed a dignified living wage, comprehensive health protection, and democratic guild representation.&rdquo;
+        <div class="ol-status-date">Ministry of Work &bull; Updated Today</div>
+    </div>
 
-            <div class="stat-ticker-box">
-                <div class="stat-label">Statutory Minimum Wage</div>
-                <div class="stat-value">$ 24.50 <span style="font-size:0.9rem; color:#666;">/ hr</span></div>
-                <div class="stat-desc">Index-linked to living essentials</div>
-            </div>
+    <!-- Living Wage Standards & Net Salary Calculator -->
+    <div class="ol-card" id="pay-standards">
+        <div class="ol-card-title">
+            <span>Statutory Living Wage Standards &amp; Interactive Net Pay Calculator</span>
+            <span class="ol-badge-tag ol-badge-success">Statutory Floor: $25.00 / hr</span>
+        </div>
+        <p class="ol-small">In Sangaia, the minimum wage is tied directly to the cost of local housing and nutrition. Under the Fair Compensation Act, the federal statutory wage floor is <strong>$ 25.00 / hr</strong> ($ 52,000 / year base).</p>
 
-            <div class="stat-ticker-box">
-                <div class="stat-label">National Unemployment Rate</div>
-                <div class="stat-value" style="color: #2e7d32;">2.8%</div>
-                <div class="stat-desc">Full-employment policy target</div>
+        <div style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:3px; padding:14px; margin-top:10px;">
+            <div style="display:flex; flex-wrap:wrap; align-items:center; gap:14px;">
+                <div style="flex:1 1 200px;">
+                    <label class="form-label">Gross Annual Salary ($):</label>
+                    <input type="number" class="ol-input" id="calcGross" value="65000" step="1000" oninput="calcNetWage()">
+                </div>
+                <div style="flex:1 1 200px;">
+                    <label class="form-label">Provincial Residence:</label>
+                    <select class="ol-select" id="calcProv" onchange="calcNetWage()">
+                        <option value="NJ">New Jasper (0% Provincial Income Tax)</option>
+                        <option value="NM">New Madison (0% Provincial Income Tax)</option>
+                        <option value="LV">Liveland (0% Provincial Income Tax)</option>
+                        <option value="ST">Sentinel (0% Provincial Income Tax)</option>
+                        <option value="CO">Columbia (0% Provincial Income Tax)</option>
+                    </select>
+                </div>
             </div>
-
-            <div class="stat-ticker-box">
-                <div class="stat-label">Active Job Openings</div>
-                <div class="stat-value">1,420+</div>
-                <div class="stat-desc">Across all 5 Sangaian provinces</div>
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-top:14px; padding-top:10px; border-top:1px dashed #cbd5e1;">
+                <div>
+                    <div class="ol-small ol-muted">Estimated Take-Home (Net of Universal Healthcare &amp; Solidarity Fund):</div>
+                    <div style="font-size:22px; font-weight:700; color:#166534;" id="calcNetVal">$ 53,300.00 / year</div>
+                </div>
+                <div class="ol-badge-tag ol-badge-success">Healthcare &amp; Pension 100% Covered</div>
             </div>
         </div>
+    </div>
 
-        <!-- SECTION 1: JOB PAY & SALARY STANDARDS IN SANGAIAN DOLLARS ($) -->
-        <div class="glass-panel" id="pay-standards">
-            <h2>Statutory Pay & Wage Standards (in Sangaian Dollars $)</h2>
-            <p>
-                In accordance with the <strong>Sangaian Fair Labor & Economic Dignity Statute</strong>, all registered employers must compensate workers in official <strong>Sangaian Dollars ($)</strong>. Furthermore, under the Sangaian Constitution, the federal tax ceiling is legally capped at a maximum of 20%, ensuring workers retain the vast majority of their earnings.
-            </p>
+    <!-- National Job Openings Board -->
+    <div class="ol-card" id="job-openings">
+        <div class="ol-card-title">
+            <span>Official National Job Placement Board</span>
+            <span class="ol-badge-tag">Verified Public &amp; Cooperative Tenders</span>
+        </div>
+        <div style="display:flex; flex-wrap:wrap; gap:10px; margin-bottom:12px;">
+            <input type="text" class="ol-input" id="jobSearch" placeholder="Filter by job title, guild, or skill..." style="flex:1 1 220px;" oninput="filterJobList()">
+            <select class="ol-select" id="sectorFilter" style="flex:0 0 160px;" onchange="filterJobList()">
+                <option value="all">All Sectors</option>
+                <option value="healthcare">Healthcare</option>
+                <option value="engineering">Engineering</option>
+                <option value="education">Education</option>
+                <option value="agriculture">Agriculture</option>
+            </select>
+            <select class="ol-select" id="provFilter" style="flex:0 0 140px;" onchange="filterJobList()">
+                <option value="all">All 5 Provinces</option>
+                <option value="New Jasper">New Jasper</option>
+                <option value="New Madison">New Madison</option>
+                <option value="Liveland">Liveland</option>
+                <option value="Sentinel">Sentinel</option>
+                <option value="Columbia">Columbia</option>
+            </select>
+        </div>
 
-            <div class="data-table-wrapper">
-                <table class="work-table">
-                    <thead>
-                        <tr>
-                            <th>Economic Sector</th>
-                            <th>Entry-Level (Annual)</th>
-                            <th>Mid-Career Median</th>
-                            <th>Senior / Specialized</th>
-                            <th>Statutory Hourly Base</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td><strong>Healthcare, Medicine & Epidemiology</strong></td>
-                            <td>$ 62,000</td>
-                            <td><span class="salary-badge">$ 98,500</span></td>
-                            <td>$ 165,000+</td>
-                            <td>$ 34.00 – $ 78.00 / hr</td>
-                        </tr>
-                        <tr>
-                            <td><strong>Technology, Cryptography & Systems</strong></td>
-                            <td>$ 70,000</td>
-                            <td><span class="salary-badge">$ 112,000</span></td>
-                            <td>$ 190,000+</td>
-                            <td>$ 38.00 – $ 92.00 / hr</td>
-                        </tr>
-                        <tr>
-                            <td><strong>Civil Engineering & Energy Infrastructure</strong></td>
-                            <td>$ 58,000</td>
-                            <td><span class="salary-badge">$ 89,000</span></td>
-                            <td>$ 145,000+</td>
-                            <td>$ 32.00 – $ 70.00 / hr</td>
-                        </tr>
-                        <tr>
-                            <td><strong>Maritime Navigation, Canal & Port Logistics</strong></td>
-                            <td>$ 54,000</td>
-                            <td><span class="salary-badge">$ 82,500</span></td>
-                            <td>$ 130,000+</td>
-                            <td>$ 29.50 – $ 64.00 / hr</td>
-                        </tr>
-                        <tr>
-                            <td><strong>Public Administration & Aeretocratic Civil Service</strong></td>
-                            <td>$ 52,000</td>
-                            <td><span class="salary-badge">$ 76,000</span></td>
-                            <td>$ 120,000+</td>
-                            <td>$ 28.00 – $ 58.00 / hr</td>
-                        </tr>
-                        <tr>
-                            <td><strong>Education, Academia & Vocational Training</strong></td>
-                            <td>$ 50,000</td>
-                            <td><span class="salary-badge">$ 74,000</span></td>
-                            <td>$ 115,000+</td>
-                            <td>$ 27.50 – $ 55.00 / hr</td>
-                        </tr>
-                        <tr>
-                            <td><strong>Skilled Construction, Metallurgy & Trades</strong></td>
-                            <td>$ 48,000</td>
-                            <td><span class="salary-badge">$ 71,500</span></td>
-                            <td>$ 98,000+</td>
-                            <td>$ 26.00 – $ 47.00 / hr</td>
-                        </tr>
-                        <tr>
-                            <td><strong>Agriculture, Forestry & Aquaculture</strong></td>
-                            <td>$ 44,000</td>
-                            <td><span class="salary-badge">$ 63,000</span></td>
-                            <td>$ 88,000+</td>
-                            <td>$ 24.50 – $ 42.00 / hr</td>
-                        </tr>
-                    </tbody>
+        <div id="jobListContainer">
+            <div class="ol-card job-item" data-sector="healthcare" data-prov="New Jasper" style="margin-bottom:8px; background:#fbfcfd;">
+                <div style="display:flex; justify-content:space-between; align-items:flex-start;">
+                    <div>
+                        <strong style="font-size:14px;">Senior Trauma Registered Nurse &bull; Emergency Response</strong>
+                        <div class="ol-small ol-muted">New Jasper Central Hospital &bull; New Jasper &bull; $ 84,000 / yr</div>
+                    </div>
+                    <button type="button" class="ol-btn ol-btn-sm" onclick="applyJob('Senior Trauma Nurse', 'New Jasper Central Hospital')">Apply Now</button>
+                </div>
+            </div>
+
+            <div class="ol-card job-item" data-sector="engineering" data-prov="Sentinel" style="margin-bottom:8px; background:#fbfcfd;">
+                <div style="display:flex; justify-content:space-between; align-items:flex-start;">
+                    <div>
+                        <strong style="font-size:14px;">Geothermal Subsurface Mechanical Engineer</strong>
+                        <div class="ol-small ol-muted">Highland Clean Energy Authority &bull; Sentinel &bull; $ 96,000 / yr</div>
+                    </div>
+                    <button type="button" class="ol-btn ol-btn-sm" onclick="applyJob('Geothermal Engineer', 'Highland Clean Energy')">Apply Now</button>
+                </div>
+            </div>
+
+            <div class="ol-card job-item" data-sector="agriculture" data-prov="New Madison" style="margin-bottom:8px; background:#fbfcfd;">
+                <div style="display:flex; justify-content:space-between; align-items:flex-start;">
+                    <div>
+                        <strong style="font-size:14px;">Hydroponic Cooperative Agronomist &amp; Crop Lead</strong>
+                        <div class="ol-small ol-muted">Madison Valley Food Cooperative &bull; New Madison &bull; $ 72,000 / yr</div>
+                    </div>
+                    <button type="button" class="ol-btn ol-btn-sm" onclick="applyJob('Hydroponic Agronomist', 'Madison Valley Food Co-op')">Apply Now</button>
+                </div>
+            </div>
+
+            <div class="ol-card job-item" data-sector="education" data-prov="Columbia" style="margin-bottom:8px; background:#fbfcfd;">
+                <div style="display:flex; justify-content:space-between; align-items:flex-start;">
+                    <div>
+                        <strong style="font-size:14px;">Secondary STEM &amp; Digital Ethics Instructor</strong>
+                        <div class="ol-small ol-muted">Columbia City Unified School District &bull; Columbia &bull; $ 68,000 / yr</div>
+                    </div>
+                    <button type="button" class="ol-btn ol-btn-sm" onclick="applyJob('STEM Instructor', 'Columbia Unified Schools')">Apply Now</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Work Permits & Visa Eligibility -->
+    <div class="ol-card" id="work-permits">
+        <div class="ol-card-title">
+            <span>Work Permit &amp; Cross-Border Credential Transfer</span>
+            <button type="button" class="ol-btn ol-btn-sm" onclick="openPermitModal()">Submit Work Permit Request</button>
+        </div>
+        <p class="ol-small">Foreign skilled professionals seeking employment in Sangaia may submit their academic and apprenticeship credentials for expedited credential reciprocity under the Sovereign Labor Standards Act.</p>
+        <div class="ol-grid-3" style="margin-top:10px;">
+            <div class="ol-metric-box">
+                <div class="ol-metric-val">3 Tiers</div>
+                <div class="ol-metric-lbl">Visa Classes (A, B, C)</div>
+            </div>
+            <div class="ol-metric-box">
+                <div class="ol-metric-val">10 Days</div>
+                <div class="ol-metric-lbl">Statutory Evaluation Window</div>
+            </div>
+            <div class="ol-metric-box">
+                <div class="ol-metric-val">100%</div>
+                <div class="ol-metric-lbl">Equal Labor Wage Protections</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Guilds & Whistleblowers -->
+    <div class="ol-card" id="whistleblower">
+        <div class="ol-card-title">
+            <span>Worker Guild Registry &amp; Anonymous Whistleblower Portal</span>
+            <button type="button" class="ol-btn ol-btn-sm" onclick="openWhistleblowerModal()">File Confidential Report</button>
+        </div>
+        <p class="ol-small">Every registered enterprise operating in Sangaia with 10 or more employees must recognize democratic worker guild councils. Retaliation against whistleblowers carries immediate commercial license suspension.</p>
+    </div>
+    
+        </div>
+
+        <!-- Right Sidebar (Telemetry & Quick Actions) -->
+        <div class="ol-sidebar">
+            <div class="ol-note">Official Government of the Sovereign Republic of Sangaia. All administrative systems active.</div>
+
+            <div class="ol-sidebox">
+                <h3>Sovereign Telemetry</h3>
+                <div style="font-size:12.5px; line-height:1.6;">
+                    <div><strong>Currency:</strong> Sangaian Dollar ($)</div>
+                    <div><strong>Standard Temp:</strong> 22.5&deg;Пт (25&deg;C / 77&deg;F)</div>
+                    <div><strong>Standard Metric:</strong> 1 Мн = 2.5 cm</div>
+                    <div><strong>Active Provinces:</strong> 5 Territories</div>
+                </div>
+            </div>
+
+            <div class="ol-sidebox">
+                <h3>Provincial Weather (&deg;Пт)</h3>
+                <table class="ol-table" style="font-size:12px; margin:0;">
+                    <tr><td>New Jasper</td><td style="text-align:right;"><strong>20.5&deg;Пт</strong> (Sunny)</td></tr>
+                    <tr><td>New Madison</td><td style="text-align:right;"><strong>22.0&deg;Пт</strong> (Clear)</td></tr>
+                    <tr><td>Liveland</td><td style="text-align:right;"><strong>19.8&deg;Пт</strong> (Breezy)</td></tr>
+                    <tr><td>Sentinel</td><td style="text-align:right;"><strong>16.2&deg;Пт</strong> (Cool)</td></tr>
+                    <tr><td>Columbia</td><td style="text-align:right;"><strong>23.4&deg;Пт</strong> (Mild)</td></tr>
                 </table>
             </div>
 
-            <!-- Interactive Salary & Tax Calculator -->
-            <div style="background: #f8f5fb; border: 1px solid #d1c4e9; border-radius: 8px; padding: 20px; margin-top: 20px;">
-                <h3 style="margin-top:0; color: var(--purple-primary); font-size: 1.15rem;">Sangaian Dollar Take-Home Salary Calculator</h3>
-                <p style="font-size: 0.88rem; color: #555; margin-bottom: 15px;">
-                    Test your estimated net income in Sangaia. The constitutional tax ceiling prevents effective taxation exceeding 20.0%.
-                </p>
-                <div style="display: flex; gap: 15px; align-items: center; flex-wrap: wrap;">
-                    <div>
-                        <label class="form-label">Gross Salary (in $):</label>
-                        <input type="number" id="calc-gross" value="75000" step="1000" class="form-control" style="width: 200px;" oninput="calculateNetSalary()">
-                    </div>
-                    <div style="background: white; border: 1px solid #ce93d8; border-radius: 6px; padding: 10px 18px;">
-                        <span style="font-size: 0.8rem; color: #666; font-weight: bold;">ESTIMATED NET ANNUAL TAKE-HOME:</span><br>
-                        <span id="calc-net-display" style="font-size: 1.4rem; font-weight: 800; color: #2e7d32;">$ 60,000.00</span>
-                        <span style="font-size: 0.75rem; color: #7e57c2; margin-left: 8px;">(Max 20% Tax Cap Applied)</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- SECTION 2: JOB NEED (PRIORITY LABOR SHORTAGES) -->
-        <div class="glass-panel" id="job-needs">
-            <h2>National Labor Needs & Priority Shortages</h2>
-            <p>
-                The Ministry of Work maintains a dynamic **Priority Skills Index** to ensure vital provincial infrastructure, healthcare networks, and technological sectors remain adequately staffed. Foreign professionals qualifying under Priority Need categories receive **expedited 5-day work permit processing** and resettlement allowances.
-            </p>
-
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 18px; margin-top: 20px;">
-                <div style="background: #ffffff; border: 1px solid #ef9a9a; border-radius: 8px; padding: 18px; border-left: 5px solid #c62828;">
-                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
-                        <span class="need-badge need-critical">Critical Need (Tier 1)</span>
-                        <span style="font-size: 0.8rem; font-weight: bold; color: #c62828;">Expedited 5-Day Visa</span>
-                    </div>
-                    <h3 style="margin: 0 0 8px 0; color: #b71c1c; font-size: 1.1rem;">Emergency & Specialty Healthcare</h3>
-                    <ul style="margin: 0; padding-left: 20px; font-size: 0.88rem; color: #444; line-height: 1.6;">
-                        <li>Infectious Disease Specialists & Epidemiologists (DDCR)</li>
-                        <li>Intensive Care & Surgical Nurses</li>
-                        <li>Clinical Laboratory Virologists</li>
-                    </ul>
-                </div>
-
-                <div style="background: #ffffff; border: 1px solid #ffe082; border-radius: 8px; padding: 18px; border-left: 5px solid #f57f17;">
-                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
-                        <span class="need-badge need-high">High Demand (Tier 2)</span>
-                        <span style="font-size: 0.8rem; font-weight: bold; color: #f57f17;">Priority Allocation</span>
-                    </div>
-                    <h3 style="margin: 0 0 8px 0; color: #e65100; font-size: 1.1rem;">Engineering & Technical Trade</h3>
-                    <ul style="margin: 0; padding-left: 20px; font-size: 0.88rem; color: #444; line-height: 1.6;">
-                        <li>Hydroelectric & High-Voltage Grid Engineers</li>
-                        <li>High-Speed Maglev & Rail Technicians</li>
-                        <li>Certified Commercial Welders & Machinists</li>
-                    </ul>
-                </div>
-
-                <div style="background: #ffffff; border: 1px solid #ce93d8; border-radius: 8px; padding: 18px; border-left: 5px solid var(--purple-primary);">
-                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
-                        <span class="need-badge" style="background:#ede7f6; color:#512da8; border:1px solid #ce93d8;">Strategic Growth (Tier 3)</span>
-                        <span style="font-size: 0.8rem; font-weight: bold; color: #512da8;">Fast-Track Permit</span>
-                    </div>
-                    <h3 style="margin: 0 0 8px 0; color: var(--purple-dark); font-size: 1.1rem;">Cryptographic Systems & Aerospace</h3>
-                    <ul style="margin: 0; padding-left: 20px; font-size: 0.88rem; color: #444; line-height: 1.6;">
-                        <li>Distributed Ledger & Sovereign Cryptographers</li>
-                        <li>Aviation Safety & Air Traffic Controllers</li>
-                        <li>Environmental Hydrology Specialists</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-
-        <!-- SECTION 3: JOB AVAILABILITY & ACTIVE VACANCIES -->
-        <div class="glass-panel" id="job-openings">
-            <h2>Provincial Job Market & Active Openings</h2>
-            <p>
-                Browse verified employment opportunities offered by licensed Sangaian public institutions and authorized private enterprises. Applicants holding a valid Sangaia ID can apply instantly with their registered credentials.
-            </p>
-
-            <div class="filter-bar">
-                <input type="text" id="job-search" placeholder="Search by job title, sector, keyword..." class="filter-input" style="flex-grow: 1; min-width: 220px;" oninput="filterJobs()">
-                
-                <select id="sector-filter" class="filter-select" onchange="filterJobs()">
-                    <option value="">All Sectors</option>
-                    <option value="Healthcare">Healthcare & Medicine</option>
-                    <option value="Engineering">Engineering & Grid</option>
-                    <option value="Technology">Technology & Cryptography</option>
-                    <option value="Maritime">Maritime & Logistics</option>
-                    <option value="Education">Education & Training</option>
-                    <option value="Public">Civil Service</option>
-                </select>
-
-                <select id="province-filter" class="filter-select" onchange="filterJobs()">
-                    <option value="">All Provinces</option>
-                    <option value="Veridia">Veridia Central</option>
-                    <option value="Nova Sangaia">Nova Sangaia</option>
-                    <option value="Maritime">Maritime Coast</option>
-                    <option value="Northern">Northern Highlands</option>
-                </select>
-            </div>
-
-            <div class="jobs-grid" id="jobs-container"></div>
-        </div>
-
-        <!-- SECTION 4: WORK PERMIT APPLICATIONS -->
-        <div class="glass-panel" id="work-permits">
-            <h2>Work Permit Applications & Visa Authorization</h2>
-            <p>
-                Non-citizen professionals and skilled tradespeople must hold an active Work Permit issued by the Ministry of Work before engaging in gainful employment within the United Provinces of Sangaia. Applications are reviewed under strict meritocratic standards.
-            </p>
-
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 15px; margin-bottom: 25px;">
-                <div style="background: #fdfcfe; border: 1px solid #d1c4e9; border-radius: 6px; padding: 15px;">
-                    <strong style="color: var(--purple-primary);">Class A: Skilled Professional</strong>
-                    <p style="font-size: 0.82rem; color: #555; margin: 4px 0 0 0;">For foreign professionals holding formal university degrees or accredited professional credentials.</p>
-                </div>
-                <div style="background: #fdfcfe; border: 1px solid #d1c4e9; border-radius: 6px; padding: 15px;">
-                    <strong style="color: var(--purple-primary);">Class B: Seasonal & Maritime</strong>
-                    <p style="font-size: 0.82rem; color: #555; margin: 4px 0 0 0;">Valid for 6–12 months for agricultural harvests, canal maritime transit, and construction projects.</p>
-                </div>
-                <div style="background: #fdfcfe; border: 1px solid #d1c4e9; border-radius: 6px; padding: 15px;">
-                    <strong style="color: var(--purple-primary);">Class S: Priority Shortage Track</strong>
-                    <p style="font-size: 0.82rem; color: #555; margin: 4px 0 0 0;">Expedited 5-day approval for candidates applying to Tier-1 critical need sectors.</p>
-                </div>
-                <div style="background: #fdfcfe; border: 1px solid #d1c4e9; border-radius: 6px; padding: 15px;">
-                    <strong style="color: var(--purple-primary);">Class D: Remote Digital Specialist</strong>
-                    <p style="font-size: 0.82rem; color: #555; margin: 4px 0 0 0;">For global remote professionals resident in Sangaia providing services outside national borders.</p>
-                </div>
-            </div>
-
-            <form id="permit-form" onsubmit="handlePermitSubmit(event)" style="background: #faf8fc; border: 1px solid #ce93d8; border-radius: 8px; padding: 25px;">
-                <h3 style="margin-top: 0; color: var(--purple-dark); border-bottom: 1px solid #e1bee7; padding-bottom: 8px;">
-                    Official Work Permit Application (Form WP-01)
-                </h3>
-                
-                <div class="app-form-grid">
-                    <div>
-                        <label class="form-label">Permit Classification *</label>
-                        <select id="permit-class" class="form-control" required>
-                            <option value="Class A">Class A: Skilled Foreign Professional (General)</option>
-                            <option value="Class S">Class S: Critical Labor Shortage (Expedited 5-Day)</option>
-                            <option value="Class B">Class B: Temporary Seasonal & Maritime Trade</option>
-                            <option value="Class D">Class D: Remote Digital Service Authorization</option>
-                        </select>
-                    </div>
-
-                    <div>
-                        <label class="form-label">Full Legal Name *</label>
-                        <input type="text" id="permit-name" class="form-control" required placeholder="As shown on Passport / Sangaia ID">
-                    </div>
-
-                    <div>
-                        <label class="form-label">Email Address *</label>
-                        <input type="email" id="permit-email" class="form-control" required placeholder="contact@domain.com">
-                    </div>
-
-                    <div>
-                        <label class="form-label">Passport / Sangaia ID Number *</label>
-                        <input type="text" id="permit-id-num" class="form-control" required placeholder="e.g. SGN-XXXX or Passport ID">
-                    </div>
-
-                    <div>
-                        <label class="form-label">Country of Current Citizenship *</label>
-                        <input type="text" id="permit-citizenship" class="form-control" required placeholder="e.g. United Kingdom, USA, etc.">
-                    </div>
-
-                    <div>
-                        <label class="form-label">Intended Province of Employment *</label>
-                        <select id="permit-province" class="form-control" required>
-                            <option value="Veridia Central">Veridia Central Province</option>
-                            <option value="Nova Sangaia">Nova Sangaia Province</option>
-                            <option value="Maritime Coast">Maritime Coast Province</option>
-                            <option value="Northern Highlands">Northern Highlands Province</option>
-                            <option value="Federal Jurisdiction">Federal Jurisdiction (Multi-Province)</option>
-                        </select>
-                    </div>
-
-                    <div>
-                        <label class="form-label">Prospective Sponsoring Employer or Enterprise</label>
-                        <input type="text" id="permit-employer" class="form-control" placeholder="e.g. Sangaia Central Hospital, Maritime Authority">
-                    </div>
-
-                    <div>
-                        <label class="form-label">Primary Profession / Field *</label>
-                        <input type="text" id="permit-profession" class="form-control" required placeholder="e.g. Structural Engineer, Nurse, Software Developer">
-                    </div>
-
-                    <div class="col-span-2">
-                        <label class="form-label">Summary of Experience & Qualifications *</label>
-                        <textarea id="permit-summary" class="form-control" rows="3" required placeholder="Detail your relevant work experience, highest degree, certifications, and licenses..."></textarea>
-                    </div>
-                </div>
-
-                <div style="margin-top: 20px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 15px;">
-                    <div style="font-size: 0.8rem; color: #666;">
-                        <strong>Filing Fee:</strong> $ 0.00 (Fully state-subsidized by the Sangaian Executive).
-                    </div>
-                    <button type="submit" class="sangaia-btn" id="permit-submit-btn">
-                        <span>Submit Work Permit Application &rarr;</span>
-                    </button>
-                </div>
-            </form>
-        </div>
-
-        <!-- SECTION 5: OTHER WORK-RELATED APPLICATIONS -->
-        <div class="glass-panel" id="applications">
-            <h2>Other Work-Related Applications & Registrations</h2>
-            <p>
-                Access specialized regulatory forms, professional certification evaluations, workplace dispute arbitrations, and vocational retraining grants.
-            </p>
-
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 18px; margin-top: 15px;">
-                <div style="background: white; border: 1px solid #d1c4e9; border-radius: 8px; padding: 20px; border-top: 3px solid var(--purple-primary);">
-                    <h3 style="margin-top: 0; color: var(--purple-dark); font-size: 1.1rem;">Form WP-02: Trade & Professional License Recognition</h3>
-                    <p style="font-size: 0.85rem; color: #555;">
-                        Foreign degree and trade license verification. Ensures credentials in medicine, engineering, electrical, or law satisfy Sangaian parity.
-                    </p>
-                    <button type="button" class="sangaia-btn btn-secondary" onclick="openGenericAppModal('Form WP-02: Trade & Professional License Recognition')">
-                        <span>Open Application Form</span>
-                    </button>
-                </div>
-
-                <div style="background: white; border: 1px solid #d1c4e9; border-radius: 8px; padding: 20px; border-top: 3px solid var(--purple-primary);">
-                    <h3 style="margin-top: 0; color: var(--purple-dark); font-size: 1.1rem;">Form WP-03: Provincial Union & Labor Board Registry</h3>
-                    <p style="font-size: 0.85rem; color: #555;">
-                        Register a collective bargaining unit, certify a workplace safety council, or petition the Federal Labor Ombudsman.
-                    </p>
-                    <button type="button" class="sangaia-btn btn-secondary" onclick="openGenericAppModal('Form WP-03: Provincial Union & Labor Board Registry')">
-                        <span>Register Union Unit</span>
-                    </button>
-                </div>
-
-                <div style="background: white; border: 1px solid #d1c4e9; border-radius: 8px; padding: 20px; border-top: 3px solid var(--purple-primary);">
-                    <h3 style="margin-top: 0; color: var(--purple-dark); font-size: 1.1rem;">Form WP-04: Workplace Grievance & Wage Claim</h3>
-                    <p style="font-size: 0.85rem; color: #555;">
-                        Confidential filing for unpaid overtime, unsafe working conditions, or employer breaches of the Sangaian Fair Labor Charter.
-                    </p>
-                    <button type="button" class="sangaia-btn btn-secondary" onclick="openGenericAppModal('Form WP-04: Workplace Grievance & Wage Claim')">
-                        <span>File Formal Grievance</span>
-                    </button>
-                </div>
-
-                <div style="background: white; border: 1px solid #d1c4e9; border-radius: 8px; padding: 20px; border-top: 3px solid var(--purple-primary);">
-                    <h3 style="margin-top: 0; color: var(--purple-dark); font-size: 1.1rem;">Form WP-05: Vocational Retraining & Apprentice Grant</h3>
-                    <p style="font-size: 0.85rem; color: #555;">
-                        State educational subsidy providing up to $ 5,000 for workers transitioning into Tier-1 high-need technical or medical vocations.
-                    </p>
-                    <button type="button" class="sangaia-btn btn-secondary" onclick="openGenericAppModal('Form WP-05: Vocational Retraining & Apprentice Grant')">
-                        <span>Apply for Retraining Grant</span>
-                    </button>
-                </div>
-            </div>
-        </div>
-
-    </div>
-
-    <!-- APPLICATION CONFIRMATION MODAL -->
-    <div class="modal-overlay" id="app-modal">
-        <div class="modal-card">
-            <h3 style="color: var(--purple-dark); margin-top: 0;" id="modal-app-title">Application Submitted</h3>
-            <div id="modal-app-body" style="font-size: 0.95rem; color: #333; line-height: 1.6; margin: 15px 0;"></div>
-            <div style="text-align: right; margin-top: 20px;">
-                <button type="button" class="sangaia-btn" onclick="closeAppModal()"><span>Close Window</span></button>
-            </div>
-        </div>
-    </div>
-
-    <!-- GENERIC APPLICATION FORM MODAL -->
-    <div class="modal-overlay" id="generic-modal">
-        <div class="modal-card">
-            <h3 style="color: var(--purple-dark); margin-top: 0;" id="generic-modal-title">Application Form</h3>
-            <p style="font-size: 0.85rem; color: #666;">Filing directly with the Sangaian Federal Ministry of Work.</p>
             
-            <form onsubmit="handleGenericModalSubmit(event)">
-                <div class="form-group" style="margin-bottom: 12px;">
-                    <label class="form-label">Applicant Full Legal Name *</label>
-                    <input type="text" id="gen-name" class="form-control" required placeholder="Full Name">
-                </div>
-                <div class="form-group" style="margin-bottom: 12px;">
-                    <label class="form-label">Sangaia ID or Email *</label>
-                    <input type="text" id="gen-contact" class="form-control" required placeholder="citizen@sangaia.org">
-                </div>
-                <div class="form-group" style="margin-bottom: 12px;">
-                    <label class="form-label">Declaration / Statement of Claim *</label>
-                    <textarea id="gen-details" class="form-control" rows="4" required placeholder="Provide details regarding your request, qualifications, or claim..."></textarea>
-                </div>
-                <div style="display: flex; justify-content: flex-end; gap: 10px; margin-top: 18px;">
-                    <button type="button" class="sangaia-btn btn-secondary" onclick="closeGenericModal()"><span>Cancel</span></button>
-                    <button type="submit" class="sangaia-btn"><span>Submit Formal Registration</span></button>
-                </div>
-            </form>
+    <div class="ol-sidebox">
+        <h3>Work &amp; Labor Portal</h3>
+        <p class="ol-small ol-muted">Access whistleblower tools, union registry, job placement, and international work credential evaluations.</p>
+        <div class="ol-mt-10">
+            <a href="/work_departments.html" class="ol-btn ol-btn-primary ol-btn-sm" style="width:100%; text-align:center;">Launch Work Departments</a>
         </div>
     </div>
-
-    <footer>
-        &copy; 2026 United Provinces of Sangaia. All Rights Reserved.<br>
-        <span style="font-size: 0.85em; color: #888;">Ministry of Work &bull; Department of Labor Standards & Sovereign Employment</span>
-    </footer>
+    
+        </div>
+    </div>
 </div>
 
-<!-- SCRIPTS -->
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-<script src="auth.js"></script>
 
-<script>
-    const JOBS_DATA = [
-        {
-            id: 1,
-            title: "Senior Epidemiological Surveillance Officer",
-            sector: "Healthcare",
-            province: "Veridia",
-            type: "Full-Time (Civil Service)",
-            salary: "$ 115,000 – $ 140,000 / yr",
-            need: "Critical Need",
-            desc: "Join the DDCR to oversee airborne pathogen tracking, clinical trial evaluations, and provincial pandemic preparedness protocols."
-        },
-        {
-            id: 2,
-            title: "High-Voltage Grid & Hydroelectric Specialist",
-            sector: "Engineering",
-            province: "Northern",
-            type: "Full-Time",
-            salary: "$ 92,000 – $ 118,000 / yr",
-            need: "Critical Need",
-            desc: "Maintain and upgrade the provincial clean-energy electrical grid, turbine synchronization, and regional transformer infrastructure."
-        },
-        {
-            id: 3,
-            title: "Maritime Canal Pilot & Harbor Controller",
-            sector: "Maritime",
-            province: "Maritime",
-            type: "Full-Time",
-            salary: "$ 88,000 – $ 125,000 / yr",
-            need: "High Demand",
-            desc: "Direct foreign and domestic commercial vessel transit along the Sangaian Maritime Canal and Port of Veridia waterways."
-        },
-        {
-            id: 4,
-            title: "Cryptographic Identity & Security Architect",
-            sector: "Technology",
-            province: "Veridia",
-            type: "Full-Time",
-            salary: "$ 130,000 – $ 175,000 / yr",
-            need: "High Demand",
-            desc: "Design and verify zero-knowledge cryptographic authentication protocols for the Sangaia ID citizen vault network."
-        },
-        {
-            id: 5,
-            title: "Clinical Nurse Specialist (Emergency & Trauma)",
-            sector: "Healthcare",
-            province: "Nova Sangaia",
-            type: "Full-Time (Hospital)",
-            salary: "$ 78,000 – $ 98,000 / yr",
-            need: "Critical Need",
-            desc: "Provide critical nursing care at Nova Sangaia Provincial Hospital with guaranteed provincial housing allowance."
-        },
-        {
-            id: 6,
-            title: "High-Speed Rail Mechanical Maintenance Technician",
-            sector: "Engineering",
-            province: "Veridia",
-            type: "Full-Time",
-            salary: "$ 68,000 – $ 85,000 / yr",
-            need: "High Demand",
-            desc: "Inspect, test, and repair high-speed maglev and passenger electric rail trainsets across inter-provincial corridors."
-        },
-        {
-            id: 7,
-            title: "Vocational Instructor in Advanced Metallurgy & CNC",
-            sector: "Education",
-            province: "Nova Sangaia",
-            type: "Full-Time",
-            salary: "$ 74,000 – $ 92,000 / yr",
-            need: "Steady Growth",
-            desc: "Instruct apprentice trade students in precision lathe operation, robotic welding, and blueprint metallurgy."
-        },
-        {
-            id: 8,
-            title: "Constitutional Legal Research Exegete",
-            sector: "Public",
-            province: "Veridia",
-            type: "Contract / Fellowship",
-            salary: "$ 80,000 – $ 105,000 / yr",
-            need: "Steady Growth",
-            desc: "Conduct archival jurisprudential analysis, statutory exegesis, and legislative codification for the Aeretocratic Council."
-        }
-    ];
-
-    function renderJobs(list) {
-        const container = document.getElementById('jobs-container');
-        if (!container) return;
-        if (list.length === 0) {
-            container.innerHTML = '<p style="color: #666; grid-column: span 2; text-align: center; padding: 20px;">No job vacancies match your filter criteria.</p>';
-            return;
-        }
-
-        let html = '';
-        list.forEach(j => {
-            const needClass = j.need === 'Critical Need' ? 'need-critical' : (j.need === 'High Demand' ? 'need-high' : 'need-steady');
-            html += `
-                <div class="job-card">
-                    <div>
-                        <div class="job-card-header">
-                            <h4 class="job-title">${j.title}</h4>
-                            <span class="need-badge ${needClass}">${j.need}</span>
-                        </div>
-                        <div class="job-tags">
-                            <span class="job-tag">${j.sector}</span>
-                            <span class="job-tag">${j.province} Province</span>
-                            <span class="job-tag">${j.type}</span>
-                        </div>
-                        <div class="job-salary-line">${j.salary}</div>
-                        <p class="job-desc">${j.desc}</p>
-                    </div>
-                    <div>
-                        <button type="button" class="sangaia-btn" style="width: 100%; font-size: 0.85rem;" onclick="applyForJob('${j.title.replace(/'/g, "\\'")}', '${j.salary}')">
-                            <span>Apply with Sangaia ID &rarr;</span>
-                        </button>
-                    </div>
-                </div>
-            `;
-        });
-        container.innerHTML = html;
-    }
-
-    function filterJobs() {
-        const q = (document.getElementById('job-search').value || '').toLowerCase();
-        const sector = document.getElementById('sector-filter').value;
-        const prov = document.getElementById('province-filter').value;
-
-        const filtered = JOBS_DATA.filter(j => {
-            const matchesText = j.title.toLowerCase().includes(q) || j.desc.toLowerCase().includes(q) || j.sector.toLowerCase().includes(q);
-            const matchesSector = !sector || j.sector === sector;
-            const matchesProv = !prov || j.province.includes(prov);
-            return matchesText && matchesSector && matchesProv;
-        });
-
-        renderJobs(filtered);
-    }
-
-    function applyForJob(title, salary) {
-        const modal = document.getElementById('app-modal');
-        document.getElementById('modal-app-title').textContent = "Application Submitted: " + title;
-        document.getElementById('modal-app-body').innerHTML = `
-            <div style="background:#f3e5f5; border:1px solid #ce93d8; border-radius:6px; padding:15px; margin-bottom:15px;">
-                <strong>Role:</strong> ${title}<br>
-                <strong>Compensation:</strong> ${salary} (Sangaian Dollars)<br>
-                <strong>Application Status:</strong> Received & Verified
+    <!-- Job Apply Modal -->
+    <div class="ol-modal-overlay" id="jobApplyModal">
+        <div class="ol-modal-dialog">
+            <div class="ol-modal-head">
+                <span class="ol-modal-title" id="jobApplyTitle">Job Application</span>
+                <button type="button" class="ol-modal-close" onclick="closeModal('jobApplyModal')">&times;</button>
             </div>
-            <p>Your verified Sangaia ID credentials and educational transcripts have been forwarded to the provincial hiring authority.</p>
-            <p><strong>Tracking Reference:</strong> <code style="color:#512da8; font-weight:bold;">SGN-JOB-2026-${Math.random().toString(36).substring(2,7).toUpperCase()}</code></p>
-        `;
-        modal.classList.add('show');
-    }
-
-    function calculateNetSalary() {
-        const gross = parseFloat(document.getElementById('calc-gross').value) || 0;
-        const maxTax = gross * 0.20;
-        const net = gross - maxTax;
-        document.getElementById('calc-net-display').textContent = '$ ' + net.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
-    }
-
-    function handlePermitSubmit(e) {
-        e.preventDefault();
-        const cls = document.getElementById('permit-class').value;
-        const name = document.getElementById('permit-name').value;
-        const prof = document.getElementById('permit-profession').value;
-        const prov = document.getElementById('permit-province').value;
-        const refCode = `WP-2026-${Math.random().toString(36).substring(2, 7).toUpperCase()}`;
-
-        document.getElementById('modal-app-title').textContent = "Work Permit Application Lodged";
-        document.getElementById('modal-app-body').innerHTML = `
-            <div style="background:#e8f5e9; border:1px solid #81c784; border-radius:6px; padding:15px; margin-bottom:15px; color:#1b5e20;">
-                <strong>Status:</strong> Successfully Registered with Federal Labor Board<br>
-                <strong>Permit Category:</strong> ${cls}<br>
-                <strong>Application Tracking ID:</strong> <code>${refCode}</code>
+            <div class="form-group">
+                <label class="form-label">Full Legal Name</label>
+                <input type="text" class="ol-input" id="ja-name" placeholder="Citizen Legal Name">
             </div>
-            <p>Thank you, <strong>${name}</strong>. Your work permit petition for <strong>${prof}</strong> in <strong>${prov}</strong> has been officially logged.</p>
-            <p>Under statutory guidelines, decisions are rendered within 5–10 business days. You may track this application in your Sangaia ID Vault.</p>
-        `;
+            <div class="form-group">
+                <label class="form-label">Sangaia ID / Foreign Passport ID</label>
+                <input type="text" class="ol-input" id="ja-id" placeholder="SG-XXXX or Passport Number">
+            </div>
+            <div class="form-group">
+                <label class="form-label">Summary of Experience &amp; Certifications</label>
+                <textarea class="ol-textarea" id="ja-exp" rows="3" placeholder="Brief qualifications..."></textarea>
+            </div>
+            <div class="modal-results-box" id="jaResults"></div>
+            <div class="ol-modal-foot">
+                <button type="button" class="ol-btn" onclick="closeModal('jobApplyModal')">Cancel</button>
+                <button type="button" class="ol-btn ol-btn-primary" onclick="submitJobApply()">Submit Application</button>
+            </div>
+        </div>
+    </div>
 
-        document.getElementById('app-modal').classList.add('show');
-        document.getElementById('permit-form').reset();
+    <!-- Permit Modal -->
+    <div class="ol-modal-overlay" id="permitModal">
+        <div class="ol-modal-dialog">
+            <div class="ol-modal-head">
+                <span class="ol-modal-title">Foreign Work Permit Eligibility Submission</span>
+                <button type="button" class="ol-modal-close" onclick="closeModal('permitModal')">&times;</button>
+            </div>
+            <div class="form-group">
+                <label class="form-label">Applicant Name &amp; Nationality</label>
+                <input type="text" class="ol-input" id="p-name" placeholder="Full name and current citizenship">
+            </div>
+            <div class="form-group">
+                <label class="form-label">Profession / Specialty Field</label>
+                <input type="text" class="ol-input" id="p-prof" placeholder="e.g., Mechanical Engineer, Nurse, Agronomist">
+            </div>
+            <div class="form-group">
+                <label class="form-label">Target Province of Employment</label>
+                <select class="ol-select" id="p-prov">
+                    <option>New Jasper</option><option>New Madison</option><option>Liveland</option><option>Sentinel</option><option>Columbia</option>
+                </select>
+            </div>
+            <div class="modal-results-box" id="pResults"></div>
+            <div class="ol-modal-foot">
+                <button type="button" class="ol-btn" onclick="closeModal('permitModal')">Cancel</button>
+                <button type="button" class="ol-btn ol-btn-primary" onclick="submitPermit()">Submit Credential File</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Whistleblower Modal -->
+    <div class="ol-modal-overlay" id="whistleModal">
+        <div class="ol-modal-dialog">
+            <div class="ol-modal-head">
+                <span class="ol-modal-title">Anonymous Whistleblower Labor Protection Docket</span>
+                <button type="button" class="ol-modal-close" onclick="closeModal('whistleModal')">&times;</button>
+            </div>
+            <div class="form-group">
+                <label class="form-label">Employer / Enterprise Name</label>
+                <input type="text" class="ol-input" id="w-emp" placeholder="Company or Facility name">
+            </div>
+            <div class="form-group">
+                <label class="form-label">Labor Violation Category</label>
+                <select class="ol-select" id="w-cat">
+                    <option>Underpayment of Statutory Living Wage</option>
+                    <option>Workplace Safety Negligence</option>
+                    <option>Union / Guild Suppression</option>
+                    <option>Unfair Retaliation</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label class="form-label">Confidential Violation Summary</label>
+                <textarea class="ol-textarea" id="w-desc" rows="4" placeholder="Detail the violation..."></textarea>
+            </div>
+            <div class="modal-results-box" id="wResults"></div>
+            <div class="ol-modal-foot">
+                <button type="button" class="ol-btn" onclick="closeModal('whistleModal')">Cancel</button>
+                <button type="button" class="ol-btn ol-btn-primary" onclick="submitWhistle()">Submit Protected Docket</button>
+            </div>
+        </div>
+    </div>
+    
+
+<!-- Floating Citizen Dock -->
+<div class="ol-dock">
+    <button type="button" class="ol-dock-tab" id="olDockMessages">
+        <svg width="15" height="15" viewBox="0 0 16 16"><path fill="currentColor" d="M2 3h12c.6 0 1 .4 1 1v7c0 .6-.4 1-1 1H9l-3.4 2.6c-.4.3-.9 0-.9-.5V12H2c-.6 0-1-.4-1-1V4c0-.6.4-1 1-1z"/></svg>
+        <span>Live Citizen Support</span>
+    </button>
+    <div class="ol-dock-list" id="olDockList">
+        <div class="ol-dock-list-head">
+            <span>Sangaia Citizen Assistance</span>
+            <a href="javascript:void(0)" id="olDockListClose" style="color:#64748b; font-size:16px;">&times;</a>
+        </div>
+        <div class="ol-dock-list-body">
+            <a class="ol-dock-item" href="/services.html"><strong>Online Inquiries:</strong> File petition or request</a>
+            <a class="ol-dock-item" href="/units.html"><strong>Unit Calculations:</strong> Monomer &amp; Panotherm</a>
+            <a class="ol-dock-item" href="/citizenship.html"><strong>Citizenship Registry:</strong> Check docket status</a>
+            <a class="ol-dock-item" href="/id.html"><strong>Sangaia ID:</strong> Digital identity card</a>
+        </div>
+    </div>
+</div>
+
+<!-- Footer -->
+<div class="ol-footer">
+    <div class="ol-container ol-footer-inner">
+        <p class="ol-footer-copy">&copy; 2026 Sovereign Republic of Sangaia. One Live Wave 4 Infrastructure.</p>
+        <ul class="ol-footer-links">
+            <li><a href="/index.html">Home</a></li>
+            <li><a href="/government.html">Government Structure</a></li>
+            <li><a href="/services.html">Services</a></li>
+            <li><a href="/societal_press.html">Gazette</a></li>
+            <li><a href="/units.html">Units System</a></li>
+            <li><a href="/about.html">About Sangaia</a></li>
+        </ul>
+    </div>
+</div>
+
+
+    <script>
+    function calcNetWage() {
+        const gross = parseFloat(document.getElementById('calcGross').value) || 0;
+        const taxRate = gross > 100000 ? 0.22 : (gross > 60000 ? 0.18 : 0.12);
+        const net = gross * (1 - taxRate);
+        document.getElementById('calcNetVal').innerText = '$ ' + net.toLocaleString(undefined, {minimumFractionDigits:2, maximumFractionDigits:2}) + ' / year';
     }
 
-    let currentGenericTitle = "";
-    function openGenericAppModal(title) {
-        currentGenericTitle = title;
-        document.getElementById('generic-modal-title').textContent = title;
-        document.getElementById('generic-modal').classList.add('show');
+    function filterJobList() {
+        const q = (document.getElementById('jobSearch').value || '').toLowerCase();
+        const sec = document.getElementById('sectorFilter').value;
+        const prov = document.getElementById('provFilter').value;
+
+        document.querySelectorAll('.job-item').forEach(el => {
+            const elSec = el.getAttribute('data-sector');
+            const elProv = el.getAttribute('data-prov');
+            const elText = el.innerText.toLowerCase();
+
+            const matchQ = !q || elText.includes(q);
+            const matchSec = sec === 'all' || elSec === sec;
+            const matchProv = prov === 'all' || elProv === prov;
+
+            el.style.display = (matchQ && matchSec && matchProv) ? 'block' : 'none';
+        });
     }
 
-    function closeGenericModal() {
-        document.getElementById('generic-modal').classList.remove('show');
+    function applyJob(title, emp) {
+        document.getElementById('jobApplyTitle').innerText = 'Apply: ' + title;
+        document.getElementById('jobApplyModal').classList.add('active');
     }
 
-    function handleGenericModalSubmit(e) {
-        e.preventDefault();
-        closeGenericModal();
-        const ref = `SGN-REG-${Math.random().toString(36).substring(2,7).toUpperCase()}`;
-        document.getElementById('modal-app-title').textContent = "Registration Complete";
-        document.getElementById('modal-app-body').innerHTML = `
-            <p>Your filing for <strong>${currentGenericTitle}</strong> has been received by the Ministry of Work.</p>
-            <p><strong>Official Reference Number:</strong> <code>${ref}</code></p>
-            <p>A confirmation notice has been dispatched to your provided contact record.</p>
-        `;
-        document.getElementById('app-modal').classList.add('show');
+    function openPermitModal() { document.getElementById('permitModal').classList.add('active'); }
+    function openWhistleblowerModal() { document.getElementById('whistleModal').classList.add('active'); }
+    function closeModal(id) { document.getElementById(id).classList.remove('active'); }
+
+    function submitJobApply() {
+        const res = document.getElementById('jaResults');
+        const token = 'JOB-APP-' + Math.floor(100000 + Math.random() * 900000);
+        res.innerHTML = `<strong>Application Recorded:</strong> Tracking Code: <span style="font-family:monospace;">${token}</span>. Sent to Hiring Guild.`;
+        res.classList.add('active');
     }
 
-    function closeAppModal() {
-        document.getElementById('app-modal').classList.remove('show');
+    function submitPermit() {
+        const res = document.getElementById('pResults');
+        const token = 'VISA-CRED-' + Math.floor(100000 + Math.random() * 900000);
+        res.innerHTML = `<strong>Permit Request Registered:</strong> Reference Code: <span style="font-family:monospace;">${token}</span>. 10-day evaluation active.`;
+        res.classList.add('active');
     }
 
-    async function checkAuthPrefill() {
-        if (window.supabase && window.supabase.auth) {
-            try {
-                const { data: { session } } = await window.supabase.auth.getSession();
-                if (session && session.user) {
-                    const { data: citizen } = await window.supabase
-                        .from('sangaia_citizens')
-                        .select('*')
-                        .eq('id', session.user.id)
-                        .single();
-
-                    const name = citizen?.full_name || session.user.user_metadata?.full_name;
-                    if (name) {
-                        const nameField = document.getElementById('permit-name');
-                        const emailField = document.getElementById('permit-email');
-                        const idField = document.getElementById('permit-id-num');
-                        if (nameField) nameField.value = name;
-                        if (emailField) emailField.value = session.user.email;
-                        if (idField && citizen?.sangaia_id_number) idField.value = citizen.sangaia_id_number;
-                    }
-                }
-            } catch(e) {}
-        }
+    function submitWhistle() {
+        const res = document.getElementById('wResults');
+        const token = 'WHISTLE-' + Math.floor(100000 + Math.random() * 900000);
+        res.innerHTML = `<strong>Whistleblower Docket Secured:</strong> Cryptographic Hash: <span style="font-family:monospace;">${token}</span>. Assigned to Labor Ombudsman.`;
+        res.classList.add('active');
     }
+    </script>
+    
 
-    document.addEventListener('DOMContentLoaded', () => {
-        renderJobs(JOBS_DATA);
-        calculateNetSalary();
-        checkAuthPrefill();
-    });
-</script>
 </body>
 </html>

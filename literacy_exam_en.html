@@ -2,2150 +2,274 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Official English Literacy Examination - Sangaia</title>
-    <style>
-        /* --- FRUTIGER AERO / SKEUOMORPHIC STYLES --- */
-        :root {
-            --glass-blue: rgba(220, 245, 255, 0.92);
-            --gloss-highlight: rgba(255, 255, 255, 0.95);
-            --ocean-blue: #0077be;
-            --ocean-dark: #004c80;
-            --fresh-green: #2e7d32;
-            --alert-red: #c62828;
-            --text-dark: #2c3e50;
-            --text-light: #ffffff;
-            --card-border: #c8d9e6;
-        }
-
-        * { box-sizing: border-box; }
-
-        body {
-            background: #eef5fa radial-gradient(circle at 50% 0%, #ffffff 0%, #e2eef7 100%) no-repeat fixed;
-            min-height: 100dvh;
-            width: 100%;
-            margin: 0;
-            font-family: 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-            color: var(--text-dark);
-            line-height: 1.6;
-        }
-
-        /* --- GLOBAL NAVIGATION HEADER --- */
-        #globalheader {
-            display: flex;
-            align-items: center;
-            position: relative;
-            width: 100%;
-            height: 38px;
-            background: linear-gradient(to bottom, #5e5e5e 0%, #3e3e3e 50%, #2d2d2d 51%, #1f1f1f 100%);
-            border-top: 1px solid #222;
-            border-bottom: 1px solid #000;
-            box-shadow: inset 0 1px 0 rgba(255,255,255,0.15), 0 2px 4px rgba(0,0,0,0.2);
-            font-size: 11px;
-            z-index: 101;
-        }
-
-        #globalnav {
-            flex-grow: 1;
-            margin: 0;
-            padding: 0;
-            list-style: none;
-            display: flex;
-            justify-content: center;
-            height: 100%;
-        }
-
-        #globalnav li { position: relative; height: 100%; display: flex; align-items: center; }
-        #globalnav li::after {
-            content: ""; position: absolute; right: 0; width: 1px; height: 100%;
-            background: linear-gradient(to bottom, #333, #111); box-shadow: 1px 0 0 rgba(255,255,255,0.08);
-        }
-        #globalnav li:first-child::before {
-            content: ""; position: absolute; left: 0; width: 1px; height: 100%;
-            background: linear-gradient(to bottom, #333, #111); box-shadow: 1px 0 0 rgba(255,255,255,0.08);
-        }
-
-        #globalnav li a {
-            display: block; color: #e8e8e8; text-decoration: none; text-shadow: 0 -1px 0 rgba(0,0,0,0.8);
-            font-weight: bold; padding: 0 20px; line-height: 38px;
-            transition: text-shadow 0.2s ease, color 0.2s ease, background 0.2s ease;
-        }
-
-        #globalnav li a:hover {
-            color: #fff;
-            background: linear-gradient(rgba(255,255,255,0.05), rgba(255,255,255,0));
-            text-shadow: 0 0 8px rgba(255, 255, 255, 0.8), 0 -1px 0 rgba(0,0,0,0.8);
-        }
-        
-        #globalnav li a.active { color: #fff; background: rgba(0,0,0,0.25); box-shadow: inset 0 2px 5px rgba(0,0,0,0.3); }
-
-        /* --- STICKY EXAM STATUS HUD --- */
-        .exam-hud {
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            background: rgba(255, 255, 255, 0.94);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border-bottom: 2px solid #0077be;
-            box-shadow: 0 4px 18px rgba(0, 76, 128, 0.12), inset 0 1px 0 rgba(255,255,255,0.9);
-            padding: 10px 20px;
-            transition: all 0.3s ease;
-        }
-
-        .hud-content {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 15px;
-            flex-wrap: wrap;
-        }
-
-        .hud-title-col {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .hud-title-col img {
-            height: 34px;
-            width: auto;
-            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.15));
-        }
-
-        .hud-exam-title {
-            font-size: 1.05rem;
-            font-weight: bold;
-            color: #004c80;
-            line-height: 1.2;
-        }
-
-        .hud-exam-sub {
-            font-size: 0.75rem;
-            color: #607d8b;
-            text-transform: uppercase;
-            letter-spacing: 0.8px;
-        }
-
-        .hud-center-col {
-            display: flex;
-            align-items: center;
-            gap: 20px;
-            flex-grow: 1;
-            justify-content: center;
-        }
-
-        .timer-box {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            background: linear-gradient(to bottom, #ffffff 0%, #f0f7fb 100%);
-            border: 1px solid #b0cbe0;
-            padding: 6px 14px;
-            border-radius: 6px;
-            box-shadow: inset 0 1px 0 #fff, 0 2px 4px rgba(0,0,0,0.06);
-        }
-
-        .timer-label {
-            font-size: 0.72rem;
-            font-weight: bold;
-            color: #546e7a;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-
-        .timer-display {
-            font-family: 'Courier New', Courier, monospace;
-            font-size: 1.45rem;
-            font-weight: bold;
-            color: #0077be;
-            letter-spacing: 1px;
-        }
-
-        .timer-display.timer-warning {
-            color: #d32f2f !important;
-            animation: pulse-warn 1.5s infinite;
-        }
-
-        @keyframes pulse-warn {
-            0% { opacity: 1; }
-            50% { opacity: 0.5; }
-            100% { opacity: 1; }
-        }
-
-        .progress-box {
-            min-width: 200px;
-            flex-grow: 1;
-            max-width: 320px;
-        }
-
-        .progress-text {
-            display: flex;
-            justify-content: space-between;
-            font-size: 0.75rem;
-            font-weight: bold;
-            color: #455a64;
-            margin-bottom: 4px;
-        }
-
-        .progress-bar-bg {
-            height: 10px;
-            background: #dce7f0;
-            border-radius: 5px;
-            overflow: hidden;
-            box-shadow: inset 0 1px 3px rgba(0,0,0,0.15);
-        }
-
-        .progress-bar-fill {
-            height: 100%;
-            width: 0%;
-            background: linear-gradient(to bottom, #68d8d6 0%, #07b1ca 50%, #0077be 100%);
-            border-radius: 5px;
-            transition: width 0.3s ease;
-            box-shadow: 0 1px 2px rgba(0,0,0,0.2);
-        }
-
-        .hud-actions-col {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        /* --- SECTION JUMP PILLS --- */
-        .section-nav-bar {
-            background: #f1f7fc;
-            border-bottom: 1px solid #d0e0ed;
-            padding: 6px 20px;
-            display: flex;
-            justify-content: center;
-            gap: 8px;
-            flex-wrap: wrap;
-            font-size: 0.8rem;
-        }
-
-        .section-pill {
-            text-decoration: none;
-            color: #00558f;
-            background: #ffffff;
-            border: 1px solid #bcdcfa;
-            border-radius: 20px;
-            padding: 4px 12px;
-            font-weight: 600;
-            box-shadow: 0 1px 2px rgba(0,0,0,0.04);
-            transition: all 0.2s ease;
-        }
-
-        .section-pill:hover {
-            background: #0077be;
-            color: #ffffff;
-            border-color: #0077be;
-            box-shadow: 0 2px 5px rgba(0,119,190,0.3);
-        }
-
-        /* --- BUTTONS --- */
-        .sangaia-btn {
-            font-size: 0.9rem;
-            font-family: inherit;
-            height: 2.3em;
-            padding: 0 1.2em;
-            border-radius: 5px;
-            position: relative;
-            cursor: pointer;
-            text-decoration: none;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            box-sizing: border-box;
-            background: linear-gradient(to bottom, #4ba3e3 0%, #0077be 50%, #00558f 100%);
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2), inset 0 1px 0 rgba(255,255,255,0.4);
-            border: 1px solid #004c80;
-            color: white;
-            font-weight: bold;
-            transition: all 0.2s ease;
-            text-shadow: 0 -1px 0 rgba(0,0,0,0.4);
-        }
-
-        .sangaia-btn:hover {
-            background: linear-gradient(to bottom, #5cb0ef 0%, #0988d8 50%, #0066aa 100%);
-            box-shadow: 0 3px 8px rgba(0, 119, 190, 0.35), inset 0 1px 0 rgba(255,255,255,0.6);
-            transform: translateY(-1px);
-        }
-
-        .sangaia-btn:active {
-            transform: translateY(1px);
-            box-shadow: inset 0 2px 4px rgba(0,0,0,0.3);
-        }
-
-        .sangaia-btn.btn-submit {
-            background: linear-gradient(to bottom, #34a853 0%, #2e7d32 50%, #1b5e20 100%);
-            border-color: #1b5e20;
-            box-shadow: 0 2px 5px rgba(46, 125, 50, 0.35), inset 0 1px 0 rgba(255,255,255,0.4);
-        }
-
-        .sangaia-btn.btn-submit:hover {
-            background: linear-gradient(to bottom, #43b863 0%, #388e3c 50%, #256f2a 100%);
-            box-shadow: 0 3px 8px rgba(46, 125, 50, 0.45);
-        }
-
-        .sangaia-btn.btn-secondary {
-            background: linear-gradient(to bottom, #ffffff 0%, #e6eff5 100%);
-            border-color: #b0cbe0;
-            color: #004c80;
-            text-shadow: 0 1px 0 #fff;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.08), inset 0 1px 0 #fff;
-        }
-
-        .sangaia-btn.btn-secondary:hover {
-            background: linear-gradient(to bottom, #f5faff 0%, #d8e8f5 100%);
-            color: #0077be;
-        }
-
-        /* --- MAIN LAYOUT --- */
-        .content-wrapper {
-            max-width: 1100px;
-            margin: 25px auto 60px auto;
-            padding: 0 20px;
-        }
-
-        .glass-panel {
-            background: linear-gradient(to bottom, #ffffff 0%, #f9fbfd 100%);
-            border: 1px solid var(--card-border);
-            border-radius: 10px;
-            padding: 30px;
-            margin-bottom: 25px;
-            box-shadow: 0 4px 14px rgba(0, 76, 128, 0.06), inset 0 1px 0 #ffffff;
-            position: relative;
-        }
-
-        .portal-header {
-            text-align: center;
-            border-bottom: 1px solid #d5e5f2;
-            padding-bottom: 25px;
-            margin-bottom: 25px;
-        }
-
-        .portal-header .seal-img {
-            height: 75px;
-            width: auto;
-            margin-bottom: 12px;
-            filter: drop-shadow(0 3px 6px rgba(0,0,0,0.12));
-        }
-
-        .portal-header h1 {
-            margin: 5px 0 10px 0;
-            font-size: 2.1rem;
-            color: #004c80;
-            text-shadow: 0 1px 0 #ffffff;
-            letter-spacing: -0.5px;
-        }
-
-        .portal-header p {
-            max-width: 800px;
-            margin: 0 auto;
-            font-size: 0.95rem;
-            color: #455a64;
-        }
-
-        /* Candidate Registration Card */
-        .candidate-card {
-            background: linear-gradient(to bottom, #f0f7fc 0%, #e4eff8 100%);
-            border: 1px solid #b8d4ea;
-            border-radius: 8px;
-            padding: 20px 24px;
-            margin-bottom: 30px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 20px;
-            flex-wrap: wrap;
-        }
-
-        .candidate-field {
-            display: flex;
-            flex-direction: column;
-            gap: 6px;
-            flex-grow: 1;
-            min-width: 260px;
-        }
-
-        .candidate-field label {
-            font-size: 0.8rem;
-            font-weight: bold;
-            color: #004c80;
-            text-transform: uppercase;
-            letter-spacing: 0.6px;
-        }
-
-        .candidate-field input {
-            padding: 9px 14px;
-            font-size: 0.95rem;
-            font-family: inherit;
-            border: 1px solid #9cbdd6;
-            border-radius: 5px;
-            background: #ffffff;
-            box-shadow: inset 0 1px 3px rgba(0,0,0,0.06);
-            color: #2c3e50;
-        }
-
-        .candidate-field input:focus {
-            outline: none;
-            border-color: #0077be;
-            box-shadow: 0 0 0 3px rgba(0, 119, 190, 0.25);
-        }
-
-        /* --- SECTION HEADERS --- */
-        .section-header-banner {
-            background: linear-gradient(to right, #0077be 0%, #00558f 100%);
-            color: white;
-            padding: 18px 24px;
-            border-radius: 8px;
-            margin: 40px 0 25px 0;
-            box-shadow: 0 3px 10px rgba(0, 76, 128, 0.18), inset 0 1px 0 rgba(255,255,255,0.3);
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            flex-wrap: wrap;
-            gap: 10px;
-        }
-
-        .section-header-banner h2 {
-            margin: 0;
-            font-size: 1.35rem;
-            letter-spacing: -0.3px;
-            text-shadow: 0 1px 2px rgba(0,0,0,0.3);
-        }
-
-        .section-badge {
-            background: rgba(255, 255, 255, 0.2);
-            border: 1px solid rgba(255, 255, 255, 0.4);
-            border-radius: 15px;
-            padding: 3px 12px;
-            font-size: 0.78rem;
-            font-weight: bold;
-            letter-spacing: 0.5px;
-            text-shadow: 0 1px 1px rgba(0,0,0,0.2);
-        }
-
-        .section-instructions {
-            background: #f4f8fc;
-            border-left: 4px solid #0077be;
-            padding: 12px 18px;
-            border-radius: 0 6px 6px 0;
-            font-size: 0.9rem;
-            color: #37474f;
-            margin-bottom: 25px;
-        }
-
-        /* --- READING PASSAGES --- */
-        .passage-card {
-            background: #ffffff;
-            border: 1px solid #d3e2ee;
-            border-radius: 8px;
-            padding: 24px;
-            margin-bottom: 25px;
-            box-shadow: 0 2px 6px rgba(0,0,0,0.04);
-            border-top: 4px solid #0077be;
-        }
-
-        .passage-title {
-            font-size: 1.15rem;
-            font-weight: bold;
-            color: #004c80;
-            margin-bottom: 4px;
-        }
-
-        .passage-author {
-            font-size: 0.85rem;
-            font-style: italic;
-            color: #546e7a;
-            margin-bottom: 16px;
-            border-bottom: 1px solid #eef3f8;
-            padding-bottom: 10px;
-        }
-
-        .passage-body {
-            font-family: Georgia, 'Times New Roman', Times, serif;
-            font-size: 1.02rem;
-            line-height: 1.75;
-            color: #212121;
-            white-space: pre-line;
-            background: #fdfefe;
-            padding: 18px 22px;
-            border-radius: 6px;
-            border: 1px solid #eef3f7;
-        }
-
-        /* --- QUESTION CARDS --- */
-        .question-card {
-            background: #ffffff;
-            border: 1px solid #dce6ef;
-            border-radius: 8px;
-            padding: 20px;
-            margin-bottom: 18px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.03);
-            transition: border-color 0.2s ease, box-shadow 0.2s ease;
-        }
-
-        .question-card.answered {
-            border-left: 4px solid #2e7d32;
-        }
-
-        .question-header {
-            display: flex;
-            align-items: flex-start;
-            gap: 12px;
-            margin-bottom: 14px;
-        }
-
-        .q-number-badge {
-            background: #e4eff8;
-            color: #004c80;
-            font-size: 0.82rem;
-            font-weight: bold;
-            padding: 4px 10px;
-            border-radius: 4px;
-            border: 1px solid #b8d4ea;
-            flex-shrink: 0;
-        }
-
-        .q-number-badge.answered {
-            background: #e8f5e9;
-            color: #2e7d32;
-            border-color: #a5d6a7;
-        }
-
-        .q-text {
-            font-size: 0.98rem;
-            font-weight: 600;
-            color: #263238;
-            flex-grow: 1;
-            white-space: pre-line;
-        }
-
-        .options-list {
-            display: flex;
-            flex-direction: column;
-            gap: 8px;
-            margin-left: 36px;
-        }
-
-        .option-label {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            background: #f9fbfd;
-            border: 1px solid #dce6ef;
-            border-radius: 6px;
-            padding: 10px 14px;
-            cursor: pointer;
-            transition: all 0.15s ease;
-            font-size: 0.92rem;
-            color: #37474f;
-        }
-
-        .option-label:hover {
-            background: #eef6fc;
-            border-color: #a4c9e8;
-        }
-
-        .option-label.selected {
-            background: #e3f2fd;
-            border-color: #0077be;
-            color: #004c80;
-            font-weight: 600;
-            box-shadow: 0 1px 3px rgba(0, 119, 190, 0.15);
-        }
-
-        .option-label input[type="radio"] {
-            margin: 0;
-            accent-color: #0077be;
-            cursor: pointer;
-            width: 17px;
-            height: 17px;
-        }
-
-        .option-letter {
-            font-weight: bold;
-            color: #0077be;
-            min-width: 22px;
-        }
-
-        /* --- SECTION 4: CLOZE INLINE DROPDOWNS --- */
-        .cloze-passage-container {
-            background: #ffffff;
-            border: 1px solid #dce6ef;
-            border-radius: 8px;
-            padding: 24px;
-            margin-bottom: 25px;
-            box-shadow: 0 2px 6px rgba(0,0,0,0.04);
-            border-top: 4px solid #0077be;
-        }
-
-        .cloze-source-title {
-            font-size: 1.15rem;
-            font-weight: bold;
-            color: #004c80;
-            margin-bottom: 6px;
-        }
-
-        .cloze-text {
-            font-family: Georgia, 'Times New Roman', Times, serif;
-            font-size: 1.05rem;
-            line-height: 2.1;
-            color: #212121;
-            background: #fbfdff;
-            padding: 20px;
-            border-radius: 6px;
-            border: 1px solid #eef3f8;
-            margin-top: 14px;
-        }
-
-        .cloze-dropdown {
-            font-family: 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-            font-size: 0.88rem;
-            font-weight: bold;
-            padding: 4px 8px;
-            border: 1.5px solid #0077be;
-            border-radius: 4px;
-            background: #ffffff;
-            color: #004c80;
-            cursor: pointer;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.08);
-            transition: all 0.2s ease;
-            vertical-align: baseline;
-            margin: 0 3px;
-        }
-
-        .cloze-dropdown.answered {
-            background: #e8f5e9;
-            border-color: #2e7d32;
-            color: #1b5e20;
-        }
-
-        .cloze-dropdown:focus {
-            outline: none;
-            box-shadow: 0 0 0 3px rgba(0, 119, 190, 0.3);
-        }
-
-        /* --- SECTION 5: ANALYTICAL MATRIX TABLES --- */
-        .matrix-table-container {
-            background: #ffffff;
-            border: 1px solid #dce6ef;
-            border-radius: 8px;
-            padding: 22px;
-            margin-bottom: 25px;
-            box-shadow: 0 2px 6px rgba(0,0,0,0.04);
-            border-top: 4px solid #0077be;
-            overflow-x: auto;
-        }
-
-        .matrix-table-title {
-            font-size: 1.15rem;
-            font-weight: bold;
-            color: #004c80;
-            margin-bottom: 6px;
-        }
-
-        .matrix-table-context {
-            font-size: 0.88rem;
-            font-style: italic;
-            color: #546e7a;
-            margin-bottom: 15px;
-            background: #f8fbfe;
-            padding: 10px 14px;
-            border-radius: 4px;
-            border: 1px solid #e2edf6;
-        }
-
-        .matrix-table {
-            width: 100%;
-            border-collapse: collapse;
-            font-size: 0.92rem;
-            margin-top: 10px;
-        }
-
-        .matrix-table th, .matrix-table td {
-            padding: 12px 14px;
-            border: 1px solid #dbe6ef;
-            vertical-align: middle;
-        }
-
-        .matrix-table th {
-            background: linear-gradient(to bottom, #f2f7fa 0%, #e5eef5 100%);
-            color: #004c80;
-            font-weight: bold;
-            text-align: center;
-            font-size: 0.85rem;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-
-        .matrix-table th.col-statement {
-            text-align: left;
-            width: 45%;
-        }
-
-        .matrix-table tr:nth-child(even) {
-            background: #fbfdff;
-        }
-
-        .matrix-table tr:hover {
-            background: #f0f7fc;
-        }
-
-        .matrix-table td.cell-option {
-            text-align: center;
-            cursor: pointer;
-            transition: background 0.15s ease;
-        }
-
-        .matrix-table td.cell-option:hover {
-            background: #e3f2fd;
-        }
-
-        .matrix-table td.cell-option.selected {
-            background: #e8f5e9;
-        }
-
-        .matrix-table input[type="radio"] {
-            cursor: pointer;
-            width: 18px;
-            height: 18px;
-            accent-color: #0077be;
-            margin: 0;
-        }
-
-        /* --- QUESTION PALETTE MODAL / DRAWER --- */
-        .palette-modal-backdrop {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.45);
-            z-index: 1000;
-            align-items: center;
-            justify-content: center;
-            padding: 20px;
-        }
-
-        .palette-modal-backdrop.show {
-            display: flex;
-        }
-
-        .palette-card {
-            background: #ffffff;
-            border-radius: 10px;
-            max-width: 800px;
-            width: 100%;
-            max-height: 85vh;
-            display: flex;
-            flex-direction: column;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.25);
-            overflow: hidden;
-            animation: modalFadeIn 0.25s ease;
-        }
-
-        @keyframes modalFadeIn {
-            from { opacity: 0; transform: scale(0.96); }
-            to { opacity: 1; transform: scale(1); }
-        }
-
-        .palette-header {
-            padding: 16px 22px;
-            background: linear-gradient(to right, #0077be, #00558f);
-            color: white;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .palette-header h3 {
-            margin: 0;
-            font-size: 1.15rem;
-        }
-
-        .palette-close-btn {
-            background: transparent;
-            border: none;
-            color: white;
-            font-size: 1.4rem;
-            cursor: pointer;
-            line-height: 1;
-        }
-
-        .palette-body {
-            padding: 20px;
-            overflow-y: auto;
-            flex-grow: 1;
-        }
-
-        .palette-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(42px, 1fr));
-            gap: 6px;
-        }
-
-        .palette-chip {
-            height: 38px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: #f0f4f8;
-            border: 1px solid #c9d8e5;
-            border-radius: 4px;
-            font-size: 0.8rem;
-            font-weight: bold;
-            color: #455a64;
-            cursor: pointer;
-            transition: all 0.15s ease;
-            text-decoration: none;
-        }
-
-        .palette-chip:hover {
-            background: #0077be;
-            color: white;
-            border-color: #0077be;
-        }
-
-        .palette-chip.answered {
-            background: #2e7d32;
-            color: white;
-            border-color: #1b5e20;
-        }
-
-        .palette-legend {
-            display: flex;
-            gap: 20px;
-            margin-bottom: 15px;
-            font-size: 0.82rem;
-            font-weight: 600;
-        }
-
-        .legend-item {
-            display: flex;
-            align-items: center;
-            gap: 6px;
-        }
-
-        .legend-color-box {
-            width: 14px;
-            height: 14px;
-            border-radius: 3px;
-        }
-
-        /* --- SUBMISSION CONFIRMATION MODAL --- */
-        .confirm-modal-card {
-            background: #ffffff;
-            border-radius: 10px;
-            max-width: 550px;
-            width: 100%;
-            padding: 28px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.25);
-            text-align: center;
-            animation: modalFadeIn 0.25s ease;
-        }
-
-        .confirm-modal-card h3 {
-            margin: 0 0 12px 0;
-            color: #004c80;
-            font-size: 1.4rem;
-        }
-
-        .confirm-stats {
-            background: #f0f7fc;
-            border: 1px solid #bcdcfa;
-            border-radius: 6px;
-            padding: 16px;
-            margin: 18px 0;
-            font-size: 0.95rem;
-            line-height: 1.6;
-        }
-
-        .confirm-unanswered-warning {
-            color: #c62828;
-            font-weight: bold;
-            margin-top: 8px;
-            font-size: 0.9rem;
-        }
-
-        /* --- RESULTS HERO & SCORECARD --- */
-        #results-container {
-            display: none;
-        }
-
-        .score-hero-card {
-            text-align: center;
-            padding: 40px 30px;
-            background: linear-gradient(to bottom, #ffffff 0%, #f4f8fc 100%);
-            border: 2px solid #0077be;
-            border-radius: 12px;
-            box-shadow: 0 8px 25px rgba(0, 76, 128, 0.12);
-            margin-bottom: 35px;
-        }
-
-        .score-badge {
-            display: inline-block;
-            font-size: 2.8rem;
-            font-weight: 900;
-            color: #0077be;
-            margin: 10px 0;
-            letter-spacing: -1px;
-        }
-
-        .score-badge.passed {
-            color: #2e7d32;
-        }
-
-        .score-badge.failed {
-            color: #c62828;
-        }
-
-        .outcome-banner {
-            font-size: 1.35rem;
-            font-weight: bold;
-            padding: 8px 24px;
-            border-radius: 30px;
-            display: inline-block;
-            margin-bottom: 15px;
-        }
-
-        .outcome-banner.passed {
-            background: #e8f5e9;
-            color: #1b5e20;
-            border: 2px solid #81c784;
-        }
-
-        .outcome-banner.failed {
-            background: #ffebee;
-            color: #b71c1c;
-            border: 2px solid #e57373;
-        }
-
-        .section-breakdown-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-            gap: 15px;
-            margin-top: 25px;
-            text-align: left;
-        }
-
-        .breakdown-box {
-            background: #ffffff;
-            border: 1px solid #dce6ef;
-            border-radius: 8px;
-            padding: 14px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.04);
-        }
-
-        .breakdown-box-title {
-            font-size: 0.8rem;
-            font-weight: bold;
-            color: #546e7a;
-            text-transform: uppercase;
-            margin-bottom: 6px;
-        }
-
-        .breakdown-score {
-            font-size: 1.3rem;
-            font-weight: bold;
-            color: #004c80;
-        }
-
-        /* --- OFFICIAL PRINTABLE CERTIFICATE --- */
-        .certificate-wrapper {
-            margin: 40px auto;
-            max-width: 850px;
-            background: #ffffff;
-            border: 12px double #004c80;
-            border-radius: 4px;
-            padding: 40px 50px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
-            text-align: center;
-            position: relative;
-            background-color: #fffdfa;
-        }
-
-        .cert-inner-border {
-            border: 2px solid #d4af37;
-            padding: 30px;
-            position: relative;
-        }
-
-        .cert-seal {
-            height: 90px;
-            width: auto;
-            margin-bottom: 10px;
-        }
-
-        .cert-authority {
-            font-size: 0.85rem;
-            font-weight: bold;
-            color: #8d6e63;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-        }
-
-        .cert-title {
-            font-family: Georgia, 'Times New Roman', Times, serif;
-            font-size: 2.2rem;
-            color: #004c80;
-            margin: 12px 0 6px 0;
-            letter-spacing: 0.5px;
-        }
-
-        .cert-sub {
-            font-size: 0.95rem;
-            font-style: italic;
-            color: #5d4037;
-            margin-bottom: 25px;
-        }
-
-        .cert-name {
-            font-family: Georgia, 'Times New Roman', Times, serif;
-            font-size: 2.3rem;
-            font-weight: bold;
-            color: #1a237e;
-            border-bottom: 2px solid #b0bec5;
-            display: inline-block;
-            padding: 0 40px 5px 40px;
-            margin: 10px auto 20px auto;
-        }
-
-        .cert-statement {
-            font-size: 1rem;
-            line-height: 1.8;
-            max-width: 650px;
-            margin: 0 auto 30px auto;
-            color: #37474f;
-        }
-
-        .cert-meta-row {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-end;
-            margin-top: 40px;
-            padding-top: 20px;
-            border-top: 1px solid #cfd8dc;
-            font-size: 0.85rem;
-            color: #546e7a;
-            text-align: left;
-        }
-
-        .cert-sig-line {
-            border-top: 1px solid #455a64;
-            width: 200px;
-            margin-top: 40px;
-            text-align: center;
-            font-size: 0.78rem;
-            color: #37474f;
-            padding-top: 5px;
-        }
-
-        /* --- REVIEW MODE STYLES --- */
-        .review-filter-bar {
-            display: flex;
-            gap: 10px;
-            margin-bottom: 20px;
-            flex-wrap: wrap;
-        }
-
-        .review-filter-btn {
-            background: #ffffff;
-            border: 1px solid #bcdcfa;
-            border-radius: 20px;
-            padding: 6px 16px;
-            font-size: 0.85rem;
-            font-weight: 600;
-            color: #00558f;
-            cursor: pointer;
-            transition: all 0.2s ease;
-        }
-
-        .review-filter-btn.active {
-            background: #0077be;
-            color: white;
-            border-color: #0077be;
-        }
-
-        .review-explanation-box {
-            background: #f1f8e9;
-            border: 1px solid #c5e1a5;
-            border-radius: 6px;
-            padding: 12px 16px;
-            margin-top: 12px;
-            font-size: 0.9rem;
-            color: #2e7d32;
-        }
-
-        .review-explanation-box strong {
-            color: #1b5e20;
-        }
-
-        /* --- PRINT MEDIA STYLES --- */
-        @media print {
-            body { background: white !important; color: black !important; }
-            #globalheader, .exam-hud, .section-nav-bar, #exam-form, .review-filter-bar, .palette-modal-backdrop, footer, .sangaia-btn {
-                display: none !important;
-            }
-            #results-container { display: block !important; }
-            .score-hero-card, .review-container { display: none !important; }
-            .certificate-wrapper {
-                box-shadow: none !important;
-                border: 8px double #004c80 !important;
-                margin: 0 !important;
-                padding: 30px !important;
-                width: 100% !important;
-                max-width: 100% !important;
-                page-break-inside: avoid;
-            }
-        }
-
-        footer {
-            text-align: center;
-            padding: 30px;
-            font-size: 0.9em;
-            background: rgba(255,255,255,0.7);
-            border-top: 1px solid #dce6ef;
-            margin-top: auto;
-        }
-    </style>
+    <title>Civic Examination Portal :: Sangaia Live</title>
+    <link rel="stylesheet" href="/css/sangaia-live.css">
+    <script src="/js/sangaia-live.js" defer></script>
 </head>
-<body>
+<body class="theme-federal">
 
-    <!-- GLOBAL SANGAIA NAVIGATION -->
-    <nav id="globalheader">
-        <div style="position: absolute; left: 15px; display: flex; align-items: center; height: 100%;">
-            <img src="media/nav_logo.png" onerror="this.src='https://sangaia.org/media/nav_logo.png';" style="height: 20px; width: auto;" alt="Logo">
+<!-- Top Live Mast Banner -->
+<div class="wl-mast">
+    <div class="ol-container wl-mast-inner">
+        <div class="ol-header-top">
+            <div class="ol-logo">
+                <a href="/index.html" aria-label="Sangaia Live Sovereign Portal">
+                    <svg viewBox="0 0 90 90" width="22" height="22" fill="currentColor">
+                        <rect x="0" y="0" width="41" height="41" rx="2"/>
+                        <rect x="49" y="0" width="41" height="41" rx="2"/>
+                        <rect x="0" y="49" width="41" height="41" rx="2"/>
+                        <rect x="49" y="49" width="41" height="41" rx="2"/>
+                    </svg>
+                    <span><b>Sangaia</b> Live</span>
+                </a>
+            </div>
+            <div class="ol-header-tools">
+                <form class="ol-search" id="headerSearchForm" action="/services.html" method="get">
+                    <input type="text" id="headerSearch" name="q" placeholder="Search government &amp; services" aria-label="Search">
+                    <button type="submit" class="ol-search-bing" aria-label="Search">&#x1F50E;</button>
+                </form>
+                
+                <a class="ol-icon-btn" href="/services.html" title="Notifications">
+                    <svg width="16" height="16" viewBox="0 0 16 16"><path fill="currentColor" d="M8 1.5c-2.4 0-4 1.9-4 4.2v3L2.7 11c-.3.4 0 1 .5 1h9.6c.5 0 .8-.6.5-1L12 8.7v-3c0-2.3-1.6-4.2-4-4.2zm0 13c1 0 1.8-.7 2-1.5H6c.2.8 1 1.5 2 1.5z"/></svg>
+                    <span class="ol-badge">3</span>
+                </a>
+                <a class="ol-icon-btn" href="/services.html" title="Citizen Messages">
+                    <svg width="16" height="16" viewBox="0 0 16 16"><path fill="currentColor" d="M2 3h12c.6 0 1 .4 1 1v7c0 .6-.4 1-1 1H9l-3.4 2.6c-.4.3-.9 0-.9-.5V12H2c-.6 0-1-.4-1-1V4c0-.6.4-1 1-1z"/></svg>
+                    <span class="ol-badge">1</span>
+                </a>
+                <div class="ol-me">
+                    <div class="ol-me-chip" id="meChip">
+                        <span class="ol-avatar sm">
+                            <img src="/images/1.jpeg" alt="Citizen Profile">
+                            <span class="ol-presence-dot"></span>
+                        </span>
+                        <span class="ol-me-name">Jqackkk</span>
+                        <span class="ol-me-caret">&#9660;</span>
+                    </div>
+                    <div class="ol-me-menu" id="meMenu" style="display:none; position:absolute; right:0; top:36px; background:#fff; border:1px solid #dfe3e7; border-radius:3px; box-shadow:0 2px 8px rgba(0,0,0,0.15); width:180px; z-index:1000; padding:6px 0;">
+                        <div style="padding:4px 12px; font-size:11px; font-weight:700; color:#64748b; text-transform:uppercase;">Citizen ID: SG-2026-F1E8</div>
+                        <a href="/id.html" style="display:block; padding:5px 12px; color:#2a2a2a; font-size:13px;">Sangaia ID Card</a>
+                        <a href="/citizenship.html" style="display:block; padding:5px 12px; color:#2a2a2a; font-size:13px;">Citizenship Status</a>
+                        <a href="/units.html" style="display:block; padding:5px 12px; color:#2a2a2a; font-size:13px;">Units &amp; Measures</a>
+                        <div style="border-top:1px solid #edf0f3; margin:4px 0;"></div>
+                        <a href="/index.html" style="display:block; padding:5px 12px; color:#2a2a2a; font-size:13px;">Federal Home</a>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div style="position: absolute; right: 15px; display: flex; align-items: center; gap: 15px; height: 100%; z-index: 100;">
-            <div id="auth-widget"><a href="id.html" style="color: #bbb; text-decoration: none; font-size: 11px; font-weight: bold; letter-spacing: 0.5px; padding: 3px 8px; border: 1px solid #444; border-radius: 4px; background: linear-gradient(to bottom, #555, #333); box-shadow: 0 1px 2px rgba(0,0,0,0.3); transition: all 0.2s ease;">Sangaia ID</a></div>
-            <a href="sgn/literacy_exam_sgn.html" style="color: #bbb; text-decoration: none; font-size: 11px; font-weight: bold; letter-spacing: 0.5px; padding: 3px 8px; border: 1px solid #444; border-radius: 4px; background: linear-gradient(to bottom, #555, #333); box-shadow: 0 1px 2px rgba(0,0,0,0.3); transition: all 0.2s ease;">Сангаиан Кирилица</a>
+
+        <div class="ol-band">
+            <div class="ol-band-inner">
+                <h1>Civic Literacy & Naturalization Examination</h1>
+                <p class="ol-band-sub">Interactive 5-question examination on constitutional virtues and sovereign units</p>
+            </div>
         </div>
-        <ul id="globalnav">
-            <li><a href="index.html">Home</a></li>
-            <li><a href="government.html">Government</a></li>
-            <li><a href="citizenship.html" class="active">Citizenship</a></li>
-            <li><a href="services.html">Services</a></li>
-            <li><a href="about.html">About</a></li>
+    </div>
+</div>
+
+<!-- Main Top Nav Tabs (One Live Bar) -->
+<div class="wl-tabs">
+    <div class="ol-container wl-tabs-inner">
+        <ul class="ol-nav" id="primaryNav">
+            <li class="ol-current"><a href="/index.html">Home</a></li>
+            <li><a href="/executive.html">Executive</a></li>
+            <li><a href="/treasury.html">Treasury</a></li>
+            <li><a href="/work.html">Work</a></li>
+            <li><a href="/healthcare.html">Healthcare</a></li>
+            <li><a href="/education.html">Education</a></li>
+            <li><a href="/domesticaffairs.html">Domestic</a></li>
+            <li><a href="/externalaffairs.html">External</a></li>
+            <li><a href="/environment.html">Environment</a></li>
+            <li><a href="/propaganda.html">Propaganda</a></li>
+            <li><a href="/services.html">Services</a></li>
+            <li><a href="/units.html">Units (Мн • °Пт)</a></li>
+            
         </ul>
-    </nav>
+    </div>
+</div>
 
-    <!-- STICKY EXAM STATUS HUD -->
-    <header class="exam-hud" id="exam-hud">
-        <div class="hud-content">
-            <div class="hud-title-col">
-                <img src="media/sangaia_seal.png" onerror="this.src='https://sangaia.org/media/sangaia_seal.png';" alt="Seal">
-                <div>
-                    <div class="hud-exam-title">Official English Literacy Examination</div>
-                    <div class="hud-exam-sub">175 Questions &bull; 2.5 Hours Timed &bull; Pass Threshold: 80%</div>
+<!-- Main Content Grid -->
+<div class="ol-container ol-main">
+    <div class="ol-with-sidebar">
+        <!-- Left Sidebar Navigation -->
+        <div class="ol-sidebar-nav">
+            <div class="ol-card ol-profile-card" style="text-align: center;">
+                <span class="ol-avatar lg">
+                    <img src="/images/1.jpeg" alt="Emblem">
+                    <span class="ol-presence-dot"></span>
+                </span>
+                <div class="ol-mt-10">
+                    <strong>Academic Board</strong><br>
+                    <span class="ol-muted ol-small">Examination Authority</span><br>
+                    <span class="ol-small" style="color:var(--ol-accent); font-weight:600;">Testing Active</span>
                 </div>
             </div>
 
-            <div class="hud-center-col">
-                <div class="timer-box">
-                    <span class="timer-label">Time Remaining</span>
-                    <span class="timer-display" id="timer-display">02:30:00</span>
-                </div>
+            <span class="ol-sidenav-label">Portal Navigation</span>
+            <ul class="ol-sidenav">
+                <li><a href="#overview" class="sel">Examination</a></li>
 
-                <div class="progress-box">
-                    <div class="progress-text">
-                        <span>Progress</span>
-                        <span id="progress-count">0 / 175 (0%)</span>
-                    </div>
-                    <div class="progress-bar-bg">
-                        <div class="progress-bar-fill" id="progress-bar-fill"></div>
-                    </div>
-                </div>
-            </div>
+            </ul>
 
-            <div class="hud-actions-col">
-                <button type="button" class="sangaia-btn btn-secondary" id="btn-toggle-palette">
-                    <span>Question Palette (175)</span>
-                </button>
-                <button type="button" class="sangaia-btn btn-submit" id="btn-submit-exam">
-                    <span>Submit Examination</span>
-                </button>
-            </div>
-        </div>
-    </header>
-
-    <!-- SECTION QUICK NAVIGATION PILLS -->
-    <nav class="section-nav-bar" id="section-nav-bar">
-        <a href="#sec-1" class="section-pill">Sec 1: Textual Exegesis (1–45)</a>
-        <a href="#sec-2" class="section-pill">Sec 2: Academic Lexicon (46–80)</a>
-        <a href="#sec-3" class="section-pill">Sec 3: Syntax & Grammar (81–115)</a>
-        <a href="#sec-4" class="section-pill">Sec 4: Cloze Passages (116–145)</a>
-        <a href="#sec-5" class="section-pill">Sec 5: Analytical Matrices (146–175)</a>
-    </nav>
-
-    <!-- MAIN CONTENT AREA -->
-    <main class="content-wrapper">
-
-        <!-- INTRO & CANDIDATE REGISTRATION -->
-        <div class="glass-panel" id="intro-panel">
-            <div class="portal-header">
-                <img src="media/sangaia_seal.png" onerror="this.src='https://sangaia.org/media/sangaia_seal.png';" alt="Seal of Sangaia" class="seal-img">
-                <div style="font-size: 0.8rem; font-weight: bold; color: #0077be; text-transform: uppercase; letter-spacing: 1.5px;">National Board of Education &bull; Ministry of Domestic Affairs</div>
-                <h1>Official English Literacy Examination</h1>
-                <p>Welcome to the standardized English fluency and textual exegesis examination for the United Provinces of Sangaia. This examination evaluates reading comprehension of canonical public domain works, advanced vocabulary, syntactic precision, contextual cloze synthesis, and formal logical analysis.</p>
-            </div>
-
-            <div class="candidate-card">
-                <div class="candidate-field">
-                    <label for="candidate-name">Candidate Full Legal Name (for Certificate Issuance)</label>
-                    <input type="text" id="candidate-name" placeholder="Enter your full legal name..." value="Prospective Citizen">
-                </div>
-                <div style="font-size: 0.85rem; color: #546e7a; max-width: 380px;">
-                    <strong>Notice:</strong> Your answers and timer are continuously saved. Do not close your browser. You have <strong>2.5 hours (150 minutes)</strong> to complete all 175 questions. Minimum passing mark: <strong>80% (140 correct)</strong>.
-                </div>
-            </div>
+            <span class="ol-sidenav-label">Federal Network</span>
+            <ul class="ol-sidenav">
+                <li><a href="/index.html">Federal Home</a></li>
+                <li><a href="/services.html">All Services</a></li>
+                <li><a href="/units.html">Units (Мн &bull; &deg;Пт)</a></li>
+                <li><a href="/societal_press.html">Societal Press</a></li>
+            </ul>
         </div>
 
-        <!-- EXAM QUESTIONS FORM -->
-        <form id="exam-form">
-            <!-- SECTION 1 -->
-            <div id="sec-1">
-                <div class="section-header-banner">
-                    <div>
-                        <h2>Section 1: Advanced Textual Analysis & Exegesis</h2>
-                        <div style="font-size: 0.85rem; opacity: 0.9;">Public Domain Canonical Treatises & Expository Literature</div>
-                    </div>
-                    <span class="section-badge">Questions 1 – 45</span>
-                </div>
-                <div class="section-instructions">
-                    <strong>Instructions:</strong> Read each classical public domain passage carefully. Answer the critical reading, rhetorical, and hermeneutic questions that follow each passage.
-                </div>
-                <div id="section-1-container"></div>
+        <!-- Center Content -->
+        <div class="ol-content">
+            
+    <div class="ol-status-bubble" id="overview">
+        &ldquo;Citizenship Literacy Examination: 5 essential questions on Sangaian law, units, and governance.&rdquo;
+        <div class="ol-status-date">Academic &amp; Civic Board</div>
+    </div>
+    <div class="ol-card">
+        <div class="ol-card-title">
+            <span>Civic Naturalization Examination</span>
+            <span class="ol-badge-tag">Instant Scoring</span>
+        </div>
+        <form id="quizForm" onsubmit="gradeQuiz(event)" style="display:flex; flex-direction:column; gap:16px;">
+            <div>
+                <strong>1. What is the official currency of Sangaia?</strong>
+                <div style="margin-top:6px;"><label><input type="radio" name="q1" value="usd"> Euro</label></div>
+                <div><label><input type="radio" name="q1" value="correct"> Sangaian Dollar ($)</label></div>
+                <div><label><input type="radio" name="q1" value="wrong"> Sovereign Ruble</label></div>
             </div>
-
-            <!-- SECTION 2 -->
-            <div id="sec-2">
-                <div class="section-header-banner">
-                    <div>
-                        <h2>Section 2: High-Level Lexicon, Etymology & Semantic Nuance</h2>
-                        <div style="font-size: 0.85rem; opacity: 0.9;">GRE / Cambridge C2 Advanced Lexical Mastery</div>
-                    </div>
-                    <span class="section-badge">Questions 46 – 80</span>
-                </div>
-                <div class="section-instructions">
-                    <strong>Instructions:</strong> Select the definition, etymological synonym, or semantic application that most precisely defines the indicated vocabulary item.
-                </div>
-                <div id="section-2-container"></div>
+            <div>
+                <strong>2. How many Sovereign Provinces comprise the Republic?</strong>
+                <div style="margin-top:6px;"><label><input type="radio" name="q2" value="wrong"> 3</label></div>
+                <div><label><input type="radio" name="q2" value="correct"> 5 (New Jasper, New Madison, Liveland, Sentinel, Columbia)</label></div>
+                <div><label><input type="radio" name="q2" value="wrong"> 12</label></div>
             </div>
-
-            <!-- SECTION 3 -->
-            <div id="sec-3">
-                <div class="section-header-banner">
-                    <div>
-                        <h2>Section 3: Structural Syntax, Complex Grammar & Mechanics</h2>
-                        <div style="font-size: 0.85rem; opacity: 0.9;">Syntactic Parallelism, Subjunctive Precision, Modifier Hierarchy & Punctuation</div>
-                    </div>
-                    <span class="section-badge">Questions 81 – 115</span>
-                </div>
-                <div class="section-instructions">
-                    <strong>Instructions:</strong> Evaluate each sentence for grammatical cohesion, dangling participles, split infinitives, subject-verb agreement, and punctuation accuracy. Choose the pristine grammatical revision or "No change".
-                </div>
-                <div id="section-3-container"></div>
+            <div>
+                <strong>3. What is 30&deg;C in the Sangaian Panotherm (&deg;Пт) scale?</strong>
+                <div style="margin-top:6px;"><label><input type="radio" name="q3" value="correct"> 27&deg;Пт (Subtract 10%)</label></div>
+                <div><label><input type="radio" name="q3" value="wrong"> 30&deg;Пт</label></div>
+                <div><label><input type="radio" name="q3" value="wrong"> 15&deg;Пт</label></div>
             </div>
-
-            <!-- SECTION 4 -->
-            <div id="sec-4">
-                <div class="section-header-banner">
-                    <div>
-                        <h2>Section 4: Contextual Cloze Passages with Dropdown Selectors</h2>
-                        <div style="font-size: 0.85rem; opacity: 0.9;">Classical Political & Philosophical Essays with In-Text Interactive Dropdowns</div>
-                    </div>
-                    <span class="section-badge">Questions 116 – 145</span>
-                </div>
-                <div class="section-instructions">
-                    <strong>Instructions:</strong> For each numbered bracket inside the continuous text, select the word from the inline dropdown menu that best preserves meaning, register, and rhetorical cohesion.
-                </div>
-                <div id="section-4-container"></div>
+            <div>
+                <strong>4. Exactly how many centimeters is 1 Monomer (1 Мн)?</strong>
+                <div style="margin-top:6px;"><label><input type="radio" name="q4" value="wrong"> 1.0 cm</label></div>
+                <div><label><input type="radio" name="q4" value="correct"> Exactly 2.5 cm</label></div>
+                <div><label><input type="radio" name="q4" value="wrong"> 10 cm</label></div>
             </div>
-
-            <!-- SECTION 5 -->
-            <div id="sec-5">
-                <div class="section-header-banner">
-                    <div>
-                        <h2>Section 5: Analytical Matrix & Table Evaluations</h2>
-                        <div style="font-size: 0.85rem; opacity: 0.9;">Structured Analytical Tables, Logical Fallacies, Rhetoric & Syllogisms</div>
-                    </div>
-                    <span class="section-badge">Questions 146 – 175</span>
-                </div>
-                <div class="section-instructions">
-                    <strong>Instructions:</strong> Evaluate each proposition in the structured evaluation tables by selecting the appropriate classification in the corresponding column.
-                </div>
-                <div id="section-5-container"></div>
+            <div>
+                <strong>5. Under the Constitution, what is the policy regarding foreign sovereign debt?</strong>
+                <div style="margin-top:6px;"><label><input type="radio" name="q5" value="correct"> Absolutely prohibited ($0 foreign debt)</label></div>
+                <div><label><input type="radio" name="q5" value="wrong"> Borrowing up to 50% of GDP</label></div>
+                <div><label><input type="radio" name="q5" value="wrong"> Managed via International IMF Loans</label></div>
             </div>
-
-            <!-- BOTTOM SUBMISSION PANEL -->
-            <div class="glass-panel" style="text-align: center; padding: 35px; margin-top: 40px;">
-                <h3 style="margin-top: 0; color: #004c80;">End of Examination</h3>
-                <p style="color: #546e7a; max-width: 600px; margin: 0 auto 20px auto;">
-                    Review your answers using the Question Palette before finalizing. Once submitted, your examination will be instantly evaluated according to the standards of the National Board of Education.
-                </p>
-                <div style="display: flex; justify-content: center; gap: 15px; flex-wrap: wrap;">
-                    <button type="button" class="sangaia-btn btn-secondary" onclick="openPaletteModal()">
-                        <span>Open Question Palette</span>
-                    </button>
-                    <button type="button" class="sangaia-btn btn-submit" style="font-size: 1.05rem; height: 2.6em;" onclick="openSubmitModal()">
-                        <span>Submit Final Examination &rarr;</span>
-                    </button>
-                </div>
+            <div class="modal-results-box" id="quizResults"></div>
+            <div class="ol-mt-10">
+                <button type="submit" class="ol-btn ol-btn-primary">Submit Examination for Grading</button>
             </div>
         </form>
-
-        <!-- RESULTS & CERTIFICATE HERO CONTAINER (SHOWN AFTER SUBMISSION) -->
-        <div id="results-container">
-            <div class="score-hero-card">
-                <div class="portal-header" style="border: none; margin-bottom: 10px; padding-bottom: 0;">
-                    <img src="media/sangaia_seal.png" onerror="this.src='https://sangaia.org/media/sangaia_seal.png';" alt="Seal" class="seal-img">
-                    <div style="font-size: 0.85rem; font-weight: bold; color: #0077be; text-transform: uppercase; letter-spacing: 1px;">Official Examination Scorecard</div>
-                    <h1 id="result-candidate-display">Candidate Score Report</h1>
-                </div>
-
-                <div class="outcome-banner" id="outcome-banner">EVALUATING...</div>
-                
-                <div style="display: flex; justify-content: center; align-items: baseline; gap: 10px;">
-                    <span class="score-badge" id="score-number-display">0 / 175</span>
-                    <span style="font-size: 1.5rem; font-weight: bold; color: #546e7a;" id="score-pct-display">(0.0%)</span>
-                </div>
-
-                <p id="outcome-text" style="font-size: 1.05rem; color: #37474f; max-width: 650px; margin: 10px auto 25px auto;">
-                    Evaluating performance against the statutory 80% passing threshold...
-                </p>
-
-                <div class="section-breakdown-grid" id="section-breakdown-grid"></div>
-
-                <div style="margin-top: 30px; display: flex; justify-content: center; gap: 15px; flex-wrap: wrap;">
-                    <button type="button" class="sangaia-btn" id="btn-print-cert" onclick="window.print()">
-                        <span>Print Official Certificate (PDF)</span>
-                    </button>
-                    <button type="button" class="sangaia-btn btn-secondary" onclick="restartExam()">
-                        <span>Retake Examination</span>
-                    </button>
-                    <a href="citizenship.html" class="sangaia-btn btn-secondary">
-                        <span>Return to Citizenship Portal</span>
-                    </a>
-                </div>
-            </div>
-
-            <!-- OFFICIAL PRINTABLE CERTIFICATE -->
-            <div class="certificate-wrapper" id="printable-certificate">
-                <div class="cert-inner-border">
-                    <img src="media/sangaia_seal.png" onerror="this.src='https://sangaia.org/media/sangaia_seal.png';" alt="Seal of Sangaia" class="cert-seal">
-                    <div class="cert-authority">United Provinces of Sangaia &bull; Ministry of Domestic Affairs</div>
-                    <div class="cert-title">Certificate of English Literacy & Exegesis</div>
-                    <div class="cert-sub">Issued under the Authority of the National Board of Education & The Constitution</div>
-
-                    <div style="margin: 20px 0; font-size: 1.05rem; color: #555;">This is to officially certify that</div>
-                    
-                    <div class="cert-name" id="cert-candidate-name">Prospective Citizen</div>
-
-                    <div class="cert-statement">
-                        has satisfactorily demonstrated advanced linguistic competence, analytical exegesis of canonical texts, syntax precision, and academic rhetorical proficiency by passing the Official Sangaian English Literacy Examination with a verified score of <strong id="cert-score-text">140 / 175 (80.0%)</strong>.
-                    </div>
-
-                    <div class="cert-meta-row">
-                        <div>
-                            <div><strong>Date of Examination:</strong> <span id="cert-date">October 19, 2026</span></div>
-                            <div><strong>Credential ID:</strong> <span id="cert-hash" style="font-family: monospace;">SGN-ENG-2026-A89F</span></div>
-                            <div><strong>Jurisdiction:</strong> United Provinces of Sangaia</div>
-                        </div>
-
-                        <div>
-                            <div class="cert-sig-line">
-                                <strong>Chancellor of Education</strong><br>
-                                Sangaia National Board of Education
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- COMPREHENSIVE ANSWER REVIEW & EXEGESIS SECTION -->
-            <div class="glass-panel review-container" id="review-container">
-                <h2 style="color: #004c80; margin-top: 0; border-bottom: 2px solid #0077be; padding-bottom: 10px;">
-                    Comprehensive Question Review & Hermeneutic Explanations
-                </h2>
-                <p style="color: #546e7a; font-size: 0.95rem;">
-                    Examine each question, your submitted response, the authoritative answer key, and the complete academic explanation.
-                </p>
-
-                <div class="review-filter-bar">
-                    <button type="button" class="review-filter-btn active" onclick="filterReview('all', this)">All Questions (175)</button>
-                    <button type="button" class="review-filter-btn" onclick="filterReview('incorrect', this)" id="filter-incorrect-btn">Incorrect Answers (0)</button>
-                    <button type="button" class="review-filter-btn" onclick="filterReview('correct', this)" id="filter-correct-btn">Correct Answers (0)</button>
-                </div>
-
-                <div id="review-questions-list"></div>
-            </div>
-        </div>
-
-    </main>
-
-    <!-- QUESTION PALETTE MODAL -->
-    <div class="palette-modal-backdrop" id="palette-modal">
-        <div class="palette-card">
-            <div class="palette-header">
-                <h3>Examination Question Palette (175 Questions)</h3>
-                <button type="button" class="palette-close-btn" onclick="closePaletteModal()">&times;</button>
-            </div>
-            <div class="palette-body">
-                <div class="palette-legend">
-                    <div class="legend-item">
-                        <div class="legend-color-box" style="background: #2e7d32;"></div>
-                        <span>Answered</span>
-                    </div>
-                    <div class="legend-item">
-                        <div class="legend-color-box" style="background: #f0f4f8; border: 1px solid #c9d8e5;"></div>
-                        <span>Unanswered</span>
-                    </div>
-                </div>
-                <div class="palette-grid" id="palette-grid"></div>
-            </div>
-        </div>
     </div>
+    
+        </div>
 
-    <!-- SUBMISSION CONFIRMATION MODAL -->
-    <div class="palette-modal-backdrop" id="submit-modal">
-        <div class="confirm-modal-card">
-            <img src="media/sangaia_seal.png" onerror="this.src='https://sangaia.org/media/sangaia_seal.png';" alt="Seal" style="height: 50px; margin-bottom: 10px;">
-            <h3>Submit Examination for Evaluation?</h3>
+        <!-- Right Sidebar (Telemetry & Quick Actions) -->
+        <div class="ol-sidebar">
+            <div class="ol-note">Official Government of the Sovereign Republic of Sangaia. All administrative systems active.</div>
+
+            <div class="ol-sidebox">
+                <h3>Sovereign Telemetry</h3>
+                <div style="font-size:12.5px; line-height:1.6;">
+                    <div><strong>Currency:</strong> Sangaian Dollar ($)</div>
+                    <div><strong>Standard Temp:</strong> 22.5&deg;Пт (25&deg;C / 77&deg;F)</div>
+                    <div><strong>Standard Metric:</strong> 1 Мн = 2.5 cm</div>
+                    <div><strong>Active Provinces:</strong> 5 Territories</div>
+                </div>
+            </div>
+
+            <div class="ol-sidebox">
+                <h3>Provincial Weather (&deg;Пт)</h3>
+                <table class="ol-table" style="font-size:12px; margin:0;">
+                    <tr><td>New Jasper</td><td style="text-align:right;"><strong>20.5&deg;Пт</strong> (Sunny)</td></tr>
+                    <tr><td>New Madison</td><td style="text-align:right;"><strong>22.0&deg;Пт</strong> (Clear)</td></tr>
+                    <tr><td>Liveland</td><td style="text-align:right;"><strong>19.8&deg;Пт</strong> (Breezy)</td></tr>
+                    <tr><td>Sentinel</td><td style="text-align:right;"><strong>16.2&deg;Пт</strong> (Cool)</td></tr>
+                    <tr><td>Columbia</td><td style="text-align:right;"><strong>23.4&deg;Пт</strong> (Mild)</td></tr>
+                </table>
+            </div>
+
             
-            <div class="confirm-stats" id="submit-stats">
-                Calculating answered questions...
-            </div>
-
-            <p style="font-size: 0.88rem; color: #546e7a;">
-                Once submitted, your responses will be scored immediately and an official credential record will be generated.
-            </p>
-
-            <div style="display: flex; justify-content: center; gap: 12px; margin-top: 20px;">
-                <button type="button" class="sangaia-btn btn-secondary" onclick="closeSubmitModal()">
-                    <span>Return to Exam</span>
-                </button>
-                <button type="button" class="sangaia-btn btn-submit" onclick="finalizeSubmission()">
-                    <span>Confirm & Finalize Grading</span>
-                </button>
-            </div>
         </div>
     </div>
+</div>
 
-    <footer>
-        &copy; 2026 United Provinces of Sangaia. All Rights Reserved.<br>
-        <span style="font-size: 0.8em; color: #888;">National Board of Education &bull; Ministry of Domestic Affairs</span>
-    </footer>
 
-    <!-- EXTERNAL SCRIPTS -->
-    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-    <script src="auth.js"></script>
-    <script src="data/literacy_exam_data.js"></script>
 
-    <!-- EXAM ENGINE JAVASCRIPT -->
+<!-- Floating Citizen Dock -->
+<div class="ol-dock">
+    <button type="button" class="ol-dock-tab" id="olDockMessages">
+        <svg width="15" height="15" viewBox="0 0 16 16"><path fill="currentColor" d="M2 3h12c.6 0 1 .4 1 1v7c0 .6-.4 1-1 1H9l-3.4 2.6c-.4.3-.9 0-.9-.5V12H2c-.6 0-1-.4-1-1V4c0-.6.4-1 1-1z"/></svg>
+        <span>Live Citizen Support</span>
+    </button>
+    <div class="ol-dock-list" id="olDockList">
+        <div class="ol-dock-list-head">
+            <span>Sangaia Citizen Assistance</span>
+            <a href="javascript:void(0)" id="olDockListClose" style="color:#64748b; font-size:16px;">&times;</a>
+        </div>
+        <div class="ol-dock-list-body">
+            <a class="ol-dock-item" href="/services.html"><strong>Online Inquiries:</strong> File petition or request</a>
+            <a class="ol-dock-item" href="/units.html"><strong>Unit Calculations:</strong> Monomer &amp; Panotherm</a>
+            <a class="ol-dock-item" href="/citizenship.html"><strong>Citizenship Registry:</strong> Check docket status</a>
+            <a class="ol-dock-item" href="/id.html"><strong>Sangaia ID:</strong> Digital identity card</a>
+        </div>
+    </div>
+</div>
+
+<!-- Footer -->
+<div class="ol-footer">
+    <div class="ol-container ol-footer-inner">
+        <p class="ol-footer-copy">&copy; 2026 Sovereign Republic of Sangaia. One Live Wave 4 Infrastructure.</p>
+        <ul class="ol-footer-links">
+            <li><a href="/index.html">Home</a></li>
+            <li><a href="/government.html">Government Structure</a></li>
+            <li><a href="/services.html">Services</a></li>
+            <li><a href="/societal_press.html">Gazette</a></li>
+            <li><a href="/units.html">Units System</a></li>
+            <li><a href="/about.html">About Sangaia</a></li>
+        </ul>
+    </div>
+</div>
+
+
     <script>
-        (function() {
-            // Exam Constants & State
-            const TOTAL_QUESTIONS = 175;
-            const TIME_LIMIT_SECONDS = 150 * 60; // 2.5 hours = 9,000 seconds
-            const PASS_THRESHOLD = 80; // 80% passing standard
-            const PASS_SCORE = 140;
-
-            const examData = window.SANGAIA_LITERACY_EXAM || {};
-            const questions = examData.questions || [];
-            const passages = examData.passages || [];
-            const clozePassages = examData.cloze_passages || [];
-            const tables = examData.tables || [];
-
-            // User Answer Store: { [qId]: selectedIndex }
-            let userAnswers = {};
-            let remainingSeconds = TIME_LIMIT_SECONDS;
-            let timerInterval = null;
-            let isSubmitted = false;
-
-            // Load saved state from sessionStorage
-            function loadSavedState() {
-                try {
-                    const savedAnswers = sessionStorage.getItem('sangaia_literacy_answers');
-                    if (savedAnswers) {
-                        userAnswers = JSON.parse(savedAnswers);
-                    }
-                    const savedTime = sessionStorage.getItem('sangaia_literacy_time_left');
-                    if (savedTime !== null) {
-                        const parsed = parseInt(savedTime, 10);
-                        if (!isNaN(parsed) && parsed > 0 && parsed <= TIME_LIMIT_SECONDS) {
-                            remainingSeconds = parsed;
-                        }
-                    }
-                    const savedCandidate = sessionStorage.getItem('sangaia_literacy_candidate_name');
-                    if (savedCandidate) {
-                        document.getElementById('candidate-name').value = savedCandidate;
-                    }
-                } catch (e) {
-                    console.warn("Storage loading error:", e);
-                }
-            }
-
-            function saveState() {
-                try {
-                    sessionStorage.setItem('sangaia_literacy_answers', JSON.stringify(userAnswers));
-                    sessionStorage.setItem('sangaia_literacy_time_left', remainingSeconds.toString());
-                    const name = document.getElementById('candidate-name').value.trim();
-                    if (name) {
-                        sessionStorage.setItem('sangaia_literacy_candidate_name', name);
-                    }
-                } catch (e) {
-                    console.warn("Storage saving error:", e);
-                }
-            }
-
-            // Timer Engine
-            function startTimer() {
-                updateTimerDisplay();
-                timerInterval = setInterval(() => {
-                    if (isSubmitted) {
-                        clearInterval(timerInterval);
-                        return;
-                    }
-                    remainingSeconds--;
-                    updateTimerDisplay();
-                    saveState();
-
-                    if (remainingSeconds <= 0) {
-                        clearInterval(timerInterval);
-                        alert("Time limit of 2.5 hours has expired! Your examination is now being automatically submitted for evaluation.");
-                        finalizeSubmission();
-                    }
-                }, 1000);
-            }
-
-            function updateTimerDisplay() {
-                const timerEl = document.getElementById('timer-display');
-                if (!timerEl) return;
-                const hours = Math.floor(remainingSeconds / 3600);
-                const mins = Math.floor((remainingSeconds % 3600) / 60);
-                const secs = remainingSeconds % 60;
-
-                const pad = (n) => n.toString().padStart(2, '0');
-                timerEl.textContent = `${pad(hours)}:${pad(mins)}:${pad(secs)}`;
-
-                if (remainingSeconds <= 900) { // 15 mins left
-                    timerEl.classList.add('timer-warning');
-                } else {
-                    timerEl.classList.remove('timer-warning');
-                }
-            }
-
-            // Update Answer Progress
-            function updateProgress() {
-                const answeredCount = Object.keys(userAnswers).length;
-                const pct = ((answeredCount / TOTAL_QUESTIONS) * 100).toFixed(1);
-                
-                const countEl = document.getElementById('progress-count');
-                const fillEl = document.getElementById('progress-bar-fill');
-                if (countEl) countEl.textContent = `${answeredCount} / ${TOTAL_QUESTIONS} (${pct}%)`;
-                if (fillEl) fillEl.style.width = `${pct}%`;
-
-                // Update Palette
-                updatePaletteBadges();
-            }
-
-            // Record Answer
-            function recordAnswer(qId, selectedIdx) {
-                userAnswers[qId] = parseInt(selectedIdx, 10);
-                saveState();
-                updateProgress();
-
-                // Highlight question card
-                const qCard = document.getElementById(`q-card-${qId}`);
-                if (qCard) {
-                    qCard.classList.add('answered');
-                    const badge = qCard.querySelector('.q-number-badge');
-                    if (badge) badge.classList.add('answered');
-                }
-            }
-
-            // --- RENDER SECTIONS ---
-
-            // Section 1: Passage Exegesis (Q1–Q45)
-            function renderSection1() {
-                const container = document.getElementById('section-1-container');
-                if (!container) return;
-
-                const s1Questions = questions.filter(q => q.section === 1);
-                let html = '';
-
-                passages.forEach((p, pIdx) => {
-                    const pQuestions = s1Questions.filter(q => q.passage_id === p.id);
-                    html += `
-                        <div class="passage-card">
-                            <div class="passage-title">${p.title}</div>
-                            <div class="passage-author">${p.author}</div>
-                            <div class="passage-body">${p.text}</div>
-                        </div>
-                    `;
-
-                    pQuestions.forEach(q => {
-                        html += renderMCQuestion(q);
-                    });
-                });
-
-                container.innerHTML = html;
-            }
-
-            // Section 2: Vocabulary (Q46–Q80)
-            function renderSection2() {
-                const container = document.getElementById('section-2-container');
-                if (!container) return;
-                const s2Questions = questions.filter(q => q.section === 2);
-                container.innerHTML = s2Questions.map(q => renderMCQuestion(q)).join('');
-            }
-
-            // Section 3: Grammar / Syntax (Q81–Q115)
-            function renderSection3() {
-                const container = document.getElementById('section-3-container');
-                if (!container) return;
-                const s3Questions = questions.filter(q => q.section === 3);
-                container.innerHTML = s3Questions.map(q => renderMCQuestion(q)).join('');
-            }
-
-            // Standard Multiple Choice Question Card
-            function renderMCQuestion(q) {
-                const selectedVal = userAnswers[q.id];
-                const letters = ['A', 'B', 'C', 'D', 'E'];
-                const isAnswered = selectedVal !== undefined;
-
-                let optsHtml = '';
-                q.options.forEach((opt, idx) => {
-                    const isChecked = selectedVal === idx ? 'checked' : '';
-                    const isSelectedClass = selectedVal === idx ? 'selected' : '';
-                    optsHtml += `
-                        <label class="option-label ${isSelectedClass}" id="opt-label-${q.id}-${idx}">
-                            <input type="radio" name="q_${q.id}" value="${idx}" ${isChecked} onchange="handleMCRadioChange(${q.id}, ${idx})">
-                            <span class="option-letter">${letters[idx]}.</span>
-                            <span>${opt}</span>
-                        </label>
-                    `;
-                });
-
-                return `
-                    <div class="question-card ${isAnswered ? 'answered' : ''}" id="q-card-${q.id}">
-                        <div class="question-header">
-                            <span class="q-number-badge ${isAnswered ? 'answered' : ''}">Question ${q.id}</span>
-                            <div class="q-text">${q.question}</div>
-                        </div>
-                        <div class="options-list">
-                            ${optsHtml}
-                        </div>
-                    </div>
-                `;
-            }
-
-            // Section 4: Cloze Passages with Inline Dropdowns (Q116–Q145)
-            function renderSection4() {
-                const container = document.getElementById('section-4-container');
-                if (!container) return;
-
-                const s4Questions = questions.filter(q => q.section === 4);
-                const qMap = {};
-                s4Questions.forEach(q => { qMap[q.id] = q; });
-
-                let html = '';
-                clozePassages.forEach((cp, idx) => {
-                    let passageText = cp.text;
-
-                    // Replace [116] with inline <select>
-                    cp.blank_ids.forEach(bId => {
-                        const q = qMap[bId];
-                        if (q) {
-                            const selectedVal = userAnswers[bId];
-                            const isAnswered = selectedVal !== undefined;
-
-                            let optHtml = `<option value="">-- [${bId}] Select Word --</option>`;
-                            q.options.forEach((opt, optIdx) => {
-                                const sel = selectedVal === optIdx ? 'selected' : '';
-                                optHtml += `<option value="${optIdx}" ${sel}>${opt}</option>`;
-                            });
-
-                            const dropdown = `<select class="cloze-dropdown ${isAnswered ? 'answered' : ''}" data-qid="${bId}" id="q-dropdown-${bId}" onchange="handleClozeChange(${bId}, this.value)">${optHtml}</select>`;
-                            passageText = passageText.replace(`[${bId}]`, dropdown);
-                        }
-                    });
-
-                    html += `
-                        <div class="cloze-passage-container" id="cloze-passage-${cp.passage_num}">
-                            <div class="cloze-source-title">${cp.source}</div>
-                            <div style="font-size: 0.85rem; color: #546e7a;">${cp.intro}</div>
-                            <div class="cloze-text">${passageText}</div>
-                        </div>
-                    `;
-                });
-
-                container.innerHTML = html;
-            }
-
-            // Section 5: Matrix Evaluation Tables (Q146–Q175)
-            function renderSection5() {
-                const container = document.getElementById('section-5-container');
-                if (!container) return;
-
-                const s5Questions = questions.filter(q => q.section === 5);
-                const qMap = {};
-                s5Questions.forEach(q => { qMap[q.id] = q; });
-
-                let html = '';
-                tables.forEach((t, tIdx) => {
-                    let theadCols = `
-                        <th class="col-statement">Proposition / Evaluative Statement</th>
-                    `;
-                    t.options.forEach(opt => {
-                        theadCols += `<th>${opt}</th>`;
-                    });
-
-                    let rowsHtml = '';
-                    t.q_ids.forEach(qId => {
-                        const q = qMap[qId];
-                        if (q) {
-                            const selectedVal = userAnswers[qId];
-                            let cols = `<td style="font-weight: 500;">
-                                <div style="display:flex; align-items:center; gap:8px;">
-                                    <span class="q-number-badge ${selectedVal !== undefined ? 'answered' : ''}">Q${qId}</span>
-                                    <span>${q.statement}</span>
-                                </div>
-                            </td>`;
-
-                            t.options.forEach((opt, optIdx) => {
-                                const isChecked = selectedVal === optIdx ? 'checked' : '';
-                                const isSelectedClass = selectedVal === optIdx ? 'selected' : '';
-                                cols += `
-                                    <td class="cell-option ${isSelectedClass}" onclick="handleMatrixCellClick(${qId}, ${optIdx})">
-                                        <input type="radio" name="matrix_${qId}" value="${optIdx}" ${isChecked} onchange="handleMatrixRadioChange(${qId}, ${optIdx}, event)">
-                                    </td>
-                                `;
-                            });
-
-                            rowsHtml += `<tr id="matrix-row-${qId}">${cols}</tr>`;
-                        }
-                    });
-
-                    html += `
-                        <div class="matrix-table-container" id="matrix-table-${tIdx+1}">
-                            <div class="matrix-table-title">${t.table_name}</div>
-                            ${t.context ? `<div class="matrix-table-context">${t.context}</div>` : ''}
-                            <table class="matrix-table">
-                                <thead><tr>${theadCols}</tr></thead>
-                                <tbody>${rowsHtml}</tbody>
-                            </table>
-                        </div>
-                    `;
-                });
-
-                container.innerHTML = html;
-            }
-
-            // --- PALETTE GENERATION & MANAGEMENT ---
-            function renderPalette() {
-                const grid = document.getElementById('palette-grid');
-                if (!grid) return;
-
-                let html = '';
-                for (let i = 1; i <= TOTAL_QUESTIONS; i++) {
-                    const isAnswered = userAnswers[i] !== undefined;
-                    html += `
-                        <a href="#q-card-${i}" class="palette-chip ${isAnswered ? 'answered' : ''}" id="pal-chip-${i}" onclick="jumpToQuestion(${i})">
-                            ${i}
-                        </a>
-                    `;
-                }
-                grid.innerHTML = html;
-            }
-
-            function updatePaletteBadges() {
-                for (let i = 1; i <= TOTAL_QUESTIONS; i++) {
-                    const chip = document.getElementById(`pal-chip-${i}`);
-                    if (chip) {
-                        if (userAnswers[i] !== undefined) {
-                            chip.classList.add('answered');
-                        } else {
-                            chip.classList.remove('answered');
-                        }
-                    }
-                }
-            }
-
-            // Window-level Handlers for inline events
-            window.handleMCRadioChange = function(qId, selectedIdx) {
-                recordAnswer(qId, selectedIdx);
-
-                // Update styling of option labels
-                const labels = document.querySelectorAll(`[id^="opt-label-${qId}-"]`);
-                labels.forEach((lbl, idx) => {
-                    if (idx === selectedIdx) {
-                        lbl.classList.add('selected');
-                    } else {
-                        lbl.classList.remove('selected');
-                    }
-                });
-            };
-
-            window.handleClozeChange = function(qId, val) {
-                const dropdown = document.getElementById(`q-dropdown-${qId}`);
-                if (val === "" || val === undefined) {
-                    delete userAnswers[qId];
-                    if (dropdown) dropdown.classList.remove('answered');
-                } else {
-                    recordAnswer(qId, parseInt(val, 10));
-                    if (dropdown) dropdown.classList.add('answered');
-                }
-                saveState();
-                updateProgress();
-            };
-
-            window.handleMatrixCellClick = function(qId, optIdx) {
-                const radio = document.querySelector(`input[name="matrix_${qId}"][value="${optIdx}"]`);
-                if (radio) {
-                    radio.checked = true;
-                    handleMatrixRadioChange(qId, optIdx);
-                }
-            };
-
-            window.handleMatrixRadioChange = function(qId, optIdx, e) {
-                if (e) e.stopPropagation();
-                recordAnswer(qId, optIdx);
-
-                const row = document.getElementById(`matrix-row-${qId}`);
-                if (row) {
-                    const cells = row.querySelectorAll('.cell-option');
-                    cells.forEach((c, idx) => {
-                        if (idx === optIdx) {
-                            c.classList.add('selected');
-                        } else {
-                            c.classList.remove('selected');
-                        }
-                    });
-                }
-            };
-
-            window.jumpToQuestion = function(qId) {
-                closePaletteModal();
-                let target = document.getElementById(`q-card-${qId}`) ||
-                             document.getElementById(`q-dropdown-${qId}`) ||
-                             document.getElementById(`matrix-row-${qId}`);
-
-                if (target) {
-                    target.scrollIntoView({ behavior: 'smooth', block: 'center' });
-                    // Flash target
-                    target.style.transition = 'box-shadow 0.3s ease';
-                    target.style.boxShadow = '0 0 0 4px #0077be';
-                    setTimeout(() => {
-                        target.style.boxShadow = '';
-                    }, 1500);
-                }
-            };
-
-            window.openPaletteModal = function() {
-                const modal = document.getElementById('palette-modal');
-                if (modal) modal.classList.add('show');
-            };
-
-            window.closePaletteModal = function() {
-                const modal = document.getElementById('palette-modal');
-                if (modal) modal.classList.remove('show');
-            };
-
-            window.openSubmitModal = function() {
-                const answered = Object.keys(userAnswers).length;
-                const unanswered = TOTAL_QUESTIONS - answered;
-                const statsDiv = document.getElementById('submit-stats');
-
-                let warningHtml = '';
-                if (unanswered > 0) {
-                    const unansweredList = [];
-                    for (let i = 1; i <= TOTAL_QUESTIONS; i++) {
-                        if (userAnswers[i] === undefined) unansweredList.push(i);
-                    }
-                    warningHtml = `
-                        <div class="confirm-unanswered-warning">
-                            Warning: You have ${unanswered} unanswered question(s).<br>
-                            <span style="font-size: 0.8rem; font-weight: normal; color: #555;">
-                                Unanswered question IDs: ${unansweredList.slice(0, 15).join(', ')}${unansweredList.length > 15 ? '...' : ''}
-                            </span>
-                        </div>
-                    `;
-                }
-
-                statsDiv.innerHTML = `
-                    <div><strong>Questions Answered:</strong> ${answered} of ${TOTAL_QUESTIONS}</div>
-                    <div><strong>Completion Rate:</strong> ${((answered/TOTAL_QUESTIONS)*100).toFixed(1)}%</div>
-                    <div><strong>Time Remaining:</strong> ${document.getElementById('timer-display').textContent}</div>
-                    ${warningHtml}
-                `;
-
-                const modal = document.getElementById('submit-modal');
-                if (modal) modal.classList.add('show');
-            };
-
-            window.closeSubmitModal = function() {
-                const modal = document.getElementById('submit-modal');
-                if (modal) modal.classList.remove('show');
-            };
-
-            // SUBMIT & SCORE
-            window.finalizeSubmission = function() {
-                closeSubmitModal();
-                isSubmitted = true;
-                if (timerInterval) clearInterval(timerInterval);
-
-                // Hide test, show results
-                document.getElementById('exam-hud').style.display = 'none';
-                document.getElementById('section-nav-bar').style.display = 'none';
-                document.getElementById('intro-panel').style.display = 'none';
-                document.getElementById('exam-form').style.display = 'none';
-
-                const resultsContainer = document.getElementById('results-container');
-                resultsContainer.style.display = 'block';
-                window.scrollTo({ top: 0, behavior: 'smooth' });
-
-                // Calculate scores
-                evaluateAndRenderResults();
-            };
-
-            function evaluateAndRenderResults() {
-                let totalCorrect = 0;
-                const sectionScores = {
-                    1: { total: 0, correct: 0, name: "Textual Exegesis" },
-                    2: { total: 0, correct: 0, name: "Academic Lexicon" },
-                    3: { total: 0, correct: 0, name: "Syntax & Grammar" },
-                    4: { total: 0, correct: 0, name: "Cloze Dropdowns" },
-                    5: { total: 0, correct: 0, name: "Matrix Tables" }
-                };
-
-                const evaluatedQuestions = [];
-
-                questions.forEach(q => {
-                    const userChoice = userAnswers[q.id];
-                    const isCorrect = userChoice !== undefined && userChoice === q.correct;
-                    if (isCorrect) totalCorrect++;
-
-                    const sec = q.section || 1;
-                    if (sectionScores[sec]) {
-                        sectionScores[sec].total++;
-                        if (isCorrect) sectionScores[sec].correct++;
-                    }
-
-                    evaluatedQuestions.push({
-                        q: q,
-                        userChoice: userChoice,
-                        isCorrect: isCorrect
-                    });
-                });
-
-                const percentage = ((totalCorrect / TOTAL_QUESTIONS) * 100).toFixed(1);
-                const hasPassed = totalCorrect >= PASS_SCORE;
-
-                // Update Score Displays
-                const candidateName = document.getElementById('candidate-name').value.trim() || 'Prospective Citizen';
-                document.getElementById('result-candidate-display').textContent = `Official Results for ${candidateName}`;
-                document.getElementById('score-number-display').textContent = `${totalCorrect} / ${TOTAL_QUESTIONS}`;
-                document.getElementById('score-pct-display').textContent = `(${percentage}%)`;
-
-                const outcomeBanner = document.getElementById('outcome-banner');
-                const outcomeText = document.getElementById('outcome-text');
-                const certWrapper = document.getElementById('printable-certificate');
-
-                if (hasPassed) {
-                    outcomeBanner.className = 'outcome-banner passed';
-                    outcomeBanner.textContent = 'PASSED & CERTIFIED';
-                    document.getElementById('score-number-display').className = 'score-badge passed';
-                    outcomeText.innerHTML = `
-                        Congratulations! You have satisfied the highest standard of English literacy proficiency required by the United Provinces of Sangaia. An official government certificate has been generated below.
-                    `;
-                    certWrapper.style.display = 'block';
-                    renderCertificate(candidateName, totalCorrect, percentage);
-                } else {
-                    outcomeBanner.className = 'outcome-banner failed';
-                    outcomeBanner.textContent = 'DID NOT MEET 80% THRESHOLD';
-                    document.getElementById('score-number-display').className = 'score-badge failed';
-                    outcomeText.innerHTML = `
-                        You scored ${totalCorrect} out of 175 (${percentage}%). The statutory threshold requires at least 80.0% (${PASS_SCORE} / 175) to certify naturalization literacy. You may review your answers below and retake the examination.
-                    `;
-                    certWrapper.style.display = 'none';
-                    document.getElementById('btn-print-cert').style.display = 'none';
-                }
-
-                // Render Section Breakdown Boxes
-                const breakdownGrid = document.getElementById('section-breakdown-grid');
-                let bHtml = '';
-                for (let s = 1; s <= 5; s++) {
-                    const sec = sectionScores[s];
-                    const sPct = ((sec.correct / sec.total) * 100).toFixed(0);
-                    bHtml += `
-                        <div class="breakdown-box">
-                            <div class="breakdown-box-title">Sec ${s}: ${sec.name}</div>
-                            <div class="breakdown-score">${sec.correct} / ${sec.total} <span style="font-size:0.85rem; color:#546e7a;">(${sPct}%)</span></div>
-                        </div>
-                    `;
-                }
-                breakdownGrid.innerHTML = bHtml;
-
-                // Render Review List
-                window.EVALUATED_QUESTIONS = evaluatedQuestions;
-                renderReviewQuestions(evaluatedQuestions, 'all');
-
-                // Update filter buttons
-                const incorrectCount = evaluatedQuestions.filter(e => !e.isCorrect).length;
-                const correctCount = evaluatedQuestions.filter(e => e.isCorrect).length;
-                document.getElementById('filter-incorrect-btn').textContent = `Incorrect Answers (${incorrectCount})`;
-                document.getElementById('filter-correct-btn').textContent = `Correct Answers (${correctCount})`;
-            }
-
-            function renderCertificate(name, score, pct) {
-                document.getElementById('cert-candidate-name').textContent = name;
-                document.getElementById('cert-score-text').textContent = `${score} / ${TOTAL_QUESTIONS} (${pct}%)`;
-
-                const today = new Date();
-                const options = { year: 'numeric', month: 'long', day: 'numeric' };
-                document.getElementById('cert-date').textContent = today.toLocaleDateString('en-US', options);
-
-                // Cryptographic verification hash
-                const randomHash = Math.random().toString(36).substring(2, 8).toUpperCase();
-                document.getElementById('cert-hash').textContent = `SGN-ENG-2026-${randomHash}`;
-            }
-
-            // Review questions renderer
-            function renderReviewQuestions(evalList, filter) {
-                const listContainer = document.getElementById('review-questions-list');
-                if (!listContainer) return;
-
-                let filtered = evalList;
-                if (filter === 'incorrect') filtered = evalList.filter(e => !e.isCorrect);
-                if (filter === 'correct') filtered = evalList.filter(e => e.isCorrect);
-
-                if (filtered.length === 0) {
-                    listContainer.innerHTML = `<p style="padding: 20px; text-align: center; color: #777;">No questions match this filter.</p>`;
-                    return;
-                }
-
-                let html = '';
-                filtered.forEach(item => {
-                    const q = item.q;
-                    const letters = ['A', 'B', 'C', 'D', 'E'];
-                    const userIdx = item.userChoice;
-                    const correctIdx = q.correct;
-                    const isCorrect = item.isCorrect;
-
-                    let optionsDisplay = '';
-                    if (q.options && q.options.length > 0) {
-                        q.options.forEach((opt, idx) => {
-                            let optStyle = "padding: 6px 10px; margin-bottom: 4px; border-radius: 4px; font-size: 0.9rem; ";
-                            let marker = "";
-
-                            if (idx === correctIdx) {
-                                optStyle += "background: #e8f5e9; border: 1px solid #81c784; font-weight: bold; color: #1b5e20;";
-                                marker = " &check; (Correct Answer)";
-                            } else if (idx === userIdx && !isCorrect) {
-                                optStyle += "background: #ffebee; border: 1px solid #e57373; color: #b71c1c;";
-                                marker = " &cross; (Your Choice)";
-                            } else {
-                                optStyle += "background: #fafafa; border: 1px solid #eee; color: #555;";
-                            }
-
-                            optionsDisplay += `
-                                <div style="${optStyle}">
-                                    <strong>${letters[idx] || idx+1}.</strong> ${opt} ${marker}
-                                </div>
-                            `;
-                        });
-                    }
-
-                    html += `
-                        <div class="question-card" style="border-left: 4px solid ${isCorrect ? '#2e7d32' : '#c62828'}; margin-bottom: 16px;">
-                            <div class="question-header">
-                                <span class="q-number-badge" style="background: ${isCorrect ? '#e8f5e9' : '#ffebee'}; color: ${isCorrect ? '#2e7d32' : '#b71c1c'};">
-                                    Q${q.id} &bull; ${isCorrect ? 'Correct' : 'Incorrect'}
-                                </span>
-                                <div class="q-text">${q.question || q.statement}</div>
-                            </div>
-                            <div style="margin-left: 36px; margin-top: 10px;">
-                                ${optionsDisplay}
-                                <div class="review-explanation-box">
-                                    <strong>Exegesis / Academic Rationale:</strong> ${q.explanation}
-                                </div>
-                            </div>
-                        </div>
-                    `;
-                });
-
-                listContainer.innerHTML = html;
-            }
-
-            window.filterReview = function(filterType, btn) {
-                document.querySelectorAll('.review-filter-btn').forEach(b => b.classList.remove('active'));
-                if (btn) btn.classList.add('active');
-                if (window.EVALUATED_QUESTIONS) {
-                    renderReviewQuestions(window.EVALUATED_QUESTIONS, filterType);
-                }
-            };
-
-            window.restartExam = function() {
-                if (confirm("Are you sure you want to retake the examination? All existing answers and progress will be reset.")) {
-                    sessionStorage.removeItem('sangaia_literacy_answers');
-                    sessionStorage.removeItem('sangaia_literacy_time_left');
-                    window.location.reload();
-                }
-            };
-
-            // Pre-fill user details from Supabase session if authenticated
-            async function checkSupabaseSession() {
-                if (window.supabase && window.supabase.auth) {
-                    try {
-                        const { data: { session } } = await window.supabase.auth.getSession();
-                        if (session) {
-                            const { data: citizen } = await window.supabase
-                                .from('sangaia_citizens')
-                                .select('full_name')
-                                .eq('id', session.user.id)
-                                .single();
-                            if (citizen && citizen.full_name) {
-                                document.getElementById('candidate-name').value = citizen.full_name;
-                            }
-                        }
-                    } catch (e) {
-                        console.warn("Supabase user fetch ignored:", e);
-                    }
-                }
-            }
-
-            // Initialization
-            document.addEventListener('DOMContentLoaded', () => {
-                loadSavedState();
-                checkSupabaseSession();
-
-                // Render sections
-                renderSection1();
-                renderSection2();
-                renderSection3();
-                renderSection4();
-                renderSection5();
-
-                // Setup Palette
-                renderPalette();
-                updateProgress();
-
-                // Event Listeners
-                document.getElementById('btn-toggle-palette').addEventListener('click', openPaletteModal);
-                document.getElementById('btn-submit-exam').addEventListener('click', openSubmitModal);
-
-                // Start Timer
-                startTimer();
-            });
-
-        })();
+    function gradeQuiz(e) {
+        e.preventDefault();
+        const f = document.getElementById('quizForm');
+        let score = 0;
+        if (f.q1.value === 'correct') score++;
+        if (f.q2.value === 'correct') score++;
+        if (f.q3.value === 'correct') score++;
+        if (f.q4.value === 'correct') score++;
+        if (f.q5.value === 'correct') score++;
+
+        const res = document.getElementById('quizResults');
+        if (score >= 4) {
+            res.innerHTML = `<strong>Examination Passed! Score: ${score}/5 (80%+).</strong> Congratulations! Certificate Code: <span style="font-family:monospace;">CERT-CIV-${Math.floor(100000 + Math.random()*900000)}</span>. You may now submit your Naturalization Application.`;
+            res.className = 'modal-results-box active';
+            res.style.background = '#f0fdf4';
+            res.style.borderColor = '#bbf7d0';
+            res.style.color = '#166534';
+        } else {
+            res.innerHTML = `<strong>Score: ${score}/5.</strong> Passing threshold is 4/5. Please review the constitutional and units standards and re-attempt.`;
+            res.className = 'modal-results-box active';
+            res.style.background = '#fee2e2';
+            res.style.borderColor = '#fecaca';
+            res.style.color = '#991b1b';
+        }
+    }
     </script>
+    
+
 </body>
 </html>
-
