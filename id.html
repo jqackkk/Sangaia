@@ -401,30 +401,6 @@
       color: var(--primary);
     }
 
-    /* Docked Floating Message Tab */
-    .messages-dock {
-      position: fixed;
-      bottom: 0;
-      right: 28px;
-      background: #546573;
-      color: #fff;
-      padding: 7px 16px;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      font-size: 13px;
-      font-weight: 500;
-      border-top-left-radius: 3px;
-      border-top-right-radius: 3px;
-      cursor: pointer;
-      box-shadow: 0 -1px 4px rgba(0, 0, 0, 0.15);
-      z-index: 999;
-    }
-
-    .messages-dock:hover {
-      background: #465561;
-    }
-
     @media (max-width: 860px) {
       .main-wrapper {
         grid-template-columns: 1fr;
@@ -707,11 +683,6 @@
       <li><a href="/government.html">Constitution &amp; Virtues</a></li>
     </ul>
   </footer>
-
-  <!-- Docked Credential Status Tab -->
-  <div class="messages-dock" onclick="alert('Sangaia ID Credential Engine: SG-2026-F1E8 Active & Verified across all 5 provinces.')">
-    <span class="mif-security"></span> Credential Active: SG-2026-F1E8
-  </div>
 
   <script>
     // User profile dropdown toggle
