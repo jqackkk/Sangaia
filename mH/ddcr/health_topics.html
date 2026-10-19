@@ -225,40 +225,250 @@
             </div>
         </div>
 
-        <div class="content-wrapper" style="padding: 30px; max-width: 1000px; margin: 0 auto; width: 100%; box-sizing: border-box;">
+        <div class="content-wrapper" style="padding: 20px; max-width: 1100px; margin: 0 auto; width: 100%; box-sizing: border-box;">
+
+<style>
+.filter-tabs { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 20px; }
+.filter-btn {
+    padding: 7px 15px; border-radius: 20px; font-size: 0.85em; font-weight: bold;
+    border: 1px solid #d0d7de; background: linear-gradient(to bottom, #ffffff 0%, #f1f3f5 100%);
+    cursor: pointer; transition: all 0.2s ease; color: #333;
+}
+.filter-btn.active, .filter-btn:hover {
+    background: linear-gradient(to bottom, #e53935 0%, #c62828 100%);
+    color: white; border-color: #b71c1c; box-shadow: 0 2px 4px rgba(0,0,0,0.15);
+}
+.search-input-box {
+    width: 100%; padding: 14px 18px; font-size: 1.05em; border: 2px solid #ccd0d5;
+    border-radius: 6px; box-sizing: border-box; margin-bottom: 18px;
+    box-shadow: inset 0 1px 3px rgba(0,0,0,0.06);
+}
+.search-input-box:focus { border-color: #c62828; outline: none; background: #fff; }
+.alphabet-bar { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 22px; align-items: center; }
+.alphabet-link {
+    display: inline-block; width: 28px; height: 28px; line-height: 28px; text-align: center;
+    border-radius: 4px; border: 1px solid #d5dbe0; background: #fff; font-size: 0.85em;
+    font-weight: bold; color: #444; text-decoration: none; cursor: pointer; transition: all 0.15s ease;
+}
+.alphabet-link.active, .alphabet-link:hover {
+    background: #c62828; color: #fff; border-color: #b71c1c;
+}
+.disease-card {
+    background: #fff; border: 1px solid #e1e4e8; border-radius: 8px; padding: 22px;
+    margin-bottom: 18px; box-shadow: 0 2px 5px rgba(0,0,0,0.03);
+    transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+}
+.disease-card:hover { transform: translateY(-2px); border-color: #c62828; box-shadow: 0 4px 12px rgba(198,40,40,0.08); }
+.disease-card-header { display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 10px; margin-bottom: 10px; }
+.disease-card-title { margin: 0; font-size: 1.3em; color: #b71c1c; }
+.disease-card-title a { color: inherit; text-decoration: none; }
+.disease-card-title a:hover { text-decoration: underline; }
+.disease-card p { font-size: 0.94em; line-height: 1.6; color: #444; margin: 0 0 12px 0; }
+.card-meta-line { font-size: 0.84em; color: #666; margin-bottom: 12px; }
+.badge {
+    display: inline-block; padding: 3px 8px; border-radius: 10px; font-size: 0.72em;
+    font-weight: bold; text-transform: uppercase; letter-spacing: 0.5px;
+}
+.badge-red { background: #ffebee; color: #b71c1c; border: 1px solid #ffcdd2; }
+.badge-blue { background: #e1f5fe; color: #0277bd; border: 1px solid #b3e5fc; }
+.badge-gold { background: #fff8e1; color: #f57f17; border: 1px solid #ffe082; }
+</style>
 
 <div class="glass-panel">
-    <h2>Health Topics (A-Z)</h2>
-    <p>Browse our comprehensive database of medical guidelines and wellness topics.</p>
-    <ul style="line-height: 1.8;">
-        <li><a href="#" style="color: #c62828;">Cardiovascular Health</a></li>
-        <li><a href="#" style="color: #c62828;">Diabetes Management</a></li>
-        <li><a href="#" style="color: #c62828;">Influenza (Flu)</a></li>
-        <li><a href="#" style="color: #c62828;">Mental Health Resources</a></li>
-        <li><a href="#" style="color: #c62828;">Vaccination Schedules</a></li>
-    </ul>
-    <p><em>Use the Search tool to find hundreds of other topics.</em></p>
+    <div style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 15px; margin-bottom: 15px;">
+        <div>
+            <h2 style="margin: 0 0 8px 0; color: #c62828;">Comprehensive Health Topics & Diseases Database</h2>
+            <p style="margin: 0; color: #555;">Browse authoritative clinical guidelines, etiology, symptoms, provincial response protocols, and peer-reviewed PubMed Central studies.</p>
+        </div>
+        <div id="disease-counter" style="font-size: 0.88em; font-weight: bold; color: #666; background: #fff; padding: 6px 12px; border-radius: 20px; border: 1px solid #ddd;">
+            Loading database...
+        </div>
+    </div>
+
+    <!-- Live Filter & Search Controls -->
+    <input type="text" id="topic-search" class="search-input-box" placeholder="Filter topics by name, pathogen, symptoms (e.g. COVID-19, Mpox, Rash, Fever, Asthma)..." autocomplete="off">
+
+    <div class="filter-tabs" id="category-tabs">
+        <button class="filter-btn active" data-category="all">All Topics</button>
+        <button class="filter-btn" data-category="viral">Viral & Epidemic Pathogens</button>
+        <button class="filter-btn" data-category="bacterial">Bacterial & Chronic Pathogens</button>
+        <button class="filter-btn" data-category="respiratory">Respiratory Illnesses</button>
+        <button class="filter-btn" data-category="chronic">Cardiovascular & Metabolic</button>
+        <button class="filter-btn" data-category="mental">Mental Health</button>
+    </div>
+
+    <div class="alphabet-bar" id="alphabet-bar">
+        <span style="font-size: 0.85em; font-weight: bold; color: #777; margin-right: 6px;">A-Z:</span>
+        <button class="alphabet-link active" data-letter="all">ALL</button>
+    </div>
+
+    <!-- Active Topics List -->
+    <div id="topics-list">
+        <div style="text-align: center; padding: 40px; color: #777;">
+            <p>Loading disease articles database...</p>
+        </div>
+    </div>
 </div>
 
 </div>
     <footer>
         &copy; 2026 United Provinces of Sangaia. All Rights Reserved.<br>
-        <span style="font-size: 0.8em; color: #888;">Ministry of Healthcare</span>
+        <span style="font-size: 0.8em; color: #888;">Ministry of Healthcare &bull; Department of Disease Control & Research</span>
     </footer>
 </div>
 
+<script src="data/diseases.js"></script>
 <script>
     // --- VERTICAL FLIP LOGIC ---
     let currentRotation = 0;
     const track = document.getElementById('track');
-    
-    // Rotate 90 degrees every 4 seconds
-    setInterval(() => {
-        currentRotation += 90;
-        track.style.transform = `rotateX(${currentRotation}deg)`;
-    }, 4000); 
-</script>
+    if (track) {
+        setInterval(() => {
+            currentRotation += 90;
+            track.style.transform = `rotateX(${currentRotation}deg)`;
+        }, 4000); 
+    }
 
+    // --- HEALTH TOPICS DIRECTORY LOGIC ---
+    let activeCategory = 'all';
+    let activeLetter = 'all';
+    let searchQuery = '';
+
+    function initAlphabetBar() {
+        const bar = document.getElementById('alphabet-bar');
+        const alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("");
+        alphabet.forEach(letter => {
+            const btn = document.createElement('button');
+            btn.className = 'alphabet-link';
+            btn.textContent = letter;
+            btn.dataset.letter = letter;
+            btn.onclick = () => {
+                document.querySelectorAll('.alphabet-link').forEach(el => el.classList.remove('active'));
+                btn.classList.add('active');
+                activeLetter = letter;
+                renderTopics();
+            };
+            bar.appendChild(btn);
+        });
+
+        // "ALL" button listener
+        const allBtn = bar.querySelector('[data-letter="all"]');
+        if (allBtn) {
+            allBtn.onclick = () => {
+                document.querySelectorAll('.alphabet-link').forEach(el => el.classList.remove('active'));
+                allBtn.classList.add('active');
+                activeLetter = 'all';
+                renderTopics();
+            };
+        }
+    }
+
+    function renderTopics() {
+        const container = document.getElementById('topics-list');
+        const counter = document.getElementById('disease-counter');
+        if (!window.DDCR_DISEASES) return;
+
+        let filtered = window.DDCR_DISEASES.filter(d => {
+            // Category filter
+            if (activeCategory !== 'all' && d.category !== activeCategory) {
+                return false;
+            }
+
+            // Letter filter
+            if (activeLetter !== 'all') {
+                const firstChar = d.name.trim().charAt(0).toUpperCase();
+                if (firstChar !== activeLetter) return false;
+            }
+
+            // Search query filter
+            if (searchQuery) {
+                const q = searchQuery.toLowerCase();
+                const matchName = d.name.toLowerCase().includes(q);
+                const matchPathogen = (d.pathogen || '').toLowerCase().includes(q);
+                const matchSummary = (d.summary || '').toLowerCase().includes(q);
+                const matchIcd = (d.icd_code || '').toLowerCase().includes(q);
+                const matchSymptoms = JSON.stringify(d.symptoms || {}).toLowerCase().includes(q);
+                if (!matchName && !matchPathogen && !matchSummary && !matchIcd && !matchSymptoms) {
+                    return false;
+                }
+            }
+
+            return true;
+        });
+
+        counter.textContent = `Showing ${filtered.length} of ${window.DDCR_DISEASES.length} Articles`;
+
+        if (filtered.length === 0) {
+            container.innerHTML = `
+                <div style="text-align: center; padding: 40px; background: #fff; border-radius: 6px; border: 1px solid #ddd;">
+                    <p style="font-size: 1.1em; color: #666; margin-bottom: 10px;">No disease articles matched your filter criteria.</p>
+                    <button class="sangaia-btn secondary" onclick="resetFilters()"><span>Reset Filters</span></button>
+                </div>
+            `;
+            return;
+        }
+
+        container.innerHTML = filtered.map(d => `
+            <div class="disease-card">
+                <div class="disease-card-header">
+                    <div>
+                        <h3 class="disease-card-title">
+                            <a href="article.html?topic=${d.id}">${d.name}</a>
+                        </h3>
+                        <div style="margin-top: 6px;">
+                            <span class="badge badge-red">${d.risk_level || 'Tier-1 Public Health Alert'}</span>
+                            <span class="badge badge-blue">${d.category_label || d.category}</span>
+                            <span class="badge badge-gold">${d.icd_code}</span>
+                        </div>
+                    </div>
+                    <a href="article.html?topic=${d.id}" class="sangaia-btn" style="height: 2.2em; font-size: 0.85em;">
+                        <span>Read Article &rarr;</span>
+                    </a>
+                </div>
+                <div class="card-meta-line">
+                    <strong>Pathogen:</strong> ${d.pathogen} &bull; 
+                    <strong>Incubation:</strong> ${d.incubation} &bull; 
+                    <strong>Citations:</strong> ${d.research_papers ? d.research_papers.length : 0} Studies
+                </div>
+                <p>${d.summary}</p>
+            </div>
+        `).join('');
+    }
+
+    function resetFilters() {
+        activeCategory = 'all';
+        activeLetter = 'all';
+        searchQuery = '';
+        document.getElementById('topic-search').value = '';
+        document.querySelectorAll('.filter-btn').forEach(b => b.classList.toggle('active', b.dataset.category === 'all'));
+        document.querySelectorAll('.alphabet-link').forEach(b => b.classList.toggle('active', b.dataset.letter === 'all'));
+        renderTopics();
+    }
+
+    window.addEventListener('DOMContentLoaded', () => {
+        initAlphabetBar();
+        renderTopics();
+
+        // Category filter listener
+        document.querySelectorAll('.filter-btn').forEach(btn => {
+            btn.onclick = () => {
+                document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                activeCategory = btn.dataset.category;
+                renderTopics();
+            };
+        });
+
+        // Search input listener
+        const searchInput = document.getElementById('topic-search');
+        if (searchInput) {
+            searchInput.addEventListener('input', (e) => {
+                searchQuery = e.target.value.trim();
+                renderTopics();
+            });
+        }
+    });
+</script>
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script src="https://sangaia.org/auth.js"></script>

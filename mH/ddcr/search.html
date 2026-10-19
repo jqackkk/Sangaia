@@ -212,101 +212,271 @@
 #search-box { width: 100%; padding: 18px 20px; font-size: 1.2em; border: 2px solid #ccc; border-radius: 8px; box-sizing: border-box; }
 #search-box:focus { border-color: #c62828; outline: none;  }
 #results { margin-top: 30px; max-width: 800px; margin-left: auto; margin-right: auto; }
-.result-card { background: #fff; border: 1px solid #e0e0e0; padding: 20px; border-radius: 8px; margin-bottom: 15px; box-shadow: 0 2px 4px rgba(0,0,0,0.02);  }
-.result-card h3 { margin: 0 0 8px; font-size: 1.3em; }
-.result-card p { margin: 0; font-size: 0.95em; color: #666; line-height: 1.5; }
+.result-card { background: #fff; border: 1px solid #e0e4e8; padding: 20px; border-radius: 8px; margin-bottom: 15px; box-shadow: 0 2px 4px rgba(0,0,0,0.02); transition: transform 0.15s ease, border-color 0.15s ease; }
+.result-card:hover { transform: translateY(-1px); border-color: #c62828; box-shadow: 0 4px 10px rgba(0,0,0,0.05); }
+.result-card h3 { margin: 0 0 8px; font-size: 1.25em; }
+.result-card p { margin: 0 0 10px 0; font-size: 0.93em; color: #555; line-height: 1.6; }
+.filter-tabs { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; margin-top: 15px; }
+.filter-btn {
+    padding: 6px 14px; border-radius: 20px; font-size: 0.85em; font-weight: bold;
+    border: 1px solid #ccd0d5; background: #fff; cursor: pointer; transition: all 0.2s ease; color: #444;
+}
+.filter-btn.active, .filter-btn:hover {
+    background: linear-gradient(to bottom, #e53935 0%, #c62828 100%);
+    color: white; border-color: #b71c1c; box-shadow: 0 2px 4px rgba(0,0,0,0.15);
+}
+.badge {
+    display: inline-block; padding: 3px 8px; border-radius: 10px; font-size: 0.72em;
+    font-weight: bold; text-transform: uppercase; letter-spacing: 0.5px;
+}
+.badge-red { background: #ffebee; color: #b71c1c; border: 1px solid #ffcdd2; }
+.badge-blue { background: #e1f5fe; color: #0277bd; border: 1px solid #b3e5fc; }
+.badge-green { background: #e8f5e9; color: #2e7d32; border: 1px solid #c8e6c9; }
 </style>
 
-<div class="glass-panel" style="text-align: center; padding: 50px 20px;">
-    
+<div class="glass-panel" style="text-align: center; padding: 40px 20px 30px 20px;">
+    <h2 style="margin: 0 0 10px 0; color: #c62828; font-size: 1.8em;">Search DDCR Public Health & Scientific Database</h2>
+    <p style="margin: 0 auto 20px auto; max-width: 650px; color: #555; font-size: 0.95em;">Instant query across comprehensive clinical articles, peer-reviewed PubMed Central (PMC) studies, and accredited biomedical journals.</p>
     
     <div id="search-container">
-        <input type="text" id="search-box" placeholder="Search topics (e.g., Influenza, Vaccines, Guidelines...)" autocomplete="off">
-            </div>
+        <input type="text" id="search-box" placeholder="Search diseases, symptoms, treatments, or research (e.g. COVID-19, Mpox, Vaccine, Rash, Inhaler)..." autocomplete="off">
+    </div>
+
+    <div class="filter-tabs" id="search-filter-tabs">
+        <button class="filter-btn active" data-tab="all">All Results (<span id="count-all">0</span>)</button>
+        <button class="filter-btn" data-tab="articles">Disease Articles (<span id="count-articles">0</span>)</button>
+        <button class="filter-btn" data-tab="research">Peer-Reviewed Studies (<span id="count-research">0</span>)</button>
+        <button class="filter-btn" data-tab="journals">PMC Journals (<span id="count-journals">0</span>)</button>
+    </div>
 </div>
+
 <div id="results">
+    <!-- Populated by search logic -->
+</div>
 
-    <div class="result-card">
-        <h3 style="font-size: 1.1em; color: #555; margin-bottom: 10px;">Trending Topic</h3>
-        <h3><a href="health_topics.html" style="color: #c62828; text-decoration: none;">Seasonal Influenza (Flu) Guidelines</a></h3>
-        <p>Review the latest provincial recommendations for the current flu season, including vaccination center locations.</p>
-    </div>
-    <div class="result-card">
-        <h3 style="font-size: 1.1em; color: #555; margin-bottom: 10px;">Trending Topic</h3>
-        <h3><a href="health_topics.html" style="color: #c62828; text-decoration: none;">Vaccination Schedules</a></h3>
-        <p>Comprehensive provincial requirements and timelines for pediatric and adult vaccines.</p>
-    </div>
-    </div>
-
+<script src="data/diseases.js"></script>
 <script>
-// DDCR Mock Database
-// Built for extremely fast O(N) client-side filtering.
-const healthTopics = [
-    { title: "Influenza (Flu)", desc: "Seasonal flu guidelines, vaccination info, and prevention protocols for provincial hospitals.", link: "health_topics.html" },
-    { title: "COVID-19", desc: "Outbreak tracking, testing centers, booster shot availability, and quarantine rules.", link: "health_topics.html" },
-    { title: "Malaria", desc: "Travel guidelines, preventative medication, and symptoms to watch for.", link: "health_topics.html" },
-    { title: "Vaccination Schedules", desc: "Provincial requirements for pediatric and adult vaccines.", link: "health_topics.html" },
-    { title: "Tuberculosis (TB)", desc: "Screening requirements, treatment protocols, and isolation standards.", link: "health_topics.html" },
-    { title: "Cholera", desc: "Water safety guidelines, active outbreak areas, and hydration therapy.", link: "health_topics.html" },
-    { title: "Mental Health", desc: "Resources for anxiety, depression, and access to provincial psychiatric care.", link: "health_topics.html" },
-    { title: "Diabetes", desc: "Management strategies, dietary advice, and state-sponsored insulin access programs.", link: "health_topics.html" },
-    { title: "Cardiovascular Health", desc: "Heart disease prevention, cholesterol guidelines, and dietary recommendations.", link: "health_topics.html" },
-    { title: "Zika Virus", desc: "Mosquito prevention, pregnancy guidelines, and affected provinces.", link: "health_topics.html" },
-    { title: "Ebola Virus Disease", desc: "Strict quarantine protocols, outbreak history, and emergency response.", link: "health_topics.html" },
-    { title: "Rabies", desc: "Animal bite protocols, post-exposure prophylaxis (PEP), and wildlife monitoring.", link: "health_topics.html" },
-    { title: "Asthma", desc: "Inhaler access, air quality warnings, and emergency management.", link: "health_topics.html" },
-    { title: "Nutrition Guidelines", desc: "Sangaian dietary recommendations, vitamins, and public school meal standards.", link: "health_topics.html" }
-];
-
 const searchBox = document.getElementById('search-box');
 const resultsBox = document.getElementById('results');
+let activeTab = 'all';
+
+// Flatten all research studies from diseases database
+function getAllResearchStudies() {
+    if (!window.DDCR_DISEASES) return [];
+    const studies = [];
+    window.DDCR_DISEASES.forEach(d => {
+        (d.research_papers || []).forEach(p => {
+            studies.push({
+                ...p,
+                disease_name: d.name,
+                disease_id: d.id
+            });
+        });
+    });
+    return studies;
+}
+
+function renderDefaultView() {
+    resultsBox.innerHTML = `
+        <div style="margin-bottom: 25px;">
+            <h3 style="font-size: 1.1em; color: #777; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 15px;">Featured Health Topics & Active Alerts</h3>
+            
+            <div class="result-card">
+                <div style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 8px;">
+                    <div>
+                        <span class="badge badge-red">Active Outbreak Alert</span>
+                        <h3 style="margin-top: 6px;"><a href="article.html?topic=covid-19" style="color: #c62828; text-decoration: none;">COVID-19 (SARS-CoV-2 / Severe Acute Respiratory Syndrome)</a></h3>
+                    </div>
+                    <a href="article.html?topic=covid-19" class="sangaia-btn" style="height: 2.2em; font-size: 0.82em;"><span>View Protocol &rarr;</span></a>
+                </div>
+                <p>Comprehensive clinical guidelines on circulating sublineages, transmission dynamics, oral antivirals (Paxlovid), and 50 indexed PubMed Central research publications.</p>
+            </div>
+
+            <div class="result-card">
+                <div style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 8px;">
+                    <div>
+                        <span class="badge badge-red">Active Outbreak Alert</span>
+                        <h3 style="margin-top: 6px;"><a href="article.html?topic=mpox" style="color: #c62828; text-decoration: none;">Mpox / Monkeypox (Orthopoxvirus Clade I & Clade II)</a></h3>
+                    </div>
+                    <a href="article.html?topic=mpox" class="sangaia-btn" style="height: 2.2em; font-size: 0.82em;"><span>View Protocol &rarr;</span></a>
+                </div>
+                <p>Etiology, transmission modes, synchronous umbilicated lesion staging, JYNNEOS vaccine regimens, and tecovirimat antiviral indications.</p>
+            </div>
+
+            <div class="result-card">
+                <div style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 8px;">
+                    <div>
+                        <span class="badge badge-blue">Seasonal Surveillance</span>
+                        <h3 style="margin-top: 6px;"><a href="article.html?topic=influenza" style="color: #c62828; text-decoration: none;">Seasonal & Epidemic Influenza (Types A & B)</a></h3>
+                    </div>
+                    <a href="article.html?topic=influenza" class="sangaia-btn" style="height: 2.2em; font-size: 0.82em;"><span>View Protocol &rarr;</span></a>
+                </div>
+                <p>Annual provincial flu guidelines, neuraminidase inhibitor therapeutics (Oseltamivir), and high-risk pediatric/geriatric prophylaxis.</p>
+            </div>
+        </div>
+    `;
+
+    // Reset tab counters
+    document.getElementById('count-all').textContent = (window.DDCR_DISEASES ? window.DDCR_DISEASES.length : 0);
+    document.getElementById('count-articles').textContent = (window.DDCR_DISEASES ? window.DDCR_DISEASES.length : 0);
+    document.getElementById('count-research').textContent = getAllResearchStudies().length;
+    document.getElementById('count-journals').textContent = (window.DDCR_JOURNALS ? window.DDCR_JOURNALS.length : 0);
+}
 
 function performSearch(query) {
-    if (!query.trim()) {
-        
-        resultsBox.innerHTML = `
-    <div class="result-card">
-        <h3 style="font-size: 1.1em; color: #555; margin-bottom: 10px;">Trending Topic</h3>
-        <h3><a href="health_topics.html" style="color: #c62828; text-decoration: none;">Seasonal Influenza (Flu) Guidelines</a></h3>
-        <p>Review the latest provincial recommendations for the current flu season, including vaccination center locations.</p>
-    </div>
-    <div class="result-card">
-        <h3 style="font-size: 1.1em; color: #555; margin-bottom: 10px;">Trending Topic</h3>
-        <h3><a href="health_topics.html" style="color: #c62828; text-decoration: none;">Vaccination Schedules</a></h3>
-        <p>Comprehensive provincial requirements and timelines for pediatric and adult vaccines.</p>
-    </div>
-    `;
+    const q = query.trim().toLowerCase();
+    if (!q) {
+        renderDefaultView();
         return;
     }
-    
-    const lowerQuery = query.toLowerCase();
-    const matches = healthTopics.filter(t => t.title.toLowerCase().includes(lowerQuery) || t.desc.toLowerCase().includes(lowerQuery));
-    
-    // Render Results
-    resultsBox.innerHTML = matches.map(m => `
-        <div class="result-card">
-            <h3><a href="${m.link}" style="color: #c62828; text-decoration: none;">${m.title}</a></h3>
-            <p>${m.desc}</p>
-        </div>
-    `).join('');
-    
-    if (matches.length === 0) {
-        resultsBox.innerHTML = '<div class="result-card"><p style="text-align:center;">No results found for "'+query+'". Please try another term.</p></div>';
+
+    const allDiseases = window.DDCR_DISEASES || [];
+    const allResearch = getAllResearchStudies();
+    const allJournals = window.DDCR_JOURNALS || [];
+
+    // 1. Match Disease Articles
+    const matchedArticles = allDiseases.filter(d => {
+        return d.name.toLowerCase().includes(q) ||
+               (d.pathogen || '').toLowerCase().includes(q) ||
+               (d.summary || '').toLowerCase().includes(q) ||
+               (d.transmission || '').toLowerCase().includes(q) ||
+               (d.treatment || '').toLowerCase().includes(q) ||
+               (d.icd_code || '').toLowerCase().includes(q) ||
+               JSON.stringify(d.symptoms || {}).toLowerCase().includes(q);
+    });
+
+    // 2. Match Research Studies
+    const matchedResearch = allResearch.filter(p => {
+        return (p.title || '').toLowerCase().includes(q) ||
+               (p.authors || '').toLowerCase().includes(q) ||
+               (p.journal || '').toLowerCase().includes(q) ||
+               (p.research_category || '').toLowerCase().includes(q) ||
+               (p.disease_name || '').toLowerCase().includes(q) ||
+               (p.pmid || '').includes(q) ||
+               (p.pmcid || '').toLowerCase().includes(q);
+    });
+
+    // 3. Match Journals
+    const matchedJournals = allJournals.filter(j => {
+        return (j.title || '').toLowerCase().includes(q) ||
+               (j.publisher || '').toLowerCase().includes(q) ||
+               (j.nlm_abbr || '').toLowerCase().includes(q) ||
+               (j.issn || '').toLowerCase().includes(q);
+    });
+
+    // Update tab counters
+    document.getElementById('count-articles').textContent = matchedArticles.length;
+    document.getElementById('count-research').textContent = matchedResearch.length;
+    document.getElementById('count-journals').textContent = matchedJournals.length;
+    document.getElementById('count-all').textContent = (matchedArticles.length + matchedResearch.length + matchedJournals.length);
+
+    let html = '';
+
+    // Render Articles
+    if (activeTab === 'all' || activeTab === 'articles') {
+        if (matchedArticles.length > 0) {
+            html += `<h3 style="font-size: 1.1em; color: #777; text-transform: uppercase; letter-spacing: 0.5px; margin: 25px 0 15px 0;">Disease Articles (${matchedArticles.length})</h3>`;
+            html += matchedArticles.map(d => `
+                <div class="result-card">
+                    <div style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 8px;">
+                        <div>
+                            <span class="badge badge-red">${d.category_label || d.category}</span>
+                            <span class="badge badge-gold">${d.icd_code}</span>
+                            <h3 style="margin-top: 6px;"><a href="article.html?topic=${d.id}" style="color: #c62828; text-decoration: none;">${d.name}</a></h3>
+                        </div>
+                        <a href="article.html?topic=${d.id}" class="sangaia-btn" style="height: 2.2em; font-size: 0.82em;"><span>Read Article &rarr;</span></a>
+                    </div>
+                    <p style="margin-top: 6px;">${d.summary}</p>
+                    <div style="font-size: 0.82em; color: #666;">
+                        <strong>Pathogen:</strong> ${d.pathogen} &bull; 
+                        <strong>Incubation:</strong> ${d.incubation}
+                    </div>
+                </div>
+            `).join('');
+        }
+    }
+
+    // Render Research Papers
+    if (activeTab === 'all' || activeTab === 'research') {
+        if (matchedResearch.length > 0) {
+            html += `<h3 style="font-size: 1.1em; color: #777; text-transform: uppercase; letter-spacing: 0.5px; margin: 25px 0 15px 0;">Peer-Reviewed Scientific Studies (${matchedResearch.length})</h3>`;
+            html += matchedResearch.map(p => `
+                <div class="result-card" style="border-left: 4px solid #0277bd;">
+                    <span class="badge badge-blue">PMC Open Access</span>
+                    ${p.research_category ? `<span class="badge badge-green">${p.research_category}</span>` : ''}
+                    <h3 style="margin-top: 6px; font-size: 1.15em; color: #1a365d;">${p.title}</h3>
+                    <p style="font-size: 0.88em; color: #555; margin-bottom: 8px;">
+                        <strong>Authors:</strong> ${p.authors}<br>
+                        <strong>Journal:</strong> <em>${p.journal}</em> (${p.year}) &bull; Topic: <a href="article.html?topic=${p.disease_id}" style="color: #c62828;">${p.disease_name.split(' (')[0]}</a>
+                    </p>
+                    <div style="display: flex; gap: 12px; font-size: 0.82em;">
+                        ${p.pmcid ? `<a href="https://pmc.ncbi.nlm.nih.gov/articles/${p.pmcid}/" target="_blank" rel="noopener" style="color: #0277bd; font-weight: bold; text-decoration: none;">Read on PubMed Central [${p.pmcid}] &nearr;</a>` : ''}
+                        ${p.pmid ? `<a href="https://pubmed.ncbi.nlm.nih.gov/${p.pmid}/" target="_blank" rel="noopener" style="color: #666; text-decoration: none;">PubMed ID: ${p.pmid} &nearr;</a>` : ''}
+                    </div>
+                </div>
+            `).join('');
+        }
+    }
+
+    // Render Journals
+    if (activeTab === 'all' || activeTab === 'journals') {
+        if (matchedJournals.length > 0) {
+            html += `<h3 style="font-size: 1.1em; color: #777; text-transform: uppercase; letter-spacing: 0.5px; margin: 25px 0 15px 0;">Accredited PMC Biomedical Journals (${matchedJournals.length})</h3>`;
+            html += matchedJournals.map(j => `
+                <div class="result-card" style="border-left: 4px solid #2e7d32;">
+                    <div style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 8px;">
+                        <div>
+                            <span class="badge badge-green">Accredited Journal</span>
+                            <h3 style="margin-top: 6px; font-size: 1.15em; color: #1b5e20;">${j.title}</h3>
+                            <p style="font-size: 0.88em; color: #555; margin-bottom: 0;">
+                                <strong>Publisher:</strong> ${j.publisher} &bull; 
+                                <strong>NLM Abbr:</strong> ${j.nlm_abbr || 'N/A'} ${j.issn ? `&bull; <strong>ISSN:</strong> ${j.issn}` : ''}
+                            </p>
+                        </div>
+                        <a href="${j.pmc_url}" target="_blank" rel="noopener" class="sangaia-btn secondary" style="height: 2.2em; font-size: 0.82em;">
+                            <span>Browse in PMC &nearr;</span>
+                        </a>
+                    </div>
+                </div>
+            `).join('');
+        }
+    }
+
+    if (!html) {
+        resultsBox.innerHTML = `
+            <div class="result-card" style="text-align: center; padding: 40px;">
+                <p style="font-size: 1.1em; color: #666; margin-bottom: 10px;">No records matched your search query "<strong>${query}</strong>".</p>
+                <p style="font-size: 0.9em; color: #888;">Try searching for generic terms like "respiratory", "vaccine", "antiviral", "rash", "transmission", or specific pathogens.</p>
+            </div>
+        `;
+    } else {
+        resultsBox.innerHTML = html;
     }
 }
 
 searchBox.addEventListener('input', (e) => performSearch(e.target.value));
 
+// Tab filter buttons listener
+document.querySelectorAll('#search-filter-tabs .filter-btn').forEach(btn => {
+    btn.onclick = () => {
+        document.querySelectorAll('#search-filter-tabs .filter-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        activeTab = btn.dataset.tab;
+        performSearch(searchBox.value);
+    };
+});
 
+window.addEventListener('DOMContentLoaded', () => {
+    renderDefaultView();
+});
 </script>
 
 </div>
     <footer>
         &copy; 2026 United Provinces of Sangaia. All Rights Reserved.<br>
-        <span style="font-size: 0.8em; color: #888;">Ministry of Healthcare</span>
+        <span style="font-size: 0.8em; color: #888;">Ministry of Healthcare &bull; Department of Disease Control & Research</span>
     </footer>
 </div>
-
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script src="https://sangaia.org/auth.js"></script>
