@@ -1,0 +1,1487 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sangaia ID - Official Identity & Access Management</title>
+    <style>
+        /* --- SANGAIA ID BESPOKE IDENTITY PORTAL THEME --- */
+        :root {
+            --id-navy-dark: #050d1a;
+            --id-navy-card: #0a1c36;
+            --id-navy-card-border: rgba(0, 210, 255, 0.25);
+            --id-cyan: #00d2ff;
+            --id-cyan-glow: rgba(0, 210, 255, 0.4);
+            --id-blue: #0077be;
+            --id-blue-dark: #004c80;
+            --id-green: #00e676;
+            --id-amber: #ffb300;
+            --id-red: #ff3d00;
+            --id-text-main: #f0f6fc;
+            --id-text-muted: #8b9bb4;
+        }
+
+        * { box-sizing: border-box; }
+
+        body {
+            background: #050d1a radial-gradient(circle at 50% 0%, #0d274c 0%, #050d1a 100%) no-repeat fixed;
+            min-height: 100dvh;
+            width: 100%;
+            margin: 0;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            color: var(--id-text-main);
+            line-height: 1.6;
+        }
+
+        /* --- STANDALONE SANGAIA ID HEADER --- */
+        .id-navbar {
+            background: rgba(5, 13, 26, 0.85);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border-bottom: 1px solid var(--id-navy-card-border);
+            padding: 12px 30px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+        }
+
+        .id-brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+            color: white;
+        }
+
+        .id-logo-icon {
+            width: 38px;
+            height: 38px;
+            border-radius: 8px;
+            background: linear-gradient(135deg, #0077be 0%, #00d2ff 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 0 15px rgba(0, 210, 255, 0.5), inset 0 1px 0 rgba(255,255,255,0.4);
+        }
+
+        .id-brand-text {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .id-brand-title {
+            font-size: 1.25rem;
+            font-weight: 800;
+            letter-spacing: 0.5px;
+            color: #ffffff;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .id-brand-title span {
+            background: linear-gradient(to right, #00d2ff, #70e2ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .id-brand-sub {
+            font-size: 0.72rem;
+            color: var(--id-text-muted);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 600;
+        }
+
+        .id-nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .id-badge-security {
+            background: rgba(0, 210, 255, 0.1);
+            border: 1px solid rgba(0, 210, 255, 0.3);
+            color: #00d2ff;
+            font-size: 0.75rem;
+            padding: 4px 10px;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-weight: 600;
+        }
+
+        .id-badge-security::before {
+            content: "";
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: #00e676;
+            box-shadow: 0 0 6px #00e676;
+        }
+
+        .id-link-btn {
+            color: var(--id-text-muted);
+            text-decoration: none;
+            font-size: 0.85rem;
+            font-weight: 600;
+            padding: 6px 14px;
+            border-radius: 6px;
+            transition: all 0.2s ease;
+            border: 1px solid transparent;
+        }
+
+        .id-link-btn:hover {
+            color: white;
+            background: rgba(255, 255, 255, 0.06);
+            border-color: rgba(255, 255, 255, 0.1);
+        }
+
+        .id-link-btn.lang-btn {
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            background: rgba(0, 0, 0, 0.3);
+        }
+
+        /* --- MAIN WRAPPER --- */
+        .id-container {
+            max-width: 1180px;
+            margin: 35px auto 60px auto;
+            padding: 0 20px;
+        }
+
+        /* --- GLASS CARDS --- */
+        .id-glass-card {
+            background: rgba(10, 28, 54, 0.75);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid var(--id-navy-card-border);
+            border-radius: 12px;
+            padding: 30px;
+            margin-bottom: 25px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.08);
+            position: relative;
+        }
+
+        /* --- AUTH SECTION (LOGIN / REGISTER) --- */
+        .auth-hero-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 30px;
+            align-items: center;
+        }
+
+        @media (min-width: 900px) {
+            .auth-hero-grid {
+                grid-template-columns: 1.1fr 1fr;
+            }
+        }
+
+        .auth-intro-col h1 {
+            font-size: 2.5rem;
+            margin: 0 0 15px 0;
+            line-height: 1.15;
+            letter-spacing: -0.5px;
+        }
+
+        .auth-intro-col h1 span {
+            background: linear-gradient(135deg, #00d2ff 0%, #0077be 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .auth-intro-col p {
+            color: var(--id-text-muted);
+            font-size: 1.05rem;
+            margin-bottom: 25px;
+        }
+
+        .sso-pills-list {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .sso-pill-item {
+            background: rgba(0, 210, 255, 0.05);
+            border: 1px solid rgba(0, 210, 255, 0.15);
+            border-radius: 8px;
+            padding: 12px 16px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .sso-pill-icon {
+            font-size: 1.4rem;
+            flex-shrink: 0;
+        }
+
+        .sso-pill-title {
+            font-size: 0.92rem;
+            font-weight: bold;
+            color: white;
+        }
+
+        .sso-pill-sub {
+            font-size: 0.78rem;
+            color: var(--id-text-muted);
+        }
+
+        /* Auth Form Card */
+        .auth-box-card {
+            background: #08162b;
+            border: 1px solid rgba(0, 210, 255, 0.3);
+            border-radius: 12px;
+            padding: 30px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.6), 0 0 25px rgba(0, 210, 255, 0.1);
+        }
+
+        .auth-tabs {
+            display: flex;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            margin-bottom: 25px;
+        }
+
+        .auth-tab-btn {
+            background: transparent;
+            border: none;
+            color: var(--id-text-muted);
+            font-size: 0.95rem;
+            font-weight: 700;
+            padding: 10px 20px;
+            cursor: pointer;
+            position: relative;
+            transition: all 0.2s ease;
+        }
+
+        .auth-tab-btn.active {
+            color: #00d2ff;
+        }
+
+        .auth-tab-btn.active::after {
+            content: "";
+            position: absolute;
+            bottom: -1px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: #00d2ff;
+            box-shadow: 0 0 10px #00d2ff;
+        }
+
+        .form-group {
+            margin-bottom: 18px;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 0.8rem;
+            font-weight: 700;
+            color: var(--id-text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.6px;
+            margin-bottom: 6px;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 12px 14px;
+            background: #050d1a;
+            border: 1px solid rgba(0, 210, 255, 0.2);
+            border-radius: 6px;
+            color: white;
+            font-size: 0.95rem;
+            transition: all 0.2s ease;
+        }
+
+        .form-group input:focus {
+            outline: none;
+            border-color: #00d2ff;
+            box-shadow: 0 0 10px rgba(0, 210, 255, 0.3);
+        }
+
+        .password-input-wrap {
+            position: relative;
+        }
+
+        .password-toggle-btn {
+            position: absolute;
+            right: 12px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: transparent;
+            border: none;
+            color: var(--id-text-muted);
+            cursor: pointer;
+            font-size: 0.85rem;
+        }
+
+        .btn-id-primary {
+            width: 100%;
+            padding: 13px;
+            background: linear-gradient(135deg, #0077be 0%, #00d2ff 100%);
+            border: none;
+            border-radius: 6px;
+            color: white;
+            font-weight: bold;
+            font-size: 1rem;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(0, 119, 190, 0.4), inset 0 1px 0 rgba(255,255,255,0.3);
+            transition: all 0.2s ease;
+        }
+
+        .btn-id-primary:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 6px 20px rgba(0, 210, 255, 0.5);
+        }
+
+        .btn-id-secondary {
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            color: white;
+            font-weight: 600;
+            padding: 8px 16px;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .btn-id-secondary:hover {
+            background: rgba(255, 255, 255, 0.15);
+            border-color: rgba(0, 210, 255, 0.4);
+        }
+
+        .auth-alert-box {
+            padding: 10px 14px;
+            border-radius: 6px;
+            margin-bottom: 16px;
+            font-size: 0.88rem;
+            display: none;
+        }
+
+        .auth-alert-box.error {
+            display: block;
+            background: rgba(255, 61, 0, 0.15);
+            border: 1px solid rgba(255, 61, 0, 0.4);
+            color: #ff8a80;
+        }
+
+        .auth-alert-box.success {
+            display: block;
+            background: rgba(0, 230, 118, 0.15);
+            border: 1px solid rgba(0, 230, 118, 0.4);
+            color: #b9f6ca;
+        }
+
+        /* --- AUTHENTICATED VAULT DASHBOARD --- */
+        #vault-section {
+            display: none;
+        }
+
+        .vault-hero-banner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+            flex-wrap: wrap;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            padding-bottom: 25px;
+            margin-bottom: 25px;
+        }
+
+        .vault-profile-col {
+            display: flex;
+            align-items: center;
+            gap: 18px;
+        }
+
+        .vault-avatar {
+            width: 65px;
+            height: 65px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #0077be 0%, #00d2ff 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: white;
+            box-shadow: 0 0 20px rgba(0, 210, 255, 0.4);
+            border: 2px solid #ffffff;
+        }
+
+        .vault-name {
+            font-size: 1.6rem;
+            font-weight: 800;
+            color: white;
+            margin: 0 0 4px 0;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .status-badge-verified {
+            background: rgba(0, 230, 118, 0.15);
+            border: 1px solid #00e676;
+            color: #00e676;
+            font-size: 0.75rem;
+            font-weight: 700;
+            padding: 3px 10px;
+            border-radius: 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .vault-id-num {
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 0.95rem;
+            color: var(--id-cyan);
+            letter-spacing: 1px;
+        }
+
+        /* --- OFFICIAL ID CARD DISPLAY SECTION --- */
+        .id-card-display-section {
+            margin: 30px 0;
+        }
+
+        .id-card-section-title {
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: white;
+            margin-bottom: 6px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .id-card-section-sub {
+            font-size: 0.85rem;
+            color: var(--id-text-muted);
+            margin-bottom: 20px;
+        }
+
+        /* STRICT SPEC: Aligned left, NO border-radius, ISO/IEC 7810 ID-1 proportions */
+        .official-card-left-aligned {
+            margin-left: 0 !important;
+            margin-right: auto !important;
+            text-align: left;
+            display: inline-block;
+        }
+
+        .official-uploaded-card-img {
+            width: 100%;
+            max-width: 420px;
+            height: auto;
+            aspect-ratio: 1.586;
+            border-radius: 0 !important; /* STRICT REQUIREMENT: No corner radius */
+            display: block;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.6);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        /* Fallback Dynamic Sangaia Digital ID Card */
+        .digital-id-card {
+            width: 100%;
+            max-width: 420px;
+            aspect-ratio: 1.586;
+            border-radius: 10px;
+            background: linear-gradient(135deg, #091e3a 0%, #061528 50%, #0f3563 100%);
+            border: 1px solid rgba(0, 210, 255, 0.4);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(255,255,255,0.2);
+            padding: 20px;
+            position: relative;
+            overflow: hidden;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .digital-id-card::before {
+            content: "";
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(0, 210, 255, 0.08) 0%, transparent 60%);
+            pointer-events: none;
+        }
+
+        .card-top-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            position: relative;
+            z-index: 2;
+        }
+
+        .card-seal-img {
+            height: 42px;
+            width: auto;
+            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.4));
+        }
+
+        .card-title-block {
+            text-align: right;
+        }
+
+        .card-nation-title {
+            font-size: 0.72rem;
+            font-weight: 800;
+            color: #00d2ff;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+        }
+
+        .card-type-title {
+            font-size: 0.95rem;
+            font-weight: 800;
+            letter-spacing: 0.5px;
+        }
+
+        .card-middle-row {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin: 12px 0;
+            position: relative;
+            z-index: 2;
+        }
+
+        .card-photo-box {
+            width: 70px;
+            height: 85px;
+            border-radius: 4px;
+            background: #050d1a;
+            border: 1px solid rgba(0, 210, 255, 0.4);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            font-weight: bold;
+            color: #00d2ff;
+            flex-shrink: 0;
+        }
+
+        .card-data-fields {
+            flex-grow: 1;
+            font-size: 0.8rem;
+            line-height: 1.5;
+        }
+
+        .card-data-name {
+            font-size: 1.05rem;
+            font-weight: bold;
+            color: white;
+            margin-bottom: 4px;
+        }
+
+        .card-bottom-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            font-size: 0.72rem;
+            color: var(--id-text-muted);
+            position: relative;
+            z-index: 2;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 8px;
+        }
+
+        /* --- CONNECTED PROVINCIAL ECOSYSTEM HUB --- */
+        .services-hub-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 18px;
+            margin: 25px 0;
+        }
+
+        .hub-service-card {
+            background: rgba(8, 22, 43, 0.8);
+            border: 1px solid rgba(0, 210, 255, 0.2);
+            border-radius: 10px;
+            padding: 20px;
+            transition: all 0.2s ease;
+            text-decoration: none;
+            color: inherit;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .hub-service-card:hover {
+            border-color: #00d2ff;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0, 210, 255, 0.15);
+        }
+
+        .hub-service-card.active-service {
+            border-top: 3px solid #00e676;
+        }
+
+        .hub-service-header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 8px;
+        }
+
+        .hub-service-icon {
+            font-size: 1.5rem;
+        }
+
+        .hub-service-name {
+            font-weight: 700;
+            color: white;
+            font-size: 1rem;
+        }
+
+        .hub-service-desc {
+            font-size: 0.82rem;
+            color: var(--id-text-muted);
+            margin-bottom: 14px;
+        }
+
+        .hub-service-status {
+            font-size: 0.75rem;
+            font-weight: 700;
+            color: #00e676;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .hub-service-status::before {
+            content: "";
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: #00e676;
+        }
+
+        /* --- VAULT DATA TABS --- */
+        .vault-tabs-nav {
+            display: flex;
+            gap: 10px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            margin-bottom: 20px;
+            overflow-x: auto;
+        }
+
+        .vault-tab-btn {
+            background: transparent;
+            border: none;
+            color: var(--id-text-muted);
+            font-size: 0.9rem;
+            font-weight: 700;
+            padding: 10px 16px;
+            cursor: pointer;
+            border-bottom: 2px solid transparent;
+            white-space: nowrap;
+        }
+
+        .vault-tab-btn.active {
+            color: #00d2ff;
+            border-color: #00d2ff;
+        }
+
+        .tab-pane {
+            display: none;
+        }
+
+        .tab-pane.active {
+            display: block;
+        }
+
+        .info-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.9rem;
+        }
+
+        .info-table th, .info-table td {
+            padding: 10px 14px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+            text-align: left;
+        }
+
+        .info-table th {
+            color: var(--id-text-muted);
+            font-weight: 600;
+            width: 35%;
+        }
+
+        .info-table td {
+            color: white;
+            font-weight: 500;
+        }
+
+        footer {
+            text-align: center;
+            padding: 30px;
+            font-size: 0.85rem;
+            color: var(--id-text-muted);
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+            margin-top: 50px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- STANDALONE SANGAIA ID NAVIGATION -->
+    <header class="id-navbar">
+        <a href="id.html" class="id-brand">
+            <div class="id-logo-icon">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                    <rect x="3" y="4" width="18" height="16" rx="3"></rect>
+                    <circle cx="9" cy="10" r="2"></circle>
+                    <path d="M15 8h2"></path>
+                    <path d="M15 12h2"></path>
+                    <path d="M7 16h10"></path>
+                </svg>
+            </div>
+            <div class="id-brand-text">
+                <div class="id-brand-title">Sangaia <span>ID</span></div>
+                <div class="id-brand-sub">Identity & Access Gateway</div>
+            </div>
+        </a>
+
+        <div class="id-nav-actions">
+            <div class="id-badge-security">
+                <span>SSO Active &bull; AES-256</span>
+            </div>
+            <a href="https://healthcare.sangaia.org" class="id-link-btn" title="Open Healthcare Portal">Healthcare</a>
+            <a href="index.html" class="id-link-btn" title="Open Government Portal">Government</a>
+            <a href="sgn/id.html" class="id-link-btn lang-btn">Сангаиан</a>
+        </div>
+    </header>
+
+    <main class="id-container">
+
+        <!-- UNAUTHENTICATED AUTH PORTAL SECTION -->
+        <section id="auth-section">
+            <div class="id-glass-card">
+                <div class="auth-hero-grid">
+                    <!-- Left Column: SSO Value Prop -->
+                    <div class="auth-intro-col">
+                        <h1>One Sangaia ID.<br><span>Infinite Provincial Services.</span></h1>
+                        <p>Sign in once to maintain continuous authenticated access across the Ministry of Healthcare, provincial hospitals, research centers, and educational vaults.</p>
+                        
+                        <div class="sso-pills-list">
+                            <div class="sso-pill-item">
+                                <span class="sso-pill-icon">🏥</span>
+                                <div>
+                                    <div class="sso-pill-title">Ministry of Healthcare & Hospitals</div>
+                                    <div class="sso-pill-sub">healthcare.sangaia.org &bull; Electronic Health Records & DDCR</div>
+                                </div>
+                            </div>
+                            <div class="sso-pill-item">
+                                <span class="sso-pill-icon">🪪</span>
+                                <div>
+                                    <div class="sso-pill-title">Official ISO/IEC 7810 ID-1 Credentials</div>
+                                    <div class="sso-pill-sub">Provincial verification, civil standing, and digital ID card</div>
+                                </div>
+                            </div>
+                            <div class="sso-pill-item">
+                                <span class="sso-pill-icon">🎓</span>
+                                <div>
+                                    <div class="sso-pill-title">Education & Civic Examination Vault</div>
+                                    <div class="sso-pill-sub">Literacy certifications, course transcripts, and naturalization</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Right Column: Interactive Login / Register Card -->
+                    <div class="auth-box-card">
+                        <div class="auth-tabs">
+                            <button type="button" class="auth-tab-btn active" id="tab-login-btn" onclick="switchAuthTab('login')">Sign In</button>
+                            <button type="button" class="auth-tab-btn" id="tab-register-btn" onclick="switchAuthTab('register')">Create Sangaia ID</button>
+                        </div>
+
+                        <div id="auth-alert" class="auth-alert-box"></div>
+
+                        <!-- Sign In Form -->
+                        <form id="login-form" onsubmit="handleLogin(event)">
+                            <div class="form-group">
+                                <label for="login-email">Citizen Email Address</label>
+                                <input type="email" id="login-email" required placeholder="citizen@domain.org" autocomplete="username">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="login-password">Password</label>
+                                <div class="password-input-wrap">
+                                    <input type="password" id="login-password" required placeholder="••••••••" autocomplete="current-password">
+                                    <button type="button" class="password-toggle-btn" onclick="togglePasswordVisibility('login-password')">Show</button>
+                                </div>
+                            </div>
+
+                            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; font-size: 0.85rem;">
+                                <label style="display: flex; align-items: center; gap: 8px; cursor: pointer; color: var(--id-text-muted);">
+                                    <input type="checkbox" id="remember-me" checked style="accent-color: #00d2ff; width: auto;">
+                                    <span>Stay signed in on all subdomains</span>
+                                </label>
+                            </div>
+
+                            <button type="submit" class="btn-id-primary" id="login-submit-btn">
+                                <span>Sign In to Sangaia ID &rarr;</span>
+                            </button>
+                        </form>
+
+                        <!-- Register Form -->
+                        <form id="register-form" style="display: none;" onsubmit="handleRegister(event)">
+                            <div class="form-group">
+                                <label for="reg-fullname">Full Legal Name</label>
+                                <input type="text" id="reg-fullname" required placeholder="e.g. John Doe">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="reg-dob">Date of Birth</label>
+                                <input type="date" id="reg-dob" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="reg-email">Email Address</label>
+                                <input type="email" id="reg-email" required placeholder="citizen@domain.org" autocomplete="username">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="reg-password">Create Master Password</label>
+                                <div class="password-input-wrap">
+                                    <input type="password" id="reg-password" required minlength="6" placeholder="At least 6 characters" autocomplete="new-password">
+                                    <button type="button" class="password-toggle-btn" onclick="togglePasswordVisibility('reg-password')">Show</button>
+                                </div>
+                            </div>
+
+                            <button type="submit" class="btn-id-primary" id="register-submit-btn">
+                                <span>Create Sangaia ID & Register &rarr;</span>
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- AUTHENTICATED CITIZEN VAULT & ID CARD SECTION -->
+        <section id="vault-section">
+            <div class="id-glass-card">
+                <!-- Citizen Banner -->
+                <div class="vault-hero-banner">
+                    <div class="vault-profile-col">
+                        <div class="vault-avatar" id="vault-avatar-letter">C</div>
+                        <div>
+                            <div class="vault-name">
+                                <span id="vault-display-name">Citizen Record</span>
+                                <span class="status-badge-verified" id="vault-status-badge">Verified Citizen</span>
+                            </div>
+                            <div class="vault-id-num" id="vault-id-number">ID: SGN-2026-PENDING</div>
+                            <div style="font-size: 0.8rem; color: var(--id-text-muted); margin-top: 2px;">
+                                Connected Account: <span id="vault-email-display">user@sangaia.org</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div style="display: flex; gap: 10px; align-items: center;">
+                        <button type="button" class="btn-id-secondary" onclick="window.print()">
+                            <span>Print ID Records</span>
+                        </button>
+                        <button type="button" class="btn-id-secondary" onclick="handleSignOut()" style="border-color: rgba(255, 61, 0, 0.4); color: #ff8a80;">
+                            <span>Sign Out</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- OFFICIAL ID CARD SECTION -->
+                <div class="id-card-display-section">
+                    <div class="id-card-section-title">
+                        <span>Official Sangaia Citizen ID Card</span>
+                        <span style="font-size: 0.75rem; color: var(--id-cyan); font-weight: 600;">(ISO/IEC 7810 ID-1 Standard)</span>
+                    </div>
+                    <div class="id-card-section-sub">
+                        Your government-issued identity credential. Valid across all provincial authorities, border inspection, healthcare facilities, and election venues.
+                    </div>
+
+                    <!-- Uploaded Official Card (Left-Aligned, No Corner Radius) -->
+                    <div id="official-uploaded-card-container" class="official-card-left-aligned" style="display: none;">
+                        <img id="official-id-card-image" class="official-uploaded-card-img" src="" alt="Official Sangaia ID Card">
+                        <div style="margin-top: 10px; display: flex; gap: 10px;">
+                            <a id="download-uploaded-card-btn" href="" download="Sangaia_ID_Card.png" class="btn-id-secondary" style="font-size: 0.8rem;">
+                                <span>Download ID (.PNG)</span>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Dynamic Sangaia Digital ID Card (Fallback if no uploaded card yet) -->
+                    <div id="dynamic-digital-card-container" class="official-card-left-aligned">
+                        <div class="digital-id-card">
+                            <div class="card-top-row">
+                                <img src="media/sangaia_seal.png" onerror="this.src='https://sangaia.org/media/sangaia_seal.png';" alt="Seal" class="card-seal-img">
+                                <div class="card-title-block">
+                                    <div class="card-nation-title">United Provinces of Sangaia</div>
+                                    <div class="card-type-title">CITIZEN IDENTITY CARD</div>
+                                </div>
+                            </div>
+
+                            <div class="card-middle-row">
+                                <div class="card-photo-box" id="card-initial-avatar">C</div>
+                                <div class="card-data-fields">
+                                    <div class="card-data-name" id="card-full-name">CITIZEN NAME</div>
+                                    <div><strong>ID:</strong> <span id="card-id-num" style="font-family: monospace; color:#00d2ff;">SGN-PENDING</span></div>
+                                    <div><strong>DOB:</strong> <span id="card-dob">N/A</span></div>
+                                    <div><strong>Status:</strong> <span id="card-status">Active Citizen</span></div>
+                                </div>
+                            </div>
+
+                            <div class="card-bottom-row">
+                                <div><strong>Issued:</strong> <span id="card-issued-date">2026-10-19</span></div>
+                                <div><strong>Blood:</strong> <span id="card-blood-type">O+</span></div>
+                                <div><strong>Jurisdiction:</strong> Sangaia Federation</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- CONNECTED PROVINCIAL ECOSYSTEM HUB -->
+                <div style="margin-top: 35px;">
+                    <div class="id-card-section-title">
+                        <span>Connected Provincial Services & Single Sign-On</span>
+                    </div>
+                    <div class="id-card-section-sub">
+                        Because you are signed into your Sangaia ID, the following provincial portals are automatically authenticated:
+                    </div>
+
+                    <div class="services-hub-grid">
+                        <!-- Healthcare Portal -->
+                        <a href="https://healthcare.sangaia.org" class="hub-service-card active-service" title="Open Healthcare Portal">
+                            <div>
+                                <div class="hub-service-header">
+                                    <span class="hub-service-icon">🏥</span>
+                                    <span class="hub-service-name">Ministry of Healthcare</span>
+                                </div>
+                                <div class="hub-service-desc">
+                                    Hospitals, clinical appointments, emergency care, and digital patient charts.
+                                </div>
+                            </div>
+                            <div class="hub-service-status">Connected &bull; Signed In</div>
+                        </a>
+
+                        <!-- DDCR Center -->
+                        <a href="mH/ddcr/index.html" class="hub-service-card active-service" title="Open DDCR Disease Control">
+                            <div>
+                                <div class="hub-service-header">
+                                    <span class="hub-service-icon">🔬</span>
+                                    <span class="hub-service-name">Disease Control & Research</span>
+                                </div>
+                                <div class="hub-service-desc">
+                                    Comprehensive disease database, pathogen surveillance, and medical bulletins.
+                                </div>
+                            </div>
+                            <div class="hub-service-status">Authorized Access</div>
+                        </a>
+
+                        <!-- Literacy & Education -->
+                        <a href="literacy_test.html" class="hub-service-card active-service" title="Official Literacy Examination">
+                            <div>
+                                <div class="hub-service-header">
+                                    <span class="hub-service-icon">🎓</span>
+                                    <span class="hub-service-name">Education & Literacy</span>
+                                </div>
+                                <div class="hub-service-desc">
+                                    Standardized literacy examination, university courses, and credentials.
+                                </div>
+                            </div>
+                            <div class="hub-service-status">Verified Credentials</div>
+                        </a>
+
+                        <!-- Government & Citizenship -->
+                        <a href="citizenship.html" class="hub-service-card active-service" title="Civic Registry">
+                            <div>
+                                <div class="hub-service-header">
+                                    <span class="hub-service-icon">🏛️</span>
+                                    <span class="hub-service-name">Civic Standing & Registry</span>
+                                </div>
+                                <div class="hub-service-desc">
+                                    Constitutional voting eligibility, provincial benefits, and civil registry.
+                                </div>
+                            </div>
+                            <div class="hub-service-status">Active Standing</div>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- CITIZEN VAULT DATA TABS -->
+                <div style="margin-top: 40px;">
+                    <div class="vault-tabs-nav">
+                        <button type="button" class="vault-tab-btn active" onclick="switchVaultTab('health', this)">Healthcare Records</button>
+                        <button type="button" class="vault-tab-btn" onclick="switchVaultTab('education', this)">Education & Courses</button>
+                        <button type="button" class="vault-tab-btn" onclick="switchVaultTab('service', this)">Community Service</button>
+                        <button type="button" class="vault-tab-btn" onclick="switchVaultTab('benefits', this)">Government Benefits</button>
+                        <button type="button" class="vault-tab-btn" onclick="switchVaultTab('profile', this)">Profile & Settings</button>
+                    </div>
+
+                    <!-- Health Tab -->
+                    <div class="tab-pane active" id="pane-health">
+                        <table class="info-table">
+                            <tr>
+                                <th>Blood Type</th>
+                                <td id="vault-blood-type">O+</td>
+                            </tr>
+                            <tr>
+                                <th>Known Allergies</th>
+                                <td id="vault-allergies">None Reported</td>
+                            </tr>
+                            <tr>
+                                <th>Primary Physician</th>
+                                <td id="vault-gp">Dr. S. Vance (Sangaia Central Hospital)</td>
+                            </tr>
+                            <tr>
+                                <th>Emergency Portal Link</th>
+                                <td><a href="mH/hospitals.html" style="color: #00d2ff; text-decoration: none;">View Provincial Hospital Directory &rarr;</a></td>
+                            </tr>
+                        </table>
+                        <div id="health-records-container" style="margin-top: 20px;"></div>
+                    </div>
+
+                    <!-- Education Tab -->
+                    <div class="tab-pane" id="pane-education">
+                        <table class="info-table">
+                            <tr>
+                                <th>Highest Level of Education</th>
+                                <td id="vault-education-level">Higher Secondary / University</td>
+                            </tr>
+                            <tr>
+                                <th>English Literacy Exam</th>
+                                <td><a href="literacy_test.html" style="color: #00d2ff; text-decoration: none;">Take / Review Literacy Examination &rarr;</a></td>
+                            </tr>
+                        </table>
+                        <div id="courses-list-container" style="margin-top: 20px;"></div>
+                    </div>
+
+                    <!-- Community Service Tab -->
+                    <div class="tab-pane" id="pane-service">
+                        <p><strong>Total Verified Community Service:</strong> <span id="vault-cs-hours" style="color: #00e676; font-weight: bold; font-size: 1.1rem;">0.00</span> hours</p>
+                        <div id="cs-records-container"></div>
+                    </div>
+
+                    <!-- Government Benefits Tab -->
+                    <div class="tab-pane" id="pane-benefits">
+                        <div id="benefits-container"></div>
+                    </div>
+
+                    <!-- Profile & Settings Tab -->
+                    <div class="tab-pane" id="pane-profile">
+                        <form onsubmit="handleUpdateProfile(event)" style="max-width: 500px;">
+                            <div class="form-group">
+                                <label for="update-fullname">Legal Full Name</label>
+                                <input type="text" id="update-fullname" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="update-phone">Phone Number</label>
+                                <input type="tel" id="update-phone" placeholder="+1 (555) 000-0000">
+                            </div>
+                            <div class="form-group">
+                                <label for="update-address">Physical Residential Address</label>
+                                <input type="text" id="update-address" placeholder="100 Republic Way, Veridia">
+                            </div>
+                            <button type="submit" class="btn-id-primary" style="width: auto; padding: 10px 24px;">Save Profile Changes</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        &copy; 2026 United Provinces of Sangaia. All Rights Reserved.<br>
+        <span style="font-size: 0.8em; color: #607d8b;">Sangaia Digital Identity & Single Sign-On Gateway &bull; ISO/IEC 7810 ID-1 Standard</span>
+    </footer>
+
+    <!-- EXTERNAL SCRIPTS -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="auth.js"></script>
+
+    <!-- SANGAIA ID APPLICATION LOGIC -->
+    <script>
+        let currentAuthTab = 'login';
+
+        function switchAuthTab(tab) {
+            currentAuthTab = tab;
+            const loginBtn = document.getElementById('tab-login-btn');
+            const regBtn = document.getElementById('tab-register-btn');
+            const loginForm = document.getElementById('login-form');
+            const regForm = document.getElementById('register-form');
+            const alertBox = document.getElementById('auth-alert');
+
+            alertBox.style.display = 'none';
+
+            if (tab === 'login') {
+                loginBtn.classList.add('active');
+                regBtn.classList.remove('active');
+                loginForm.style.display = 'block';
+                regForm.style.display = 'none';
+            } else {
+                loginBtn.classList.remove('active');
+                regBtn.classList.add('active');
+                loginForm.style.display = 'none';
+                regForm.style.display = 'block';
+            }
+        }
+
+        function togglePasswordVisibility(fieldId) {
+            const field = document.getElementById(fieldId);
+            if (!field) return;
+            field.type = field.type === 'password' ? 'text' : 'password';
+        }
+
+        function showAlert(msg, isError = true) {
+            const alertBox = document.getElementById('auth-alert');
+            alertBox.textContent = msg;
+            alertBox.className = 'auth-alert-box ' + (isError ? 'error' : 'success');
+            alertBox.style.display = 'block';
+        }
+
+        // Handle Login
+        async function handleLogin(e) {
+            e.preventDefault();
+            const email = document.getElementById('login-email').value.trim();
+            const password = document.getElementById('login-password').value;
+            const submitBtn = document.getElementById('login-submit-btn');
+
+            if (!window.supabase) {
+                showAlert("Authentication system initializing. Please refresh in a moment.");
+                return;
+            }
+
+            submitBtn.disabled = true;
+            submitBtn.innerHTML = "<span>Authenticating...</span>";
+
+            try {
+                const { data, error } = await window.supabase.auth.signInWithPassword({
+                    email: email,
+                    password: password
+                });
+
+                if (error) {
+                    showAlert(error.message, true);
+                    submitBtn.disabled = false;
+                    submitBtn.innerHTML = "<span>Sign In to Sangaia ID &rarr;</span>";
+                } else {
+                    showAlert("Authentication successful! Loading citizen vault...", false);
+                    setTimeout(() => {
+                        loadVault(data.user);
+                    }, 500);
+                }
+            } catch (err) {
+                showAlert("Login error: " + err.message, true);
+                submitBtn.disabled = false;
+                submitBtn.innerHTML = "<span>Sign In to Sangaia ID &rarr;</span>";
+            }
+        }
+
+        // Handle Register
+        async function handleRegister(e) {
+            e.preventDefault();
+            const fullName = document.getElementById('reg-fullname').value.trim();
+            const dob = document.getElementById('reg-dob').value;
+            const email = document.getElementById('reg-email').value.trim();
+            const password = document.getElementById('reg-password').value;
+            const submitBtn = document.getElementById('register-submit-btn');
+
+            if (!window.supabase) {
+                showAlert("Authentication system initializing.");
+                return;
+            }
+
+            submitBtn.disabled = true;
+            submitBtn.innerHTML = "<span>Creating Identity...</span>";
+
+            try {
+                const { data, error } = await window.supabase.auth.signUp({
+                    email: email,
+                    password: password,
+                    options: {
+                        data: {
+                            full_name: fullName,
+                            date_of_birth: dob
+                        }
+                    }
+                });
+
+                if (error) {
+                    showAlert(error.message, true);
+                    submitBtn.disabled = false;
+                    submitBtn.innerHTML = "<span>Create Sangaia ID & Register &rarr;</span>";
+                } else {
+                    // Create citizen record
+                    if (data.user) {
+                        try {
+                            await window.supabase.from('sangaia_citizens').insert([{
+                                id: data.user.id,
+                                full_name: fullName,
+                                date_of_birth: dob,
+                                account_status: 'Active'
+                            }]);
+                        } catch(e) {}
+                    }
+                    showAlert("Sangaia ID created successfully! Signing into your vault...", false);
+                    setTimeout(() => {
+                        loadVault(data.user);
+                    }, 800);
+                }
+            } catch (err) {
+                showAlert("Registration error: " + err.message, true);
+                submitBtn.disabled = false;
+                submitBtn.innerHTML = "<span>Create Sangaia ID & Register &rarr;</span>";
+            }
+        }
+
+        // Handle Sign Out
+        async function handleSignOut() {
+            if (window.supabase) {
+                await window.supabase.auth.signOut();
+            }
+            if (window.sangaiaStorage) {
+                window.sangaiaStorage.removeItem('sb-qcgdjdnihwchjargpfcc-auth-token');
+            }
+            document.getElementById('vault-section').style.display = 'none';
+            document.getElementById('auth-section').style.display = 'block';
+            window.location.reload();
+        }
+
+        // Load Authenticated Vault
+        async function loadVault(user) {
+            document.getElementById('auth-section').style.display = 'none';
+            document.getElementById('vault-section').style.display = 'block';
+
+            document.getElementById('vault-email-display').textContent = user.email;
+
+            // Fetch citizen profile
+            let citizen = null;
+            try {
+                const { data, error } = await window.supabase
+                    .from('sangaia_citizens')
+                    .select('*')
+                    .eq('id', user.id)
+                    .single();
+                citizen = data;
+            } catch (e) {
+                console.warn("Error fetching citizen:", e);
+            }
+
+            const name = citizen?.full_name || user.user_metadata?.full_name || 'Citizen';
+            const initial = name.charAt(0).toUpperCase();
+
+            // Populate Banner
+            document.getElementById('vault-avatar-letter').textContent = initial;
+            document.getElementById('vault-display-name').textContent = name;
+            
+            const idNumber = citizen?.sangaia_id_number || `SGN-${user.id.substring(0, 8).toUpperCase()}`;
+            document.getElementById('vault-id-number').textContent = `ID: ${idNumber}`;
+            
+            if (citizen?.account_status) {
+                document.getElementById('vault-status-badge').textContent = `${citizen.account_status} Citizen`;
+            }
+
+            // Populate Digital Card Fallback
+            document.getElementById('card-initial-avatar').textContent = initial;
+            document.getElementById('card-full-name').textContent = name.toUpperCase();
+            document.getElementById('card-id-num').textContent = idNumber;
+            document.getElementById('card-dob').textContent = citizen?.date_of_birth || user.user_metadata?.date_of_birth || 'N/A';
+            document.getElementById('card-status').textContent = citizen?.account_status || 'Active Citizen';
+            document.getElementById('card-issued-date').textContent = citizen?.issue_date || new Date().toISOString().split('T')[0];
+            document.getElementById('card-blood-type').textContent = citizen?.blood_type || 'O+';
+
+            // Populate Profile Update Form
+            document.getElementById('update-fullname').value = name;
+            if (citizen?.phone_number) document.getElementById('update-phone').value = citizen.phone_number;
+            if (citizen?.physical_address) document.getElementById('update-address').value = citizen.physical_address;
+
+            // Populate Health Tab
+            if (citizen?.blood_type) document.getElementById('vault-blood-type').textContent = citizen.blood_type;
+            if (citizen?.allergies) document.getElementById('vault-allergies').textContent = citizen.allergies;
+            if (citizen?.primary_doctor) document.getElementById('vault-gp').textContent = citizen.primary_doctor;
+            if (citizen?.education_level) document.getElementById('vault-education-level').textContent = citizen.education_level;
+
+            // STRICT SPEC: Uploaded ISO/IEC 7810 ID-1 Card logic
+            const uploadedCardContainer = document.getElementById('official-uploaded-card-container');
+            const digitalCardContainer = document.getElementById('dynamic-digital-card-container');
+
+            if (citizen && citizen.id_card) {
+                // Hide digital card, show uploaded card (left-aligned, no border-radius)
+                uploadedCardContainer.style.display = 'block';
+                document.getElementById('official-id-card-image').src = citizen.id_card;
+                document.getElementById('download-uploaded-card-btn').href = citizen.id_card;
+                digitalCardContainer.style.display = 'none';
+            } else {
+                uploadedCardContainer.style.display = 'none';
+                digitalCardContainer.style.display = 'block';
+            }
+
+            // Load additional tab records
+            loadBenefits(user.id);
+            loadCommunityService(user.id);
+            loadHealthRecords(user.id);
+            loadCourses(user.id);
+        }
+
+        // Vault Tab Switcher
+        function switchVaultTab(tabName, btn) {
+            document.querySelectorAll('.vault-tab-btn').forEach(b => b.classList.remove('active'));
+            if (btn) btn.classList.add('active');
+
+            document.querySelectorAll('.tab-pane').forEach(p => p.classList.remove('active'));
+            const target = document.getElementById(`pane-${tabName}`);
+            if (target) target.classList.add('active');
+        }
+
+        // Load Benefits
+        async function loadBenefits(userId) {
+            const container = document.getElementById('benefits-container');
+            try {
+                const { data: benefits } = await window.supabase
+                    .from('government_benefits')
+                    .select('*')
+                    .eq('citizen_id', userId);
+
+                if (benefits && benefits.length > 0) {
+                    let html = '<table class="info-table"><thead><tr><th>Benefit Name</th><th>Status</th><th>Description</th></tr></thead><tbody>';
+                    benefits.forEach(b => {
+                        const color = b.status === 'Approved' ? '#00e676' : (b.status === 'Pending' ? '#ffb300' : '#888');
+                        html += `<tr><td><strong>${b.benefit_name}</strong></td><td style="color:${color}; font-weight:bold;">${b.status}</td><td>${b.description || ''}</td></tr>`;
+                    });
+                    html += '</tbody></table>';
+                    container.innerHTML = html;
+                } else {
+                    container.innerHTML = '<p style="color: var(--id-text-muted);">No active provincial benefit applications registered.</p>';
+                }
+            } catch(e) {
+                container.innerHTML = '<p style="color: var(--id-text-muted);">Benefits system initialized.</p>';
+            }
+        }
+
+        // Load Community Service
+        async function loadCommunityService(userId) {
+            const container = document.getElementById('cs-records-container');
+            try {
+                const { data: records } = await window.supabase
+                    .from('community_service_records')
+                    .select('*')
+                    .eq('citizen_id', userId);
+
+                if (records && records.length > 0) {
+                    let total = 0;
+                    let html = '<table class="info-table"><thead><tr><th>Organization</th><th>Hours</th><th>Status</th><th>Activity</th></tr></thead><tbody>';
+                    records.forEach(r => {
+                        if (r.status === 'Verified') total += parseFloat(r.hours) || 0;
+                        const color = r.status === 'Verified' ? '#00e676' : '#ffb300';
+                        html += `<tr><td>${r.organization_name}</td><td>${r.hours} hrs</td><td style="color:${color}; font-weight:bold;">${r.status}</td><td>${r.activity_description || ''}</td></tr>`;
+                    });
+                    html += '</tbody></table>';
+                    container.innerHTML = html;
+                    document.getElementById('vault-cs-hours').textContent = total.toFixed(2);
+                } else {
+                    container.innerHTML = '<p style="color: var(--id-text-muted);">No community service records logged yet.</p>';
+                }
+            } catch(e) {}
+        }
+
+        // Load Health Records
+        async function loadHealthRecords(userId) {
+            const container = document.getElementById('health-records-container');
+            try {
+                const { data: records } = await window.supabase
+                    .from('health_records')
+                    .select('*')
+                    .eq('citizen_id', userId);
+
+                if (records && records.length > 0) {
+                    let html = '<table class="info-table"><thead><tr><th>Record Type</th><th>Title</th><th>Date</th><th>Facility</th></tr></thead><tbody>';
+                    records.forEach(r => {
+                        html += `<tr><td><strong>${r.record_type}</strong></td><td>${r.title}</td><td>${r.record_date}</td><td>${r.facility_name} (${r.doctor_name || 'Staff'})</td></tr>`;
+                    });
+                    html += '</tbody></table>';
+                    container.innerHTML = html;
+                }
+            } catch(e) {}
+        }
+
+        // Load Courses
+        async function loadCourses(userId) {
+            const container = document.getElementById('courses-list-container');
+            try {
+                const { data: courses } = await window.supabase
+                    .from('education_courses')
+                    .select('*')
+                    .eq('citizen_id', userId);
+
+                if (courses && courses.length > 0) {
+                    let html = '<table class="info-table"><thead><tr><th>Code</th><th>Course Title</th><th>Credits</th><th>Status</th></tr></thead><tbody>';
+                    courses.forEach(c => {
+                        html += `<tr><td>${c.course_code}</td><td><strong>${c.course_title}</strong></td><td>${c.credits}</td><td>${c.status}</td></tr>`;
+                    });
+                    html += '</tbody></table>';
+                    container.innerHTML = html;
+                }
+            } catch(e) {}
+        }
+
+        // Profile Update
+        async function handleUpdateProfile(e) {
+            e.preventDefault();
+            const { data: { user } } = await window.supabase.auth.getUser();
+            if (!user) return;
+
+            const name = document.getElementById('update-fullname').value.trim();
+            const phone = document.getElementById('update-phone').value.trim();
+            const address = document.getElementById('update-address').value.trim();
+
+            const { error } = await window.supabase
+                .from('sangaia_citizens')
+                .update({
+                    full_name: name,
+                    phone_number: phone,
+                    physical_address: address
+                })
+                .eq('id', user.id);
+
+            if (error) {
+                alert("Error updating profile: " + error.message);
+            } else {
+                alert("Citizen profile updated successfully.");
+                loadVault(user);
+            }
+        }
+
+        // Auto-detect existing session
+        async function checkInitialSession() {
+            if (window.supabase && window.supabase.auth) {
+                try {
+                    const { data: { session } } = await window.supabase.auth.getSession();
+                    if (session && session.user) {
+                        loadVault(session.user);
+                    } else {
+                        document.getElementById('auth-section').style.display = 'block';
+                    }
+                } catch(e) {
+                    document.getElementById('auth-section').style.display = 'block';
+                }
+            } else {
+                setTimeout(checkInitialSession, 300);
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', checkInitialSession);
+    </script>
+</body>
+</html>
