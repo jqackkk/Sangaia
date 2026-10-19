@@ -21,6 +21,19 @@ CSS_PATH = os.path.join(os.path.dirname(__file__), "css", "sangaia-live.css")
 with open(CSS_PATH, "r", encoding="utf-8") as _f:
     MASTER_EMBEDDED_CSS = _f.read()
 
+THEME_MINISTRY_MAP = {
+    "theme-executive": ("Ministry of the Executive", "executive.html"),
+    "theme-treasury": ("Ministry of the Treasury", "treasury.html"),
+    "theme-work": ("Ministry of Work", "work.html"),
+    "theme-healthcare": ("Ministry of Healthcare", "healthcare.html"),
+    "theme-education": ("Ministry of Education", "education.html"),
+    "theme-domestic": ("Ministry of Domestic Affairs", "domesticaffairs.html"),
+    "theme-external": ("Ministry of External Affairs", "externalaffairs.html"),
+    "theme-environment": ("Ministry of the Environment", "environment.html"),
+    "theme-propaganda": ("Ministry of Propaganda", "propaganda.html"),
+}
+MINISTRY_SUBDIRS = {"MoEX", "mEx", "mT", "mW", "mH", "mEd", "mE", "MdA", "MiA", "MtE", "mEnv", "mP"}
+
 def generate_page(
     filename,
     title,
@@ -37,8 +50,29 @@ def generate_page(
     modal_dialog_html="",
     extra_scripts="",
     custom_nav_tabs=None,
-    sidebar_info_html=None
+    sidebar_info_html=None,
+    brand_text=None,
+    brand_url=None
 ):
+    norm_filename = filename.replace("\\", "/")
+    parts = norm_filename.split("/")
+
+    if brand_text is None:
+        if theme_class in THEME_MINISTRY_MAP:
+            brand_text = THEME_MINISTRY_MAP[theme_class][0]
+        else:
+            brand_text = "Sangaia Live"
+
+    if brand_url is None:
+        if theme_class in THEME_MINISTRY_MAP:
+            root_page = THEME_MINISTRY_MAP[theme_class][1]
+            if len(parts) == 2 and parts[0] in MINISTRY_SUBDIRS:
+                brand_url = "index.html"
+            else:
+                brand_url = f"/{root_page}"
+        else:
+            brand_url = "/index.html"
+
     if custom_nav_tabs:
         nav_tabs = custom_nav_tabs
     else:
@@ -111,7 +145,7 @@ def generate_page(
   <header class="hero-header">
     <div class="top-bar">
       <div class="brand">
-        <a href="/index.html"><span class="mif-windows"></span> Sangaia Live</a>
+        <a href="{brand_url}"><span class="mif-windows"></span> {brand_text}</a>
       </div>
       <div class="top-right">
         <form class="search-box" action="/services.html" method="get">

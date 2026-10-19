@@ -279,7 +279,7 @@ def build_all_ministry_departments():
     extra_scripts = EXTRA_SCRIPTS_TEMPLATE.format(modal_configs_json=modal_configs_json)
 
     for mkey, m in MINISTRIES.items():
-        theme_class = f"theme-{m['theme']}"
+        theme_class = f"theme-{mkey}"
         ministry_title = m["ministry_en"]
         home_url = f"/{m['root_file']}"
         dept_hub_file = f"{mkey}_departments.html"
