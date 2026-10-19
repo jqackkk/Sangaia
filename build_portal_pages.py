@@ -40,6 +40,81 @@ def build_index():
     ]
 
     main_content = """
+    <!-- Post Composer Card -->
+    <div class="card composer">
+        <div class="toolbar">
+            <button class="tool-btn" onclick="formatDoc('bold')">B</button>
+            <button class="tool-btn" onclick="formatDoc('italic')">I</button>
+            <button class="tool-btn" onclick="formatDoc('underline')">U</button>
+            <button class="tool-btn" onclick="formatDoc('strikeThrough')">S</button>
+            <button class="tool-btn" aria-label="Link"><span class="mif-link"></span></button>
+            <button class="tool-btn" aria-label="Emoji"><span class="mif-face"></span></button>
+            <div class="color-picker"></div>
+            <select id="fontSelect">
+                <option>Segoe WP (default)</option>
+                <option>Segoe UI</option>
+                <option>Metropolis</option>
+                <option>Hanken Grotesk</option>
+                <option>Tahoma</option>
+                <option>Verdana</option>
+            </select>
+            <select id="audienceSelect">
+                <option>Everyone</option>
+                <option>My network</option>
+                <option>Only me</option>
+            </select>
+        </div>
+
+        <textarea id="postInput" placeholder="What's on your mind?"></textarea>
+
+        <div class="composer-footer">
+            <button class="btn-share" id="postBtn">Share</button>
+            <div class="composer-actions">
+                <a>Add photo</a>
+                <a>Add video</a>
+                <a>Attach file</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Feed Container -->
+    <div class="card">
+        <div class="feed-tabs">
+            <a href="#" class="active">What's new?</a>
+            <a href="#">My network</a>
+            <a href="#">Groups</a>
+            <a href="#">Global network</a>
+            <a href="#">Umiki</a>
+            <span class="mif-filter filter-icon" aria-label="Filter"></span>
+        </div>
+
+        <div id="postsList">
+            <div class="post-item">
+                <img class="post-avatar" src="/images/1.jpeg" alt="avatar" />
+                <div class="post-content-wrap">
+                    <p><a href="/id.html" class="post-author">Jqackkk</a> says: "Coding"</p>
+                    <div class="post-meta">3 hours ago &bull; Sangaia Sovereign Network</div>
+                </div>
+            </div>
+
+            <div class="post-item">
+                <img class="post-avatar" src="/images/1.jpeg" alt="avatar" />
+                <div class="post-content-wrap">
+                    <p><a href="/id.html" class="post-author">Jqackkk</a> changed their profile picture</p>
+                    <div class="post-meta">4 days ago</div>
+                </div>
+            </div>
+
+            <div class="post-item">
+                <img class="post-avatar" src="/images/1.jpeg" alt="avatar" />
+                <div class="post-content-wrap">
+                    <p><a href="/id.html" class="post-author">Jqackkk</a> published <a href="/id.html">Sangaia ID</a> on <a href="/services.html">the Live Store</a></p>
+                    <div class="post-meta">4 days ago</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <div class="ol-status-bubble" id="overview">
         &ldquo;Welcome to Sangaia Live: The unified federal gateway for all sovereign public services, provincial coordination, and civic identity.&rdquo;
         <div class="ol-status-date">Sovereign State Gazette &bull; Updated Today</div>

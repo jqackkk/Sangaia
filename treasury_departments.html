@@ -1,330 +1,113 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ministry of the Treasury Departments :: Sangaia Live</title>
-    <link rel="stylesheet" href="/css/sangaia-live.css">
-    <script src="/js/sangaia-live.js" defer></script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ministry of the Treasury Departments :: Sangaia Live</title>
+  <link href="https://cdn.metroui.org.ua/4.5.12/icons.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <link rel="stylesheet" href="/css/sangaia-live.css">
+  <script src="/js/sangaia-live.js" defer></script>
 </head>
 <body class="theme-treasury">
 
-<!-- Top Live Mast Banner -->
-<div class="wl-mast">
-    <div class="ol-container wl-mast-inner">
-        <div class="ol-header-top">
-            <div class="ol-logo">
-                <a href="/index.html" aria-label="Sangaia Live Sovereign Portal">
-                    <svg viewBox="0 0 90 90" width="22" height="22" fill="currentColor">
-                        <rect x="0" y="0" width="41" height="41" rx="2"/>
-                        <rect x="49" y="0" width="41" height="41" rx="2"/>
-                        <rect x="0" y="49" width="41" height="41" rx="2"/>
-                        <rect x="49" y="49" width="41" height="41" rx="2"/>
-                    </svg>
-                    <span><b>Sangaia</b> Live</span>
-                </a>
-            </div>
-            <div class="ol-header-tools">
-                <form class="ol-search" id="headerSearchForm" action="/services.html" method="get">
-                    <input type="text" id="headerSearch" name="q" placeholder="Search government &amp; services" aria-label="Search">
-                    <button type="submit" class="ol-search-bing" aria-label="Search">&#x1F50E;</button>
-                </form>
-                
-                <a class="ol-icon-btn" href="/services.html" title="Notifications">
-                    <svg width="16" height="16" viewBox="0 0 16 16"><path fill="currentColor" d="M8 1.5c-2.4 0-4 1.9-4 4.2v3L2.7 11c-.3.4 0 1 .5 1h9.6c.5 0 .8-.6.5-1L12 8.7v-3c0-2.3-1.6-4.2-4-4.2zm0 13c1 0 1.8-.7 2-1.5H6c.2.8 1 1.5 2 1.5z"/></svg>
-                    <span class="ol-badge">3</span>
-                </a>
-                <a class="ol-icon-btn" href="/services.html" title="Citizen Messages">
-                    <svg width="16" height="16" viewBox="0 0 16 16"><path fill="currentColor" d="M2 3h12c.6 0 1 .4 1 1v7c0 .6-.4 1-1 1H9l-3.4 2.6c-.4.3-.9 0-.9-.5V12H2c-.6 0-1-.4-1-1V4c0-.6.4-1 1-1z"/></svg>
-                    <span class="ol-badge">1</span>
-                </a>
-                <div class="ol-me">
-                    <div class="ol-me-chip" id="meChip">
-                        <span class="ol-avatar sm">
-                            <img src="/images/1.jpeg" alt="Citizen Profile">
-                            <span class="ol-presence-dot"></span>
-                        </span>
-                        <span class="ol-me-name">Jqackkk</span>
-                        <span class="ol-me-caret">&#9660;</span>
-                    </div>
-                    <div class="ol-me-menu" id="meMenu" style="display:none; position:absolute; right:0; top:36px; background:#fff; border:1px solid #dfe3e7; border-radius:3px; box-shadow:0 2px 8px rgba(0,0,0,0.15); width:180px; z-index:1000; padding:6px 0;">
-                        <div style="padding:4px 12px; font-size:11px; font-weight:700; color:#64748b; text-transform:uppercase;">Citizen ID: SG-2026-F1E8</div>
-                        <a href="/id.html" style="display:block; padding:5px 12px; color:#2a2a2a; font-size:13px;">Sangaia ID Card</a>
-                        <a href="/citizenship.html" style="display:block; padding:5px 12px; color:#2a2a2a; font-size:13px;">Citizenship Status</a>
-                        <a href="/units.html" style="display:block; padding:5px 12px; color:#2a2a2a; font-size:13px;">Units &amp; Measures</a>
-                        <div style="border-top:1px solid #edf0f3; margin:4px 0;"></div>
-                        <a href="/index.html" style="display:block; padding:5px 12px; color:#2a2a2a; font-size:13px;">Federal Home</a>
-                    </div>
-                </div>
-            </div>
+  <!-- Top Hero Header -->
+  <header class="hero-header">
+    <div class="top-bar">
+      <div class="brand">
+        <a href="/index.html"><span class="mif-windows"></span> Sangaia Live</a>
+      </div>
+      <div class="top-right">
+        <form class="search-box" action="/services.html" method="get">
+          <input type="text" name="q" placeholder="Search people &amp; posts" />
+          <button type="submit" aria-label="Search"><span class="mif-search"></span></button>
+        </form>
+        <div class="user-profile-menu" id="userProfileMenu">
+          <img src="/images/1.jpeg" alt="Avatar" />
+          <span>Jqackkk</span>
+          <span class="mif-arrow-drop-down" style="font-size: 14px;"></span>
+          <div class="user-dropdown">
+            <div class="user-dropdown-header">Citizen: SG-2026-F1E8</div>
+            <a href="/id.html"><span class="mif-profile"></span> Sangaia ID Card</a>
+            <a href="/citizenship.html"><span class="mif-checkmark"></span> Citizenship Status</a>
+            <a href="/units.html"><span class="mif-compass"></span> Units &amp; Measures</a>
+            <a href="/dashboard.html"><span class="mif-chart-bars"></span> Sovereign Telemetry</a>
+            <div style="border-top:1px solid #e1dfdd; margin:4px 0;"></div>
+            <a href="/index.html"><span class="mif-home"></span> Federal Home</a>
+          </div>
         </div>
-
-        <div class="ol-band">
-            <div class="ol-band-inner">
-                <h1>Ministry of the Treasury</h1>
-                <p class="ol-band-sub">Fiscal Management, Sovereign Borrowing, Taxation & Procurement</p>
-            </div>
-        </div>
+      </div>
     </div>
-</div>
-
-<!-- Main Top Nav Tabs (One Live Bar) -->
-<div class="wl-tabs">
-    <div class="ol-container wl-tabs-inner">
-        <ul class="ol-nav" id="primaryNav">
-            <li><a href="/index.html">Home</a></li>
-            <li><a href="/executive.html">Executive</a></li>
-            <li class="ol-current"><a href="/treasury.html">Treasury</a></li>
-            <li><a href="/work.html">Work</a></li>
-            <li><a href="/healthcare.html">Healthcare</a></li>
-            <li><a href="/education.html">Education</a></li>
-            <li><a href="/domesticaffairs.html">Domestic</a></li>
-            <li><a href="/externalaffairs.html">External</a></li>
-            <li><a href="/environment.html">Environment</a></li>
-            <li><a href="/propaganda.html">Propaganda</a></li>
-            <li><a href="/services.html">Services</a></li>
-            <li><a href="/units.html">Units (Мн • °Пт)</a></li>
-            
-        </ul>
+    <div class="hero-content">
+      <h1>Ministry of the Treasury</h1>
+      <p>Fiscal Management, Sovereign Borrowing, Taxation & Procurement</p>
     </div>
-</div>
+  </header>
 
-<!-- Main Content Grid -->
-<div class="ol-container ol-main">
-    <div class="ol-with-sidebar">
-        <!-- Left Sidebar Navigation -->
-        <div class="ol-sidebar-nav">
-            <div class="ol-card ol-profile-card" style="text-align: center;">
-                <span class="ol-avatar lg">
-                    <img src="/images/1.jpeg" alt="Emblem">
-                    <span class="ol-presence-dot"></span>
-                </span>
-                <div class="ol-mt-10">
-                    <strong>Ministry of the Treasury</strong><br>
-                    <span class="ol-muted ol-small">Fiscal Authority</span><br>
-                    <span class="ol-small" style="color:var(--ol-accent); font-weight:600;">Directorate Active</span>
-                </div>
-            </div>
+  <!-- Navigation Bar -->
+  <nav class="subnav">
+    <a href="/index.html">Home</a>
+    <a href="/executive.html">Executive</a>
+    <a href="/treasury.html" class="active">Treasury</a>
+    <a href="/work.html">Work</a>
+    <a href="/healthcare.html">Healthcare</a>
+    <a href="/education.html">Education</a>
+    <a href="/domesticaffairs.html">Domestic</a>
+    <a href="/externalaffairs.html">External</a>
+    <a href="/environment.html">Environment</a>
+    <a href="/propaganda.html">Propaganda</a>
+    <a href="/services.html">Services</a>
+    <a href="/units.html">Units (Мн • °Пт)</a>
+  </nav>
 
-            <span class="ol-sidenav-label">Portal Navigation</span>
-            <ul class="ol-sidenav">
-                <li><a href="/treasury.html">← Ministry of the Treasury Home</a></li>
-<li><a href="#overview" class="sel">Overview & Search</a></li>
-<li><a href="#taxation">Dept: Taxation</a></li>
-<li><a href="#fiscal-management">Dept: Fiscal Management</a></li>
-<li><a href="#appropriations">Dept: Ministerial Appropriations</a></li>
+  <!-- Content Grid -->
+  <main class="main-wrapper">
+    <!-- Left Column: Primary Content -->
+    <div class="left-col">
 
-            </ul>
-
-            <span class="ol-sidenav-label">Federal Network</span>
-            <ul class="ol-sidenav">
-                <li><a href="/index.html">Federal Home</a></li>
-                <li><a href="/services.html">All Services</a></li>
-                <li><a href="/units.html">Units (Мн &bull; &deg;Пт)</a></li>
-                <li><a href="/societal_press.html">Societal Press</a></li>
-            </ul>
-        </div>
-
-        <!-- Center Content -->
-        <div class="ol-content">
-            
     <div class="ol-card" id="overview">
         <div class="ol-card-title">
             <span>Find Statutory Services &amp; Interactive Portals</span>
-            <span class="ol-badge-tag">3 Departments Active</span>
+            <span class="ol-badge-tag">0 Departments Active</span>
         </div>
         <p class="ol-small ol-muted">Instant keyword search across statutory mandates, citizen registries, calculators, and official filing portals.</p>
         <input type="text" class="ol-input" id="dept-search-input" placeholder="Type department name, service title, or keyword..." style="margin-top:6px;">
     </div>
     
+    </div>
 
-        <div class="ol-card dept-container" id="taxation">
-            <div class="ol-card-title">
-                <span>🏢 Department of Taxation</span>
-                <a class="ol-title-link" href="#overview">Top ↑</a>
-            </div>
-            <div class="ol-note" style="margin-bottom:14px;">
-                <strong>Constitutional Mandate:</strong> Collecting federal taxes, managing audits, and enforcing fiscal compliance under a progressive, zero-corporate-lobby tax code.
-            </div>
-            <div class="ol-grid-2">
-                
-            <div class="ol-card func-item-box" style="margin-bottom:0; background:#fbfcfd; border:1px solid #dfe3e7;">
-                <div style="display:flex; align-items:flex-start; gap:12px;">
-                    <div style="font-size:26px; line-height:1;">🧮</div>
-                    <div style="flex:1 1 auto; min-width:0;">
-                        <strong style="color:#1e293b; font-size:13.5px; display:block; margin-bottom:4px;">Interactive Individual & Corporate Tax Calculator</strong>
-                        <p class="ol-small ol-muted" style="margin-bottom:10px; line-height:1.4;">Calculate statutory income, land resource royalty, or progressive enterprise surcharge brackets in Sangaian Dollars.</p>
-                        <button type="button" class="ol-btn ol-btn-primary ol-btn-sm open-modal-btn" data-modal="taxcalc">
-                            Launch Service &rarr;
-                        </button>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="ol-card func-item-box" style="margin-bottom:0; background:#fbfcfd; border:1px solid #dfe3e7;">
-                <div style="display:flex; align-items:flex-start; gap:12px;">
-                    <div style="font-size:26px; line-height:1;">📑</div>
-                    <div style="flex:1 1 auto; min-width:0;">
-                        <strong style="color:#1e293b; font-size:13.5px; display:block; margin-bottom:4px;">Digital Tax Filing & Clearance Verification</strong>
-                        <p class="ol-small ol-muted" style="margin-bottom:10px; line-height:1.4;">Submit Form A-Tax electronic returns or verify immediate tax compliance certificate status using your Sangaia ID.</p>
-                        <button type="button" class="ol-btn ol-btn-primary ol-btn-sm open-modal-btn" data-modal="taxfile">
-                            Launch Service &rarr;
-                        </button>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="ol-card func-item-box" style="margin-bottom:0; background:#fbfcfd; border:1px solid #dfe3e7;">
-                <div style="display:flex; align-items:flex-start; gap:12px;">
-                    <div style="font-size:26px; line-height:1;">⚖️</div>
-                    <div style="flex:1 1 auto; min-width:0;">
-                        <strong style="color:#1e293b; font-size:13.5px; display:block; margin-bottom:4px;">Electronic Tax Appeal Submission</strong>
-                        <p class="ol-small ol-muted" style="margin-bottom:10px; line-height:1.4;">Formal dispute adjudication portal to contest assessment discrepancies directly before the Board of Tax Magistrates.</p>
-                        <button type="button" class="ol-btn ol-btn-primary ol-btn-sm open-modal-btn" data-modal="taxappeal">
-                            Launch Service &rarr;
-                        </button>
-                    </div>
-                </div>
-            </div>
-            
-            </div>
-        </div>
+    <!-- Right Column: Status & Sidebar Widgets -->
+    <aside class="sidebar">
+      <div class="card beta-banner">
+        This is a BETA experience. Things may be changed or removed at any time.
+      </div>
+
+      <div class="card">
+        <h3>Your status</h3>
+        <p style="color: var(--text-muted); font-size: 12px;">This shows next to your name across Sangaia Live.</p>
         
-
-        <div class="ol-card dept-container" id="fiscal-management">
-            <div class="ol-card-title">
-                <span>🏢 Department of Fiscal Management</span>
-                <a class="ol-title-link" href="#overview">Top ↑</a>
-            </div>
-            <div class="ol-note" style="margin-bottom:14px;">
-                <strong>Constitutional Mandate:</strong> Safeguarding zero foreign sovereign debt, issuing national solidarity bonds, and forecasting national liquidity reserves.
-            </div>
-            <div class="ol-grid-2">
-                
-            <div class="ol-card func-item-box" style="margin-bottom:0; background:#fbfcfd; border:1px solid #dfe3e7;">
-                <div style="display:flex; align-items:flex-start; gap:12px;">
-                    <div style="font-size:26px; line-height:1;">📈</div>
-                    <div style="flex:1 1 auto; min-width:0;">
-                        <strong style="color:#1e293b; font-size:13.5px; display:block; margin-bottom:4px;">Live Debt Tracker & Bond Yield Telemetry</strong>
-                        <p class="ol-small ol-muted" style="margin-bottom:10px; line-height:1.4;">Real-time verification of Sangaia's 100% solvency ($0 foreign debt) alongside 10-year domestic bond yields (3.2% silver-backed).</p>
-                        <button type="button" class="ol-btn ol-btn-primary ol-btn-sm open-modal-btn" data-modal="debtscreen">
-                            Launch Service &rarr;
-                        </button>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="ol-card func-item-box" style="margin-bottom:0; background:#fbfcfd; border:1px solid #dfe3e7;">
-                <div style="display:flex; align-items:flex-start; gap:12px;">
-                    <div style="font-size:26px; line-height:1;">🏦</div>
-                    <div style="flex:1 1 auto; min-width:0;">
-                        <strong style="color:#1e293b; font-size:13.5px; display:block; margin-bottom:4px;">Citizen Bond Purchase & Redemption Hub</strong>
-                        <p class="ol-small ol-muted" style="margin-bottom:10px; line-height:1.4;">Direct citizen portal to purchase non-transferable Sovereign Solidarity Bonds that directly fund provincial green infrastructure.</p>
-                        <button type="button" class="ol-btn ol-btn-primary ol-btn-sm open-modal-btn" data-modal="bondhub">
-                            Launch Service &rarr;
-                        </button>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="ol-card func-item-box" style="margin-bottom:0; background:#fbfcfd; border:1px solid #dfe3e7;">
-                <div style="display:flex; align-items:flex-start; gap:12px;">
-                    <div style="font-size:26px; line-height:1;">📰</div>
-                    <div style="flex:1 1 auto; min-width:0;">
-                        <strong style="color:#1e293b; font-size:13.5px; display:block; margin-bottom:4px;">Quarterly Economic Outlook Bulletins</strong>
-                        <p class="ol-small ol-muted" style="margin-bottom:10px; line-height:1.4;">Exhaustive macro forecasting detailing real GDP expansion, resource reserves, and inter-provincial trade surpluses.</p>
-                        <button type="button" class="ol-btn ol-btn-primary ol-btn-sm open-modal-btn" data-modal="econbulletin">
-                            Launch Service &rarr;
-                        </button>
-                    </div>
-                </div>
-            </div>
-            
-            </div>
-        </div>
-        
-
-        <div class="ol-card dept-container" id="appropriations">
-            <div class="ol-card-title">
-                <span>🏢 Department of Ministerial Appropriations</span>
-                <a class="ol-title-link" href="#overview">Top ↑</a>
-            </div>
-            <div class="ol-note" style="margin-bottom:14px;">
-                <strong>Constitutional Mandate:</strong> Allocating statutory funding to executive ministries, publishing expenditure audits, and vetting open public tenders.
-            </div>
-            <div class="ol-grid-2">
-                
-            <div class="ol-card func-item-box" style="margin-bottom:0; background:#fbfcfd; border:1px solid #dfe3e7;">
-                <div style="display:flex; align-items:flex-start; gap:12px;">
-                    <div style="font-size:26px; line-height:1;">📋</div>
-                    <div style="flex:1 1 auto; min-width:0;">
-                        <strong style="color:#1e293b; font-size:13.5px; display:block; margin-bottom:4px;">Open Government Procurement Listings</strong>
-                        <p class="ol-small ol-muted" style="margin-bottom:10px; line-height:1.4;">Live transparent register of all state construction, technological, and medical tenders with zero backroom bidding.</p>
-                        <button type="button" class="ol-btn ol-btn-primary ol-btn-sm open-modal-btn" data-modal="tenders">
-                            Launch Service &rarr;
-                        </button>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="ol-card func-item-box" style="margin-bottom:0; background:#fbfcfd; border:1px solid #dfe3e7;">
-                <div style="display:flex; align-items:flex-start; gap:12px;">
-                    <div style="font-size:26px; line-height:1;">🔍</div>
-                    <div style="flex:1 1 auto; min-width:0;">
-                        <strong style="color:#1e293b; font-size:13.5px; display:block; margin-bottom:4px;">Ministry Expenditure Audit Reports</strong>
-                        <p class="ol-small ol-muted" style="margin-bottom:10px; line-height:1.4;">Line-by-line disbursement ledger auditing ministerial outlays against approved Body of Electives statutory ceilings.</p>
-                        <button type="button" class="ol-btn ol-btn-primary ol-btn-sm open-modal-btn" data-modal="auditledger">
-                            Launch Service &rarr;
-                        </button>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="ol-card func-item-box" style="margin-bottom:0; background:#fbfcfd; border:1px solid #dfe3e7;">
-                <div style="display:flex; align-items:flex-start; gap:12px;">
-                    <div style="font-size:26px; line-height:1;">💼</div>
-                    <div style="flex:1 1 auto; min-width:0;">
-                        <strong style="color:#1e293b; font-size:13.5px; display:block; margin-bottom:4px;">Budget Request Tracking Portal</strong>
-                        <p class="ol-small ol-muted" style="margin-bottom:10px; line-height:1.4;">Internal workflow tracker for administrative bodies submitting statutory supplemental funding requests.</p>
-                        <button type="button" class="ol-btn ol-btn-primary ol-btn-sm open-modal-btn" data-modal="budgetreq">
-                            Launch Service &rarr;
-                        </button>
-                    </div>
-                </div>
-            </div>
-            
-            </div>
-        </div>
-        
+        <div class="status-input-group">
+          <input type="text" id="statusField" value="Serving Sangaia" />
+          <button type="button" aria-label="Status icon"><span class="mif-face"></span></button>
         </div>
 
-        <!-- Right Sidebar (Telemetry & Quick Actions) -->
-        <div class="ol-sidebar">
-            <div class="ol-note">Official Government of the Sovereign Republic of Sangaia. All administrative systems active.</div>
+        <div class="status-controls">
+          <button class="btn-status" id="updateStatusBtn">Update status</button>
+          <span class="btn-clear" id="clearStatusBtn">Clear</span>
+        </div>
+      </div>
 
-            <div class="ol-sidebox">
-                <h3>Sovereign Telemetry</h3>
-                <div style="font-size:12.5px; line-height:1.6;">
-                    <div><strong>Currency:</strong> Sangaian Dollar ($)</div>
-                    <div><strong>Standard Temp:</strong> 22.5&deg;Пт (25&deg;C / 77&deg;F)</div>
-                    <div><strong>Standard Metric:</strong> 1 Мн = 2.5 cm</div>
-                    <div><strong>Active Provinces:</strong> 5 Territories</div>
-                </div>
-            </div>
+      <div class="card">
+        <h3>Ministry of the Treasury</h3>
+        <p style="color: var(--text-muted); font-size: 12px; margin-bottom: 8px;">Fiscal Authority</p>
+        <ul class="sidebar-nav-list">
+          <li><a href="/treasury.html"><span class="mif-chevron-right"></span> ← Ministry of the Treasury Home</a></li>
+<li><a href="#overview" class="active"><span class="mif-chevron-right"></span> Overview & Search</a></li>
 
-            <div class="ol-sidebox">
-                <h3>Provincial Weather (&deg;Пт)</h3>
-                <table class="ol-table" style="font-size:12px; margin:0;">
-                    <tr><td>New Jasper</td><td style="text-align:right;"><strong>20.5&deg;Пт</strong> (Sunny)</td></tr>
-                    <tr><td>New Madison</td><td style="text-align:right;"><strong>22.0&deg;Пт</strong> (Clear)</td></tr>
-                    <tr><td>Liveland</td><td style="text-align:right;"><strong>19.8&deg;Пт</strong> (Breezy)</td></tr>
-                    <tr><td>Sentinel</td><td style="text-align:right;"><strong>16.2&deg;Пт</strong> (Cool)</td></tr>
-                    <tr><td>Columbia</td><td style="text-align:right;"><strong>23.4&deg;Пт</strong> (Mild)</td></tr>
-                </table>
-            </div>
+        </ul>
+      </div>
 
-            
+
     <div class="ol-sidebox">
         <h3>Department Overview</h3>
         <p class="ol-small ol-muted">All services operate under federal statutory oversight of the Ministry of the Treasury. Applications are cryptographically authenticated via Sangaia ID.</p>
@@ -333,9 +116,45 @@
         </div>
     </div>
     
+      <div class="card">
+        <h3>Trending hashtags</h3>
+        <p style="color: var(--text-muted); font-size: 12px; margin-top: 4px;">
+          Nothing is trending right now. A hashtag trends once five different people use it within a day.
+        </p>
+
+        <h4>Latest hashtags</h4>
+        <div class="hashtag-list">
+          <a class="hashtag" href="/services.html?tag=sangaialive">#sangaialive</a>
+          <a class="hashtag" href="/treasury.html?tag=sovereigndollar">#sovereigndollar</a>
+          <a class="hashtag" href="/units.html?tag=monomer">#monomer</a>
+          <a class="hashtag" href="/units.html?tag=panoterm">#panoterm</a>
+          <a class="hashtag" href="/executive.html?tag=aeretocrat">#aeretocrat</a>
+          <a class="hashtag" href="/propaganda.html?tag=nationalradio">#nationalradio</a>
+          <a class="hashtag" href="/work.html?tag=laborstandards">#laborstandards</a>
+          <a class="hashtag" href="/healthcare.html?tag=5provinces">#5provinces</a>
+          <a class="hashtag" href="/domesticaffairs.html?tag=interprovincial">#interprovincial</a>
+          <a class="hashtag" href="/externalaffairs.html?tag=treaties">#treaties</a>
         </div>
-    </div>
-</div>
+        <p style="margin-top: 10px;"><a href="/services.html" style="font-size: 12px;">All hashtags</a></p>
+      </div>
+
+      <div class="card" style="font-size: 12px; color: var(--text-muted);">
+        <h3 style="color: var(--text-main);">Sovereign Telemetry</h3>
+        <div style="margin-top: 8px; display: flex; flex-direction: column; gap: 5px;">
+          <div>Federal Currency: <strong style="color: var(--text-main);">$ (Sangaian Dollar)</strong></div>
+          <div>Territory: <strong style="color: var(--text-main);">5 Provinces</strong> (New Jasper, New Madison, Liveland, Sentinel, Columbia)</div>
+          <div>Temperature Standard: <strong style="color: var(--text-main);">Панотерм (22°Пт)</strong></div>
+          <div>Distance Standard: <strong style="color: var(--text-main);">Мономер (1 Мн = 2.5 cm)</strong></div>
+          <div>Gateway Status: <span style="color: #15803d; font-weight: 600;">Active &bull; Operational</span></div>
+        </div>
+      </div>
+    </aside>
+  </main>
+
+  <!-- Docked Messages Tab -->
+  <div class="messages-dock" id="messagesDock">
+    <span class="mif-bubble"></span> Messages
+  </div>
 
 
     <!-- Standardized One Live Wave 4 Modal Dialog -->
@@ -357,42 +176,6 @@
         </div>
     </div>
     
-
-<!-- Floating Citizen Dock -->
-<div class="ol-dock">
-    <button type="button" class="ol-dock-tab" id="olDockMessages">
-        <svg width="15" height="15" viewBox="0 0 16 16"><path fill="currentColor" d="M2 3h12c.6 0 1 .4 1 1v7c0 .6-.4 1-1 1H9l-3.4 2.6c-.4.3-.9 0-.9-.5V12H2c-.6 0-1-.4-1-1V4c0-.6.4-1 1-1z"/></svg>
-        <span>Live Citizen Support</span>
-    </button>
-    <div class="ol-dock-list" id="olDockList">
-        <div class="ol-dock-list-head">
-            <span>Sangaia Citizen Assistance</span>
-            <a href="javascript:void(0)" id="olDockListClose" style="color:#64748b; font-size:16px;">&times;</a>
-        </div>
-        <div class="ol-dock-list-body">
-            <a class="ol-dock-item" href="/services.html"><strong>Online Inquiries:</strong> File petition or request</a>
-            <a class="ol-dock-item" href="/units.html"><strong>Unit Calculations:</strong> Monomer &amp; Panotherm</a>
-            <a class="ol-dock-item" href="/citizenship.html"><strong>Citizenship Registry:</strong> Check docket status</a>
-            <a class="ol-dock-item" href="/id.html"><strong>Sangaia ID:</strong> Digital identity card</a>
-        </div>
-    </div>
-</div>
-
-<!-- Footer -->
-<div class="ol-footer">
-    <div class="ol-container ol-footer-inner">
-        <p class="ol-footer-copy">&copy; 2026 Sovereign Republic of Sangaia. One Live Wave 4 Infrastructure.</p>
-        <ul class="ol-footer-links">
-            <li><a href="/index.html">Home</a></li>
-            <li><a href="/government.html">Government Structure</a></li>
-            <li><a href="/services.html">Services</a></li>
-            <li><a href="/societal_press.html">Gazette</a></li>
-            <li><a href="/units.html">Units System</a></li>
-            <li><a href="/about.html">About Sangaia</a></li>
-        </ul>
-    </div>
-</div>
-
 
     <script>
     // Injected Statutory Modal Configs
@@ -581,6 +364,5 @@
     });
     </script>
     
-
 </body>
 </html>

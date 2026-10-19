@@ -1,345 +1,185 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Health Topics - DDCR</title>
-    <style>
-        /* --- FRUTIGER AERO / SKEUOMORPHIC STYLES --- */
-        :root {
-            --glass-blue: rgba(220, 245, 255, 0.85);
-            --gloss-highlight: rgba(255, 255, 255, 0.9);
-            --ocean-blue: #c62828;
-            --fresh-green: #0277bd;
-            --text-dark: #2c3e50;
-            --text-light: #ffffff;
-        }
-
-        body {
-            background: #ffffff;
-            min-height: 100dvh;
-            width: 100%;
-            display: flex;
-            align-items: center;
-            justify-content: flex-start;
-            flex-direction: column;
-            margin: 0;
-            font-family: 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-            color: var(--text-dark);
-        }
-
-        .main-container {
-            width: 100%;
-            margin: 0;
-            background: transparent;
-            padding: 0;
-            flex-grow: 1; 
-        }
-
-        
-
-        
-
-        h1 { margin: 0; font-size: 2.5em; letter-spacing: -1px; }
-        
-
-        #globalheader {
-            display: flex;
-            align-items: center;
-            position: relative;
-            width: 100%;
-            height: 38px;
-            background: linear-gradient(to bottom, #5e5e5e 0%, #3e3e3e 50%, #2d2d2d 51%, #1f1f1f 100%);
-            border-top: 1px solid #222;
-            border-bottom: 1px solid #000;
-            box-shadow: inset 0 1px 0 rgba(255,255,255,0.15), 0 2px 4px rgba(0,0,0,0.2);
-            font-size: 11px;
-            position: relative;
-            z-index: 99;
-        }
-
-        #globalnav {
-            flex-grow: 1;
-            margin: 0;
-            padding: 0;
-            list-style: none;
-            display: flex;
-            justify-content: center;
-            height: 100%;
-        }
-
-        #globalnav li { position: relative; height: 100%; display: flex; align-items: center; }
-        #globalnav li::after {
-            content: ""; position: absolute; right: 0; width: 1px; height: 100%;
-            background: linear-gradient(to bottom, #333, #111); box-shadow: 1px 0 0 rgba(255,255,255,0.08);
-        }
-        #globalnav li:first-child::before {
-            content: ""; position: absolute; left: 0; width: 1px; height: 100%;
-            background: linear-gradient(to bottom, #333, #111); box-shadow: 1px 0 0 rgba(255,255,255,0.08);
-        }
-
-        #globalnav li a {
-            display: block; color: #e8e8e8; text-decoration: none; text-shadow: 0 -1px 0 rgba(0,0,0,0.8);
-            font-weight: bold; padding: 0 24px; line-height: 38px;
-            transition: text-shadow 0.2s ease, color 0.2s ease, background 0.2s ease, box-shadow 0.2s ease;
-        }
-
-        #globalnav li a:hover {
-            color: #fff;
-            background: linear-gradient(rgba(255,255,255,0.05), rgba(255,255,255,0));
-            text-shadow: 0 0 8px rgba(255, 255, 255, 0.8), 0 -1px 0 rgba(0,0,0,0.8);
-        }
-        
-        #globalnav li a.active { color: #fff; background: rgba(0,0,0,0.2); box-shadow: inset 0 2px 5px rgba(0,0,0,0.3); }
-
-        .sangaia-btn {
-            font-size: 0.9rem; font-family: "myriad-pro", "Segoe UI", sans-serif; height: 2.5em;
-            padding: 0 1em; width: 15em; border-radius: 3px; position: relative; overflow: hidden;
-            cursor: pointer;  text-decoration: none; display: inline-flex;
-            align-items: center; justify-content: center; margin: 5px; 
-            
-             
-             box-sizing: border-box;
-        background: linear-gradient(to bottom, #e53935 0%, #c62828 100%); box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1); border: 1px solid #b71c1c; color: white;}
-
-        
-
-        
-
-        .sangaia-btn:hover { background: linear-gradient(to bottom, #ef5350 0%, #d32f2f 100%); }
-        .sangaia-btn span { position: relative; z-index: 3; font-weight: 600; text-shadow: 0 1px 1px rgba(0,0,0,0.3); }
-
-        .sangaia-btn.active, .sangaia-btn:active {
-            
-             
-             
-        background: linear-gradient(to bottom, #b71c1c 0%, #7f0000 100%); box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.2); border: 1px solid #7f0000; color: white;}
-
-        .sangaia-btn.active span, .sangaia-btn:active span { text-shadow: 0 1px 2px rgba(0, 0, 0, 0.4); }
-
-        .content-wrapper { padding: 30px; width: 100%; box-sizing: border-box; }
-
-        .glass-panel {
-            background: linear-gradient(to bottom, #fcfcfc 0%, #f1f1f1 100%);
-            border: 1px solid #ddd; border-radius: 8px; padding: 20px; margin-bottom: 25px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.05), inset 0 1px 0 #fff; position: relative;
-        }
-
-        .glass-panel h2 { margin: 0 0 15px; color: #c62828; border-bottom: 1px solid #eee; padding-bottom: 10px; font-size: 1.4em; }
-        
-        /* --- 3D FLIP CAROUSEL STYLES --- */
-        .carousel-container {
-            width: 100%;
-            max-width: 1200px;
-            height: 300px;
-            margin: 0 auto 25px auto;
-            perspective: 1000px;
-            border-radius: 8px;
-            border: 1px solid #ddd;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.05), inset 0 1px 0 #fff;
-            background: #fff;
-            overflow: hidden; /* Ensures images don't spill out during flip */
-        }
-
-        .carousel-track {
-            width: 100%;
-            height: 100%;
-            position: relative;
-            transform-style: preserve-3d;
-            transition: transform 1s cubic-bezier(0.645, 0.045, 0.355, 1); /* Smooth "Apple-like" easing */
-        }
-
-        .carousel-slide {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            backface-visibility: hidden;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .carousel-slide img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            object-position: bottom;
-        }
-
-        /* We structure the slides as faces of a vertical prism/cube.
-           Since we have 4 slides, we can treat them like a 4-sided spinner.
-           Height is 300px.
-           TranslateZ = 300px / 2 = 150px.
-        */
-        .slide-1 { transform: rotateX(0deg) translateZ(150px); }
-        .slide-2 { transform: rotateX(-90deg) translateZ(150px); }
-        .slide-3 { transform: rotateX(-180deg) translateZ(150px); }
-        .slide-4 { transform: rotateX(-270deg) translateZ(150px); }
-
-        .content-grid { display: grid; grid-template-columns: 1fr; gap: 20px; max-width: 1200px; margin: 0 auto; }
-        @media (min-width: 768px) { .content-grid { grid-template-columns: 2fr 1fr; } }
-
-        footer { text-align: center; padding: 20px; font-size: 0.9em; background: rgba(255,255,255,0.6); margin-top: auto; }
-        p { line-height: 1.6; margin: 0 0 15px; }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Health Topics (A-Z) - DDCR :: Sangaia Live</title>
+  <link href="https://cdn.metroui.org.ua/4.5.12/icons.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <link rel="stylesheet" href="/css/sangaia-live.css">
+  <script src="/js/sangaia-live.js" defer></script>
 </head>
-<body>
-<div class="main-container">
-    
-    <nav id="globalheader">
-        <div style="position: absolute; left: 15px; display: flex; align-items: center; height: 100%;">
-            <img src="https://sangaia.org/media/mh_logo.png" onerror="this.onerror=null; this.src='../media/mh_logo.png';" style="height: 24px; width: auto;" alt="Logo">
+<body class="theme-healthcare">
+
+  <!-- Top Hero Header -->
+  <header class="hero-header">
+    <div class="top-bar">
+      <div class="brand">
+        <a href="/index.html"><span class="mif-windows"></span> Sangaia Live</a>
+      </div>
+      <div class="top-right">
+        <form class="search-box" action="/services.html" method="get">
+          <input type="text" name="q" placeholder="Search people &amp; posts" />
+          <button type="submit" aria-label="Search"><span class="mif-search"></span></button>
+        </form>
+        <div class="user-profile-menu" id="userProfileMenu">
+          <img src="/images/1.jpeg" alt="Avatar" />
+          <span>Jqackkk</span>
+          <span class="mif-arrow-drop-down" style="font-size: 14px;"></span>
+          <div class="user-dropdown">
+            <div class="user-dropdown-header">Citizen: SG-2026-F1E8</div>
+            <a href="/id.html"><span class="mif-profile"></span> Sangaia ID Card</a>
+            <a href="/citizenship.html"><span class="mif-checkmark"></span> Citizenship Status</a>
+            <a href="/units.html"><span class="mif-compass"></span> Units &amp; Measures</a>
+            <a href="/dashboard.html"><span class="mif-chart-bars"></span> Sovereign Telemetry</a>
+            <div style="border-top:1px solid #e1dfdd; margin:4px 0;"></div>
+            <a href="/index.html"><span class="mif-home"></span> Federal Home</a>
+          </div>
         </div>
-        <div style="position: absolute; right: 15px; display: flex; align-items: center; gap: 15px; height: 100%; z-index: 100;">
-            <div id="auth-widget"><a href="https://sangaia.org/id.html" style="color: #bbb; text-decoration: none; font-size: 11px; font-weight: bold; letter-spacing: 0.5px; padding: 3px 8px; border: 1px solid #444; border-radius: 4px; background: linear-gradient(to bottom, #555, #333); box-shadow: 0 1px 2px rgba(0,0,0,0.3); transition: all 0.2s ease;" onmouseover="this.style.color='#fff'; this.style.borderColor='#666';" onmouseout="this.style.color='#bbb'; this.style.borderColor='#444';">Sangaia ID</a></div>
-            <a href="sgn/index.html" style="color: #bbb; text-decoration: none; font-size: 11px; font-weight: bold; letter-spacing: 0.5px; padding: 3px 8px; border: 1px solid #444; border-radius: 4px; background: linear-gradient(to bottom, #555, #333); box-shadow: 0 1px 2px rgba(0,0,0,0.3); transition: all 0.2s ease;" onmouseover="this.style.color='#fff'; this.style.borderColor='#666';" onmouseout="this.style.color='#bbb'; this.style.borderColor='#444';">English</a>
-        </div>
-                <ul id="globalnav">
-            <li><a href="index.html" >Home</a></li>
-            <li><a href="health_topics.html" class="active">Health Topics</a></li>
-            <li><a href="outbreaks.html">Outbreaks</a></li>
-            <li><a href="search.html">Search</a></li>
-        </ul>
-    </nav>
-    <div class="content-wrapper">
+      </div>
+    </div>
+    <div class="hero-content">
+      <h1>DDCR Health Topics & Pathogens Directory</h1>
+      <p>Comprehensive Disease Registry, Clinical Protocols & Evidence-Based Guidelines</p>
+    </div>
+  </header>
+
+  <!-- Navigation Bar -->
+  <nav class="subnav">
+    <a href="/index.html">Home</a>
+    <a href="/executive.html">Executive</a>
+    <a href="/treasury.html">Treasury</a>
+    <a href="/work.html">Work</a>
+    <a href="/healthcare.html" class="active">Healthcare</a>
+    <a href="/education.html">Education</a>
+    <a href="/domesticaffairs.html">Domestic</a>
+    <a href="/externalaffairs.html">External</a>
+    <a href="/environment.html">Environment</a>
+    <a href="/propaganda.html">Propaganda</a>
+    <a href="/services.html">Services</a>
+    <a href="/units.html">Units (Мн • °Пт)</a>
+  </nav>
+
+  <!-- Content Grid -->
+  <main class="main-wrapper">
+    <!-- Left Column: Primary Content -->
+    <div class="left-col">
+
+    <div class="card">
+        <h2>Health Topics Directory &bull; Comprehensive Clinical A-Z</h2>
+        <p class="ol-small ol-muted">Authoritative clinical summaries, symptomatic triage, diagnostic criteria, and sovereign treatment guidance vetted by the Sangaia Medical Board.</p>
         
-        <!-- 3D FLIP CAROUSEL -->
-        <div class="carousel-container">
-            <div class="carousel-track" id="track">
-                <!-- Slide 1 -->
-                <div class="carousel-slide slide-1">
-                    <img src="https://sangaia.org/slide1.jpg" onerror="this.src='https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?q=80&w=1200&auto=format&fit=crop'" alt="Sangaia Slide 1">
-                </div>
-                <!-- Slide 2 -->
-                <div class="carousel-slide slide-2">
-                    <img src="https://sangaia.org/slide2.jpg" onerror="this.src='https://images.unsplash.com/photo-1441974231531-c6227db76b6e?q=80&w=1200&auto=format&fit=crop'" alt="Sangaia Slide 2">
-                </div>
-                <!-- Slide 3 -->
-                <div class="carousel-slide slide-3">
-                    <img src="https://sangaia.org/slide3.jpg" onerror="this.src='https://images.unsplash.com/photo-1506744038136-46273834b3fb?q=80&w=1200&auto=format&fit=crop'" alt="Sangaia Slide 3">
-                </div>
-                <!-- Slide 4 -->
-                <div class="carousel-slide slide-4">
-                    <img src="https://sangaia.org/slide4.jpg" onerror="this.src='https://images.unsplash.com/photo-1472214103451-9374bd1c798e?q=80&w=1200&auto=format&fit=crop'" alt="Sangaia Slide 4">
-                </div>
-            </div>
+        <div style="margin: 12px 0;">
+            <input type="text" id="topic-search-input" class="form-input" placeholder="Search disease, condition, or pathogen (e.g., Influenza, COVID-19, Mpox)...">
         </div>
 
-        <div class="content-wrapper" style="padding: 20px; max-width: 1100px; margin: 0 auto; width: 100%; box-sizing: border-box;">
-
-<style>
-.filter-tabs { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 20px; }
-.filter-btn {
-    padding: 7px 15px; border-radius: 20px; font-size: 0.85em; font-weight: bold;
-    border: 1px solid #d0d7de; background: linear-gradient(to bottom, #ffffff 0%, #f1f3f5 100%);
-    cursor: pointer; transition: all 0.2s ease; color: #333;
-}
-.filter-btn.active, .filter-btn:hover {
-    background: linear-gradient(to bottom, #e53935 0%, #c62828 100%);
-    color: white; border-color: #b71c1c; box-shadow: 0 2px 4px rgba(0,0,0,0.15);
-}
-.search-input-box {
-    width: 100%; padding: 14px 18px; font-size: 1.05em; border: 2px solid #ccd0d5;
-    border-radius: 6px; box-sizing: border-box; margin-bottom: 18px;
-    box-shadow: inset 0 1px 3px rgba(0,0,0,0.06);
-}
-.search-input-box:focus { border-color: #c62828; outline: none; background: #fff; }
-.alphabet-bar { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 22px; align-items: center; }
-.alphabet-link {
-    display: inline-block; width: 28px; height: 28px; line-height: 28px; text-align: center;
-    border-radius: 4px; border: 1px solid #d5dbe0; background: #fff; font-size: 0.85em;
-    font-weight: bold; color: #444; text-decoration: none; cursor: pointer; transition: all 0.15s ease;
-}
-.alphabet-link.active, .alphabet-link:hover {
-    background: #c62828; color: #fff; border-color: #b71c1c;
-}
-.disease-card {
-    background: #fff; border: 1px solid #e1e4e8; border-radius: 8px; padding: 22px;
-    margin-bottom: 18px; box-shadow: 0 2px 5px rgba(0,0,0,0.03);
-    transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
-}
-.disease-card:hover { transform: translateY(-2px); border-color: #c62828; box-shadow: 0 4px 12px rgba(198,40,40,0.08); }
-.disease-card-header { display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 10px; margin-bottom: 10px; }
-.disease-card-title { margin: 0; font-size: 1.3em; color: #b71c1c; }
-.disease-card-title a { color: inherit; text-decoration: none; }
-.disease-card-title a:hover { text-decoration: underline; }
-.disease-card p { font-size: 0.94em; line-height: 1.6; color: #444; margin: 0 0 12px 0; }
-.card-meta-line { font-size: 0.84em; color: #666; margin-bottom: 12px; }
-.badge {
-    display: inline-block; padding: 3px 8px; border-radius: 10px; font-size: 0.72em;
-    font-weight: bold; text-transform: uppercase; letter-spacing: 0.5px;
-}
-.badge-red { background: #ffebee; color: #b71c1c; border: 1px solid #ffcdd2; }
-.badge-blue { background: #e1f5fe; color: #0277bd; border: 1px solid #b3e5fc; }
-.badge-gold { background: #fff8e1; color: #f57f17; border: 1px solid #ffe082; }
-</style>
-
-<div class="glass-panel">
-    <div style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 15px; margin-bottom: 15px;">
-        <div>
-            <h2 style="margin: 0 0 8px 0; color: #c62828;">Comprehensive Health Topics & Diseases Database</h2>
-            <p style="margin: 0; color: #555;">Browse authoritative clinical guidelines, etiology, symptoms, provincial response protocols, and peer-reviewed PubMed Central studies.</p>
+        <div id="alphabet-bar" style="display: flex; flex-wrap: wrap; gap: 4px; margin: 12px 0;">
+            <button type="button" class="tool-btn alphabet-link active" data-letter="all">ALL</button>
         </div>
-        <div id="disease-counter" style="font-size: 0.88em; font-weight: bold; color: #666; background: #fff; padding: 6px 12px; border-radius: 20px; border: 1px solid #ddd;">
-            Loading database...
+
+        <div style="display:flex; flex-wrap:wrap; gap:6px; margin-bottom:14px;">
+            <button type="button" class="btn btn-outline btn-sm cat-filter active" data-cat="all">All Conditions</button>
+            <button type="button" class="btn btn-outline btn-sm cat-filter" data-cat="Infectious">Infectious</button>
+            <button type="button" class="btn btn-outline btn-sm cat-filter" data-cat="Respiratory">Respiratory</button>
+            <button type="button" class="btn btn-outline btn-sm cat-filter" data-cat="Cardiovascular">Cardiovascular</button>
+            <button type="button" class="btn btn-outline btn-sm cat-filter" data-cat="Neurological">Neurological</button>
+        </div>
+
+        <div id="topics-list" style="display: flex; flex-direction: column; gap: 10px;">
+            <!-- Populated via diseases.js -->
         </div>
     </div>
-
-    <!-- Live Filter & Search Controls -->
-    <input type="text" id="topic-search" class="search-input-box" placeholder="Filter topics by name, pathogen, symptoms (e.g. COVID-19, Mpox, Rash, Fever, Asthma)..." autocomplete="off">
-
-    <div class="filter-tabs" id="category-tabs">
-        <button class="filter-btn active" data-category="all">All Topics</button>
-        <button class="filter-btn" data-category="viral">Viral & Epidemic Pathogens</button>
-        <button class="filter-btn" data-category="bacterial">Bacterial & Chronic Pathogens</button>
-        <button class="filter-btn" data-category="respiratory">Respiratory Illnesses</button>
-        <button class="filter-btn" data-category="chronic">Cardiovascular & Metabolic</button>
-        <button class="filter-btn" data-category="mental">Mental Health</button>
+    
     </div>
 
-    <div class="alphabet-bar" id="alphabet-bar">
-        <span style="font-size: 0.85em; font-weight: bold; color: #777; margin-right: 6px;">A-Z:</span>
-        <button class="alphabet-link active" data-letter="all">ALL</button>
-    </div>
+    <!-- Right Column: Status & Sidebar Widgets -->
+    <aside class="sidebar">
+      <div class="card beta-banner">
+        This is a BETA experience. Things may be changed or removed at any time.
+      </div>
 
-    <!-- Active Topics List -->
-    <div id="topics-list">
-        <div style="text-align: center; padding: 40px; color: #777;">
-            <p>Loading disease articles database...</p>
+      <div class="card">
+        <h3>Your status</h3>
+        <p style="color: var(--text-muted); font-size: 12px;">This shows next to your name across Sangaia Live.</p>
+        
+        <div class="status-input-group">
+          <input type="text" id="statusField" value="Serving Sangaia" />
+          <button type="button" aria-label="Status icon"><span class="mif-face"></span></button>
         </div>
+
+        <div class="status-controls">
+          <button class="btn-status" id="updateStatusBtn">Update status</button>
+          <span class="btn-clear" id="clearStatusBtn">Clear</span>
+        </div>
+      </div>
+
+
+    <div class="card">
+        <h3>DDCR Navigation</h3>
+        <ul class="sidebar-nav-list">
+            <li><a href="/mH/ddcr/index.html"><span class="mif-home"></span> DDCR Home</a></li>
+            <li><a href="/mH/ddcr/health_topics.html" class="active"><span class="mif-folder"></span> Health Topics (A-Z)</a></li>
+            <li><a href="/mH/ddcr/outbreaks.html"><span class="mif-warning"></span> Active Outbreaks</a></li>
+            <li><a href="/mH/ddcr/search.html"><span class="mif-search"></span> Research Search</a></li>
+            <li><a href="/healthcare.html"><span class="mif-chevron-left"></span> Ministry of Healthcare</a></li>
+        </ul>
     </div>
-</div>
+    
+      <div class="card">
+        <h3>Trending hashtags</h3>
+        <p style="color: var(--text-muted); font-size: 12px; margin-top: 4px;">
+          Nothing is trending right now. A hashtag trends once five different people use it within a day.
+        </p>
 
-</div>
-    <footer>
-        &copy; 2026 United Provinces of Sangaia. All Rights Reserved.<br>
-        <span style="font-size: 0.8em; color: #888;">Ministry of Healthcare &bull; Department of Disease Control & Research</span>
-    </footer>
-</div>
+        <h4>Latest hashtags</h4>
+        <div class="hashtag-list">
+          <a class="hashtag" href="/services.html?tag=sangaialive">#sangaialive</a>
+          <a class="hashtag" href="/treasury.html?tag=sovereigndollar">#sovereigndollar</a>
+          <a class="hashtag" href="/units.html?tag=monomer">#monomer</a>
+          <a class="hashtag" href="/units.html?tag=panoterm">#panoterm</a>
+          <a class="hashtag" href="/executive.html?tag=aeretocrat">#aeretocrat</a>
+          <a class="hashtag" href="/propaganda.html?tag=nationalradio">#nationalradio</a>
+          <a class="hashtag" href="/work.html?tag=laborstandards">#laborstandards</a>
+          <a class="hashtag" href="/healthcare.html?tag=5provinces">#5provinces</a>
+          <a class="hashtag" href="/domesticaffairs.html?tag=interprovincial">#interprovincial</a>
+          <a class="hashtag" href="/externalaffairs.html?tag=treaties">#treaties</a>
+        </div>
+        <p style="margin-top: 10px;"><a href="/services.html" style="font-size: 12px;">All hashtags</a></p>
+      </div>
 
-<script src="data/diseases.js"></script>
-<script>
-    // --- VERTICAL FLIP LOGIC ---
-    let currentRotation = 0;
-    const track = document.getElementById('track');
-    if (track) {
-        setInterval(() => {
-            currentRotation += 90;
-            track.style.transform = `rotateX(${currentRotation}deg)`;
-        }, 4000); 
-    }
+      <div class="card" style="font-size: 12px; color: var(--text-muted);">
+        <h3 style="color: var(--text-main);">Sovereign Telemetry</h3>
+        <div style="margin-top: 8px; display: flex; flex-direction: column; gap: 5px;">
+          <div>Federal Currency: <strong style="color: var(--text-main);">$ (Sangaian Dollar)</strong></div>
+          <div>Territory: <strong style="color: var(--text-main);">5 Provinces</strong> (New Jasper, New Madison, Liveland, Sentinel, Columbia)</div>
+          <div>Temperature Standard: <strong style="color: var(--text-main);">Панотерм (22°Пт)</strong></div>
+          <div>Distance Standard: <strong style="color: var(--text-main);">Мономер (1 Мн = 2.5 cm)</strong></div>
+          <div>Gateway Status: <span style="color: #15803d; font-weight: 600;">Active &bull; Operational</span></div>
+        </div>
+      </div>
+    </aside>
+  </main>
 
-    // --- HEALTH TOPICS DIRECTORY LOGIC ---
-    let activeCategory = 'all';
-    let activeLetter = 'all';
-    let searchQuery = '';
+  <!-- Docked Messages Tab -->
+  <div class="messages-dock" id="messagesDock">
+    <span class="mif-bubble"></span> Messages
+  </div>
 
-    function initAlphabetBar() {
+
+
+    <script src="/mH/ddcr/data/diseases.js"></script>
+    <script>
+    document.addEventListener('DOMContentLoaded', () => {
+        let activeCategory = 'all';
+        let activeLetter = 'all';
+        let searchQuery = '';
+
         const bar = document.getElementById('alphabet-bar');
         const alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("");
         alphabet.forEach(letter => {
             const btn = document.createElement('button');
-            btn.className = 'alphabet-link';
+            btn.type = 'button';
+            btn.className = 'tool-btn alphabet-link';
             btn.textContent = letter;
             btn.dataset.letter = letter;
             btn.onclick = () => {
@@ -351,7 +191,6 @@
             bar.appendChild(btn);
         });
 
-        // "ALL" button listener
         const allBtn = bar.querySelector('[data-letter="all"]');
         if (allBtn) {
             allBtn.onclick = () => {
@@ -361,116 +200,63 @@
                 renderTopics();
             };
         }
-    }
 
-    function renderTopics() {
-        const container = document.getElementById('topics-list');
-        const counter = document.getElementById('disease-counter');
-        if (!window.DDCR_DISEASES) return;
-
-        let filtered = window.DDCR_DISEASES.filter(d => {
-            // Category filter
-            if (activeCategory !== 'all' && d.category !== activeCategory) {
-                return false;
-            }
-
-            // Letter filter
-            if (activeLetter !== 'all') {
-                const firstChar = d.name.trim().charAt(0).toUpperCase();
-                if (firstChar !== activeLetter) return false;
-            }
-
-            // Search query filter
-            if (searchQuery) {
-                const q = searchQuery.toLowerCase();
-                const matchName = d.name.toLowerCase().includes(q);
-                const matchPathogen = (d.pathogen || '').toLowerCase().includes(q);
-                const matchSummary = (d.summary || '').toLowerCase().includes(q);
-                const matchIcd = (d.icd_code || '').toLowerCase().includes(q);
-                const matchSymptoms = JSON.stringify(d.symptoms || {}).toLowerCase().includes(q);
-                if (!matchName && !matchPathogen && !matchSummary && !matchIcd && !matchSymptoms) {
-                    return false;
-                }
-            }
-
-            return true;
-        });
-
-        counter.textContent = `Showing ${filtered.length} of ${window.DDCR_DISEASES.length} Articles`;
-
-        if (filtered.length === 0) {
-            container.innerHTML = `
-                <div style="text-align: center; padding: 40px; background: #fff; border-radius: 6px; border: 1px solid #ddd;">
-                    <p style="font-size: 1.1em; color: #666; margin-bottom: 10px;">No disease articles matched your filter criteria.</p>
-                    <button class="sangaia-btn secondary" onclick="resetFilters()"><span>Reset Filters</span></button>
-                </div>
-            `;
-            return;
-        }
-
-        container.innerHTML = filtered.map(d => `
-            <div class="disease-card">
-                <div class="disease-card-header">
-                    <div>
-                        <h3 class="disease-card-title">
-                            <a href="article.html?topic=${d.id}">${d.name}</a>
-                        </h3>
-                        <div style="margin-top: 6px;">
-                            <span class="badge badge-red">${d.risk_level || 'Tier-1 Public Health Alert'}</span>
-                            <span class="badge badge-blue">${d.category_label || d.category}</span>
-                            <span class="badge badge-gold">${d.icd_code}</span>
-                        </div>
-                    </div>
-                    <a href="article.html?topic=${d.id}" class="sangaia-btn" style="height: 2.2em; font-size: 0.85em;">
-                        <span>Read Article &rarr;</span>
-                    </a>
-                </div>
-                <div class="card-meta-line">
-                    <strong>Pathogen:</strong> ${d.pathogen} &bull; 
-                    <strong>Incubation:</strong> ${d.incubation} &bull; 
-                    <strong>Citations:</strong> ${d.research_papers ? d.research_papers.length : 0} Studies
-                </div>
-                <p>${d.summary}</p>
-            </div>
-        `).join('');
-    }
-
-    function resetFilters() {
-        activeCategory = 'all';
-        activeLetter = 'all';
-        searchQuery = '';
-        document.getElementById('topic-search').value = '';
-        document.querySelectorAll('.filter-btn').forEach(b => b.classList.toggle('active', b.dataset.category === 'all'));
-        document.querySelectorAll('.alphabet-link').forEach(b => b.classList.toggle('active', b.dataset.letter === 'all'));
-        renderTopics();
-    }
-
-    window.addEventListener('DOMContentLoaded', () => {
-        initAlphabetBar();
-        renderTopics();
-
-        // Category filter listener
-        document.querySelectorAll('.filter-btn').forEach(btn => {
+        document.querySelectorAll('.cat-filter').forEach(btn => {
             btn.onclick = () => {
-                document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+                document.querySelectorAll('.cat-filter').forEach(el => el.classList.remove('active'));
                 btn.classList.add('active');
-                activeCategory = btn.dataset.category;
+                activeCategory = btn.dataset.cat;
                 renderTopics();
             };
         });
 
-        // Search input listener
-        const searchInput = document.getElementById('topic-search');
+        const searchInput = document.getElementById('topic-search-input');
         if (searchInput) {
-            searchInput.addEventListener('input', (e) => {
-                searchQuery = e.target.value.trim();
+            searchInput.oninput = (e) => {
+                searchQuery = e.target.value.toLowerCase().trim();
                 renderTopics();
+            };
+        }
+
+        function renderTopics() {
+            const list = document.getElementById('topics-list');
+            if (!list || !window.DDCR_DISEASES) return;
+            list.innerHTML = '';
+
+            const filtered = window.DDCR_DISEASES.filter(d => {
+                const matchCat = (activeCategory === 'all') || (d.category === activeCategory);
+                const matchLet = (activeLetter === 'all') || (d.name.toUpperCase().startsWith(activeLetter));
+                const matchQ = (!searchQuery) || (d.name.toLowerCase().includes(searchQuery) || (d.overview || '').toLowerCase().includes(searchQuery));
+                return matchCat && matchLet && matchQ;
+            });
+
+            if (filtered.length === 0) {
+                list.innerHTML = '<div style="padding:16px; color:#666; text-align:center;">No matching medical conditions found.</div>';
+                return;
+            }
+
+            filtered.forEach(d => {
+                const item = document.createElement('div');
+                item.className = 'card';
+                item.style.marginBottom = '8px';
+                item.style.padding = '12px';
+                item.innerHTML = `
+                    <div style="display:flex; justify-content:space-between; align-items:flex-start;">
+                        <div>
+                            <h3 style="margin:0 0 4px 0;"><a href="/mH/ddcr/article.html?topic=${encodeURIComponent(d.id)}">${d.name}</a></h3>
+                            <span class="badge badge-primary">${d.category || 'General'}</span>
+                        </div>
+                        <a href="/mH/ddcr/article.html?topic=${encodeURIComponent(d.id)}" class="btn btn-sm btn-outline">Read Clinical Protocol &rarr;</a>
+                    </div>
+                    <p style="font-size:12px; color:#555; margin-top:8px; line-height:1.4;">${(d.overview || '').substring(0, 180)}...</p>
+                `;
+                list.appendChild(item);
             });
         }
-    });
-</script>
 
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-<script src="https://sangaia.org/auth.js"></script>
+        renderTopics();
+    });
+    </script>
+    
 </body>
 </html>
