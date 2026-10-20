@@ -6,8 +6,13 @@
   <title>sangaia id :: citizen directory &amp; digital credential</title>
   <link href="https://cdn.metroui.org.ua/4.5.12/icons.css" rel="stylesheet">
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-  <script src="/auth.js" onerror="this.onerror=null;this.src='auth.js';" defer></script>
-  <script src="/js/sangaia-live.js" onerror="this.onerror=null;this.src='js/sangaia-live.js';" defer></script>
+  <script src="auth.js"></script>
+  <script>
+    if (!window.SangaiaAuth) {
+      document.write('<script src="../auth.js"><\/script>');
+    }
+  </script>
+  <script src="js/sangaia-live.js" defer></script>
   <style>
     :root {
       --primary: #0078d4;
@@ -993,6 +998,14 @@
       btn.disabled = true;
       btn.innerHTML = '<span class="mif-spinner mif-ani-pulse"></span> authenticating...';
 
+      if (!window.SangaiaAuth) {
+        errBox.innerText = 'Authentication engine is initializing. Please try again.';
+        errBox.style.display = 'block';
+        btn.disabled = false;
+        btn.innerHTML = '<span class="mif-enter"></span> sign in to sangaia id';
+        return;
+      }
+
       try {
         await window.SangaiaAuth.signIn(email, pass);
         succBox.innerText = 'Authenticated successfully! Loading your sovereign credential...';
@@ -1024,6 +1037,14 @@
       succBox.style.display = 'none';
       btn.disabled = true;
       btn.innerHTML = '<span class="mif-spinner mif-ani-pulse"></span> registering citizen docket...';
+
+      if (!window.SangaiaAuth) {
+        errBox.innerText = 'Authentication engine is initializing. Please try again.';
+        errBox.style.display = 'block';
+        btn.disabled = false;
+        btn.innerHTML = '<span class="mif-user-plus"></span> register sovereign citizen id';
+        return;
+      }
 
       try {
         await window.SangaiaAuth.signUp({

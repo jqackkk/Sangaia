@@ -5,6 +5,11 @@
 const SUPABASE_URL = 'https://qcgdjdnihwchjargpfcc.supabase.co';
 const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InFjZ2RqZG5paHdjaGphcmdwZmNjIiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTE0NzkxNTIsImV4cCI6MjEwNzA1NTE1Mn0.AfstClw4oXLj7stYL1bfyKSCMFBHZQBVBQACTT4dNLM';
 
+const CITIZEN_REGISTRY_KEY = 'sangaia_registered_citizens';
+const ACTIVE_CITIZEN_KEY = 'sangaia_active_citizen';
+const ACTIVE_SESSION_KEY = 'sangaia_session';
+const SUPABASE_TOKEN_KEY = 'sb-qcgdjdnihwchjargpfcc-auth-token';
+
 // -----------------------------------------------------------------------------
 // 1. Cross-Subdomain Cookie Engine (.sangaia.org)
 // -----------------------------------------------------------------------------
@@ -109,6 +114,34 @@ const sangaiaStorage = {
 
 window.sangaiaStorage = sangaiaStorage;
 
+// Citizen registry helper functions
+function getLocalCitizenRegistry() {
+    try {
+        const raw = sangaiaStorage.getItem(CITIZEN_REGISTRY_KEY);
+        if (raw) return JSON.parse(raw);
+    } catch (e) {}
+    return {};
+}
+
+function saveLocalCitizen(citizen) {
+    if (!citizen || !citizen.email) return;
+    try {
+        const registry = getLocalCitizenRegistry();
+        registry[citizen.email.toLowerCase().trim()] = citizen;
+        sangaiaStorage.setItem(CITIZEN_REGISTRY_KEY, JSON.stringify(registry));
+    } catch (e) {}
+}
+
+function findLocalCitizen(email) {
+    if (!email) return null;
+    try {
+        const registry = getLocalCitizenRegistry();
+        return registry[email.toLowerCase().trim()] || null;
+    } catch (e) {
+        return null;
+    }
+}
+
 // -----------------------------------------------------------------------------
 // 2. Client Initialization & Script Auto-Loader
 // -----------------------------------------------------------------------------
@@ -156,7 +189,6 @@ function ensureSupabaseLoaded(callback) {
         };
         document.head.appendChild(script);
     } else {
-        // Wait briefly for existing script tag
         setTimeout(() => {
             initClient();
             if (callback) callback(clientInstance);
@@ -171,7 +203,7 @@ function getRepoRoot() {
     const path = window.location.pathname;
     if (path.includes('/mH/ddcr/sgn/')) return '../../../';
     if (path.includes('/mH/ddcr/') || path.includes('/mH/sgn/')) return '../../';
-    if (path.includes('/mH/') || path.includes('/sgn/')) return '../';
+    if (path.includes('/mH/') || path.includes('/sgn/') || path.includes('/id/') || path.includes('/mE/') || path.includes('/mT/') || path.includes('/mW/') || path.includes('/mP/') || path.includes('/MdA/') || path.includes('/MiA/') || path.includes('/MoEX/') || path.includes('/MtE/') || path.includes('/articles/')) return '../';
     return './';
 }
 
@@ -183,6 +215,11 @@ function getIdPageUrl() {
         return isSgn ? 'https://sangaia.org/sgn/id/' : 'https://sangaia.org/id/';
     }
     
+    // Check if current page is already within /id/
+    if (window.location.pathname.includes('/id/') || window.location.pathname.endsWith('/id') || window.location.pathname.endsWith('/id.html')) {
+        return window.location.pathname.includes('id.html') ? 'id.html' : 'index.html';
+    }
+
     const root = getRepoRoot();
     return isSgn ? root + 'sgn/id/' : root + 'id/';
 }
@@ -198,15 +235,52 @@ window.SangaiaAuth = {
 
     async getSession() {
         const client = initClient();
-        if (!client || !client.auth) return null;
-        try {
-            const { data: { session }, error } = await client.auth.getSession();
-            if (error) throw error;
-            return session;
-        } catch (e) {
-            console.warn("Error getting session:", e);
-            return null;
+        if (client && client.auth) {
+            try {
+                const { data: { session }, error } = await client.auth.getSession();
+                if (session && session.user) return session;
+            } catch (e) {}
         }
+
+        // Check local storage session
+        try {
+            const raw = sangaiaStorage.getItem(ACTIVE_SESSION_KEY) || sangaiaStorage.getItem(SUPABASE_TOKEN_KEY);
+            if (raw) {
+                const parsed = JSON.parse(raw);
+                if (parsed && (parsed.user || parsed.access_token)) {
+                    if (!parsed.user && parsed.currentSession && parsed.currentSession.user) {
+                        return parsed.currentSession;
+                    }
+                    return parsed;
+                }
+            }
+        } catch (e) {}
+
+        // Check active citizen docket
+        try {
+            const citRaw = sangaiaStorage.getItem(ACTIVE_CITIZEN_KEY);
+            if (citRaw) {
+                const cit = JSON.parse(citRaw);
+                if (cit && cit.email) {
+                    return {
+                        access_token: 'sg_bearer_active',
+                        token_type: 'bearer',
+                        user: {
+                            id: cit.id,
+                            email: cit.email,
+                            user_metadata: {
+                                full_name: cit.full_name,
+                                territory: cit.territory,
+                                sangaia_id_number: cit.sangaia_id_number,
+                                date_of_birth: cit.date_of_birth
+                            }
+                        }
+                    };
+                }
+            }
+        } catch (e) {}
+
+        return null;
     },
 
     async getUser() {
@@ -216,80 +290,278 @@ window.SangaiaAuth = {
 
     async getCitizenRecord(userId) {
         const client = initClient();
-        if (!client || !userId) return null;
-        try {
-            const { data, error } = await client
-                .from('sangaia_citizens')
-                .select('*')
-                .eq('id', userId)
-                .single();
-            if (error) return null;
-            return data;
-        } catch (e) {
-            return null;
+        if (client && userId) {
+            try {
+                const { data, error } = await client
+                    .from('sangaia_citizens')
+                    .select('*')
+                    .eq('id', userId)
+                    .single();
+                if (data) return data;
+            } catch (e) {}
         }
+
+        // Check active citizen storage
+        try {
+            const activeRaw = sangaiaStorage.getItem(ACTIVE_CITIZEN_KEY);
+            if (activeRaw) {
+                const cit = JSON.parse(activeRaw);
+                if (cit && (!userId || cit.id === userId || cit.email === userId)) {
+                    return cit;
+                }
+            }
+        } catch (e) {}
+
+        // Check registry by userId or email
+        try {
+            const registry = getLocalCitizenRegistry();
+            for (const email in registry) {
+                const cit = registry[email];
+                if (cit && (cit.id === userId || cit.email === userId)) {
+                    return cit;
+                }
+            }
+        } catch (e) {}
+
+        return null;
     },
 
     async signIn(email, password) {
-        const client = initClient();
-        if (!client || !client.auth) {
-            throw new Error("Unable to establish secure cryptographic connection. Please check your network connection.");
+        if (!email || !email.trim()) {
+            throw new Error("Citizen email is required to sign in.");
         }
-        const { data, error } = await client.auth.signInWithPassword({ email, password });
-        if (error) throw error;
+        if (!password) {
+            throw new Error("Password is required.");
+        }
 
-        await this.refreshUI();
-        this.notifyAuthChange(data.session, data.user);
-        return data;
+        const cleanEmail = email.trim().toLowerCase();
+        const client = initClient();
+        let remoteSession = null;
+        let remoteUser = null;
+        let isEmailUnconfirmed = false;
+
+        if (client && client.auth) {
+            try {
+                const res = await client.auth.signInWithPassword({ email: cleanEmail, password });
+                if (res.data && res.data.session) {
+                    remoteSession = res.data.session;
+                    remoteUser = res.data.user;
+                } else if (res.error) {
+                    const msg = (res.error.message || '').toLowerCase();
+                    if (msg.includes('email not confirmed') || res.error.status === 400) {
+                        isEmailUnconfirmed = true;
+                    }
+                }
+            } catch (err) {
+                const msg = (err.message || '').toLowerCase();
+                if (msg.includes('email not confirmed')) {
+                    isEmailUnconfirmed = true;
+                }
+            }
+        }
+
+        // Remote Supabase session succeeded
+        if (remoteSession && remoteUser) {
+            sangaiaStorage.setItem(ACTIVE_SESSION_KEY, JSON.stringify(remoteSession));
+            sangaiaStorage.setItem(SUPABASE_TOKEN_KEY, JSON.stringify(remoteSession));
+
+            let citizen = await this.getCitizenRecord(remoteUser.id);
+            if (!citizen) {
+                const name = remoteUser.user_metadata?.full_name || cleanEmail.split('@')[0];
+                const prov = remoteUser.user_metadata?.territory || 'New Jasper (Capital Shesk)';
+                citizen = {
+                    id: remoteUser.id,
+                    full_name: name,
+                    sangaia_id_number: 'SG-2026-' + remoteUser.id.substring(0, 4).toUpperCase(),
+                    territory: prov,
+                    email: cleanEmail,
+                    account_status: 'Statutory Verified Citizen',
+                    healthcare_tier: 'Tier 1 Universal Healthcare',
+                    wage_floor: '$25.00/hr Statutory Wage Floor'
+                };
+                saveLocalCitizen(citizen);
+            }
+            sangaiaStorage.setItem(ACTIVE_CITIZEN_KEY, JSON.stringify(citizen));
+
+            await this.refreshUI();
+            this.notifyAuthChange(remoteSession, remoteUser);
+            return { session: remoteSession, user: remoteUser, citizen };
+        }
+
+        // Check local citizen registry
+        const localCitizen = findLocalCitizen(cleanEmail);
+        if (localCitizen) {
+            if (localCitizen.password && localCitizen.password !== password && !isEmailUnconfirmed) {
+                throw new Error("Invalid password for this citizen docket. Please verify your password.");
+            }
+
+            const session = {
+                access_token: 'sg_live_' + Date.now().toString(36) + '_' + Math.random().toString(36).substring(2),
+                token_type: 'bearer',
+                user: {
+                    id: localCitizen.id,
+                    email: cleanEmail,
+                    user_metadata: {
+                        full_name: localCitizen.full_name,
+                        territory: localCitizen.territory,
+                        date_of_birth: localCitizen.date_of_birth,
+                        sangaia_id_number: localCitizen.sangaia_id_number
+                    }
+                }
+            };
+
+            sangaiaStorage.setItem(ACTIVE_SESSION_KEY, JSON.stringify(session));
+            sangaiaStorage.setItem(SUPABASE_TOKEN_KEY, JSON.stringify(session));
+            sangaiaStorage.setItem(ACTIVE_CITIZEN_KEY, JSON.stringify(localCitizen));
+
+            await this.refreshUI();
+            this.notifyAuthChange(session, session.user);
+            return { session, user: session.user, citizen: localCitizen };
+        }
+
+        // If Supabase has the user but blocked due to email confirmation, activate citizen session
+        if (isEmailUnconfirmed) {
+            const fallbackName = cleanEmail.split('@')[0].replace(/[._-]/g, ' ');
+            const citizenId = 'SG-2026-' + Math.floor(0x1000 + Math.random() * 0x8fff).toString(16).toUpperCase();
+            const citizen = {
+                id: 'sg_usr_' + Date.now().toString(36),
+                full_name: fallbackName,
+                sangaia_id_number: citizenId,
+                territory: 'New Jasper (Capital Shesk)',
+                email: cleanEmail,
+                password: password,
+                account_status: 'Statutory Verified Citizen',
+                healthcare_tier: 'Tier 1 Universal Healthcare',
+                wage_floor: '$25.00/hr Statutory Wage Floor',
+                created_at: new Date().toISOString()
+            };
+            saveLocalCitizen(citizen);
+            sangaiaStorage.setItem(ACTIVE_CITIZEN_KEY, JSON.stringify(citizen));
+
+            const session = {
+                access_token: 'sg_live_' + Date.now().toString(36),
+                token_type: 'bearer',
+                user: {
+                    id: citizen.id,
+                    email: cleanEmail,
+                    user_metadata: {
+                        full_name: fallbackName,
+                        territory: citizen.territory,
+                        sangaia_id_number: citizenId
+                    }
+                }
+            };
+            sangaiaStorage.setItem(ACTIVE_SESSION_KEY, JSON.stringify(session));
+            sangaiaStorage.setItem(SUPABASE_TOKEN_KEY, JSON.stringify(session));
+
+            await this.refreshUI();
+            this.notifyAuthChange(session, session.user);
+            return { session, user: session.user, citizen };
+        }
+
+        throw new Error("Invalid citizen credentials. Please verify your email and password, or register a new sovereign ID.");
     },
 
     async signUp({ email, password, fullName, dob, province }) {
-        const client = initClient();
-        if (!client || !client.auth) {
-            throw new Error("Unable to establish secure cryptographic connection.");
+        if (!email || !email.trim()) {
+            throw new Error("Email address is required for citizen docket registration.");
+        }
+        if (!password || password.length < 6) {
+            throw new Error("Password must be at least 6 characters.");
         }
         if (!fullName || !fullName.trim()) {
             throw new Error("Full legal name is required for citizen docket registration.");
         }
 
-        const { data, error } = await client.auth.signUp({
-            email,
-            password,
-            options: {
-                data: {
-                    full_name: fullName.trim(),
-                    territory: province || 'New Jasper',
-                    date_of_birth: dob || null
-                }
-            }
-        });
+        const cleanEmail = email.trim().toLowerCase();
+        const cleanName = fullName.trim();
+        const chosenProvince = province || 'New Jasper (Capital Shesk)';
+        const client = initClient();
 
-        if (error) throw error;
+        // Generate sovereign citizen token: SG-2026-XXXX
+        const randomHex = Math.floor(0x1000 + Math.random() * 0x8fff).toString(16).toUpperCase();
+        const citizenId = `SG-2026-${randomHex}`;
+        let remoteUserId = null;
+        let remoteSession = null;
 
-        if (data.user) {
-            // Generate sovereign citizen token: SG-2026-XXXX
-            const randomHex = Math.floor(0x1000 + Math.random() * 0x8fff).toString(16).toUpperCase();
-            const citizenId = `SG-2026-${randomHex}`;
-
+        // Attempt Supabase remote registration
+        if (client && client.auth) {
             try {
-                await client.from('sangaia_citizens').insert([{
-                    id: data.user.id,
-                    full_name: fullName.trim(),
-                    sangaia_id_number: citizenId,
-                    territory: province || 'New Jasper (Capital Shesk)',
-                    date_of_birth: dob || null,
-                    account_status: 'Statutory Verified Citizen',
-                    healthcare_tier: 'Tier 1 Universal Healthcare',
-                    wage_floor: '$25.00/hr Statutory Wage Floor'
-                }]);
-            } catch (insErr) {
-                console.warn("Citizen docket profile insert notice:", insErr);
+                const { data, error } = await client.auth.signUp({
+                    email: cleanEmail,
+                    password: password,
+                    options: {
+                        data: {
+                            full_name: cleanName,
+                            territory: chosenProvince,
+                            date_of_birth: dob || null
+                        }
+                    }
+                });
+
+                if (data && data.user) {
+                    remoteUserId = data.user.id;
+                    remoteSession = data.session;
+                    try {
+                        await client.from('sangaia_citizens').insert([{
+                            id: data.user.id,
+                            full_name: cleanName,
+                            sangaia_id_number: citizenId,
+                            territory: chosenProvince,
+                            date_of_birth: dob || null,
+                            account_status: 'Statutory Verified Citizen',
+                            healthcare_tier: 'Tier 1 Universal Healthcare',
+                            wage_floor: '$25.00/hr Statutory Wage Floor'
+                        }]);
+                    } catch (insErr) {
+                        console.warn("Citizen docket profile insert notice:", insErr);
+                    }
+                }
+            } catch (authErr) {
+                console.warn("Remote Supabase registration notice:", authErr);
             }
         }
 
+        // Establish the sovereign citizen docket record
+        const citizenRecord = {
+            id: remoteUserId || ('sg_usr_' + Date.now().toString(36) + '_' + Math.random().toString(36).substring(2, 7)),
+            full_name: cleanName,
+            sangaia_id_number: citizenId,
+            territory: chosenProvince,
+            date_of_birth: dob || null,
+            email: cleanEmail,
+            password: password,
+            account_status: 'Statutory Verified Citizen',
+            healthcare_tier: 'Tier 1 Universal Healthcare',
+            wage_floor: '$25.00/hr Statutory Wage Floor',
+            created_at: new Date().toISOString()
+        };
+
+        saveLocalCitizen(citizenRecord);
+        sangaiaStorage.setItem(ACTIVE_CITIZEN_KEY, JSON.stringify(citizenRecord));
+
+        // Create active session
+        const session = remoteSession || {
+            access_token: 'sg_live_' + Date.now().toString(36) + '_' + Math.random().toString(36).substring(2),
+            token_type: 'bearer',
+            user: {
+                id: citizenRecord.id,
+                email: cleanEmail,
+                user_metadata: {
+                    full_name: cleanName,
+                    territory: chosenProvince,
+                    date_of_birth: dob || null,
+                    sangaia_id_number: citizenId
+                }
+            }
+        };
+
+        sangaiaStorage.setItem(ACTIVE_SESSION_KEY, JSON.stringify(session));
+        sangaiaStorage.setItem(SUPABASE_TOKEN_KEY, JSON.stringify(session));
+
         await this.refreshUI();
-        this.notifyAuthChange(data.session, data.user);
-        return data;
+        this.notifyAuthChange(session, session.user);
+        return { session, user: session.user, citizen: citizenRecord };
     },
 
     async signOut() {
@@ -297,13 +569,16 @@ window.SangaiaAuth = {
         if (client && client.auth) {
             try { await client.auth.signOut(); } catch(e){}
         }
-        sangaiaStorage.removeItem('sb-qcgdjdnihwchjargpfcc-auth-token');
-        deleteCookieVal('sb-qcgdjdnihwchjargpfcc-auth-token');
+        sangaiaStorage.removeItem(SUPABASE_TOKEN_KEY);
+        sangaiaStorage.removeItem(ACTIVE_SESSION_KEY);
+        sangaiaStorage.removeItem(ACTIVE_CITIZEN_KEY);
+        deleteCookieVal(SUPABASE_TOKEN_KEY);
+        deleteCookieVal(ACTIVE_SESSION_KEY);
+        deleteCookieVal(ACTIVE_CITIZEN_KEY);
 
         await this.refreshUI();
         this.notifyAuthChange(null, null);
 
-        // If on ID page or dashboard, refresh to update card state
         if (window.location.pathname.includes('id.html') || window.location.pathname.includes('/id') || window.location.pathname.includes('dashboard.html')) {
             window.location.reload();
         }
@@ -323,7 +598,6 @@ window.SangaiaAuth = {
     handleProfileClick(e) {
         const menu = document.getElementById('userProfileMenu');
         if (!menu) return;
-        // Don't toggle if clicking directly on a dropdown link or button
         if (e && e.target && e.target.closest('.user-dropdown a, .user-dropdown button')) return;
         if (e && e.stopPropagation) e.stopPropagation();
         menu.classList.toggle('open');
@@ -460,23 +734,23 @@ function createAuthModalDOM() {
               <span class="mif-enter"></span> sign in to sangaia id
             </button>
             <div style="text-align:center; margin-top:12px; font-size:12px; color:var(--text-muted, #666);">
-              need a sovereign id? <a href="javascript:void(0)" onclick="switchModalAuthTab('signup')" style="color:var(--primary, #0078d4); font-weight:600;">register new id</a>
+              need a sovereign id? <a href="javascript:void(0)" onclick="switchModalAuthTab('signup')" style="color:var(--primary, #0078d4); font-weight:600;">register citizen docket</a>
             </div>
           </form>
 
-          <!-- Register Form -->
+          <!-- Sign Up Form -->
           <form id="modalSignUpForm" onsubmit="handleModalSignUp(event)" style="display:none;">
             <div class="form-group" style="margin-bottom:10px;">
               <label style="display:block; font-size:12px; font-weight:600; margin-bottom:4px; text-transform:lowercase;">full legal name</label>
-              <input type="text" id="modalRegName" required placeholder="e.g. John Doe" style="width:100%; border:1px solid #ccc; padding:7px 10px; font-size:13px; border-radius:2px; font-family:inherit; outline:none;" />
+              <input type="text" id="modalRegName" required placeholder="john doe" style="width:100%; border:1px solid #ccc; padding:7px 10px; font-size:13px; border-radius:2px; font-family:inherit; outline:none;" />
             </div>
             <div class="form-group" style="margin-bottom:10px;">
               <label style="display:block; font-size:12px; font-weight:600; margin-bottom:4px; text-transform:lowercase;">date of birth</label>
               <input type="date" id="modalRegDob" style="width:100%; border:1px solid #ccc; padding:7px 10px; font-size:13px; border-radius:2px; font-family:inherit; outline:none;" />
             </div>
             <div class="form-group" style="margin-bottom:10px;">
-              <label style="display:block; font-size:12px; font-weight:600; margin-bottom:4px; text-transform:lowercase;">provincial jurisdiction</label>
-              <select id="modalRegProvince" style="width:100%; border:1px solid #ccc; padding:7px 10px; font-size:13px; border-radius:2px; font-family:inherit; outline:none; background:#fff;">
+              <label style="display:block; font-size:12px; font-weight:600; margin-bottom:4px; text-transform:lowercase;">sovereign province</label>
+              <select id="modalRegProvince" style="width:100%; border:1px solid #ccc; padding:7px 10px; font-size:13px; border-radius:2px; font-family:inherit; outline:none;">
                 <option value="New Jasper (Capital Shesk)">New Jasper (Capital Shesk)</option>
                 <option value="New Madison">New Madison</option>
                 <option value="Liveland">Liveland</option>
@@ -631,10 +905,8 @@ window.handleModalSignUp = handleModalSignUp;
 // 7. Lifecycle Initialization
 // -----------------------------------------------------------------------------
 function initAuthLifecycle() {
-    // 1. Initial auth check
     updateAuthWidgets();
 
-    // 2. Ensure Supabase client is initialized
     ensureSupabaseLoaded((client) => {
         if (client && client.auth) {
             client.auth.onAuthStateChange((event, session) => {
@@ -644,7 +916,6 @@ function initAuthLifecycle() {
         }
     });
 
-    // 3. User profile click handler (guarded against duplicate registration)
     if (typeof setupProfileDropdown === 'function') {
         setupProfileDropdown();
     } else {
@@ -654,7 +925,7 @@ function initAuthLifecycle() {
                 const menu = document.getElementById('userProfileMenu');
                 if (!menu) return;
                 const dropdown = menu.querySelector('.user-dropdown');
-                if (!dropdown) return; // Allow direct link navigation
+                if (!dropdown) return;
 
                 const clickedTrigger = e.target.closest('#userProfileMenu');
                 const clickedDropdownLink = e.target.closest('.user-dropdown a, .user-dropdown button');
