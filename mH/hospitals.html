@@ -345,28 +345,37 @@ a:hover {
 }
 
 /* Standard Card */
-.card {
+.card,
+.ol-card,
+section.card {
   background: var(--card-bg);
   border: 1px solid var(--border);
   border-radius: 2px;
-  padding: 16px;
-  margin-bottom: 16px;
+  padding: 20px 24px;
+  margin-bottom: 20px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.03);
 }
 
-.card h2 {
-  font-size: 18px;
+.card h2,
+.ol-card h2,
+section.card h2 {
+  font-size: 16px;
   font-weight: 600;
   margin-bottom: 12px;
   color: var(--primary);
 }
 
-.card h3 {
-  font-size: 15px;
+.card h3,
+.ol-card h3,
+section.card h3 {
+  font-size: 14.5px;
   font-weight: 600;
   margin-bottom: 8px;
 }
 
-.card h4 {
+.card h4,
+.ol-card h4,
+section.card h4 {
   font-size: 13px;
   font-weight: 600;
   color: #333;
@@ -839,7 +848,7 @@ a:hover {
 .ol-sidebox h3 { font-size: 14px; font-weight: 600; margin-bottom: 6px; }
 .ol-status-bubble { background: #f8fafc; border: 1px solid var(--border); border-left: 4px solid var(--primary); padding: 12px 16px; margin-bottom: 16px; font-size: 13px; border-radius: 2px; }
 .ol-status-date { font-style: normal; font-size: 11px; color: var(--text-muted); margin-top: 4px; font-weight: 500; }
-.ol-card-title { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; font-size: 15px; font-weight: 600; color: var(--primary); }
+.ol-card-title { display: flex; justify-content: space-between; align-items: center; margin-bottom: 14px; padding-bottom: 10px; border-bottom: 1px solid var(--border); font-size: 15px; font-weight: 600; color: var(--primary); }
 .ol-title-link { font-size: 12px; font-weight: 500; }
 .ol-small { font-size: 12px; }
 .ol-muted { color: var(--text-muted); }
@@ -944,20 +953,20 @@ button,
     </div>
     <div class="hero-content">
       <h1>hospital emergency network & regional medical centers</h1>
-      <p>Level 1 trauma care, acute intensive triage, and regional medical facilities across all 5 sovereign provinces</p>
+      <p>level 1 trauma care, acute intensive triage, and regional medical facilities across all 5 sovereign provinces</p>
     </div>
   </header>
 
   <!-- Navigation Bar -->
   <nav class="subnav">
-    <a href="index.html">Healthcare Home</a>
-    <a href="departments.html">Departments</a>
-    <a href="services.html">Medical Services</a>
-    <a href="hospitals.html" class="active">5-Province Hospitals</a>
-    <a href="research.html">Medical Research</a>
-    <a href="support.html">Patient Support</a>
-    <a href="ddcr/index.html">DDCR Disease Control</a>
-    <a href="https://sangaia.org/index.html">← Federal Portal</a>
+    <a href="index.html">healthcare home</a>
+    <a href="departments.html">departments</a>
+    <a href="services.html">medical services</a>
+    <a href="hospitals.html" class="active">5-province hospitals</a>
+    <a href="research.html">medical research</a>
+    <a href="support.html">patient support</a>
+    <a href="ddcr/index.html">ddcr disease control</a>
+    <a href="https://sangaia.org/index.html">← federal portal</a>
   </nav>
 
   <!-- Content Grid -->
@@ -966,124 +975,183 @@ button,
     <div class="left-col">
 
     <!-- Hospital Network Overview -->
-    <div class="ol-card" id="overview">
+    <section class="card" id="overview">
         <div class="ol-card-title">
-            <span>Sangaia Integrated Hospital Network</span>
-            <span class="ol-badge-tag ol-badge-success">5 Provincial Centers Active</span>
+            <span>sangaia integrated hospital network</span>
+            <span class="ol-badge-tag ol-badge-success">5 provincial centers active</span>
         </div>
-        <p>Sangaia boasts a fully integrated network of state-of-the-art public hospitals across all five sovereign provinces. Every facility operates 24/7 acute trauma response, subsidized neonatal and pediatric wings, and emergency room care with zero out-of-pocket costs for registered citizens.</p>
-        <div class="ol-grid-3" style="margin-top:12px;">
-            <div style="background:#f8fafc; border:1px solid #e1dfdd; border-radius:2px; padding:10px; text-align:center;">
-                <div style="font-size:11px; color:#605e5c; text-transform:uppercase; font-weight:600;">Average ER Wait Time</div>
-                <div style="font-size:18px; font-weight:700; color:#b91c1c; margin:4px 0;">12 Minutes</div>
-                <div style="font-size:11px; color:#8a8886;">Rapid Triage Standard</div>
+        <p>sangaia boasts a fully integrated network of state-of-the-art public hospitals across all five sovereign provinces. every facility operates 24/7 acute trauma response, subsidized neonatal and pediatric wings, and emergency room care with zero out-of-pocket costs for registered citizens.</p>
+        <div class="ol-grid-3" style="margin-top:14px;">
+            <div style="background:#f8fafc; border:1px solid #e1dfdd; border-radius:2px; padding:12px; text-align:center;">
+                <div style="font-size:11px; color:#605e5c; text-transform:lowercase; font-weight:600;">average er wait time</div>
+                <div style="font-size:18px; font-weight:700; color:#b91c1c; margin:4px 0;">12 minutes</div>
+                <div style="font-size:11px; color:#8a8886;">rapid triage standard</div>
             </div>
-            <div style="background:#f8fafc; border:1px solid #e1dfdd; border-radius:2px; padding:10px; text-align:center;">
+            <div style="background:#f8fafc; border:1px solid #e1dfdd; border-radius:2px; padding:12px; text-align:center;">
                 <div style="font-size:11px; color:#605e5c; text-transform:lowercase; font-weight:600;">acute trauma beds</div>
                 <div style="font-size:18px; font-weight:700; color:#b91c1c; margin:4px 0;">240+ beds</div>
                 <div style="font-size:11px; color:#8a8886;">100% acute capacity</div>
             </div>
-            <div style="background:#f8fafc; border:1px solid #e1dfdd; border-radius:2px; padding:10px; text-align:center;">
-                <div style="font-size:11px; color:#605e5c; text-transform:uppercase; font-weight:600;">Helipad Capacity</div>
-                <div style="font-size:18px; font-weight:700; color:#b91c1c; margin:4px 0;">5 / 5 Bases</div>
-                <div style="font-size:11px; color:#8a8886;">Air Medevac Active</div>
+            <div style="background:#f8fafc; border:1px solid #e1dfdd; border-radius:2px; padding:12px; text-align:center;">
+                <div style="font-size:11px; color:#605e5c; text-transform:lowercase; font-weight:600;">helipad capacity</div>
+                <div style="font-size:18px; font-weight:700; color:#b91c1c; margin:4px 0;">5 / 5 bases</div>
+                <div style="font-size:11px; color:#8a8886;">air medevac active</div>
             </div>
         </div>
-    </div>
+    </section>
 
     <!-- Province 1: Watson Healthcare (New Jasper) -->
-    <div class="ol-card" id="watson">
+    <section class="card" id="watson">
         <div class="ol-card-title">
-            <span>Watson Healthcare &bull; Province of New Jasper</span>
-            <span class="ol-badge-tag">Level 1 Trauma Center</span>
+            <span>watson healthcare &bull; province of new jasper</span>
+            <span class="ol-badge-tag">level 1 trauma center</span>
         </div>
-        <div style="display:flex; flex-direction:column; gap:6px; font-size:13px; margin:8px 0;">
-            <div><strong>Sangaian Address:</strong> H0001 1st Street, Shesk, New Jasper, 1-1000</div>
-            <div style="color:#605e5c;"><em>Map Reference: 506 4th St NW, Jasper, FL 32052</em></div>
-            <div><strong>Key Departments:</strong> Emergency Medicine, Cardiovascular Surgery, Pediatric ICU, Orthopedics</div>
-            <div><strong>ER Availability:</strong> 24/7 Triage &bull; 48 Acute Beds &bull; Immediate Trauma Team</div>
+        <div class="ol-grid-2" style="margin-top:12px;">
+            <div style="background:#f8fafc; border:1px solid #e1dfdd; border-radius:2px; padding:12px;">
+                <div style="font-size:11px; color:#605e5c; text-transform:lowercase; font-weight:600; margin-bottom:4px;">facility location</div>
+                <div style="font-weight:600; color:var(--text-main);">H0001 1st street, shesk, new jasper, 1-1000</div>
+                <div class="ol-small ol-muted" style="margin-top:2px;">map reference: 506 4th st nw, jasper, fl 32052</div>
+            </div>
+            <div style="background:#f8fafc; border:1px solid #e1dfdd; border-radius:2px; padding:12px;">
+                <div style="font-size:11px; color:#605e5c; text-transform:lowercase; font-weight:600; margin-bottom:4px;">emergency readiness</div>
+                <div style="font-weight:600; color:#b91c1c;">24/7 triage &bull; 48 acute beds</div>
+                <div class="ol-small ol-muted" style="margin-top:2px;">immediate trauma surgical response active</div>
+            </div>
         </div>
-        <div style="margin-top:10px;">
-            <button type="button" class="ol-btn ol-btn-sm" onclick="alert('Routing directions to Watson Healthcare (New Jasper)...')">Get Driving Directions &rarr;</button>
+        <div style="background:#f8fafc; border:1px solid #e1dfdd; border-radius:2px; padding:12px; margin-top:10px;">
+            <div style="font-size:11px; color:#605e5c; text-transform:lowercase; font-weight:600; margin-bottom:4px;">specialized clinical departments</div>
+            <p class="ol-small" style="margin:0;">emergency medicine, cardiovascular surgery, pediatric icu, orthopedics, burn care unit.</p>
         </div>
-    </div>
+        <div style="margin-top:12px;">
+            <button type="button" class="ol-btn ol-btn-sm" onclick="alert('routing directions to watson healthcare (new jasper)...')">get driving directions &rarr;</button>
+        </div>
+    </section>
 
     <!-- Province 2: New Madison Hospital (New Madison) -->
-    <div class="ol-card" id="madison">
+    <section class="card" id="madison">
         <div class="ol-card-title">
-            <span>New Madison Hospital &bull; Province of New Madison</span>
-            <span class="ol-badge-tag">Regional Acute Center</span>
+            <span>new madison hospital &bull; province of new madison</span>
+            <span class="ol-badge-tag">regional acute center</span>
         </div>
-        <div style="display:flex; flex-direction:column; gap:6px; font-size:13px; margin:8px 0;">
-            <div><strong>Sangaian Address:</strong> H0002 2nd Street, Madison City, New Madison, 1-2000</div>
-            <div style="color:#605e5c;"><em>Map Reference: 224 NW Crane Ave, Madison, FL 32340</em></div>
-            <div><strong>Key Departments:</strong> Intensive Care, Maternal Health, Emergency Pediatrics, Dialysis Unit</div>
-            <div><strong>ER Availability:</strong> 24/7 Triage &bull; 36 Acute Beds &bull; Dedicated Stroke Response Unit</div>
+        <div class="ol-grid-2" style="margin-top:12px;">
+            <div style="background:#f8fafc; border:1px solid #e1dfdd; border-radius:2px; padding:12px;">
+                <div style="font-size:11px; color:#605e5c; text-transform:lowercase; font-weight:600; margin-bottom:4px;">facility location</div>
+                <div style="font-weight:600; color:var(--text-main);">H0002 2nd street, madison city, new madison, 1-2000</div>
+                <div class="ol-small ol-muted" style="margin-top:2px;">map reference: 224 nw crane ave, madison, fl 32340</div>
+            </div>
+            <div style="background:#f8fafc; border:1px solid #e1dfdd; border-radius:2px; padding:12px;">
+                <div style="font-size:11px; color:#605e5c; text-transform:lowercase; font-weight:600; margin-bottom:4px;">emergency readiness</div>
+                <div style="font-weight:600; color:#b91c1c;">24/7 triage &bull; 36 acute beds</div>
+                <div class="ol-small ol-muted" style="margin-top:2px;">dedicated stroke &amp; cardiovascular response unit</div>
+            </div>
         </div>
-        <div style="margin-top:10px;">
-            <button type="button" class="ol-btn ol-btn-sm" onclick="alert('Routing directions to New Madison Hospital (New Madison)...')">Get Driving Directions &rarr;</button>
+        <div style="background:#f8fafc; border:1px solid #e1dfdd; border-radius:2px; padding:12px; margin-top:10px;">
+            <div style="font-size:11px; color:#605e5c; text-transform:lowercase; font-weight:600; margin-bottom:4px;">specialized clinical departments</div>
+            <p class="ol-small" style="margin:0;">intensive care, maternal health, emergency pediatrics, dialysis unit, pulmonary medicine.</p>
         </div>
-    </div>
+        <div style="margin-top:12px;">
+            <button type="button" class="ol-btn ol-btn-sm" onclick="alert('routing directions to new madison hospital (new madison)...')">get driving directions &rarr;</button>
+        </div>
+    </section>
 
     <!-- Province 3: Suwannee Emergency (Liveland) -->
-    <div class="ol-card" id="suwannee">
+    <section class="card" id="suwannee">
         <div class="ol-card-title">
-            <span>Suwannee Emergency Hospital &bull; Province of Liveland</span>
-            <span class="ol-badge-tag">Rapid Response Center</span>
+            <span>suwannee emergency hospital &bull; province of liveland</span>
+            <span class="ol-badge-tag">rapid response center</span>
         </div>
-        <div style="display:flex; flex-direction:column; gap:6px; font-size:13px; margin:8px 0;">
-            <div><strong>Sangaian Address:</strong> H0003 3rd Street, Oaks, Liveland, 1-3000</div>
-            <div style="color:#605e5c;"><em>Map Reference: 1100 11th St SW, Live Oak, FL 32064</em></div>
-            <div><strong>Key Departments:</strong> Rapid Emergency Triage, Acute Medical Care, Helipad Dispatch, Surgical Suites</div>
-            <div><strong>ER Availability:</strong> 24/7 Triage &bull; 40 Acute Beds &bull; Coastal Disaster Relief Wing</div>
+        <div class="ol-grid-2" style="margin-top:12px;">
+            <div style="background:#f8fafc; border:1px solid #e1dfdd; border-radius:2px; padding:12px;">
+                <div style="font-size:11px; color:#605e5c; text-transform:lowercase; font-weight:600; margin-bottom:4px;">facility location</div>
+                <div style="font-weight:600; color:var(--text-main);">H0003 3rd street, oaks, liveland, 1-3000</div>
+                <div class="ol-small ol-muted" style="margin-top:2px;">map reference: 1100 11th st sw, live oak, fl 32064</div>
+            </div>
+            <div style="background:#f8fafc; border:1px solid #e1dfdd; border-radius:2px; padding:12px;">
+                <div style="font-size:11px; color:#605e5c; text-transform:lowercase; font-weight:600; margin-bottom:4px;">emergency readiness</div>
+                <div style="font-weight:600; color:#b91c1c;">24/7 triage &bull; 40 acute beds</div>
+                <div class="ol-small ol-muted" style="margin-top:2px;">coastal disaster relief wing &amp; helipad dispatch</div>
+            </div>
         </div>
-        <div style="margin-top:10px;">
-            <button type="button" class="ol-btn ol-btn-sm" onclick="alert('Routing directions to Suwannee Emergency (Liveland)...')">Get Driving Directions &rarr;</button>
+        <div style="background:#f8fafc; border:1px solid #e1dfdd; border-radius:2px; padding:12px; margin-top:10px;">
+            <div style="font-size:11px; color:#605e5c; text-transform:lowercase; font-weight:600; margin-bottom:4px;">specialized clinical departments</div>
+            <p class="ol-small" style="margin:0;">rapid emergency triage, acute medical care, helipad dispatch, surgical suites, maritime trauma.</p>
         </div>
-    </div>
+        <div style="margin-top:12px;">
+            <button type="button" class="ol-btn ol-btn-sm" onclick="alert('routing directions to suwannee emergency (liveland)...')">get driving directions &rarr;</button>
+        </div>
+    </section>
 
     <!-- Province 4: Sentinel Memorial Hospital (Sentinel) -->
-    <div class="ol-card" id="sentinel">
+    <section class="card" id="sentinel">
         <div class="ol-card-title">
-            <span>Sentinel Memorial Hospital &bull; Province of Sentinel</span>
-            <span class="ol-badge-tag">Neurological & Trauma Hub</span>
+            <span>sentinel memorial hospital &bull; province of sentinel</span>
+            <span class="ol-badge-tag">neurological &amp; trauma hub</span>
         </div>
-        <div style="display:flex; flex-direction:column; gap:6px; font-size:13px; margin:8px 0;">
-            <div><strong>Sangaian Address:</strong> H0004 4th Street, Sentinel Ridge, Sentinel, 1-4000</div>
-            <div style="color:#605e5c;"><em>Map Reference: 168 NW Main Blvd, Lake City, FL 32055</em></div>
-            <div><strong>Key Departments:</strong> Specialized Neurological Wing, Orthopedic Surgery, Free Emergency Care, Burn Center</div>
-            <div><strong>ER Availability:</strong> 24/7 Triage &bull; 54 Acute Beds &bull; Advanced CT / MRI Diagnostic Suite</div>
+        <div class="ol-grid-2" style="margin-top:12px;">
+            <div style="background:#f8fafc; border:1px solid #e1dfdd; border-radius:2px; padding:12px;">
+                <div style="font-size:11px; color:#605e5c; text-transform:lowercase; font-weight:600; margin-bottom:4px;">facility location</div>
+                <div style="font-weight:600; color:var(--text-main);">H0004 4th street, sentinel ridge, sentinel, 1-4000</div>
+                <div class="ol-small ol-muted" style="margin-top:2px;">map reference: 168 nw main blvd, lake city, fl 32055</div>
+            </div>
+            <div style="background:#f8fafc; border:1px solid #e1dfdd; border-radius:2px; padding:12px;">
+                <div style="font-size:11px; color:#605e5c; text-transform:lowercase; font-weight:600; margin-bottom:4px;">emergency readiness</div>
+                <div style="font-weight:600; color:#b91c1c;">24/7 triage &bull; 54 acute beds</div>
+                <div class="ol-small ol-muted" style="margin-top:2px;">advanced ct / mri diagnostic suite &bull; highland triage</div>
+            </div>
         </div>
-        <div style="margin-top:10px;">
-            <button type="button" class="ol-btn ol-btn-sm" onclick="alert('Routing directions to Sentinel Memorial Hospital (Sentinel)...')">Get Driving Directions &rarr;</button>
+        <div style="background:#f8fafc; border:1px solid #e1dfdd; border-radius:2px; padding:12px; margin-top:10px;">
+            <div style="font-size:11px; color:#605e5c; text-transform:lowercase; font-weight:600; margin-bottom:4px;">specialized clinical departments</div>
+            <p class="ol-small" style="margin:0;">specialized neurological wing, orthopedic surgery, universal emergency care, burn center, hypothermia triage.</p>
         </div>
-    </div>
+        <div style="margin-top:12px;">
+            <button type="button" class="ol-btn ol-btn-sm" onclick="alert('routing directions to sentinel memorial hospital (sentinel)...')">get driving directions &rarr;</button>
+        </div>
+    </section>
 
     <!-- Province 5: Columbia Regional Medical Center (Columbia) -->
-    <div class="ol-card" id="columbia">
+    <section class="card" id="columbia">
         <div class="ol-card-title">
-            <span>Columbia Regional Medical Center &bull; Province of Columbia</span>
-            <span class="ol-badge-tag">Comprehensive Medical Hub</span>
+            <span>columbia regional medical center &bull; province of columbia</span>
+            <span class="ol-badge-tag">comprehensive medical hub</span>
         </div>
-        <div style="display:flex; flex-direction:column; gap:6px; font-size:13px; margin:8px 0;">
-            <div><strong>Sangaian Address:</strong> H0005 5th Street, Columbia City, Columbia, 1-5000</div>
-            <div style="color:#605e5c;"><em>Map Reference: 4288 SW State Road 47, Lake City, FL 32024</em></div>
-            <div><strong>Key Departments:</strong> Regional Oncology Center, Neonatal ICU, Sovereign Healthcare Research Hub, Toxicology</div>
-            <div><strong>ER Availability:</strong> 24/7 Triage &bull; 62 Acute Beds &bull; State-Level Pandemic Isolation Wing</div>
+        <div class="ol-grid-2" style="margin-top:12px;">
+            <div style="background:#f8fafc; border:1px solid #e1dfdd; border-radius:2px; padding:12px;">
+                <div style="font-size:11px; color:#605e5c; text-transform:lowercase; font-weight:600; margin-bottom:4px;">facility location</div>
+                <div style="font-weight:600; color:var(--text-main);">H0005 5th street, columbia city, columbia, 1-5000</div>
+                <div class="ol-small ol-muted" style="margin-top:2px;">map reference: 4288 sw state road 47, lake city, fl 32024</div>
+            </div>
+            <div style="background:#f8fafc; border:1px solid #e1dfdd; border-radius:2px; padding:12px;">
+                <div style="font-size:11px; color:#605e5c; text-transform:lowercase; font-weight:600; margin-bottom:4px;">emergency readiness</div>
+                <div style="font-weight:600; color:#b91c1c;">24/7 triage &bull; 62 acute beds</div>
+                <div class="ol-small ol-muted" style="margin-top:2px;">state-level pandemic isolation wing &bull; advanced oncology hub</div>
+            </div>
         </div>
-        <div style="margin-top:10px;">
-            <button type="button" class="ol-btn ol-btn-sm" onclick="alert('Routing directions to Columbia Regional Medical Center (Columbia)...')">Get Driving Directions &rarr;</button>
+        <div style="background:#f8fafc; border:1px solid #e1dfdd; border-radius:2px; padding:12px; margin-top:10px;">
+            <div style="font-size:11px; color:#605e5c; text-transform:lowercase; font-weight:600; margin-bottom:4px;">specialized clinical departments</div>
+            <p class="ol-small" style="margin:0;">regional oncology center, neonatal icu, sovereign healthcare research hub, clinical toxicology, genetic medicine.</p>
         </div>
-    </div>
+        <div style="margin-top:12px;">
+            <button type="button" class="ol-btn ol-btn-sm" onclick="alert('routing directions to columbia regional medical center (columbia)...')">get driving directions &rarr;</button>
+        </div>
+    </section>
 
     <!-- Emergency Protocols -->
-    <div class="ol-card" id="emergency-protocols">
+    <section class="card" id="emergency-protocols">
         <div class="ol-card-title">
-            <span>Emergency Medical Transport &amp; Ambulance Dispatch</span>
-            <span class="ol-badge-tag" style="background:#b91c1c; color:#fff; border-color:#991b1b;">Hotline: 9-1-1</span>
+            <span>emergency medical transport &amp; ambulance dispatch</span>
+            <span class="ol-badge-tag" style="background:#b91c1c; color:#fff; border-color:#991b1b;">hotline: 9-1-1</span>
         </div>
-        <p>If you or someone near you experiences chest pain, severe hemorrhage, respiratory distress, or trauma, dial <strong>9-1-1</strong> immediately. Ambulance dispatch is 100% sovereign-funded with zero out-of-pocket bills for all residents.</p>
-    </div>
+        <div class="ol-grid-2" style="margin-top:12px;">
+            <div style="background:#f8fafc; border:1px solid #e1dfdd; border-radius:2px; padding:12px;">
+                <strong style="color:#b91c1c; font-size:13px; display:block; margin-bottom:4px;">life-threatening emergencies</strong>
+                <p class="ol-small ol-muted" style="margin:0;">for chest pain, severe hemorrhage, respiratory distress, or acute trauma, dial <strong>9-1-1</strong> immediately for rapid paramedic response.</p>
+            </div>
+            <div style="background:#f8fafc; border:1px solid #e1dfdd; border-radius:2px; padding:12px;">
+                <strong style="color:var(--text-main); font-size:13px; display:block; margin-bottom:4px;">100% sovereign funded dispatch</strong>
+                <p class="ol-small ol-muted" style="margin:0;">ground ambulances, mobile triage units, and air medevac helicopters operate with zero out-of-pocket bills for all residents.</p>
+            </div>
+        </div>
+    </section>
     
     </div>
 
@@ -1091,16 +1159,16 @@ button,
     <aside class="sidebar">
 
       <div class="card">
-        <h3>Ministry of Healthcare</h3>
-        <p style="color: var(--text-muted); font-size: 12px; margin-bottom: 8px;">5-Province Hospital Network</p>
+        <h3>ministry of healthcare</h3>
+        <p style="color: var(--text-muted); font-size: 12px; margin-bottom: 8px;">5-province hospital network</p>
         <ul class="sidebar-nav-list">
-          <li><a href="#overview" class="active"><span class="mif-chevron-right"></span> Overview & ER Triage</a></li>
-<li><a href="#watson"><span class="mif-chevron-right"></span> Watson Healthcare (New Jasper)</a></li>
-<li><a href="#madison"><span class="mif-chevron-right"></span> New Madison Hospital (New Madison)</a></li>
-<li><a href="#suwannee"><span class="mif-chevron-right"></span> Suwannee Emergency (Liveland)</a></li>
-<li><a href="#sentinel"><span class="mif-chevron-right"></span> Sentinel Memorial Hospital (Sentinel)</a></li>
-<li><a href="#columbia"><span class="mif-chevron-right"></span> Columbia Regional Center (Columbia)</a></li>
-<li><a href="#emergency-protocols"><span class="mif-chevron-right"></span> Emergency Protocols</a></li>
+          <li><a href="#overview" class="active"><span class="mif-chevron-right"></span> overview & er triage</a></li>
+<li><a href="#watson"><span class="mif-chevron-right"></span> watson healthcare (new jasper)</a></li>
+<li><a href="#madison"><span class="mif-chevron-right"></span> new madison hospital (new madison)</a></li>
+<li><a href="#suwannee"><span class="mif-chevron-right"></span> suwannee emergency (liveland)</a></li>
+<li><a href="#sentinel"><span class="mif-chevron-right"></span> sentinel memorial hospital (sentinel)</a></li>
+<li><a href="#columbia"><span class="mif-chevron-right"></span> columbia regional center (columbia)</a></li>
+<li><a href="#emergency-protocols"><span class="mif-chevron-right"></span> emergency protocols</a></li>
 
         </ul>
       </div>
@@ -1119,17 +1187,17 @@ button,
 
 
     <div class="ol-sidebox">
-        <h3>Emergency Dispatch</h3>
-        <p class="ol-small ol-muted">24/7 Sovereign Triage Dispatchers standing by across New Jasper, New Madison, Liveland, Sentinel, and Columbia.</p>
+        <h3>emergency dispatch</h3>
+        <p class="ol-small ol-muted">24/7 sovereign triage dispatchers standing by across new jasper, new madison, liveland, sentinel, and columbia.</p>
         <div class="ol-mt-10">
-            <a href="tel:911" class="ol-btn ol-btn-primary ol-btn-sm" style="width:100%; text-align:center; background:#b91c1c; border-color:#991b1b;">Dial Emergency 9-1-1</a>
+            <a href="tel:911" class="ol-btn ol-btn-primary ol-btn-sm" style="width:100%; text-align:center; background:#b91c1c; border-color:#991b1b;">dial emergency 9-1-1</a>
         </div>
     </div>
     <div class="ol-sidebox">
-        <h3>Statutory Health Directory</h3>
-        <p class="ol-small ol-muted">Explore statutory departments, health licenses, and clinical standards.</p>
+        <h3>statutory health directory</h3>
+        <p class="ol-small ol-muted">explore statutory departments, health licenses, and clinical standards.</p>
         <div class="ol-mt-10">
-            <a href="/healthcare_departments.html" class="ol-btn ol-btn-sm" style="width:100%; text-align:center;">Launch Departments</a>
+            <a href="/healthcare_departments.html" class="ol-btn ol-btn-sm" style="width:100%; text-align:center;">launch departments</a>
         </div>
     </div>
     

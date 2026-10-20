@@ -345,28 +345,37 @@ a:hover {
 }
 
 /* Standard Card */
-.card {
+.card,
+.ol-card,
+section.card {
   background: var(--card-bg);
   border: 1px solid var(--border);
   border-radius: 2px;
-  padding: 16px;
-  margin-bottom: 16px;
+  padding: 20px 24px;
+  margin-bottom: 20px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.03);
 }
 
-.card h2 {
-  font-size: 18px;
+.card h2,
+.ol-card h2,
+section.card h2 {
+  font-size: 16px;
   font-weight: 600;
   margin-bottom: 12px;
   color: var(--primary);
 }
 
-.card h3 {
-  font-size: 15px;
+.card h3,
+.ol-card h3,
+section.card h3 {
+  font-size: 14.5px;
   font-weight: 600;
   margin-bottom: 8px;
 }
 
-.card h4 {
+.card h4,
+.ol-card h4,
+section.card h4 {
   font-size: 13px;
   font-weight: 600;
   color: #333;
@@ -839,7 +848,7 @@ a:hover {
 .ol-sidebox h3 { font-size: 14px; font-weight: 600; margin-bottom: 6px; }
 .ol-status-bubble { background: #f8fafc; border: 1px solid var(--border); border-left: 4px solid var(--primary); padding: 12px 16px; margin-bottom: 16px; font-size: 13px; border-radius: 2px; }
 .ol-status-date { font-style: normal; font-size: 11px; color: var(--text-muted); margin-top: 4px; font-weight: 500; }
-.ol-card-title { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; font-size: 15px; font-weight: 600; color: var(--primary); }
+.ol-card-title { display: flex; justify-content: space-between; align-items: center; margin-bottom: 14px; padding-bottom: 10px; border-bottom: 1px solid var(--border); font-size: 15px; font-weight: 600; color: var(--primary); }
 .ol-title-link { font-size: 12px; font-weight: 500; }
 .ol-small { font-size: 12px; }
 .ol-muted { color: var(--text-muted); }
@@ -944,20 +953,20 @@ button,
     </div>
     <div class="hero-content">
       <h1>comprehensive medical services</h1>
-      <p>Guaranteed universal coverage, zero out-of-pocket fees, preventative care, and specialized surgery</p>
+      <p>guaranteed universal coverage, preventative care, and specialized surgery across all 5 provinces</p>
     </div>
   </header>
 
   <!-- Navigation Bar -->
   <nav class="subnav">
-    <a href="index.html">Healthcare Home</a>
-    <a href="departments.html">Departments</a>
-    <a href="services.html" class="active">Medical Services</a>
-    <a href="hospitals.html">5-Province Hospitals</a>
-    <a href="research.html">Medical Research</a>
-    <a href="support.html">Patient Support</a>
-    <a href="ddcr/index.html">DDCR Disease Control</a>
-    <a href="https://sangaia.org/index.html">← Federal Portal</a>
+    <a href="index.html">healthcare home</a>
+    <a href="departments.html">departments</a>
+    <a href="services.html" class="active">medical services</a>
+    <a href="hospitals.html">5-province hospitals</a>
+    <a href="research.html">medical research</a>
+    <a href="support.html">patient support</a>
+    <a href="ddcr/index.html">ddcr disease control</a>
+    <a href="https://sangaia.org/index.html">← federal portal</a>
   </nav>
 
   <!-- Content Grid -->
@@ -966,94 +975,147 @@ button,
     <div class="left-col">
 
     <!-- The Sangaian Health Charter -->
-    <div class="ol-card" id="charter">
+    <section class="card" id="charter">
         <div class="ol-card-title">
-            <span>The Sangaian Health Charter</span>
-            <span class="ol-badge-tag ol-badge-success">Constitutional Right</span>
+            <span>the sangaian health charter</span>
+            <span class="ol-badge-tag ol-badge-success">constitutional right</span>
         </div>
-        <p>The Sangaian Health Charter establishes that healthcare is a fundamental civic entitlement, not a commodity. Under Article IV of the Sovereign Constitution, no citizen or authorized resident shall ever be turned away from medical treatment, denied medications, or driven into debt due to illness.</p>
-        <div class="ol-note" style="margin-top:12px;">
-            <strong>Statutory Guarantee:</strong> 100% of preventative doctor visits, emergency surgeries, hospital stays, and essential prescription medications are covered by sovereign public revenue.
+        <p>the sangaian health charter establishes that healthcare is a fundamental civic entitlement, not a commodity. under article iv of the sovereign constitution, no citizen or authorized resident shall ever be turned away from medical treatment, denied medications, or driven into debt due to illness.</p>
+        <div class="ol-grid-2" style="margin-top:14px;">
+            <div style="background:#f8fafc; border:1px solid #e1dfdd; border-radius:2px; padding:12px;">
+                <strong style="color:var(--text-main); font-size:13px; display:block; margin-bottom:4px;">constitutional guarantee</strong>
+                <p class="ol-small ol-muted" style="margin:0;">universal access to level 1 trauma surgery, acute intensive triage, and preventative wellness across all 5 sovereign provinces.</p>
+            </div>
+            <div style="background:#f8fafc; border:1px solid #e1dfdd; border-radius:2px; padding:12px;">
+                <strong style="color:var(--text-main); font-size:13px; display:block; margin-bottom:4px;">100% public funding</strong>
+                <p class="ol-small ol-muted" style="margin:0;">zero out-of-pocket medical debt, surprise bills, or private insurer denials. funded directly from sovereign public revenue.</p>
+            </div>
         </div>
-    </div>
+    </section>
 
     <!-- Comprehensive Care Catalog -->
-    <div class="ol-card" id="catalog">
+    <section class="card" id="catalog">
         <div class="ol-card-title">
-            <span>Comprehensive Healthcare Services</span>
-            <span class="ol-badge-tag">All Provincial Facilities</span>
+            <span>comprehensive healthcare services</span>
+            <span class="ol-badge-tag">all provincial facilities</span>
         </div>
-        <p>We provide a comprehensive array of medical services to ensure the health and dignity of all Sangaians:</p>
+        <p class="ol-small ol-muted">statutory medical procedures provided at all accredited public healthcare facilities:</p>
         <table class="ol-table" style="margin-top:10px;">
             <thead>
                 <tr>
-                    <th>Service Discipline</th>
-                    <th>Covered Procedures</th>
-                    <th>Provincial Availability</th>
-                    <th>Citizen Cost</th>
+                    <th>service discipline</th>
+                    <th>covered procedures</th>
+                    <th>provincial availability</th>
+                    <th>coverage status</th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
-                    <td><strong>Primary Care</strong></td>
-                    <td>Annual physicals, chronic illness management, pediatric wellness, vaccinations</td>
-                    <td>All 5 Provinces</td>
-                    <td><span class="ol-badge-tag ol-badge-success">$ 0.00 (Free)</span></td>
+                    <td><strong>primary care</strong></td>
+                    <td>annual physicals, chronic illness management, pediatric wellness, vaccinations</td>
+                    <td>all 5 provinces</td>
+                    <td><span class="ol-badge-tag ol-badge-success">universal public coverage</span></td>
                 </tr>
                 <tr>
-                    <td><strong>Emergency &amp; Trauma</strong></td>
-                    <td>24/7 ER triage, acute surgery, intensive care, burn care, air ambulance</td>
-                    <td>All 5 Provinces</td>
-                    <td><span class="ol-badge-tag ol-badge-success">$ 0.00 (Free)</span></td>
+                    <td><strong>emergency &amp; trauma</strong></td>
+                    <td>24/7 er triage, acute surgery, intensive care, burn care, air ambulance</td>
+                    <td>all 5 provinces</td>
+                    <td><span class="ol-badge-tag ol-badge-success">universal public coverage</span></td>
                 </tr>
                 <tr>
-                    <td><strong>Specialty Surgery</strong></td>
-                    <td>Cardiothoracic, orthopedic, neurosurgery, oncological resections</td>
-                    <td>Regional Hubs</td>
-                    <td><span class="ol-badge-tag ol-badge-success">$ 0.00 (Free)</span></td>
+                    <td><strong>specialty surgery</strong></td>
+                    <td>cardiothoracic, orthopedic, neurosurgery, oncological resections</td>
+                    <td>regional hubs</td>
+                    <td><span class="ol-badge-tag ol-badge-success">universal public coverage</span></td>
                 </tr>
                 <tr>
-                    <td><strong>Maternal &amp; Infant</strong></td>
-                    <td>Prenatal care, birthing suites, neonatal intensive care, postnatal visits</td>
-                    <td>All 5 Provinces</td>
-                    <td><span class="ol-badge-tag ol-badge-success">$ 0.00 (Free)</span></td>
+                    <td><strong>maternal &amp; infant</strong></td>
+                    <td>prenatal care, birthing suites, neonatal intensive care, postnatal visits</td>
+                    <td>all 5 provinces</td>
+                    <td><span class="ol-badge-tag ol-badge-success">universal public coverage</span></td>
                 </tr>
                 <tr>
-                    <td><strong>Diagnostic Imaging</strong></td>
-                    <td>MRI, CT scans, ultrasound, X-ray, digital lab bloodwork</td>
-                    <td>All 5 Provinces</td>
-                    <td><span class="ol-badge-tag ol-badge-success">$ 0.00 (Free)</span></td>
+                    <td><strong>diagnostic imaging</strong></td>
+                    <td>mri, ct scans, ultrasound, x-ray, digital lab bloodwork</td>
+                    <td>all 5 provinces</td>
+                    <td><span class="ol-badge-tag ol-badge-success">universal public coverage</span></td>
                 </tr>
             </tbody>
         </table>
-    </div>
+    </section>
 
     <!-- Prescription Drug Coverage -->
-    <div class="ol-card" id="pharmacy">
+    <section class="card" id="pharmacy">
         <div class="ol-card-title">
-            <span>Prescription Drug Formulary &amp; Local Dispensaries</span>
+            <span>prescription drug formulary &amp; local dispensaries</span>
             <span class="ol-badge-tag ol-badge-success">100% sovereign funded</span>
         </div>
-        <p>All essential maintenance medications—including insulin, cardiovascular medications, antibiotics, and inhalers—are categorized under Tier 1 of the Sovereign Formulary and dispensed at zero cost through accredited public hospital pharmacies.</p>
-    </div>
+        <p class="ol-small ol-muted">all essential maintenance medications are categorized under tier 1 of the sovereign formulary and dispensed without fees through accredited public hospital pharmacies.</p>
+        <div class="ol-grid-2" style="margin-top:14px;">
+            <div style="background:#f8fafc; border:1px solid #e1dfdd; border-radius:2px; padding:12px;">
+                <strong style="color:var(--text-main); font-size:13px; display:block; margin-bottom:4px;">essential life-support therapeutics</strong>
+                <p class="ol-small ol-muted" style="margin:0;">human biosimilar insulin (all formats), cardiovascular regulators, statins, and anti-arrhythmic agents.</p>
+            </div>
+            <div style="background:#f8fafc; border:1px solid #e1dfdd; border-radius:2px; padding:12px;">
+                <strong style="color:var(--text-main); font-size:13px; display:block; margin-bottom:4px;">broad-spectrum anti-infectives</strong>
+                <p class="ol-small ol-muted" style="margin:0;">penicillins, cephalosporins, macrolides, and antivirals available on-demand at hospital dispensaries.</p>
+            </div>
+            <div style="background:#f8fafc; border:1px solid #e1dfdd; border-radius:2px; padding:12px;">
+                <strong style="color:var(--text-main); font-size:13px; display:block; margin-bottom:4px;">pulmonary &amp; respiratory inhalers</strong>
+                <p class="ol-small ol-muted" style="margin:0;">maintenance corticosteroids, rescue bronchodilators (salbutamol), and pediatric nebulizer solutions.</p>
+            </div>
+            <div style="background:#f8fafc; border:1px solid #e1dfdd; border-radius:2px; padding:12px;">
+                <strong style="color:var(--text-main); font-size:13px; display:block; margin-bottom:4px;">oncological &amp; autoimmune medications</strong>
+                <p class="ol-small ol-muted" style="margin:0;">targeted immunotherapies, chemotherapy infusions, and rheumatological biologics fully covered.</p>
+            </div>
+        </div>
+    </section>
 
     <!-- Dental & Vision -->
-    <div class="ol-card" id="dental-vision">
+    <section class="card" id="dental-vision">
         <div class="ol-card-title">
-            <span>Dental, Vision &amp; Auditory Care</span>
-            <span class="ol-badge-tag">Universal Inclusions</span>
+            <span>dental, vision &amp; auditory care</span>
+            <span class="ol-badge-tag">universal inclusions</span>
         </div>
-        <p>Unlike commercial healthcare regimes, Sangaia treats oral and visual health as inseparable from bodily wellbeing. Annual dental cleanings, cavity restorations, comprehensive eye examinations, and standard corrective lenses are fully covered.</p>
-    </div>
+        <p class="ol-small ol-muted">unlike commercial regimes, sangaia treats oral and sensory wellbeing as inseparable from bodily health.</p>
+        <div class="ol-grid-3" style="margin-top:14px;">
+            <div style="background:#f8fafc; border:1px solid #e1dfdd; border-radius:2px; padding:12px;">
+                <strong style="color:var(--text-main); font-size:13px; display:block; margin-bottom:4px;">preventative &amp; restorative dental</strong>
+                <p class="ol-small ol-muted" style="margin:0;">annual examinations, ultrasonic prophylaxis, composite restorations, and endodontic therapy.</p>
+            </div>
+            <div style="background:#f8fafc; border:1px solid #e1dfdd; border-radius:2px; padding:12px;">
+                <strong style="color:var(--text-main); font-size:13px; display:block; margin-bottom:4px;">optometry &amp; corrective lenses</strong>
+                <p class="ol-small ol-muted" style="margin:0;">comprehensive eye exams, digital retinal imaging, and standard prescription eyewear.</p>
+            </div>
+            <div style="background:#f8fafc; border:1px solid #e1dfdd; border-radius:2px; padding:12px;">
+                <strong style="color:var(--text-main); font-size:13px; display:block; margin-bottom:4px;">audiology &amp; hearing support</strong>
+                <p class="ol-small ol-muted" style="margin:0;">diagnostic hearing screenings, inner-ear consultations, and sovereign digital hearing aids.</p>
+            </div>
+        </div>
+    </section>
 
     <!-- Mental Health & Wellness -->
-    <div class="ol-card" id="mental-health">
+    <section class="card" id="mental-health">
         <div class="ol-card-title">
-            <span>Mental Health, Counseling &amp; Addiction Support</span>
-            <span class="ol-badge-tag">Confidential &bull; Free</span>
+            <span>mental health, counseling &amp; addiction support</span>
+            <span class="ol-badge-tag">confidential &bull; universal</span>
         </div>
-        <p>Mental healthcare is accessible without referral. Citizens may book confidential therapy sessions, psychiatric consultations, or residential holistic recovery programs with complete medical privacy.</p>
-    </div>
+        <p class="ol-small ol-muted">mental healthcare is accessible without referral. citizens may book confidential therapy sessions, psychiatric consultations, or residential holistic recovery programs with complete medical privacy.</p>
+        <div class="ol-grid-3" style="margin-top:14px;">
+            <div style="background:#f8fafc; border:1px solid #e1dfdd; border-radius:2px; padding:12px;">
+                <strong style="color:var(--text-main); font-size:13px; display:block; margin-bottom:4px;">individual &amp; family therapy</strong>
+                <p class="ol-small ol-muted" style="margin:0;">confidential psychotherapy, cognitive behavioral support, and family counseling.</p>
+            </div>
+            <div style="background:#f8fafc; border:1px solid #e1dfdd; border-radius:2px; padding:12px;">
+                <strong style="color:var(--text-main); font-size:13px; display:block; margin-bottom:4px;">24/7 crisis de-escalation</strong>
+                <p class="ol-small ol-muted" style="margin:0;">specialized medical crisis teams dispatched with zero law enforcement or punitive response.</p>
+            </div>
+            <div style="background:#f8fafc; border:1px solid #e1dfdd; border-radius:2px; padding:12px;">
+                <strong style="color:var(--text-main); font-size:13px; display:block; margin-bottom:4px;">holistic recovery programs</strong>
+                <p class="ol-small ol-muted" style="margin:0;">provincial retreat centers offering addiction rehabilitation, peer mentorship, and wellness.</p>
+            </div>
+        </div>
+    </section>
     
     </div>
 
@@ -1061,15 +1123,14 @@ button,
     <aside class="sidebar">
 
       <div class="card">
-        <h3>Ministry of Healthcare</h3>
-        <p style="color: var(--text-muted); font-size: 12px; margin-bottom: 8px;">Universal Health Charter</p>
+        <h3>ministry of healthcare</h3>
+        <p style="color: var(--text-muted); font-size: 12px; margin-bottom: 8px;">universal health charter</p>
         <ul class="sidebar-nav-list">
-          <li><a href="#charter" class="active"><span class="mif-chevron-right"></span> The Sangaian Health Charter</a></li>
-<li><a href="#catalog"><span class="mif-chevron-right"></span> Comprehensive Care Catalog</a></li>
-<li><a href="#pharmacy"><span class="mif-chevron-right"></span> Prescription Drug Coverage</a></li>
-<li><a href="#dental-vision"><span class="mif-chevron-right"></span> Dental & Vision Healthcare</a></li>
-<li><a href="#mental-health"><span class="mif-chevron-right"></span> Mental Health & Wellness</a></li>
-<li><a href="#pricing"><span class="mif-chevron-right"></span> Zero-Cost Pricing Schedule</a></li>
+          <li><a href="#charter" class="active"><span class="mif-chevron-right"></span> the sangaian health charter</a></li>
+<li><a href="#catalog"><span class="mif-chevron-right"></span> comprehensive care catalog</a></li>
+<li><a href="#pharmacy"><span class="mif-chevron-right"></span> prescription drug coverage</a></li>
+<li><a href="#dental-vision"><span class="mif-chevron-right"></span> dental & vision healthcare</a></li>
+<li><a href="#mental-health"><span class="mif-chevron-right"></span> mental health & wellness</a></li>
 
         </ul>
       </div>
@@ -1088,10 +1149,10 @@ button,
 
 
     <div class="ol-sidebox">
-        <h3>Health Pricing PDF</h3>
-        <p class="ol-small ol-muted">Download the official Sangaia Health Pricing Schedule detailing full universal coverage benchmarks.</p>
+        <h3>patient health charter</h3>
+        <p class="ol-small ol-muted">download the official sangaia health charter detailing universal constitutional coverage protections.</p>
         <div class="ol-mt-10">
-            <a href="javascript:void(0)" onclick="alert('Downloading Sangaia Health Pricing Schedule (PDF)...')" class="ol-btn ol-btn-sm" style="width:100%; text-align:center;">Download Pricing PDF</a>
+            <a href="javascript:void(0)" onclick="alert('downloading sangaia patient health charter (.pdf)...')" class="ol-btn ol-btn-sm" style="width:100%; text-align:center;">download health charter (.pdf)</a>
         </div>
     </div>
     

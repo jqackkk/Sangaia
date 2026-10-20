@@ -345,28 +345,37 @@ a:hover {
 }
 
 /* Standard Card */
-.card {
+.card,
+.ol-card,
+section.card {
   background: var(--card-bg);
   border: 1px solid var(--border);
   border-radius: 2px;
-  padding: 16px;
-  margin-bottom: 16px;
+  padding: 20px 24px;
+  margin-bottom: 20px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.03);
 }
 
-.card h2 {
-  font-size: 18px;
+.card h2,
+.ol-card h2,
+section.card h2 {
+  font-size: 16px;
   font-weight: 600;
   margin-bottom: 12px;
   color: var(--primary);
 }
 
-.card h3 {
-  font-size: 15px;
+.card h3,
+.ol-card h3,
+section.card h3 {
+  font-size: 14.5px;
   font-weight: 600;
   margin-bottom: 8px;
 }
 
-.card h4 {
+.card h4,
+.ol-card h4,
+section.card h4 {
   font-size: 13px;
   font-weight: 600;
   color: #333;
@@ -839,7 +848,7 @@ a:hover {
 .ol-sidebox h3 { font-size: 14px; font-weight: 600; margin-bottom: 6px; }
 .ol-status-bubble { background: #f8fafc; border: 1px solid var(--border); border-left: 4px solid var(--primary); padding: 12px 16px; margin-bottom: 16px; font-size: 13px; border-radius: 2px; }
 .ol-status-date { font-style: normal; font-size: 11px; color: var(--text-muted); margin-top: 4px; font-weight: 500; }
-.ol-card-title { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; font-size: 15px; font-weight: 600; color: var(--primary); }
+.ol-card-title { display: flex; justify-content: space-between; align-items: center; margin-bottom: 14px; padding-bottom: 10px; border-bottom: 1px solid var(--border); font-size: 15px; font-weight: 600; color: var(--primary); }
 .ol-title-link { font-size: 12px; font-weight: 500; }
 .ol-small { font-size: 12px; }
 .ol-muted { color: var(--text-muted); }
@@ -944,20 +953,20 @@ button,
     </div>
     <div class="hero-content">
       <h1>medical research & development directorate</h1>
-      <p>Ethical clinical trials, open-access biomedical literature, non-commercial patents & disease surveillance</p>
+      <p>ethical clinical trials, open-access biomedical literature, non-commercial patents & disease surveillance</p>
     </div>
   </header>
 
   <!-- Navigation Bar -->
   <nav class="subnav">
-    <a href="/healthcare.html">Healthcare Home</a>
-    <a href="/healthcare_departments.html">Departments</a>
-    <a href="/healthcare_services.html">Medical Services</a>
-    <a href="/healthcare_hospitals.html">5-Province Hospitals</a>
-    <a href="/healthcare_research.html" class="active">Medical Research</a>
-    <a href="/healthcare_support.html">Patient Support</a>
-    <a href="/mH/ddcr/index.html">DDCR Disease Control</a>
-    <a href="/index.html">← Federal Portal</a>
+    <a href="/healthcare.html">healthcare home</a>
+    <a href="/healthcare_departments.html">departments</a>
+    <a href="/healthcare_services.html">medical services</a>
+    <a href="/healthcare_hospitals.html">5-province hospitals</a>
+    <a href="/healthcare_research.html" class="active">medical research</a>
+    <a href="/healthcare_support.html">patient support</a>
+    <a href="/mH/ddcr/index.html">ddcr disease control</a>
+    <a href="/index.html">← federal portal</a>
   </nav>
 
   <!-- Content Grid -->
@@ -966,61 +975,73 @@ button,
     <div class="left-col">
 
     <!-- Medical Research & Development -->
-    <div class="ol-card" id="overview">
+    <section class="card" id="overview">
         <div class="ol-card-title">
-            <span>Medical Research &amp; Non-Commercial Innovation</span>
-            <span class="ol-badge-tag ol-badge-success">Open Access</span>
+            <span>medical research &amp; non-commercial innovation</span>
+            <span class="ol-badge-tag ol-badge-success">open access</span>
         </div>
-        <p>The Ministry of Healthcare invests heavily in the future of sovereign medicine. All medical research funded by Sangaia is held in public trust with open-source patent licenses, guaranteeing that breakthroughs in oncology, genomics, and infectious disease treatments remain globally accessible and free from monopolistic price-gouging.</p>
-    </div>
+        <p>the ministry of healthcare invests heavily in the future of sovereign medicine. all medical research funded by sangaia is held in public trust with open-source patent licenses, guaranteeing that breakthroughs in oncology, genomics, and infectious disease treatments remain globally accessible and free from monopolistic price-gouging.</p>
+        <div class="ol-grid-2" style="margin-top:14px;">
+            <div style="background:#f8fafc; border:1px solid #e1dfdd; border-radius:2px; padding:12px;">
+                <strong style="color:var(--text-main); font-size:13px; display:block; margin-bottom:4px;">open patent sovereignty</strong>
+                <p class="ol-small ol-muted" style="margin:0;">all government-funded research is placed directly into the public domain, preventing commercial patent lockouts.</p>
+            </div>
+            <div style="background:#f8fafc; border:1px solid #e1dfdd; border-radius:2px; padding:12px;">
+                <strong style="color:var(--text-main); font-size:13px; display:block; margin-bottom:4px;">ethical trial mandate</strong>
+                <p class="ol-small ol-muted" style="margin:0;">rigorous compliance with the declaration of helsinki, transparent safety reporting, and guaranteed lifetime patient monitoring.</p>
+            </div>
+        </div>
+    </section>
 
     <!-- DDCR Gateway Card -->
-    <div class="ol-card" id="ddcr-gateway" style="border: 2px solid #b91c1c; background: #fffdfd;">
+    <section class="card" id="ddcr-gateway" style="border: 2px solid #b91c1c; background: #fffdfd;">
         <div class="ol-card-title">
-            <span style="color:#b91c1c; font-size:16px;">Department of Disease Control &amp; Research (DDCR)</span>
-            <span class="ol-badge-tag" style="background:#b91c1c; color:#fff; border-color:#991b1b;">Sovereign CDC</span>
+            <span style="color:#b91c1c; font-size:15px;">department of disease control &amp; research (ddcr)</span>
+            <span class="ol-badge-tag" style="background:#b91c1c; color:#fff; border-color:#991b1b;">sovereign cdc</span>
         </div>
-        <p>Looking for specific health topics, epidemic guidelines, outbreak surveillance, or biomedical research papers? The DDCR maintains our comprehensive national repository:</p>
+        <p>looking for specific health topics, epidemic guidelines, outbreak surveillance, or biomedical research papers? the ddcr maintains our comprehensive national repository:</p>
         <div class="ol-grid-3" style="margin-top:14px;">
             <div style="background:#ffffff; border:1px solid #fecaca; border-radius:2px; padding:12px; text-align:center;">
                 <div style="font-size:22px;">📚</div>
-                <strong style="display:block; margin:6px 0 4px; font-size:13px;">Health Topics (A-Z)</strong>
-                <p class="ol-small ol-muted">Verified disease symptom guides and clinical treatment protocols.</p>
-                <a href="/mH/ddcr/health_topics.html" class="ol-btn ol-btn-sm" style="width:100%; margin-top:8px;">Browse Topics &rarr;</a>
+                <strong style="display:block; margin:6px 0 4px; font-size:13px;">health topics (a-z)</strong>
+                <p class="ol-small ol-muted">verified disease symptom guides and clinical treatment protocols.</p>
+                <a href="/mH/ddcr/health_topics.html" class="ol-btn ol-btn-sm" style="width:100%; margin-top:8px;">browse topics &rarr;</a>
             </div>
             <div style="background:#ffffff; border:1px solid #fecaca; border-radius:2px; padding:12px; text-align:center;">
                 <div style="font-size:22px;">⚠️</div>
-                <strong style="display:block; margin:6px 0 4px; font-size:13px;">Outbreak Surveillance</strong>
-                <p class="ol-small ol-muted">Real-time provincial alert levels, quarantine corridors, and containment.</p>
-                <a href="/mH/ddcr/outbreaks.html" class="ol-btn ol-btn-sm" style="width:100%; margin-top:8px;">View Outbreaks &rarr;</a>
+                <strong style="display:block; margin:6px 0 4px; font-size:13px;">outbreak surveillance</strong>
+                <p class="ol-small ol-muted">real-time provincial alert levels, quarantine corridors, and containment.</p>
+                <a href="/mH/ddcr/outbreaks.html" class="ol-btn ol-btn-sm" style="width:100%; margin-top:8px;">view outbreaks &rarr;</a>
             </div>
             <div style="background:#ffffff; border:1px solid #fecaca; border-radius:2px; padding:12px; text-align:center;">
                 <div style="font-size:22px;">🔬</div>
-                <strong style="display:block; margin:6px 0 4px; font-size:13px;">PubMed / Literature</strong>
-                <p class="ol-small ol-muted">Live search across PubMed, PMC, and sovereign biomedical papers.</p>
-                <a href="/mH/ddcr/search.html" class="ol-btn ol-btn-sm" style="width:100%; margin-top:8px;">Search Literature &rarr;</a>
+                <strong style="display:block; margin:6px 0 4px; font-size:13px;">pubmed / literature</strong>
+                <p class="ol-small ol-muted">live search across pubmed, pmc, and sovereign biomedical papers.</p>
+                <a href="/mH/ddcr/search.html" class="ol-btn ol-btn-sm" style="width:100%; margin-top:8px;">search literature &rarr;</a>
             </div>
         </div>
-    </div>
+    </section>
 
     <!-- Active Clinical Trials -->
-    <div class="ol-card" id="trials">
+    <section class="card" id="trials">
         <div class="ol-card-title">
-            <span>Active Sovereign Clinical Trials Registry</span>
-            <span class="ol-badge-tag">Ethically Monitored</span>
+            <span>active sovereign clinical trials registry</span>
+            <span class="ol-badge-tag">ethically monitored</span>
         </div>
-        <p>All clinical trials conducted within Sangaia adhere to the Declaration of Helsinki and strict informed consent protocols. Trial participants receive full medical oversight, transparent risk disclosure, and guaranteed post-trial therapy.</p>
-        <div style="display:flex; flex-direction:column; gap:8px; margin-top:10px;">
-            <div style="background:#f8fafc; border:1px solid #e1dfdd; border-radius:2px; padding:10px;">
-                <strong>Trial SG-2026-ONC-04: Targeted Immunotherapy in Advanced Solid Tumors</strong>
-                <div class="ol-small ol-muted">Columbia Regional Medical Center &bull; Phase II &bull; Enrollment Open</div>
+        <p class="ol-small ol-muted">all clinical trials conducted within sangaia adhere to strict informed consent protocols:</p>
+        <div class="ol-grid-2" style="margin-top:14px;">
+            <div style="background:#f8fafc; border:1px solid #e1dfdd; border-radius:2px; padding:14px;">
+                <strong style="color:#b91c1c; font-size:13.5px; display:block; margin-bottom:4px;">trial sg-2026-onc-04: targeted solid tumor immunotherapy</strong>
+                <div class="ol-small ol-muted" style="margin-bottom:6px;">columbia regional medical center &bull; phase ii &bull; enrollment active</div>
+                <p class="ol-small" style="margin:0;">assessing personalized neoantigen peptide vaccines for advanced colorectal and pulmonary carcinomas.</p>
             </div>
-            <div style="background:#f8fafc; border:1px solid #e1dfdd; border-radius:2px; padding:10px;">
-                <strong>Trial SG-2026-NEU-11: Neural Regeneration in Traumatic Spinal Cord Injury</strong>
-                <div class="ol-small ol-muted">Sentinel Memorial Hospital &bull; Phase I/II &bull; Clinical Observation Active</div>
+            <div style="background:#f8fafc; border:1px solid #e1dfdd; border-radius:2px; padding:14px;">
+                <strong style="color:#b91c1c; font-size:13.5px; display:block; margin-bottom:4px;">trial sg-2026-neu-11: neural regeneration in spinal trauma</strong>
+                <div class="ol-small ol-muted" style="margin-bottom:6px;">sentinel memorial hospital &bull; phase i/ii &bull; observation active</div>
+                <p class="ol-small" style="margin:0;">testing biocompatible axonal growth scaffolds paired with electrical neuro-stimulation therapies.</p>
             </div>
         </div>
-    </div>
+    </section>
     
     </div>
 
@@ -1028,14 +1049,14 @@ button,
     <aside class="sidebar">
 
       <div class="card">
-        <h3>Ministry of Healthcare</h3>
-        <p style="color: var(--text-muted); font-size: 12px; margin-bottom: 8px;">Innovation & DDCR</p>
+        <h3>ministry of healthcare</h3>
+        <p style="color: var(--text-muted); font-size: 12px; margin-bottom: 8px;">innovation & ddcr</p>
         <ul class="sidebar-nav-list">
-          <li><a href="#overview" class="active"><span class="mif-chevron-right"></span> Research & Ethics Mandate</a></li>
-<li><a href="#ddcr-gateway"><span class="mif-chevron-right"></span> DDCR Portal Gateway</a></li>
-<li><a href="#trials"><span class="mif-chevron-right"></span> Active Clinical Trials</a></li>
-<li><a href="#standards"><span class="mif-chevron-right"></span> Biomedical Standards</a></li>
-<li><a href="#labs"><span class="mif-chevron-right"></span> Provincial Labs</a></li>
+          <li><a href="#overview" class="active"><span class="mif-chevron-right"></span> research & ethics mandate</a></li>
+<li><a href="#ddcr-gateway"><span class="mif-chevron-right"></span> ddcr portal gateway</a></li>
+<li><a href="#trials"><span class="mif-chevron-right"></span> active clinical trials</a></li>
+<li><a href="#standards"><span class="mif-chevron-right"></span> biomedical standards</a></li>
+<li><a href="#labs"><span class="mif-chevron-right"></span> provincial labs</a></li>
 
         </ul>
       </div>
@@ -1054,10 +1075,10 @@ button,
 
 
     <div class="ol-sidebox">
-        <h3>DDCR Direct Portal</h3>
-        <p class="ol-small ol-muted">Access the dedicated Disease Control & Research system for epidemic surveillance and diagnostic databases.</p>
+        <h3>ddcr direct portal</h3>
+        <p class="ol-small ol-muted">access the dedicated disease control &amp; research system for epidemic surveillance and diagnostic databases.</p>
         <div class="ol-mt-10">
-            <a href="/mH/ddcr/index.html" class="ol-btn ol-btn-primary ol-btn-sm" style="width:100%; text-align:center; background:#b91c1c; border-color:#991b1b;">Open DDCR Portal</a>
+            <a href="/mH/ddcr/index.html" class="ol-btn ol-btn-primary ol-btn-sm" style="width:100%; text-align:center; background:#b91c1c; border-color:#991b1b;">open ddcr portal</a>
         </div>
     </div>
     

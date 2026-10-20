@@ -345,28 +345,37 @@ a:hover {
 }
 
 /* Standard Card */
-.card {
+.card,
+.ol-card,
+section.card {
   background: var(--card-bg);
   border: 1px solid var(--border);
   border-radius: 2px;
-  padding: 16px;
-  margin-bottom: 16px;
+  padding: 20px 24px;
+  margin-bottom: 20px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.03);
 }
 
-.card h2 {
-  font-size: 18px;
+.card h2,
+.ol-card h2,
+section.card h2 {
+  font-size: 16px;
   font-weight: 600;
   margin-bottom: 12px;
   color: var(--primary);
 }
 
-.card h3 {
-  font-size: 15px;
+.card h3,
+.ol-card h3,
+section.card h3 {
+  font-size: 14.5px;
   font-weight: 600;
   margin-bottom: 8px;
 }
 
-.card h4 {
+.card h4,
+.ol-card h4,
+section.card h4 {
   font-size: 13px;
   font-weight: 600;
   color: #333;
@@ -839,7 +848,7 @@ a:hover {
 .ol-sidebox h3 { font-size: 14px; font-weight: 600; margin-bottom: 6px; }
 .ol-status-bubble { background: #f8fafc; border: 1px solid var(--border); border-left: 4px solid var(--primary); padding: 12px 16px; margin-bottom: 16px; font-size: 13px; border-radius: 2px; }
 .ol-status-date { font-style: normal; font-size: 11px; color: var(--text-muted); margin-top: 4px; font-weight: 500; }
-.ol-card-title { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; font-size: 15px; font-weight: 600; color: var(--primary); }
+.ol-card-title { display: flex; justify-content: space-between; align-items: center; margin-bottom: 14px; padding-bottom: 10px; border-bottom: 1px solid var(--border); font-size: 15px; font-weight: 600; color: var(--primary); }
 .ol-title-link { font-size: 12px; font-weight: 500; }
 .ol-small { font-size: 12px; }
 .ol-muted { color: var(--text-muted); }
@@ -944,20 +953,20 @@ button,
     </div>
     <div class="hero-content">
       <h1>patient support & citizen advocacy</h1>
-      <p>24/7 medical advice hotline, patient rights, hospital navigator, and comprehensive healthcare FAQ</p>
+      <p>24/7 medical advice hotline, patient rights, hospital navigator, and comprehensive healthcare faq</p>
     </div>
   </header>
 
   <!-- Navigation Bar -->
   <nav class="subnav">
-    <a href="index.html">Healthcare Home</a>
-    <a href="departments.html">Departments</a>
-    <a href="services.html">Medical Services</a>
-    <a href="hospitals.html">5-Province Hospitals</a>
-    <a href="research.html">Medical Research</a>
-    <a href="support.html" class="active">Patient Support</a>
-    <a href="ddcr/index.html">DDCR Disease Control</a>
-    <a href="https://sangaia.org/index.html">← Federal Portal</a>
+    <a href="index.html">healthcare home</a>
+    <a href="departments.html">departments</a>
+    <a href="services.html">medical services</a>
+    <a href="hospitals.html">5-province hospitals</a>
+    <a href="research.html">medical research</a>
+    <a href="support.html" class="active">patient support</a>
+    <a href="ddcr/index.html">ddcr disease control</a>
+    <a href="https://sangaia.org/index.html">← federal portal</a>
   </nav>
 
   <!-- Content Grid -->
@@ -966,57 +975,79 @@ button,
     <div class="left-col">
 
     <!-- Patient Support Overview -->
-    <div class="ol-card" id="overview">
+    <section class="card" id="overview">
         <div class="ol-card-title">
-            <span>Patient Support &amp; Healthcare Navigation</span>
-            <span class="ol-badge-tag ol-badge-success">Advocacy Services Free</span>
+            <span>patient support &amp; healthcare navigation</span>
+            <span class="ol-badge-tag ol-badge-success">advocacy services free</span>
         </div>
-        <p>The Patient Support Directorate assists citizens with hospital appointments, medical record transfers between provinces, accessibility accommodations, and grievance resolution. We ensure that every patient receives compassionate, prompt, and dignified care.</p>
-    </div>
+        <p>the patient support directorate assists citizens with hospital appointments, medical record transfers between provinces, accessibility accommodations, and grievance resolution. we ensure that every patient receives compassionate, prompt, and dignified care.</p>
+        <div class="ol-grid-2" style="margin-top:14px;">
+            <div style="background:#f8fafc; border:1px solid #e1dfdd; border-radius:2px; padding:12px;">
+                <strong style="color:var(--text-main); font-size:13px; display:block; margin-bottom:4px;">inter-provincial chart synchronization</strong>
+                <p class="ol-small ol-muted" style="margin:0;">unified electronic health records accessible instantly across all 5 provincial medical centers.</p>
+            </div>
+            <div style="background:#f8fafc; border:1px solid #e1dfdd; border-radius:2px; padding:12px;">
+                <strong style="color:var(--text-main); font-size:13px; display:block; margin-bottom:4px;">independent ombudsman council</strong>
+                <p class="ol-small ol-muted" style="margin:0;">direct citizen advocacy for patient rights, clinical review appeals, and language accommodations.</p>
+            </div>
+        </div>
+    </section>
 
     <!-- Frequently Asked Questions -->
-    <div class="ol-card" id="faq">
+    <section class="card" id="faq">
         <div class="ol-card-title">
-            <span>Frequently Asked Questions</span>
-            <span class="ol-badge-tag">Sangaia Health Mandate</span>
+            <span>frequently asked questions</span>
+            <span class="ol-badge-tag">sangaia health mandate</span>
         </div>
-        <div style="display:flex; flex-direction:column; gap:12px; margin-top:8px;">
-            <div style="background:#f8fafc; border:1px solid #e1dfdd; border-radius:2px; padding:12px;">
-                <strong style="color:#b91c1c; font-size:14px;">How do I apply for healthcare?</strong>
-                <p class="ol-small" style="margin-top:4px;">All citizens are automatically eligible for universal healthcare under the Sangaian Health Mandate upon receipt of their Sangaia ID. You can present your physical or digital Sangaia ID at any provincial clinic or hospital for immediate registration.</p>
+        <div class="ol-grid-2" style="margin-top:14px;">
+            <div style="background:#f8fafc; border:1px solid #e1dfdd; border-radius:2px; padding:14px;">
+                <strong style="color:#b91c1c; font-size:13.5px; display:block; margin-bottom:6px;">how do i apply for healthcare?</strong>
+                <p class="ol-small" style="margin:0; line-height:1.5;">all citizens are automatically eligible for universal healthcare under the sangaian health mandate upon receipt of their sangaia id. you can present your physical or digital sangaia id at any provincial clinic or hospital for immediate registration.</p>
             </div>
 
-            <div style="background:#f8fafc; border:1px solid #e1dfdd; border-radius:2px; padding:12px;">
-                <strong style="color:#b91c1c; font-size:14px;">What does the Sangaian Health Charter cover?</strong>
-                <p class="ol-small" style="margin-top:4px;">The Charter comprehensively covers preventative checkups, emergency room care, routine surgeries, organ transplants, mental health counseling, prescription medications on the national formulary, dental restorations, and corrective eye examinations at 100% state expense.</p>
+            <div style="background:#f8fafc; border:1px solid #e1dfdd; border-radius:2px; padding:14px;">
+                <strong style="color:#b91c1c; font-size:13.5px; display:block; margin-bottom:6px;">what does the sangaian health charter cover?</strong>
+                <p class="ol-small" style="margin:0; line-height:1.5;">the charter comprehensively covers preventative checkups, emergency room care, routine surgeries, organ transplants, mental health counseling, prescription medications on the national formulary, dental restorations, and corrective eye examinations at 100% state expense.</p>
             </div>
 
-            <div style="background:#f8fafc; border:1px solid #e1dfdd; border-radius:2px; padding:12px;">
-                <strong style="color:#b91c1c; font-size:14px;">How do I find a doctor or specialist?</strong>
-                <p class="ol-small" style="margin-top:4px;">You may schedule an appointment directly at any public hospital in New Jasper, New Madison, Liveland, Sentinel, or Columbia. Referrals for specialized surgical disciplines are issued within 48 hours by your primary care physician.</p>
+            <div style="background:#f8fafc; border:1px solid #e1dfdd; border-radius:2px; padding:14px;">
+                <strong style="color:#b91c1c; font-size:13.5px; display:block; margin-bottom:6px;">how do i find a doctor or specialist?</strong>
+                <p class="ol-small" style="margin:0; line-height:1.5;">you may schedule an appointment directly at any public hospital in new jasper, new madison, liveland, sentinel, or columbia. referrals for specialized surgical disciplines are issued within 48 hours by your primary care physician.</p>
             </div>
 
-            <div style="background:#f8fafc; border:1px solid #e1dfdd; border-radius:2px; padding:12px;">
-                <strong style="color:#b91c1c; font-size:14px;">What do I do in an emergency?</strong>
-                <p class="ol-small" style="margin-top:4px;">For life-threatening conditions, dial <strong>9-1-1</strong> immediately. For non-life-threatening medical guidance, you can call the 24/7 Sovereign Health Nurse Line at <strong>1-800-SANGAIA-CARE</strong>.</p>
+            <div style="background:#f8fafc; border:1px solid #e1dfdd; border-radius:2px; padding:14px;">
+                <strong style="color:#b91c1c; font-size:13.5px; display:block; margin-bottom:6px;">what do i do in an emergency?</strong>
+                <p class="ol-small" style="margin:0; line-height:1.5;">for life-threatening conditions, dial <strong>9-1-1</strong> immediately. for non-life-threatening medical guidance, you can call the 24/7 sovereign health nurse line at <strong>1-800-sangaia-care</strong>.</p>
             </div>
         </div>
-    </div>
+    </section>
 
     <!-- Patient Rights Charter -->
-    <div class="ol-card" id="rights">
+    <section class="card" id="rights">
         <div class="ol-card-title">
-            <span>Patient Rights &amp; Legal Guarantees</span>
-            <span class="ol-badge-tag">Statutory Protection</span>
+            <span>patient rights &amp; legal guarantees</span>
+            <span class="ol-badge-tag">statutory protection</span>
         </div>
-        <p>Every individual receiving care in Sangaia is legally guaranteed:</p>
-        <ul style="margin:8px 0 0 20px; font-size:13px; line-height:1.6; color:#201f1e;">
-            <li>The right to informed consent, complete treatment disclosure, and dignity.</li>
-            <li>Zero surprise medical bills or commercial collection harassment.</li>
-            <li>Cryptographic privacy of electronic medical records under sovereign data protection laws.</li>
-            <li>Free interpretation services in any recognized regional or international language.</li>
-        </ul>
-    </div>
+        <p class="ol-small ol-muted">every individual receiving care in sangaia is legally guaranteed ironclad protections:</p>
+        <div class="ol-grid-2" style="margin-top:14px;">
+            <div style="background:#f8fafc; border:1px solid #e1dfdd; border-radius:2px; padding:12px;">
+                <strong style="color:var(--text-main); font-size:13px; display:block; margin-bottom:4px;">informed consent &amp; dignity</strong>
+                <p class="ol-small ol-muted" style="margin:0;">the absolute right to full treatment disclosure, second opinions, and respectful care.</p>
+            </div>
+            <div style="background:#f8fafc; border:1px solid #e1dfdd; border-radius:2px; padding:12px;">
+                <strong style="color:var(--text-main); font-size:13px; display:block; margin-bottom:4px;">zero out-of-pocket billing</strong>
+                <p class="ol-small ol-muted" style="margin:0;">constitutional ban on surprise fees, debt collection, and commercial medical liens.</p>
+            </div>
+            <div style="background:#f8fafc; border:1px solid #e1dfdd; border-radius:2px; padding:12px;">
+                <strong style="color:var(--text-main); font-size:13px; display:block; margin-bottom:4px;">cryptographic record privacy</strong>
+                <p class="ol-small ol-muted" style="margin:0;">electronic medical charts encrypted under sovereign individual key ownership.</p>
+            </div>
+            <div style="background:#f8fafc; border:1px solid #e1dfdd; border-radius:2px; padding:12px;">
+                <strong style="color:var(--text-main); font-size:13px; display:block; margin-bottom:4px;">free language interpretation</strong>
+                <p class="ol-small ol-muted" style="margin:0;">certified multilingual medical interpreters available 24/7 in-person or via live video.</p>
+            </div>
+        </div>
+    </section>
     
     </div>
 
@@ -1024,14 +1055,14 @@ button,
     <aside class="sidebar">
 
       <div class="card">
-        <h3>Ministry of Healthcare</h3>
-        <p style="color: var(--text-muted); font-size: 12px; margin-bottom: 8px;">Advocacy & FAQ</p>
+        <h3>ministry of healthcare</h3>
+        <p style="color: var(--text-muted); font-size: 12px; margin-bottom: 8px;">advocacy & faq</p>
         <ul class="sidebar-nav-list">
-          <li><a href="#overview" class="active"><span class="mif-chevron-right"></span> Patient Support Overview</a></li>
-<li><a href="#faq"><span class="mif-chevron-right"></span> Frequently Asked Questions</a></li>
-<li><a href="#rights"><span class="mif-chevron-right"></span> Patient Rights Charter</a></li>
-<li><a href="#hotline"><span class="mif-chevron-right"></span> Medical Evacuation Hotline</a></li>
-<li><a href="#ombudsman"><span class="mif-chevron-right"></span> Patient Ombudsman Contact</a></li>
+          <li><a href="#overview" class="active"><span class="mif-chevron-right"></span> patient support overview</a></li>
+<li><a href="#faq"><span class="mif-chevron-right"></span> frequently asked questions</a></li>
+<li><a href="#rights"><span class="mif-chevron-right"></span> patient rights charter</a></li>
+<li><a href="#hotline"><span class="mif-chevron-right"></span> medical evacuation hotline</a></li>
+<li><a href="#ombudsman"><span class="mif-chevron-right"></span> patient ombudsman contact</a></li>
 
         </ul>
       </div>
@@ -1050,10 +1081,10 @@ button,
 
 
     <div class="ol-sidebox">
-        <h3>24/7 Patient Helpline</h3>
-        <p class="ol-small ol-muted">Speak with a registered triage nurse or patient advocate toll-free anytime.</p>
+        <h3>24/7 patient helpline</h3>
+        <p class="ol-small ol-muted">speak with a registered triage nurse or patient advocate toll-free anytime.</p>
         <div class="ol-mt-10">
-            <button type="button" class="ol-btn ol-btn-primary ol-btn-sm" style="width:100%; background:#b91c1c; border-color:#991b1b;" onclick="alert('Connecting to 24/7 Patient Nurse Line (Toll-Free 1-800-SANGAIA-CARE)...')">Call Nurse Line</button>
+            <button type="button" class="ol-btn ol-btn-primary ol-btn-sm" style="width:100%; background:#b91c1c; border-color:#991b1b;" onclick="alert('connecting to 24/7 patient nurse line (toll-free 1-800-sangaia-care)...')">call nurse line</button>
         </div>
     </div>
     
