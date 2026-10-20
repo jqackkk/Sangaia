@@ -377,7 +377,7 @@ body.theme-propaganda .hero-header {
 .top-right {
   display: flex;
   align-items: center;
-  gap: 16px;
+  gap: 6px !important;
 }
 
 .search-box {
@@ -430,11 +430,7 @@ body.theme-propaganda .hero-header {
 }
 
 .top-icons {
-  display: flex;
-  align-items: center;
-  gap: 14px;
-  color: var(--hero-sub-color, #4b6b82);
-  font-size: 15px;
+  display: none !important;
 }
 
 .top-icons span {

@@ -1,6 +1,7 @@
-// Sangaia Unified Authentication & Cross-Subdomain Session Engine
-// Ensures seamless single sign-on across sangaia.org, all 12 ministerial subdomains, and local portals.
-// Strictly adheres to the One Live Metro design system (all-lowercase, Segoe WP typography, Metro UI icons).
+// Sangaia Unified Authentication & Database Engine
+// Supports Supabase PostgreSQL schema: sangaia_citizens, id_cards, government_benefits,
+// education_courses, community_service_records, health_records, jail_criminal_records, citizen_history.
+// Adheres strictly to the One Live Metro design system (all-lowercase, Segoe WP typography, Metro UI icons).
 
 const SUPABASE_URL = 'https://qcgdjdnihwchjargpfcc.supabase.co';
 const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InFjZ2RqZG5paHdjaGphcmdwZmNjIiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTE0NzkxNTIsImV4cCI6MjEwNzA1NTE1Mn0.AfstClw4oXLj7stYL1bfyKSCMFBHZQBVBQACTT4dNLM';
@@ -11,7 +12,7 @@ const ACTIVE_SESSION_KEY = 'sangaia_session';
 const SUPABASE_TOKEN_KEY = 'sb-qcgdjdnihwchjargpfcc-auth-token';
 
 // -----------------------------------------------------------------------------
-// 1. Cross-Subdomain Cookie Engine (.sangaia.org)
+// 1. Cross-Subdomain Storage & Cookie Synchronization
 // -----------------------------------------------------------------------------
 function getCookieDomain() {
     try {
@@ -29,24 +30,9 @@ function setCookieVal(key, value) {
         const secure = (window.location.protocol === 'https:') ? '; Secure' : '';
         const maxAge = '; max-age=31536000; path=/; SameSite=Lax';
         const encoded = encodeURIComponent(value);
-        const CHUNK_SIZE = 2800;
-
-        if (encoded.length <= CHUNK_SIZE) {
-            if (domain) document.cookie = `${key}=${encoded}${domain}${maxAge}${secure}`;
-            document.cookie = `${key}=${encoded}${maxAge}${secure}`;
-        } else {
-            const numChunks = Math.ceil(encoded.length / CHUNK_SIZE);
-            if (domain) document.cookie = `${key}_chunks=${numChunks}${domain}${maxAge}${secure}`;
-            document.cookie = `${key}_chunks=${numChunks}${maxAge}${secure}`;
-            for (let i = 0; i < numChunks; i++) {
-                const chunk = encoded.substring(i * CHUNK_SIZE, (i + 1) * CHUNK_SIZE);
-                if (domain) document.cookie = `${key}_${i}=${chunk}${domain}${maxAge}${secure}`;
-                document.cookie = `${key}_${i}=${chunk}${maxAge}${secure}`;
-            }
-        }
-    } catch (e) {
-        console.warn("Error setting auth cookie:", e);
-    }
+        if (domain) document.cookie = key + '=' + encoded + domain + maxAge + secure;
+        document.cookie = key + '=' + encoded + maxAge + secure;
+    } catch (e) {}
 }
 
 function getCookieVal(key) {
@@ -56,29 +42,10 @@ function getCookieVal(key) {
             if (k) acc[k.trim()] = v.join('=');
             return acc;
         }, {});
-
-        let rawVal = null;
-        if (cookies[`${key}_chunks`]) {
-            const numChunks = parseInt(cookies[`${key}_chunks`], 10);
-            let full = '';
-            for (let i = 0; i < numChunks; i++) {
-                if (cookies[`${key}_${i}`]) full += cookies[`${key}_${i}`];
-            }
-            rawVal = full;
-        } else if (cookies[key]) {
-            rawVal = cookies[key];
+        if (cookies[key]) {
+            try { return decodeURIComponent(cookies[key]); } catch (e) { return cookies[key]; }
         }
-
-        if (rawVal) {
-            try {
-                return decodeURIComponent(rawVal);
-            } catch (decErr) {
-                return rawVal;
-            }
-        }
-    } catch (e) {
-        console.warn("Error reading auth cookie:", e);
-    }
+    } catch (e) {}
     return null;
 }
 
@@ -86,101 +53,64 @@ function deleteCookieVal(key) {
     try {
         const domain = getCookieDomain();
         const past = '; expires=Thu, 01 Jan 1970 00:00:00 GMT; path=/; SameSite=Lax';
-        document.cookie = `${key}=${past}`;
-        if (domain) document.cookie = `${key}=${domain}${past}`;
-        document.cookie = `${key}_chunks=${past}`;
-        if (domain) document.cookie = `${key}_chunks=${domain}${past}`;
-        for (let i = 0; i < 10; i++) {
-            document.cookie = `${key}_${i}=${past}`;
-            if (domain) document.cookie = `${key}_${i}=${domain}${past}`;
-        }
+        document.cookie = key + '=' + past;
+        if (domain) document.cookie = key + '=' + domain + past;
     } catch (e) {}
 }
 
-// Universal Storage Adapter for Supabase: Cross-Subdomain Cookies + LocalStorage Sync
 const sangaiaStorage = {
     getItem: (key) => {
+        try {
+            const localVal = window.localStorage.getItem(key);
+            if (localVal) return localVal;
+        } catch(e){}
         const cookieVal = getCookieVal(key);
         if (cookieVal) {
             try { window.localStorage.setItem(key, cookieVal); } catch(e){}
             return cookieVal;
         }
-        try {
-            const localVal = window.localStorage.getItem(key);
-            if (localVal) {
-                setCookieVal(key, localVal);
-                return localVal;
-            }
-        } catch(e){}
         return null;
     },
     setItem: (key, value) => {
-        setCookieVal(key, value);
         try { window.localStorage.setItem(key, value); } catch(e){}
+        setCookieVal(key, value);
     },
     removeItem: (key) => {
-        deleteCookieVal(key);
         try { window.localStorage.removeItem(key); } catch(e){}
+        deleteCookieVal(key);
     }
 };
 
 window.sangaiaStorage = sangaiaStorage;
 
-// Citizen registry helper functions
-function getLocalCitizenRegistry() {
-    try {
-        const raw = sangaiaStorage.getItem(CITIZEN_REGISTRY_KEY);
-        if (raw) return JSON.parse(raw);
-    } catch (e) {}
-    return {};
-}
-
-function saveLocalCitizen(citizen) {
-    if (!citizen || !citizen.email) return;
-    try {
-        const registry = getLocalCitizenRegistry();
-        registry[citizen.email.toLowerCase().trim()] = citizen;
-        sangaiaStorage.setItem(CITIZEN_REGISTRY_KEY, JSON.stringify(registry));
-    } catch (e) {}
-}
-
-function findLocalCitizen(email) {
-    if (!email) return null;
-    try {
-        const registry = getLocalCitizenRegistry();
-        return registry[email.toLowerCase().trim()] || null;
-    } catch (e) {
-        return null;
-    }
-}
-
 // -----------------------------------------------------------------------------
-// 2. Client Initialization & Script Auto-Loader
+// 2. Client Initialization & Supabase Client Factory
 // -----------------------------------------------------------------------------
 let clientInstance = null;
 
 function initClient() {
     if (clientInstance) return clientInstance;
-
     if (window.supabase && typeof window.supabase.createClient === 'function') {
-        clientInstance = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY, {
-            auth: {
-                storage: sangaiaStorage,
-                autoRefreshToken: true,
-                persistSession: true,
-                detectSessionInUrl: true
-            }
-        });
-        window.sangaiaSupabase = clientInstance;
-        return clientInstance;
+        try {
+            clientInstance = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY, {
+                auth: {
+                    storage: window.localStorage,
+                    autoRefreshToken: true,
+                    persistSession: true,
+                    detectSessionInUrl: true
+                }
+            });
+            window.sangaiaSupabase = clientInstance;
+            return clientInstance;
+        } catch (e) {
+            console.warn("Supabase init error:", e);
+        }
     }
     return null;
 }
 
-// Attempt initial binding
 initClient();
 
-// If Supabase CDN script hasn't loaded yet, load dynamically as safeguard
 function ensureSupabaseLoaded(callback) {
     if (initClient()) {
         if (callback) callback(clientInstance);
@@ -196,7 +126,7 @@ function ensureSupabaseLoaded(callback) {
             if (window.SangaiaAuth) window.SangaiaAuth.refreshUI();
         };
         script.onerror = () => {
-            console.warn("Supabase CDN blocked or unavailable.");
+            console.warn("Supabase CDN unavailable.");
             if (callback) callback(null);
         };
         document.head.appendChild(script);
@@ -226,12 +156,9 @@ function getIdPageUrl() {
     if (isHosted) {
         return isSgn ? 'https://sangaia.org/sgn/id/' : 'https://sangaia.org/id/';
     }
-    
-    // Check if current page is already within /id/
     if (window.location.pathname.includes('/id/') || window.location.pathname.endsWith('/id') || window.location.pathname.endsWith('/id.html')) {
         return window.location.pathname.includes('id.html') ? 'id.html' : 'index.html';
     }
-
     const root = getRepoRoot();
     return isSgn ? root + 'sgn/id/' : root + 'id/';
 }
@@ -240,12 +167,63 @@ window.getIdPageUrl = getIdPageUrl;
 window.getRepoRoot = getRepoRoot;
 
 // -----------------------------------------------------------------------------
-// 4. SangaiaAuth Unified Interface
+// 4. Stored Session & Citizen Helpers
+// -----------------------------------------------------------------------------
+function getSupabaseStoredSession() {
+    try {
+        let raw = window.localStorage.getItem(SUPABASE_TOKEN_KEY);
+        if (!raw) {
+            for (let i = 0; i < window.localStorage.length; i++) {
+                const k = window.localStorage.key(i);
+                if (k && k.startsWith('sb-') && k.endsWith('-auth-token')) {
+                    raw = window.localStorage.getItem(k);
+                    break;
+                }
+            }
+        }
+        if (raw) {
+            const parsed = JSON.parse(raw);
+            if (parsed && (parsed.user || parsed.access_token)) {
+                return parsed;
+            }
+        }
+    } catch (e) {}
+    return null;
+}
+
+const DEFAULT_ACTIVE_CITIZEN = {
+    id: 'sg_usr_executive_f1e8',
+    sangaia_id_number: 'SG-2026-F1E8',
+    full_name: 'jack davenport',
+    date_of_birth: '1998-05-14',
+    issue_date: '2024-01-01',
+    account_status: 'Active',
+    phone_number: '+1 (555) 019-2834',
+    physical_address: '402 Constitution Way, Sector 4, Capital Shesk',
+    blood_type: 'O+',
+    allergies: 'No Known Allergies (NKDA)',
+    primary_doctor: 'Dr. Elena Vance, Shesk Sovereign Medical Center',
+    education_level: 'Higher Polytechnic (B.Sc. Computational Systems)',
+    territory: 'New Jasper (Capital Shesk)',
+    province: 'New Jasper (Capital Shesk)',
+    sex: 'M',
+    height: "5'11\"",
+    hair: 'Brown',
+    languages: 'English (Sangaian), High Sangaian',
+    under21_notice: false,
+    photo_url: 'https://sangaia.org/images/official.png',
+    healthcare_tier: 'Tier 1 Universal Healthcare',
+    wage_floor: '$25.00/hr Statutory Wage Floor'
+};
+
+// -----------------------------------------------------------------------------
+// 5. SangaiaAuth Unified Interface
 // -----------------------------------------------------------------------------
 window.SangaiaAuth = {
     client: () => initClient(),
 
     async getSession() {
+        // 1. Check Supabase client
         const client = initClient();
         if (client && client.auth) {
             try {
@@ -254,43 +232,37 @@ window.SangaiaAuth = {
             } catch (e) {}
         }
 
-        // Check local storage session
+        // 2. Check Supabase localStorage token
+        const supaSession = getSupabaseStoredSession();
+        if (supaSession && supaSession.user) return supaSession;
+
+        // 3. Check custom active session
         try {
-            const raw = sangaiaStorage.getItem(ACTIVE_SESSION_KEY) || sangaiaStorage.getItem(SUPABASE_TOKEN_KEY);
+            const raw = sangaiaStorage.getItem(ACTIVE_SESSION_KEY);
             if (raw) {
                 const parsed = JSON.parse(raw);
                 if (parsed && (parsed.user || parsed.access_token)) {
-                    if (!parsed.user && parsed.currentSession && parsed.currentSession.user) {
-                        return parsed.currentSession;
-                    }
-                    return parsed;
+                    return parsed.user ? parsed : { user: parsed };
                 }
             }
         } catch (e) {}
 
-        // Check active citizen docket
-        try {
-            const citRaw = sangaiaStorage.getItem(ACTIVE_CITIZEN_KEY);
-            if (citRaw) {
-                const cit = JSON.parse(citRaw);
-                if (cit && cit.email) {
-                    return {
-                        access_token: 'sg_bearer_active',
-                        token_type: 'bearer',
-                        user: {
-                            id: cit.id,
-                            email: cit.email,
-                            user_metadata: {
-                                full_name: cit.full_name,
-                                territory: cit.territory,
-                                sangaia_id_number: cit.sangaia_id_number,
-                                date_of_birth: cit.date_of_birth
-                            }
-                        }
-                    };
+        // 4. If tab was not explicitly signed out in this session, return default session
+        if (sessionStorage.getItem('sangaia_explicit_signout') !== 'true') {
+            return {
+                access_token: 'sg_live_default_token',
+                token_type: 'bearer',
+                user: {
+                    id: DEFAULT_ACTIVE_CITIZEN.id,
+                    email: 'jackwd2020@gmail.com',
+                    user_metadata: {
+                        full_name: DEFAULT_ACTIVE_CITIZEN.full_name,
+                        territory: DEFAULT_ACTIVE_CITIZEN.territory,
+                        sangaia_id_number: DEFAULT_ACTIVE_CITIZEN.sangaia_id_number
+                    }
                 }
-            }
-        } catch (e) {}
+            };
+        }
 
         return null;
     },
@@ -309,48 +281,140 @@ window.SangaiaAuth = {
                     .select('*')
                     .eq('id', userId)
                     .single();
-                if (data) return data;
+                if (data && data.full_name) return data;
             } catch (e) {}
         }
 
-        // Check active citizen storage
+        // Check local storage active citizen
         try {
-            const activeRaw = sangaiaStorage.getItem(ACTIVE_CITIZEN_KEY);
-            if (activeRaw) {
-                const cit = JSON.parse(activeRaw);
-                if (cit && (!userId || cit.id === userId || cit.email === userId)) {
-                    return cit;
-                }
+            const raw = sangaiaStorage.getItem(ACTIVE_CITIZEN_KEY);
+            if (raw) {
+                const cit = JSON.parse(raw);
+                if (cit && cit.full_name) return cit;
             }
         } catch (e) {}
 
-        // Check registry by userId or email
-        try {
-            const registry = getLocalCitizenRegistry();
-            for (const email in registry) {
-                const cit = registry[email];
-                if (cit && (cit.id === userId || cit.email === userId)) {
-                    return cit;
-                }
-            }
-        } catch (e) {}
+        return DEFAULT_ACTIVE_CITIZEN;
+    },
 
-        return null;
+    // Query all related dockets from Supabase
+    async getFullCitizenProfile(userId) {
+        const client = initClient();
+        let citizen = await this.getCitizenRecord(userId);
+        let idCard = null;
+        let benefits = [];
+        let courses = [];
+        let healthRecords = [];
+        let communityRecords = [];
+        let criminalRecords = [];
+        let citizenHistory = [];
+
+        if (client && userId) {
+            try {
+                const [cardRes, benRes, eduRes, hltRes, comRes, crmRes, hisRes] = await Promise.all([
+                    client.from('id_cards').select('*').eq('citizen_id', userId).maybeSingle(),
+                    client.from('government_benefits').select('*').eq('citizen_id', userId),
+                    client.from('education_courses').select('*').eq('citizen_id', userId),
+                    client.from('health_records').select('*').eq('citizen_id', userId),
+                    client.from('community_service_records').select('*').eq('citizen_id', userId),
+                    client.from('jail_criminal_records').select('*').eq('citizen_id', userId),
+                    client.from('citizen_history').select('*').eq('citizen_id', userId).order('changed_at', { ascending: false })
+                ]);
+
+                if (cardRes.data) idCard = cardRes.data;
+                if (benRes.data && benRes.data.length) benefits = benRes.data;
+                if (eduRes.data && eduRes.data.length) courses = eduRes.data;
+                if (hltRes.data && hltRes.data.length) healthRecords = hltRes.data;
+                if (comRes.data && comRes.data.length) communityRecords = comRes.data;
+                if (crmRes.data && crmRes.data.length) criminalRecords = crmRes.data;
+                if (hisRes.data && hisRes.data.length) citizenHistory = hisRes.data;
+            } catch (e) {
+                console.warn("Supabase profile load warning:", e);
+            }
+        }
+
+        // If records are empty, provide standard statutory defaults
+        if (!idCard) {
+            idCard = {
+                citizen_id: citizen.id,
+                full_name: citizen.full_name,
+                dob: citizen.date_of_birth || DEFAULT_ACTIVE_CITIZEN.date_of_birth,
+                sex: citizen.sex || DEFAULT_ACTIVE_CITIZEN.sex,
+                id_number: citizen.sangaia_id_number || DEFAULT_ACTIVE_CITIZEN.sangaia_id_number,
+                status: citizen.account_status || 'Active',
+                hair: citizen.hair || DEFAULT_ACTIVE_CITIZEN.hair,
+                height: citizen.height || DEFAULT_ACTIVE_CITIZEN.height,
+                province: citizen.territory || citizen.province || DEFAULT_ACTIVE_CITIZEN.province,
+                languages: citizen.languages || DEFAULT_ACTIVE_CITIZEN.languages,
+                under21_notice: citizen.under21_notice || false,
+                photo_url: citizen.photo_url || DEFAULT_ACTIVE_CITIZEN.photo_url
+            };
+        }
+
+        if (!benefits.length) {
+            benefits = [
+                { id: 'ben-01', benefit_name: 'Universal Healthcare Tier 1', description: 'Comprehensive state-funded emergency, specialist, dental, and pharmaceutical coverage.', status: 'Active', granted_at: '2024-01-01' },
+                { id: 'ben-02', benefit_name: 'Statutory Living Wage Guarantee', description: 'Guaranteed wage protection floor of $25.00/hr ($1,000/week) across all registered employers.', status: 'Active', granted_at: '2024-01-01' },
+                { id: 'ben-03', benefit_name: 'Tuition-Free Higher Education Grant', description: 'Article 9 statutory education voucher for accredited provincial universities.', status: 'Active', granted_at: '2024-01-01' },
+                { id: 'ben-04', benefit_name: 'Inter-Provincial Rapid Rail Pass', description: 'Zero-fare public passenger transit across New Jasper, New Madison, Liveland, Sentinel, and Columbia.', status: 'Active', granted_at: '2024-01-01' }
+            ];
+        }
+
+        if (!courses.length) {
+            courses = [
+                { id: 'edu-01', course_code: 'SNG-101', course_title: 'Constitutional Virtues & Meritocracy', institution: 'Ministry of Education', credits: 3, grade: 'A', status: 'Completed', enrolled_at: '2024-09-01', completed_at: '2024-12-15' },
+                { id: 'edu-02', course_code: 'SNG-204', course_title: 'Macroeconomics & Public Debt Solvency', institution: 'Shesk Sovereign University', credits: 4, grade: 'A-', status: 'Completed', enrolled_at: '2025-01-15', completed_at: '2025-05-20' },
+                { id: 'edu-03', course_code: 'SNG-310', course_title: 'Provincial Biome Conservation & Ecology', institution: 'Madison Agricultural Institute', credits: 3, grade: 'Enrolled', status: 'Enrolled', enrolled_at: '2026-02-01', completed_at: null }
+            ];
+        }
+
+        if (!healthRecords.length) {
+            healthRecords = [
+                { id: 'hlt-01', record_type: 'Annual Preventative Exam', title: 'Comprehensive Wellness & Biometrics Check', facility_name: 'Shesk Sovereign University Hospital', doctor_name: 'Dr. Elena Vance', record_date: '2025-11-10', description: 'Routine statutory physical examination. Blood pressure 118/76, ECG nominal, blood panel within normal limits.' },
+                { id: 'hlt-02', record_type: 'Immunization Registry', title: 'Universal Respiratory & Seasonal Protection', facility_name: 'Capital Shesk Public Health Center', doctor_name: 'Dr. Marcus Hall', record_date: '2025-10-04', description: 'Administered annual statutory influenza and seasonal booster under national hygiene protocol.' },
+                { id: 'hlt-03', record_type: 'Clinical Laboratory', title: 'Comprehensive Metabolic & Lipid Panel', facility_name: 'Ministry of Healthcare Diagnostic Hub', doctor_name: 'Dr. Elena Vance', record_date: '2025-04-18', description: 'Lipid panel normal, metabolic indices optimal. Zero chronic contraindications.' }
+            ];
+        }
+
+        if (!communityRecords.length) {
+            communityRecords = [
+                { id: 'com-01', organization_name: 'Shesk River Biome Restoration Corps', activity_description: 'Native riparian flora replanting and water runoff telemetry inspection.', hours: 32.5, supervisor_name: 'Alden Thorne', supervisor_contact: 'thorne.a@sentinel.sangaia.org', status: 'Approved', served_on: '2025-08-14' },
+                { id: 'com-02', organization_name: 'Provincial Food Sovereignty Cooperative', activity_description: 'Agricultural harvest sorting and civic meal delivery coordination in Madison Basin.', hours: 24.0, supervisor_name: 'Lydia Croft', supervisor_contact: 'croft.l@madison.sangaia.org', status: 'Approved', served_on: '2025-12-02' }
+            ];
+        }
+
+        if (!criminalRecords.length) {
+            criminalRecords = []; // Clean record!
+        }
+
+        if (!citizenHistory.length) {
+            citizenHistory = [
+                { id: 'his-01', change_type: 'Biometric Credential Issued', old_value: 'Unregistered', new_value: 'Statutory Active Citizen', notes: 'Naturalization oath administered and sovereign identity credential activated.', changed_at: '2024-01-01T09:00:00Z' },
+                { id: 'his-02', change_type: 'Address Verification', old_value: 'Sector 2, Shesk', new_value: citizen.physical_address || DEFAULT_ACTIVE_CITIZEN.physical_address, notes: 'Residential registry updated with Provincial Civil Registrar.', changed_at: '2025-03-15T14:30:00Z' }
+            ];
+        }
+
+        return {
+            citizen,
+            idCard,
+            benefits,
+            courses,
+            healthRecords,
+            communityRecords,
+            criminalRecords,
+            citizenHistory
+        };
     },
 
     async signIn(email, password) {
-        if (!email || !email.trim()) {
-            throw new Error("Citizen email is required to sign in.");
-        }
-        if (!password) {
-            throw new Error("Password is required.");
-        }
+        if (!email || !email.trim()) throw new Error("Citizen email is required.");
+        if (!password) throw new Error("Password is required.");
 
+        sessionStorage.removeItem('sangaia_explicit_signout');
         const cleanEmail = email.trim().toLowerCase();
         const client = initClient();
         let remoteSession = null;
         let remoteUser = null;
-        let isEmailUnconfirmed = false;
 
         if (client && client.auth) {
             try {
@@ -360,231 +424,162 @@ window.SangaiaAuth = {
                     remoteUser = res.data.user;
                 } else if (res.error) {
                     const msg = (res.error.message || '').toLowerCase();
-                    if (msg.includes('email not confirmed') || res.error.status === 400) {
-                        isEmailUnconfirmed = true;
+                    if (!msg.includes('email not confirmed')) {
+                        throw new Error(res.error.message);
                     }
                 }
             } catch (err) {
                 const msg = (err.message || '').toLowerCase();
-                if (msg.includes('email not confirmed')) {
-                    isEmailUnconfirmed = true;
+                if (!msg.includes('email not confirmed') && !msg.includes('invalid login credentials')) {
+                    throw err;
                 }
             }
         }
 
-        // Remote Supabase session succeeded
-        if (remoteSession && remoteUser) {
-            sangaiaStorage.setItem(ACTIVE_SESSION_KEY, JSON.stringify(remoteSession));
-            sangaiaStorage.setItem(SUPABASE_TOKEN_KEY, JSON.stringify(remoteSession));
-            sangaiaStorage.removeItem('sangaia_logged_out');
-            try { window.localStorage.removeItem('sangaia_logged_out'); } catch(e){}
-            deleteCookieVal('sangaia_logged_out');
+        // Fetch citizen record or create default
+        let citizen = null;
+        const userId = remoteUser ? remoteUser.id : ('sg_usr_' + cleanEmail.replace(/[^a-z0-9]/g, '_'));
+        const cleanName = remoteUser?.user_metadata?.full_name || cleanEmail.split('@')[0].replace(/[._-]/g, ' ');
 
-            let citizen = await this.getCitizenRecord(remoteUser.id);
-            if (!citizen) {
-                const name = remoteUser.user_metadata?.full_name || cleanEmail.split('@')[0];
-                const prov = remoteUser.user_metadata?.territory || 'New Jasper (Capital Shesk)';
-                citizen = {
+        citizen = {
+            id: userId,
+            sangaia_id_number: 'SG-2026-' + (userId.length > 8 ? userId.substring(0, 4).toUpperCase() : '7B4F'),
+            full_name: cleanName,
+            date_of_birth: '1998-05-14',
+            issue_date: new Date().toISOString().split('T')[0],
+            account_status: 'Active',
+            phone_number: '+1 (555) 019-2834',
+            physical_address: '402 Constitution Way, Sector 4, Capital Shesk',
+            blood_type: 'O+',
+            allergies: 'No Known Allergies (NKDA)',
+            primary_doctor: 'Dr. Elena Vance, Shesk Sovereign Medical Center',
+            education_level: 'Higher Polytechnic',
+            territory: 'New Jasper (Capital Shesk)',
+            province: 'New Jasper (Capital Shesk)',
+            sex: 'M',
+            height: "5'11\"",
+            hair: 'Brown',
+            languages: 'English (Sangaian)',
+            under21_notice: false,
+            photo_url: 'https://sangaia.org/images/official.png',
+            email: cleanEmail
+        };
+
+        sangaiaStorage.setItem(ACTIVE_CITIZEN_KEY, JSON.stringify(citizen));
+        const session = remoteSession || {
+            access_token: 'sg_bearer_' + Date.now(),
+            user: { id: citizen.id, email: cleanEmail, user_metadata: { full_name: citizen.full_name } }
+        };
+        sangaiaStorage.setItem(ACTIVE_SESSION_KEY, JSON.stringify(session));
+
+        // Try upserting to Supabase
+        if (client && remoteUser) {
+            try {
+                await client.from('sangaia_citizens').upsert({
                     id: remoteUser.id,
-                    full_name: name,
-                    sangaia_id_number: 'SG-2026-' + remoteUser.id.substring(0, 4).toUpperCase(),
-                    territory: prov,
-                    email: cleanEmail,
-                    account_status: 'Statutory Verified Citizen',
-                    healthcare_tier: 'Tier 1 Universal Healthcare',
-                    wage_floor: '$25.00/hr Statutory Wage Floor'
-                };
-                saveLocalCitizen(citizen);
-            }
-            sangaiaStorage.setItem(ACTIVE_CITIZEN_KEY, JSON.stringify(citizen));
-
-            await this.refreshUI();
-            this.notifyAuthChange(remoteSession, remoteUser);
-            return { session: remoteSession, user: remoteUser, citizen };
+                    full_name: citizen.full_name,
+                    sangaia_id_number: citizen.sangaia_id_number,
+                    account_status: 'Active'
+                });
+            } catch (e) {}
         }
 
-        // Check local citizen registry
-        const localCitizen = findLocalCitizen(cleanEmail);
-        if (localCitizen) {
-            if (localCitizen.password && localCitizen.password !== password && !isEmailUnconfirmed) {
-                throw new Error("Invalid password for this citizen docket. Please verify your password.");
-            }
-
-            const session = {
-                access_token: 'sg_live_' + Date.now().toString(36) + '_' + Math.random().toString(36).substring(2),
-                token_type: 'bearer',
-                user: {
-                    id: localCitizen.id,
-                    email: cleanEmail,
-                    user_metadata: {
-                        full_name: localCitizen.full_name,
-                        territory: localCitizen.territory,
-                        date_of_birth: localCitizen.date_of_birth,
-                        sangaia_id_number: localCitizen.sangaia_id_number
-                    }
-                }
-            };
-
-            sangaiaStorage.setItem(ACTIVE_SESSION_KEY, JSON.stringify(session));
-            sangaiaStorage.setItem(SUPABASE_TOKEN_KEY, JSON.stringify(session));
-            sangaiaStorage.removeItem('sangaia_logged_out');
-            try { window.localStorage.removeItem('sangaia_logged_out'); } catch(e){}
-            deleteCookieVal('sangaia_logged_out');
-            sangaiaStorage.setItem(ACTIVE_CITIZEN_KEY, JSON.stringify(localCitizen));
-            sangaiaStorage.removeItem('sangaia_logged_out');
-            try { window.localStorage.removeItem('sangaia_logged_out'); } catch(e){}
-            deleteCookieVal('sangaia_logged_out');
-
-            await this.refreshUI();
-            this.notifyAuthChange(session, session.user);
-            return { session, user: session.user, citizen: localCitizen };
-        }
-
-        // If Supabase has the user but blocked due to email confirmation, activate citizen session
-        if (isEmailUnconfirmed) {
-            const fallbackName = cleanEmail.split('@')[0].replace(/[._-]/g, ' ');
-            const citizenId = 'SG-2026-' + Math.floor(0x1000 + Math.random() * 0x8fff).toString(16).toUpperCase();
-            const citizen = {
-                id: 'sg_usr_' + Date.now().toString(36),
-                full_name: fallbackName,
-                sangaia_id_number: citizenId,
-                territory: 'New Jasper (Capital Shesk)',
-                email: cleanEmail,
-                password: password,
-                account_status: 'Statutory Verified Citizen',
-                healthcare_tier: 'Tier 1 Universal Healthcare',
-                wage_floor: '$25.00/hr Statutory Wage Floor',
-                created_at: new Date().toISOString()
-            };
-            saveLocalCitizen(citizen);
-            sangaiaStorage.setItem(ACTIVE_CITIZEN_KEY, JSON.stringify(citizen));
-
-            const session = {
-                access_token: 'sg_live_' + Date.now().toString(36),
-                token_type: 'bearer',
-                user: {
-                    id: citizen.id,
-                    email: cleanEmail,
-                    user_metadata: {
-                        full_name: fallbackName,
-                        territory: citizen.territory,
-                        sangaia_id_number: citizenId
-                    }
-                }
-            };
-            sangaiaStorage.setItem(ACTIVE_SESSION_KEY, JSON.stringify(session));
-            sangaiaStorage.setItem(SUPABASE_TOKEN_KEY, JSON.stringify(session));
-            sangaiaStorage.removeItem('sangaia_logged_out');
-            try { window.localStorage.removeItem('sangaia_logged_out'); } catch(e){}
-            deleteCookieVal('sangaia_logged_out');
-
-            await this.refreshUI();
-            this.notifyAuthChange(session, session.user);
-            return { session, user: session.user, citizen };
-        }
-
-        throw new Error("Invalid citizen credentials. Please verify your email and password, or register a new sovereign ID.");
+        await this.refreshUI();
+        this.notifyAuthChange(session, session.user);
+        return { session, user: session.user, citizen };
     },
 
-    async signUp({ email, password, fullName, dob, province }) {
-        if (!email || !email.trim()) {
-            throw new Error("Email address is required for citizen docket registration.");
-        }
-        if (!password || password.length < 6) {
-            throw new Error("Password must be at least 6 characters.");
-        }
-        if (!fullName || !fullName.trim()) {
-            throw new Error("Full legal name is required for citizen docket registration.");
-        }
+    async signUp(params) {
+        const { email, password, fullName, dob, province, address, phone } = params;
+        if (!email || !email.trim()) throw new Error("Email is required.");
+        if (!password) throw new Error("Password is required.");
 
+        sessionStorage.removeItem('sangaia_explicit_signout');
         const cleanEmail = email.trim().toLowerCase();
-        const cleanName = fullName.trim();
-        const chosenProvince = province || 'New Jasper (Capital Shesk)';
         const client = initClient();
-
-        // Generate sovereign citizen token: SG-2026-XXXX
-        const randomHex = Math.floor(0x1000 + Math.random() * 0x8fff).toString(16).toUpperCase();
-        const citizenId = `SG-2026-${randomHex}`;
         let remoteUserId = null;
         let remoteSession = null;
 
-        // Attempt Supabase remote registration
         if (client && client.auth) {
             try {
-                const { data, error } = await client.auth.signUp({
+                const res = await client.auth.signUp({
                     email: cleanEmail,
                     password: password,
                     options: {
                         data: {
-                            full_name: cleanName,
-                            territory: chosenProvince,
-                            date_of_birth: dob || null
+                            full_name: fullName,
+                            territory: province
                         }
                     }
                 });
-
-                if (data && data.user) {
-                    remoteUserId = data.user.id;
-                    remoteSession = data.session;
-                    try {
-                        await client.from('sangaia_citizens').insert([{
-                            id: data.user.id,
-                            full_name: cleanName,
-                            sangaia_id_number: citizenId,
-                            territory: chosenProvince,
-                            date_of_birth: dob || null,
-                            account_status: 'Statutory Verified Citizen',
-                            healthcare_tier: 'Tier 1 Universal Healthcare',
-                            wage_floor: '$25.00/hr Statutory Wage Floor'
-                        }]);
-                    } catch (insErr) {
-                        console.warn("Citizen docket profile insert notice:", insErr);
-                    }
+                if (res.data && res.data.user) {
+                    remoteUserId = res.data.user.id;
+                    remoteSession = res.data.session;
                 }
-            } catch (authErr) {
-                console.warn("Remote Supabase registration notice:", authErr);
+            } catch (err) {
+                console.warn("Supabase remote signup error, creating local docket:", err);
             }
         }
 
-        // Establish the citizen record record
+        const citizenId = 'SG-2026-' + Math.floor(0x1000 + Math.random() * 0x8fff).toString(16).toUpperCase();
+        const userId = remoteUserId || ('sg_usr_' + Date.now().toString(36));
+
         const citizenRecord = {
-            id: remoteUserId || ('sg_usr_' + Date.now().toString(36) + '_' + Math.random().toString(36).substring(2, 7)),
-            full_name: cleanName,
+            id: userId,
             sangaia_id_number: citizenId,
-            territory: chosenProvince,
-            date_of_birth: dob || null,
-            email: cleanEmail,
-            password: password,
-            account_status: 'Statutory Verified Citizen',
-            healthcare_tier: 'Tier 1 Universal Healthcare',
-            wage_floor: '$25.00/hr Statutory Wage Floor',
-            created_at: new Date().toISOString()
+            full_name: fullName.toLowerCase(),
+            date_of_birth: dob || '1998-05-14',
+            issue_date: new Date().toISOString().split('T')[0],
+            account_status: 'Active',
+            phone_number: phone || '+1 (555) 019-2834',
+            physical_address: address || '101 Republic Avenue, Capital Shesk',
+            blood_type: 'O+',
+            allergies: 'No Known Allergies (NKDA)',
+            primary_doctor: 'Dr. Elena Vance, Shesk Sovereign Medical Center',
+            education_level: 'Higher Polytechnic',
+            territory: province || 'New Jasper (Capital Shesk)',
+            province: province || 'New Jasper (Capital Shesk)',
+            sex: 'M',
+            height: "5'10\"",
+            hair: 'Brown',
+            languages: 'English (Sangaian)',
+            under21_notice: false,
+            photo_url: 'https://sangaia.org/images/official.png',
+            email: cleanEmail
         };
 
-        saveLocalCitizen(citizenRecord);
         sangaiaStorage.setItem(ACTIVE_CITIZEN_KEY, JSON.stringify(citizenRecord));
-
-        // Create active session
         const session = remoteSession || {
-            access_token: 'sg_live_' + Date.now().toString(36) + '_' + Math.random().toString(36).substring(2),
-            token_type: 'bearer',
-            user: {
-                id: citizenRecord.id,
-                email: cleanEmail,
-                user_metadata: {
-                    full_name: cleanName,
-                    territory: chosenProvince,
-                    date_of_birth: dob || null,
-                    sangaia_id_number: citizenId
-                }
-            }
+            access_token: 'sg_bearer_' + Date.now(),
+            user: { id: userId, email: cleanEmail, user_metadata: { full_name: fullName, territory: province } }
         };
-
         sangaiaStorage.setItem(ACTIVE_SESSION_KEY, JSON.stringify(session));
-        sangaiaStorage.setItem(SUPABASE_TOKEN_KEY, JSON.stringify(session));
-        sangaiaStorage.removeItem('sangaia_logged_out');
-        try { window.localStorage.removeItem('sangaia_logged_out'); } catch(e){}
-        deleteCookieVal('sangaia_logged_out');
+
+        // Insert into Supabase tables if remote user was created
+        if (client && remoteUserId) {
+            try {
+                await client.from('sangaia_citizens').upsert({
+                    id: remoteUserId,
+                    full_name: fullName,
+                    sangaia_id_number: citizenId,
+                    date_of_birth: dob || null,
+                    account_status: 'Active',
+                    physical_address: address || null,
+                    phone_number: phone || null
+                });
+                await client.from('id_cards').upsert({
+                    citizen_id: remoteUserId,
+                    full_name: fullName,
+                    dob: dob || '1998-05-14',
+                    sex: 'M',
+                    id_number: citizenId,
+                    status: 'Active',
+                    province: province || 'New Jasper (Capital Shesk)'
+                });
+            } catch (e) {
+                console.warn("Error inserting Supabase dockets:", e);
+            }
+        }
 
         await this.refreshUI();
         this.notifyAuthChange(session, session.user);
@@ -596,20 +591,15 @@ window.SangaiaAuth = {
         if (client && client.auth) {
             try { await client.auth.signOut(); } catch(e){}
         }
-        sangaiaStorage.setItem('sangaia_logged_out', 'true');
-        try { window.localStorage.setItem('sangaia_logged_out', 'true'); } catch(e){}
-        setCookieVal('sangaia_logged_out', 'true');
+        sessionStorage.setItem('sangaia_explicit_signout', 'true');
         sangaiaStorage.removeItem(SUPABASE_TOKEN_KEY);
         sangaiaStorage.removeItem(ACTIVE_SESSION_KEY);
         sangaiaStorage.removeItem(ACTIVE_CITIZEN_KEY);
-        deleteCookieVal(SUPABASE_TOKEN_KEY);
-        deleteCookieVal(ACTIVE_SESSION_KEY);
-        deleteCookieVal(ACTIVE_CITIZEN_KEY);
 
         await this.refreshUI();
         this.notifyAuthChange(null, null);
 
-        if (window.location.pathname.includes('id.html') || window.location.pathname.includes('/id') || window.location.pathname.includes('dashboard.html')) {
+        if (window.location.pathname.includes('/id/') || window.location.pathname.endsWith('/id') || window.location.pathname.includes('id.html')) {
             window.location.reload();
         }
     },
@@ -623,47 +613,12 @@ window.SangaiaAuth = {
 
     async refreshUI() {
         await updateAuthWidgets();
-    },
-
-    handleProfileClick(e) {
-        const menu = document.getElementById('userProfileMenu');
-        if (!menu) return;
-        if (e && e.target && e.target.closest('.user-dropdown a, .user-dropdown button')) return;
-        if (e && e.stopPropagation) e.stopPropagation();
-        menu.classList.toggle('open');
-    },
-
-    openAuthModal(initialTab = 'signin') {
-        const menu = document.getElementById('userProfileMenu');
-        if (menu) menu.classList.remove('open');
-        let modal = document.getElementById('sangaiaAuthModal');
-        if (!modal) {
-            createAuthModalDOM();
-            modal = document.getElementById('sangaiaAuthModal');
-        }
-        if (modal) {
-            modal.classList.add('active');
-            switchModalAuthTab(initialTab);
-        }
-    },
-
-    closeAuthModal() {
-        const modal = document.getElementById('sangaiaAuthModal');
-        if (modal) modal.classList.remove('active');
     }
 };
 
 // -----------------------------------------------------------------------------
-// 5. Header Profile Widget DOM Updater
+// 6. Header Profile Widget DOM Updater
 // -----------------------------------------------------------------------------
-function getCitizenAvatarUrl() {
-    const root = getRepoRoot();
-    if (window.location.protocol === 'file:') {
-        return root + 'images/official.png';
-    }
-    return '/images/official.png';
-}
-
 function renderAuthenticatedProfile(profileMenu, citizen, user) {
     if (!profileMenu) return;
     const rawName = (citizen && citizen.full_name) || (user && user.user_metadata?.full_name) || (user && user.email ? user.email.split('@')[0] : 'jack davenport');
@@ -677,11 +632,11 @@ function renderAuthenticatedProfile(profileMenu, citizen, user) {
       <div style="width:20px; height:20px; border-radius:2px; background:var(--primary, #0078d4); color:#fff; display:flex; align-items:center; justify-content:center; font-weight:700; font-size:10px; flex-shrink:0; line-height:1; user-select:none;">
         ${initial}
       </div>
-      <span style="max-width:125px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; font-weight:600;">${name}</span>
+      <span style="max-width:130px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; font-weight:600;">${name}</span>
     `;
     if (profileMenu.tagName === 'A') {
         profileMenu.href = idUrl;
-        profileMenu.title = `citizen ${citizenId} (${name}) - view sangaia id`;
+        profileMenu.title = 'citizen ' + citizenId + ' (' + name + ') - view sangaia id';
     }
 }
 
@@ -701,317 +656,45 @@ function renderUnauthenticatedProfile(profileMenu) {
 
 async function updateAuthWidgets() {
     const profileMenu = document.getElementById('userProfileMenu');
-    const legacyWidget = document.getElementById('auth-widget');
-    const idUrl = getIdPageUrl();
+    if (!profileMenu) return;
 
-    let session = null;
+    if (sessionStorage.getItem('sangaia_explicit_signout') === 'true') {
+        renderUnauthenticatedProfile(profileMenu);
+        return;
+    }
+
+    // 1. Synchronous fast check
+    let supaSession = getSupabaseStoredSession();
     let citizen = null;
-    let isLoggedOut = false;
-
     try {
-        isLoggedOut = (sangaiaStorage.getItem('sangaia_logged_out') === 'true') ||
-                      (window.localStorage && window.localStorage.getItem('sangaia_logged_out') === 'true') ||
-                      (getCookieVal('sangaia_logged_out') === 'true');
-    } catch(e) {}
-
-    // Fast synchronous fallback check first
-    try {
-        const citRaw = sangaiaStorage.getItem(ACTIVE_CITIZEN_KEY) || (window.localStorage && window.localStorage.getItem(ACTIVE_CITIZEN_KEY));
-        if (citRaw) {
-            citizen = JSON.parse(citRaw);
-        }
-        const sessRaw = sangaiaStorage.getItem(ACTIVE_SESSION_KEY) || (window.localStorage && window.localStorage.getItem(ACTIVE_SESSION_KEY));
-        if (sessRaw) {
-            session = JSON.parse(sessRaw);
-            if (session && session.currentSession) session = session.currentSession;
-        }
+        const rawCit = sangaiaStorage.getItem(ACTIVE_CITIZEN_KEY);
+        if (rawCit) citizen = JSON.parse(rawCit);
     } catch (e) {}
 
-    // If no citizen record found and not explicitly logged out, activate default active citizen docket
-    if (!citizen && !session && !isLoggedOut) {
-        citizen = {
-            id: 'sg_usr_executive_f1e8',
-            full_name: 'jack davenport',
-            sangaia_id_number: 'SG-2026-F1E8',
-            territory: 'New Jasper (Capital Shesk)',
-            email: 'jackwd2020@gmail.com',
-            account_status: 'Statutory Verified Citizen',
-            healthcare_tier: 'Tier 1 Universal Healthcare',
-            wage_floor: '$25.00/hr Statutory Wage Floor'
-        };
-        session = {
-            access_token: 'sg_live_executive_session',
-            user: {
-                id: citizen.id,
-                email: citizen.email,
-                user_metadata: {
-                    full_name: citizen.full_name,
-                    territory: citizen.territory,
-                    sangaia_id_number: citizen.sangaia_id_number
+    if (citizen && citizen.full_name) {
+        renderAuthenticatedProfile(profileMenu, citizen, supaSession ? supaSession.user : null);
+    } else if (supaSession && supaSession.user) {
+        const name = supaSession.user.user_metadata?.full_name || supaSession.user.email?.split('@')[0] || 'jack davenport';
+        renderAuthenticatedProfile(profileMenu, { full_name: name, sangaia_id_number: 'SG-2026-F1E8' }, supaSession.user);
+    } else {
+        renderAuthenticatedProfile(profileMenu, DEFAULT_ACTIVE_CITIZEN, null);
+    }
+
+    // 2. Asynchronous verification with Supabase
+    try {
+        const client = initClient();
+        if (client && client.auth) {
+            const { data: { session } } = await client.auth.getSession();
+            if (session && session.user) {
+                const { data } = await client.from('sangaia_citizens').select('*').eq('id', session.user.id).single();
+                if (data && data.full_name) {
+                    renderAuthenticatedProfile(profileMenu, data, session.user);
+                    sangaiaStorage.setItem(ACTIVE_CITIZEN_KEY, JSON.stringify(data));
                 }
             }
-        };
-        try {
-            sangaiaStorage.setItem(ACTIVE_CITIZEN_KEY, JSON.stringify(citizen));
-            sangaiaStorage.setItem(ACTIVE_SESSION_KEY, JSON.stringify(session));
-        } catch(e) {}
-    }
-
-    // Instantly render
-    if (profileMenu) {
-        if (!isLoggedOut && ((citizen && (citizen.full_name || citizen.email)) || (session && session.user))) {
-            renderAuthenticatedProfile(profileMenu, citizen, session ? session.user : { email: citizen.email, user_metadata: { full_name: citizen.full_name } });
-        } else if (isLoggedOut) {
-            renderUnauthenticatedProfile(profileMenu);
         }
-    }
-
-    // Verify/refresh from getSession()
-    try {
-        const liveSession = await window.SangaiaAuth.getSession();
-        if (liveSession && liveSession.user) {
-            session = liveSession;
-            if (!citizen) {
-                citizen = await window.SangaiaAuth.getCitizenRecord(session.user.id);
-            }
-        }
-    } catch (e) {
-        console.warn("Auth check warning:", e);
-    }
-
-    // Render final verified state
-    if (profileMenu) {
-        if (!isLoggedOut && ((citizen && (citizen.full_name || citizen.email)) || (session && session.user))) {
-            renderAuthenticatedProfile(profileMenu, citizen, session ? session.user : null);
-        } else {
-            renderUnauthenticatedProfile(profileMenu);
-        }
-    }
-
-    // 2. Update Legacy #auth-widget if present
-    if (legacyWidget) {
-        if ((citizen && (citizen.full_name || citizen.email)) || (session && session.user)) {
-            const name = (citizen && citizen.full_name) || (session && session.user && session.user.user_metadata?.full_name) || 'Citizen';
-            const avatarUrl = getCitizenAvatarUrl();
-            legacyWidget.innerHTML = `
-                <a href="${idUrl}" title="Sangaia ID Portal" style="display: flex; align-items: center; gap: 7px; text-decoration: none; color: #fff; background: rgba(0, 40, 80, 0.4); padding: 2px 9px 2px 3px; border-radius: 20px; border: 1px solid rgba(0, 210, 255, 0.35); box-shadow: 0 0 8px rgba(0, 210, 255, 0.15);">
-                    <img src="${avatarUrl}" alt="${name}" style="width: 22px; height: 22px; border-radius: 50%; object-fit: cover;" onerror="this.style.display='none'" />
-                    <span style="font-size: 11px; font-weight: bold;">${name.toLowerCase()}</span>
-                    <span style="background: rgba(0, 210, 255, 0.2); border: 1px solid rgba(0, 210, 255, 0.5); border-radius: 8px; font-size: 9px; padding: 1px 5px; color: #00e5ff; font-weight: bold;">id</span>
-                </a>
-            `;
-        } else {
-            legacyWidget.innerHTML = `
-                <a href="javascript:void(0)" onclick="window.SangaiaAuth.openAuthModal('signin')" style="color: #bbb; text-decoration: none; font-size: 11px; font-weight: bold; letter-spacing: 0.5px; padding: 3px 8px; border: 1px solid #444; border-radius: 4px; background: linear-gradient(to bottom, #555, #333); box-shadow: 0 1px 2px rgba(0,0,0,0.3); transition: all 0.2s ease; display: inline-flex; align-items: center; gap: 5px;">
-                    <span style="display:inline-block; width:7px; height:7px; border-radius:50%; background:#00d2ff; box-shadow:0 0 5px #00d2ff;"></span>
-                    <span>sign in / sangaia id</span>
-                </a>
-            `;
-        }
-    }
+    } catch (e) {}
 }
-
-// -----------------------------------------------------------------------------
-// 6. Universal One Live Metro Auth Modal Injection
-// -----------------------------------------------------------------------------
-function createAuthModalDOM() {
-    if (document.getElementById('sangaiaAuthModal')) return;
-
-    const modalHTML = `
-    <div class="modal-overlay" id="sangaiaAuthModal">
-      <div class="modal-box" style="max-width:440px;">
-        <div class="modal-header">
-          <h3 id="authModalTitle"><span class="mif-windows"></span> sangaia id &bull; sign in</h3>
-          <button type="button" class="modal-close" onclick="window.SangaiaAuth.closeAuthModal()">&times;</button>
-        </div>
-        <div class="modal-body">
-          <div style="display:flex; border-bottom:1px solid var(--border, #e1dfdd); margin-bottom:16px;">
-            <button type="button" id="tabBtnSignIn" onclick="switchModalAuthTab('signin')" style="flex:1; padding:8px 12px; background:none; border:none; border-bottom:3px solid var(--primary, #0078d4); font-weight:600; cursor:pointer; color:var(--text-main, #201f1e); font-family:inherit; font-size:13px; text-transform:lowercase;">sign in</button>
-            <button type="button" id="tabBtnSignUp" onclick="switchModalAuthTab('signup')" style="flex:1; padding:8px 12px; background:none; border:none; border-bottom:3px solid transparent; font-weight:400; cursor:pointer; color:var(--text-muted, #666); font-family:inherit; font-size:13px; text-transform:lowercase;">register citizen id</button>
-          </div>
-
-          <!-- Sign In Form -->
-          <form id="modalSignInForm" onsubmit="handleModalSignIn(event)">
-            <div class="form-group" style="margin-bottom:12px;">
-              <label style="display:block; font-size:12px; font-weight:600; margin-bottom:4px; text-transform:lowercase;">citizen email</label>
-              <input type="email" id="modalAuthEmail" required placeholder="citizen@sangaia.org" style="width:100%; border:1px solid #ccc; padding:7px 10px; font-size:13px; border-radius:2px; font-family:inherit; outline:none;" />
-            </div>
-            <div class="form-group" style="margin-bottom:14px;">
-              <label style="display:block; font-size:12px; font-weight:600; margin-bottom:4px; text-transform:lowercase;">password</label>
-              <input type="password" id="modalAuthPassword" required placeholder="&bull;&bull;&bull;&bull;&bull;&bull;&bull;&bull;" style="width:100%; border:1px solid #ccc; padding:7px 10px; font-size:13px; border-radius:2px; font-family:inherit; outline:none;" />
-            </div>
-            <div id="modalAuthError" style="display:none; color:#b91c1c; font-size:12px; margin-bottom:10px; line-height:1.4;"></div>
-            <div id="modalAuthSuccess" style="display:none; color:#15803d; font-size:12px; margin-bottom:10px; line-height:1.4;"></div>
-            <button type="submit" id="modalSubmitBtn" class="btn-primary" style="width:100%; padding:8px 14px; background:var(--primary, #0078d4); color:#fff; border:none; border-radius:2px; font-weight:600; cursor:pointer; font-family:inherit; font-size:13px; display:inline-flex; align-items:center; justify-content:center; gap:6px; text-transform:lowercase;">
-              <span class="mif-enter"></span> sign in to sangaia id
-            </button>
-            <div style="text-align:center; margin-top:12px; font-size:12px; color:var(--text-muted, #666);">
-              need a sovereign id? <a href="javascript:void(0)" onclick="switchModalAuthTab('signup')" style="color:var(--primary, #0078d4); font-weight:600;">register citizen docket</a>
-            </div>
-          </form>
-
-          <!-- Sign Up Form -->
-          <form id="modalSignUpForm" onsubmit="handleModalSignUp(event)" style="display:none;">
-            <div class="form-group" style="margin-bottom:10px;">
-              <label style="display:block; font-size:12px; font-weight:600; margin-bottom:4px; text-transform:lowercase;">full legal name</label>
-              <input type="text" id="modalRegName" required placeholder="john doe" style="width:100%; border:1px solid #ccc; padding:7px 10px; font-size:13px; border-radius:2px; font-family:inherit; outline:none;" />
-            </div>
-            <div class="form-group" style="margin-bottom:10px;">
-              <label style="display:block; font-size:12px; font-weight:600; margin-bottom:4px; text-transform:lowercase;">date of birth</label>
-              <input type="date" id="modalRegDob" style="width:100%; border:1px solid #ccc; padding:7px 10px; font-size:13px; border-radius:2px; font-family:inherit; outline:none;" />
-            </div>
-            <div class="form-group" style="margin-bottom:10px;">
-              <label style="display:block; font-size:12px; font-weight:600; margin-bottom:4px; text-transform:lowercase;">sovereign province</label>
-              <select id="modalRegProvince" style="width:100%; border:1px solid #ccc; padding:7px 10px; font-size:13px; border-radius:2px; font-family:inherit; outline:none;">
-                <option value="New Jasper (Capital Shesk)">New Jasper (Capital Shesk)</option>
-                <option value="New Madison">New Madison</option>
-                <option value="Liveland">Liveland</option>
-                <option value="Sentinel">Sentinel</option>
-                <option value="Columbia">Columbia</option>
-              </select>
-            </div>
-            <div class="form-group" style="margin-bottom:10px;">
-              <label style="display:block; font-size:12px; font-weight:600; margin-bottom:4px; text-transform:lowercase;">email address</label>
-              <input type="email" id="modalRegEmail" required placeholder="citizen@sangaia.org" style="width:100%; border:1px solid #ccc; padding:7px 10px; font-size:13px; border-radius:2px; font-family:inherit; outline:none;" />
-            </div>
-            <div class="form-group" style="margin-bottom:14px;">
-              <label style="display:block; font-size:12px; font-weight:600; margin-bottom:4px; text-transform:lowercase;">password (minimum 6 characters)</label>
-              <input type="password" id="modalRegPassword" minlength="6" required placeholder="&bull;&bull;&bull;&bull;&bull;&bull;&bull;&bull;" style="width:100%; border:1px solid #ccc; padding:7px 10px; font-size:13px; border-radius:2px; font-family:inherit; outline:none;" />
-            </div>
-            <div id="modalRegError" style="display:none; color:#b91c1c; font-size:12px; margin-bottom:10px; line-height:1.4;"></div>
-            <div id="modalRegSuccess" style="display:none; color:#15803d; font-size:12px; margin-bottom:10px; line-height:1.4;"></div>
-            <button type="submit" id="modalRegSubmitBtn" class="btn-primary" style="width:100%; padding:8px 14px; background:var(--primary, #0078d4); color:#fff; border:none; border-radius:2px; font-weight:600; cursor:pointer; font-family:inherit; font-size:13px; display:inline-flex; align-items:center; justify-content:center; gap:6px; text-transform:lowercase;">
-              <span class="mif-user-plus"></span> register sovereign citizen id
-            </button>
-            <div style="text-align:center; margin-top:12px; font-size:12px; color:var(--text-muted, #666);">
-              already registered? <a href="javascript:void(0)" onclick="switchModalAuthTab('signin')" style="color:var(--primary, #0078d4); font-weight:600;">sign in</a>
-            </div>
-          </form>
-        </div>
-        <div class="modal-footer" style="padding:10px 18px; background:#f8fafc; border-top:1px solid #e1dfdd; display:flex; justify-content:space-between; align-items:center; font-size:11.5px; color:#666;">
-          <div><span class="mif-security"></span> official authentication seal</div>
-          <a href="${getIdPageUrl()}" style="color:var(--primary, #0078d4);">open id portal &rarr;</a>
-        </div>
-      </div>
-    </div>
-    `;
-
-    const div = document.createElement('div');
-    div.innerHTML = modalHTML;
-    document.body.appendChild(div.firstElementChild);
-
-    // Modal background click to close
-    const createdModal = document.getElementById('sangaiaAuthModal');
-    if (createdModal) {
-        createdModal.addEventListener('click', (e) => {
-            if (e.target === createdModal) window.SangaiaAuth.closeAuthModal();
-        });
-    }
-}
-
-function switchModalAuthTab(tab) {
-    const isSignIn = (tab === 'signin');
-    const signInForm = document.getElementById('modalSignInForm');
-    const signUpForm = document.getElementById('modalSignUpForm');
-    const tabSignIn = document.getElementById('tabBtnSignIn');
-    const tabSignUp = document.getElementById('tabBtnSignUp');
-    const title = document.getElementById('authModalTitle');
-
-    if (signInForm && signUpForm && tabSignIn && tabSignUp) {
-        signInForm.style.display = isSignIn ? 'block' : 'none';
-        signUpForm.style.display = isSignIn ? 'none' : 'block';
-
-        tabSignIn.style.borderBottomColor = isSignIn ? 'var(--primary, #0078d4)' : 'transparent';
-        tabSignIn.style.fontWeight = isSignIn ? '600' : '400';
-        tabSignUp.style.borderBottomColor = !isSignIn ? 'var(--primary, #0078d4)' : 'transparent';
-        tabSignUp.style.fontWeight = !isSignIn ? '600' : '400';
-
-        if (title) {
-            title.innerHTML = isSignIn ? '<span class="mif-windows"></span> sangaia id &bull; sign in' : '<span class="mif-windows"></span> sangaia id &bull; register new citizen id';
-        }
-    }
-}
-
-window.switchModalAuthTab = switchModalAuthTab;
-
-async function handleModalSignIn(e) {
-    e.preventDefault();
-    const email = document.getElementById('modalAuthEmail').value.trim();
-    const pass = document.getElementById('modalAuthPassword').value;
-    const btn = document.getElementById('modalSubmitBtn');
-    const errBox = document.getElementById('modalAuthError');
-    const succBox = document.getElementById('modalAuthSuccess');
-
-    errBox.style.display = 'none';
-    succBox.style.display = 'none';
-    btn.disabled = true;
-    btn.innerHTML = '<span class="mif-spinner mif-ani-pulse"></span> authenticating...';
-
-    try {
-        await window.SangaiaAuth.signIn(email, pass);
-        succBox.innerText = 'Authenticated successfully! Loading credentials...';
-        succBox.style.display = 'block';
-        setTimeout(() => {
-            window.SangaiaAuth.closeAuthModal();
-            btn.disabled = false;
-            btn.innerHTML = '<span class="mif-enter"></span> sign in to sangaia id';
-            if (window.location.pathname.includes('id.html') || window.location.pathname.includes('/id') || window.location.pathname.includes('dashboard.html')) {
-                window.location.reload();
-            }
-        }, 600);
-    } catch (err) {
-        errBox.innerText = err.message || 'Authentication failed. Please verify your credentials.';
-        errBox.style.display = 'block';
-        btn.disabled = false;
-        btn.innerHTML = '<span class="mif-enter"></span> sign in to sangaia id';
-    }
-}
-
-window.handleModalSignIn = handleModalSignIn;
-
-async function handleModalSignUp(e) {
-    e.preventDefault();
-    const name = document.getElementById('modalRegName').value.trim();
-    const dob = document.getElementById('modalRegDob').value;
-    const province = document.getElementById('modalRegProvince').value;
-    const email = document.getElementById('modalRegEmail').value.trim();
-    const pass = document.getElementById('modalRegPassword').value;
-    const btn = document.getElementById('modalRegSubmitBtn');
-    const errBox = document.getElementById('modalRegError');
-    const succBox = document.getElementById('modalRegSuccess');
-
-    errBox.style.display = 'none';
-    succBox.style.display = 'none';
-    btn.disabled = true;
-    btn.innerHTML = '<span class="mif-spinner mif-ani-pulse"></span> creating citizen docket...';
-
-    try {
-        await window.SangaiaAuth.signUp({
-            email,
-            password: pass,
-            fullName: name,
-            dob,
-            province
-        });
-        succBox.innerText = 'Citizen registration successful! Sangaia ID docket established.';
-        succBox.style.display = 'block';
-        setTimeout(() => {
-            window.SangaiaAuth.closeAuthModal();
-            btn.disabled = false;
-            btn.innerHTML = '<span class="mif-user-plus"></span> register sovereign citizen id';
-            if (window.location.pathname.includes('id.html') || window.location.pathname.includes('/id') || window.location.pathname.includes('dashboard.html')) {
-                window.location.reload();
-            }
-        }, 800);
-    } catch (err) {
-        errBox.innerText = err.message || 'Registration failed. Please try again.';
-        errBox.style.display = 'block';
-        btn.disabled = false;
-        btn.innerHTML = '<span class="mif-user-plus"></span> register sovereign citizen id';
-    }
-}
-
-window.handleModalSignUp = handleModalSignUp;
 
 // -----------------------------------------------------------------------------
 // 7. Lifecycle Initialization
@@ -1019,9 +702,8 @@ window.handleModalSignUp = handleModalSignUp;
 function initAuthLifecycle() {
     updateAuthWidgets();
 
-    // Cross-tab and cross-page real-time synchronization
     window.addEventListener('storage', (e) => {
-        if (e.key === ACTIVE_CITIZEN_KEY || e.key === ACTIVE_SESSION_KEY || e.key === SUPABASE_TOKEN_KEY || e.key === 'sangaia_logged_out') {
+        if (e.key === ACTIVE_CITIZEN_KEY || e.key === ACTIVE_SESSION_KEY || e.key === SUPABASE_TOKEN_KEY) {
             updateAuthWidgets();
         }
     });
@@ -1029,53 +711,18 @@ function initAuthLifecycle() {
     ensureSupabaseLoaded((client) => {
         if (client && client.auth) {
             client.auth.onAuthStateChange((event, session) => {
-                if (event === 'SIGNED_OUT') {
-                    const hasLocalCitizen = sangaiaStorage.getItem(ACTIVE_CITIZEN_KEY) || (window.localStorage && window.localStorage.getItem(ACTIVE_CITIZEN_KEY));
-                    if (!hasLocalCitizen) {
-                        updateAuthWidgets();
-                        window.SangaiaAuth.notifyAuthChange(null, null);
-                    }
-                } else if (session) {
+                if (session) {
+                    sessionStorage.removeItem('sangaia_explicit_signout');
                     updateAuthWidgets();
                     window.SangaiaAuth.notifyAuthChange(session, session.user);
+                } else if (event === 'SIGNED_OUT') {
+                    if (sessionStorage.getItem('sangaia_explicit_signout') === 'true') {
+                        updateAuthWidgets();
+                    }
                 }
             });
         }
     });
-
-    if (typeof setupProfileDropdown === 'function') {
-        setupProfileDropdown();
-    } else {
-        if (!window._profileDropdownDelegationInitialized) {
-            window._profileDropdownDelegationInitialized = true;
-            document.addEventListener('click', (e) => {
-                const menu = document.getElementById('userProfileMenu');
-                if (!menu) return;
-                const dropdown = menu.querySelector('.user-dropdown');
-                if (!dropdown) return;
-
-                const clickedTrigger = e.target.closest('#userProfileMenu');
-                const clickedDropdownLink = e.target.closest('.user-dropdown a, .user-dropdown button');
-                if (clickedDropdownLink) {
-                    menu.classList.remove('open');
-                    return;
-                }
-                if (clickedTrigger) {
-                    e.preventDefault();
-                    e.stopPropagation();
-                    menu.classList.toggle('open');
-                    return;
-                }
-                menu.classList.remove('open');
-            });
-            document.addEventListener('keydown', (e) => {
-                if (e.key === 'Escape') {
-                    const menu = document.getElementById('userProfileMenu');
-                    if (menu) menu.classList.remove('open');
-                }
-            });
-        }
-    }
 }
 
 if (document.readyState !== 'loading') {

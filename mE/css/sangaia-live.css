@@ -5,7 +5,7 @@
    ========================================================================== */
 
 :root {
-  --primary: #0078d4;
+  --primary: #d97706;
   --bg: #f3f3f3;
   --card-bg: #ffffff;
   --border: #e1dfdd;
@@ -377,7 +377,7 @@ body.theme-propaganda .hero-header {
 .top-right {
   display: flex;
   align-items: center;
-  gap: 16px;
+  gap: 6px !important;
 }
 
 .search-box {
@@ -430,11 +430,7 @@ body.theme-propaganda .hero-header {
 }
 
 .top-icons {
-  display: flex;
-  align-items: center;
-  gap: 14px;
-  color: var(--hero-sub-color, #4b6b82);
-  font-size: 15px;
+  display: none !important;
 }
 
 .top-icons span {
@@ -785,7 +781,7 @@ section.card h4 {
   letter-spacing: 0.3px;
 }
 
-.badge-primary { background: #fef9c3; color: #854d0e; border: 1px solid #fde047; }
+.badge-primary { background: #e0f2fe; color: #0369a1; border: 1px solid #bae6fd; }
 .badge-success { background: #dcfce7; color: #15803d; border: 1px solid #bbf7d0; }
 .badge-warning { background: #fef3c7; color: #b45309; border: 1px solid #fde68a; }
 .badge-danger  { background: #fee2e2; color: #b91c1c; border: 1px solid #fecaca; }
@@ -1160,7 +1156,7 @@ section.card h4 {
 .ol-btn-primary { background: var(--primary); color: #fff; border-color: transparent; }
 .ol-btn-primary:hover { filter: brightness(0.92); color: #fff; }
 .ol-btn-sm { padding: 4px 8px; font-size: 11.5px; }
-.ol-badge-tag { display: inline-block; font-size: 11px; font-weight: 600; padding: 2px 7px; border-radius: 2px; text-transform: lowercase; letter-spacing: 0.3px; background: #fef9c3; color: #854d0e; border: 1px solid #fde047; }
+.ol-badge-tag { display: inline-block; font-size: 11px; font-weight: 600; padding: 2px 7px; border-radius: 2px; text-transform: lowercase; letter-spacing: 0.3px; background: #e0f2fe; color: #0369a1; border: 1px solid #bae6fd; }
 .ol-badge-success { background: #dcfce7; color: #15803d; border: 1px solid #bbf7d0; }
 .ol-grid-2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 12px; }
 .ol-grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px; }
