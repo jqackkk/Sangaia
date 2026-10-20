@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Department of Higher Education & Research Grants :: Ministry of Education :: Sangaia Live</title>
   <link href="https://cdn.metroui.org.ua/4.5.12/icons.css" rel="stylesheet">
+  <link rel="stylesheet" href="/css/sangaia-live.css?v=20261020_v1">
   <style>
 /* ==========================================================================
    SANGAIA LIVE MASTER DESIGN SYSTEM
@@ -28,7 +29,7 @@
 
   /* Windows Live / Metro Atmospheric Hero Defaults (Sky Blue -> White) */
   --hero-bg: #d7ecfa;
-  --hero-gradient: radial-gradient(ellipse at 42% 120%, rgba(255, 255, 255, 0.85), rgba(255, 255, 255, 0) 55%), linear-gradient(180deg, #b7dff5 0%, #9ed3f0 16%, #bfe4f7 40%, #ddf0fb 66%, #f2fafd 88%, #ffffff 100%);
+  --hero-gradient: radial-gradient(ellipse at 42% 120%, rgba(255, 255, 255, 0.75), rgba(255, 255, 255, 0) 55%), linear-gradient(180deg, #96cdef 0%, #b3def6 18%, #cbe8f8 38%, #e2f2fc 65%, #f4fafd 86%, #ffffff 100%);
   --hero-title-color: #14405c;
   --hero-sub-color: #3f6579;
   --hero-brand-color: #14405c;
@@ -42,7 +43,7 @@ body.theme-executive {
   --accent-btn: #1e3a8a;
   --accent-btn-hover: #172554;
   --hero-bg: #dbeafe;
-  --hero-gradient: radial-gradient(ellipse at 42% 120%, rgba(255, 255, 255, 0.85), rgba(255, 255, 255, 0) 55%), linear-gradient(180deg, #bfdbfe 0%, #93c5fd 16%, #c7d2fe 40%, #e0e7ff 66%, #f1f5f9 88%, #ffffff 100%);
+  --hero-gradient: radial-gradient(ellipse at 42% 120%, rgba(255, 255, 255, 0.75), rgba(255, 255, 255, 0) 55%), linear-gradient(180deg, #93b7eb 0%, #b2cef4 18%, #cbdffa 38%, #e2edfd 65%, #f3f7fe 86%, #ffffff 100%);
   --hero-title-color: #172554;
   --hero-sub-color: #334155;
   --hero-brand-color: #1e3a8a;
@@ -55,7 +56,7 @@ body.theme-treasury {
   --accent-btn: #0f766e;
   --accent-btn-hover: #115e59;
   --hero-bg: #ccfbf1;
-  --hero-gradient: radial-gradient(ellipse at 42% 120%, rgba(255, 255, 255, 0.85), rgba(255, 255, 255, 0) 55%), linear-gradient(180deg, #99f6e4 0%, #5eead4 16%, #a7f3d0 40%, #ccfbf1 66%, #f0fdfa 88%, #ffffff 100%);
+  --hero-gradient: radial-gradient(ellipse at 42% 120%, rgba(255, 255, 255, 0.75), rgba(255, 255, 255, 0) 55%), linear-gradient(180deg, #6ee7b7 0%, #99f6e4 18%, #bbf7ec 38%, #dcfbf5 65%, #f0fdfa 86%, #ffffff 100%);
   --hero-title-color: #115e59;
   --hero-sub-color: #285e61;
   --hero-brand-color: #0f766e;
@@ -68,7 +69,7 @@ body.theme-work {
   --accent-btn: #6b21a8;
   --accent-btn-hover: #581c87;
   --hero-bg: #f3e8ff;
-  --hero-gradient: radial-gradient(ellipse at 42% 120%, rgba(255, 255, 255, 0.85), rgba(255, 255, 255, 0) 55%), linear-gradient(180deg, #e9d5ff 0%, #d8b4fe 16%, #e9d5ff 40%, #f3e8ff 66%, #faf5ff 88%, #ffffff 100%);
+  --hero-gradient: radial-gradient(ellipse at 42% 120%, rgba(255, 255, 255, 0.75), rgba(255, 255, 255, 0) 55%), linear-gradient(180deg, #d8b4fe 0%, #e5ccff 18%, #eee0ff 38%, #f6efff 65%, #faf6ff 86%, #ffffff 100%);
   --hero-title-color: #581c87;
   --hero-sub-color: #6b21a8;
   --hero-brand-color: #581c87;
@@ -81,7 +82,7 @@ body.theme-healthcare {
   --accent-btn: #b91c1c;
   --accent-btn-hover: #991b1b;
   --hero-bg: #ffe4e6;
-  --hero-gradient: radial-gradient(ellipse at 42% 120%, rgba(255, 255, 255, 0.85), rgba(255, 255, 255, 0) 55%), linear-gradient(180deg, #fecdd3 0%, #fda4af 16%, #fecdd3 40%, #ffe4e6 66%, #fff1f2 88%, #ffffff 100%);
+  --hero-gradient: radial-gradient(ellipse at 42% 120%, rgba(255, 255, 255, 0.75), rgba(255, 255, 255, 0) 55%), linear-gradient(180deg, #fda4af 0%, #fecdd3 18%, #fedfe3 38%, #ffeef0 65%, #fff7f8 86%, #ffffff 100%);
   --hero-title-color: #991b1b;
   --hero-sub-color: #881337;
   --hero-brand-color: #991b1b;
@@ -94,7 +95,7 @@ body.theme-education {
   --accent-btn: #0284c7;
   --accent-btn-hover: #0369a1;
   --hero-bg: #e0f2fe;
-  --hero-gradient: radial-gradient(ellipse at 42% 120%, rgba(255, 255, 255, 0.85), rgba(255, 255, 255, 0) 55%), linear-gradient(180deg, #bae6fd 0%, #7dd3fc 16%, #bae6fd 40%, #e0f2fe 66%, #f0f9ff 88%, #ffffff 100%);
+  --hero-gradient: radial-gradient(ellipse at 42% 120%, rgba(255, 255, 255, 0.75), rgba(255, 255, 255, 0) 55%), linear-gradient(180deg, #7dd3fc 0%, #a5e1fd 18%, #c5ecfe 38%, #e0f4fe 65%, #f1f9fe 86%, #ffffff 100%);
   --hero-title-color: #0369a1;
   --hero-sub-color: #0284c7;
   --hero-brand-color: #0369a1;
@@ -107,7 +108,7 @@ body.theme-domestic {
   --accent-btn: #334155;
   --accent-btn-hover: #0f172a;
   --hero-bg: #e2e8f0;
-  --hero-gradient: radial-gradient(ellipse at 42% 120%, rgba(255, 255, 255, 0.85), rgba(255, 255, 255, 0) 55%), linear-gradient(180deg, #cbd5e1 0%, #94a3b8 16%, #cbd5e1 40%, #e2e8f0 66%, #f1f5f9 88%, #ffffff 100%);
+  --hero-gradient: radial-gradient(ellipse at 42% 120%, rgba(255, 255, 255, 0.75), rgba(255, 255, 255, 0) 55%), linear-gradient(180deg, #94a3b8 0%, #b6c2d1 18%, #cbd5e1 38%, #e2e8f0 65%, #f1f5f9 86%, #ffffff 100%);
   --hero-title-color: #0f172a;
   --hero-sub-color: #334155;
   --hero-brand-color: #1e293b;
@@ -120,7 +121,7 @@ body.theme-external {
   --accent-btn: #db2777;
   --accent-btn-hover: #be185d;
   --hero-bg: #fce7f3;
-  --hero-gradient: radial-gradient(ellipse at 42% 120%, rgba(255, 255, 255, 0.85), rgba(255, 255, 255, 0) 55%), linear-gradient(180deg, #fbcfe8 0%, #f472b6 16%, #fbcfe8 40%, #fce7f3 66%, #fdf2f8 88%, #ffffff 100%);
+  --hero-gradient: radial-gradient(ellipse at 42% 120%, rgba(255, 255, 255, 0.75), rgba(255, 255, 255, 0) 55%), linear-gradient(180deg, #f472b6 0%, #f9a0ce 18%, #fbcfe8 38%, #fce4f2 65%, #fdf2f8 86%, #ffffff 100%);
   --hero-title-color: #831843;
   --hero-sub-color: #9d174d;
   --hero-brand-color: #9d174d;
@@ -133,7 +134,7 @@ body.theme-environment {
   --accent-btn: #15803d;
   --accent-btn-hover: #166534;
   --hero-bg: #dcfce7;
-  --hero-gradient: radial-gradient(ellipse at 42% 120%, rgba(255, 255, 255, 0.85), rgba(255, 255, 255, 0) 55%), linear-gradient(180deg, #bbf7d0 0%, #86efac 16%, #bbf7d0 40%, #dcfce7 66%, #f0fdf4 88%, #ffffff 100%);
+  --hero-gradient: radial-gradient(ellipse at 42% 120%, rgba(255, 255, 255, 0.75), rgba(255, 255, 255, 0) 55%), linear-gradient(180deg, #86efac 0%, #aaf2c3 18%, #c7f7d7 38%, #e1fbe9 65%, #f2fdf6 86%, #ffffff 100%);
   --hero-title-color: #14532d;
   --hero-sub-color: #15803d;
   --hero-brand-color: #14532d;
@@ -146,7 +147,7 @@ body.theme-propaganda {
   --accent-btn: #ea580c;
   --accent-btn-hover: #c2410c;
   --hero-bg: #ffedd5;
-  --hero-gradient: radial-gradient(ellipse at 42% 120%, rgba(255, 255, 255, 0.85), rgba(255, 255, 255, 0) 55%), linear-gradient(180deg, #fed7aa 0%, #fdba74 16%, #fed7aa 40%, #ffedd5 66%, #fff7ed 88%, #ffffff 100%);
+  --hero-gradient: radial-gradient(ellipse at 42% 120%, rgba(255, 255, 255, 0.75), rgba(255, 255, 255, 0) 55%), linear-gradient(180deg, #fdba74 0%, #fecd99 18%, #fedebb 38%, #ffeedd 65%, #fff7ef 86%, #ffffff 100%);
   --hero-title-color: #7c2d12;
   --hero-sub-color: #c2410c;
   --hero-brand-color: #7c2d12;
@@ -160,7 +161,7 @@ body.theme-default {
   --accent-btn: #6e8494;
   --accent-btn-hover: #5d707e;
   --hero-bg: #d7ecfa;
-  --hero-gradient: radial-gradient(ellipse at 42% 120%, rgba(255, 255, 255, 0.85), rgba(255, 255, 255, 0) 55%), linear-gradient(180deg, #b7dff5 0%, #9ed3f0 16%, #bfe4f7 40%, #ddf0fb 66%, #f2fafd 88%, #ffffff 100%);
+  --hero-gradient: radial-gradient(ellipse at 42% 120%, rgba(255, 255, 255, 0.75), rgba(255, 255, 255, 0) 55%), linear-gradient(180deg, #96cdef 0%, #b3def6 18%, #cbe8f8 38%, #e2f2fc 65%, #f4fafd 86%, #ffffff 100%);
   --hero-title-color: #14405c;
   --hero-sub-color: #3f6579;
   --hero-brand-color: #14405c;
@@ -248,12 +249,73 @@ a:hover {
 .hero-header {
   position: relative;
   background-color: var(--hero-bg, #d7ecfa);
-  background-image: var(--hero-gradient, linear-gradient(180deg, #b7dff5 0%, #9ed3f0 16%, #bfe4f7 40%, #ddf0fb 66%, #f2fafd 88%, #ffffff 100%));
+  background-image: var(--hero-gradient, linear-gradient(180deg, #96cdef 0%, #b3def6 18%, #cbe8f8 38%, #e2f2fc 65%, #f4fafd 86%, #ffffff 100%));
   background-repeat: no-repeat;
   background-position: top center;
   color: var(--text-main);
   padding: 16px 36px 24px 36px;
-  border-bottom: 1px solid var(--border);
+  border-bottom: none;
+}
+
+body.theme-federal .hero-header,
+body.theme-default .hero-header {
+  background-color: #d7ecfa;
+  background-image: radial-gradient(ellipse at 42% 120%, rgba(255, 255, 255, 0.75), rgba(255, 255, 255, 0) 55%),
+                    linear-gradient(180deg, #96cdef 0%, #b3def6 18%, #cbe8f8 38%, #e2f2fc 65%, #f4fafd 86%, #ffffff 100%);
+}
+
+body.theme-executive .hero-header {
+  background-color: #dbeafe;
+  background-image: radial-gradient(ellipse at 42% 120%, rgba(255, 255, 255, 0.75), rgba(255, 255, 255, 0) 55%),
+                    linear-gradient(180deg, #93b7eb 0%, #b2cef4 18%, #cbdffa 38%, #e2edfd 65%, #f3f7fe 86%, #ffffff 100%);
+}
+
+body.theme-treasury .hero-header {
+  background-color: #ccfbf1;
+  background-image: radial-gradient(ellipse at 42% 120%, rgba(255, 255, 255, 0.75), rgba(255, 255, 255, 0) 55%),
+                    linear-gradient(180deg, #6ee7b7 0%, #99f6e4 18%, #bbf7ec 38%, #dcfbf5 65%, #f0fdfa 86%, #ffffff 100%);
+}
+
+body.theme-work .hero-header {
+  background-color: #f3e8ff;
+  background-image: radial-gradient(ellipse at 42% 120%, rgba(255, 255, 255, 0.75), rgba(255, 255, 255, 0) 55%),
+                    linear-gradient(180deg, #d8b4fe 0%, #e5ccff 18%, #eee0ff 38%, #f6efff 65%, #faf6ff 86%, #ffffff 100%);
+}
+
+body.theme-healthcare .hero-header {
+  background-color: #ffe4e6;
+  background-image: radial-gradient(ellipse at 42% 120%, rgba(255, 255, 255, 0.75), rgba(255, 255, 255, 0) 55%),
+                    linear-gradient(180deg, #fda4af 0%, #fecdd3 18%, #fedfe3 38%, #ffeef0 65%, #fff7f8 86%, #ffffff 100%);
+}
+
+body.theme-education .hero-header {
+  background-color: #e0f2fe;
+  background-image: radial-gradient(ellipse at 42% 120%, rgba(255, 255, 255, 0.75), rgba(255, 255, 255, 0) 55%),
+                    linear-gradient(180deg, #7dd3fc 0%, #a5e1fd 18%, #c5ecfe 38%, #e0f4fe 65%, #f1f9fe 86%, #ffffff 100%);
+}
+
+body.theme-domestic .hero-header {
+  background-color: #e2e8f0;
+  background-image: radial-gradient(ellipse at 42% 120%, rgba(255, 255, 255, 0.75), rgba(255, 255, 255, 0) 55%),
+                    linear-gradient(180deg, #94a3b8 0%, #b6c2d1 18%, #cbd5e1 38%, #e2e8f0 65%, #f1f5f9 86%, #ffffff 100%);
+}
+
+body.theme-external .hero-header {
+  background-color: #fce7f3;
+  background-image: radial-gradient(ellipse at 42% 120%, rgba(255, 255, 255, 0.75), rgba(255, 255, 255, 0) 55%),
+                    linear-gradient(180deg, #f472b6 0%, #f9a0ce 18%, #fbcfe8 38%, #fce4f2 65%, #fdf2f8 86%, #ffffff 100%);
+}
+
+body.theme-environment .hero-header {
+  background-color: #dcfce7;
+  background-image: radial-gradient(ellipse at 42% 120%, rgba(255, 255, 255, 0.75), rgba(255, 255, 255, 0) 55%),
+                    linear-gradient(180deg, #86efac 0%, #aaf2c3 18%, #c7f7d7 38%, #e1fbe9 65%, #f2fdf6 86%, #ffffff 100%);
+}
+
+body.theme-propaganda .hero-header {
+  background-color: #ffedd5;
+  background-image: radial-gradient(ellipse at 42% 120%, rgba(255, 255, 255, 0.75), rgba(255, 255, 255, 0) 55%),
+                    linear-gradient(180deg, #fdba74 0%, #fecd99 18%, #fedebb 38%, #ffeedd 65%, #fff7ef 86%, #ffffff 100%);
 }
 
 .top-bar {
@@ -1147,7 +1209,6 @@ button,
 }
 
   </style>
-  <link rel="stylesheet" href="/css/sangaia-live.css?v=20261019_v5">
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   <script src="/auth.js" onerror="this.onerror=null;this.src='auth.js';" defer></script>
   <script src="/js/sangaia-live.js" defer></script>

@@ -159,10 +159,10 @@ def generate_page(
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>{title} :: Sangaia Live</title>
   <link href="https://cdn.metroui.org.ua/4.5.12/icons.css" rel="stylesheet">
+  <link rel="stylesheet" href="/css/sangaia-live.css?v=20261020_v1">
   <style>
 {current_css}
   </style>
-  <link rel="stylesheet" href="/css/sangaia-live.css?v=20261019_v5">
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   <script src="/auth.js" onerror="this.onerror=null;this.src='auth.js';" defer></script>
   <script src="/js/sangaia-live.js" defer></script>
