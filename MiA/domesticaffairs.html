@@ -1376,17 +1376,17 @@ button,
             <span>The Five Sovereign Provinces of Sangaia</span>
             <span class="ol-badge-tag ol-badge-success">Interstate Harmony Pact Active</span>
         </div>
-        <p class="ol-small">Each province exercises constitutional autonomy under republican principles while coordinating through the Federal Council of Governors.</p>
+        <p class="ol-small">Each province exercises constitutional autonomy under aeretocratic principles, administered by its District Director (the governor of each province) while coordinating through the Council of District Directors and the Body of Electives.</p>
         <table class="ol-table">
             <thead>
-                <tr><th>Province</th><th>Capital</th><th>Population</th><th>Major Economic Role</th><th>Provincial Governor</th></tr>
+                <tr><th>Province</th><th>Capital</th><th>Population</th><th>Major Economic Role</th><th>District Director</th></tr>
             </thead>
             <tbody>
-                <tr><td>New Jasper</td><td>Shesk</td><td>2,410,000</td><td>National Governance &amp; High Technology</td><td>Gov. Alistair Sterling</td></tr>
-                <tr><td>New Madison</td><td>Madison City</td><td>1,980,000</td><td>Agricultural Breadbasket &amp; Green Energy</td><td>Gov. Miriam Thorne</td></tr>
-                <tr><td>Liveland</td><td>Oaks</td><td>1,650,000</td><td>Maritime Logistics &amp; Fisheries</td><td>Gov. Jonas Vance</td></tr>
-                <tr><td>Sentinel</td><td>Sentinel Ridge</td><td>890,000</td><td>Geothermal Power &amp; Mineral Stewardship</td><td>Gov. Clara Lindqvist</td></tr>
-                <tr><td>Columbia</td><td>Columbia City</td><td>940,000</td><td>Aerospace, Cultural Arts &amp; Education</td><td>Gov. Derek Morales</td></tr>
+                <tr><td>New Jasper</td><td>Shesk</td><td>2,410,000</td><td>National Governance &amp; High Technology</td><td>District Director Alistair Sterling</td></tr>
+                <tr><td>New Madison</td><td>Madison City</td><td>1,980,000</td><td>Agricultural Breadbasket &amp; Green Energy</td><td>District Director Miriam Thorne</td></tr>
+                <tr><td>Liveland</td><td>Oaks</td><td>1,650,000</td><td>Maritime Logistics &amp; Fisheries</td><td>District Director Jonas Vance</td></tr>
+                <tr><td>Sentinel</td><td>Sentinel Ridge</td><td>890,000</td><td>Geothermal Power &amp; Mineral Stewardship</td><td>District Director Clara Lindqvist</td></tr>
+                <tr><td>Columbia</td><td>Columbia City</td><td>940,000</td><td>Aerospace, Cultural Arts &amp; Education</td><td>District Director Derek Morales</td></tr>
             </tbody>
         </table>
     </div>
@@ -1504,7 +1504,7 @@ button,
             <div class="modal-results-box" id="pactResults"></div>
             <div class="ol-modal-foot">
                 <button type="button" class="ol-btn" onclick="closeModal('pactModal')">Cancel</button>
-                <button type="button" class="ol-btn ol-btn-primary" onclick="submitPact()">Submit to Council of Governors</button>
+                <button type="button" class="ol-btn ol-btn-primary" onclick="submitPact()">Submit to Council of District Directors</button>
             </div>
         </div>
     </div>
@@ -1517,7 +1517,7 @@ button,
     function submitPact() {
         const res = document.getElementById('pactResults');
         const token = 'DOM-PACT-' + Math.floor(100000 + Math.random() * 900000);
-        res.innerHTML = `<strong>Petition Docketed:</strong> Tracking Token: <span style="font-family:monospace;">${token}</span>. Placed on Federal Council agenda.`;
+        res.innerHTML = `<strong>Petition Docketed:</strong> Tracking Token: <span style="font-family:monospace;">${token}</span>. Placed on Council of District Directors agenda.`;
         res.classList.add('active');
     }
     </script>
