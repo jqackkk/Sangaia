@@ -34,7 +34,7 @@ def render_sangaia_id_html(is_subdomain=False):
   <link href="https://cdn.metroui.org.ua/4.5.12/icons.css" rel="stylesheet">
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   <script src="/auth.js" onerror="this.onerror=null;this.src='auth.js';" defer></script>
-  <script src="/js/sangaia-live.js" defer></script>
+  <script src="/js/sangaia-live.js" onerror="this.onerror=null;this.src='js/sangaia-live.js';" defer></script>
   <style>
     :root {{
       --primary: #0078d4;
@@ -250,7 +250,8 @@ def render_sangaia_id_html(is_subdomain=False):
       transition: color 0.15s ease;
     }}
 
-    .user-profile-menu:hover {{
+    .user-profile-menu:hover,
+    .user-profile-menu.open {{
       color: var(--primary);
     }}
 
@@ -260,6 +261,12 @@ def render_sangaia_id_html(is_subdomain=False):
 
     .user-profile-menu .mif-arrow-drop-down {{
       color: #3f6579;
+      transition: transform 0.2s ease, color 0.15s ease;
+    }}
+
+    .user-profile-menu.open .mif-arrow-drop-down {{
+      transform: rotate(180deg);
+      color: var(--primary);
     }}
 
     .user-profile-menu img {{
@@ -286,12 +293,11 @@ def render_sangaia_id_html(is_subdomain=False):
       box-shadow: 0 4px 16px rgba(0, 0, 0, 0.18);
       border-radius: 2px;
       width: 210px;
-      z-index: 1000;
+      z-index: 10000;
       padding: 6px 0;
     }}
 
-    .user-profile-menu.open .user-dropdown,
-    .user-profile-menu:hover .user-dropdown {{
+    .user-profile-menu.open .user-dropdown {{
       display: block;
     }}
 

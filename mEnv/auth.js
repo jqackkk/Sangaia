@@ -330,6 +330,8 @@ window.SangaiaAuth = {
     },
 
     openAuthModal(initialTab = 'signin') {
+        const menu = document.getElementById('userProfileMenu');
+        if (menu) menu.classList.remove('open');
         let modal = document.getElementById('sangaiaAuthModal');
         if (!modal) {
             createAuthModalDOM();
@@ -369,13 +371,14 @@ async function updateAuthWidgets() {
 
     // 1. Update Modern One Live #userProfileMenu
     if (profileMenu) {
+        const isOpen = profileMenu.classList.contains('open');
         if (session && session.user) {
             const rawName = (citizen && citizen.full_name) || session.user.user_metadata?.full_name || session.user.email.split('@')[0];
             const name = rawName.toLowerCase();
             const citizenId = ((citizen && citizen.sangaia_id_number) || 'sg-2026-f1e8').toLowerCase();
             const initial = name.charAt(0).toUpperCase();
 
-            profileMenu.className = 'user-profile-menu authenticated';
+            profileMenu.className = 'user-profile-menu authenticated' + (isOpen ? ' open' : '');
             profileMenu.innerHTML = `
               <div style="width:28px; height:28px; border-radius:2px; background:var(--primary, #0078d4); color:#fff; display:flex; align-items:center; justify-content:center; font-weight:700; font-size:12px; border:1px solid rgba(255,255,255,0.7); flex-shrink:0;">
                 ${initial}
@@ -392,7 +395,7 @@ async function updateAuthWidgets() {
               </div>
             `;
         } else {
-            profileMenu.className = 'user-profile-menu unauthenticated';
+            profileMenu.className = 'user-profile-menu unauthenticated' + (isOpen ? ' open' : '');
             profileMenu.innerHTML = `
               <span class="mif-user" style="font-size:15px; color:var(--primary, #0078d4);"></span>
               <span>sign in</span>
@@ -639,7 +642,7 @@ window.handleModalSignUp = handleModalSignUp;
 // -----------------------------------------------------------------------------
 // 7. Lifecycle Initialization
 // -----------------------------------------------------------------------------
-document.addEventListener('DOMContentLoaded', () => {
+function initAuthLifecycle() {
     // 1. Initial auth check
     updateAuthWidgets();
 
@@ -657,20 +660,37 @@ document.addEventListener('DOMContentLoaded', () => {
     if (typeof setupProfileDropdown === 'function') {
         setupProfileDropdown();
     } else {
-        const menu = document.getElementById('userProfileMenu');
-        if (menu && !menu._profileMenuInitialized) {
-            menu._profileMenuInitialized = true;
-            menu.addEventListener('click', (e) => {
-                if (e.target.closest('.user-dropdown a, .user-dropdown button')) return;
-                e.preventDefault();
-                e.stopPropagation();
-                menu.classList.toggle('open');
-            });
+        if (!window._profileDropdownDelegationInitialized) {
+            window._profileDropdownDelegationInitialized = true;
             document.addEventListener('click', (e) => {
-                if (!menu.contains(e.target)) {
+                const menu = document.getElementById('userProfileMenu');
+                if (!menu) return;
+                const clickedTrigger = e.target.closest('#userProfileMenu');
+                const clickedDropdownLink = e.target.closest('.user-dropdown a, .user-dropdown button');
+                if (clickedDropdownLink) {
                     menu.classList.remove('open');
+                    return;
+                }
+                if (clickedTrigger) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    menu.classList.toggle('open');
+                    return;
+                }
+                menu.classList.remove('open');
+            });
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape') {
+                    const menu = document.getElementById('userProfileMenu');
+                    if (menu) menu.classList.remove('open');
                 }
             });
         }
     }
-});
+}
+
+if (document.readyState !== 'loading') {
+    initAuthLifecycle();
+} else {
+    document.addEventListener('DOMContentLoaded', initAuthLifecycle);
+}

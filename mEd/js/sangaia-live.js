@@ -4,8 +4,8 @@
  * interactive statutory modals, and sovereign calculators.
  */
 
-document.addEventListener('DOMContentLoaded', () => {
-    // 1. User Profile Dropdown Menu Toggle (de-duplicated across auth.js & sangaia-live.js)
+function initSangaiaLive() {
+    // 1. User Profile Dropdown Menu Setup
     setupProfileDropdown();
 
     // 2. Generic Modal System Setup
@@ -19,27 +19,48 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // 5. Dynamic Variable-Width Search Box
     setupDynamicSearchWidth();
-});
+}
+
+if (document.readyState !== 'loading') {
+    initSangaiaLive();
+} else {
+    document.addEventListener('DOMContentLoaded', initSangaiaLive);
+}
 
 // User Profile Dropdown Menu Setup (guarded against duplicate event listener registration)
 function setupProfileDropdown() {
-    const menu = document.getElementById('userProfileMenu');
-    if (!menu || menu._profileMenuInitialized) return;
-    menu._profileMenuInitialized = true;
-
-    menu.addEventListener('click', (e) => {
-        // If clicking on an anchor/button inside the dropdown, allow navigation / handler to fire
-        if (e.target.closest('.user-dropdown a, .user-dropdown button')) {
-            return;
-        }
-        e.preventDefault();
-        e.stopPropagation();
-        menu.classList.toggle('open');
-    });
+    if (window._profileDropdownDelegationInitialized) return;
+    window._profileDropdownDelegationInitialized = true;
 
     document.addEventListener('click', (e) => {
-        if (!menu.contains(e.target)) {
+        const menu = document.getElementById('userProfileMenu');
+        if (!menu) return;
+
+        const clickedTrigger = e.target.closest('#userProfileMenu');
+        const clickedDropdownLink = e.target.closest('.user-dropdown a, .user-dropdown button');
+
+        if (clickedDropdownLink) {
+            // User clicked inside dropdown: allow navigation / handler to fire, then close
             menu.classList.remove('open');
+            return;
+        }
+
+        if (clickedTrigger) {
+            // User clicked trigger (avatar / sign in button)
+            e.preventDefault();
+            e.stopPropagation();
+            menu.classList.toggle('open');
+            return;
+        }
+
+        // Clicked outside
+        menu.classList.remove('open');
+    });
+
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') {
+            const menu = document.getElementById('userProfileMenu');
+            if (menu) menu.classList.remove('open');
         }
     });
 }

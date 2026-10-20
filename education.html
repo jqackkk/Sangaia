@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Ministry of Education :: Sangaia Live</title>
   <link href="https://cdn.metroui.org.ua/4.5.12/icons.css" rel="stylesheet">
-  <link rel="stylesheet" href="/css/sangaia-live.css?v=20261020_v1">
+  <link rel="stylesheet" href="/css/sangaia-live.css?v=20261020_v2">
   <style>
 /* ==========================================================================
    SANGAIA LIVE MASTER DESIGN SYSTEM
@@ -482,7 +482,8 @@ body.theme-propaganda .hero-header {
   transition: color 0.15s ease;
 }
 
-.user-profile-menu:hover {
+.user-profile-menu:hover,
+.user-profile-menu.open {
   color: var(--primary);
 }
 
@@ -493,6 +494,12 @@ body.theme-propaganda .hero-header {
 .user-profile-menu .mif-arrow-drop-down {
   color: var(--hero-sub-color, #4b6b82);
   font-size: 14px;
+  transition: transform 0.2s ease, color 0.15s ease;
+}
+
+.user-profile-menu.open .mif-arrow-drop-down {
+  transform: rotate(180deg);
+  color: var(--primary);
 }
 
 .user-profile-menu img {
@@ -519,12 +526,11 @@ body.theme-propaganda .hero-header {
   box-shadow: 0 4px 16px rgba(0,0,0,0.18);
   border-radius: 2px;
   width: 210px;
-  z-index: 1000;
+  z-index: 10000;
   padding: 6px 0;
 }
 
-.user-profile-menu.open .user-dropdown,
-.user-profile-menu:hover .user-dropdown {
+.user-profile-menu.open .user-dropdown {
   display: block;
 }
 
@@ -1240,7 +1246,7 @@ button,
   </style>
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   <script src="/auth.js" onerror="this.onerror=null;this.src='auth.js';" defer></script>
-  <script src="/js/sangaia-live.js" defer></script>
+  <script src="/js/sangaia-live.js" onerror="this.onerror=null;this.src='js/sangaia-live.js';" defer></script>
 </head>
 <body class="theme-education">
 
