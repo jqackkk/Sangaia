@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Metro ID Card Studio</title>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <style>
+    :root {
+      --accent: #0078d7;
+      --bg-dark: #111111;
+      --panel-bg: #1f1f1f;
+      --input-bg: #2d2d2d;
+      --text-main: #ffffff;
+      --text-dim: #a0a0a0;
+      --border-color: #383838;
+      --card-ratio: 1.586;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      border-radius: 0 !important;
+      font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
+    }
+
+    body {
+      background-color: var(--bg-dark);
+      color: var(--text-main);
+      padding: 2rem;
+      min-height: 100vh;
+    }
+
+    header {
+      margin-bottom: 2rem;
+      border-left: 6px solid var(--accent);
+      padding-left: 1rem;
+    }
+
+    header h1 {
+      font-size: 2.2rem;
+      font-weight: 300;
+      letter-spacing: -0.5px;
+      text-transform: lowercase;
+    }
+
+    .app-container {
+      display: grid;
+      grid-template-columns: 1fr 1.3fr;
+      gap: 2.5rem;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    @media (max-width: 1050px) {
+      .app-container {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .metro-panel {
+      background: var(--panel-bg);
+      border: 1px solid var(--border-color);
+      padding: 1.5rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .metro-panel h2 {
+      font-size: 1.1rem;
+      font-weight: 600;
+      margin-bottom: 1rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--accent);
+    }
+
+    .form-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1rem;
+    }
+
+    .full-width {
+      grid-column: span 2;
+    }
+
+    label {
+      display: block;
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: var(--text-dim);
+      margin-bottom: 0.35rem;
+    }
+
+    input, select {
+      width: 100%;
+      background: var(--input-bg);
+      border: 1px solid var(--border-color);
+      color: #fff;
+      padding: 0.65rem;
+      font-size: 0.9rem;
+      outline: none;
+      transition: border-color 0.15s ease;
+    }
+
+    input:focus, select:focus {
+      border-color: var(--accent);
+    }
+
+    .btn-group {
+      display: flex;
+      gap: 0.75rem;
+      margin-top: 1.25rem;
+    }
+
+    .metro-btn {
+      background: var(--input-bg);
+      border: 1px solid var(--border-color);
+      color: #fff;
+      padding: 0.75rem 1.25rem;
+      cursor: pointer;
+      font-weight: 600;
+      text-transform: uppercase;
+      font-size: 0.8rem;
+      letter-spacing: 0.5px;
+      transition: all 0.15s ease;
+    }
+
+    .metro-btn:hover {
+      background: #3a3a3a;
+      border-color: #666;
+    }
+
+    .metro-btn.primary {
+      background: var(--accent);
+      border-color: var(--accent);
+    }
+
+    .metro-btn.primary:hover {
+      filter: brightness(1.15);
+    }
+
+    /* CARD PREVIEW WRAPPER */
+    .preview-sticky {
+      position: sticky;
+      top: 2rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .card-scene {
+      width: 100%;
+      max-width: 580px;
+      aspect-ratio: 85.6 / 53.98;
+      perspective: 1000px;
+      margin-bottom: 1.5rem;
+    }
+
+    .id-card {
+      width: 100%;
+      height: 100%;
+      position: relative;
+      background: #ffffff;
+      color: #000000;
+      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.6);
+      display: grid;
+      grid-template-columns: 185px 1fr 42px;
+      padding: 1.4rem 1rem 1.2rem 1.4rem;
+      gap: 1.2rem;
+      overflow: hidden;
+      user-select: none;
+    }
+
+    /* CARD LEFT: PHOTO */
+    .card-photo-wrapper {
+      width: 100%;
+      height: 100%;
+      background: #e0e0e0;
+      border: 1px solid #d0d0d0;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .card-photo {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    /* CARD CENTER: DATA */
+    .card-data-col {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      overflow: hidden;
+    }
+
+    .card-name {
+      font-size: 1.85rem;
+      font-weight: 300;
+      line-height: 1.05;
+      letter-spacing: -0.5px;
+      color: #000;
+      text-transform: lowercase;
+      margin-top: 0.2rem;
+      margin-bottom: 0.8rem;
+    }
+
+    .card-meta-grid {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      row-gap: 0.28rem;
+      column-gap: 1.2rem;
+      font-size: 0.82rem;
+      color: #111;
+      line-height: 1.2;
+    }
+
+    .card-meta-grid .status-col {
+      text-align: right;
+      font-weight: 400;
+      letter-spacing: 0.5px;
+    }
+
+    .meta-spacer {
+      height: 0.45rem;
+      grid-column: span 2;
+    }
+
+    .card-footer-notice {
+      font-size: 0.78rem;
+      font-weight: 300;
+      color: #222;
+      text-align: right;
+      margin-top: auto;
+      padding-top: 0.4rem;
+    }
+
+    /* CARD RIGHT: VERTICAL BARCODE */
+    .card-barcode-col {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .vertical-barcode {
+      width: 28px;
+      height: 100%;
+      background-repeat: repeat-y;
+      background-size: 100% 12px;
+      background-image: linear-gradient(
+        to bottom,
+        #000 0px, #000 2px,
+        transparent 2px, transparent 3px,
+        #000 3px, #000 6px,
+        transparent 6px, transparent 7px,
+        #000 7px, #000 8px,
+        transparent 8px, transparent 10px,
+        #000 10px, #000 12px
+      );
+      border-left: 1px solid #eee;
+    }
+
+    /* STATUS TOAST */
+    #statusToast {
+      margin-top: 1rem;
+      padding: 0.75rem 1rem;
+      font-size: 0.85rem;
+      display: none;
+    }
+
+    .toast-success { background: #107c10; color: #fff; }
+    .toast-error { background: #a80000; color: #fff; }
+
+    @media print {
+      body { background: white; padding: 0; }
+      .metro-panel, header, .btn-group, #statusToast { display: none !important; }
+      .app-container { display: block; }
+      .preview-sticky { position: static; }
+      .card-scene { max-width: 85.6mm; aspect-ratio: 85.6/53.98; }
+      .id-card { box-shadow: none; border: 1px solid #ccc; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>identity management studio</h1>
+  </header>
+
+  <div class="app-container">
+    <!-- LEFT COLUMN: CONTROLS & CONFIG -->
+    <div class="controls-col">
+      <!-- SUPABASE CONFIG -->
+      <section class="metro-panel">
+        <h2>Supabase Connection</h2>
+        <div class="form-grid">
+          <div class="full-width">
+            <label>Project URL</label>
+            <input type="text" id="sbUrl" value="https://qcgdjdnihwchjargpfcc.supabase.co">
+          </div>
+          <div class="full-width">
+            <label>Public Anon Key</label>
+            <input type="password" id="sbKey" value="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InFjZ2RqZG5paHdjaGphcmdwZmNjIiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTE0NzkxNTIsImV4cCI6MjEwNzA1NTE1Mn0.AfstClw4oXLj7stYL1bfyKSCMFBHZQBVBQACTT4dNLM">
+          </div>
+          <div>
+            <label>Table Name</label>
+            <input type="text" id="sbTable" value="id_cards">
+          </div>
+          <div style="display:flex; align-items:flex-end;">
+            <button class="metro-btn" style="width:100%" id="btnSaveConfig">Save Credentials</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- CARD DATA FIELDS -->
+      <section class="metro-panel">
+        <h2>Card Attributes</h2>
+        <div class="form-grid">
+          <div class="full-width">
+            <label>Full Name (lowercase)</label>
+            <input type="text" id="inName" value="jack davenport">
+          </div>
+          <div class="full-width">
+            <label>Photo URL / Path</label>
+            <input type="text" id="inPhoto" placeholder="https://example.com/photo.jpg">
+          </div>
+          <div>
+            <label>Date of Birth</label>
+            <input type="text" id="inDob" value="06/22/2010">
+          </div>
+          <div>
+            <label>Status</label>
+            <input type="text" id="inSta" value="ACTIVE">
+          </div>
+          <div>
+            <label>Sex</label>
+            <input type="text" id="inSex" value="M">
+          </div>
+          <div>
+            <label>ID Identifier</label>
+            <input type="text" id="inId" value="SGN-09FDA816">
+          </div>
+          <div>
+            <label>Hair (Hr)</label>
+            <input type="text" id="inHr" value="Bld">
+          </div>
+          <div>
+            <label>Height (Ht)</label>
+            <input type="text" id="inHt" value="5'8\"">
+          </div>
+          <div>
+            <label>Province / Region (PR)</label>
+            <input type="text" id="inPr" value="SHESK">
+          </div>
+          <div>
+            <label>Languages (LNG)</label>
+            <input type="text" id="inLng" value="SGN, ENG, RUS, CHN, GER">
+          </div>
+          <div class="full-width">
+            <label>Notice Footer</label>
+            <input type="text" id="inNotice" value="not twenty-one until 06/22/2031">
+          </div>
+        </div>
+
+        <div class="btn-group">
+          <button class="metro-btn primary" id="btnPushSupabase">Insert Into Supabase</button>
+          <button class="metro-btn" onclick="window.print()">Print Card</button>
+        </div>
+        <div id="statusToast"></div>
+      </section>
+    </div>
+
+    <!-- RIGHT COLUMN: LIVE BADGE PREVIEW -->
+    <div class="preview-col">
+      <div class="preview-sticky">
+        <div class="card-scene">
+          <div class="id-card" id="cardElement">
+            <!-- PHOTO LEFT -->
+            <div class="card-photo-wrapper">
+              <img id="cardPhotoImg" class="card-photo" src="" alt="Badge Portrait" style="display:none;">
+              <span id="photoFallback" style="font-size:0.75rem; color:#888;">NO PHOTO</span>
+            </div>
+
+            <!-- METADATA CENTER -->
+            <div class="card-data-col">
+              <div class="card-name" id="cardDispName">jack davenport</div>
+              
+              <div class="card-meta-grid">
+                <div>DOB: <span id="cardDispDob">06/22/2010</span></div>
+                <div class="status-col">STA: <span id="cardDispSta">ACTIVE</span></div>
+
+                <div class="full-width">SEX: <span id="cardDispSex">M</span></div>
+                <div class="full-width">ID: <span id="cardDispId">SGN-09FDA816</span></div>
+
+                <div class="meta-spacer"></div>
+
+                <div class="full-width">Hr: <span id="cardDispHr">Bld</span></div>
+                <div class="full-width">Ht: <span id="cardDispHt">5'8\"</span></div>
+
+                <div class="meta-spacer"></div>
+
+                <div class="full-width">PR: <span id="cardDispPr">SHESK</span></div>
+                <div class="full-width">LNG: <span id="cardDispLng">SGN, ENG, RUS, CHN, GER</span></div>
+              </div>
+
+              <div class="card-footer-notice" id="cardDispNotice">not twenty-one until 06/22/2031</div>
+            </div>
+
+            <!-- HIGH-DENSITY VERTICAL BARCODE RIGHT -->
+            <div class="card-barcode-col">
+              <div class="vertical-barcode"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // State & DOM cache
+    const els = {
+      sbUrl: document.getElementById('sbUrl'),
+      sbKey: document.getElementById('sbKey'),
+      sbTable: document.getElementById('sbTable'),
+      btnSaveConfig: document.getElementById('btnSaveConfig'),
+      btnPushSupabase: document.getElementById('btnPushSupabase'),
+      statusToast: document.getElementById('statusToast'),
+
+      // Inputs
+      inName: document.getElementById('inName'),
+      inPhoto: document.getElementById('inPhoto'),
+      inDob: document.getElementById('inDob'),
+      inSta: document.getElementById('inSta'),
+      inSex: document.getElementById('inSex'),
+      inId: document.getElementById('inId'),
+      inHr: document.getElementById('inHr'),
+      inHt: document.getElementById('inHt'),
+      inPr: document.getElementById('inPr'),
+      inLng: document.getElementById('inLng'),
+      inNotice: document.getElementById('inNotice'),
+
+      // Card displays
+      cardDispName: document.getElementById('cardDispName'),
+      cardDispDob: document.getElementById('cardDispDob'),
+      cardDispSta: document.getElementById('cardDispSta'),
+      cardDispSex: document.getElementById('cardDispSex'),
+      cardDispId: document.getElementById('cardDispId'),
+      cardDispHr: document.getElementById('cardDispHr'),
+      cardDispHt: document.getElementById('cardDispHt'),
+      cardDispPr: document.getElementById('cardDispPr'),
+      cardDispLng: document.getElementById('cardDispLng'),
+      cardDispNotice: document.getElementById('cardDispNotice'),
+      cardPhotoImg: document.getElementById('cardPhotoImg'),
+      photoFallback: document.getElementById('photoFallback')
+    };
+
+    // Load persisted Supabase credentials
+    els.sbUrl.value = localStorage.getItem('metro_sb_url') || '';
+    els.sbKey.value = localStorage.getItem('metro_sb_key') || '';
+    els.sbTable.value = localStorage.getItem('metro_sb_table') || 'id_cards';
+
+    function showToast(msg, isSuccess = true) {
+      els.statusToast.textContent = msg;
+      els.statusToast.className = isSuccess ? 'toast-success' : 'toast-error';
+      els.statusToast.style.display = 'block';
+      setTimeout(() => { els.statusToast.style.display = 'none'; }, 4500);
+    }
+
+    // Save Supabase credentials to localStorage
+    els.btnSaveConfig.addEventListener('click', () => {
+      localStorage.setItem('metro_sb_url', els.sbUrl.value.trim());
+      localStorage.setItem('metro_sb_key', els.sbKey.value.trim());
+      localStorage.setItem('metro_sb_table', els.sbTable.value.trim());
+      showToast('Supabase settings saved to local storage.');
+    });
+
+    // Realtime preview binding
+    function syncPreview() {
+      els.cardDispName.textContent = els.inName.value;
+      els.cardDispDob.textContent = els.inDob.value;
+      els.cardDispSta.textContent = els.inSta.value;
+      els.cardDispSex.textContent = els.inSex.value;
+      els.cardDispId.textContent = els.inId.value;
+      els.cardDispHr.textContent = els.inHr.value;
+      els.cardDispHt.textContent = els.inHt.value;
+      els.cardDispPr.textContent = els.inPr.value;
+      els.cardDispLng.textContent = els.inLng.value;
+      els.cardDispNotice.textContent = els.inNotice.value;
+
+      const photoUrl = els.inPhoto.value.trim();
+      if (photoUrl) {
+        els.cardPhotoImg.src = photoUrl;
+        els.cardPhotoImg.style.display = 'block';
+        els.photoFallback.style.display = 'none';
+      } else {
+        els.cardPhotoImg.style.display = 'none';
+        els.photoFallback.style.display = 'block';
+      }
+    }
+
+    [
+      els.inName, els.inPhoto, els.inDob, els.inSta,
+      els.inSex, els.inId, els.inHr, els.inHt,
+      els.inPr, els.inLng, els.inNotice
+    ].forEach(input => input.addEventListener('input', syncPreview));
+
+    // Supabase Insert Operation
+    els.btnPushSupabase.addEventListener('click', async () => {
+      const url = els.sbUrl.value.trim();
+      const key = els.sbKey.value.trim();
+      const tableName = els.sbTable.value.trim() || 'id_cards';
+
+      if (!url || !key) {
+        showToast('Please provide your Supabase URL and Key above.', false);
+        return;
+      }
+
+      try {
+        const supabase = window.supabase.createClient(url, key);
+
+        const payload = {
+          full_name: els.inName.value.trim(),
+          dob: els.inDob.value.trim(),
+          sex: els.inSex.value.trim(),
+          id_number: els.inId.value.trim(),
+          status: els.inSta.value.trim(),
+          hair: els.inHr.value.trim(),
+          height: els.inHt.value.trim(),
+          province: els.inPr.value.trim(),
+          languages: els.inLng.value.trim(),
+          under21_notice: els.inNotice.value.trim(),
+          photo_url: els.inPhoto.value.trim()
+        };
+
+        const { data, error } = await supabase
+          .from(tableName)
+          .insert([payload])
+          .select();
+
+        if (error) throw error;
+        showToast(`Record inserted successfully! ID: ${data[0]?.id || 'OK'}`);
+      } catch (err) {
+        showToast(`Insert failed: ${err.message}`, false);
+      }
+    });
+
+    // Initial render
+    syncPreview();
+  </script>
+</body>
+</html>
+
