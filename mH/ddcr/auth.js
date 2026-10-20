@@ -191,11 +191,11 @@ function getSupabaseStoredSession() {
     return null;
 }
 
-const DEFAULT_ACTIVE_CITIZEN = {
-    id: 'sg_usr_executive_f1e8',
-    sangaia_id_number: 'SG-2026-F1E8',
-    full_name: 'jack davenport',
-    date_of_birth: '1998-05-14',
+const SAMPLE_CITIZEN = {
+    id: 'sg_usr_sample_01',
+    sangaia_id_number: 'SNG-7B4F92A1',
+    full_name: 'john doe',
+    date_of_birth: '1995-04-12',
     issue_date: '2024-01-01',
     account_status: 'Active',
     phone_number: '+1 (555) 019-2834',
@@ -247,22 +247,28 @@ window.SangaiaAuth = {
             }
         } catch (e) {}
 
-        // 4. If tab was not explicitly signed out in this session, return default session
-        if (sessionStorage.getItem('sangaia_explicit_signout') !== 'true') {
-            return {
-                access_token: 'sg_live_default_token',
-                token_type: 'bearer',
-                user: {
-                    id: DEFAULT_ACTIVE_CITIZEN.id,
-                    email: 'jackwd2020@gmail.com',
-                    user_metadata: {
-                        full_name: DEFAULT_ACTIVE_CITIZEN.full_name,
-                        territory: DEFAULT_ACTIVE_CITIZEN.territory,
-                        sangaia_id_number: DEFAULT_ACTIVE_CITIZEN.sangaia_id_number
-                    }
+        // 4. Check active citizen
+        try {
+            const rawCit = sangaiaStorage.getItem(ACTIVE_CITIZEN_KEY);
+            if (rawCit) {
+                const cit = JSON.parse(rawCit);
+                if (cit && cit.full_name) {
+                    return {
+                        access_token: 'sg_bearer_active',
+                        token_type: 'bearer',
+                        user: {
+                            id: cit.id || 'sg_usr_active',
+                            email: cit.email || 'citizen@sangaia.org',
+                            user_metadata: {
+                                full_name: cit.full_name,
+                                territory: cit.territory || cit.province || 'New Jasper (Capital Shesk)',
+                                sangaia_id_number: cit.sangaia_id_number
+                            }
+                        }
+                    };
                 }
-            };
-        }
+            }
+        } catch (e) {}
 
         return null;
     },
@@ -294,7 +300,7 @@ window.SangaiaAuth = {
             }
         } catch (e) {}
 
-        return DEFAULT_ACTIVE_CITIZEN;
+        return null;
     },
 
     // Query all related dockets from Supabase
@@ -333,21 +339,24 @@ window.SangaiaAuth = {
             }
         }
 
-        // If records are empty, provide standard statutory defaults
+        if (!citizen) {
+            citizen = { ...SAMPLE_CITIZEN, id: userId };
+        }
+
         if (!idCard) {
             idCard = {
                 citizen_id: citizen.id,
                 full_name: citizen.full_name,
-                dob: citizen.date_of_birth || DEFAULT_ACTIVE_CITIZEN.date_of_birth,
-                sex: citizen.sex || DEFAULT_ACTIVE_CITIZEN.sex,
-                id_number: citizen.sangaia_id_number || DEFAULT_ACTIVE_CITIZEN.sangaia_id_number,
+                dob: citizen.date_of_birth || SAMPLE_CITIZEN.date_of_birth,
+                sex: citizen.sex || SAMPLE_CITIZEN.sex,
+                id_number: citizen.sangaia_id_number || SAMPLE_CITIZEN.sangaia_id_number,
                 status: citizen.account_status || 'Active',
-                hair: citizen.hair || DEFAULT_ACTIVE_CITIZEN.hair,
-                height: citizen.height || DEFAULT_ACTIVE_CITIZEN.height,
-                province: citizen.territory || citizen.province || DEFAULT_ACTIVE_CITIZEN.province,
-                languages: citizen.languages || DEFAULT_ACTIVE_CITIZEN.languages,
+                hair: citizen.hair || SAMPLE_CITIZEN.hair,
+                height: citizen.height || SAMPLE_CITIZEN.height,
+                province: citizen.territory || citizen.province || SAMPLE_CITIZEN.province,
+                languages: citizen.languages || SAMPLE_CITIZEN.languages,
                 under21_notice: citizen.under21_notice || false,
-                photo_url: citizen.photo_url || DEFAULT_ACTIVE_CITIZEN.photo_url
+                photo_url: citizen.photo_url || SAMPLE_CITIZEN.photo_url
             };
         }
 
@@ -390,7 +399,7 @@ window.SangaiaAuth = {
         if (!citizenHistory.length) {
             citizenHistory = [
                 { id: 'his-01', change_type: 'Biometric Credential Issued', old_value: 'Unregistered', new_value: 'Statutory Active Citizen', notes: 'Naturalization oath administered and sovereign identity credential activated.', changed_at: '2024-01-01T09:00:00Z' },
-                { id: 'his-02', change_type: 'Address Verification', old_value: 'Sector 2, Shesk', new_value: citizen.physical_address || DEFAULT_ACTIVE_CITIZEN.physical_address, notes: 'Residential registry updated with Provincial Civil Registrar.', changed_at: '2025-03-15T14:30:00Z' }
+                { id: 'his-02', change_type: 'Address Verification', old_value: 'Sector 2, Shesk', new_value: citizen.physical_address || SAMPLE_CITIZEN.physical_address, notes: 'Residential registry updated with Provincial Civil Registrar.', changed_at: '2025-03-15T14:30:00Z' }
             ];
         }
 
@@ -410,7 +419,6 @@ window.SangaiaAuth = {
         if (!email || !email.trim()) throw new Error("Citizen email is required.");
         if (!password) throw new Error("Password is required.");
 
-        sessionStorage.removeItem('sangaia_explicit_signout');
         const cleanEmail = email.trim().toLowerCase();
         const client = initClient();
         let remoteSession = null;
@@ -443,9 +451,9 @@ window.SangaiaAuth = {
 
         citizen = {
             id: userId,
-            sangaia_id_number: 'SG-2026-' + (userId.length > 8 ? userId.substring(0, 4).toUpperCase() : '7B4F'),
+            sangaia_id_number: 'SNG-' + (userId.length > 8 ? userId.replace(/-/g, '').substring(0, 8).toUpperCase() : '7B4F92A1'),
             full_name: cleanName,
-            date_of_birth: '1998-05-14',
+            date_of_birth: '1995-04-12',
             issue_date: new Date().toISOString().split('T')[0],
             account_status: 'Active',
             phone_number: '+1 (555) 019-2834',
@@ -494,7 +502,6 @@ window.SangaiaAuth = {
         if (!email || !email.trim()) throw new Error("Email is required.");
         if (!password) throw new Error("Password is required.");
 
-        sessionStorage.removeItem('sangaia_explicit_signout');
         const cleanEmail = email.trim().toLowerCase();
         const client = initClient();
         let remoteUserId = null;
@@ -521,14 +528,14 @@ window.SangaiaAuth = {
             }
         }
 
-        const citizenId = 'SG-2026-' + Math.floor(0x1000 + Math.random() * 0x8fff).toString(16).toUpperCase();
+        const citizenId = 'SNG-' + Math.floor(0x10000000 + Math.random() * 0x8fffffff).toString(16).toUpperCase();
         const userId = remoteUserId || ('sg_usr_' + Date.now().toString(36));
 
         const citizenRecord = {
             id: userId,
             sangaia_id_number: citizenId,
             full_name: fullName.toLowerCase(),
-            date_of_birth: dob || '1998-05-14',
+            date_of_birth: dob || '1995-04-12',
             issue_date: new Date().toISOString().split('T')[0],
             account_status: 'Active',
             phone_number: phone || '+1 (555) 019-2834',
@@ -570,7 +577,7 @@ window.SangaiaAuth = {
                 await client.from('id_cards').upsert({
                     citizen_id: remoteUserId,
                     full_name: fullName,
-                    dob: dob || '1998-05-14',
+                    dob: dob || '1995-04-12',
                     sex: 'M',
                     id_number: citizenId,
                     status: 'Active',
@@ -591,7 +598,6 @@ window.SangaiaAuth = {
         if (client && client.auth) {
             try { await client.auth.signOut(); } catch(e){}
         }
-        sessionStorage.setItem('sangaia_explicit_signout', 'true');
         sangaiaStorage.removeItem(SUPABASE_TOKEN_KEY);
         sangaiaStorage.removeItem(ACTIVE_SESSION_KEY);
         sangaiaStorage.removeItem(ACTIVE_CITIZEN_KEY);
@@ -621,9 +627,9 @@ window.SangaiaAuth = {
 // -----------------------------------------------------------------------------
 function renderAuthenticatedProfile(profileMenu, citizen, user) {
     if (!profileMenu) return;
-    const rawName = (citizen && citizen.full_name) || (user && user.user_metadata?.full_name) || (user && user.email ? user.email.split('@')[0] : 'jack davenport');
+    const rawName = (citizen && citizen.full_name) || (user && user.user_metadata?.full_name) || (user && user.email ? user.email.split('@')[0] : 'john doe');
     const name = rawName.toLowerCase();
-    const citizenId = ((citizen && citizen.sangaia_id_number) || 'sg-2026-f1e8').toLowerCase();
+    const citizenId = ((citizen && citizen.sangaia_id_number) || 'SNG-7B4F92A1').toLowerCase();
     const initial = (name.charAt(0) || 'j').toUpperCase();
     const idUrl = getIdPageUrl();
 
@@ -634,10 +640,8 @@ function renderAuthenticatedProfile(profileMenu, citizen, user) {
       </div>
       <span style="max-width:130px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; font-weight:600;">${name}</span>
     `;
-    if (profileMenu.tagName === 'A') {
-        profileMenu.href = idUrl;
-        profileMenu.title = 'citizen ' + citizenId + ' (' + name + ') - view sangaia id';
-    }
+    profileMenu.href = idUrl;
+    profileMenu.title = 'citizen ' + citizenId + ' (' + name + ') - view sangaia id';
 }
 
 function renderUnauthenticatedProfile(profileMenu) {
@@ -648,22 +652,15 @@ function renderUnauthenticatedProfile(profileMenu) {
       <span class="mif-user"></span>
       <span>sign in</span>
     `;
-    if (profileMenu.tagName === 'A') {
-        profileMenu.href = idUrl;
-        profileMenu.title = 'sign in to sangaia id';
-    }
+    profileMenu.href = idUrl;
+    profileMenu.title = 'sign in to sangaia id';
 }
 
 async function updateAuthWidgets() {
     const profileMenu = document.getElementById('userProfileMenu');
     if (!profileMenu) return;
 
-    if (sessionStorage.getItem('sangaia_explicit_signout') === 'true') {
-        renderUnauthenticatedProfile(profileMenu);
-        return;
-    }
-
-    // 1. Synchronous fast check
+    // 1. Fast check if any session or citizen exists
     let supaSession = getSupabaseStoredSession();
     let citizen = null;
     try {
@@ -674,10 +671,10 @@ async function updateAuthWidgets() {
     if (citizen && citizen.full_name) {
         renderAuthenticatedProfile(profileMenu, citizen, supaSession ? supaSession.user : null);
     } else if (supaSession && supaSession.user) {
-        const name = supaSession.user.user_metadata?.full_name || supaSession.user.email?.split('@')[0] || 'jack davenport';
-        renderAuthenticatedProfile(profileMenu, { full_name: name, sangaia_id_number: 'SG-2026-F1E8' }, supaSession.user);
+        const name = supaSession.user.user_metadata?.full_name || supaSession.user.email?.split('@')[0] || 'citizen';
+        renderAuthenticatedProfile(profileMenu, { full_name: name, sangaia_id_number: 'SNG-7B4F92A1' }, supaSession.user);
     } else {
-        renderAuthenticatedProfile(profileMenu, DEFAULT_ACTIVE_CITIZEN, null);
+        renderUnauthenticatedProfile(profileMenu);
     }
 
     // 2. Asynchronous verification with Supabase
@@ -691,6 +688,8 @@ async function updateAuthWidgets() {
                     renderAuthenticatedProfile(profileMenu, data, session.user);
                     sangaiaStorage.setItem(ACTIVE_CITIZEN_KEY, JSON.stringify(data));
                 }
+            } else if (!citizen) {
+                renderUnauthenticatedProfile(profileMenu);
             }
         }
     } catch (e) {}
@@ -712,13 +711,11 @@ function initAuthLifecycle() {
         if (client && client.auth) {
             client.auth.onAuthStateChange((event, session) => {
                 if (session) {
-                    sessionStorage.removeItem('sangaia_explicit_signout');
                     updateAuthWidgets();
                     window.SangaiaAuth.notifyAuthChange(session, session.user);
                 } else if (event === 'SIGNED_OUT') {
-                    if (sessionStorage.getItem('sangaia_explicit_signout') === 'true') {
-                        updateAuthWidgets();
-                    }
+                    updateAuthWidgets();
+                    window.SangaiaAuth.notifyAuthChange(null, null);
                 }
             });
         }

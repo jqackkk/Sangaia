@@ -5,13 +5,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Sangaia ID :: Sovereign Citizen Credential &amp; Civil Dockets :: Sangaia</title>
   <link href="https://cdn.metroui.org.ua/4.5.12/icons.css" rel="stylesheet">
-  <link rel="stylesheet" href="/css/sangaia-live.css?v=20261020_v3">
-  <link rel="stylesheet" href="../css/sangaia-live.css?v=20261020_v3">
+  <link rel="stylesheet" href="/css/sangaia-live.css?v=20261020_v5">
+  <link rel="stylesheet" href="../css/sangaia-live.css?v=20261020_v5">
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-  <script src="auth.js"></script>
+  <script src="auth.js?v=20261020_v5"></script>
   <script>
     if (!window.SangaiaAuth) {
-      document.write('<script src="../auth.js"><\/script>');
+      document.write('<script src="../auth.js?v=20261020_v5"><\/script>');
     }
   </script>
   <script src="/js/sangaia-live.js" defer></script>
@@ -22,8 +22,8 @@
       gap: 6px !important;
     }
     .top-icons {
-  display: none !important;
-}
+      display: none !important;
+    }
     /* ID Card Metro Graphic Styles */
     .id-card-frame {
       max-width: 540px;
@@ -156,505 +156,71 @@
           <input type="text" name="q" placeholder="search anything" />
           <button type="submit" aria-label="Search"><span class="mif-search"></span></button>
         </form>
-        <a href="https://sangaia.org/id/" class="user-profile-btn authenticated" id="userProfileMenu" title="citizen docket: jack davenport">
-          <div style="width:20px; height:20px; border-radius:2px; background:var(--primary, #0078d4); color:#fff; display:flex; align-items:center; justify-content:center; font-weight:700; font-size:10px; flex-shrink:0; line-height:1; user-select:none;">J</div>
-          <span style="max-width:130px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; font-weight:600;">jack davenport</span>
+        <a href="/id/" class="user-profile-btn unauthenticated" id="userProfileMenu" title="sign in to sangaia id">
+          <span class="mif-user"></span>
+          <span>sign in</span>
         </a>
       </div>
     </div>
     <div class="hero-content">
-      <h1>sangaia id</h1>
-      <p>official citizen identity credential &bull; national civil dockets &bull; five provinces</p>
+      <h1 id="heroPortalTitle">sangaia id</h1>
+      <p id="heroPortalSubtitle">official citizen identity credential &bull; national civil dockets &bull; five provinces</p>
       <div class="hero-breadcrumbs">
         <a href="/index.html">← federal portal</a> <span class="bc-sep">&bull;</span> <a href="/id/">sangaia id</a>
       </div>
     </div>
   </header>
 
-  <!-- Horizontal Metro Subnav -->
+  <!-- Horizontal Metro Subnav: Dynamically Swapped between Auth and Unauth states -->
   <nav class="subnav id-subnav" id="pageSubnav">
-    <a href="javascript:void(0)" class="active" data-tab="card" onclick="switchIdTab('card')"><span class="mif-profile"></span> identity card</a>
-    <a href="javascript:void(0)" data-tab="benefits" onclick="switchIdTab('benefits')"><span class="mif-coins"></span> benefits &amp; entitlements</a>
-    <a href="javascript:void(0)" data-tab="education" onclick="switchIdTab('education')"><span class="mif-school"></span> education &amp; courses</a>
-    <a href="javascript:void(0)" data-tab="health" onclick="switchIdTab('health')"><span class="mif-medkit"></span> health records</a>
-    <a href="javascript:void(0)" data-tab="community" onclick="switchIdTab('community')"><span class="mif-organization"></span> community service</a>
-    <a href="javascript:void(0)" data-tab="justice" onclick="switchIdTab('justice')"><span class="mif-balance"></span> justice &amp; legal</a>
-    <a href="javascript:void(0)" data-tab="history" onclick="switchIdTab('history')"><span class="mif-history"></span> audit history</a>
-    <a href="javascript:void(0)" data-tab="account" onclick="switchIdTab('account')"><span class="mif-cog"></span> account &amp; security</a>
-    <a href="javascript:void(0)" data-tab="auth" id="subnavAuthBtn" onclick="switchIdTab('auth')" style="margin-left:auto;"><span class="mif-user"></span> sign in / register</a>
+    <!-- Unauthenticated Subnav Links -->
+    <div id="subnavUnauthLinks" style="display: flex; gap: 8px; flex-wrap: wrap;">
+      <a href="javascript:void(0)" class="active" id="subnavTabSignIn" onclick="switchAuthSubtab('signin')"><span class="mif-enter"></span> sign in</a>
+      <a href="javascript:void(0)" id="subnavTabSignUp" onclick="switchAuthSubtab('signup')"><span class="mif-user-plus"></span> register citizen id</a>
+      <a href="/citizenship.html"><span class="mif-book"></span> citizenship charter</a>
+      <a href="/services.html"><span class="mif-apps"></span> services</a>
+      <a href="/government.html"><span class="mif-library"></span> government</a>
+    </div>
+
+    <!-- Authenticated Subnav Links -->
+    <div id="subnavAuthLinks" style="display: none; gap: 8px; flex-wrap: wrap;">
+      <a href="javascript:void(0)" class="active" data-tab="card" onclick="switchIdTab('card')"><span class="mif-profile"></span> identity card</a>
+      <a href="javascript:void(0)" data-tab="benefits" onclick="switchIdTab('benefits')"><span class="mif-coins"></span> benefits &amp; entitlements</a>
+      <a href="javascript:void(0)" data-tab="education" onclick="switchIdTab('education')"><span class="mif-school"></span> education &amp; courses</a>
+      <a href="javascript:void(0)" data-tab="health" onclick="switchIdTab('health')"><span class="mif-medkit"></span> health records</a>
+      <a href="javascript:void(0)" data-tab="community" onclick="switchIdTab('community')"><span class="mif-organization"></span> community service</a>
+      <a href="javascript:void(0)" data-tab="justice" onclick="switchIdTab('justice')"><span class="mif-balance"></span> justice &amp; legal</a>
+      <a href="javascript:void(0)" data-tab="history" onclick="switchIdTab('history')"><span class="mif-history"></span> audit history</a>
+      <a href="javascript:void(0)" data-tab="account" onclick="switchIdTab('account')"><span class="mif-cog"></span> account &amp; security</a>
+      <a href="javascript:void(0)" onclick="handleSignOut()" style="color:#b91c1c;"><span class="mif-exit"></span> sign out</a>
+    </div>
   </nav>
 
   <!-- Main Content Grid -->
   <main class="main-wrapper">
-    <!-- Left Column: Primary Content Tabs -->
+    <!-- Left Column: Primary Content Views -->
     <div class="left-col">
 
       <!-- ================================================================
-           TAB 1: OFFICIAL IDENTITY CARD GRAPHIC & CIVIL REGISTRATION
+           VIEW A: UNAUTHENTICATED VIEW (Clean Simple Sign In / Register)
+           When not signed in, NO example id pages exist! Just simple auth.
            ================================================================ -->
-      <div id="tabContentCard" class="tab-content active">
-        <section class="card">
-          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:14px; flex-wrap:wrap; gap:8px;">
-            <h2 style="margin-bottom:0;" id="cardHeaderTitle">official citizen identity credential (public.id_cards)</h2>
-            <div style="display:flex; gap:6px; align-items:center;">
-              <span id="cardStatusBadge" class="ol-badge-tag ol-badge-success">active citizen</span>
-              <span id="cardUnder21Badge" class="ol-badge-tag ol-badge-primary">majority 21+</span>
-            </div>
-          </div>
-
-          <!-- The Sangaia Official Physical ID Card Graphic -->
-          <div class="id-card-frame">
-            <div class="id-card-header">
-              <div>
-                <strong style="font-size:14px; letter-spacing:0.8px; display:block;">THE UNITED PROVINCES OF SANGAIA</strong>
-                <div style="font-size:10.5px; color:#93c5fd; letter-spacing:0.4px;">SOVEREIGN CITIZEN IDENTIFICATION CARD &bull; AERETOCRACY</div>
-              </div>
-              <svg viewBox="0 0 90 90" width="22" height="22" fill="#ffffff">
-                <rect x="0" y="0" width="41" height="41" rx="2"/>
-                <rect x="49" y="0" width="41" height="41" rx="2"/>
-                <rect x="0" y="49" width="41" height="41" rx="2"/>
-                <rect x="49" y="49" width="41" height="41" rx="2"/>
-              </svg>
-            </div>
-            <div class="id-card-body">
-              <div class="id-card-photo-box">
-                <div class="id-card-photo">
-                  <img id="cardPhotoImg" src="https://sangaia.org/images/official.png" onerror="this.onerror=null;this.src='/images/official.png';" alt="Citizen Portrait" />
-                </div>
-                <div style="font-size:9.5px; color:#64748b; font-weight:700; margin-top:4px; text-align:center;">PHOTO VERIFIED</div>
-              </div>
-              <div class="id-card-details">
-                <div>
-                  <div style="font-size:11px; color:#64748b; text-transform:uppercase; font-weight:600;">full legal name</div>
-                  <div style="font-size:17px; font-weight:700; color:#0f172a; line-height:1.2;" id="cardLegalName">jack davenport</div>
-                  <div style="display:flex; align-items:center; gap:8px; margin-top:3px;">
-                    <span style="font-size:11px; color:#64748b; text-transform:uppercase; font-weight:600;">citizen id:</span>
-                    <strong style="font-family:monospace; color:#0078d4; font-size:13px;" id="cardCitizenId">SG-2026-F1E8</strong>
-                  </div>
-                </div>
-
-                <div class="id-card-grid">
-                  <div class="id-card-grid-item">
-                    <label>date of birth</label>
-                    <span id="cardDob">1998-05-14</span>
-                  </div>
-                  <div class="id-card-grid-item">
-                    <label>sex / height / hair</label>
-                    <span id="cardPhysicalTraits">M &bull; 5'11" &bull; Brown</span>
-                  </div>
-                  <div class="id-card-grid-item" style="grid-column: span 2;">
-                    <label>provincial jurisdiction</label>
-                    <span id="cardProvince">New Jasper (Capital Shesk)</span>
-                  </div>
-                  <div class="id-card-grid-item" style="grid-column: span 2;">
-                    <label>official languages</label>
-                    <span id="cardLanguages">English (Sangaian), High Sangaian</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="id-card-footer">
-              <span id="cardIssueText">ISSUED: 2024-01-01</span>
-              <span style="letter-spacing:2px; color:#475569;">&lt;&lt;&lt; SNG &lt;&lt;&lt; 2026 &lt;&lt;&lt; CITIZEN &lt;&lt;&lt;</span>
-              <span id="cardHash">ID: SG#F1E8</span>
-            </div>
-          </div>
-
-          <!-- Civil Demographics & Emergency Medical Vitals (sangaia_citizens) -->
-          <div style="margin-top:16px; border-top:1px solid #e2e8f0; padding-top:14px;">
-            <div class="ol-card-title">
-              <span>Civil Registry &amp; Demographic Dockets (public.sangaia_citizens)</span>
-            </div>
-            <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(210px, 1fr)); gap:12px; font-size:12.5px; margin-top:10px;">
-              <div class="stat-metric-box">
-                <div class="metric-lbl">physical address</div>
-                <div style="font-size:13px; font-weight:600; color:#1e293b; margin-top:3px;" id="vitalAddress">402 Constitution Way, Sector 4, Capital Shesk</div>
-              </div>
-              <div class="stat-metric-box">
-                <div class="metric-lbl">registered phone</div>
-                <div style="font-size:13px; font-weight:600; color:#1e293b; margin-top:3px;" id="vitalPhone">+1 (555) 019-2834</div>
-              </div>
-              <div class="stat-metric-box">
-                <div class="metric-lbl">education credential</div>
-                <div style="font-size:13px; font-weight:600; color:#1e293b; margin-top:3px;" id="vitalEducation">Higher Polytechnic (B.Sc. Systems)</div>
-              </div>
-              <div class="stat-metric-box">
-                <div class="metric-lbl">blood type &amp; allergies</div>
-                <div style="font-size:13px; font-weight:600; color:#b91c1c; margin-top:3px;" id="vitalMedical">O+ &bull; NKDA (No Known Allergies)</div>
-              </div>
-              <div class="stat-metric-box" style="grid-column: span 2;">
-                <div class="metric-lbl">attending primary care physician</div>
-                <div style="font-size:13px; font-weight:600; color:#1e293b; margin-top:3px;" id="vitalDoctor">Dr. Elena Vance, Shesk Sovereign Medical Center</div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Action buttons -->
-          <div style="display:flex; flex-wrap:wrap; gap:8px; justify-content:flex-start; margin-top:16px;">
-            <button type="button" class="ol-btn ol-btn-sm" onclick="window.print()"><span class="mif-printer"></span> print official pass</button>
-            <button type="button" class="ol-btn ol-btn-sm" onclick="downloadDigitalCredential()"><span class="mif-download"></span> export json-ld</button>
-            <button type="button" class="ol-btn ol-btn-sm" onclick="toggleQrCode()"><span class="mif-qrcode"></span> verification qr</button>
-            <button type="button" class="ol-btn ol-btn-sm" onclick="loadAllCitizenDockets()"><span class="mif-refresh"></span> refresh live dockets</button>
-          </div>
-
-          <div id="qrBox" style="display:none; text-align:center; margin-top:14px; padding:14px; background:#f8fafc; border:1px dashed #cbd5e1; border-radius:4px;">
-            <div style="font-weight:600; color:#1e293b; margin-bottom:6px;">sovereign biometric verification qr</div>
-            <div style="display:inline-block; padding:10px; background:#fff; border:1px solid #e2e8f0; border-radius:4px;">
-              <svg viewBox="0 0 100 100" width="110" height="110" fill="#0f172a">
-                <rect x="10" y="10" width="25" height="25" rx="1"/>
-                <rect x="15" y="15" width="15" height="15" fill="#fff"/>
-                <rect x="18" y="18" width="9" height="9"/>
-                <rect x="65" y="10" width="25" height="25" rx="1"/>
-                <rect x="70" y="15" width="15" height="15" fill="#fff"/>
-                <rect x="73" y="18" width="9" height="9"/>
-                <rect x="10" y="65" width="25" height="25" rx="1"/>
-                <rect x="15" y="70" width="15" height="15" fill="#fff"/>
-                <rect x="18" y="73" width="9" height="9"/>
-                <rect x="45" y="15" width="10" height="10"/>
-                <rect x="45" y="35" width="10" height="20"/>
-                <rect x="40" y="65" width="20" height="10"/>
-                <rect x="65" y="45" width="15" height="10"/>
-                <rect x="70" y="65" width="20" height="20"/>
-                <rect x="75" y="70" width="10" height="10" fill="#fff"/>
-              </svg>
-            </div>
-            <div id="qrTokenText" style="font-family:monospace; font-size:11px; color:#64748b; margin-top:6px;">token: urn:sangaia:id:SG-2026-F1E8</div>
-          </div>
-        </section>
-      </div>
-
-      <!-- ================================================================
-           TAB 2: GOVERNMENT BENEFITS & ENTITLEMENTS (government_benefits)
-           ================================================================ -->
-      <div id="tabContentBenefits" class="tab-content">
-        <section class="card">
-          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px;">
-            <h2 style="margin-bottom:0;">statutory benefits &amp; entitlements (public.government_benefits)</h2>
-            <span class="ol-badge-tag ol-badge-success">4 active statutory entitlements</span>
-          </div>
-          <p style="color:var(--text-muted); font-size:12.5px; margin-bottom:16px;">
-            Statutory social guarantees provided directly to every verified Sangaia ID holder pursuant to Constitutional Articles 1, 7, 8, and 9.
-          </p>
-
-          <table class="ol-table">
-            <thead>
-              <tr>
-                <th>entitlement program</th>
-                <th>statutory description</th>
-                <th>granted date</th>
-                <th>status</th>
-              </tr>
-            </thead>
-            <tbody id="benefitsTableBody">
-              <tr>
-                <td><strong>Universal Healthcare Tier 1</strong></td>
-                <td>100% state-funded hospitalization, specialized surgical, primary care, and pharmaceutical coverage.</td>
-                <td>2024-01-01</td>
-                <td><span class="ol-badge-tag ol-badge-success">active</span></td>
-              </tr>
-              <tr>
-                <td><strong>Living Wage Protection Floor</strong></td>
-                <td>Statutory wage guarantee of $25.00/hr ($1,000/week) across all private and public enterprises.</td>
-                <td>2024-01-01</td>
-                <td><span class="ol-badge-tag ol-badge-success">active</span></td>
-              </tr>
-              <tr>
-                <td><strong>Higher Education Subvention</strong></td>
-                <td>Tuition-free university and polytechnic instruction under Constitutional Article 9 grants.</td>
-                <td>2024-01-01</td>
-                <td><span class="ol-badge-tag ol-badge-success">active</span></td>
-              </tr>
-              <tr>
-                <td><strong>Provincial Rapid Transit Pass</strong></td>
-                <td>Zero-fare inter-provincial passenger rail access across New Jasper, Madison, Liveland, Sentinel, Columbia.</td>
-                <td>2024-01-01</td>
-                <td><span class="ol-badge-tag ol-badge-success">active</span></td>
-              </tr>
-            </tbody>
-          </table>
-        </section>
-      </div>
-
-      <!-- ================================================================
-           TAB 3: EDUCATION & COURSES (education_courses)
-           ================================================================ -->
-      <div id="tabContentEducation" class="tab-content">
-        <section class="card">
-          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px;">
-            <h2 style="margin-bottom:0;">academic credentials &amp; courses (public.education_courses)</h2>
-            <span class="ol-badge-tag ol-badge-primary">10 credits completed &bull; gpa: 3.85</span>
-          </div>
-          <p style="color:var(--text-muted); font-size:12.5px; margin-bottom:16px;">
-            Higher education courses, polytechnic certifications, and academic standing administered under the Ministry of Education.
-          </p>
-
-          <table class="ol-table">
-            <thead>
-              <tr>
-                <th>course code</th>
-                <th>course title</th>
-                <th>accredited institution</th>
-                <th>credits</th>
-                <th>grade</th>
-                <th>status</th>
-              </tr>
-            </thead>
-            <tbody id="educationTableBody">
-              <tr>
-                <td><strong style="font-family:monospace; color:#0078d4;">SNG-101</strong></td>
-                <td>Constitutional Virtues &amp; Meritocracy</td>
-                <td>Ministry of Education</td>
-                <td>3</td>
-                <td><span class="ol-badge-tag ol-badge-success">A</span></td>
-                <td><span class="ol-badge-tag ol-badge-success">completed</span></td>
-              </tr>
-              <tr>
-                <td><strong style="font-family:monospace; color:#0078d4;">SNG-204</strong></td>
-                <td>Macroeconomics &amp; Public Debt Solvency</td>
-                <td>Shesk Sovereign University</td>
-                <td>4</td>
-                <td><span class="ol-badge-tag ol-badge-success">A-</span></td>
-                <td><span class="ol-badge-tag ol-badge-success">completed</span></td>
-              </tr>
-              <tr>
-                <td><strong style="font-family:monospace; color:#0078d4;">SNG-310</strong></td>
-                <td>Provincial Biome Conservation &amp; Ecology</td>
-                <td>Madison Agricultural Institute</td>
-                <td>3</td>
-                <td><span class="ol-badge-tag ol-badge-neutral">pending</span></td>
-                <td><span class="ol-badge-tag ol-badge-warning">enrolled</span></td>
-              </tr>
-            </tbody>
-          </table>
-        </section>
-      </div>
-
-      <!-- ================================================================
-           TAB 4: HEALTH RECORDS & CLINICAL VITALITY (health_records)
-           ================================================================ -->
-      <div id="tabContentHealth" class="tab-content">
-        <section class="card">
-          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px;">
-            <h2 style="margin-bottom:0;">clinical records &amp; digital health (public.health_records)</h2>
-            <span class="ol-badge-tag ol-badge-success">tier 1 universal health coverage</span>
-          </div>
-          <p style="color:var(--text-muted); font-size:12.5px; margin-bottom:16px;">
-            Unified health charts authenticated by the Ministry of Healthcare across all 5 provincial medical centers.
-          </p>
-
-          <table class="ol-table">
-            <thead>
-              <tr>
-                <th>record type</th>
-                <th>clinical summary</th>
-                <th>medical facility</th>
-                <th>physician</th>
-                <th>record date</th>
-              </tr>
-            </thead>
-            <tbody id="healthTableBody">
-              <tr>
-                <td><strong>Annual Preventative</strong></td>
-                <td>Comprehensive Wellness Exam &bull; BP 118/76 &bull; Optimal Indices</td>
-                <td>Shesk Sovereign University Hospital</td>
-                <td>Dr. Elena Vance</td>
-                <td>2025-11-10</td>
-              </tr>
-              <tr>
-                <td><strong>Immunization Record</strong></td>
-                <td>Annual Respiratory &amp; Influenza Protection Vaccine</td>
-                <td>Capital Shesk Public Health Center</td>
-                <td>Dr. Marcus Hall</td>
-                <td>2025-10-04</td>
-              </tr>
-              <tr>
-                <td><strong>Diagnostic Lab</strong></td>
-                <td>Comprehensive Lipid &amp; Metabolic Blood Chemistry Panel (Optimal)</td>
-                <td>Ministry of Healthcare Diagnostic Hub</td>
-                <td>Dr. Elena Vance</td>
-                <td>2025-04-18</td>
-              </tr>
-            </tbody>
-          </table>
-        </section>
-      </div>
-
-      <!-- ================================================================
-           TAB 5: COMMUNITY SERVICE RECORDS (community_service_records)
-           ================================================================ -->
-      <div id="tabContentCommunity" class="tab-content">
-        <section class="card">
-          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px;">
-            <h2 style="margin-bottom:0;">community service contributions (public.community_service_records)</h2>
-            <span class="ol-badge-tag ol-badge-success">56.5 verified civic hours</span>
-          </div>
-          <p style="color:var(--text-muted); font-size:12.5px; margin-bottom:16px;">
-            Verified civic stewardship and voluntary communal labor credited toward civic merit and provincial fellowship.
-          </p>
-
-          <table class="ol-table">
-            <thead>
-              <tr>
-                <th>organization</th>
-                <th>activity description</th>
-                <th>hours</th>
-                <th>supervisor</th>
-                <th>served date</th>
-                <th>status</th>
-              </tr>
-            </thead>
-            <tbody id="communityTableBody">
-              <tr>
-                <td><strong>Shesk River Biome Corps</strong></td>
-                <td>Native riparian flora replanting and water telemetry sampling.</td>
-                <td><strong>32.5 hrs</strong></td>
-                <td>Alden Thorne &bull; Sentinel</td>
-                <td>2025-08-14</td>
-                <td><span class="ol-badge-tag ol-badge-success">approved</span></td>
-              </tr>
-              <tr>
-                <td><strong>Provincial Food Cooperative</strong></td>
-                <td>Agricultural harvest sorting and civic meal delivery in Madison Basin.</td>
-                <td><strong>24.0 hrs</strong></td>
-                <td>Lydia Croft &bull; Madison</td>
-                <td>2025-12-02</td>
-                <td><span class="ol-badge-tag ol-badge-success">approved</span></td>
-              </tr>
-            </tbody>
-          </table>
-        </section>
-      </div>
-
-      <!-- ================================================================
-           TAB 6: JUSTICE & JUDICIAL DOCKETS (jail_criminal_records)
-           ================================================================ -->
-      <div id="tabContentJustice" class="tab-content">
-        <section class="card">
-          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px;">
-            <h2 style="margin-bottom:0;">judicial dockets &amp; criminal records (public.jail_criminal_records)</h2>
-            <span class="ol-badge-tag ol-badge-success">clear conduct docket</span>
-          </div>
-
-          <!-- Clean status indicator -->
-          <div style="padding:14px 16px; background:#f0fdf4; border:1px solid #bbf7d0; border-radius:3px; margin-bottom:16px; display:flex; align-items:center; gap:12px;">
-            <span class="mif-shield-check" style="font-size:28px; color:#15803d;"></span>
-            <div>
-              <strong style="color:#15803d; font-size:13.5px; display:block;">Statutory Good Standing &bull; Zero Disciplinary Incarcerations</strong>
-              <div style="color:#166534; font-size:12px;">Citizen is in full legal and civil compliance. No pending arrest warrants, detentions, or penal sentences recorded across the five sovereign provinces.</div>
-            </div>
-          </div>
-
-          <div id="criminalRecordsContainer" style="display:none;">
-            <table class="ol-table">
-              <thead>
-                <tr>
-                  <th>case number</th>
-                  <th>offense name</th>
-                  <th>severity</th>
-                  <th>facility</th>
-                  <th>status</th>
-                  <th>sentence</th>
-                </tr>
-              </thead>
-              <tbody id="criminalTableBody"></tbody>
-            </table>
-          </div>
-        </section>
-      </div>
-
-      <!-- ================================================================
-           TAB 7: CITIZEN AUDIT HISTORY (citizen_history)
-           ================================================================ -->
-      <div id="tabContentHistory" class="tab-content">
-        <section class="card">
-          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px;">
-            <h2 style="margin-bottom:0;">statutory audit trail &amp; change log (public.citizen_history)</h2>
-            <span class="ol-badge-tag ol-badge-neutral">immutable civil record</span>
-          </div>
-          <p style="color:var(--text-muted); font-size:12.5px; margin-bottom:16px;">
-            Administrative audit trail tracking updates to citizen registration, jurisdiction, and official records.
-          </p>
-
-          <table class="ol-table">
-            <thead>
-              <tr>
-                <th>change type</th>
-                <th>previous value</th>
-                <th>updated value</th>
-                <th>administrative notes</th>
-                <th>timestamp</th>
-              </tr>
-            </thead>
-            <tbody id="historyTableBody">
-              <tr>
-                <td><strong>Biometric Credential Issued</strong></td>
-                <td><span class="ol-muted">Unregistered</span></td>
-                <td><span class="ol-badge-tag ol-badge-success">Statutory Active Citizen</span></td>
-                <td>Naturalization oath administered &amp; digital identity key issued.</td>
-                <td>2024-01-01 09:00:00</td>
-              </tr>
-              <tr>
-                <td><strong>Address Verification</strong></td>
-                <td>Sector 2, Shesk</td>
-                <td>402 Constitution Way, Sector 4</td>
-                <td>Residential registry updated with Provincial Civil Registrar.</td>
-                <td>2025-03-15 14:30:00</td>
-              </tr>
-            </tbody>
-          </table>
-        </section>
-      </div>
-
-      <!-- ================================================================
-           TAB 8: ACCOUNT & SESSION SECURITY
-           ================================================================ -->
-      <div id="tabContentAccount" class="tab-content">
-        <section class="card">
-          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px;">
-            <h2 style="margin-bottom:0;">citizen account security &amp; session</h2>
-            <span class="ol-badge-tag ol-badge-success">authenticated session</span>
-          </div>
-
-          <div style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:2px; padding:16px; margin-bottom:16px;">
-            <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:8px;">
-              <div>
-                <strong style="font-size:14.5px; color:#1e293b;" id="accountFullName">jack davenport</strong>
-                <div style="font-size:12px; color:#64748b;" id="accountEmail">jackwd2020@gmail.com</div>
-              </div>
-              <span class="ol-badge-tag ol-badge-success">single sign-on connected</span>
-            </div>
-            <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(180px, 1fr)); gap:10px; font-size:12.5px; border-top:1px solid #e2e8f0; padding-top:12px; margin-top:12px;">
-              <div><span style="color:#64748b;">citizen id:</span> <strong style="font-family:monospace; color:#0078d4;" id="accountIdNumber">SG-2026-F1E8</strong></div>
-              <div><span style="color:#64748b;">jurisdiction:</span> <strong id="accountProvince">New Jasper (Capital Shesk)</strong></div>
-              <div><span style="color:#64748b;">account status:</span> <strong style="color:#15803d;" id="accountStatus">Active</strong></div>
-              <div><span style="color:#64748b;">auth provider:</span> <strong>Supabase Sovereign Auth</strong></div>
-            </div>
-          </div>
-
-          <div style="display:flex; gap:10px; flex-wrap:wrap;">
-            <button type="button" class="ol-btn ol-btn-sm" onclick="handleSignOut()"><span class="mif-exit"></span> sign out of sangaia id</button>
-            <button type="button" class="ol-btn ol-btn-sm" onclick="switchIdTab('auth')"><span class="mif-user-check"></span> switch citizen docket</button>
-            <a href="/citizenship.html" class="ol-btn ol-btn-sm"><span class="mif-book"></span> view citizenship charter</a>
-          </div>
-        </section>
-      </div>
-
-      <!-- ================================================================
-           TAB 9: SIGN IN / CITIZEN REGISTRATION (portalUnauth)
-           ================================================================ -->
-      <div id="tabContentAuth" class="tab-content">
+      <div id="viewUnauthenticated">
         <section class="card">
           <div style="display:flex; border-bottom:1px solid var(--border); margin-bottom:18px;">
             <button type="button" id="formBtnSignIn" class="ol-btn" onclick="switchAuthSubtab('signin')" style="flex:1; border:none; border-bottom:3px solid var(--primary); font-weight:600; border-radius:0;">
               <span class="mif-enter"></span> sign in to sangaia id
             </button>
             <button type="button" id="formBtnSignUp" class="ol-btn" onclick="switchAuthSubtab('signup')" style="flex:1; border:none; border-bottom:3px solid transparent; font-weight:400; border-radius:0; color:var(--text-muted);">
-              <span class="mif-user-plus"></span> register citizen id
+              <span class="mif-user-plus"></span> register sovereign citizen id
             </button>
           </div>
 
           <!-- Sign In Form -->
           <form id="idSignInForm" onsubmit="executeSignIn(event)">
+            <p style="color:var(--text-muted); font-size:12.5px; margin-bottom:16px;">
+              Enter your citizen email and password to access your sovereign ID credential, provincial registries, and civil dockets.
+            </p>
             <div class="form-group" style="margin-bottom:14px;">
               <label style="display:block; font-size:12px; font-weight:600; margin-bottom:4px; text-transform:lowercase;">citizen email</label>
               <input type="email" id="inputSignInEmail" required placeholder="citizen@sangaia.org" class="ol-input" style="width:100%; padding:8px 10px; font-size:13px;" />
@@ -665,16 +231,22 @@
             </div>
             <div id="signInError" style="display:none; color:#b91c1c; font-size:12px; margin-bottom:12px; padding:8px; background:#fef2f2; border:1px solid #fecaca; border-radius:2px;"></div>
             <div id="signInSuccess" style="display:none; color:#15803d; font-size:12px; margin-bottom:12px; padding:8px; background:#f0fdf4; border:1px solid #bbf7d0; border-radius:2px;"></div>
-            <button type="submit" id="btnSubmitSignIn" class="ol-btn ol-btn-primary" style="width:100%; padding:9px 14px; font-weight:600;">
-              <span class="mif-enter"></span> sign in to sangaia id
-            </button>
+            <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px; margin-top:16px;">
+              <button type="submit" id="btnSubmitSignIn" class="ol-btn ol-btn-primary" style="padding:9px 18px; font-weight:600;">
+                <span class="mif-enter"></span> sign in to sangaia id
+              </button>
+              <a href="javascript:void(0)" onclick="switchAuthSubtab('signup')" style="font-size:12px; color:var(--primary); font-weight:600;">need to register? create citizen id</a>
+            </div>
           </form>
 
           <!-- Register Form -->
           <form id="idSignUpForm" onsubmit="executeSignUp(event)" style="display:none;">
+            <p style="color:var(--text-muted); font-size:12.5px; margin-bottom:16px;">
+              Register your sovereign citizen docket under Constitutional Article 6 to receive your Sangaia ID and full civil entitlements.
+            </p>
             <div class="form-group" style="margin-bottom:12px;">
               <label style="display:block; font-size:12px; font-weight:600; margin-bottom:4px; text-transform:lowercase;">full legal name</label>
-              <input type="text" id="inputRegName" required placeholder="e.g. Jack Davenport" class="ol-input" style="width:100%; padding:8px 10px; font-size:13px;" />
+              <input type="text" id="inputRegName" required placeholder="e.g. John Doe" class="ol-input" style="width:100%; padding:8px 10px; font-size:13px;" />
             </div>
             <div class="form-group" style="margin-bottom:12px;">
               <label style="display:block; font-size:12px; font-weight:600; margin-bottom:4px; text-transform:lowercase;">email address</label>
@@ -708,26 +280,371 @@
             </div>
             <div id="signUpError" style="display:none; color:#b91c1c; font-size:12px; margin-bottom:12px; padding:8px; background:#fef2f2; border:1px solid #fecaca; border-radius:2px;"></div>
             <div id="signUpSuccess" style="display:none; color:#15803d; font-size:12px; margin-bottom:12px; padding:8px; background:#f0fdf4; border:1px solid #bbf7d0; border-radius:2px;"></div>
-            <button type="submit" id="btnSubmitSignUp" class="ol-btn ol-btn-primary" style="width:100%; padding:9px 14px; font-weight:600; background:#15803d; border-color:#15803d;">
-              <span class="mif-user-plus"></span> register sovereign citizen id
-            </button>
+            <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px; margin-top:16px;">
+              <button type="submit" id="btnSubmitSignUp" class="ol-btn ol-btn-primary" style="padding:9px 18px; font-weight:600; background:#15803d; border-color:#15803d;">
+                <span class="mif-user-plus"></span> register sovereign citizen id
+              </button>
+              <a href="javascript:void(0)" onclick="switchAuthSubtab('signin')" style="font-size:12px; color:var(--primary); font-weight:600;">already registered? sign in</a>
+            </div>
           </form>
         </section>
+
+        <!-- Informational Card -->
+        <section class="card" style="margin-top:14px;">
+          <div class="ol-card-title">
+            <span>Sovereign Identity Protection (Article 1, &alefsym;3)</span>
+          </div>
+          <p style="color:var(--text-muted); font-size:12.5px; line-height:1.6;">
+            Sangaia ID is the unified credential of the Aeretocracy. Your civil identity guarantees immediate single sign-on across all five sovereign provinces, Tier 1 Universal Healthcare enrollment, and statutory wage protections. Commercial data harvesting and third-party tracking are constitutionally prohibited.
+          </p>
+        </section>
+      </div>
+
+      <!-- ================================================================
+           VIEW B: AUTHENTICATED VIEW (Active ID Card & Full Supabase Dockets)
+           Shown ONLY when the user is logged into their citizen account.
+           ================================================================ -->
+      <div id="viewAuthenticated" style="display: none;">
+
+        <!-- TAB 1: OFFICIAL IDENTITY CARD GRAPHIC & CIVIL REGISTRATION -->
+        <div id="tabContentCard" class="tab-content active">
+          <section class="card">
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:14px; flex-wrap:wrap; gap:8px;">
+              <h2 style="margin-bottom:0;" id="cardHeaderTitle">official citizen identity credential (public.id_cards)</h2>
+              <div style="display:flex; gap:6px; align-items:center;">
+                <span id="cardStatusBadge" class="ol-badge-tag ol-badge-success">active citizen</span>
+                <span id="cardUnder21Badge" class="ol-badge-tag ol-badge-primary">majority 21+</span>
+              </div>
+            </div>
+
+            <!-- The Sangaia Official Physical ID Card Graphic -->
+            <div class="id-card-frame">
+              <div class="id-card-header">
+                <div>
+                  <strong style="font-size:14px; letter-spacing:0.8px; display:block;">THE UNITED PROVINCES OF SANGAIA</strong>
+                  <div style="font-size:10.5px; color:#93c5fd; letter-spacing:0.4px;">SOVEREIGN CITIZEN IDENTIFICATION CARD &bull; AERETOCRACY</div>
+                </div>
+                <svg viewBox="0 0 90 90" width="22" height="22" fill="#ffffff">
+                  <rect x="0" y="0" width="41" height="41" rx="2"/>
+                  <rect x="49" y="0" width="41" height="41" rx="2"/>
+                  <rect x="0" y="49" width="41" height="41" rx="2"/>
+                  <rect x="49" y="49" width="41" height="41" rx="2"/>
+                </svg>
+              </div>
+              <div class="id-card-body">
+                <div class="id-card-photo-box">
+                  <div class="id-card-photo">
+                    <img id="cardPhotoImg" src="https://sangaia.org/images/official.png" onerror="this.onerror=null;this.src='/images/official.png';" alt="Citizen Portrait" />
+                  </div>
+                  <div style="font-size:9.5px; color:#64748b; font-weight:700; margin-top:4px; text-align:center;">PHOTO VERIFIED</div>
+                </div>
+                <div class="id-card-details">
+                  <div>
+                    <div style="font-size:11px; color:#64748b; text-transform:uppercase; font-weight:600;">full legal name</div>
+                    <div style="font-size:17px; font-weight:700; color:#0f172a; line-height:1.2;" id="cardLegalName">john doe</div>
+                    <div style="display:flex; align-items:center; gap:8px; margin-top:3px;">
+                      <span style="font-size:11px; color:#64748b; text-transform:uppercase; font-weight:600;">citizen id:</span>
+                      <strong style="font-family:monospace; color:#0078d4; font-size:13px;" id="cardCitizenId">SNG-7B4F92A1</strong>
+                    </div>
+                  </div>
+
+                  <div class="id-card-grid">
+                    <div class="id-card-grid-item">
+                      <label>date of birth</label>
+                      <span id="cardDob">1995-04-12</span>
+                    </div>
+                    <div class="id-card-grid-item">
+                      <label>sex / height / hair</label>
+                      <span id="cardPhysicalTraits">M &bull; 5'11" &bull; Brown</span>
+                    </div>
+                    <div class="id-card-grid-item" style="grid-column: span 2;">
+                      <label>provincial jurisdiction</label>
+                      <span id="cardProvince">New Jasper (Capital Shesk)</span>
+                    </div>
+                    <div class="id-card-grid-item" style="grid-column: span 2;">
+                      <label>official languages</label>
+                      <span id="cardLanguages">English (Sangaian), High Sangaian</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="id-card-footer">
+                <span id="cardIssueText">ISSUED: 2024-01-01</span>
+                <span style="letter-spacing:2px; color:#475569;">&lt;&lt;&lt; SNG &lt;&lt;&lt; 2026 &lt;&lt;&lt; CITIZEN &lt;&lt;&lt;</span>
+                <span id="cardHash">ID: SG#7B4F</span>
+              </div>
+            </div>
+
+            <!-- Civil Demographics & Emergency Medical Vitals (sangaia_citizens) -->
+            <div style="margin-top:16px; border-top:1px solid #e2e8f0; padding-top:14px;">
+              <div class="ol-card-title">
+                <span>Civil Registry &amp; Demographic Dockets (public.sangaia_citizens)</span>
+              </div>
+              <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(210px, 1fr)); gap:12px; font-size:12.5px; margin-top:10px;">
+                <div class="stat-metric-box">
+                  <div class="metric-lbl">physical address</div>
+                  <div style="font-size:13px; font-weight:600; color:#1e293b; margin-top:3px;" id="vitalAddress">402 Constitution Way, Sector 4, Capital Shesk</div>
+                </div>
+                <div class="stat-metric-box">
+                  <div class="metric-lbl">registered phone</div>
+                  <div style="font-size:13px; font-weight:600; color:#1e293b; margin-top:3px;" id="vitalPhone">+1 (555) 019-2834</div>
+                </div>
+                <div class="stat-metric-box">
+                  <div class="metric-lbl">education credential</div>
+                  <div style="font-size:13px; font-weight:600; color:#1e293b; margin-top:3px;" id="vitalEducation">Higher Polytechnic (B.Sc. Systems)</div>
+                </div>
+                <div class="stat-metric-box">
+                  <div class="metric-lbl">blood type &amp; allergies</div>
+                  <div style="font-size:13px; font-weight:600; color:#b91c1c; margin-top:3px;" id="vitalMedical">O+ &bull; NKDA (No Known Allergies)</div>
+                </div>
+                <div class="stat-metric-box" style="grid-column: span 2;">
+                  <div class="metric-lbl">attending primary care physician</div>
+                  <div style="font-size:13px; font-weight:600; color:#1e293b; margin-top:3px;" id="vitalDoctor">Dr. Elena Vance, Shesk Sovereign Medical Center</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Action buttons -->
+            <div style="display:flex; flex-wrap:wrap; gap:8px; justify-content:flex-start; margin-top:16px;">
+              <button type="button" class="ol-btn ol-btn-sm" onclick="window.print()"><span class="mif-printer"></span> print official pass</button>
+              <button type="button" class="ol-btn ol-btn-sm" onclick="downloadDigitalCredential()"><span class="mif-download"></span> export json-ld</button>
+              <button type="button" class="ol-btn ol-btn-sm" onclick="toggleQrCode()"><span class="mif-qrcode"></span> verification qr</button>
+              <button type="button" class="ol-btn ol-btn-sm" onclick="refreshAuthenticatedDockets()"><span class="mif-refresh"></span> refresh live dockets</button>
+            </div>
+
+            <div id="qrBox" style="display:none; text-align:center; margin-top:14px; padding:14px; background:#f8fafc; border:1px dashed #cbd5e1; border-radius:4px;">
+              <div style="font-weight:600; color:#1e293b; margin-bottom:6px;">sovereign biometric verification qr</div>
+              <div style="display:inline-block; padding:10px; background:#fff; border:1px solid #e2e8f0; border-radius:4px;">
+                <svg viewBox="0 0 100 100" width="110" height="110" fill="#0f172a">
+                  <rect x="10" y="10" width="25" height="25" rx="1"/>
+                  <rect x="15" y="15" width="15" height="15" fill="#fff"/>
+                  <rect x="18" y="18" width="9" height="9"/>
+                  <rect x="65" y="10" width="25" height="25" rx="1"/>
+                  <rect x="70" y="15" width="15" height="15" fill="#fff"/>
+                  <rect x="73" y="18" width="9" height="9"/>
+                  <rect x="10" y="65" width="25" height="25" rx="1"/>
+                  <rect x="15" y="70" width="15" height="15" fill="#fff"/>
+                  <rect x="18" y="73" width="9" height="9"/>
+                  <rect x="45" y="15" width="10" height="10"/>
+                  <rect x="45" y="35" width="10" height="20"/>
+                  <rect x="40" y="65" width="20" height="10"/>
+                  <rect x="65" y="45" width="15" height="10"/>
+                  <rect x="70" y="65" width="20" height="20"/>
+                  <rect x="75" y="70" width="10" height="10" fill="#fff"/>
+                </svg>
+              </div>
+              <div id="qrTokenText" style="font-family:monospace; font-size:11px; color:#64748b; margin-top:6px;">token: urn:sangaia:id:SNG-7B4F92A1</div>
+            </div>
+          </section>
+        </div>
+
+        <!-- TAB 2: GOVERNMENT BENEFITS & ENTITLEMENTS (government_benefits) -->
+        <div id="tabContentBenefits" class="tab-content">
+          <section class="card">
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px;">
+              <h2 style="margin-bottom:0;">statutory benefits &amp; entitlements (public.government_benefits)</h2>
+              <span class="ol-badge-tag ol-badge-success">active statutory entitlements</span>
+            </div>
+            <p style="color:var(--text-muted); font-size:12.5px; margin-bottom:16px;">
+              Statutory social guarantees provided directly to every verified Sangaia ID holder pursuant to Constitutional Articles 1, 7, 8, and 9.
+            </p>
+            <table class="ol-table">
+              <thead>
+                <tr>
+                  <th>entitlement program</th>
+                  <th>statutory description</th>
+                  <th>granted date</th>
+                  <th>status</th>
+                </tr>
+              </thead>
+              <tbody id="benefitsTableBody"></tbody>
+            </table>
+          </section>
+        </div>
+
+        <!-- TAB 3: EDUCATION & COURSES (education_courses) -->
+        <div id="tabContentEducation" class="tab-content">
+          <section class="card">
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px;">
+              <h2 style="margin-bottom:0;">academic credentials &amp; courses (public.education_courses)</h2>
+              <span class="ol-badge-tag ol-badge-primary" id="eduMetricsBadge">higher academic standing</span>
+            </div>
+            <p style="color:var(--text-muted); font-size:12.5px; margin-bottom:16px;">
+              Higher education courses, polytechnic certifications, and academic standing administered under the Ministry of Education.
+            </p>
+            <table class="ol-table">
+              <thead>
+                <tr>
+                  <th>course code</th>
+                  <th>course title</th>
+                  <th>accredited institution</th>
+                  <th>credits</th>
+                  <th>grade</th>
+                  <th>status</th>
+                </tr>
+              </thead>
+              <tbody id="educationTableBody"></tbody>
+            </table>
+          </section>
+        </div>
+
+        <!-- TAB 4: HEALTH RECORDS & CLINICAL VITALITY (health_records) -->
+        <div id="tabContentHealth" class="tab-content">
+          <section class="card">
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px;">
+              <h2 style="margin-bottom:0;">clinical records &amp; digital health (public.health_records)</h2>
+              <span class="ol-badge-tag ol-badge-success">tier 1 universal health coverage</span>
+            </div>
+            <p style="color:var(--text-muted); font-size:12.5px; margin-bottom:16px;">
+              Unified health charts authenticated by the Ministry of Healthcare across all 5 provincial medical centers.
+            </p>
+            <table class="ol-table">
+              <thead>
+                <tr>
+                  <th>record type</th>
+                  <th>clinical summary</th>
+                  <th>medical facility</th>
+                  <th>physician</th>
+                  <th>record date</th>
+                </tr>
+              </thead>
+              <tbody id="healthTableBody"></tbody>
+            </table>
+          </section>
+        </div>
+
+        <!-- TAB 5: COMMUNITY SERVICE RECORDS (community_service_records) -->
+        <div id="tabContentCommunity" class="tab-content">
+          <section class="card">
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px;">
+              <h2 style="margin-bottom:0;">community service contributions (public.community_service_records)</h2>
+              <span class="ol-badge-tag ol-badge-success" id="communityHoursBadge">verified civic hours</span>
+            </div>
+            <p style="color:var(--text-muted); font-size:12.5px; margin-bottom:16px;">
+              Verified civic stewardship and voluntary communal labor credited toward civic merit and provincial fellowship.
+            </p>
+            <table class="ol-table">
+              <thead>
+                <tr>
+                  <th>organization</th>
+                  <th>activity description</th>
+                  <th>hours</th>
+                  <th>supervisor</th>
+                  <th>served date</th>
+                  <th>status</th>
+                </tr>
+              </thead>
+              <tbody id="communityTableBody"></tbody>
+            </table>
+          </section>
+        </div>
+
+        <!-- TAB 6: JUSTICE & JUDICIAL DOCKETS (jail_criminal_records) -->
+        <div id="tabContentJustice" class="tab-content">
+          <section class="card">
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px;">
+              <h2 style="margin-bottom:0;">judicial dockets &amp; criminal records (public.jail_criminal_records)</h2>
+              <span class="ol-badge-tag ol-badge-success">clear conduct docket</span>
+            </div>
+
+            <!-- Clean status indicator -->
+            <div style="padding:14px 16px; background:#f0fdf4; border:1px solid #bbf7d0; border-radius:3px; margin-bottom:16px; display:flex; align-items:center; gap:12px;">
+              <span class="mif-shield-check" style="font-size:28px; color:#15803d;"></span>
+              <div>
+                <strong style="color:#15803d; font-size:13.5px; display:block;">Statutory Good Standing &bull; Zero Disciplinary Incarcerations</strong>
+                <div style="color:#166534; font-size:12px;">Citizen is in full legal and civil compliance. No pending arrest warrants, detentions, or penal sentences recorded across the five sovereign provinces.</div>
+              </div>
+            </div>
+
+            <div id="criminalRecordsContainer" style="display:none;">
+              <table class="ol-table">
+                <thead>
+                  <tr>
+                    <th>case number</th>
+                    <th>offense name</th>
+                    <th>severity</th>
+                    <th>facility</th>
+                    <th>status</th>
+                    <th>sentence</th>
+                  </tr>
+                </thead>
+                <tbody id="criminalTableBody"></tbody>
+              </table>
+            </div>
+          </section>
+        </div>
+
+        <!-- TAB 7: CITIZEN AUDIT HISTORY (citizen_history) -->
+        <div id="tabContentHistory" class="tab-content">
+          <section class="card">
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px;">
+              <h2 style="margin-bottom:0;">statutory audit trail &amp; change log (public.citizen_history)</h2>
+              <span class="ol-badge-tag ol-badge-neutral">immutable civil record</span>
+            </div>
+            <p style="color:var(--text-muted); font-size:12.5px; margin-bottom:16px;">
+              Administrative audit trail tracking updates to citizen registration, jurisdiction, and official records.
+            </p>
+            <table class="ol-table">
+              <thead>
+                <tr>
+                  <th>change type</th>
+                  <th>previous value</th>
+                  <th>updated value</th>
+                  <th>administrative notes</th>
+                  <th>timestamp</th>
+                </tr>
+              </thead>
+              <tbody id="historyTableBody"></tbody>
+            </table>
+          </section>
+        </div>
+
+        <!-- TAB 8: ACCOUNT & SESSION SECURITY -->
+        <div id="tabContentAccount" class="tab-content">
+          <section class="card">
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px;">
+              <h2 style="margin-bottom:0;">citizen account security &amp; session</h2>
+              <span class="ol-badge-tag ol-badge-success">authenticated session</span>
+            </div>
+
+            <div style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:2px; padding:16px; margin-bottom:16px;">
+              <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:8px;">
+                <div>
+                  <strong style="font-size:14.5px; color:#1e293b;" id="accountFullName">john doe</strong>
+                  <div style="font-size:12px; color:#64748b;" id="accountEmail">citizen@sangaia.org</div>
+                </div>
+                <span class="ol-badge-tag ol-badge-success">single sign-on connected</span>
+              </div>
+              <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(180px, 1fr)); gap:10px; font-size:12.5px; border-top:1px solid #e2e8f0; padding-top:12px; margin-top:12px;">
+                <div><span style="color:#64748b;">citizen id:</span> <strong style="font-family:monospace; color:#0078d4;" id="accountIdNumber">SNG-7B4F92A1</strong></div>
+                <div><span style="color:#64748b;">jurisdiction:</span> <strong id="accountProvince">New Jasper (Capital Shesk)</strong></div>
+                <div><span style="color:#64748b;">account status:</span> <strong style="color:#15803d;" id="accountStatus">Active</strong></div>
+                <div><span style="color:#64748b;">auth provider:</span> <strong>Supabase Sovereign Auth</strong></div>
+              </div>
+            </div>
+
+            <div style="display:flex; gap:10px; flex-wrap:wrap;">
+              <button type="button" class="ol-btn ol-btn-sm" onclick="handleSignOut()" style="color:#b91c1c;"><span class="mif-exit"></span> sign out of sangaia id</button>
+              <a href="/citizenship.html" class="ol-btn ol-btn-sm"><span class="mif-book"></span> view citizenship charter</a>
+            </div>
+          </section>
+        </div>
+
       </div>
 
     </div>
 
     <!-- Right Column: Sidebar Widgets -->
     <aside class="sidebar">
-      <!-- Citizen Quick Card -->
-      <div class="card">
+      <!-- Authenticated Citizen Quick Card -->
+      <div class="card" id="sidebarAuthCard" style="display:none;">
         <div style="display:flex; align-items:center; gap:12px; margin-bottom:12px;">
           <div style="width:48px; height:48px; border-radius:2px; background:#f1f5f9; border:1px solid #cbd5e1; overflow:hidden; display:flex; align-items:center; justify-content:center;">
             <img id="sidebarAvatar" src="https://sangaia.org/images/official.png" onerror="this.onerror=null;this.src='/images/official.png';" style="width:100%; height:100%; object-fit:cover;" alt="Avatar" />
           </div>
           <div>
-            <div style="font-weight:700; font-size:14px; color:#0f172a;" id="sidebarName">jack davenport</div>
-            <div style="font-family:monospace; font-size:11.5px; color:#0078d4;" id="sidebarId">SG-2026-F1E8</div>
+            <div style="font-weight:700; font-size:14px; color:#0f172a;" id="sidebarName">john doe</div>
+            <div style="font-family:monospace; font-size:11.5px; color:#0078d4;" id="sidebarId">SNG-7B4F92A1</div>
             <span class="ol-badge-tag ol-badge-success" style="font-size:9.5px;" id="sidebarStatus">active citizen</span>
           </div>
         </div>
@@ -736,6 +653,20 @@
           <div><strong>Education:</strong> <span id="sidebarEducation">Higher Polytechnic</span></div>
           <div><strong>Healthcare:</strong> Tier 1 Universal</div>
           <div><strong>Wage Floor:</strong> $25.00/hr Statutory</div>
+        </div>
+      </div>
+
+      <!-- Unauthenticated Overview Card -->
+      <div class="card" id="sidebarUnauthCard">
+        <h3>Sangaia Sovereign ID</h3>
+        <p style="color:var(--text-muted); font-size:12px; margin-bottom:10px; line-height:1.5;">
+          The official single sign-on civil identity authority for the United Provinces of Sangaia.
+        </p>
+        <div style="font-size:12px; color:#475569; line-height:1.7;">
+          <div><strong>Provinces:</strong> 5 Autonomous Jurisdictions</div>
+          <div><strong>Currency:</strong> $ (Sangaian Dollar)</div>
+          <div><strong>Healthcare:</strong> Tier 1 Universal ($0 Out-of-pocket)</div>
+          <div><strong>Wage Floor:</strong> $25.00/hr Statutory Living Wage</div>
         </div>
       </div>
 
@@ -758,7 +689,7 @@
         <h3>Verify Citizen Status</h3>
         <p style="color:var(--text-muted); font-size:11.5px; margin-bottom:8px;">Instant query against the national civil register.</p>
         <div style="display:flex; gap:6px;">
-          <input type="text" id="sidebarVerifyInput" placeholder="e.g. SG-2026-F1E8" class="ol-input" style="flex:1; font-size:12px; padding:6px 8px;" />
+          <input type="text" id="sidebarVerifyInput" placeholder="e.g. SNG-7B4F92A1" class="ol-input" style="flex:1; font-size:12px; padding:6px 8px;" />
           <button type="button" class="ol-btn ol-btn-primary ol-btn-sm" onclick="runSidebarVerify()"><span class="mif-search"></span></button>
         </div>
         <div id="sidebarVerifyResult" style="display:none; font-size:11.5px; margin-top:8px; padding:8px; background:#f0fdf4; border:1px solid #bbf7d0; border-radius:2px; color:#166534;"></div>
@@ -790,13 +721,13 @@
     let activeProfile = null;
 
     function switchIdTab(tabName) {
-      document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
-      document.querySelectorAll('.id-subnav a').forEach(el => el.classList.remove('active'));
+      document.querySelectorAll('#viewAuthenticated .tab-content').forEach(el => el.classList.remove('active'));
+      document.querySelectorAll('#subnavAuthLinks a').forEach(el => el.classList.remove('active'));
 
       const target = document.getElementById('tabContent' + tabName.charAt(0).toUpperCase() + tabName.slice(1));
       if (target) target.classList.add('active');
 
-      const navBtn = document.querySelector(`.id-subnav a[data-tab="${tabName}"]`);
+      const navBtn = document.querySelector(`#subnavAuthLinks a[data-tab="${tabName}"]`);
       if (navBtn) navBtn.classList.add('active');
     }
 
@@ -809,29 +740,69 @@
       const btnUp = document.getElementById('formBtnSignUp');
       btnIn.style.borderBottomColor = isSignIn ? 'var(--primary)' : 'transparent';
       btnIn.style.fontWeight = isSignIn ? '600' : '400';
+      btnIn.style.color = isSignIn ? 'var(--text-main)' : 'var(--text-muted)';
       btnUp.style.borderBottomColor = isSignIn ? 'transparent' : 'var(--primary)';
       btnUp.style.fontWeight = isSignIn ? '400' : '600';
+      btnUp.style.color = isSignIn ? 'var(--text-muted)' : 'var(--text-main)';
+
+      const subIn = document.getElementById('subnavTabSignIn');
+      const subUp = document.getElementById('subnavTabSignUp');
+      if (subIn) subIn.classList.toggle('active', isSignIn);
+      if (subUp) subUp.classList.toggle('active', !isSignIn);
     }
 
-    async function loadAllCitizenDockets() {
-      if (!window.SangaiaAuth) return;
-      const session = await window.SangaiaAuth.getSession();
-      const userId = session?.user?.id || 'sg_usr_executive_f1e8';
-      activeProfile = await window.SangaiaAuth.getFullCitizenProfile(userId);
+    async function initIdPortal() {
+      let session = null;
+      if (window.SangaiaAuth && typeof window.SangaiaAuth.getSession === 'function') {
+        try {
+          session = await window.SangaiaAuth.getSession();
+        } catch(e) {}
+      }
 
-      const cit = activeProfile.citizen;
-      const card = activeProfile.idCard;
+      if (session && session.user) {
+        // User IS signed in: Display authenticated view
+        document.getElementById('viewUnauthenticated').style.display = 'none';
+        document.getElementById('viewAuthenticated').style.display = 'block';
+        document.getElementById('subnavUnauthLinks').style.display = 'none';
+        document.getElementById('subnavAuthLinks').style.display = 'flex';
+        document.getElementById('sidebarUnauthCard').style.display = 'none';
+        document.getElementById('sidebarAuthCard').style.display = 'block';
+
+        await loadAuthenticatedCitizenData(session.user);
+      } else {
+        // User is NOT signed in: Display simple sign-in / register view ONLY
+        document.getElementById('viewUnauthenticated').style.display = 'block';
+        document.getElementById('viewAuthenticated').style.display = 'none';
+        document.getElementById('subnavUnauthLinks').style.display = 'flex';
+        document.getElementById('subnavAuthLinks').style.display = 'none';
+        document.getElementById('sidebarUnauthCard').style.display = 'block';
+        document.getElementById('sidebarAuthCard').style.display = 'none';
+      }
+    }
+
+    async function loadAuthenticatedCitizenData(user) {
+      const userId = user.id;
+      if (window.SangaiaAuth && typeof window.SangaiaAuth.getFullCitizenProfile === 'function') {
+        try {
+          activeProfile = await window.SangaiaAuth.getFullCitizenProfile(userId);
+        } catch (err) {
+          console.warn("Could not load profile dockets:", err);
+        }
+      }
+
+      const cit = activeProfile?.citizen || {};
+      const card = activeProfile?.idCard || {};
 
       // Update ID Card Graphic
-      const name = (card?.full_name || cit?.full_name || 'jack davenport').toLowerCase();
-      const citizenId = (card?.id_number || cit?.sangaia_id_number || 'SG-2026-F1E8').toUpperCase();
-      const dob = card?.dob || cit?.date_of_birth || '1998-05-14';
-      const sex = card?.sex || cit?.sex || 'M';
-      const height = card?.height || cit?.height || "5'11\"";
-      const hair = card?.hair || cit?.hair || "Brown";
-      const prov = card?.province || cit?.province || cit?.territory || 'New Jasper (Capital Shesk)';
-      const langs = card?.languages || cit?.languages || 'English (Sangaian), High Sangaian';
-      const photo = card?.photo_url || cit?.photo_url || 'https://sangaia.org/images/official.png';
+      const name = (card.full_name || cit.full_name || user.user_metadata?.full_name || user.email?.split('@')[0] || 'john doe').toLowerCase();
+      const citizenId = (card.id_number || cit.sangaia_id_number || 'SNG-7B4F92A1').toUpperCase();
+      const dob = card.dob || cit.date_of_birth || '1995-04-12';
+      const sex = card.sex || cit.sex || 'M';
+      const height = card.height || cit.height || "5'11\"";
+      const hair = card.hair || cit.hair || "Brown";
+      const prov = card.province || cit.province || cit.territory || 'New Jasper (Capital Shesk)';
+      const langs = card.languages || cit.languages || 'English (Sangaian), High Sangaian';
+      const photo = card.photo_url || cit.photo_url || 'https://sangaia.org/images/official.png';
 
       document.getElementById('cardLegalName').innerText = name;
       document.getElementById('cardCitizenId').innerText = citizenId;
@@ -840,34 +811,34 @@
       document.getElementById('cardProvince').innerText = prov;
       document.getElementById('cardLanguages').innerText = langs;
       document.getElementById('cardPhotoImg').src = photo;
-      document.getElementById('cardIssueText').innerText = 'ISSUED: ' + (cit?.issue_date || '2024-01-01');
+      document.getElementById('cardIssueText').innerText = 'ISSUED: ' + (cit.issue_date || '2024-01-01');
       document.getElementById('cardHash').innerText = 'ID: SG#' + citizenId.replace(/[^A-Z0-9]/gi, '').slice(-4);
       document.getElementById('qrTokenText').innerText = 'token: urn:sangaia:id:' + citizenId;
 
       // Update Civil Registry Vitals
-      document.getElementById('vitalAddress').innerText = cit?.physical_address || '402 Constitution Way, Sector 4, Capital Shesk';
-      document.getElementById('vitalPhone').innerText = cit?.phone_number || '+1 (555) 019-2834';
-      document.getElementById('vitalEducation').innerText = cit?.education_level || 'Higher Polytechnic (B.Sc. Systems)';
-      document.getElementById('vitalMedical').innerText = (cit?.blood_type || 'O+') + ' • ' + (cit?.allergies || 'NKDA');
-      document.getElementById('vitalDoctor').innerText = cit?.primary_doctor || 'Dr. Elena Vance, Shesk Sovereign Medical Center';
+      document.getElementById('vitalAddress').innerText = cit.physical_address || '402 Constitution Way, Sector 4, Capital Shesk';
+      document.getElementById('vitalPhone').innerText = cit.phone_number || '+1 (555) 019-2834';
+      document.getElementById('vitalEducation').innerText = cit.education_level || 'Higher Polytechnic (B.Sc. Systems)';
+      document.getElementById('vitalMedical').innerText = (cit.blood_type || 'O+') + ' • ' + (cit.allergies || 'NKDA');
+      document.getElementById('vitalDoctor').innerText = cit.primary_doctor || 'Dr. Elena Vance, Shesk Sovereign Medical Center';
 
       // Update Account & Security Tab
       document.getElementById('accountFullName').innerText = name;
-      document.getElementById('accountEmail').innerText = session?.user?.email || cit?.email || 'jackwd2020@gmail.com';
+      document.getElementById('accountEmail').innerText = user.email || cit.email || 'citizen@sangaia.org';
       document.getElementById('accountIdNumber').innerText = citizenId;
       document.getElementById('accountProvince').innerText = prov;
-      document.getElementById('accountStatus').innerText = cit?.account_status || 'Active';
+      document.getElementById('accountStatus').innerText = cit.account_status || 'Active';
 
       // Update Sidebar Quick Card
       document.getElementById('sidebarName').innerText = name;
       document.getElementById('sidebarId').innerText = citizenId;
       document.getElementById('sidebarProvince').innerText = prov.split('(')[0].trim();
-      document.getElementById('sidebarEducation').innerText = (cit?.education_level || 'Higher Polytechnic').split('(')[0].trim();
+      document.getElementById('sidebarEducation').innerText = (cit.education_level || 'Higher Polytechnic').split('(')[0].trim();
       document.getElementById('sidebarAvatar').src = photo;
 
       // Render Benefits Table
       const benTbody = document.getElementById('benefitsTableBody');
-      if (benTbody && activeProfile.benefits?.length) {
+      if (benTbody && activeProfile?.benefits?.length) {
         benTbody.innerHTML = activeProfile.benefits.map(b => `
           <tr>
             <td><strong>${b.benefit_name}</strong></td>
@@ -880,7 +851,7 @@
 
       // Render Education Courses Table
       const eduTbody = document.getElementById('educationTableBody');
-      if (eduTbody && activeProfile.courses?.length) {
+      if (eduTbody && activeProfile?.courses?.length) {
         eduTbody.innerHTML = activeProfile.courses.map(c => `
           <tr>
             <td><strong style="font-family:monospace; color:#0078d4;">${c.course_code}</strong></td>
@@ -895,7 +866,7 @@
 
       // Render Health Records Table
       const hltTbody = document.getElementById('healthTableBody');
-      if (hltTbody && activeProfile.healthRecords?.length) {
+      if (hltTbody && activeProfile?.healthRecords?.length) {
         hltTbody.innerHTML = activeProfile.healthRecords.map(h => `
           <tr>
             <td><strong>${h.record_type}</strong></td>
@@ -909,7 +880,7 @@
 
       // Render Community Service Table
       const comTbody = document.getElementById('communityTableBody');
-      if (comTbody && activeProfile.communityRecords?.length) {
+      if (comTbody && activeProfile?.communityRecords?.length) {
         comTbody.innerHTML = activeProfile.communityRecords.map(s => `
           <tr>
             <td><strong>${s.organization_name}</strong></td>
@@ -926,7 +897,7 @@
       const crmTbody = document.getElementById('criminalTableBody');
       const crmContainer = document.getElementById('criminalRecordsContainer');
       if (crmTbody && crmContainer) {
-        if (activeProfile.criminalRecords?.length) {
+        if (activeProfile?.criminalRecords?.length) {
           crmContainer.style.display = 'block';
           crmTbody.innerHTML = activeProfile.criminalRecords.map(r => `
             <tr>
@@ -945,7 +916,7 @@
 
       // Render Citizen History Table
       const hisTbody = document.getElementById('historyTableBody');
-      if (hisTbody && activeProfile.citizenHistory?.length) {
+      if (hisTbody && activeProfile?.citizenHistory?.length) {
         hisTbody.innerHTML = activeProfile.citizenHistory.map(h => `
           <tr>
             <td><strong>${h.change_type}</strong></td>
@@ -975,8 +946,7 @@
         await window.SangaiaAuth.signIn(email, pass);
         succBox.innerText = 'Authenticated successfully! Loading citizen dockets...';
         succBox.style.display = 'block';
-        await loadAllCitizenDockets();
-        setTimeout(() => switchIdTab('card'), 600);
+        await initIdPortal();
       } catch (err) {
         errBox.innerText = err.message || 'Authentication error. Please check your credentials.';
         errBox.style.display = 'block';
@@ -1016,8 +986,7 @@
         });
         succBox.innerText = 'Registration complete! Sovereign Citizen ID generated.';
         succBox.style.display = 'block';
-        await loadAllCitizenDockets();
-        setTimeout(() => switchIdTab('card'), 600);
+        await initIdPortal();
       } catch (err) {
         errBox.innerText = err.message || 'Registration failed. Please check inputs.';
         errBox.style.display = 'block';
@@ -1030,7 +999,7 @@
     async function handleSignOut() {
       if (confirm('Sign out of your Sangaia ID session?')) {
         await window.SangaiaAuth.signOut();
-        switchIdTab('auth');
+        await initIdPortal();
       }
     }
 
@@ -1085,9 +1054,9 @@
     }
 
     document.addEventListener('DOMContentLoaded', () => {
-      loadAllCitizenDockets();
+      initIdPortal();
       document.addEventListener('sangaia:auth-changed', () => {
-        loadAllCitizenDockets();
+        initIdPortal();
       });
     });
   </script>
