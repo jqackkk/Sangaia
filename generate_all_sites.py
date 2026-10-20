@@ -22,15 +22,17 @@ with open(CSS_PATH, "r", encoding="utf-8") as _f:
     MASTER_EMBEDDED_CSS = _f.read()
 
 THEME_MINISTRY_MAP = {
-    "theme-executive": ("ministry of the executive", "executive.html"),
-    "theme-treasury": ("ministry of the treasury", "treasury.html"),
-    "theme-work": ("ministry of work", "work.html"),
-    "theme-healthcare": ("ministry of healthcare", "healthcare.html"),
-    "theme-education": ("ministry of education", "education.html"),
-    "theme-domestic": ("ministry of domestic affairs", "domesticaffairs.html"),
-    "theme-external": ("ministry of external affairs", "externalaffairs.html"),
-    "theme-environment": ("ministry of the environment", "environment.html"),
-    "theme-propaganda": ("ministry of propaganda", "propaganda.html"),
+    "theme-executive": ("ministry of the executive", "executive.html", "mif-cabinet"),
+    "theme-treasury": ("ministry of the treasury", "treasury.html", "mif-money"),
+    "theme-work": ("ministry of work", "work.html", "mif-suitcase"),
+    "theme-healthcare": ("ministry of healthcare", "healthcare.html", "mif-plus"),
+    "theme-education": ("ministry of education", "education.html", "mif-book"),
+    "theme-domestic": ("ministry of domestic affairs", "domesticaffairs.html", "mif-location-city"),
+    "theme-external": ("ministry of external affairs", "externalaffairs.html", "mif-earth"),
+    "theme-environment": ("ministry of the environment", "environment.html", "mif-tree"),
+    "theme-propaganda": ("ministry of propaganda", "propaganda.html", "mif-broadcast"),
+
+# Retained icon mapping; duplicate entries removed
 }
 MINISTRY_SUBDIRS = {"MoEX", "mEx", "mT", "mW", "mH", "mEd", "mE", "MdA", "MiA", "MtE", "mEnv", "mP"}
 
@@ -87,8 +89,10 @@ def generate_page(
     if brand_text is None:
         if theme_class in THEME_MINISTRY_MAP:
             brand_text = THEME_MINISTRY_MAP[theme_class][0]
+            brand_icon_class = THEME_MINISTRY_MAP[theme_class][2] if len(THEME_MINISTRY_MAP[theme_class]) > 2 else "mif-windows"
         else:
             brand_text = "sangaia live"
+            brand_icon_class = "mif-windows"
 
     if brand_url is None:
         if theme_class in THEME_MINISTRY_MAP:
@@ -138,18 +142,7 @@ def generate_page(
 """
 
     if sidebar_info_html is None:
-        sidebar_info_html = """
-      <div class="card" style="font-size: 12px; line-height: 1.6;">
-        <h3 style="color: var(--text-main); margin-bottom: 6px;">official government seal</h3>
-        <p style="color: var(--text-muted); margin-bottom: 8px;">united provinces of sangaia &bull; sovereign constitutional gateway</p>
-        <div style="display: flex; flex-direction: column; gap: 4px; color: var(--text-muted);">
-          <div><strong style="color: var(--text-main);">jurisdiction:</strong> 5 provinces (new jasper, new madison, liveland, sentinel, columbia)</div>
-          <div><strong style="color: var(--text-main);">currency:</strong> $ (sangaian dollar)</div>
-          <div><strong style="color: var(--text-main);">standards:</strong> sovereign civic charter &bull; metric</div>
-          <div><strong style="color: var(--text-main);">classification:</strong> verified official portal</div>
-        </div>
-      </div>
-"""
+        sidebar_info_html = ""
 
     with open(CSS_PATH, "r", encoding="utf-8") as _f:
         current_css = _f.read()
@@ -175,7 +168,7 @@ def generate_page(
   <header class="hero-header">
     <div class="top-bar">
       <div class="brand">
-        <a href="{brand_url}"><span class="mif-windows"></span> {brand_text}</a>
+        <a href="{brand_url}"><span class="{brand_icon_class}"></span> {brand_text}</a>
       </div>
       <div class="top-right">
         <form class="search-box" action="{search_action}" method="get">
