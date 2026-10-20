@@ -1320,6 +1320,8 @@ button,
   text-transform: lowercase;
 }
 
+.ol-card-title .ol-badge-tag, .docket-entry-header .ol-badge-tag { display: none !important; }
+
   </style>
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   <script src="/auth.js" onerror="this.onerror=null;this.src='auth.js';" defer></script>
@@ -1373,7 +1375,6 @@ button,
     <div class="card" id="overview"><a id="charter"></a>
         <div class="ol-card-title">
             <span>The Sangaian Charter of Fundamental Liberties</span>
-            <span class="ol-badge-tag ol-badge-success">Constitutional Guarantees</span>
         </div>
         <ul style="line-height:1.7; font-size:13.5px;">
             <li><strong>Inviolability of Bodily Integrity &amp; Care:</strong> Universal healthcare is constitutionally protected with zero out-of-pocket costs at point of service.</li>
@@ -1392,7 +1393,6 @@ button,
             <div class="ol-card" style="margin-bottom:0; background:#fbfcfd;">
                 <strong>Birthright Status</strong>
                 <p class="ol-small ol-muted" style="margin:4px 0 8px;">Conferred automatically to children born to Sangaian citizens or within the Five Provinces.</p>
-                <span class="ol-badge-tag ol-badge-success">Immediate</span>
             </div>
             <div class="ol-card" style="margin-bottom:0; background:#fbfcfd;">
                 <strong>Resident Naturalization</strong>
@@ -1402,7 +1402,6 @@ button,
             <div class="ol-card" style="margin-bottom:0; background:#fbfcfd;">
                 <strong>Sovereign Merit Grant</strong>
                 <p class="ol-small ol-muted" style="margin:4px 0 8px;">Awarded directly by the Aeretocrat to scientists, artists, and humanitarians of global distinction.</p>
-                <span class="ol-badge-tag">Council Review</span>
             </div>
         </div>
     </div>

@@ -1320,6 +1320,8 @@ button,
   text-transform: lowercase;
 }
 
+.ol-card-title .ol-badge-tag, .docket-entry-header .ol-badge-tag { display: none !important; }
+
   </style>
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   <script src="/auth.js" onerror="this.onerror=null;this.src='auth.js';" defer></script>
@@ -1374,7 +1376,6 @@ button,
     <div class="card" id="overview"><a id="travel"></a>
         <div class="ol-card-title">
             <span>Global Travel Advisories &bull; Worldwide Nation Directory</span>
-            <span class="ol-badge-tag ol-badge-success">Consular Telemetry Live</span>
         </div>
         <p class="ol-small">Official risk assessments and travel guidance issued by the Sangaian Consular Service for all recognized nations worldwide.</p>
         <div style="margin-bottom:12px;">
@@ -1409,7 +1410,6 @@ button,
     <div class="ol-card" id="treaties">
         <div class="ol-card-title">
             <span>Sovereign Treaties &amp; International Accords Registry</span>
-            <span class="ol-badge-tag">Ratified by Aeretocrat</span>
         </div>
         <table class="ol-table">
             <thead>

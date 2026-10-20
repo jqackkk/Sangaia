@@ -1310,3 +1310,5 @@ button,
 .ol-proclamation-card div:first-child {
   text-transform: lowercase;
 }
+
+.ol-card-title .ol-badge-tag, .docket-entry-header .ol-badge-tag { display: none !important; }

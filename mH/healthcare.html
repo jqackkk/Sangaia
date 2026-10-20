@@ -1320,6 +1320,8 @@ button,
   text-transform: lowercase;
 }
 
+.ol-card-title .ol-badge-tag, .docket-entry-header .ol-badge-tag { display: none !important; }
+
   </style>
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   <script src="/auth.js" onerror="this.onerror=null;this.src='auth.js';" defer></script>
@@ -1375,7 +1377,6 @@ button,
     <div class="card" id="overview"><a id="coverage"></a>
         <div class="ol-card-title">
             <span>Universal Healthcare Coverage &amp; Digital Insurance Verification</span>
-            <span class="ol-badge-tag ol-badge-success">Zero Out-of-Pocket Fees</span>
         </div>
         <p class="ol-small">Every registered Sangaia ID holder is automatically enrolled into Tier 1 Universal Comprehensive Care, covering hospitalization, dental surgery, psychological therapy, and prescription drugs.</p>
         <div class="ol-grid-3" style="margin-top:10px;">
@@ -1398,7 +1399,6 @@ button,
     <div class="ol-card" id="hospitals">
         <div class="ol-card-title">
             <span>Live Hospital Emergency Room Capacity Across the 5 Provinces</span>
-            <span class="ol-badge-tag ol-badge-success">Live Triage Network</span>
         </div>
         <p class="ol-small ol-muted">Real-time telemetry of regional trauma centers across all 5 Sovereign Provinces.</p>
         <table class="ol-table">
@@ -1425,7 +1425,6 @@ button,
     <div class="ol-card" id="cdc">
         <div class="ol-card-title">
             <span>National Disease Control Telemetry &amp; Public Hygiene</span>
-            <span class="ol-badge-tag ol-badge-success">Epidemic Index: LOW</span>
         </div>
         <div class="ol-grid-2" style="margin-top:10px;">
             <div style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:3px; padding:12px;">

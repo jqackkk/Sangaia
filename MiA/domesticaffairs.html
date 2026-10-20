@@ -1320,6 +1320,8 @@ button,
   text-transform: lowercase;
 }
 
+.ol-card-title .ol-badge-tag, .docket-entry-header .ol-badge-tag { display: none !important; }
+
   </style>
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   <script src="/auth.js" onerror="this.onerror=null;this.src='auth.js';" defer></script>
@@ -1374,7 +1376,6 @@ button,
     <div class="card" id="overview"><a id="provinces"></a>
         <div class="ol-card-title">
             <span>The Five Sovereign Provinces of Sangaia</span>
-            <span class="ol-badge-tag ol-badge-success">Interstate Harmony Pact Active</span>
         </div>
         <p class="ol-small">Each province exercises constitutional autonomy under aeretocratic principles, administered by its District Director (the governor of each province) while coordinating through the Council of District Directors and the Body of Electives.</p>
         <table class="ol-table">
@@ -1395,7 +1396,6 @@ button,
     <div class="ol-card" id="trade">
         <div class="ol-card-title">
             <span>Interprovincial Trade &amp; Resource Distribution</span>
-            <span class="ol-badge-tag">Tariff-Free Internal Market</span>
         </div>
         <p class="ol-small">Under the Interstate Commerce Covenant, all commerce moving between the five provinces is 100% exempt from internal tariffs, inspections, and discriminatory restrictions.</p>
         <div class="ol-grid-3" style="margin-top:10px;">
@@ -1418,7 +1418,6 @@ button,
     <div class="ol-card" id="transit">
         <div class="ol-card-title">
             <span>National Highway &amp; Roadway Status Dashboard</span>
-            <span class="ol-badge-tag ol-badge-success">Measured in Monomers &amp; Kilomers (Кмн)</span>
         </div>
         <p class="ol-small ol-muted">Live highway maintenance and traffic status across the federal transit arterial network.</p>
         <table class="ol-table">

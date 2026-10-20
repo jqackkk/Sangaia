@@ -1320,6 +1320,8 @@ button,
   text-transform: lowercase;
 }
 
+.ol-card-title .ol-badge-tag, .docket-entry-header .ol-badge-tag { display: none !important; }
+
   </style>
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   <script src="/auth.js" onerror="this.onerror=null;this.src='auth.js';" defer></script>
@@ -1372,7 +1374,6 @@ button,
     <div class="ol-card">
         <div class="ol-card-title">
             <span>Civic Naturalization Examination</span>
-            <span class="ol-badge-tag">Instant Scoring</span>
         </div>
         <form id="quizForm" onsubmit="gradeQuiz(event)" style="display:flex; flex-direction:column; gap:16px;">
             <div>

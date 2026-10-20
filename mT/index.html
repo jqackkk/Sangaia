@@ -1320,6 +1320,8 @@ button,
   text-transform: lowercase;
 }
 
+.ol-card-title .ol-badge-tag, .docket-entry-header .ol-badge-tag { display: none !important; }
+
   </style>
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   <script src="/auth.js" onerror="this.onerror=null;this.src='auth.js';" defer></script>
@@ -1375,7 +1377,6 @@ button,
     <div class="card" id="overview"><a id="debt"></a>
         <div class="ol-card-title">
             <span>Sovereign Debt Ceiling &amp; Foreign Solvency Ledger</span>
-            <span class="ol-badge-tag ol-badge-success">Constitutional Compliance</span>
         </div>
         <div class="ol-grid-3" style="margin-bottom:12px;">
             <div class="ol-metric-box">
@@ -1423,7 +1424,6 @@ button,
     <div class="ol-card" id="allocations">
         <div class="ol-card-title">
             <span>Statutory Budgetary Allocations by Sector (FY2026)</span>
-            <span class="ol-badge-tag">Total: $ 103.6 B Outlays</span>
         </div>
         <table class="ol-table">
             <thead>

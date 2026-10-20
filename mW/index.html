@@ -1320,6 +1320,8 @@ button,
   text-transform: lowercase;
 }
 
+.ol-card-title .ol-badge-tag, .docket-entry-header .ol-badge-tag { display: none !important; }
+
   </style>
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   <script src="/auth.js" onerror="this.onerror=null;this.src='auth.js';" defer></script>
@@ -1375,7 +1377,6 @@ button,
     <div class="card" id="overview"><a id="pay-standards"></a>
         <div class="ol-card-title">
             <span>Statutory Living Wage Standards &amp; Interactive Net Pay Calculator</span>
-            <span class="ol-badge-tag ol-badge-success">Statutory Floor: $25.00 / hr</span>
         </div>
         <p class="ol-small">In Sangaia, the minimum wage is tied directly to the cost of local housing and nutrition. Under the Fair Compensation Act, the federal statutory wage floor is <strong>$ 25.00 / hr</strong> ($ 52,000 / year base).</p>
 
@@ -1401,7 +1402,6 @@ button,
                     <div class="ol-small ol-muted">Estimated Take-Home (Net of Universal Healthcare &amp; Solidarity Fund):</div>
                     <div style="font-size:22px; font-weight:700; color:#166534;" id="calcNetVal">$ 53,300.00 / year</div>
                 </div>
-                <div class="ol-badge-tag ol-badge-success">Healthcare &amp; Pension 100% Covered</div>
             </div>
         </div>
     </div>
@@ -1410,7 +1410,6 @@ button,
     <div class="ol-card" id="job-openings">
         <div class="ol-card-title">
             <span>Official National Job Placement Board</span>
-            <span class="ol-badge-tag">Verified Public &amp; Cooperative Tenders</span>
         </div>
         <div style="display:flex; flex-wrap:wrap; gap:10px; margin-bottom:12px;">
             <input type="text" class="ol-input" id="jobSearch" placeholder="Filter by job title, guild, or skill..." style="flex:1 1 220px;" oninput="filterJobList()">

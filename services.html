@@ -1320,6 +1320,8 @@ button,
   text-transform: lowercase;
 }
 
+.ol-card-title .ol-badge-tag, .docket-entry-header .ol-badge-tag { display: none !important; }
+
   </style>
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   <script src="/auth.js" onerror="this.onerror=null;this.src='auth.js';" defer></script>
@@ -1373,7 +1375,6 @@ button,
     <div class="ol-card">
         <div class="ol-card-title">
             <span>Instant Public Service Directory Search</span>
-            <span class="ol-badge-tag">72 Tools Available</span>
         </div>
         <p class="ol-small ol-muted">Type any department name, service title, calculator, or keyword to filter the master government catalog.</p>
         <input type="text" class="ol-input" id="servSearch" placeholder="Type keyword (e.g., tax, permit, hospital, visa, weather, radio)..." oninput="filterServices()">
@@ -1382,7 +1383,6 @@ button,
     <div class="ol-card">
         <div class="ol-card-title">
             <span>Master Catalog of Statutory Portals</span>
-            <span class="ol-badge-tag ol-badge-success">All Active</span>
         </div>
 
         <div id="servicesMasterList">

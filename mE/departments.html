@@ -1320,6 +1320,8 @@ button,
   text-transform: lowercase;
 }
 
+.ol-card-title .ol-badge-tag, .docket-entry-header .ol-badge-tag { display: none !important; }
+
   </style>
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   <script src="/auth.js" onerror="this.onerror=null;this.src='auth.js';" defer></script>
@@ -1372,7 +1374,6 @@ button,
         <div class="ol-card" id="overview">
             <div class="ol-card-title">
                 <span>Find Statutory Services &amp; Dedicated Entity Portals</span>
-                <span class="ol-badge-tag">3 Entities Active</span>
             </div>
             <p class="ol-small ol-muted">Instant keyword search across statutory mandates, citizen registries, calculators, and official filing portals of the Ministry of Education.</p>
             <input type="text" class="ol-input" id="dept-search-input" placeholder="Type department name, service title, or keyword..." style="margin-top:6px;">
