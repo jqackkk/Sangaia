@@ -3,16 +3,10 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Civic Examination Portal :: Sangaia Live</title>
+  <title>Civic Naturalization Examination :: Sangaia Live</title>
   <link href="https://cdn.metroui.org.ua/4.5.12/icons.css" rel="stylesheet">
   <link rel="stylesheet" href="/css/sangaia-live.css?v=20261020_v2">
   <style>
-/* ==========================================================================
-   SANGAIA LIVE MASTER DESIGN SYSTEM
-   Standardized layout, typography (Segoe WP), and ministerial theme engine.
-   Strictly aligned with the user-defined One Live architecture.
-   ========================================================================== */
-
 :root {
   --primary: #0078d4;
   --bg: #f3f3f3;
@@ -26,1302 +20,252 @@
   --accent-btn-hover: #5d707e;
   --metro-blue: #002050;
   --font-family: 'Segoe WP', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-
-  /* Windows Live / Metro Atmospheric Hero Defaults (Sky Blue -> White) */
   --hero-bg: #d7ecfa;
   --hero-gradient: radial-gradient(ellipse at 42% 120%, rgba(255, 255, 255, 0.75), rgba(255, 255, 255, 0) 55%), linear-gradient(180deg, #96cdef 0%, #b3def6 18%, #cbe8f8 38%, #e2f2fc 65%, #f4fafd 86%, #ffffff 100%);
   --hero-title-color: #14405c;
   --hero-sub-color: #3f6579;
   --hero-brand-color: #14405c;
-  --glow-color: rgba(0, 120, 212, 0.65);
-  --glow-color-soft: rgba(0, 120, 212, 0.3);
 }
 
-/* --- Ministerial Theme Overrides --- */
-body.theme-executive {
-  --primary: #1e3a8a; /* Imperial Navy & Gold */
-  --accent-btn: #1e3a8a;
-  --accent-btn-hover: #172554;
-  --hero-bg: #dbeafe;
-  --hero-gradient: radial-gradient(ellipse at 42% 120%, rgba(255, 255, 255, 0.75), rgba(255, 255, 255, 0) 55%), linear-gradient(180deg, #93b7eb 0%, #b2cef4 18%, #cbdffa 38%, #e2edfd 65%, #f3f7fe 86%, #ffffff 100%);
-  --hero-title-color: #172554;
-  --hero-sub-color: #334155;
-  --hero-brand-color: #1e3a8a;
-  --glow-color: rgba(30, 58, 138, 0.65);
-  --glow-color-soft: rgba(30, 58, 138, 0.3);
-}
-
-body.theme-treasury {
-  --primary: #0f766e; /* Slate & Emerald */
-  --accent-btn: #0f766e;
-  --accent-btn-hover: #115e59;
-  --hero-bg: #ccfbf1;
-  --hero-gradient: radial-gradient(ellipse at 42% 120%, rgba(255, 255, 255, 0.75), rgba(255, 255, 255, 0) 55%), linear-gradient(180deg, #6ee7b7 0%, #99f6e4 18%, #bbf7ec 38%, #dcfbf5 65%, #f0fdfa 86%, #ffffff 100%);
-  --hero-title-color: #115e59;
-  --hero-sub-color: #285e61;
-  --hero-brand-color: #0f766e;
-  --glow-color: rgba(15, 118, 110, 0.65);
-  --glow-color-soft: rgba(15, 118, 110, 0.3);
-}
-
-body.theme-work {
-  --primary: #6b21a8; /* Industrial Purple */
-  --accent-btn: #6b21a8;
-  --accent-btn-hover: #581c87;
-  --hero-bg: #f3e8ff;
-  --hero-gradient: radial-gradient(ellipse at 42% 120%, rgba(255, 255, 255, 0.75), rgba(255, 255, 255, 0) 55%), linear-gradient(180deg, #d8b4fe 0%, #e5ccff 18%, #eee0ff 38%, #f6efff 65%, #faf6ff 86%, #ffffff 100%);
-  --hero-title-color: #581c87;
-  --hero-sub-color: #6b21a8;
-  --hero-brand-color: #581c87;
-  --glow-color: rgba(107, 33, 168, 0.65);
-  --glow-color-soft: rgba(107, 33, 168, 0.3);
-}
-
-body.theme-healthcare {
-  --primary: #b91c1c; /* Clinical Crimson */
-  --accent-btn: #b91c1c;
-  --accent-btn-hover: #991b1b;
-  --hero-bg: #ffe4e6;
-  --hero-gradient: radial-gradient(ellipse at 42% 120%, rgba(255, 255, 255, 0.75), rgba(255, 255, 255, 0) 55%), linear-gradient(180deg, #fda4af 0%, #fecdd3 18%, #fedfe3 38%, #ffeef0 65%, #fff7f8 86%, #ffffff 100%);
-  --hero-title-color: #991b1b;
-  --hero-sub-color: #881337;
-  --hero-brand-color: #991b1b;
-  --glow-color: rgba(185, 28, 28, 0.65);
-  --glow-color-soft: rgba(185, 28, 28, 0.3);
-}
-
-body.theme-education {
-  --primary: #0284c7; /* Academic Cyan */
-  --accent-btn: #0284c7;
-  --accent-btn-hover: #0369a1;
-  --hero-bg: #e0f2fe;
-  --hero-gradient: radial-gradient(ellipse at 42% 120%, rgba(255, 255, 255, 0.75), rgba(255, 255, 255, 0) 55%), linear-gradient(180deg, #7dd3fc 0%, #a5e1fd 18%, #c5ecfe 38%, #e0f4fe 65%, #f1f9fe 86%, #ffffff 100%);
-  --hero-title-color: #0369a1;
-  --hero-sub-color: #0284c7;
-  --hero-brand-color: #0369a1;
-  --glow-color: rgba(2, 132, 199, 0.65);
-  --glow-color-soft: rgba(2, 132, 199, 0.3);
-}
-
-body.theme-domestic {
-  --primary: #1e293b; /* Deep Navy Blue */
-  --accent-btn: #334155;
-  --accent-btn-hover: #0f172a;
-  --hero-bg: #e2e8f0;
-  --hero-gradient: radial-gradient(ellipse at 42% 120%, rgba(255, 255, 255, 0.75), rgba(255, 255, 255, 0) 55%), linear-gradient(180deg, #94a3b8 0%, #b6c2d1 18%, #cbd5e1 38%, #e2e8f0 65%, #f1f5f9 86%, #ffffff 100%);
-  --hero-title-color: #0f172a;
-  --hero-sub-color: #334155;
-  --hero-brand-color: #1e293b;
-  --glow-color: rgba(30, 41, 59, 0.65);
-  --glow-color-soft: rgba(30, 41, 59, 0.3);
-}
-
-body.theme-external {
-  --primary: #db2777; /* Diplomatic Rose / Pink */
-  --accent-btn: #db2777;
-  --accent-btn-hover: #be185d;
-  --hero-bg: #fce7f3;
-  --hero-gradient: radial-gradient(ellipse at 42% 120%, rgba(255, 255, 255, 0.75), rgba(255, 255, 255, 0) 55%), linear-gradient(180deg, #f472b6 0%, #f9a0ce 18%, #fbcfe8 38%, #fce4f2 65%, #fdf2f8 86%, #ffffff 100%);
-  --hero-title-color: #831843;
-  --hero-sub-color: #9d174d;
-  --hero-brand-color: #9d174d;
-  --glow-color: rgba(219, 39, 119, 0.65);
-  --glow-color-soft: rgba(219, 39, 119, 0.3);
-}
-
-body.theme-environment {
-  --primary: #15803d; /* Forest Green */
-  --accent-btn: #15803d;
-  --accent-btn-hover: #166534;
-  --hero-bg: #dcfce7;
-  --hero-gradient: radial-gradient(ellipse at 42% 120%, rgba(255, 255, 255, 0.75), rgba(255, 255, 255, 0) 55%), linear-gradient(180deg, #86efac 0%, #aaf2c3 18%, #c7f7d7 38%, #e1fbe9 65%, #f2fdf6 86%, #ffffff 100%);
-  --hero-title-color: #14532d;
-  --hero-sub-color: #15803d;
-  --hero-brand-color: #14532d;
-  --glow-color: rgba(21, 128, 61, 0.65);
-  --glow-color-soft: rgba(21, 128, 61, 0.3);
-}
-
-body.theme-propaganda {
-  --primary: #ea580c; /* Vibrant Orange */
-  --accent-btn: #ea580c;
-  --accent-btn-hover: #c2410c;
-  --hero-bg: #ffedd5;
-  --hero-gradient: radial-gradient(ellipse at 42% 120%, rgba(255, 255, 255, 0.75), rgba(255, 255, 255, 0) 55%), linear-gradient(180deg, #fdba74 0%, #fecd99 18%, #fedebb 38%, #ffeedd 65%, #fff7ef 86%, #ffffff 100%);
-  --hero-title-color: #7c2d12;
-  --hero-sub-color: #c2410c;
-  --hero-brand-color: #7c2d12;
-  --glow-color: rgba(234, 88, 12, 0.65);
-  --glow-color-soft: rgba(234, 88, 12, 0.3);
-}
-
-body.theme-federal,
-body.theme-default {
-  --primary: #0078d4; /* Sovereign Windows Live Blue */
-  --accent-btn: #6e8494;
-  --accent-btn-hover: #5d707e;
-  --hero-bg: #d7ecfa;
-  --hero-gradient: radial-gradient(ellipse at 42% 120%, rgba(255, 255, 255, 0.75), rgba(255, 255, 255, 0) 55%), linear-gradient(180deg, #96cdef 0%, #b3def6 18%, #cbe8f8 38%, #e2f2fc 65%, #f4fafd 86%, #ffffff 100%);
-  --hero-title-color: #14405c;
-  --hero-sub-color: #3f6579;
-  --hero-brand-color: #14405c;
-  --glow-color: rgba(0, 120, 212, 0.65);
-  --glow-color-soft: rgba(0, 120, 212, 0.3);
-}
-
-/* ==========================================================================
-   METRO UI ICON & COLOR UTILITIES
-   Aligned with Metro UI Font & Colors (v4.metroui.org.ua/colors.html)
-   ========================================================================== */
-
-[class*="mif-"] {
-  display: inline-block;
-  vertical-align: middle;
-  line-height: 1;
-}
-
-.fg-cyan { color: #1ba1e2 !important; }
-.fg-teal { color: #00aba9 !important; }
-.fg-emerald { color: #008a00 !important; }
-.fg-green { color: #60a917 !important; }
-.fg-forest { color: #15803d !important; }
-.fg-lime { color: #a4c400 !important; }
-.fg-yellow { color: #e3c800 !important; }
-.fg-amber { color: #f0a30a !important; }
-.fg-orange { color: #fa6800 !important; }
-.fg-red { color: #e51400 !important; }
-.fg-crimson { color: #b91c1c !important; }
-.fg-magenta { color: #d80073 !important; }
-.fg-pink { color: #db2777 !important; }
-.fg-purple { color: #6b21a8 !important; }
-.fg-violet { color: #aa00ff !important; }
-.fg-indigo { color: #1e293b !important; }
-.fg-blue { color: #0078d4 !important; }
-.fg-cobalt { color: #0050ef !important; }
-.fg-navy { color: #1e3a8a !important; }
-.fg-steel { color: #647687 !important; }
-.fg-mauve { color: #76608a !important; }
-.fg-taupe { color: #87794e !important; }
-.fg-brown { color: #825a2c !important; }
-.fg-gray { color: #605e5c !important; }
-.fg-dark { color: #201f1e !important; }
-.fg-white { color: #ffffff !important; }
-.fg-primary { color: var(--primary) !important; }
-
-/* Global Reset */
-html {
-  scroll-behavior: smooth;
-}
-
-[id] {
-  scroll-margin-top: 16px;
-}
-
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
-
+* { box-sizing: border-box; margin: 0; padding: 0; }
 body {
   font-family: var(--font-family);
   background-color: var(--bg);
   color: var(--text-main);
   font-size: 13.5px;
-  line-height: 1.4;
+  line-height: 1.45;
   min-height: 100vh;
-  position: relative;
-  padding-bottom: 48px; /* space for docked messages */
+  display: flex;
+  flex-direction: column;
 }
 
-a {
-  color: var(--primary);
-  text-decoration: none;
-}
+a { color: var(--primary); text-decoration: none; }
+a:hover { text-decoration: underline; }
 
-a:hover {
-  text-decoration: underline;
-}
-
-/* ==========================================================================
-   Top Hero Header
-   ========================================================================== */
 .hero-header {
-  position: relative;
-  z-index: 100;
-  background-color: var(--hero-bg, #d7ecfa);
-  background-image: var(--hero-gradient, linear-gradient(180deg, #96cdef 0%, #b3def6 18%, #cbe8f8 38%, #e2f2fc 65%, #f4fafd 86%, #ffffff 100%));
-  background-repeat: no-repeat;
-  background-position: top center;
-  color: var(--text-main);
-  padding: 16px 36px 24px 36px;
-  border-bottom: none;
+  background: var(--hero-bg);
+  background-image: var(--hero-gradient);
+  border-bottom: 1px solid var(--border);
+  padding: 12px 24px 20px;
 }
-
-body.theme-federal .hero-header,
-body.theme-default .hero-header {
-  background-color: #d7ecfa;
-  background-image: radial-gradient(ellipse at 42% 120%, rgba(255, 255, 255, 0.75), rgba(255, 255, 255, 0) 55%),
-                    linear-gradient(180deg, #96cdef 0%, #b3def6 18%, #cbe8f8 38%, #e2f2fc 65%, #f4fafd 86%, #ffffff 100%);
-}
-
-body.theme-executive .hero-header {
-  background-color: #dbeafe;
-  background-image: radial-gradient(ellipse at 42% 120%, rgba(255, 255, 255, 0.75), rgba(255, 255, 255, 0) 55%),
-                    linear-gradient(180deg, #93b7eb 0%, #b2cef4 18%, #cbdffa 38%, #e2edfd 65%, #f3f7fe 86%, #ffffff 100%);
-}
-
-body.theme-treasury .hero-header {
-  background-color: #ccfbf1;
-  background-image: radial-gradient(ellipse at 42% 120%, rgba(255, 255, 255, 0.75), rgba(255, 255, 255, 0) 55%),
-                    linear-gradient(180deg, #6ee7b7 0%, #99f6e4 18%, #bbf7ec 38%, #dcfbf5 65%, #f0fdfa 86%, #ffffff 100%);
-}
-
-body.theme-work .hero-header {
-  background-color: #f3e8ff;
-  background-image: radial-gradient(ellipse at 42% 120%, rgba(255, 255, 255, 0.75), rgba(255, 255, 255, 0) 55%),
-                    linear-gradient(180deg, #d8b4fe 0%, #e5ccff 18%, #eee0ff 38%, #f6efff 65%, #faf6ff 86%, #ffffff 100%);
-}
-
-body.theme-healthcare .hero-header {
-  background-color: #ffe4e6;
-  background-image: radial-gradient(ellipse at 42% 120%, rgba(255, 255, 255, 0.75), rgba(255, 255, 255, 0) 55%),
-                    linear-gradient(180deg, #fda4af 0%, #fecdd3 18%, #fedfe3 38%, #ffeef0 65%, #fff7f8 86%, #ffffff 100%);
-}
-
-body.theme-education .hero-header {
-  background-color: #e0f2fe;
-  background-image: radial-gradient(ellipse at 42% 120%, rgba(255, 255, 255, 0.75), rgba(255, 255, 255, 0) 55%),
-                    linear-gradient(180deg, #7dd3fc 0%, #a5e1fd 18%, #c5ecfe 38%, #e0f4fe 65%, #f1f9fe 86%, #ffffff 100%);
-}
-
-body.theme-domestic .hero-header {
-  background-color: #e2e8f0;
-  background-image: radial-gradient(ellipse at 42% 120%, rgba(255, 255, 255, 0.75), rgba(255, 255, 255, 0) 55%),
-                    linear-gradient(180deg, #94a3b8 0%, #b6c2d1 18%, #cbd5e1 38%, #e2e8f0 65%, #f1f5f9 86%, #ffffff 100%);
-}
-
-body.theme-external .hero-header {
-  background-color: #fce7f3;
-  background-image: radial-gradient(ellipse at 42% 120%, rgba(255, 255, 255, 0.75), rgba(255, 255, 255, 0) 55%),
-                    linear-gradient(180deg, #f472b6 0%, #f9a0ce 18%, #fbcfe8 38%, #fce4f2 65%, #fdf2f8 86%, #ffffff 100%);
-}
-
-body.theme-environment .hero-header {
-  background-color: #dcfce7;
-  background-image: radial-gradient(ellipse at 42% 120%, rgba(255, 255, 255, 0.75), rgba(255, 255, 255, 0) 55%),
-                    linear-gradient(180deg, #86efac 0%, #aaf2c3 18%, #c7f7d7 38%, #e1fbe9 65%, #f2fdf6 86%, #ffffff 100%);
-}
-
-body.theme-propaganda .hero-header {
-  background-color: #ffedd5;
-  background-image: radial-gradient(ellipse at 42% 120%, rgba(255, 255, 255, 0.75), rgba(255, 255, 255, 0) 55%),
-                    linear-gradient(180deg, #fdba74 0%, #fecd99 18%, #fedebb 38%, #ffeedd 65%, #fff7ef 86%, #ffffff 100%);
-}
-
 .top-bar {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 24px;
-  overflow: visible;
+  max-width: 1200px;
+  margin: 0 auto 16px;
 }
-
-.brand {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  font-size: 20px;
-  font-weight: 600;
-  letter-spacing: -0.3px;
-}
-
-.brand a, .brand span {
-  color: var(--primary);
-  text-decoration: none;
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-}
-
 .brand a {
-  position: relative;
-  padding: 0;
-  color: var(--primary);
-  background: linear-gradient(
-    110deg,
-    var(--primary) 0%,
-    var(--primary) 35%,
-    #ffffff 50%,
-    var(--primary) 65%,
-    var(--primary) 100%
-  );
-  background-size: 300% 100%;
-  background-position: 100% 0;
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-
-.brand a:hover {
-  text-decoration: none;
-  animation: brandShine 0.5s ease-out forwards;
-}
-
-@keyframes brandShine {
-  0% {
-    background-position: 100% 0;
-  }
-  100% {
-    background-position: 0% 0;
-  }
-}
-
-.brand [class*="mif-"] {
-  font-size: 18px;
-  display: inline-block;
-  line-height: 1;
-}
-
-.top-right {
-  display: flex;
-  align-items: center;
-  gap: 16px;
-}
-
-.search-box {
-  display: inline-flex;
-  align-items: center;
-  background: #ffffff;
-  border: 1px solid rgba(0, 0, 0, 0.16);
-  border-radius: 2px;
-  overflow: hidden;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
-  transition: width 0.12s ease, box-shadow 0.15s ease, border-color 0.15s ease;
-}
-
-.search-box:focus-within {
-  border-color: var(--primary);
-  box-shadow: 0 0 0 1px var(--primary);
-}
-
-.search-box input {
-  border: none;
-  outline: none;
-  padding: 6px 10px;
-  font-size: 12.5px;
-  width: auto;
-  min-width: 50px;
-  max-width: 380px;
-  field-sizing: content;
-  font-family: inherit;
-  color: var(--text-main);
-  background: transparent;
-  transition: width 0.12s ease;
-}
-
-.search-box button {
-  background: transparent;
-  border: none;
-  padding: 6px 10px;
-  color: #605e5c;
-  cursor: pointer;
-  font-size: 13px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: color 0.15s ease, background 0.15s ease;
-}
-
-.search-box button:hover {
-  background: #f0f0f0;
-  color: var(--primary);
-}
-
-.top-icons {
-  display: flex;
-  align-items: center;
-  gap: 14px;
-  color: var(--hero-sub-color, #4b6b82);
-  font-size: 15px;
-}
-
-.top-icons span {
-  cursor: pointer;
-  opacity: 0.9;
-  transition: opacity 0.15s ease, color 0.15s ease;
-}
-
-.top-icons span:hover {
-  opacity: 1;
-  color: var(--primary);
-}
-
-.user-profile-btn,
-.user-profile-menu {
-  display: inline-flex;
-  align-items: center;
-  gap: 7px;
-  cursor: pointer;
-  font-size: 13px;
-  font-weight: 500;
-  text-decoration: none;
-  padding: 5px 12px;
-  background: #ffffff;
-  border: 1px solid rgba(0, 0, 0, 0.16);
-  border-radius: 2px;
-  color: var(--hero-brand-color, #14405c);
-  transition: all 0.15s ease;
-  user-select: none;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
-}
-
-.user-profile-btn:hover,
-.user-profile-menu:hover {
-  border-color: var(--primary);
-  color: var(--primary);
-  text-decoration: none;
-  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.12);
-}
-
-.user-profile-btn .mif-user,
-.user-profile-menu .mif-user {
-  color: var(--primary) !important;
-  font-size: 14px;
-}
-
-.user-profile-menu .mif-arrow-drop-down {
-  color: var(--hero-sub-color, #4b6b82);
-  font-size: 14px;
-  transition: transform 0.2s ease, color 0.15s ease;
-}
-
-.user-profile-menu.open .mif-arrow-drop-down {
-  transform: rotate(180deg);
-  color: var(--primary);
-}
-
-.user-profile-menu img {
-  width: 28px !important;
-  height: 28px !important;
-  max-width: 28px !important;
-  max-height: 28px !important;
-  border-radius: 2px;
-  border: 1px solid rgba(0, 0, 0, 0.15);
-  object-fit: contain;
-  background: #ffffff;
-  display: block;
-}
-
-.user-profile-menu .user-dropdown {
-  display: none;
-  position: absolute;
-  right: 0;
-  top: 100%;
-  margin-top: 6px;
-  background: #fff;
-  color: var(--text-main);
-  border: 1px solid var(--border);
-  box-shadow: 0 4px 16px rgba(0,0,0,0.18);
-  border-radius: 2px;
-  width: 210px;
-  z-index: 10000;
-  padding: 6px 0;
-}
-
-.user-profile-menu.open .user-dropdown,
-.user-profile-menu:focus-within .user-dropdown {
-  display: block;
-}
-
-.user-profile-menu .user-dropdown::before {
-  content: '';
-  position: absolute;
-  top: -10px;
-  left: 0;
-  right: 0;
-  height: 10px;
-}
-
-.user-dropdown .user-dropdown-header {
-  padding: 6px 14px;
-  font-size: 11px;
-  color: var(--text-muted);
-  text-transform: lowercase;
+  font-size: 17px;
   font-weight: 700;
-  border-bottom: 1px solid var(--border);
-  margin-bottom: 4px;
-}
-
-.user-dropdown a {
-  display: block;
-  padding: 6px 14px;
-  color: var(--text-main);
-  font-size: 13px;
-  text-decoration: none;
-}
-
-.user-dropdown a:hover {
-  background: #f0f0f0;
-  color: var(--primary);
-  text-decoration: none;
-}
-
-.hero-content h1 {
-  font-size: 28px;
-  font-weight: 300;
-  margin-bottom: 4px;
-  letter-spacing: -0.5px;
-  color: var(--hero-title-color, #14405c);
-}
-
-.hero-content p {
-  font-size: 13.5px;
-  color: var(--hero-sub-color, #3f6579);
-  margin-bottom: 4px;
-}
-
-.hero-breadcrumbs {
-  margin-top: 8px;
-  display: flex;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 8px;
-  font-size: 12.5px;
-  font-style: normal;
-  color: var(--hero-sub-color, #3f6579);
-}
-
-.hero-breadcrumbs a {
-  color: var(--primary);
-  text-decoration: none;
+  color: var(--hero-brand-color);
   display: inline-flex;
   align-items: center;
-  gap: 4px;
-  font-weight: 500;
-  transition: text-decoration 0.15s ease;
+  gap: 8px;
 }
-
-.hero-breadcrumbs a:hover {
-  text-decoration: underline;
-}
-
-.hero-breadcrumbs .bc-sep {
-  opacity: 0.6;
-  font-size: 11px;
-  user-select: none;
-  color: var(--hero-sub-color, #3f6579);
-}
-
-/* ==========================================================================
-   Sub-Navigation Bar
-   ========================================================================== */
-.subnav {
-  background: #fff;
-  border-bottom: 1px solid var(--border);
-  padding: 0 36px;
-  display: flex;
-  gap: 28px;
-  overflow-x: auto;
-  scrollbar-width: thin;
-}
-
-.subnav a {
+.top-right { display: flex; align-items: center; gap: 12px; }
+.search-box { display: flex; align-items: center; background: #fff; border: 1px solid var(--border-dark); border-radius: 2px; }
+.search-box input { border: none; padding: 4px 8px; font-size: 12.5px; font-family: inherit; outline: none; width: 140px; }
+.search-box button { background: none; border: none; padding: 4px 8px; cursor: pointer; color: var(--text-muted); }
+.user-profile-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 10px;
+  background: #ffffff;
+  border: 1px solid var(--border-dark);
+  border-radius: 2px;
   color: var(--text-main);
-  padding: 12px 2px;
-  font-size: 13.5px;
-  text-decoration: none;
-  display: inline-block;
-  position: relative;
-  white-space: nowrap;
-}
-
-.subnav a.active {
+  font-size: 12px;
   font-weight: 600;
-  border-bottom: 3px solid var(--primary);
-  color: var(--primary);
+  text-decoration: none;
 }
 
-.subnav a:hover:not(.active) {
+.hero-content { max-width: 1200px; margin: 0 auto; }
+.hero-content h1 { font-size: 26px; font-weight: 300; color: var(--hero-title-color); margin-bottom: 4px; }
+.hero-content p { font-size: 13.5px; color: var(--hero-sub-color); margin-bottom: 8px; }
+.hero-breadcrumbs { font-size: 12px; color: var(--hero-sub-color); }
+
+.subnav {
+  background: #ffffff;
+  border-bottom: 1px solid var(--border);
+  padding: 0 24px;
+  display: flex;
+  gap: 20px;
+  max-width: 100%;
+}
+.subnav a {
+  padding: 10px 0;
+  color: var(--text-muted);
+  font-size: 13px;
+  border-bottom: 3px solid transparent;
+  text-decoration: none;
+  font-weight: 500;
+}
+.subnav a.active, .subnav a:hover {
   color: var(--primary);
+  border-bottom-color: var(--primary);
 }
 
-/* ==========================================================================
-   Main Content Grid
-   ========================================================================== */
 .main-wrapper {
   max-width: 1200px;
   margin: 20px auto;
-  padding: 0 20px;
+  padding: 0 24px;
   display: grid;
-  grid-template-columns: 2fr 1fr;
+  grid-template-columns: 1fr 300px;
   gap: 20px;
+  width: 100%;
+  flex: 1;
 }
 
-.left-col {
-  display: flex;
-  flex-direction: column;
-}
-
-.sidebar {
-  display: flex;
-  flex-direction: column;
-}
-
-/* Standard Card */
-.card,
-.ol-card,
-section.card {
+.ol-card {
   background: var(--card-bg);
   border: 1px solid var(--border);
   border-radius: 2px;
-  padding: 20px 24px;
-  margin-bottom: 20px;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.03);
+  padding: 18px 20px;
+  margin-bottom: 18px;
 }
-
-.card h2,
-.ol-card h2,
-section.card h2 {
-  font-size: 16px;
+.ol-card-title {
+  font-size: 15px;
   font-weight: 600;
+  color: var(--text-main);
   margin-bottom: 12px;
-  color: var(--primary);
+  border-bottom: 1px solid #f0f0f0;
+  padding-bottom: 8px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
-.card h3,
-.ol-card h3,
-section.card h3 {
-  font-size: 14.5px;
+.category-banner {
+  background: #f0f7fc;
+  border-left: 4px solid var(--primary);
+  padding: 10px 14px;
+  margin: 18px 0 12px;
+  border-radius: 0 2px 2px 0;
+}
+.category-banner h3 {
+  font-size: 14px;
+  font-weight: 700;
+  color: #1e3a8a;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+.category-banner p {
+  font-size: 12px;
+  color: var(--text-muted);
+  margin-top: 2px;
+}
+
+.q-box {
+  background: #fafafa;
+  border: 1px solid #e5e7eb;
+  border-radius: 3px;
+  padding: 14px 16px;
+  margin-bottom: 14px;
+}
+.q-title {
+  font-size: 13.5px;
   font-weight: 600;
+  color: #111827;
   margin-bottom: 8px;
+  display: flex;
+  gap: 8px;
 }
+.q-num {
+  color: var(--primary);
+  font-weight: 700;
+  min-width: 28px;
+}
+.q-options {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-left: 36px;
+}
+.q-opt {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  font-size: 13px;
+  cursor: pointer;
+  padding: 4px 6px;
+  border-radius: 2px;
+}
+.q-opt:hover { background: #eef2ff; }
+.q-opt input { margin-top: 2px; cursor: pointer; }
 
-.card h4,
-.ol-card h4,
-section.card h4 {
+.modal-results-box {
+  display: none;
+  padding: 16px;
+  border-radius: 3px;
+  margin-top: 14px;
+  border: 1px solid transparent;
+  line-height: 1.5;
+}
+.modal-results-box.active { display: block; }
+
+.ol-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 7px 16px;
+  font-family: inherit;
   font-size: 13px;
   font-weight: 600;
-  color: #333;
-  margin: 12px 0 8px 0;
+  border: 1px solid transparent;
+  border-radius: 2px;
+  cursor: pointer;
+  text-decoration: none;
 }
+.ol-btn-primary { background: var(--primary); color: #ffffff; }
+.ol-btn-primary:hover { background: #0060aa; }
+.ol-btn-sm { padding: 4px 10px; font-size: 12px; }
 
-/* ==========================================================================
-   Sovereign Portals, Registries & Document Dockets
-   ========================================================================== */
-.sovereign-card {
+.card {
   background: var(--card-bg);
   border: 1px solid var(--border);
   border-radius: 2px;
   padding: 16px;
   margin-bottom: 16px;
 }
-
-.docket-entry {
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-  padding: 12px;
-  background: #fbfcfd;
-  border: 1px solid var(--border);
-  border-left: 3px solid var(--primary);
-  border-radius: 2px;
-  margin-bottom: 10px;
-}
-
-.docket-entry:last-child {
-  margin-bottom: 0;
-}
-
-.docket-entry-header {
+.sidebar-nav-list { list-style: none; }
+.sidebar-nav-list li a {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  flex-wrap: wrap;
   gap: 8px;
-}
-
-.docket-entry-title {
-  font-size: 13.5px;
-  font-weight: 600;
-  color: var(--primary);
-  text-decoration: none;
-}
-
-.docket-entry-title:hover {
-  text-decoration: underline;
-}
-
-.docket-entry-body {
+  padding: 6px 0;
   font-size: 12.5px;
-  color: var(--text-main);
-  line-height: 1.45;
-}
-
-.docket-entry-meta {
-  font-size: 11px;
   color: var(--text-muted);
 }
+.sidebar-nav-list li a.active, .sidebar-nav-list li a:hover { color: var(--primary); }
 
-.ol-proclamation-card {
-  background: #f8fafc;
-  border: 1px solid var(--border);
-  border-left: 4px solid var(--primary);
-  padding: 12px 16px;
-  margin-bottom: 16px;
-  font-size: 13px;
-  border-radius: 2px;
-}
-
-/* ==========================================================================
-   Universal Component Utilities (Tables, Forms, Modals, Badges, Metrics)
-   ========================================================================== */
-
-/* Badges */
-.badge {
+.stat-chip {
   display: inline-block;
+  background: #e0f2fe;
+  color: #0369a1;
   font-size: 11px;
-  font-weight: 600;
-  padding: 2px 7px;
-  border-radius: 2px;
-  text-transform: lowercase;
-  letter-spacing: 0.3px;
+  font-weight: 700;
+  padding: 2px 8px;
+  border-radius: 12px;
 }
 
-.badge-primary { background: #e0f2fe; color: #0369a1; border: 1px solid #bae6fd; }
-.badge-success { background: #dcfce7; color: #15803d; border: 1px solid #bbf7d0; }
-.badge-warning { background: #fef3c7; color: #b45309; border: 1px solid #fde68a; }
-.badge-danger  { background: #fee2e2; color: #b91c1c; border: 1px solid #fecaca; }
-.badge-neutral { background: #f3f4f6; color: #4b5563; border: 1px solid #e5e7eb; }
-
-/* Buttons */
-.btn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 6px;
-  padding: 7px 14px;
-  font-size: 13px;
-  font-weight: 500;
-  border-radius: 2px;
-  cursor: pointer;
-  border: 1px solid transparent;
-  font-family: inherit;
-  text-decoration: none;
-}
-
-.btn-primary {
-  background: var(--primary);
-  color: #fff;
-}
-
-.btn-primary:hover {
-  filter: brightness(0.92);
-  text-decoration: none;
-}
-
-.btn-secondary {
-  background: var(--accent-btn);
-  color: #fff;
-}
-
-.btn-secondary:hover {
-  background: var(--accent-btn-hover);
-  text-decoration: none;
-}
-
-.btn-outline {
-  background: #fff;
-  border-color: var(--border-dark);
-  color: var(--text-main);
-}
-
-.btn-outline:hover {
-  background: #f7f7f7;
-  text-decoration: none;
-}
-
-.btn-sm {
-  padding: 4px 8px;
-  font-size: 11.5px;
-}
-
-/* Data Tables */
-.data-table-container {
-  width: 100%;
-  overflow-x: auto;
-  margin: 12px 0;
-}
-
-.data-table {
-  width: 100%;
-  border-collapse: collapse;
-  font-size: 12.5px;
-  text-align: left;
-}
-
-.data-table th {
-  background: #f8fafc;
-  border-bottom: 2px solid var(--border);
-  padding: 8px 10px;
-  font-weight: 600;
-  color: var(--text-muted);
-}
-
-.data-table td {
-  border-bottom: 1px solid #f1f5f9;
-  padding: 8px 10px;
-  color: var(--text-main);
-}
-
-.data-table tr:hover td {
-  background: #fbfcfd;
-}
-
-/* Forms & Inputs */
-.form-group {
-  margin-bottom: 12px;
-}
-
-.form-label {
-  display: block;
-  font-size: 12px;
-  font-weight: 600;
-  color: var(--text-muted);
-  margin-bottom: 4px;
-}
-
-.form-input, .form-select, .form-textarea {
-  width: 100%;
-  padding: 7px 10px;
-  border: 1px solid var(--border-dark);
-  border-radius: 2px;
-  font-size: 13px;
-  font-family: inherit;
-  background: #fff;
-  color: var(--text-main);
-  outline: none;
-}
-
-.form-input:focus, .form-select:focus, .form-textarea:focus {
-  border-color: var(--primary);
-}
-
-/* Department Tool Cards */
-.dept-card {
-  border: 1px solid var(--border);
-  border-radius: 2px;
-  padding: 14px;
-  margin-bottom: 14px;
-  background: #fff;
-  transition: box-shadow 0.15s ease;
-}
-
-.dept-card:hover {
-  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
-}
-
-.dept-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  margin-bottom: 8px;
-}
-
-.dept-title {
-  font-size: 15px;
-  font-weight: 600;
-  color: var(--primary);
-}
-
-.dept-mandate {
-  font-size: 12.5px;
-  color: var(--text-muted);
-  margin-bottom: 10px;
-  line-height: 1.45;
-}
-
-.dept-tools-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-  gap: 10px;
-  margin-top: 10px;
-}
-
-.dept-tool-item {
-  background: #f8fafc;
-  border: 1px solid #e2e8f0;
-  border-radius: 2px;
-  padding: 10px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-}
-
-.dept-tool-item h4 {
-  margin: 0 0 4px 0;
-  font-size: 13px;
-  color: var(--text-main);
-}
-
-.dept-tool-item p {
-  font-size: 11.5px;
-  color: var(--text-muted);
-  margin-bottom: 8px;
-  flex: 1;
-}
-
-/* Metric / Telemetry Cards */
-.telemetry-grid {
+.scorecard-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
   gap: 10px;
-  margin: 12px 0;
+  margin: 14px 0;
 }
-
-.metric-box {
-  background: #f8fafc;
-  border: 1px solid var(--border);
+.scorecard-item {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
   border-radius: 2px;
   padding: 10px;
   text-align: center;
 }
-
-.metric-box .metric-val {
-  font-size: 20px;
-  font-weight: 700;
-  color: var(--primary);
-  margin-bottom: 2px;
-}
-
-.metric-box .metric-lbl {
-  font-size: 11px;
-  text-transform: lowercase;
-  color: var(--text-muted);
-  font-weight: 600;
-}
-
-/* Quick Nav Sidebar List */
-.sidebar-nav-list {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-}
-
-.sidebar-nav-list a {
-  display: block;
-  padding: 6px 10px;
-  font-size: 12.5px;
-  color: var(--text-main);
-  border-radius: 2px;
-  text-decoration: none;
-}
-
-.sidebar-nav-list a:hover {
-  background: #f0f0f0;
-  color: var(--primary);
-}
-
-.sidebar-nav-list a.active {
-  background: #eef5fc;
-  font-weight: 600;
-  color: var(--primary);
-  border-left: 3px solid var(--primary);
-}
-
-/* Modal Dialog System */
-.modal-overlay {
-  display: none;
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: rgba(0, 0, 0, 0.5);
-  z-index: 10000;
-  align-items: center;
-  justify-content: center;
-  padding: 20px;
-}
-
-.modal-overlay.active {
-  display: flex;
-}
-
-.modal-box {
-  background: #ffffff;
-  border-radius: 3px;
-  width: 100%;
-  max-width: 580px;
-  max-height: 90vh;
-  overflow-y: auto;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
-  border: 1px solid var(--border-dark);
-}
-
-.modal-header {
-  padding: 14px 18px;
-  background: #f8fafc;
-  border-bottom: 1px solid var(--border);
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.modal-header h3 {
-  font-size: 16px;
-  font-weight: 600;
-  color: var(--text-main);
-  margin: 0;
-}
-
-.modal-close {
-  background: none;
-  border: none;
-  font-size: 18px;
-  cursor: pointer;
-  color: #888;
-}
-
-.modal-close:hover {
-  color: #000;
-}
-
-.modal-body {
-  padding: 18px;
-}
-
-.modal-footer {
-  padding: 12px 18px;
-  background: #f8fafc;
-  border-top: 1px solid var(--border);
-  display: flex;
-  justify-content: flex-end;
-  gap: 10px;
-}
-
-.modal-result-box {
-  display: none;
-  background: #f0fdf4;
-  border: 1px solid #bbf7d0;
-  border-radius: 2px;
-  padding: 12px;
-  margin-top: 14px;
-  font-size: 12.5px;
-}
-
-.modal-result-box.active {
-  display: block;
-}
-
-/* Audio Player Widget (Ministry of Propaganda) */
-.radio-player-card {
-  background: #1c1917;
-  color: #fff;
-  border-radius: 2px;
-  padding: 16px;
-  margin-bottom: 16px;
-}
-
-.radio-player-card h3 {
-  color: #fb923c;
-}
-
-.radio-stream-btn {
-  background: #ea580c;
-  color: #fff;
-  border: none;
-  padding: 8px 16px;
-  border-radius: 2px;
-  cursor: pointer;
-  font-weight: 600;
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-}
-
-.radio-stream-btn:hover {
-  background: #c2410c;
-}
-
-/* Compatibility Aliases for components */
-.ol-modal-overlay { position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.5); z-index: 10000; display: none; align-items: center; justify-content: center; padding: 20px; }
-.ol-modal-overlay.active { display: flex; }
-.ol-modal-dialog { background: #fff; border-radius: 3px; width: 100%; max-width: 580px; max-height: 90vh; overflow-y: auto; box-shadow: 0 10px 25px rgba(0,0,0,0.25); border: 1px solid var(--border-dark); }
-.ol-modal-head { padding: 14px 18px; background: #f8fafc; border-bottom: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; }
-.ol-modal-title { font-size: 16px; font-weight: 600; color: var(--text-main); }
-.ol-modal-close { background: none; border: none; font-size: 20px; cursor: pointer; color: #888; }
-.ol-modal-close:hover { color: #000; }
-.ol-modal-foot { padding: 12px 18px; background: #f8fafc; border-top: 1px solid var(--border); display: flex; justify-content: flex-end; gap: 10px; }
-.ol-input, .ol-select, .ol-textarea { width: 100%; padding: 7px 10px; border: 1px solid var(--border-dark); border-radius: 2px; font-size: 13px; font-family: inherit; background: #fff; color: var(--text-main); outline: none; box-sizing: border-box; }
-.ol-input:focus, .ol-select:focus, .ol-textarea:focus { border-color: var(--primary); }
-.ol-btn { display: inline-flex; align-items: center; justify-content: center; gap: 6px; padding: 7px 14px; font-size: 13px; font-weight: 500; border-radius: 2px; cursor: pointer; border: 1px solid var(--border-dark); background: #fff; color: var(--text-main); font-family: inherit; text-decoration: none; }
-.ol-btn:hover { background: #f7f7f7; text-decoration: none; }
-.ol-btn-primary { background: var(--primary); color: #fff; border-color: transparent; }
-.ol-btn-primary:hover { filter: brightness(0.92); color: #fff; }
-.ol-btn-sm { padding: 4px 8px; font-size: 11.5px; }
-.ol-badge-tag { display: inline-block; font-size: 11px; font-weight: 600; padding: 2px 7px; border-radius: 2px; text-transform: lowercase; letter-spacing: 0.3px; background: #e0f2fe; color: #0369a1; border: 1px solid #bae6fd; }
-.ol-badge-success { background: #dcfce7; color: #15803d; border: 1px solid #bbf7d0; }
-.ol-grid-2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 12px; }
-.ol-grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px; }
-.ol-note { background: #f8fafc; border-left: 3px solid var(--primary); padding: 8px 12px; font-size: 12.5px; color: var(--text-muted); }
-.ol-sidebox { background: var(--card-bg); border: 1px solid var(--border); border-radius: 2px; padding: 14px; margin-bottom: 14px; }
-.ol-sidebox h3 { font-size: 14px; font-weight: 600; margin-bottom: 6px; }
-.ol-status-bubble { background: #f8fafc; border: 1px solid var(--border); border-left: 4px solid var(--primary); padding: 12px 16px; margin-bottom: 16px; font-size: 13px; border-radius: 2px; }
-.ol-status-date { font-style: normal; font-size: 11px; color: var(--text-muted); margin-top: 4px; font-weight: 500; }
-.ol-card-title { display: flex; justify-content: space-between; align-items: center; margin-bottom: 14px; padding-bottom: 10px; border-bottom: 1px solid var(--border); font-size: 15px; font-weight: 600; color: var(--primary); }
-.ol-title-link { font-size: 12px; font-weight: 500; }
-.ol-small { font-size: 12px; }
-.ol-muted { color: var(--text-muted); }
-.ol-mt-10 { margin-top: 10px; }
-.modal-telemetry-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 10px; margin-top: 10px; }
-.telemetry-card { background: #f8fafc; border: 1px solid var(--border); border-radius: 2px; padding: 8px; text-align: center; }
-.telemetry-name { font-size: 11px; color: var(--text-muted); text-transform: lowercase; font-weight: 600; }
-.telemetry-val { font-size: 18px; font-weight: 700; color: var(--primary); margin: 2px 0; }
-.telemetry-sub { font-size: 11px; color: var(--text-light); }
-.modal-results-box { display: none; background: #f0fdf4; border: 1px solid #bbf7d0; border-radius: 2px; padding: 12px; margin: 12px 18px; font-size: 12.5px; }
-.modal-results-box.active { display: block; }
-#modal-dynamic-fields { padding: 14px 18px; }
-
-/* Responsive adjustments */
-@media (max-width: 800px) {
-  .main-wrapper {
-    grid-template-columns: 1fr;
-  }
-  .subnav {
-    overflow-x: auto;
-  }
-  .hero-header {
-    padding: 16px 20px 20px 20px;
-  }
-}
-
-/* ==========================================================================
-   Dedicated Uncluttered Sign In Page Layout (.auth-page-wrapper)
-   ========================================================================== */
-.auth-page-wrapper {
-  max-width: 440px;
-  width: 100%;
-  margin: 36px auto;
-  padding: 0 20px;
-  box-sizing: border-box;
-}
-
-.auth-card {
-  background: var(--card-bg, #ffffff);
-  border: 1px solid var(--border, #e1dfdd);
-  border-radius: 2px;
-  padding: 28px 30px;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
-}
-
-.auth-card-head h2 {
-  font-size: 20px;
-  font-weight: 400;
-  letter-spacing: -0.3px;
-  color: var(--text-main, #201f1e);
-  margin-bottom: 6px;
-}
-
-.auth-card-head p {
-  font-size: 13px;
-  color: var(--text-muted, #605e5c);
-  margin-bottom: 18px;
-  line-height: 1.45;
-}
-
-.auth-tabs {
-  display: flex;
-  border-bottom: 1px solid var(--border, #e1dfdd);
-  margin-bottom: 20px;
-}
-
-.auth-tab {
-  flex: 1;
-  padding: 10px 12px;
-  background: none;
-  border: none;
-  border-bottom: 3px solid transparent;
-  font-family: inherit;
-  font-size: 13px;
-  font-weight: 400;
-  color: var(--text-muted, #605e5c);
-  cursor: pointer;
-  text-transform: lowercase;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 6px;
-  transition: color 0.15s ease, border-color 0.15s ease;
-}
-
-.auth-tab.active {
-  color: var(--primary, #0078d4);
-  border-bottom-color: var(--primary, #0078d4);
-  font-weight: 600;
-}
-
-.auth-card-footer {
-  margin-top: 22px;
-  padding-top: 14px;
-  border-top: 1px solid var(--border, #e1dfdd);
-  font-size: 11.5px;
-  color: var(--text-light, #8a8886);
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-  gap: 3px;
-}
-
-/* ==========================================================================
-   Metro All-Lowercase Typography for Headings, Titles & Navigation
-   ========================================================================== */
-h1, h2, h3, h4, h5, h6,
-.brand a,
-.brand span,
-.hero-content h1,
-.hero-breadcrumbs a,
-.subnav a,
-.sidebar h3,
-.sidebar h4,
-.card h1,
-.card h2,
-.card h3,
-.card h4,
-.ol-card-title,
-.ol-card-title span,
-.sovereign-card h3,
-.docket-entry-title,
-.docket-entry-header strong,
-.sidebar-nav-list a,
-.side-nav-item,
-.side-nav-group-title,
-.side-nav-heading,
-.side-nav-group a,
-.ol-title-link,
-.dept-title,
-.dept-tool-item h4,
-.data-table th,
-.ol-table th,
-th,
-.badge,
-.ol-badge-tag,
-.btn,
-.ol-btn,
-button,
-.telemetry-name,
-.metric-lbl,
-.user-dropdown a,
-.user-dropdown-header,
-.ol-proclamation-card div:first-child {
-  text-transform: lowercase;
-}
-
-.ol-card-title .ol-badge-tag, .docket-entry-header .ol-badge-tag { display: none !important; }
-
+.scorecard-item .val { font-size: 18px; font-weight: 700; margin-top: 2px; }
+.scorecard-item .lbl { font-size: 11px; color: var(--text-muted); }
   </style>
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   <script src="auth.js" defer></script>
@@ -1340,9 +284,6 @@ button,
           <input type="text" name="q" placeholder="search anything" />
           <button type="submit" aria-label="Search"><span class="mif-search"></span></button>
         </form>
-        <div class="top-icons">
-          <span class="mif-bell" title="notifications"></span>
-        </div>
         <a href="/id/" class="user-profile-btn unauthenticated" id="userProfileMenu" title="sign in to sangaia id">
           <span class="mif-user"></span>
           <span>sign in</span>
@@ -1350,9 +291,9 @@ button,
       </div>
     </div>
     <div class="hero-content">
-      <h1>Civic Literacy & Naturalization Examination</h1>
-      <p>Interactive 5-question examination on constitutional virtues and civic rights</p>
-      <div class="hero-breadcrumbs"><a href="/index.html">← federal portal</a></div>
+      <h1>Civic Naturalization Examination</h1>
+      <p>Official Statutory 40-Question Examination on the Constitution of the United Provinces of Sangaia</p>
+      <div class="hero-breadcrumbs"><a href="/index.html">← federal portal</a> &bull; <a href="/citizenship.html">citizenship &amp; naturalization</a></div>
     </div>
   </header>
 
@@ -1371,96 +312,587 @@ button,
     <!-- Left Column: Primary Content -->
     <div class="left-col">
 
-    <div class="ol-card">
+      <!-- Exam Introduction & Statutory Standards -->
+      <div class="ol-card">
         <div class="ol-card-title">
-            <span>Civic Naturalization Examination</span>
+          <span>Statutory Examination Standards &bull; Article Six (⎰6.cp.cnsp)</span>
+          <span class="stat-chip">Passing Standard: 80% In All Categories</span>
         </div>
-        <form id="quizForm" onsubmit="gradeQuiz(event)" style="display:flex; flex-direction:column; gap:16px;">
-            <div>
-                <strong>1. What is the official currency of Sangaia?</strong>
-                <div style="margin-top:6px;"><label><input type="radio" name="q1" value="usd"> Euro</label></div>
-                <div><label><input type="radio" name="q1" value="correct"> Sangaian Dollar ($)</label></div>
-                <div><label><input type="radio" name="q1" value="wrong"> Sovereign Ruble</label></div>
+        <p style="margin-bottom:10px;">Pursuant to <strong>Article Six, Section ⎰6.cp.cnsp</strong> of the Constitution of the United Provinces of Sangaia, every applicant for citizenship must demonstrate competent knowledge across the foundational pillars of the Commonwealth. This examination consists of <strong>40 questions across five constitutional categories</strong>.</p>
+        <p class="ol-small ol-muted">Applicants must achieve a score of <strong>80% or higher in all categories</strong> (at least 7 out of 8 correct per category) to be approved for citizenship and proceed to the solemn Swearing of the Oath of Allegiance.</p>
+      </div>
+
+      <!-- Examination Form -->
+      <div class="ol-card">
+        <div class="ol-card-title">
+          <span>Official Naturalization Examination Questions</span>
+          <span id="progressIndicator" style="font-size:12px; font-weight:600; color:var(--primary);">0 of 40 Answered</span>
+        </div>
+
+        <form id="citizenshipExamForm" onsubmit="gradeCitizenshipExam(event)">
+
+          <!-- CATEGORY 1: Flag, Insignia & National Symbols -->
+          <div class="category-banner">
+            <h3>Category I: The Flag of Sangaia, Insignia &amp; National Creed</h3>
+            <p>Questions 1–8 &bull; Constitution Preamble &amp; Sovereign Emblems</p>
+          </div>
+
+          <div class="q-box">
+            <div class="q-title"><span class="q-num">1.</span> What do the primary colors of the Sangaian national flag represent?</div>
+            <div class="q-options">
+              <label class="q-opt"><input type="radio" name="q1" value="correct"> Azure blue for reason, truth, and sovereign skies; emerald green for flourishing biomes and natural soil; and pristine white for virtue and the rule of law.</label>
+              <label class="q-opt"><input type="radio" name="q1" value="w1"> Crimson for revolutionary conquest, gold for mineral reserves, and black for industrial iron.</label>
+              <label class="q-opt"><input type="radio" name="q1" value="w2"> Scarlet for foreign alliances, violet for executive nobility, and gray for steel manufacturing.</label>
             </div>
-            <div>
-                <strong>2. How many Sovereign Provinces comprise the Aeretocracy?</strong>
-                <div style="margin-top:6px;"><label><input type="radio" name="q2" value="wrong"> 3</label></div>
-                <div><label><input type="radio" name="q2" value="correct"> 5 (New Jasper, New Madison, Liveland, Sentinel, Columbia)</label></div>
-                <div><label><input type="radio" name="q2" value="wrong"> 12</label></div>
+          </div>
+
+          <div class="q-box">
+            <div class="q-title"><span class="q-num">2.</span> How many stars are emblazoned upon the sovereign standard of Sangaia, and what do they signify?</div>
+            <div class="q-options">
+              <label class="q-opt"><input type="radio" name="q2" value="w1"> Three stars, signifying the Executive, Legislative, and Judicial councils.</label>
+              <label class="q-opt"><input type="radio" name="q2" value="correct"> Five stars, representing the five autonomous Sovereign Provinces (New Jasper, New Madison, Liveland, Sentinel, and Columbia).</label>
+              <label class="q-opt"><input type="radio" name="q2" value="w2"> Twelve stars, representing the federal ministries.</label>
             </div>
-            <div>
-                <strong>3. Under the Constitution, how is point-of-service healthcare provided to citizens?</strong>
-                <div style="margin-top:6px;"><label><input type="radio" name="q3" value="wrong"> Private insurance copays and deductibles</label></div>
-                <div><label><input type="radio" name="q3" value="correct"> 100% free with zero out-of-pocket costs or fees</label></div>
-                <div><label><input type="radio" name="q3" value="wrong"> Subsidized through foreign loans</label></div>
+          </div>
+
+          <div class="q-box">
+            <div class="q-title"><span class="q-num">3.</span> What is the constitutional significance of the Central Cross and Starburst upon the national banner?</div>
+            <div class="q-options">
+              <label class="q-opt"><input type="radio" name="q3" value="w1"> The absolute authority of the Aeretocrat over the provincial governors.</label>
+              <label class="q-opt"><input type="radio" name="q3" value="correct"> The sacred intersection of reason, virtue, and merit guiding the Commonwealth under the rule of law.</label>
+              <label class="q-opt"><input type="radio" name="q3" value="w2"> The historical unification of foreign trade guilds.</label>
             </div>
-            <div>
-                <strong>4. What is the statutory minimum living wage floor established across all five provinces?</strong>
-                <div style="margin-top:6px;"><label><input type="radio" name="q4" value="wrong"> $12.50 per hour</label></div>
-                <div><label><input type="radio" name="q4" value="correct"> Statutory $25.00 per hour minimum</label></div>
-                <div><label><input type="radio" name="q4" value="wrong"> $18.00 per hour</label></div>
+          </div>
+
+          <div class="q-box">
+            <div class="q-title"><span class="q-num">4.</span> According to Article Zero (The Preamble), what fundamental principles guide the People of the United Provinces of Sangaia?</div>
+            <div class="q-options">
+              <label class="q-opt"><input type="radio" name="q4" value="correct"> Guided by the principles of Virtue and the light of Reason, determined that Merit governs and Liberty endures.</label>
+              <label class="q-opt"><input type="radio" name="q4" value="w1"> Guided by military supremacy and absolute sovereign wealth.</label>
+              <label class="q-opt"><input type="radio" name="q4" value="w2"> Guided by commercial expansion and colonial dominion.</label>
             </div>
-            <div>
-                <strong>5. Under the Constitution, what is the policy regarding foreign sovereign debt?</strong>
-                <div style="margin-top:6px;"><label><input type="radio" name="q5" value="correct"> Absolutely prohibited ($0 foreign debt)</label></div>
-                <div><label><input type="radio" name="q5" value="wrong"> Borrowing up to 50% of GDP</label></div>
-                <div><label><input type="radio" name="q5" value="wrong"> Managed via International IMF Loans</label></div>
+          </div>
+
+          <div class="q-box">
+            <div class="q-title"><span class="q-num">5.</span> In the national coat of arms and civil insignias, what does the quill paired with the balance scale represent?</div>
+            <div class="q-options">
+              <label class="q-opt"><input type="radio" name="q5" value="correct"> The supremacy of written statutory law, the sanctity of codified rights, and reasoned civil discourse.</label>
+              <label class="q-opt"><input type="radio" name="q5" value="w1"> The authority of tax assessors over private property.</label>
+              <label class="q-opt"><input type="radio" name="q5" value="w2"> The commercial licensing authority of the Ministry of Work.</label>
             </div>
-            <div class="modal-results-box" id="quizResults"></div>
-            <div class="ol-mt-10">
-                <button type="submit" class="ol-btn ol-btn-primary">Submit Examination for Grading</button>
+          </div>
+
+          <div class="q-box">
+            <div class="q-title"><span class="q-num">6.</span> What is the foundational state motto and creed enshrined in the Preamble of the Constitution?</div>
+            <div class="q-options">
+              <label class="q-opt"><input type="radio" name="q6" value="w1"> "Power through Commerce and Victory through Unity."</label>
+              <label class="q-opt"><input type="radio" name="q6" value="correct"> "Founded not merely upon Power, but upon the firm bedrock of Character and Law."</label>
+              <label class="q-opt"><input type="radio" name="q6" value="w2"> "Absolute obedience to the Sovereign Crown."</label>
             </div>
+          </div>
+
+          <div class="q-box">
+            <div class="q-title"><span class="q-num">7.</span> When displayed during official provincial commons and public assemblies, how must the Sangaian flag be flown?</div>
+            <div class="q-options">
+              <label class="q-opt"><input type="radio" name="q7" value="w1"> Alone, with provincial standards strictly prohibited from public view.</label>
+              <label class="q-opt"><input type="radio" name="q7" value="correct"> With reverence alongside provincial banners, signifying equal unity of the five provinces under the federal covenant.</label>
+              <label class="q-opt"><input type="radio" name="q7" value="w2"> Only during national military holidays.</label>
+            </div>
+          </div>
+
+          <div class="q-box">
+            <div class="q-title"><span class="q-num">8.</span> How does the Sangaian flag reflect the relationship between the federal government and the provinces?</div>
+            <div class="q-options">
+              <label class="q-opt"><input type="radio" name="q8" value="w1"> A dominant federal eagle holding subordinate provincial crests.</label>
+              <label class="q-opt"><input type="radio" name="q8" value="correct"> Five equal stars united within a common sovereign field, honoring both provincial autonomy and national unity.</label>
+              <label class="q-opt"><input type="radio" name="q8" value="w2"> A solitary pyramid denoting centralized executive hierarchy.</label>
+            </div>
+          </div>
+
+          <!-- CATEGORY 2: General History, Virtue & The Aeretocracy -->
+          <div class="category-banner">
+            <h3>Category II: Sangaian History, Virtue &amp; The Aeretocracy</h3>
+            <p>Questions 9–16 &bull; Article Four (The Structure and Framework of Government)</p>
+          </div>
+
+          <div class="q-box">
+            <div class="q-title"><span class="q-num">9.</span> Under Article Four (⎰4.gs.ggs), what is the official constitutional form of government of the United Provinces of Sangaia?</div>
+            <div class="q-options">
+              <label class="q-opt"><input type="radio" name="q9" value="w1"> A constitutional hereditary monarchy.</label>
+              <label class="q-opt"><input type="radio" name="q9" value="correct"> A pure Aeretocracy, where the powers of state are exercised according to merit, proven virtue, and constitutional law.</label>
+              <label class="q-opt"><input type="radio" name="q9" value="w2"> A direct unrepresentative plebiscite democracy without a head of state.</label>
+            </div>
+          </div>
+
+          <div class="q-box">
+            <div class="q-title"><span class="q-num">10.</span> How is the Aeretocrat elevated to office upon the demise or lawful removal of their predecessor (⎰4.gs.ggs &amp; ⎰4.gs.dcdr)?</div>
+            <div class="q-options">
+              <label class="q-opt"><input type="radio" name="q10" value="w1"> Automatic hereditary succession to the oldest surviving child.</label>
+              <label class="q-opt"><input type="radio" name="q10" value="correct"> Through the Dual Mandate—rigorously vetted by the Bureaucracy and elected by direct vote of the People and Body of Electives.</label>
+              <label class="q-opt"><input type="radio" name="q10" value="w2"> Unilateral appointment by the outgoing Aeretocrat's private will.</label>
+            </div>
+          </div>
+
+          <div class="q-box">
+            <div class="q-title"><span class="q-num">11.</span> What anti-dynastic rule does Article Four (⎰4.gs.dcdr ℶ2) strictly ordain to prevent the usurpation of power by a single bloodline?</div>
+            <div class="q-options">
+              <label class="q-opt"><input type="radio" name="q11" value="correct"> No relative by blood or marriage of the previous two Aeretocrats shall be permitted to stand as an electoral candidate for the office.</label>
+              <label class="q-opt"><input type="radio" name="q11" value="w1"> Relatives of the Aeretocrat must pay a double tax to stand for public office.</label>
+              <label class="q-opt"><input type="radio" name="q11" value="w2"> Candidates must trace their lineage to the founding settlers of New Jasper.</label>
+            </div>
+          </div>
+
+          <div class="q-box">
+            <div class="q-title"><span class="q-num">12.</span> Who assumes temporary caretaker authority during an Interregnum upon the demise, sudden incapacitation, or removal of the Aeretocrat (⎰4.gs.sopatl ℶ1)?</div>
+            <div class="q-options">
+              <label class="q-opt"><input type="radio" name="q12" value="w1"> The District Director of the largest province by population.</label>
+              <label class="q-opt"><input type="radio" name="q12" value="correct"> The High Steward of Sangaia (highest-ranking appointed official in the Bureaucracy), who is strictly forbidden from altering the Constitution or running for Aeretocrat.</label>
+              <label class="q-opt"><input type="radio" name="q12" value="w2"> The Speaker of the Body of Electives as permanent acting ruler.</label>
+            </div>
+          </div>
+
+          <div class="q-box">
+            <div class="q-title"><span class="q-num">13.</span> By what formal constitutional mechanism may the Body of Electives impeach an Aeretocrat who abandons virtue or suffers cognitive decline (⎰4.gs.ipm)?</div>
+            <div class="q-options">
+              <label class="q-opt"><input type="radio" name="q13" value="w1"> A Writ of Mandamus issued by a District Court.</label>
+              <label class="q-opt"><input type="radio" name="q13" value="correct"> The Declaration of the Loss of Virtue, requiring a supermajority of the Body of Electives acting in concurrence with Bureaucracy leadership.</label>
+              <label class="q-opt"><input type="radio" name="q13" value="w2"> A unilateral decree issued by provincial District Directors.</label>
+            </div>
+          </div>
+
+          <div class="q-box">
+            <div class="q-title"><span class="q-num">14.</span> What tenure of office does the Aeretocrat hold under Article Four (⎰4.gs.dcdr)?</div>
+            <div class="q-options">
+              <label class="q-opt"><input type="radio" name="q14" value="w1"> A fixed term of four years with a maximum of two terms.</label>
+              <label class="q-opt"><input type="radio" name="q14" value="correct"> They lead the Nation until their natural death or lawful removal through constitutional impeachment.</label>
+              <label class="q-opt"><input type="radio" name="q14" value="w2"> A lifetime hereditary title that passes to their descendants.</label>
+            </div>
+          </div>
+
+          <div class="q-box">
+            <div class="q-title"><span class="q-num">15.</span> What is the constitutional maximum term for members of the Aeretocrat's Cabinet under Article Four (⎰4.gs.gcs)?</div>
+            <div class="q-options">
+              <label class="q-opt"><input type="radio" name="q15" value="w1"> Four years matching legislative elections.</label>
+              <label class="q-opt"><input type="radio" name="q15" value="correct"> A term not exceeding twenty-five (25) years, after which they may either be reappointed or deselected.</label>
+              <label class="q-opt"><input type="radio" name="q15" value="w2"> Indefinite tenure without any legislative ratification.</label>
+            </div>
+          </div>
+
+          <div class="q-box">
+            <div class="q-title"><span class="q-num">16.</span> How does the Constitution differentiate an Aeretocracy from a dictatorship or hereditary monarchy (⎰4.gs.dcdr ℶ1)?</div>
+            <div class="q-options">
+              <label class="q-opt"><input type="radio" name="q16" value="correct"> Authority is not absolute or arbitrary, but entrusted to a proven leader chosen through the Dual Mandate of the State and the Citizenry based on education, service, and virtue.</label>
+              <label class="q-opt"><input type="radio" name="q16" value="w1"> Dictatorships hold annual referendums while the Aeretocracy does not.</label>
+              <label class="q-opt"><input type="radio" name="q16" value="w2"> The Aeretocracy permits foreign monarchs to veto federal legislation.</label>
+            </div>
+          </div>
+
+          <!-- CATEGORY 3: Fundamental Constitutional Rights & Civil Liberties -->
+          <div class="category-banner">
+            <h3>Category III: Fundamental Constitutional Rights &amp; Civil Liberties</h3>
+            <p>Questions 17–24 &bull; Article One (Rights as a Citizen)</p>
+          </div>
+
+          <div class="q-box">
+            <div class="q-title"><span class="q-num">17.</span> Under Article One (⎰1.rc.ghf), which six fundamental rights are declared inviolable for the natural life of every citizen?</div>
+            <div class="q-options">
+              <label class="q-opt"><input type="radio" name="q17" value="correct"> The Rights of Conscience, Expression, Discourse, Suffrage, Education, and Liberty.</label>
+              <label class="q-opt"><input type="radio" name="q17" value="w1"> The Rights of Commerce, Conscription, Taxation, Subsidies, Litigation, and Emigration.</label>
+              <label class="q-opt"><input type="radio" name="q17" value="w2"> The Rights of Property, Seclusion, Bearing Arms, Monopolies, Guilds, and State Bailouts.</label>
+            </div>
+          </div>
+
+          <div class="q-box">
+            <div class="q-title"><span class="q-num">18.</span> What does Section ⎰1.rc.rtian guarantee regarding equality before the law?</div>
+            <div class="q-options">
+              <label class="q-opt"><input type="radio" name="q18" value="w1"> Certain legal privileges are reserved for individuals holding proprietary commercial charters.</label>
+              <label class="q-opt"><input type="radio" name="q18" value="correct"> All citizens are created equal before the law, with zero distinction based on race, ethnicity, origin, belief, or status, and are protected from all government discrimination.</label>
+              <label class="q-opt"><input type="radio" name="q18" value="w2"> Civil rights are proportional to the amount of taxes contributed to the Treasury.</label>
+            </div>
+          </div>
+
+          <div class="q-box">
+            <div class="q-title"><span class="q-num">19.</span> Under Clause ℶ1 of Article One, what are the constitutional boundaries of religious freedom in Sangaia?</div>
+            <div class="q-options">
+              <label class="q-opt"><input type="radio" name="q19" value="w1"> Religious practice is restricted to private dwellings and forbidden in public assemblies.</label>
+              <label class="q-opt"><input type="radio" name="q19" value="correct"> Citizens have the unconstrained right to profess, change, and manifest any religion through public and private worship, provided it does not infringe on others' rights or disrupt public peace.</label>
+              <label class="q-opt"><input type="radio" name="q19" value="w2"> Only the established national contemplative society is permitted tax-exempt status.</label>
+            </div>
+          </div>
+
+          <div class="q-box">
+            <div class="q-title"><span class="q-num">20.</span> What constitutional protection does Clause ℶ3 establish regarding individual privacy and domestic communications?</div>
+            <div class="q-options">
+              <label class="q-opt"><input type="radio" name="q20" value="w1"> Private communications are subject to routine monitoring by the Ministry of Work.</label>
+              <label class="q-opt"><input type="radio" name="q20" value="correct"> Every citizen has an inviolable right to privacy and security in their person, dwellings, written/electronic communications, and personal effects against unreasonable intrusion.</label>
+              <label class="q-opt"><input type="radio" name="q20" value="w2"> Dwellings may be entered at any time without a warrant for public health inspections.</label>
+            </div>
+          </div>
+
+          <div class="q-box">
+            <div class="q-title"><span class="q-num">21.</span> What due process guarantees must be observed before any citizen can be deprived of life, liberty, or property (⎰1.rc.lpdp)?</div>
+            <div class="q-options">
+              <label class="q-opt"><input type="radio" name="q21" value="w1"> A summary decree issued by the district police commissioner.</label>
+              <label class="q-opt"><input type="radio" name="q21" value="correct"> Due and regular process of law, including a fair and impartial hearing before a duly constituted tribunal, opportunity to present evidence, and judgment by established laws.</label>
+              <label class="q-opt"><input type="radio" name="q21" value="w2"> A non-binding administrative review with no right of legal representation.</label>
+            </div>
+          </div>
+
+          <div class="q-box">
+            <div class="q-title"><span class="q-num">22.</span> What right does Section ⎰1.rc.gfth guarantee regarding peaceful assembly and civic association?</div>
+            <div class="q-options">
+              <label class="q-opt"><input type="radio" name="q22" value="correct"> Citizens may assemble peaceably without arms, form societies and associations for lawful purposes, and petition the government for redress of grievances.</label>
+              <label class="q-opt"><input type="radio" name="q22" value="w1"> Public assemblies require armed guard escorts and advance bond payments.</label>
+              <label class="q-opt"><input type="radio" name="q22" value="w2"> Political associations and civic societies are strictly prohibited from meeting without executive licensing.</label>
+            </div>
+          </div>
+
+          <div class="q-box">
+            <div class="q-title"><span class="q-num">23.</span> Under Section ⎰1.rc.isas, what specific legal requirements must be fulfilled before a search warrant can be issued?</div>
+            <div class="q-options">
+              <label class="q-opt"><input type="radio" name="q23" value="w1"> A verbal order issued by an elective representative.</label>
+              <label class="q-opt"><input type="radio" name="q23" value="correct"> Probable cause, supported by oath or solemn affirmation, particularly describing the place to be searched and the persons and things to be seized.</label>
+              <label class="q-opt"><input type="radio" name="q23" value="w2"> General suspicion of disloyalty during economic recessions.</label>
+            </div>
+          </div>
+
+          <div class="q-box">
+            <div class="q-title"><span class="q-num">24.</span> According to Clause ℶ2 of Article One, what is the scope of private property rights in Sangaia?</div>
+            <div class="q-options">
+              <label class="q-opt"><input type="radio" name="q24" value="w1"> All real estate is state-owned and leased annually.</label>
+              <label class="q-opt"><input type="radio" name="q24" value="correct"> The undeniable right to acquire, possess, and dispose of private property of every kind, subject only to just regulations enacted for the common good.</label>
+              <label class="q-opt"><input type="radio" name="q24" value="w2"> Private property may be confiscated without compensation whenever a municipal authority requests it.</label>
+            </div>
+          </div>
+
+          <!-- CATEGORY 4: Framework of Governance, Legislation & Judiciary -->
+          <div class="category-banner">
+            <h3>Category IV: Structure of Government, Body of Electives &amp; United Judiciary</h3>
+            <p>Questions 25–32 &bull; Articles Four &amp; Five (Legislative &amp; Judicial Powers)</p>
+          </div>
+
+          <div class="q-box">
+            <div class="q-title"><span class="q-num">25.</span> Under Article Four (⎰4.gs.sggs), into what two principal branches or sectors is the Federal Government organized?</div>
+            <div class="q-options">
+              <label class="q-opt"><input type="radio" name="q25" value="w1"> The House of Nobles and the House of Commons.</label>
+              <label class="q-opt"><input type="radio" name="q25" value="correct"> The Executive Body (administration and direction) and the Body of Electives (legislative authority).</label>
+              <label class="q-opt"><input type="radio" name="q25" value="w2"> The Central Bureaucracy and the Military High Council.</label>
+            </div>
+          </div>
+
+          <div class="q-box">
+            <div class="q-title"><span class="q-num">26.</span> How many Representatives comprise the Body of Electives, and how often are legislative elections held (⎰4.gs.boe)?</div>
+            <div class="q-options">
+              <label class="q-opt"><input type="radio" name="q26" value="w1"> Exactly 100 Senators elected every two years.</label>
+              <label class="q-opt"><input type="radio" name="q26" value="correct"> No more than Eight Hundred (800) Representatives, elected every six (6) years by direct popular suffrage.</label>
+              <label class="q-opt"><input type="radio" name="q26" value="w2"> Five hundred delegates appointed for life by provincial directors.</label>
+            </div>
+          </div>
+
+          <div class="q-box">
+            <div class="q-title"><span class="q-num">27.</span> How are seats distributed within the Body of Electives following a national legislative election (⎰4.gs.boe ℶ2)?</div>
+            <div class="q-options">
+              <label class="q-opt"><input type="radio" name="q27" value="w1"> Winner-take-all: the party with a simple plurality wins all 800 seats.</label>
+              <label class="q-opt"><input type="radio" name="q27" value="correct"> Proportionately among political associations according to their share of the popular vote (e.g., 34% of the popular vote equals 34% of the legislative seats).</label>
+              <label class="q-opt"><input type="radio" name="q27" value="w2"> Divided equally among the five provinces regardless of population.</label>
+            </div>
+          </div>
+
+          <div class="q-box">
+            <div class="q-title"><span class="q-num">28.</span> What supermajority thresholds are required to pass a new Federal Law under Article Four (⎰4.gs.lms)?</div>
+            <div class="q-options">
+              <label class="q-opt"><input type="radio" name="q28" value="w1"> A simple majority of the Body of Electives signed by a District Director.</label>
+              <label class="q-opt"><input type="radio" name="q28" value="correct"> Assent of Three-Fourths (75%) of the Provinces, followed by Nine-Tenths (90%) of the Body of Electives, presented to the Aeretocrat (who may Veto, Accept, or Pause).</label>
+              <label class="q-opt"><input type="radio" name="q28" value="w2"> A two-thirds vote of the Cabinet with no provincial voting.</label>
+            </div>
+          </div>
+
+          <div class="q-box">
+            <div class="q-title"><span class="q-num">29.</span> What extraordinary consensus is required to ratify an Amendment to the Constitution of Sangaia (⎰4.gs.lms ℶ1)?</div>
+            <div class="q-options">
+              <label class="q-opt"><input type="radio" name="q29" value="w1"> 50% plus one vote in a national online poll.</label>
+              <label class="q-opt"><input type="radio" name="q29" value="correct"> Affirmative vote of Nine-Tenths (90%) of the Electoral Body in each of the several Provinces, Nine-Tenths (90%) of the Body of Electives, and Three-Fourths (75%) of the Aeretocrat and Cabinet acting in concert.</label>
+              <label class="q-opt"><input type="radio" name="q29" value="w2"> A unanimous declaration of the High Magistrates of Virtue.</label>
+            </div>
+          </div>
+
+          <div class="q-box">
+            <div class="q-title"><span class="q-num">30.</span> How many Justices comprise the United Judiciary (Federal Judiciary), and how are they chosen (Article V, ⎰5.fpj.jca)?</div>
+            <div class="q-options">
+              <label class="q-opt"><input type="radio" name="q30" value="w1"> Seven Justices appointed directly by the Aeretocrat.</label>
+              <label class="q-opt"><input type="radio" name="q30" value="correct"> Nine (9) Justices, selected by the deliberate vote of the provincial Electoral Bodies within five (5) weeks of a vacancy.</label>
+              <label class="q-opt"><input type="radio" name="q30" value="w2"> Fifteen judges elected on national partisan ballots.</label>
+            </div>
+          </div>
+
+          <div class="q-box">
+            <div class="q-title"><span class="q-num">31.</span> What is the tenure of office for a Justice of the Federal Judiciary under Article Five (⎰5.fpj.jt)?</div>
+            <div class="q-options">
+              <label class="q-opt"><input type="radio" name="q31" value="w1"> Life tenure with no retirement age.</label>
+              <label class="q-opt"><input type="radio" name="q31" value="correct"> A term of fifteen (15) years, with the possibility of being re-elected for no more than two additional terms (maximum 3 terms / 45 years total).</label>
+              <label class="q-opt"><input type="radio" name="q31" value="w2"> A single six-year non-renewable term.</label>
+            </div>
+          </div>
+
+          <div class="q-box">
+            <div class="q-title"><span class="q-num">32.</span> What unique constitutional status does Section ⎰5.fpj.eojc grant to the Federal Judiciary's power of Judicial Review?</div>
+            <div class="q-options">
+              <label class="q-opt"><input type="radio" name="q32" value="w1"> It is subject to suspension by executive decree during wartime.</label>
+              <label class="q-opt"><input type="radio" name="q32" value="correct"> It establishes the Constitution as the supreme law of the land and is declared strictly UNAMENDABLE to safeguard the bedrock of liberty.</label>
+              <label class="q-opt"><input type="radio" name="q32" value="w2"> It allows provincial courts to overrule the Federal Supreme Court on constitutional disputes.</label>
+            </div>
+          </div>
+
+          <!-- CATEGORY 5: Provincial Powers, Public Finance, Commerce, Education & Citizenship Duties -->
+          <div class="category-banner">
+            <h3>Category V: Provincial Powers, Public Finance, Commerce, Education &amp; Citizenship</h3>
+            <p>Questions 33–40 &bull; Articles II, III, VI, VII, VIII &amp; IX</p>
+          </div>
+
+          <div class="q-box">
+            <div class="q-title"><span class="q-num">33.</span> Under Article Three (⎰3.prl.dd), who serves as the chief executive officer of each Province, and how are they chosen?</div>
+            <div class="q-options">
+              <label class="q-opt"><input type="radio" name="q33" value="w1"> The Federal High Commissioner appointed by the Cabinet.</label>
+              <label class="q-opt"><input type="radio" name="q33" value="correct"> The District Director, elected directly by the qualified voters of that province once every six (6) years (with runoff elections resolving ties).</label>
+              <label class="q-opt"><input type="radio" name="q33" value="w2"> The senior judge of the Provincial Court.</label>
+            </div>
+          </div>
+
+          <div class="q-box">
+            <div class="q-title"><span class="q-num">34.</span> What road safety violation penalties does the Constitution mandate under Article Three (⎰3.prl.pdmv)?</div>
+            <div class="q-options">
+              <label class="q-opt"><input type="radio" name="q34" value="correct"> Adults: min. $150 fine and up to 5 months in gaol; Children: min. 2 days gaol, and operating without a license forfeits license eligibility until age 21.</label>
+              <label class="q-opt"><input type="radio" name="q34" value="w1"> A warning letter for the first three violations.</label>
+              <label class="q-opt"><input type="radio" name="q34" value="w2"> Immediate confiscation of all family vehicles with no fines or detention.</label>
+            </div>
+          </div>
+
+          <div class="q-box">
+            <div class="q-title"><span class="q-num">35.</span> What is the strict constitutional ceiling upon outstanding national debt under Article Seven (⎰7.t.nd)?</div>
+            <div class="q-options">
+              <label class="q-opt"><input type="radio" name="q35" value="w1"> Zero debt ($0.00) under all circumstances.</label>
+              <label class="q-opt"><input type="radio" name="q35" value="correct"> Fifteen Billion Dollars ($15,000,000,000), which may only be raised by deliberate vote of the Body of Electives, with mandatory budget sequestration if exceeded.</label>
+              <label class="q-opt"><input type="radio" name="q35" value="w2"> Fifty percent of national GDP managed through foreign central banks.</label>
+            </div>
+          </div>
+
+          <div class="q-box">
+            <div class="q-title"><span class="q-num">36.</span> What are the constitutional limitations on federal taxation under Article Seven (⎰7.t.tot)?</div>
+            <div class="q-options">
+              <label class="q-opt"><input type="radio" name="q36" value="correct"> Sales taxes capped at 7% (7¢ per dollar), duty taxes for military maintenance, fund taxes on wages, and total federal taxes capped at 20% of substance.</label>
+              <label class="q-opt"><input type="radio" name="q36" value="w1"> A flat 35% income tax across all corporate and private revenues.</label>
+              <label class="q-opt"><input type="radio" name="q36" value="w2"> No federal taxes permitted; all funding derived from private donations.</label>
+            </div>
+          </div>
+
+          <div class="q-box">
+            <div class="q-title"><span class="q-num">37.</span> What are the legal characteristics and backing of the Sangaian Dollar ($) under Article Seven (⎰7.t.nc)?</div>
+            <div class="q-options">
+              <label class="q-opt"><input type="radio" name="q37" value="w1"> Pegged directly to the United States Dollar at a fixed 1:1 ratio.</label>
+              <label class="q-opt"><input type="radio" name="q37" value="correct"> An independent currency regulated solely by the Federal Government, derived from the confidence and credit of Sangaia, and NOT tied to gold, silver, or raw minerals.</label>
+              <label class="q-opt"><input type="radio" name="q37" value="w2"> Backed exclusively by physical gold bullion stored in the Shesk federal depository.</label>
+            </div>
+          </div>
+
+          <div class="q-box">
+            <div class="q-title"><span class="q-num">38.</span> What is the mandatory Mark of Record cypher for all legislative bills introduced under Article Eight (⎰8.clb.moc)?</div>
+            <div class="q-options">
+              <label class="q-opt"><input type="radio" name="q38" value="w1"> BILL-2026-###.</label>
+              <label class="q-opt"><input type="radio" name="q38" value="correct"> YYYYMMDD-CAT-PTY-### (Date, 3-letter subject cypher, 3-letter party cypher, and 3-digit sequential number).</label>
+              <label class="q-opt"><input type="radio" name="q38" value="w2"> SNG-LEG-####-PROV.</label>
+            </div>
+          </div>
+
+          <div class="q-box">
+            <div class="q-title"><span class="q-num">39.</span> Under Article Nine (⎰9.edu.psf &amp; ⎰9.edu.rfc), what rules govern public education subventions and school revenues?</div>
+            <div class="q-options">
+              <label class="q-opt"><input type="radio" name="q39" value="w1"> Public funds are shared equally with private academies and religious seminaries.</label>
+              <label class="q-opt"><input type="radio" name="q39" value="correct"> Public funds are reserved exclusively for public schools and provincial colleges (private schools ineligible), and 20% of first-party school event/meal profits are refunded to the Treasury.</label>
+              <label class="q-opt"><input type="radio" name="q39" value="w2"> Public universities may charge discretionary tuition without federal limits.</label>
+            </div>
+          </div>
+
+          <div class="q-box">
+            <div class="q-title"><span class="q-num">40.</span> Under Article Six (⎰6.cp.cnsp to ⎰6.cp.roc), what are the fundamental qualifications and duties of a Sangaian citizen?</div>
+            <div class="q-options">
+              <label class="q-opt"><input type="radio" name="q40" value="correct"> Minimum age 13, 6 months minimum residence/employment, 80%+ score on examination in all categories, sole allegiance (dual citizenship strictly prohibited), and mandatory voting by law.</label>
+              <label class="q-opt"><input type="radio" name="q40" value="w1"> Minimum age 21, 2 years residency, dual citizenship encouraged, and voluntary voting.</label>
+              <label class="q-opt"><input type="radio" name="q40" value="w2"> Open registration with no age minimum, no residency requirement, and no examination.</label>
+            </div>
+          </div>
+
+          <!-- Submission & Results -->
+          <div class="modal-results-box" id="examResultsBox"></div>
+
+          <div style="margin-top:20px; display:flex; gap:12px; align-items:center;">
+            <button type="submit" class="ol-btn ol-btn-primary" style="padding:10px 24px; font-size:14px;">
+              <span class="mif-checkmark"></span> Submit Examination for Sovereign Grading
+            </button>
+            <button type="button" class="ol-btn" onclick="document.getElementById('citizenshipExamForm').reset(); updateProgress(); window.scrollTo({top:0, behavior:'smooth'});">
+              Reset Answers
+            </button>
+          </div>
         </form>
-    </div>
-    
+      </div>
+
     </div>
 
     <!-- Right Column: Official Sidebar Widgets -->
     <aside class="sidebar">
 
       <div class="card">
-        <h3>Academic Board</h3>
-        <p style="color: var(--text-muted); font-size: 12px; margin-bottom: 8px;">Examination Authority</p>
+        <h3>Naturalization Roster</h3>
+        <p style="color: var(--text-muted); font-size: 12px; margin-bottom: 8px;">Statutory Examination Guidelines</p>
         <ul class="sidebar-nav-list">
-          <li><a href="#overview" class="active"><span class="mif-chevron-right"></span> Examination</a></li>
-
+          <li><a href="#overview" class="active"><span class="mif-chevron-right"></span> Examination Overview</a></li>
+          <li><a href="/citizenship.html"><span class="mif-chevron-right"></span> Citizenship Charter</a></li>
+          <li><a href="/government.html"><span class="mif-chevron-right"></span> Constitutional Structure</a></li>
+          <li><a href="/application.html"><span class="mif-chevron-right"></span> Naturalization Petition</a></li>
+          <li><a href="/id/"><span class="mif-chevron-right"></span> Sangaia ID Portal</a></li>
         </ul>
       </div>
 
+      <div class="card">
+        <h3 style="font-size:13.5px; color:#1e3a8a; margin-bottom:8px;">Statutory Examination Rules</h3>
+        <ul style="font-size:12px; line-height:1.6; color:#475569; padding-left:16px;">
+          <li><strong>Article 6 Standard:</strong> 80% passing threshold in ALL 5 categories.</li>
+          <li><strong>Age Mandate:</strong> Minimum age of 13 years old.</li>
+          <li><strong>Residence Mandate:</strong> 6 months minimum residence or employment.</li>
+          <li><strong>Sole Allegiance:</strong> Dual nationality prohibited by law.</li>
+          <li><strong>Civic Obligation:</strong> Voting in public elections is required by law.</li>
+        </ul>
+      </div>
 
+      <div class="ol-sidebox" style="background:#fff; border:1px solid var(--border); padding:14px; border-radius:2px;">
+        <h3 style="font-size:13px; font-weight:700; color:var(--text-main); margin-bottom:6px;">Oath of Allegiance</h3>
+        <blockquote style="font-size:11.5px; font-style:italic; color:#475569; border-left:2px solid var(--primary); padding-left:8px; line-height:1.5;">
+          &ldquo;I pledge my sole allegiance to these United Provinces, and unto which they recognize, one whole nation, under sanctity of the people, with the sacred liberties held by the people thereunto.&rdquo;
+        </blockquote>
+        <div style="font-size:10.5px; color:#64748b; margin-top:6px;">Article VI, Section ⎰6.cp.ssoop</div>
+      </div>
 
     </aside>
   </main>
 
-
-
-    <script>
-    function gradeQuiz(e) {
-        e.preventDefault();
-        const f = document.getElementById('quizForm');
-        let score = 0;
-        if (f.q1.value === 'correct') score++;
-        if (f.q2.value === 'correct') score++;
-        if (f.q3.value === 'correct') score++;
-        if (f.q4.value === 'correct') score++;
-        if (f.q5.value === 'correct') score++;
-
-        const res = document.getElementById('quizResults');
-        if (score >= 4) {
-            res.innerHTML = `<strong>Examination Passed! Score: ${score}/5 (80%+).</strong> Congratulations! Certificate Code: <span style="font-family:monospace;">CERT-CIV-${Math.floor(100000 + Math.random()*900000)}</span>. You may now submit your Naturalization Application.`;
-            res.className = 'modal-results-box active';
-            res.style.background = '#f0fdf4';
-            res.style.borderColor = '#bbf7d0';
-            res.style.color = '#166534';
-        } else {
-            res.innerHTML = `<strong>Score: ${score}/5.</strong> Passing threshold is 4/5. Please review the constitutional principles and re-attempt.`;
-            res.className = 'modal-results-box active';
-            res.style.background = '#fee2e2';
-            res.style.borderColor = '#fecaca';
-            res.style.color = '#991b1b';
+  <!-- Interactive Grading Script -->
+  <script>
+    // Live progress indicator
+    function updateProgress() {
+      const f = document.getElementById('citizenshipExamForm');
+      let count = 0;
+      for (let i = 1; i <= 40; i++) {
+        if (f['q' + i] && f['q' + i].value) {
+          count++;
         }
+      }
+      const p = document.getElementById('progressIndicator');
+      if (p) p.innerText = `${count} of 40 Answered`;
     }
-    </script>
-    
+
+    document.getElementById('citizenshipExamForm').addEventListener('change', updateProgress);
+
+    // Examination Grading Engine
+    function gradeCitizenshipExam(e) {
+      e.preventDefault();
+      const f = document.getElementById('citizenshipExamForm');
+
+      const categories = [
+        { name: "Flag, Insignia & Creed", start: 1, end: 8, correct: 0 },
+        { name: "History & The Aeretocracy", start: 9, end: 16, correct: 0 },
+        { name: "Fundamental Civil Rights", start: 17, end: 24, correct: 0 },
+        { name: "Government & United Judiciary", start: 25, end: 32, correct: 0 },
+        { name: "Provinces, Finance & Duties", start: 33, end: 40, correct: 0 }
+      ];
+
+      let totalScore = 0;
+      let unanswered = 0;
+
+      for (let i = 1; i <= 40; i++) {
+        const val = f['q' + i] ? f['q' + i].value : '';
+        if (!val) {
+          unanswered++;
+        }
+        if (val === 'correct') {
+          totalScore++;
+          // Assign to category
+          for (let cat of categories) {
+            if (i >= cat.start && i <= cat.end) {
+              cat.correct++;
+              break;
+            }
+          }
+        }
+      }
+
+      const resBox = document.getElementById('examResultsBox');
+      const totalPercentage = Math.round((totalScore / 40) * 100);
+
+      // Check if candidate met 80% in all categories (at least 7 of 8 per category, or >= 80%)
+      let allCategoriesPassed = true;
+      let breakdownHTML = '<div class="scorecard-grid">';
+      for (let cat of categories) {
+        const catPct = Math.round((cat.correct / 8) * 100);
+        const passedCat = (catPct >= 80);
+        if (!passedCat) allCategoriesPassed = false;
+        breakdownHTML += `
+          <div class="scorecard-item" style="border-top:3px solid ${passedCat ? '#16a34a' : '#dc2626'};">
+            <div class="lbl">${cat.name}</div>
+            <div class="val" style="color:${passedCat ? '#16a34a' : '#dc2626'};">${cat.correct}/8 (${catPct}%)</div>
+            <div style="font-size:10.5px; font-weight:700; color:${passedCat ? '#15803d' : '#b91c1c'}; margin-top:2px;">
+              ${passedCat ? 'PASSED' : 'RE-STUDY'}
+            </div>
+          </div>
+        `;
+      }
+      breakdownHTML += '</div>';
+
+      if (unanswered > 0) {
+        if (!confirm(`You have left ${unanswered} question(s) unanswered. Unanswered questions are graded as incorrect. Would you like to proceed with grading?`)) {
+          return;
+        }
+      }
+
+      if (allCategoriesPassed && totalPercentage >= 80) {
+        const certCode = 'CERT-CIV-SG2026-' + Math.floor(0x1000 + Math.random() * 0x8fff).toString(16).toUpperCase();
+        resBox.className = 'modal-results-box active';
+        resBox.style.background = '#f0fdf4';
+        resBox.style.borderColor = '#86efac';
+        resBox.style.color = '#14532d';
+        resBox.innerHTML = `
+          <div style="display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid #bbf7d0; padding-bottom:8px; margin-bottom:10px;">
+            <strong style="font-size:16px; color:#15803d;"><span class="mif-checkmark"></span> Statutory Examination Passed!</strong>
+            <span style="background:#16a34a; color:#fff; font-size:11px; font-weight:700; padding:3px 8px; border-radius:2px;">QUALIFIED FOR CITIZENSHIP</span>
+          </div>
+          <p style="margin-bottom:6px;"><strong>Composite Score:</strong> ${totalScore}/40 (${totalPercentage}%) &bull; <em>80% or higher attained across all 5 constitutional categories as mandated by Article Six (⎰6.cp.cnsp).</em></p>
+          ${breakdownHTML}
+          <div style="background:#ffffff; border:1px solid #bbf7d0; border-radius:2px; padding:12px; margin-top:12px;">
+            <div style="font-size:11px; text-transform:uppercase; font-weight:700; color:#15803d; margin-bottom:4px;">Official Naturalization Credential Code</div>
+            <div style="font-family:monospace; font-size:16px; font-weight:700; color:#0f766e; letter-spacing:1px;">${certCode}</div>
+            <p class="ol-small" style="margin-top:6px; color:#334155;">You have demonstrated constitutional competency. Proceed to your six-month residency verification, sign your Naturalization Petition, and claim your Sangaia ID credential.</p>
+            <div style="margin-top:10px; display:flex; gap:10px;">
+              <a href="/application.html" class="ol-btn ol-btn-sm ol-btn-primary">File Naturalization Petition &rarr;</a>
+              <a href="/id/#signup" class="ol-btn ol-btn-sm" style="background:#e0f2fe; color:#0369a1;">Establish Sangaia ID &rarr;</a>
+            </div>
+          </div>
+        `;
+      } else {
+        resBox.className = 'modal-results-box active';
+        resBox.style.background = '#fef2f2';
+        resBox.style.borderColor = '#fca5a5';
+        resBox.style.color = '#7f1d1d';
+        resBox.innerHTML = `
+          <div style="border-bottom:1px solid #fecaca; padding-bottom:8px; margin-bottom:10px;">
+            <strong style="font-size:16px; color:#b91c1c;"><span class="mif-cross"></span> Examination Standard Not Met</strong>
+            <div class="ol-small" style="color:#991b1b; margin-top:2px;">Under Article Six (⎰6.cp.cnsp), applicants must achieve 80% or higher in <strong>every</strong> category.</div>
+          </div>
+          <p style="margin-bottom:6px;"><strong>Your Score:</strong> ${totalScore}/40 (${totalPercentage}% overall).</p>
+          ${breakdownHTML}
+          <p class="ol-small" style="margin-top:8px;">Please review the constitutional text for the categories marked <strong>RE-STUDY</strong> above, correct your selections, and submit again.</p>
+        `;
+      }
+
+      resBox.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }
+  </script>
 </body>
 </html>

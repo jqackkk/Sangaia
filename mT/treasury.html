@@ -1373,26 +1373,26 @@ button,
     <div class="left-col">
 
 
-    <!-- Zero Sovereign Debt Tracker -->
+    <!-- Sovereign Debt Ceiling & Foreign Solvency Ledger -->
     <div class="card" id="overview"><a id="debt"></a>
         <div class="ol-card-title">
             <span>Sovereign Debt Ceiling &amp; Foreign Solvency Ledger</span>
         </div>
         <div class="ol-grid-3" style="margin-bottom:12px;">
             <div class="ol-metric-box">
-                <div class="ol-metric-val">$ 0.00</div>
-                <div class="ol-metric-lbl">Foreign Sovereign Debt</div>
+                <div class="ol-metric-val">$ 15.00 B</div>
+                <div class="ol-metric-lbl">Statutory Debt Ceiling (⎰7.t.nd)</div>
             </div>
             <div class="ol-metric-box">
-                <div class="ol-metric-val">100.0%</div>
-                <div class="ol-metric-lbl">National Fiscal Solvency</div>
+                <div class="ol-metric-val">$ 4.20 B</div>
+                <div class="ol-metric-lbl">Current Utilized Debt (28.0%)</div>
             </div>
             <div class="ol-metric-box">
-                <div class="ol-metric-val">3.2%</div>
-                <div class="ol-metric-lbl">10-Yr Solidarity Bond Yield</div>
+                <div class="ol-metric-val">20.0% Max</div>
+                <div class="ol-metric-lbl">Federal Tax Cap (⎰7.t.ut)</div>
             </div>
         </div>
-        <p class="ol-small">Under the Sangaian Sovereign Monetary Act, the federal government is constitutionally barred from issuing bonds to foreign banking institutions or incurring compound interest deficits. All municipal and provincial capital loans are funded via internal solidarity bonds backed by public utility revenues.</p>
+        <p class="ol-small">Under Article 7 (⎰7.t.nd) of the Sangaian Constitution, the sovereign debt ceiling is set at $15 Billion ($15,000,000,000). Foreign loans may be secured on honourable terms provided total debt remains under this limit. Should obligations exceed the ceiling without Elective approval, automatic Budget Sequestration is triggered to curb discretionary spending. The Sangaian Dollar is an independent fiat currency backed by national credit and public confidence (⎰7.t.nc), free from physical commodity pegging.</p>
     </div>
 
     <!-- Solidarity Infrastructure Loans -->
@@ -1441,10 +1441,10 @@ button,
         </table>
     </div>
 
-    <!-- Council of Fiscal Rectitude & Surprise Audits -->
+    <!-- Office of the Financial Secretary & Surprise Audits -->
     <div class="ol-card" id="audits">
         <div class="ol-card-title">
-            <span>Council of Fiscal Rectitude &amp; Surprise Public Audits</span>
+            <span>Office of the Financial Secretary &amp; Provincial Audits (⎰7.t.ada)</span>
             <button type="button" class="ol-btn ol-btn-sm" onclick="openAuditModal()">File Audit Inquiry</button>
         </div>
         <p class="ol-small">To eliminate bureaucratic graft and kickbacks, the Treasury conducts unannounced quarterly forensic inspections of all procurement contracts above $50,000.</p>
@@ -1470,7 +1470,7 @@ button,
         <p style="color: var(--text-muted); font-size: 12px; margin-bottom: 8px;">Fiscal & Solvency Authority</p>
         <ul class="sidebar-nav-list">
           <li><a href="#overview" class="active"><span class="mif-chevron-right"></span> Overview & Solvency</a></li>
-<li><a href="#debt"><span class="mif-chevron-right"></span> Zero Sovereign Debt</a></li>
+<li><a href="#debt"><span class="mif-chevron-right"></span> Debt Ceiling &amp; Credit</a></li>
 <li><a href="#loans"><span class="mif-chevron-right"></span> Solidarity Loans</a></li>
 <li><a href="#allocations"><span class="mif-chevron-right"></span> Fund Allocations</a></li>
 <li><a href="#audits"><span class="mif-chevron-right"></span> Fiscal Rectitude & Audits</a></li>
@@ -1566,7 +1566,7 @@ button,
     function submitAudit() {
         const res = document.getElementById('auditResults');
         const token = 'TREAS-AUD-' + Math.floor(100000 + Math.random() * 900000);
-        res.innerHTML = `<strong>Inquiry Docketed:</strong> Tracking Token: <span style="font-family:monospace;">${token}</span>. Assigned to Council of Fiscal Rectitude. Protected under Whistleblower Shield.`;
+        res.innerHTML = `<strong>Inquiry Docketed:</strong> Tracking Token: <span style="font-family:monospace;">${token}</span>. Assigned to Office of the Financial Secretary / Provincial Auditors (⎰7.t.ada). Protected under Whistleblower Shield.`;
         res.classList.add('active');
     }
     </script>

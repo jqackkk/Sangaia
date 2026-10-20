@@ -1373,34 +1373,57 @@ button,
 
     <div class="ol-card">
         <div class="ol-card-title">
-            <span>Submit Official Civic Application</span>
+            <span>Submit Official Civic Petition &amp; Naturalization Application</span>
         </div>
-        <div class="form-group">
-            <label class="form-label">Full Legal Name</label>
-            <input type="text" class="ol-input" id="app-name" placeholder="Applicant Legal Name">
+        <p class="ol-small ol-muted" style="margin-bottom:12px;">Pursuant to Article Six of the Constitution, petitions for naturalization and public charters are processed through the Sovereign Civic Registry.</p>
+        <div class="form-group" style="margin-bottom:12px;">
+            <label class="form-label" style="display:block; font-weight:600; font-size:12px; margin-bottom:4px;">Full Legal Name</label>
+            <input type="text" class="ol-input" id="app-name" placeholder="Applicant Full Legal Name" style="width:100%; border:1px solid #ccc; padding:7px 10px; font-family:inherit; font-size:13px; border-radius:2px;">
         </div>
-        <div class="form-group">
-            <label class="form-label">Application Category</label>
-            <select class="ol-select" id="app-cat">
-                <option>Citizenship Naturalization</option>
+        <div class="form-group" style="margin-bottom:12px;">
+            <label class="form-label" style="display:block; font-weight:600; font-size:12px; margin-bottom:4px;">Date of Birth (Must be at least 13 years old &bull; ⎰6.cp.cnsp)</label>
+            <input type="date" class="ol-input" id="app-dob" style="width:100%; border:1px solid #ccc; padding:7px 10px; font-family:inherit; font-size:13px; border-radius:2px;">
+        </div>
+        <div class="form-group" style="margin-bottom:12px;">
+            <label class="form-label" style="display:block; font-weight:600; font-size:12px; margin-bottom:4px;">Application Category</label>
+            <select class="ol-select" id="app-cat" style="width:100%; border:1px solid #ccc; padding:7px 10px; font-family:inherit; font-size:13px; border-radius:2px;">
+                <option>Citizenship Naturalization (Article VI)</option>
                 <option>Public Service &amp; Civil Bureau Apprenticeship</option>
                 <option>Cooperative Enterprise Charter</option>
                 <option>Environmental Land Stewardship Grant</option>
             </select>
         </div>
-        <div class="form-group">
-            <label class="form-label">Selected Province of Residence</label>
-            <select class="ol-select" id="app-prov">
-                <option>New Jasper</option><option>New Madison</option><option>Liveland</option><option>Sentinel</option><option>Columbia</option>
+        <div class="form-group" style="margin-bottom:12px;">
+            <label class="form-label" style="display:block; font-weight:600; font-size:12px; margin-bottom:4px;">Jurisdiction / Province of Residence (for Provincial ID Issuance)</label>
+            <select class="ol-select" id="app-prov" style="width:100%; border:1px solid #ccc; padding:7px 10px; font-family:inherit; font-size:13px; border-radius:2px;">
+                <option>New Jasper (Capital Shesk)</option>
+                <option>New Madison</option>
+                <option>Liveland</option>
+                <option>Sentinel</option>
+                <option>Columbia</option>
             </select>
         </div>
-        <div class="form-group">
-            <label class="form-label">Applicant Statement &amp; Intent</label>
-            <textarea class="ol-textarea" id="app-stmt" rows="4" placeholder="Detail your background, civic commitment, or project goals..."></textarea>
+        <div class="form-group" style="margin-bottom:12px;">
+            <label class="form-label" style="display:block; font-weight:600; font-size:12px; margin-bottom:4px;">Naturalization Exam Certificate Code (if applying for citizenship)</label>
+            <input type="text" class="ol-input" id="app-cert" placeholder="e.g. CERT-CIV-SG2026-XXXX (or complete 40-Q exam first)" style="width:100%; border:1px solid #ccc; padding:7px 10px; font-family:inherit; font-size:13px; border-radius:2px;">
+        </div>
+        <div style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:2px; padding:10px 12px; margin-bottom:14px; font-size:12px; line-height:1.5;">
+            <label style="display:flex; align-items:flex-start; gap:8px; cursor:pointer;">
+                <input type="checkbox" id="app-residency" style="margin-top:2px;">
+                <span>I solemnly affirm that I meet the mandatory minimum of having resided and/or been employed within the United Provinces of Sangaia for a period of at least six (6) months (Article VI, Section ⎰6.cp.soto).</span>
+            </label>
+            <label style="display:flex; align-items:flex-start; gap:8px; cursor:pointer; margin-top:8px;">
+                <input type="checkbox" id="app-sole" style="margin-top:2px;">
+                <span>I understand and agree that multiple or dual citizenship is strictly contrary to law (⎰6.cp.dc), and I pledge sole allegiance to these United Provinces upon naturalization.</span>
+            </label>
+        </div>
+        <div class="form-group" style="margin-bottom:14px;">
+            <label class="form-label" style="display:block; font-weight:600; font-size:12px; margin-bottom:4px;">Applicant Statement &amp; Intent</label>
+            <textarea class="ol-textarea" id="app-stmt" rows="3" placeholder="Detail your background, civic commitment, or professional experience in Sangaia..." style="width:100%; border:1px solid #ccc; padding:7px 10px; font-family:inherit; font-size:13px; border-radius:2px;"></textarea>
         </div>
         <div class="modal-results-box" id="appResults"></div>
         <div class="ol-mt-10">
-            <button type="button" class="ol-btn ol-btn-primary" onclick="submitApp()">Submit Official Application</button>
+            <button type="button" class="ol-btn ol-btn-primary" onclick="submitApp()">Submit Official Sovereign Petition</button>
         </div>
     </div>
     
