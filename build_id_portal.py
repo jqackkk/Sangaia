@@ -31,7 +31,7 @@ def render_sangaia_id_html(is_subdomain=False):
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Sangaia ID :: Citizen Directory &amp; Digital Credential</title>
+  <title>sangaia id :: citizen directory &amp; digital credential</title>
   <link href="https://cdn.metroui.org.ua/4.5.12/icons.css" rel="stylesheet">
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   <script src="/auth.js" onerror="this.onerror=null;this.src='auth.js';" defer></script>
@@ -577,7 +577,7 @@ def render_sangaia_id_html(is_subdomain=False):
       </div>
     </div>
     <div class="hero-content">
-      <h1>people &bull; sangaia id</h1>
+      <h1>sangaia id</h1>
       <p>official sovereign citizen credential &bull; cryptographic identity &bull; 5 provinces</p>
     </div>
   </header>
@@ -585,8 +585,7 @@ def render_sangaia_id_html(is_subdomain=False):
   <!-- Horizontal Navigation Bar -->
   <nav class="subnav">
     <a href="{home_url}">federal home</a>
-    <a href="{id_url}" class="active">people &amp; id</a>
-    <a href="#card">citizen credential</a>
+    <a href="#card" class="active">citizen credential</a>
     <a href="#authSection">sign in / register</a>
     <a href="#verify">verify docket</a>
     <a href="{citizenship_url}">citizenship</a>
@@ -828,7 +827,7 @@ def render_sangaia_id_html(is_subdomain=False):
       <!-- Find & Verify Citizen Form Card -->
       <section class="card" id="verify">
         <h2>verify citizen credentials</h2>
-        <input type="text" class="input-find" id="verifyInput" placeholder="search for people or citizen id (e.g. SG-2026-F1E8)" value="SG-2026-F1E8" />
+        <input type="text" class="input-find" id="verifyInput" placeholder="search citizen id or name (e.g. SG-2026-F1E8)" value="SG-2026-F1E8" />
         <div style="display:flex; align-items:center; gap:12px; flex-wrap:wrap; font-size:12.5px; color:var(--text-muted);">
           <button type="button" class="btn-neutral" id="verifyBtn" onclick="runVerification()"><span class="mif-search"></span> verify docket</button>
           <span>instant validation against the sovereign civil records ledger.</span>
