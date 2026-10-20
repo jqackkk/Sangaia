@@ -115,49 +115,35 @@ def render_sangaia_id_html(is_subdomain=False):
       position: relative;
       padding: 0;
       background: linear-gradient(
-        105deg,
+        110deg,
         var(--primary) 0%,
-        var(--primary) 38%,
+        var(--primary) 35%,
         #ffffff 50%,
-        #ffffff 54%,
-        var(--primary) 66%,
+        var(--primary) 65%,
         var(--primary) 100%
       );
-      background-size: 260% 100%;
+      background-size: 300% 100%;
       background-position: 100% 0;
       -webkit-background-clip: text;
       background-clip: text;
       -webkit-text-fill-color: transparent;
-      transition: filter 0.3s ease;
     }}
 
     .brand a:hover {{
       text-decoration: none;
-      animation: brandTextFlash 0.75s ease-in-out forwards;
+      animation: brandShine 0.5s ease-out forwards;
     }}
 
-    @keyframes brandTextFlash {{
+    @keyframes brandShine {{
       0% {{
         background-position: 100% 0;
-        filter: drop-shadow(0 0 0 rgba(255, 255, 255, 0));
-      }}
-      40% {{
-        filter: drop-shadow(0 0 6px var(--primary)) drop-shadow(0 0 12px rgba(255, 255, 255, 0.85));
-      }}
-      50% {{
-        background-position: 50% 0;
-        filter: drop-shadow(0 0 8px var(--primary)) drop-shadow(0 0 16px rgba(255, 255, 255, 0.95));
-      }}
-      60% {{
-        filter: drop-shadow(0 0 6px var(--primary)) drop-shadow(0 0 12px rgba(255, 255, 255, 0.85));
       }}
       100% {{
         background-position: 0% 0;
-        filter: drop-shadow(0 0 4px var(--primary));
       }}
     }}
 
-    .brand .mif-windows {{
+    .brand [class*="mif-"] {{
       font-size: 20px;
       display: inline-block;
       line-height: 1;
@@ -237,26 +223,37 @@ def render_sangaia_id_html(is_subdomain=False):
       color: var(--primary);
     }}
 
+    .user-profile-btn,
     .user-profile-menu {{
-      display: flex;
+      display: inline-flex;
       align-items: center;
-      gap: 8px;
+      gap: 7px;
       cursor: pointer;
       font-size: 13px;
       font-weight: 500;
-      position: relative;
-      user-select: none;
+      text-decoration: none;
+      padding: 5px 12px;
+      background: #ffffff;
+      border: 1px solid rgba(0, 0, 0, 0.16);
+      border-radius: 2px;
       color: #14405c;
-      transition: color 0.15s ease;
+      transition: all 0.15s ease;
+      user-select: none;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
     }}
 
-    .user-profile-menu:hover,
-    .user-profile-menu.open {{
+    .user-profile-btn:hover,
+    .user-profile-menu:hover {{
+      border-color: var(--primary);
       color: var(--primary);
+      text-decoration: none;
+      box-shadow: 0 1px 4px rgba(0, 0, 0, 0.12);
     }}
 
+    .user-profile-btn .mif-user,
     .user-profile-menu .mif-user {{
       color: var(--primary) !important;
+      font-size: 14px;
     }}
 
     .user-profile-menu .mif-arrow-drop-down {{
@@ -683,7 +680,7 @@ def render_sangaia_id_html(is_subdomain=False):
   <header class="hero-header">
     <div class="top-bar">
       <div class="brand">
-        <a href="{home_url}"><span class="mif-windows"></span> sangaia id</a>
+        <a href="{home_url}"><span class="mif-home"></span> sangaia id</a>
       </div>
       <div class="top-right">
         <form class="search-box" action="{services_url}" method="get">
@@ -694,20 +691,10 @@ def render_sangaia_id_html(is_subdomain=False):
           <span class="mif-bell" title="notifications"></span>
           <span class="mif-security" title="sovereign cryptographic clearance active"></span>
         </div>
-        <div class="user-profile-menu unauthenticated" id="userProfileMenu">
-          <span class="mif-user" style="font-size: 15px; color:var(--primary);"></span>
+        <a href="{id_url}#signin" class="user-profile-btn unauthenticated" id="userProfileMenu" title="sign in to sangaia id">
+          <span class="mif-user"></span>
           <span>sign in</span>
-          <span class="mif-arrow-drop-down" style="font-size: 14px;"></span>
-          <div class="user-dropdown">
-            <div class="user-dropdown-header">sangaia id portal</div>
-            <a href="javascript:void(0)" onclick="if(window.SangaiaAuth) window.SangaiaAuth.openAuthModal('signin'); else window.location.hash='#signin';"><span class="mif-enter"></span> sign in to sangaia id</a>
-            <a href="javascript:void(0)" onclick="if(window.SangaiaAuth) window.SangaiaAuth.openAuthModal('signup'); else window.location.hash='#register';"><span class="mif-user-plus"></span> register new citizen id</a>
-            <a href="{id_url}"><span class="mif-profile"></span> sovereign citizen directory</a>
-            <a href="#verify"><span class="mif-security"></span> verify citizen docket</a>
-            <div style="border-top:1px solid #e1dfdd; margin:4px 0;"></div>
-            <a href="{home_url}"><span class="mif-home"></span> federal home</a>
-          </div>
-        </div>
+        </a>
       </div>
     </div>
     <div class="hero-content">

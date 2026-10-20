@@ -27,7 +27,7 @@ if (document.readyState !== 'loading') {
     document.addEventListener('DOMContentLoaded', initSangaiaLive);
 }
 
-// User Profile Dropdown Menu Setup (guarded against duplicate event listener registration)
+// User Profile Setup
 function setupProfileDropdown() {
     if (window._profileDropdownDelegationInitialized) return;
     window._profileDropdownDelegationInitialized = true;
@@ -36,24 +36,27 @@ function setupProfileDropdown() {
         const menu = document.getElementById('userProfileMenu');
         if (!menu) return;
 
+        const dropdown = menu.querySelector('.user-dropdown');
+        if (!dropdown) {
+            // Static button/link: allow standard navigation
+            return;
+        }
+
         const clickedTrigger = e.target.closest('#userProfileMenu');
         const clickedDropdownLink = e.target.closest('.user-dropdown a, .user-dropdown button');
 
         if (clickedDropdownLink) {
-            // User clicked inside dropdown: allow navigation / handler to fire, then close
             menu.classList.remove('open');
             return;
         }
 
         if (clickedTrigger) {
-            // User clicked trigger (avatar / sign in button)
             e.preventDefault();
             e.stopPropagation();
             menu.classList.toggle('open');
             return;
         }
 
-        // Clicked outside
         menu.classList.remove('open');
     });
 

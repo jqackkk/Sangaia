@@ -61,7 +61,7 @@ def generate_page(
     parts = norm_filename.split("/")
     is_subdomain = (len(parts) == 2 and parts[0] in MINISTRY_SUBDIRS) or (len(parts) > 1 and parts[0] in MINISTRY_SUBDIRS)
     federal_url = "https://sangaia.org/index.html" if is_subdomain else "/index.html"
-    id_url = "https://sangaia.org/id.html" if is_subdomain else "/id.html"
+    id_url = "https://sangaia.org/id/" if is_subdomain else "/id/"
     verify_url = "https://sangaia.org/verify.html" if is_subdomain else "/verify.html"
     search_action = "https://sangaia.org/services.html" if is_subdomain else "/services.html"
 
@@ -179,20 +179,10 @@ def generate_page(
           <span class="mif-bell" title="notifications"></span>
           <span class="mif-security" title="sovereign clearance active"></span>
         </div>
-        <div class="user-profile-menu unauthenticated" id="userProfileMenu">
-          <span class="mif-user" style="font-size:15px; color:var(--primary);"></span>
+        <a href="{id_url}" class="user-profile-btn unauthenticated" id="userProfileMenu" title="sign in to sangaia id">
+          <span class="mif-user"></span>
           <span>sign in</span>
-          <span class="mif-arrow-drop-down" style="font-size: 14px;"></span>
-          <div class="user-dropdown">
-            <div class="user-dropdown-header">sangaia id portal</div>
-            <a href="javascript:void(0)" onclick="if(window.SangaiaAuth) window.SangaiaAuth.openAuthModal('signin'); else window.location.href='{id_url}#signin';"><span class="mif-enter"></span> sign in to sangaia id</a>
-            <a href="javascript:void(0)" onclick="if(window.SangaiaAuth) window.SangaiaAuth.openAuthModal('signup'); else window.location.href='{id_url}#register';"><span class="mif-user-plus"></span> register new citizen id</a>
-            <a href="{id_url}"><span class="mif-profile"></span> citizen id directory</a>
-            <a href="{verify_url}"><span class="mif-security"></span> verify citizen docket</a>
-            <div style="border-top:1px solid #e1dfdd; margin:4px 0;"></div>
-            <a href="{federal_url}"><span class="mif-home"></span> federal home</a>
-          </div>
-        </div>
+        </a>
       </div>
     </div>
     <div class="hero-content">

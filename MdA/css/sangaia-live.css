@@ -340,15 +340,14 @@ body.theme-propaganda .hero-header {
   padding: 0;
   color: var(--primary);
   background: linear-gradient(
-    105deg,
+    110deg,
     var(--primary) 0%,
     var(--primary) 35%,
-    #ffffff 48%,
-    #ffffff 52%,
+    #ffffff 50%,
     var(--primary) 65%,
     var(--primary) 100%
   );
-  background-size: 260% 100%;
+  background-size: 300% 100%;
   background-position: 100% 0;
   -webkit-background-clip: text;
   background-clip: text;
@@ -357,18 +356,15 @@ body.theme-propaganda .hero-header {
 
 .brand a:hover {
   text-decoration: none;
-  animation: brandShine 0.5s ease-in-out forwards;
+  animation: brandShine 0.5s ease-out forwards;
 }
 
 @keyframes brandShine {
   0% {
     background-position: 100% 0;
   }
-  50% {
-    background-position: 20% 0;
-  }
   100% {
-    background-position: 100% 0;
+    background-position: 0% 0;
   }
 }
 
@@ -452,26 +448,37 @@ body.theme-propaganda .hero-header {
   color: var(--primary);
 }
 
+.user-profile-btn,
 .user-profile-menu {
-  display: flex;
+  display: inline-flex;
   align-items: center;
-  gap: 8px;
+  gap: 7px;
   cursor: pointer;
   font-size: 13px;
   font-weight: 500;
-  position: relative;
-  user-select: none;
+  text-decoration: none;
+  padding: 5px 12px;
+  background: #ffffff;
+  border: 1px solid rgba(0, 0, 0, 0.16);
+  border-radius: 2px;
   color: var(--hero-brand-color, #14405c);
-  transition: color 0.15s ease;
+  transition: all 0.15s ease;
+  user-select: none;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
 }
 
-.user-profile-menu:hover,
-.user-profile-menu.open {
+.user-profile-btn:hover,
+.user-profile-menu:hover {
+  border-color: var(--primary);
   color: var(--primary);
+  text-decoration: none;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.12);
 }
 
+.user-profile-btn .mif-user,
 .user-profile-menu .mif-user {
   color: var(--primary) !important;
+  font-size: 14px;
 }
 
 .user-profile-menu .mif-arrow-drop-down {
@@ -513,7 +520,8 @@ body.theme-propaganda .hero-header {
   padding: 6px 0;
 }
 
-.user-profile-menu.open .user-dropdown {
+.user-profile-menu.open .user-dropdown,
+.user-profile-menu:focus-within .user-dropdown {
   display: block;
 }
 

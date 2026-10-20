@@ -180,11 +180,11 @@ function getIdPageUrl() {
     const isHosted = window.location.hostname.endsWith('sangaia.org');
     
     if (isHosted) {
-        return isSgn ? 'https://sangaia.org/sgn/id.html' : 'https://sangaia.org/id.html';
+        return isSgn ? 'https://sangaia.org/sgn/id/' : 'https://sangaia.org/id/';
     }
     
     const root = getRepoRoot();
-    return isSgn ? root + 'sgn/id.html' : root + 'id.html';
+    return isSgn ? root + 'sgn/id/' : root + 'id/';
 }
 
 window.getIdPageUrl = getIdPageUrl;
@@ -369,47 +369,35 @@ async function updateAuthWidgets() {
         console.warn("Auth check warning:", e);
     }
 
-    // 1. Update Modern One Live #userProfileMenu
+    // 1. Update Modern One Live #userProfileMenu as a clean static button
     if (profileMenu) {
-        const isOpen = profileMenu.classList.contains('open');
         if (session && session.user) {
             const rawName = (citizen && citizen.full_name) || session.user.user_metadata?.full_name || session.user.email.split('@')[0];
             const name = rawName.toLowerCase();
             const citizenId = ((citizen && citizen.sangaia_id_number) || 'sg-2026-f1e8').toLowerCase();
             const initial = name.charAt(0).toUpperCase();
 
-            profileMenu.className = 'user-profile-menu authenticated' + (isOpen ? ' open' : '');
+            profileMenu.className = 'user-profile-btn authenticated';
             profileMenu.innerHTML = `
-              <div style="width:28px; height:28px; border-radius:2px; background:var(--primary, #0078d4); color:#fff; display:flex; align-items:center; justify-content:center; font-weight:700; font-size:12px; border:1px solid rgba(255,255,255,0.7); flex-shrink:0;">
+              <div style="width:20px; height:20px; border-radius:2px; background:var(--primary, #0078d4); color:#fff; display:flex; align-items:center; justify-content:center; font-weight:700; font-size:10px; flex-shrink:0;">
                 ${initial}
               </div>
               <span style="max-width:110px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;">${name}</span>
-              <span class="mif-arrow-drop-down" style="font-size: 14px;"></span>
-              <div class="user-dropdown">
-                <div class="user-dropdown-header">citizen: ${citizenId}</div>
-                <a href="${idUrl}"><span class="mif-profile"></span> sangaia id card</a>
-                <a href="/citizenship.html"><span class="mif-checkmark"></span> citizenship status</a>
-                <a href="/dashboard.html"><span class="mif-chart-bars"></span> sovereign registry</a>
-                <div style="border-top:1px solid #e1dfdd; margin:4px 0;"></div>
-                <a href="javascript:void(0)" onclick="window.SangaiaAuth.signOut()"><span class="mif-exit"></span> sign out</a>
-              </div>
             `;
+            if (profileMenu.tagName === 'A') {
+                profileMenu.href = idUrl;
+                profileMenu.title = `citizen ${citizenId} (${name}) - view sangaia id`;
+            }
         } else {
-            profileMenu.className = 'user-profile-menu unauthenticated' + (isOpen ? ' open' : '');
+            profileMenu.className = 'user-profile-btn unauthenticated';
             profileMenu.innerHTML = `
-              <span class="mif-user" style="font-size:15px; color:var(--primary, #0078d4);"></span>
+              <span class="mif-user"></span>
               <span>sign in</span>
-              <span class="mif-arrow-drop-down" style="font-size: 14px;"></span>
-              <div class="user-dropdown">
-                <div class="user-dropdown-header">sangaia id portal</div>
-                <a href="javascript:void(0)" onclick="window.SangaiaAuth.openAuthModal('signin')"><span class="mif-enter"></span> sign in to sangaia id</a>
-                <a href="javascript:void(0)" onclick="window.SangaiaAuth.openAuthModal('signup')"><span class="mif-user-plus"></span> register new citizen id</a>
-                <a href="${idUrl}"><span class="mif-profile"></span> sovereign citizen directory</a>
-                <a href="${idUrl}#verify"><span class="mif-security"></span> verify citizen docket</a>
-                <div style="border-top:1px solid #e1dfdd; margin:4px 0;"></div>
-                <a href="/index.html"><span class="mif-home"></span> federal home</a>
-              </div>
             `;
+            if (profileMenu.tagName === 'A') {
+                profileMenu.href = idUrl;
+                profileMenu.title = 'sign in to sangaia id';
+            }
         }
     }
 
@@ -665,6 +653,9 @@ function initAuthLifecycle() {
             document.addEventListener('click', (e) => {
                 const menu = document.getElementById('userProfileMenu');
                 if (!menu) return;
+                const dropdown = menu.querySelector('.user-dropdown');
+                if (!dropdown) return; // Allow direct link navigation
+
                 const clickedTrigger = e.target.closest('#userProfileMenu');
                 const clickedDropdownLink = e.target.closest('.user-dropdown a, .user-dropdown button');
                 if (clickedDropdownLink) {
