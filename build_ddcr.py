@@ -19,8 +19,6 @@ DDCR_NAV_TABS = [
     ("topics", "health topics (a-z)", "/mH/ddcr/health_topics.html"),
     ("outbreaks", "active outbreaks", "/mH/ddcr/outbreaks.html"),
     ("search", "pubmed research", "/mH/ddcr/search.html"),
-    ("healthcare", "← healthcare home", "/healthcare.html"),
-    ("federal", "← federal portal", "/index.html"),
 ]
 
 def build_ddcr_index():
@@ -95,7 +93,8 @@ def build_ddcr_index():
         sidebar_nav_links=[],
         main_content_html=main_content,
         sidebar_right_extra_html=sidebar_extra,
-        custom_nav_tabs=DDCR_NAV_TABS
+        custom_nav_tabs=DDCR_NAV_TABS,
+        breadcrumbs=[("← federal portal", "https://sangaia.org/index.html"), ("ministry of healthcare", "/healthcare.html")]
     )
 
 def build_ddcr_topics():
@@ -246,7 +245,8 @@ def build_ddcr_topics():
         main_content_html=main_content,
         sidebar_right_extra_html=sidebar_extra,
         extra_scripts=extra_scripts,
-        custom_nav_tabs=DDCR_NAV_TABS
+        custom_nav_tabs=DDCR_NAV_TABS,
+        breadcrumbs=[("← federal portal", "https://sangaia.org/index.html"), ("ministry of healthcare", "/healthcare.html"), ("ddcr disease control", "/mH/ddcr/index.html")]
     )
 
 def build_ddcr_outbreaks():
@@ -331,7 +331,8 @@ def build_ddcr_outbreaks():
         sidebar_nav_links=[],
         main_content_html=main_content,
         sidebar_right_extra_html=sidebar_extra,
-        custom_nav_tabs=DDCR_NAV_TABS
+        custom_nav_tabs=DDCR_NAV_TABS,
+        breadcrumbs=[("← federal portal", "https://sangaia.org/index.html"), ("ministry of healthcare", "/healthcare.html"), ("ddcr disease control", "/mH/ddcr/index.html")]
     )
 
 def build_ddcr_search():
@@ -462,7 +463,8 @@ def build_ddcr_search():
         main_content_html=main_content,
         sidebar_right_extra_html=sidebar_extra,
         extra_scripts=extra_scripts,
-        custom_nav_tabs=DDCR_NAV_TABS
+        custom_nav_tabs=DDCR_NAV_TABS,
+        breadcrumbs=[("← federal portal", "https://sangaia.org/index.html"), ("ministry of healthcare", "/healthcare.html"), ("ddcr disease control", "/mH/ddcr/index.html")]
     )
 
 def build_ddcr_article():
@@ -547,7 +549,8 @@ def build_ddcr_article():
         main_content_html=main_content,
         sidebar_right_extra_html=sidebar_extra,
         extra_scripts=extra_scripts,
-        custom_nav_tabs=DDCR_NAV_TABS
+        custom_nav_tabs=DDCR_NAV_TABS,
+        breadcrumbs=[("← federal portal", "https://sangaia.org/index.html"), ("ministry of healthcare", "/healthcare.html"), ("ddcr disease control", "/mH/ddcr/index.html")]
     )
 
 def build_article_press():
@@ -595,7 +598,8 @@ def build_article_press():
         sidebar_status="Official Release",
         sidebar_nav_links=[],
         main_content_html=main_content,
-        sidebar_right_extra_html=sidebar_extra
+        sidebar_right_extra_html=sidebar_extra,
+        breadcrumbs=[("← federal portal", "/index.html"), ("the societal press", "/societal_press.html")]
     )
 
 if __name__ == "__main__":

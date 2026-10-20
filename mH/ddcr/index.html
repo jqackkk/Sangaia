@@ -272,12 +272,13 @@ a:hover {
 }
 
 .search-box {
-  display: flex;
+  display: inline-flex;
   align-items: center;
   background: #ffffff;
   border-radius: 2px;
   overflow: hidden;
   box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+  transition: width 0.12s ease, box-shadow 0.15s ease;
 }
 
 .search-box input {
@@ -285,10 +286,14 @@ a:hover {
   outline: none;
   padding: 6px 10px;
   font-size: 12.5px;
-  width: 190px;
+  width: auto;
+  min-width: 50px;
+  max-width: 380px;
+  field-sizing: content;
   font-family: inherit;
   color: var(--text-main);
   background: transparent;
+  transition: width 0.12s ease;
 }
 
 .search-box button {
@@ -403,6 +408,40 @@ a:hover {
 .hero-content p {
   font-size: 13px;
   opacity: 0.9;
+  margin-bottom: 4px;
+}
+
+.hero-breadcrumbs {
+  margin-top: 8px;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  font-size: 12.5px;
+  font-style: normal;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.hero-breadcrumbs a {
+  color: #ffffff;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  opacity: 0.9;
+  font-weight: 500;
+  transition: opacity 0.15s ease, text-decoration 0.15s ease;
+}
+
+.hero-breadcrumbs a:hover {
+  opacity: 1;
+  text-decoration: underline;
+}
+
+.hero-breadcrumbs .bc-sep {
+  opacity: 0.6;
+  font-size: 11px;
+  user-select: none;
 }
 
 /* ==========================================================================
@@ -998,6 +1037,7 @@ h1, h2, h3, h4, h5, h6,
 .brand a,
 .brand span,
 .hero-content h1,
+.hero-breadcrumbs a,
 .subnav a,
 .sidebar h3,
 .sidebar h4,
@@ -1049,8 +1089,8 @@ button,
         <a href="/healthcare.html"><span class="mif-windows"></span> ministry of healthcare</a>
       </div>
       <div class="top-right">
-        <form class="search-box" action="/services.html" method="get">
-          <input type="text" name="q" placeholder="search services, laws &amp; societal press" />
+        <form class="search-box" action="https://sangaia.org/services.html" method="get">
+          <input type="text" name="q" placeholder="search anything" />
           <button type="submit" aria-label="Search"><span class="mif-search"></span></button>
         </form>
         <div class="top-icons">
@@ -1076,6 +1116,7 @@ button,
     <div class="hero-content">
       <h1>Department of Disease Control & Research (DDCR)</h1>
       <p>National Epidemiological Surveillance, Pathogen Monitoring & Clinical Research</p>
+      <div class="hero-breadcrumbs"><a href="https://sangaia.org/index.html">← federal portal</a> <span class="bc-sep">&bull;</span> <a href="/healthcare.html">ministry of healthcare</a></div>
     </div>
   </header>
 
@@ -1085,8 +1126,6 @@ button,
     <a href="/mH/ddcr/health_topics.html">health topics (a-z)</a>
     <a href="/mH/ddcr/outbreaks.html">active outbreaks</a>
     <a href="/mH/ddcr/search.html">pubmed research</a>
-    <a href="/healthcare.html">← healthcare home</a>
-    <a href="/index.html">← federal portal</a>
   </nav>
 
   <!-- Content Grid -->

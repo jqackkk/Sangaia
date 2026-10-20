@@ -26,6 +26,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // 4. Sub-Navigation Tab State Handling
     setupSubnavTabs();
+
+    // 5. Dynamic Variable-Width Search Box
+    setupDynamicSearchWidth();
 });
 
 // Sub-Navigation Tab State Handling
@@ -255,4 +258,36 @@ function setupUnitConverters() {
         });
     }
 }
+
+// Variable Width Search Bar based on input text or placeholder
+function setupDynamicSearchWidth() {
+    const searchInputs = document.querySelectorAll('.search-box input');
+    if (!searchInputs.length) return;
+
+    let canvas = document.createElement('canvas');
+    let ctx = canvas.getContext('2d');
+
+    searchInputs.forEach(input => {
+        function updateWidth() {
+            const val = input.value;
+            const placeholder = input.placeholder || 'search anything';
+            const textToMeasure = val.length > 0 ? val : placeholder;
+
+            const style = window.getComputedStyle(input);
+            ctx.font = `${style.fontWeight || '400'} ${style.fontSize || '12.5px'} ${style.fontFamily || 'Segoe UI, sans-serif'}`;
+            const metrics = ctx.measureText(textToMeasure);
+            // 20px padding (10px left + 10px right) + 16px breathing room for typing cursor
+            const textWidth = Math.ceil(metrics.width) + 26;
+            const targetWidth = Math.min(Math.max(textWidth, 50), 380);
+            input.style.width = targetWidth + 'px';
+        }
+
+        input.addEventListener('input', updateWidth);
+        input.addEventListener('focus', updateWidth);
+        input.addEventListener('blur', updateWidth);
+        input.addEventListener('change', updateWidth);
+        updateWidth();
+    });
+}
+
 

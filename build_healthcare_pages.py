@@ -26,7 +26,6 @@ HEALTHCARE_NAV_TABS = [
     ("research", "medical research", "/healthcare_research.html"),
     ("support", "patient support", "/healthcare_support.html"),
     ("ddcr", "ddcr disease control", "/mH/ddcr/index.html"),
-    ("federal", "← federal portal", "/index.html"),
 ]
 
 HEALTHCARE_NAV_TABS_SUBDOMAIN = [
@@ -37,7 +36,6 @@ HEALTHCARE_NAV_TABS_SUBDOMAIN = [
     ("research", "medical research", "research.html"),
     ("support", "patient support", "support.html"),
     ("ddcr", "ddcr disease control", "ddcr/index.html"),
-    ("federal", "← federal portal", "https://sangaia.org/index.html"),
 ]
 
 def build_hospitals_page():
@@ -254,8 +252,8 @@ def build_hospitals_page():
     </div>
     """
 
-    generate_page("healthcare_hospitals.html", title, theme, "hospitals", hero_title, hero_sub, "ministry of healthcare", "5-province hospital network", "ers active", sidebar_links, main_content, sidebar_right, custom_nav_tabs=HEALTHCARE_NAV_TABS)
-    generate_page("mH/hospitals.html", title, theme, "hospitals", hero_title, hero_sub, "ministry of healthcare", "5-province hospital network", "ers active", sidebar_links, main_content, sidebar_right, custom_nav_tabs=HEALTHCARE_NAV_TABS_SUBDOMAIN)
+    generate_page("healthcare_hospitals.html", title, theme, "hospitals", hero_title, hero_sub, "ministry of healthcare", "5-province hospital network", "ers active", sidebar_links, main_content, sidebar_right, custom_nav_tabs=HEALTHCARE_NAV_TABS, breadcrumbs=[("← federal portal", "/index.html"), ("ministry of healthcare", "/healthcare.html")])
+    generate_page("mH/hospitals.html", title, theme, "hospitals", hero_title, hero_sub, "ministry of healthcare", "5-province hospital network", "ers active", sidebar_links, main_content, sidebar_right, custom_nav_tabs=HEALTHCARE_NAV_TABS_SUBDOMAIN, breadcrumbs=[("← federal portal", "https://sangaia.org/index.html"), ("ministry of healthcare", "index.html")])
 
 def build_services_page():
     title = "Comprehensive Medical Services & The Sangaian Health Charter"
@@ -426,8 +424,8 @@ def build_services_page():
     </div>
     """
 
-    generate_page("healthcare_services.html", title, theme, "services", hero_title, hero_sub, "ministry of healthcare", "universal health charter", "services active", sidebar_links, main_content, sidebar_right, custom_nav_tabs=HEALTHCARE_NAV_TABS)
-    generate_page("mH/services.html", title, theme, "services", hero_title, hero_sub, "ministry of healthcare", "universal health charter", "services active", sidebar_links, main_content, sidebar_right, custom_nav_tabs=HEALTHCARE_NAV_TABS_SUBDOMAIN)
+    generate_page("healthcare_services.html", title, theme, "services", hero_title, hero_sub, "ministry of healthcare", "universal health charter", "services active", sidebar_links, main_content, sidebar_right, custom_nav_tabs=HEALTHCARE_NAV_TABS, breadcrumbs=[("← federal portal", "/index.html"), ("ministry of healthcare", "/healthcare.html")])
+    generate_page("mH/services.html", title, theme, "services", hero_title, hero_sub, "ministry of healthcare", "universal health charter", "services active", sidebar_links, main_content, sidebar_right, custom_nav_tabs=HEALTHCARE_NAV_TABS_SUBDOMAIN, breadcrumbs=[("← federal portal", "https://sangaia.org/index.html"), ("ministry of healthcare", "index.html")])
 
 def build_research_page():
     title = "Medical Research, Clinical Trials & DDCR Liaison"
@@ -524,8 +522,8 @@ def build_research_page():
     </div>
     """
 
-    generate_page("healthcare_research.html", title, theme, "research", hero_title, hero_sub, "ministry of healthcare", "innovation & ddcr", "laboratories active", sidebar_links, main_content, sidebar_right, custom_nav_tabs=HEALTHCARE_NAV_TABS)
-    generate_page("mH/research.html", title, theme, "research", hero_title, hero_sub, "ministry of healthcare", "innovation & ddcr", "laboratories active", sidebar_links, main_content, sidebar_right, custom_nav_tabs=HEALTHCARE_NAV_TABS_SUBDOMAIN)
+    generate_page("healthcare_research.html", title, theme, "research", hero_title, hero_sub, "ministry of healthcare", "innovation & ddcr", "laboratories active", sidebar_links, main_content, sidebar_right, custom_nav_tabs=HEALTHCARE_NAV_TABS, breadcrumbs=[("← federal portal", "/index.html"), ("ministry of healthcare", "/healthcare.html")])
+    generate_page("mH/research.html", title, theme, "research", hero_title, hero_sub, "ministry of healthcare", "innovation & ddcr", "laboratories active", sidebar_links, main_content, sidebar_right, custom_nav_tabs=HEALTHCARE_NAV_TABS_SUBDOMAIN, breadcrumbs=[("← federal portal", "https://sangaia.org/index.html"), ("ministry of healthcare", "index.html")])
 
 def build_support_page():
     title = "Patient Support, Citizen Advocacy & Healthcare FAQ"
@@ -628,8 +626,8 @@ def build_support_page():
     </div>
     """
 
-    generate_page("healthcare_support.html", title, theme, "support", hero_title, hero_sub, "ministry of healthcare", "advocacy & faq", "support available", sidebar_links, main_content, sidebar_right, custom_nav_tabs=HEALTHCARE_NAV_TABS)
-    generate_page("mH/support.html", title, theme, "support", hero_title, hero_sub, "ministry of healthcare", "advocacy & faq", "support available", sidebar_links, main_content, sidebar_right, custom_nav_tabs=HEALTHCARE_NAV_TABS_SUBDOMAIN)
+    generate_page("healthcare_support.html", title, theme, "support", hero_title, hero_sub, "ministry of healthcare", "advocacy & faq", "support available", sidebar_links, main_content, sidebar_right, custom_nav_tabs=HEALTHCARE_NAV_TABS, breadcrumbs=[("← federal portal", "/index.html"), ("ministry of healthcare", "/healthcare.html")])
+    generate_page("mH/support.html", title, theme, "support", hero_title, hero_sub, "ministry of healthcare", "advocacy & faq", "support available", sidebar_links, main_content, sidebar_right, custom_nav_tabs=HEALTHCARE_NAV_TABS_SUBDOMAIN, breadcrumbs=[("← federal portal", "https://sangaia.org/index.html"), ("ministry of healthcare", "index.html")])
 
 def build_all_healthcare_secondary():
     build_hospitals_page()

@@ -52,10 +52,35 @@ def generate_page(
     custom_nav_tabs=None,
     sidebar_info_html=None,
     brand_text=None,
-    brand_url=None
+    brand_url=None,
+    breadcrumbs=None
 ):
     norm_filename = filename.replace("\\", "/")
     parts = norm_filename.split("/")
+    is_subdomain = (len(parts) == 2 and parts[0] in MINISTRY_SUBDIRS) or (len(parts) > 1 and parts[0] in MINISTRY_SUBDIRS)
+    federal_url = "https://sangaia.org/index.html" if is_subdomain else "/index.html"
+    search_action = "https://sangaia.org/services.html" if is_subdomain else "/services.html"
+
+    # Breadcrumbs generation beneath subtitle
+    breadcrumbs_html = ""
+    if breadcrumbs is not None:
+        if isinstance(breadcrumbs, str):
+            breadcrumbs_html = breadcrumbs
+        elif isinstance(breadcrumbs, (list, tuple)):
+            if breadcrumbs:
+                links_html = []
+                for b_item in breadcrumbs:
+                    if isinstance(b_item, (list, tuple)) and len(b_item) == 2:
+                        b_label, b_url = b_item
+                        links_html.append(f'<a href="{b_url}">{b_label}</a>')
+                    elif isinstance(b_item, str):
+                        links_html.append(b_item)
+                sep = ' <span class="bc-sep">&bull;</span> '
+                breadcrumbs_html = f'      <div class="hero-breadcrumbs">{"".join([sep.join(links_html)])}</div>\n'
+    else:
+        # Default breadcrumbs: every page except federal home index.html gets at least federal portal link
+        if norm_filename != "index.html":
+            breadcrumbs_html = f'      <div class="hero-breadcrumbs"><a href="{federal_url}">← federal portal</a></div>\n'
 
     if brand_text is None:
         if theme_class in THEME_MINISTRY_MAP:
@@ -152,8 +177,8 @@ def generate_page(
         <a href="{brand_url}"><span class="mif-windows"></span> {brand_text}</a>
       </div>
       <div class="top-right">
-        <form class="search-box" action="/services.html" method="get">
-          <input type="text" name="q" placeholder="search services, laws &amp; societal press" />
+        <form class="search-box" action="{search_action}" method="get">
+          <input type="text" name="q" placeholder="search anything" />
           <button type="submit" aria-label="Search"><span class="mif-search"></span></button>
         </form>
         <div class="top-icons">
@@ -179,7 +204,7 @@ def generate_page(
     <div class="hero-content">
       <h1>{hero_title}</h1>
       <p>{hero_sub}</p>
-    </div>
+{breadcrumbs_html}    </div>
   </header>
 
   <!-- Navigation Bar -->

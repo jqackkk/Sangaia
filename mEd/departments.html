@@ -272,12 +272,13 @@ a:hover {
 }
 
 .search-box {
-  display: flex;
+  display: inline-flex;
   align-items: center;
   background: #ffffff;
   border-radius: 2px;
   overflow: hidden;
   box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+  transition: width 0.12s ease, box-shadow 0.15s ease;
 }
 
 .search-box input {
@@ -285,10 +286,14 @@ a:hover {
   outline: none;
   padding: 6px 10px;
   font-size: 12.5px;
-  width: 190px;
+  width: auto;
+  min-width: 50px;
+  max-width: 380px;
+  field-sizing: content;
   font-family: inherit;
   color: var(--text-main);
   background: transparent;
+  transition: width 0.12s ease;
 }
 
 .search-box button {
@@ -403,6 +408,40 @@ a:hover {
 .hero-content p {
   font-size: 13px;
   opacity: 0.9;
+  margin-bottom: 4px;
+}
+
+.hero-breadcrumbs {
+  margin-top: 8px;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  font-size: 12.5px;
+  font-style: normal;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.hero-breadcrumbs a {
+  color: #ffffff;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  opacity: 0.9;
+  font-weight: 500;
+  transition: opacity 0.15s ease, text-decoration 0.15s ease;
+}
+
+.hero-breadcrumbs a:hover {
+  opacity: 1;
+  text-decoration: underline;
+}
+
+.hero-breadcrumbs .bc-sep {
+  opacity: 0.6;
+  font-size: 11px;
+  user-select: none;
 }
 
 /* ==========================================================================
@@ -998,6 +1037,7 @@ h1, h2, h3, h4, h5, h6,
 .brand a,
 .brand span,
 .hero-content h1,
+.hero-breadcrumbs a,
 .subnav a,
 .sidebar h3,
 .sidebar h4,
@@ -1049,8 +1089,8 @@ button,
         <a href="index.html"><span class="mif-windows"></span> ministry of education</a>
       </div>
       <div class="top-right">
-        <form class="search-box" action="/services.html" method="get">
-          <input type="text" name="q" placeholder="search services, laws &amp; societal press" />
+        <form class="search-box" action="https://sangaia.org/services.html" method="get">
+          <input type="text" name="q" placeholder="search anything" />
           <button type="submit" aria-label="Search"><span class="mif-search"></span></button>
         </form>
         <div class="top-icons">
@@ -1076,6 +1116,7 @@ button,
     <div class="hero-content">
       <h1>Ministry of Education</h1>
       <p>Statutory Directorates, Executive Decrees & State Administration &bull; Ministry of Education</p>
+      <div class="hero-breadcrumbs"><a href="https://sangaia.org/index.html">← federal portal</a> <span class="bc-sep">&bull;</span> <a href="index.html">ministry of education</a></div>
     </div>
   </header>
 
@@ -1087,7 +1128,6 @@ button,
     <a href="#higher-ed">higher ed & grants</a>
     <a href="#schools">school scorecards</a>
     <a href="#teachers">teacher certifications</a>
-    <a href="https://sangaia.org/index.html">← federal portal</a>
   </nav>
 
   <!-- Content Grid -->
@@ -1284,7 +1324,7 @@ button,
         <h3>Ministry of Education</h3>
         <p style="color: var(--text-muted); font-size: 12px; margin-bottom: 8px;">Statutory Authority</p>
         <ul class="sidebar-nav-list">
-          <li><a href="/education_departments.html"><span class="mif-chevron-right"></span> ← Ministry of Education Home</a></li>
+          <li><a href="/education.html"><span class="mif-chevron-right"></span> ← Ministry of Education Home</a></li>
 <li><a href="#overview" class="active"><span class="mif-chevron-right"></span> Overview & Search</a></li>
 <li><a href="#curriculum-standards"><span class="mif-chevron-right"></span> Dept: Curriculum Development & Academic Standards</a></li>
 <li><a href="#higher-ed-grants"><span class="mif-chevron-right"></span> Dept: Higher Education & Research Grants</a></li>
@@ -1310,7 +1350,7 @@ button,
             <h3>Ministry of Education</h3>
             <p class="ol-small ol-muted">All services operate under federal statutory oversight. Applications are cryptographically authenticated via Sangaia ID.</p>
             <div style="margin-top:10px;">
-                <a href="/education_departments.html" class="ol-btn ol-btn-sm" style="width:100%; text-align:center;">Return to Ministry Portal</a>
+                <a href="/education.html" class="ol-btn ol-btn-sm" style="width:100%; text-align:center;">Return to Ministry Portal</a>
             </div>
         </div>
         

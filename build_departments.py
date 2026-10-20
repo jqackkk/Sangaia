@@ -23,7 +23,6 @@ MINISTRY_NAV_TABS = {
         ("budget", "national budget", "/executive.html#national-budget"),
         ("constitution", "constitution & veto", "/executive.html#constitutional-framework"),
         ("calendar", "cabinet calendar", "/executive.html#calendar"),
-        ("federal", "← federal portal", "/index.html"),
     ],
     "treasury": [
         ("home", "treasury home", "/treasury.html"),
@@ -33,7 +32,6 @@ MINISTRY_NAV_TABS = {
         ("budget", "budget ledger", "/treasury.html#fund-allocation"),
         ("electives", "electives salaries", "/treasury.html#electives"),
         ("audits", "check-ins & audits", "/treasury.html#audits"),
-        ("federal", "← federal portal", "/index.html"),
     ],
     "work": [
         ("home", "work home", "/work.html"),
@@ -43,7 +41,6 @@ MINISTRY_NAV_TABS = {
         ("jobs", "job market", "/work.html#jobs"),
         ("permits", "work permits", "/work.html#work-permits"),
         ("unions", "guild registry", "/work.html#whistleblower"),
-        ("federal", "← federal portal", "/index.html"),
     ],
     "healthcare": [
         ("home", "healthcare home", "/healthcare.html"),
@@ -53,7 +50,6 @@ MINISTRY_NAV_TABS = {
         ("research", "medical research", "/healthcare_research.html"),
         ("support", "patient support", "/healthcare_support.html"),
         ("ddcr", "ddcr disease control", "/mH/ddcr/index.html"),
-        ("federal", "← federal portal", "/index.html"),
     ],
     "education": [
         ("home", "education home", "/education.html"),
@@ -62,7 +58,6 @@ MINISTRY_NAV_TABS = {
         ("higher-ed", "higher ed & grants", "/education.html#higher-ed"),
         ("schools", "school scorecards", "/education.html#schools"),
         ("teachers", "teacher certifications", "/education.html#teachers"),
-        ("federal", "← federal portal", "/index.html"),
     ],
     "domesticaffairs": [
         ("home", "domestic home", "/domesticaffairs.html"),
@@ -71,7 +66,6 @@ MINISTRY_NAV_TABS = {
         ("trade", "internal common market", "/domesticaffairs.html#provincial-trade"),
         ("accords", "federal accords", "/domesticaffairs.html#federal-interactions"),
         ("transit", "highways & dmv", "/domesticaffairs.html#traffic-roads"),
-        ("federal", "← federal portal", "/index.html"),
     ],
     "externalaffairs": [
         ("home", "external home", "/externalaffairs.html"),
@@ -80,7 +74,6 @@ MINISTRY_NAV_TABS = {
         ("treaties", "treaties archive", "/externalaffairs.html#treaties"),
         ("embassies", "global embassies", "/externalaffairs.html#embassies"),
         ("visas", "visa services", "/externalaffairs.html#visa-services"),
-        ("federal", "← federal portal", "/index.html"),
     ],
     "environment": [
         ("home", "environment home", "/environment.html"),
@@ -91,7 +84,6 @@ MINISTRY_NAV_TABS = {
         ("food", "food security", "/environment.html#food-security"),
         ("weather", "weather (°пт)", "/environment.html#weather"),
         ("conservation", "tree planting ledger", "/environment.html#conservation"),
-        ("federal", "← federal portal", "/index.html"),
     ],
     "propaganda": [
         ("home", "propaganda home", "/propaganda.html"),
@@ -100,7 +92,6 @@ MINISTRY_NAV_TABS = {
         ("tv", "tv & radio directory", "/propaganda.html#channels-directory"),
         ("press", "reporter qualifications", "/propaganda.html#reporter-qualifications"),
         ("churches", "religious audits", "/propaganda.html#churches-registry"),
-        ("federal", "← federal portal", "/index.html"),
     ],
 }
 
@@ -377,7 +368,7 @@ def build_all_ministry_departments():
     for mkey, m in MINISTRIES.items():
         theme_class = f"theme-{mkey}"
         ministry_title = m["ministry_en"]
-        home_url = f"/{m['root_file']}"
+        home_url = f"/{mkey}.html"
         dept_hub_file = f"{mkey}_departments.html"
 
         target_dirs = m.get("target_dirs", [])
@@ -501,7 +492,8 @@ def build_all_ministry_departments():
             sidebar_right_extra_html=hub_sidebar_right,
             modal_dialog_html=MODAL_DIALOG_HTML,
             extra_scripts=extra_scripts,
-            custom_nav_tabs=nav_tabs
+            custom_nav_tabs=nav_tabs,
+            breadcrumbs=[("← federal portal", "/index.html"), (ministry_title.lower(), home_url)]
         )
 
         # Generate subdomain mirror for hub file
@@ -522,7 +514,8 @@ def build_all_ministry_departments():
                 sidebar_right_extra_html=hub_sidebar_right,
                 modal_dialog_html=MODAL_DIALOG_HTML,
                 extra_scripts=extra_scripts,
-                custom_nav_tabs=sub_nav_tabs
+                custom_nav_tabs=sub_nav_tabs,
+                breadcrumbs=[("← federal portal", "https://sangaia.org/index.html"), (ministry_title.lower(), "index.html")]
             )
 
         # -------------------------------------------------------------
@@ -627,7 +620,8 @@ def build_all_ministry_departments():
                 sidebar_right_extra_html=dedicated_sidebar_right,
                 modal_dialog_html=MODAL_DIALOG_HTML,
                 extra_scripts=extra_scripts,
-                custom_nav_tabs=nav_tabs
+                custom_nav_tabs=nav_tabs,
+                breadcrumbs=[("← federal portal", "/index.html"), (ministry_title.lower(), home_url), ("departments", f"/{dept_hub_file}")]
             )
 
             # Generate subdomain separate page
@@ -659,7 +653,8 @@ def build_all_ministry_departments():
                     sidebar_right_extra_html=dedicated_sidebar_right,
                     modal_dialog_html=MODAL_DIALOG_HTML,
                     extra_scripts=extra_scripts,
-                    custom_nav_tabs=sub_nav_tabs
+                    custom_nav_tabs=sub_nav_tabs,
+                    breadcrumbs=[("← federal portal", "https://sangaia.org/index.html"), (ministry_title.lower(), "index.html"), ("departments", "departments.html")]
                 )
 
     print("All 9 ministry department overview hubs and all 24 dedicated entity pages generated successfully!")

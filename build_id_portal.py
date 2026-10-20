@@ -181,12 +181,13 @@ def render_sangaia_id_html(is_subdomain=False):
     }}
 
     .search-box {{
-      display: flex;
+      display: inline-flex;
       align-items: center;
       background: #fff;
       border-radius: 2px;
       overflow: hidden;
       box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25);
+      transition: width 0.12s ease, box-shadow 0.15s ease;
     }}
 
     .search-box input {{
@@ -194,9 +195,13 @@ def render_sangaia_id_html(is_subdomain=False):
       outline: none;
       padding: 6px 10px;
       font-size: 12.5px;
-      width: 200px;
+      width: auto;
+      min-width: 50px;
+      max-width: 380px;
+      field-sizing: content;
       font-family: inherit;
       background: transparent;
+      transition: width 0.12s ease;
     }}
 
     .search-box button {{
@@ -299,6 +304,40 @@ def render_sangaia_id_html(is_subdomain=False):
       font-style: italic;
       opacity: 0.9;
       margin-top: 4px;
+      margin-bottom: 4px;
+    }}
+
+    .hero-breadcrumbs {{
+      margin-top: 8px;
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 8px;
+      font-size: 12.5px;
+      font-style: normal;
+      color: rgba(255, 255, 255, 0.8);
+    }}
+
+    .hero-breadcrumbs a {{
+      color: #ffffff;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      opacity: 0.9;
+      font-weight: 500;
+      transition: opacity 0.15s ease, text-decoration 0.15s ease;
+    }}
+
+    .hero-breadcrumbs a:hover {{
+      opacity: 1;
+      text-decoration: underline;
+    }}
+
+    .hero-breadcrumbs .bc-sep {{
+      opacity: 0.6;
+      font-size: 11px;
+      user-select: none;
     }}
 
     /* Sub-Navigation Bar */
@@ -584,6 +623,7 @@ def render_sangaia_id_html(is_subdomain=False):
     .brand a,
     .brand span,
     .hero-content h1,
+    .hero-breadcrumbs a,
     .subnav a,
     .side-nav-heading,
     .side-nav-group a,
@@ -607,7 +647,7 @@ def render_sangaia_id_html(is_subdomain=False):
       </div>
       <div class="top-right">
         <form class="search-box" action="{services_url}" method="get">
-          <input type="text" name="q" placeholder="search citizens &amp; credentials..." />
+          <input type="text" name="q" placeholder="search anything" />
           <button type="submit" aria-label="Search"><span class="mif-search"></span></button>
         </form>
         <div class="top-icons">
@@ -633,12 +673,14 @@ def render_sangaia_id_html(is_subdomain=False):
     <div class="hero-content">
       <h1>sangaia id</h1>
       <p>official sovereign citizen credential &bull; cryptographic identity &bull; 5 provinces</p>
+      <div class="hero-breadcrumbs">
+        <a href="{home_url}">← federal portal</a>
+      </div>
     </div>
   </header>
 
   <!-- Horizontal Navigation Bar -->
   <nav class="subnav">
-    <a href="{home_url}">federal home</a>
     <a href="#card" class="active">citizen credential</a>
     <a href="#authSection">sign in / register</a>
     <a href="#verify">verify docket</a>
@@ -1247,7 +1289,40 @@ def render_sangaia_id_html(is_subdomain=False):
       }} else if (window.location.hash === '#register') {{
         switchPageAuthTab('signup');
       }}
+
+      // Dynamic variable width search box
+      setupDynamicSearchWidth();
     }});
+
+    // Variable Width Search Bar based on input text or placeholder
+    function setupDynamicSearchWidth() {{
+      const searchInputs = document.querySelectorAll('.search-box input');
+      if (!searchInputs.length) return;
+
+      const canvas = document.createElement('canvas');
+      const ctx = canvas.getContext('2d');
+
+      searchInputs.forEach(input => {{
+        function updateWidth() {{
+          const val = input.value;
+          const placeholder = input.placeholder || 'search anything';
+          const textToMeasure = val.length > 0 ? val : placeholder;
+
+          const style = window.getComputedStyle(input);
+          ctx.font = `${{style.fontWeight || '400'}} ${{style.fontSize || '12.5px'}} ${{style.fontFamily || 'Segoe UI, sans-serif'}}`;
+          const metrics = ctx.measureText(textToMeasure);
+          const textWidth = Math.ceil(metrics.width) + 26;
+          const targetWidth = Math.min(Math.max(textWidth, 50), 380);
+          input.style.width = targetWidth + 'px';
+        }}
+
+        input.addEventListener('input', updateWidth);
+        input.addEventListener('focus', updateWidth);
+        input.addEventListener('blur', updateWidth);
+        input.addEventListener('change', updateWidth);
+        updateWidth();
+      }});
+    }}
   </script>
 </body>
 </html>"""
