@@ -366,15 +366,18 @@ body.theme-propaganda .hero-header {
 
 .brand a:hover {
   text-decoration: none;
-  animation: brandShine 0.45s linear forwards;
+  animation: brandShine 0.5s ease-in-out forwards;
 }
 
 @keyframes brandShine {
   0% {
     background-position: 100% 0;
   }
+  50% {
+    background-position: 20% 0;
+  }
   100% {
-    background-position: -60% 0;
+    background-position: 100% 0;
   }
 }
 
