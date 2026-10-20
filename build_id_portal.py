@@ -20,7 +20,6 @@ def render_sangaia_id_html(is_subdomain=False):
     id_url = "index.html" if is_subdomain else "/id.html"
     citizenship_url = f"{root_prefix}/citizenship.html"
     services_url = f"{root_prefix}/services.html"
-    units_url = f"{root_prefix}/index.html#units"
     dashboard_url = f"{root_prefix}/dashboard.html"
     government_url = f"{root_prefix}/government.html"
     literacy_url = f"{root_prefix}/literacy_test.html"
@@ -697,7 +696,6 @@ def render_sangaia_id_html(is_subdomain=False):
     <a href="#verify">verify docket</a>
     <a href="{citizenship_url}">citizenship</a>
     <a href="{services_url}">services</a>
-    <a href="{units_url}">units (мн • °пт)</a>
     <a href="{dashboard_url}">registry dashboard</a>
     <a href="{government_url}">government</a>
   </nav>
@@ -1035,7 +1033,6 @@ def render_sangaia_id_html(is_subdomain=False):
       <li><a href="{home_url}">federal home</a></li>
       <li><a href="{citizenship_url}">citizenship charter</a></li>
       <li><a href="{services_url}">public services</a></li>
-      <li><a href="{units_url}">sovereign standards (мн &bull; °пт)</a></li>
       <li><a href="{dashboard_url}">registry dashboard</a></li>
       <li><a href="{government_url}">constitution &amp; virtues</a></li>
     </ul>

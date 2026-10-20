@@ -108,7 +108,6 @@ def generate_page(
             ("aeretocrat", "the aeretocrat", "/about.html"),
             ("citizenship", "citizenship", "/citizenship.html"),
             ("press", "societal press", "/societal_press.html"),
-            ("units", "units (мн • °пт)", "/index.html#units"),
         ]
 
     subnav_html = ""
@@ -144,7 +143,7 @@ def generate_page(
         <div style="display: flex; flex-direction: column; gap: 4px; color: var(--text-muted);">
           <div><strong style="color: var(--text-main);">jurisdiction:</strong> 5 provinces (new jasper, new madison, liveland, sentinel, columbia)</div>
           <div><strong style="color: var(--text-main);">currency:</strong> $ (sangaian dollar)</div>
-          <div><strong style="color: var(--text-main);">standards:</strong> панотерм (°пт) &bull; мономер (мн)</div>
+          <div><strong style="color: var(--text-main);">standards:</strong> sovereign civic charter &bull; metric</div>
           <div><strong style="color: var(--text-main);">classification:</strong> verified official portal</div>
         </div>
       </div>

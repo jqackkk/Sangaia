@@ -386,7 +386,6 @@ async function updateAuthWidgets() {
                 <div class="user-dropdown-header">citizen: ${citizenId}</div>
                 <a href="${idUrl}"><span class="mif-profile"></span> sangaia id card</a>
                 <a href="/citizenship.html"><span class="mif-checkmark"></span> citizenship status</a>
-                <a href="/index.html#units"><span class="mif-compass"></span> units &amp; measures</a>
                 <a href="/dashboard.html"><span class="mif-chart-bars"></span> sovereign registry</a>
                 <div style="border-top:1px solid #e1dfdd; margin:4px 0;"></div>
                 <a href="javascript:void(0)" onclick="window.SangaiaAuth.signOut()"><span class="mif-exit"></span> sign out</a>

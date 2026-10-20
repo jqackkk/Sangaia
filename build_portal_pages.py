@@ -27,7 +27,6 @@ FEDERAL_NAV_TABS = [
     ("aeretocrat", "the aeretocrat", "/about.html"),
     ("citizenship", "citizenship", "/citizenship.html"),
     ("press", "societal press", "/societal_press.html"),
-    ("units", "units (мн • °пт)", "/index.html#units"),
 ]
 
 # -----------------------------------------------------------------------------
@@ -45,7 +44,6 @@ def build_index():
         {"label": "provincial showcase", "url": "#showcase", "active": False},
         {"label": "the aeretocracy", "url": "#aeretocracy", "active": False},
         {"label": "9 federal ministries", "url": "#ministries", "active": False},
-        {"label": "units (мн • °пт)", "url": "#units", "active": False},
         {"label": "government structure", "url": "/government.html", "active": False},
         {"label": "citizenship application", "url": "/citizenship.html", "active": False}
     ]
@@ -70,14 +68,14 @@ def build_index():
                 <div style="font-size:11px; color:#8a8886;">zero foreign debt</div>
             </div>
             <div style="background:#f8fafc; border:1px solid #e1dfdd; border-radius:2px; padding:10px; text-align:center;">
-                <div style="font-size:11px; color:#605e5c; text-transform:lowercase; font-weight:600;">temperature standard</div>
-                <div style="font-size:18px; font-weight:700; color:#0078d4; margin:4px 0;">панотерм (°пт)</div>
-                <div style="font-size:11px; color:#8a8886;">°пт = 0.5 &times; (°f - 32)</div>
+                <div style="font-size:11px; color:#605e5c; text-transform:lowercase; font-weight:600;">statutory wage floor</div>
+                <div style="font-size:18px; font-weight:700; color:#0078d4; margin:4px 0;">$25.00 / hr</div>
+                <div style="font-size:11px; color:#8a8886;">universal living wage</div>
             </div>
             <div style="background:#f8fafc; border:1px solid #e1dfdd; border-radius:2px; padding:10px; text-align:center;">
-                <div style="font-size:11px; color:#605e5c; text-transform:lowercase; font-weight:600;">distance standard</div>
-                <div style="font-size:18px; font-weight:700; color:#0078d4; margin:4px 0;">мономер (мн)</div>
-                <div style="font-size:11px; color:#8a8886;">1 мн = 2.5 cm</div>
+                <div style="font-size:11px; color:#605e5c; text-transform:lowercase; font-weight:600;">universal healthcare</div>
+                <div style="font-size:18px; font-weight:700; color:#0078d4; margin:4px 0;">100% coverage</div>
+                <div style="font-size:11px; color:#8a8886;">$0 out-of-pocket point-of-service</div>
             </div>
         </div>
     </div>
@@ -195,114 +193,6 @@ def build_index():
             </div>
         </div>
     </div>
-
-    <!-- Sovereign Weights & Measures Directorate (Units Tab) -->
-    <div class="ol-card" id="units">
-        <div class="ol-card-title">
-            <span>sovereign weights &amp; measures directorate</span>
-            <span class="ol-badge-tag ol-badge-success">official standards active</span>
-        </div>
-        <p>Sangaia standardizes upon sovereign, base-10 human-scaled measurements: <strong>панотерм (&deg;пт)</strong> for temperature and <strong>мономер (мн)</strong> for distance. Both eliminate awkward imperial math while integrating cleanly with scientific metric conversions.</p>
-
-        <!-- Panotherm Temperature Converter -->
-        <div style="background:#f8fafc; border:1px solid #e1dfdd; border-radius:2px; padding:14px; margin-top:12px;">
-            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px; flex-wrap:wrap; gap:6px;">
-                <strong style="color:var(--text-main); font-size:13px;">1. temperature standard &bull; панотерм (&deg;пт)</strong>
-                <span class="ol-badge-tag ol-badge-success">&deg;пт = 0.9 &times; &deg;c = 0.5 &times; (&deg;f - 32)</span>
-            </div>
-            <p class="ol-small" style="color:var(--text-muted); margin-bottom:10px;">effortless mental conversions: <strong>from fahrenheit</strong>: drop 32, then cut in half (86&deg;f &rarr; 54 &rarr; <strong>27&deg;пт</strong>). <strong>from celsius</strong>: subtract 10% (30&deg;c - 3 = <strong>27&deg;пт</strong>).</p>
-
-            <div style="display:flex; flex-wrap:wrap; gap:12px;">
-                <div style="flex:1 1 140px;">
-                    <label class="form-label" style="display:block; font-size:11px; font-weight:600; color:var(--text-muted); margin-bottom:4px;">панотерм (&deg;пт)</label>
-                    <input type="number" class="ol-input" id="inPt" value="27" step="any" style="width:100%; padding:6px 10px; border:1px solid var(--border-dark); border-radius:2px; font-size:16px; font-weight:700; color:#15803d; font-family:inherit;">
-                </div>
-                <div style="flex:1 1 140px;">
-                    <label class="form-label" style="display:block; font-size:11px; font-weight:600; color:var(--text-muted); margin-bottom:4px;">celsius (&deg;c)</label>
-                    <input type="number" class="ol-input" id="inC" value="30" step="any" style="width:100%; padding:6px 10px; border:1px solid var(--border-dark); border-radius:2px; font-size:16px; font-weight:700; font-family:inherit;">
-                </div>
-                <div style="flex:1 1 140px;">
-                    <label class="form-label" style="display:block; font-size:11px; font-weight:600; color:var(--text-muted); margin-bottom:4px;">fahrenheit (&deg;f)</label>
-                    <input type="number" class="ol-input" id="inF" value="86" step="any" style="width:100%; padding:6px 10px; border:1px solid var(--border-dark); border-radius:2px; font-size:16px; font-weight:700; font-family:inherit;">
-                </div>
-            </div>
-            <div style="margin-top:10px; padding-top:8px; border-top:1px dashed #cbd5e1; font-size:12px; color:var(--text-muted);" id="tempMentalText">
-                &bull; <strong>from fahrenheit (86&deg;f)</strong>: drop 32 (54), then cut in half &rarr; <strong>27&deg;пт</strong>.<br>
-                &bull; <strong>from celsius (30&deg;c)</strong>: subtract 10% (-3) &rarr; <strong>27&deg;пт</strong>.
-            </div>
-        </div>
-
-        <!-- Monomer Distance Converter -->
-        <div style="background:#f0f9ff; border:1px solid #bae6fd; border-radius:2px; padding:14px; margin-top:14px;">
-            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px; flex-wrap:wrap; gap:6px;">
-                <strong style="color:var(--text-main); font-size:13px;">2. distance system &bull; мономер (мн)</strong>
-                <span class="ol-badge-tag ol-badge-success">1 monomer = exactly 2.5 cm</span>
-            </div>
-            <p class="ol-small" style="color:var(--text-muted); margin-bottom:10px;">the mathematical sweet spot: defined as exactly 2.5 cm (98.4% identical to an inch), monomer scales cleanly into base-10 units while eliminating awkward imperial math.</p>
-
-            <div style="display:flex; flex-wrap:wrap; gap:12px;">
-                <div style="flex:2 1 200px;">
-                    <label class="form-label" style="display:block; font-size:11px; font-weight:600; color:var(--text-muted); margin-bottom:4px;">input value:</label>
-                    <input type="number" class="ol-input" id="distVal" value="10" step="any" style="width:100%; padding:6px 10px; border:1px solid var(--border-dark); border-radius:2px; font-size:16px; font-weight:700; color:#0369a1; font-family:inherit;">
-                </div>
-                <div style="flex:1 1 180px;">
-                    <label class="form-label" style="display:block; font-size:11px; font-weight:600; color:var(--text-muted); margin-bottom:4px;">selected unit:</label>
-                    <select class="ol-select" id="distUnit" style="width:100%; padding:6px 10px; border:1px solid var(--border-dark); border-radius:2px; font-size:13px; font-family:inherit; background:#fff;">
-                        <option value="mn" selected>мономер (мн - 2.5 cm)</option>
-                        <option value="dmn">декамер (дмн - 10 мн / 25 cm)</option>
-                        <option value="trideka">тридека (3дмн - 30 мн / 75 cm)</option>
-                        <option value="kvadrodeka">квадродека (4дмн - 40 мн / 1 m)</option>
-                        <option value="kmn">киломер (кмн - 60,000 мн / 1.5 km)</option>
-                        <option value="cm">centimeters (cm)</option>
-                        <option value="m">meters (m)</option>
-                        <option value="in">inches (in)</option>
-                        <option value="ft">feet (ft)</option>
-                        <option value="mi">miles (mi)</option>
-                    </select>
-                </div>
-            </div>
-
-            <!-- Dynamic Output Grid -->
-            <div class="ol-grid-3" id="distOutputGrid" style="margin-top:14px;">
-                <!-- Populated via JS -->
-            </div>
-
-            <div style="margin-top:12px; padding-top:8px; border-top:1px dashed #cbd5e1; font-size:12px; color:var(--text-muted);" id="distMentalText">
-                &bull; <strong>monomers to centimeters</strong>: multiply by 2.5 (10 мн &times; 2.5 = <strong>25 cm</strong>).<br>
-                &bull; <strong>kilomers to miles</strong>: drop last three zeros and divide by 6 (60,000 мн &rarr; 60 &divide; 6 = <strong>1.0 mile</strong>).
-            </div>
-        </div>
-
-        <!-- Master Scaling Table -->
-        <div style="margin-top:14px;">
-            <div class="ol-card-title">
-                <span>sovereign distance master scaling table</span>
-                <span class="ol-badge-tag">statutory schedule a</span>
-            </div>
-            <div style="overflow-x:auto;">
-                <table class="ol-table" style="width:100%; border-collapse:collapse; font-size:12px; margin-top:6px;">
-                    <thead>
-                        <tr style="background:#f8fafc; border-bottom:2px solid var(--border);">
-                            <th style="padding:6px 10px; text-align:left;">imperial / metric unit</th>
-                            <th style="padding:6px 10px; text-align:left;">exact conversion</th>
-                            <th style="padding:6px 10px; text-align:left;">cyrillic name</th>
-                            <th style="padding:6px 10px; text-align:left;">symbol</th>
-                            <th style="padding:6px 10px; text-align:left;">monomer value</th>
-                            <th style="padding:6px 10px; text-align:left;">human visual reference</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr style="border-bottom:1px solid var(--border);"><td style="padding:6px 10px;">1 centimeter</td><td style="padding:6px 10px;">0.4 мн</td><td style="padding:6px 10px;">децимн (decimn)</td><td style="padding:6px 10px;"><strong>дмн</strong></td><td style="padding:6px 10px;">0.4 мн</td><td style="padding:6px 10px;">width of a fingernail</td></tr>
-                        <tr style="border-bottom:1px solid var(--border);"><td style="padding:6px 10px;">1 inch</td><td style="padding:6px 10px;">1.016 мн (1:1 everyday)</td><td style="padding:6px 10px;">мономер (monomer)</td><td style="padding:6px 10px;"><strong>мн</strong></td><td style="padding:6px 10px;">1 мн</td><td style="padding:6px 10px;">knuckle of a thumb</td></tr>
-                        <tr style="border-bottom:1px solid var(--border);"><td style="padding:6px 10px;">1 foot</td><td style="padding:6px 10px;">12.19 мн (10 мн base)</td><td style="padding:6px 10px;">декамер (dekamer)</td><td style="padding:6px 10px;"><strong>дмн</strong></td><td style="padding:6px 10px;">10 мн</td><td style="padding:6px 10px;">length of a human foot</td></tr>
-                        <tr style="border-bottom:1px solid var(--border);"><td style="padding:6px 10px;">1 yard</td><td style="padding:6px 10px;">36.57 мн (30 мн base)</td><td style="padding:6px 10px;">тридека (trideka)</td><td style="padding:6px 10px;"><strong>3дмн</strong></td><td style="padding:6px 10px;">30 мн</td><td style="padding:6px 10px;">one large stride</td></tr>
-                        <tr style="border-bottom:1px solid var(--border);"><td style="padding:6px 10px;">1 meter</td><td style="padding:6px 10px;">40 мн</td><td style="padding:6px 10px;">квадродека (kvadrodeka)</td><td style="padding:6px 10px;"><strong>4дмн</strong></td><td style="padding:6px 10px;">40 мн</td><td style="padding:6px 10px;">guitar length</td></tr>
-                        <tr><td style="padding:6px 10px;">1 mile</td><td style="padding:6px 10px;">63,360 мн (60,000 base)</td><td style="padding:6px 10px;">киломер (kilomer)</td><td style="padding:6px 10px;"><strong>кмн</strong></td><td style="padding:6px 10px;">60,000 мн</td><td style="padding:6px 10px;">15-minute brisk walk</td></tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
-    </div>
     """
 
     sidebar_right = """
@@ -315,10 +205,10 @@ def build_index():
         </div>
     </div>
     <div class="ol-sidebox">
-        <h3>sovereign measurement</h3>
-        <p class="ol-small ol-muted">Sangaia standardizes upon base-10 Monomer distance (Мн) and Panotherm temperature (&deg;Пт).</p>
+        <h3>societal press</h3>
+        <p class="ol-small ol-muted">Official societal press, executive decrees, circulars &amp; statutory regulations.</p>
         <div class="ol-mt-10">
-            <a href="#units" class="ol-btn ol-btn-sm" style="width:100%; text-align:center;">open units calculator</a>
+            <a href="/societal_press.html" class="ol-btn ol-btn-sm" style="width:100%; text-align:center;">view public record</a>
         </div>
     </div>
     """
@@ -326,20 +216,20 @@ def build_index():
     generate_page("index.html", title, theme, tab, hero_title, hero_sub, "sovereign republic of sangaia", "federal executive gateway", "live infrastructure", sidebar_links, main_content, sidebar_right, custom_nav_tabs=FEDERAL_NAV_TABS)
 
 # -----------------------------------------------------------------------------
-# 2. SOVEREIGN WEIGHTS & MEASURES (units.html redirect)
+# 2. SOVEREIGN REDIRECT (units.html redirect)
 # -----------------------------------------------------------------------------
 def build_units():
-    # units.html redirects to index.html#units
+    # units.html redirects to index.html
     redirect_html = """<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta http-equiv="refresh" content="0; url=/index.html#units" />
-  <title>redirecting to sovereign units :: sangaia live</title>
-  <script>window.location.replace('/index.html#units');</script>
+  <meta http-equiv="refresh" content="0; url=/index.html" />
+  <title>redirecting to federal portal :: sangaia live</title>
+  <script>window.location.replace('/index.html');</script>
 </head>
 <body style="font-family:'Segoe WP', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background:#f3f3f3; color:#201f1e; text-align:center; padding-top:60px;">
-  <p style="text-transform:lowercase; font-size:14px;">redirecting to <a href="/index.html#units" style="color:#0078d4;">sangaia.org/index.html#units</a>...</p>
+  <p style="text-transform:lowercase; font-size:14px;">redirecting to <a href="/index.html" style="color:#0078d4;">sangaia.org/index.html</a>...</p>
 </body>
 </html>
 """
@@ -755,11 +645,11 @@ def build_societal_press():
             <div class="docket-entry-header">
                 <div>
                     <span class="mif-file-text" style="color:var(--primary); margin-right:6px;"></span>
-                    <strong style="color:#15803d;">decree no. 103-a: universal standard units adoption (панотерм &amp; мономер)</strong>
+                    <strong style="color:#15803d;">decree no. 103-a: universal living wage statutory floor affirmation ($25.00/hr)</strong>
                 </div>
                 <span class="ol-badge-tag ol-badge-success">enacted</span>
             </div>
-            <div class="docket-entry-body">Mandates base-10 Monomer scaling (1 Мн = 2.5 cm) and Panotherm (&deg;Пт = 0.9 &times; &deg;C) across all five provincial school boards and public signage.</div>
+            <div class="docket-entry-body">Mandates a statutory $25.00/hr minimum wage across all five provinces with indexation to real food and housing costs.</div>
             <div class="docket-entry-meta">published october 15, 2026 &bull; promulgated by the aeretocrat</div>
         </div>
         <div class="docket-entry">
@@ -902,16 +792,16 @@ def build_supporting_portals():
                 <div><label><input type="radio" name="q2" value="wrong"> 12</label></div>
             </div>
             <div>
-                <strong>3. What is 30&deg;C in the Sangaian Panotherm (&deg;Пт) scale?</strong>
-                <div style="margin-top:6px;"><label><input type="radio" name="q3" value="correct"> 27&deg;Пт (Subtract 10%)</label></div>
-                <div><label><input type="radio" name="q3" value="wrong"> 30&deg;Пт</label></div>
-                <div><label><input type="radio" name="q3" value="wrong"> 15&deg;Пт</label></div>
+                <strong>3. Under the Constitution, how is point-of-service healthcare provided to citizens?</strong>
+                <div style="margin-top:6px;"><label><input type="radio" name="q3" value="wrong"> Private insurance copays and deductibles</label></div>
+                <div><label><input type="radio" name="q3" value="correct"> 100% free with zero out-of-pocket costs or fees</label></div>
+                <div><label><input type="radio" name="q3" value="wrong"> Subsidized through foreign loans</label></div>
             </div>
             <div>
-                <strong>4. Exactly how many centimeters is 1 Monomer (1 Мн)?</strong>
-                <div style="margin-top:6px;"><label><input type="radio" name="q4" value="wrong"> 1.0 cm</label></div>
-                <div><label><input type="radio" name="q4" value="correct"> Exactly 2.5 cm</label></div>
-                <div><label><input type="radio" name="q4" value="wrong"> 10 cm</label></div>
+                <strong>4. What is the statutory minimum living wage floor established across all five provinces?</strong>
+                <div style="margin-top:6px;"><label><input type="radio" name="q4" value="wrong"> $12.50 per hour</label></div>
+                <div><label><input type="radio" name="q4" value="correct"> Statutory $25.00 per hour minimum</label></div>
+                <div><label><input type="radio" name="q4" value="wrong"> $18.00 per hour</label></div>
             </div>
             <div>
                 <strong>5. Under the Constitution, what is the policy regarding foreign sovereign debt?</strong>
@@ -946,7 +836,7 @@ def build_supporting_portals():
             res.style.borderColor = '#bbf7d0';
             res.style.color = '#166534';
         } else {
-            res.innerHTML = `<strong>Score: ${score}/5.</strong> Passing threshold is 4/5. Please review the constitutional and units standards and re-attempt.`;
+            res.innerHTML = `<strong>Score: ${score}/5.</strong> Passing threshold is 4/5. Please review the constitutional principles and re-attempt.`;
             res.className = 'modal-results-box active';
             res.style.background = '#fee2e2';
             res.style.borderColor = '#fecaca';
@@ -955,8 +845,8 @@ def build_supporting_portals():
     }
     </script>
     """
-    generate_page("literacy_test.html", "Civic Examination Portal", theme, "citizenship", "Civic Literacy & Naturalization Examination", "Interactive 5-question examination on constitutional virtues and sovereign units", "Academic Board", "Examination Authority", "Testing Active", [{"label": "Examination", "url": "#overview", "active": True}], exam_content, "", "", exam_scripts, custom_nav_tabs=FEDERAL_NAV_TABS)
-    generate_page("literacy_exam_en.html", "Civic Examination Portal", theme, "citizenship", "Civic Literacy & Naturalization Examination", "Interactive 5-question examination on constitutional virtues and sovereign units", "Academic Board", "Examination Authority", "Testing Active", [{"label": "Examination", "url": "#overview", "active": True}], exam_content, "", "", exam_scripts, custom_nav_tabs=FEDERAL_NAV_TABS)
+    generate_page("literacy_test.html", "Civic Examination Portal", theme, "citizenship", "Civic Literacy & Naturalization Examination", "Interactive 5-question examination on constitutional virtues and civic rights", "Academic Board", "Examination Authority", "Testing Active", [{"label": "Examination", "url": "#overview", "active": True}], exam_content, "", "", exam_scripts, custom_nav_tabs=FEDERAL_NAV_TABS)
+    generate_page("literacy_exam_en.html", "Civic Examination Portal", theme, "citizenship", "Civic Literacy & Naturalization Examination", "Interactive 5-question examination on constitutional virtues and civic rights", "Academic Board", "Examination Authority", "Testing Active", [{"label": "Examination", "url": "#overview", "active": True}], exam_content, "", "", exam_scripts, custom_nav_tabs=FEDERAL_NAV_TABS)
 
 if __name__ == "__main__":
     build_index()

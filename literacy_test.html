@@ -1126,7 +1126,7 @@ button,
     </div>
     <div class="hero-content">
       <h1>Civic Literacy & Naturalization Examination</h1>
-      <p>Interactive 5-question examination on constitutional virtues and sovereign units</p>
+      <p>Interactive 5-question examination on constitutional virtues and civic rights</p>
       <div class="hero-breadcrumbs"><a href="/index.html">← federal portal</a></div>
     </div>
   </header>
@@ -1139,7 +1139,6 @@ button,
     <a href="/about.html">the aeretocrat</a>
     <a href="/citizenship.html" class="active">citizenship</a>
     <a href="/societal_press.html">societal press</a>
-    <a href="/index.html#units">units (мн • °пт)</a>
   </nav>
 
   <!-- Content Grid -->
@@ -1166,16 +1165,16 @@ button,
                 <div><label><input type="radio" name="q2" value="wrong"> 12</label></div>
             </div>
             <div>
-                <strong>3. What is 30&deg;C in the Sangaian Panotherm (&deg;Пт) scale?</strong>
-                <div style="margin-top:6px;"><label><input type="radio" name="q3" value="correct"> 27&deg;Пт (Subtract 10%)</label></div>
-                <div><label><input type="radio" name="q3" value="wrong"> 30&deg;Пт</label></div>
-                <div><label><input type="radio" name="q3" value="wrong"> 15&deg;Пт</label></div>
+                <strong>3. Under the Constitution, how is point-of-service healthcare provided to citizens?</strong>
+                <div style="margin-top:6px;"><label><input type="radio" name="q3" value="wrong"> Private insurance copays and deductibles</label></div>
+                <div><label><input type="radio" name="q3" value="correct"> 100% free with zero out-of-pocket costs or fees</label></div>
+                <div><label><input type="radio" name="q3" value="wrong"> Subsidized through foreign loans</label></div>
             </div>
             <div>
-                <strong>4. Exactly how many centimeters is 1 Monomer (1 Мн)?</strong>
-                <div style="margin-top:6px;"><label><input type="radio" name="q4" value="wrong"> 1.0 cm</label></div>
-                <div><label><input type="radio" name="q4" value="correct"> Exactly 2.5 cm</label></div>
-                <div><label><input type="radio" name="q4" value="wrong"> 10 cm</label></div>
+                <strong>4. What is the statutory minimum living wage floor established across all five provinces?</strong>
+                <div style="margin-top:6px;"><label><input type="radio" name="q4" value="wrong"> $12.50 per hour</label></div>
+                <div><label><input type="radio" name="q4" value="correct"> Statutory $25.00 per hour minimum</label></div>
+                <div><label><input type="radio" name="q4" value="wrong"> $18.00 per hour</label></div>
             </div>
             <div>
                 <strong>5. Under the Constitution, what is the policy regarding foreign sovereign debt?</strong>
@@ -1211,7 +1210,7 @@ button,
         <div style="display: flex; flex-direction: column; gap: 4px; color: var(--text-muted);">
           <div><strong style="color: var(--text-main);">jurisdiction:</strong> 5 provinces (new jasper, new madison, liveland, sentinel, columbia)</div>
           <div><strong style="color: var(--text-main);">currency:</strong> $ (sangaian dollar)</div>
-          <div><strong style="color: var(--text-main);">standards:</strong> панотерм (°пт) &bull; мономер (мн)</div>
+          <div><strong style="color: var(--text-main);">standards:</strong> sovereign civic charter &bull; metric</div>
           <div><strong style="color: var(--text-main);">classification:</strong> verified official portal</div>
         </div>
       </div>
@@ -1241,7 +1240,7 @@ button,
             res.style.borderColor = '#bbf7d0';
             res.style.color = '#166534';
         } else {
-            res.innerHTML = `<strong>Score: ${score}/5.</strong> Passing threshold is 4/5. Please review the constitutional and units standards and re-attempt.`;
+            res.innerHTML = `<strong>Score: ${score}/5.</strong> Passing threshold is 4/5. Please review the constitutional principles and re-attempt.`;
             res.className = 'modal-results-box active';
             res.style.background = '#fee2e2';
             res.style.borderColor = '#fecaca';
