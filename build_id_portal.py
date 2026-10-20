@@ -3,12 +3,12 @@
 Sangaia ID Portal Generator
 Builds the Sangaia ID site (id.html & id/index.html) following the user's exact One Live 'People' layout:
 1. 210px left navigation column + 1fr main column.
-2. Segoe WP typography & MetroUI / FontAwesome icons.
-3. High-fidelity Sovereign Citizen Identity Card (SG-2026-F1E8).
-4. Instant interactive credential verification engine.
-5. Statutory civil entitlements & 5 Provinces registry.
-6. Exportable digital pass (JSON-LD) and verification QR generator.
-7. Docked messages / verification status pill at the bottom right.
+2. Segoe WP typography & Metro UI icons (mif-*).
+3. Sovereign Citizen Identity Card (dynamically populated when authenticated).
+4. Full interactive Single Sign-On & Registration engine (cross-subdomain cookie sessions via auth.js & Supabase).
+5. Instant credential verification engine against statutory civil records.
+6. Statutory civil entitlements & 5 Provinces registry.
+7. Exportable digital pass (JSON-LD) and verification QR generator.
 8. Zero personal face photos / unwanted clutter.
 """
 
@@ -33,6 +33,9 @@ def render_sangaia_id_html(is_subdomain=False):
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Sangaia ID :: Citizen Directory &amp; Digital Credential</title>
   <link href="https://cdn.metroui.org.ua/4.5.12/icons.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="/auth.js" onerror="this.onerror=null;this.src='auth.js';" defer></script>
+  <script src="/js/sangaia-live.js" defer></script>
   <style>
     :root {{
       --primary: #0078d4;
@@ -176,15 +179,6 @@ def render_sangaia_id_html(is_subdomain=False):
       font-weight: 500;
       position: relative;
       user-select: none;
-    }}
-
-    .user-profile-menu img {{
-      width: 28px;
-      height: 28px;
-      border-radius: 2px;
-      border: 1px solid rgba(255, 255, 255, 0.7);
-      object-fit: contain;
-      background: #ffffff;
     }}
 
     .user-dropdown {{
@@ -342,7 +336,7 @@ def render_sangaia_id_html(is_subdomain=False):
       margin-bottom: 16px;
     }}
 
-    /* Find People Form */
+    /* Input styling */
     .input-find {{
       width: 100%;
       max-width: 380px;
@@ -358,14 +352,6 @@ def render_sangaia_id_html(is_subdomain=False):
 
     .input-find:focus {{
       border-color: var(--primary);
-    }}
-
-    .import-row {{
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      font-size: 12.5px;
-      color: var(--text-muted);
     }}
 
     .btn-neutral {{
@@ -386,16 +372,104 @@ def render_sangaia_id_html(is_subdomain=False):
       background: var(--btn-gray-hover);
     }}
 
-    /* Empty States */
-    .empty-notice {{
-      display: flex;
+    .btn-primary {{
+      background: var(--primary);
+      color: #ffffff;
+      border: 1px solid var(--primary);
+      border-radius: 2px;
+      padding: 7px 16px;
+      font-size: 13px;
+      cursor: pointer;
+      font-family: inherit;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }}
+
+    .btn-primary:hover {{
+      filter: brightness(0.92);
+    }}
+
+    .form-group {{
+      margin-bottom: 12px;
+    }}
+
+    .form-group label {{
+      display: block;
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--text-muted);
+      margin-bottom: 4px;
+      text-transform: lowercase;
+    }}
+
+    .form-control {{
+      width: 100%;
+      max-width: 440px;
+      border: 1px solid var(--border-dark);
+      border-radius: 2px;
+      padding: 7px 10px;
+      font-size: 13px;
+      font-family: inherit;
+      outline: none;
+      background: #ffffff;
+    }}
+
+    .form-control:focus {{
+      border-color: var(--primary);
+    }}
+
+    /* Modal System */
+    .modal-overlay {{
+      display: none;
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(0, 0, 0, 0.5);
+      z-index: 10000;
       align-items: center;
       justify-content: center;
-      min-height: 80px;
-      color: var(--text-muted);
-      font-size: 13.5px;
-      text-align: center;
-      padding: 10px 0;
+      padding: 20px;
+    }}
+
+    .modal-overlay.active {{
+      display: flex;
+    }}
+
+    .modal-box {{
+      background: #ffffff;
+      border-radius: 3px;
+      width: 100%;
+      max-width: 460px;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
+      border: 1px solid var(--border-dark);
+    }}
+
+    .modal-header {{
+      padding: 14px 18px;
+      background: #f8fafc;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }}
+
+    .modal-header h3 {{
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--text-main);
+      margin: 0;
+    }}
+
+    .modal-close {{
+      background: none;
+      border: none;
+      font-size: 18px;
+      cursor: pointer;
+      color: #888;
+    }}
+
+    .modal-body {{
+      padding: 18px;
     }}
 
     /* Footer */
@@ -473,19 +547,19 @@ def render_sangaia_id_html(is_subdomain=False):
           <button type="submit" aria-label="Search"><span class="mif-search"></span></button>
         </form>
         <div class="top-icons">
-          <span class="mif-bell" title="Notifications"></span>
-          <span class="mif-security" title="Sovereign Cryptographic Clearance Active"></span>
+          <span class="mif-bell" title="notifications"></span>
+          <span class="mif-security" title="sovereign cryptographic clearance active"></span>
         </div>
-        <div class="user-profile-menu" id="userProfileMenu">
-          <img src="/images/default-wl.png" alt="Avatar" width="28" height="28" />
-          <span>jqackkk</span>
+        <div class="user-profile-menu unauthenticated" id="userProfileMenu">
+          <span class="mif-user" style="font-size: 15px; color:#fff;"></span>
+          <span>sign in</span>
           <span class="mif-arrow-drop-down" style="font-size: 14px;"></span>
           <div class="user-dropdown">
-            <div class="user-dropdown-header">citizen: sg-2026-f1e8</div>
-            <a href="{id_url}"><span class="mif-profile"></span> sangaia id card</a>
-            <a href="{citizenship_url}"><span class="mif-checkmark"></span> citizenship status</a>
-            <a href="{units_url}"><span class="mif-compass"></span> units &amp; measures</a>
-            <a href="{dashboard_url}"><span class="mif-chart-bars"></span> sovereign registry</a>
+            <div class="user-dropdown-header">sangaia id portal</div>
+            <a href="javascript:void(0)" onclick="if(window.SangaiaAuth) window.SangaiaAuth.openAuthModal('signin'); else window.location.hash='#signin';"><span class="mif-enter"></span> sign in to sangaia id</a>
+            <a href="javascript:void(0)" onclick="if(window.SangaiaAuth) window.SangaiaAuth.openAuthModal('signup'); else window.location.hash='#register';"><span class="mif-user-plus"></span> register new citizen id</a>
+            <a href="{id_url}"><span class="mif-profile"></span> sovereign citizen directory</a>
+            <a href="#verify"><span class="mif-security"></span> verify citizen docket</a>
             <div style="border-top:1px solid #e1dfdd; margin:4px 0;"></div>
             <a href="{home_url}"><span class="mif-home"></span> federal home</a>
           </div>
@@ -502,6 +576,9 @@ def render_sangaia_id_html(is_subdomain=False):
   <nav class="subnav">
     <a href="{home_url}">federal home</a>
     <a href="{id_url}" class="active">people &amp; id</a>
+    <a href="#card">citizen credential</a>
+    <a href="#authSection">sign in / register</a>
+    <a href="#verify">verify docket</a>
     <a href="{citizenship_url}">citizenship</a>
     <a href="{services_url}">services</a>
     <a href="{units_url}">units (мн • °пт)</a>
@@ -517,6 +594,7 @@ def render_sangaia_id_html(is_subdomain=False):
         <div class="side-nav-heading">identity services</div>
         <ul>
           <li><a href="#card" class="active" onclick="switchNav(this)"><span class="mif-profile"></span> my citizen id</a></li>
+          <li><a href="#authSection" onclick="switchNav(this)"><span class="mif-enter"></span> sign in &amp; register</a></li>
           <li><a href="#verify" onclick="switchNav(this)"><span class="mif-security"></span> verify credential</a></li>
           <li><a href="#entitlements" onclick="switchNav(this)"><span class="mif-shield"></span> civil entitlements</a></li>
           <li><a href="#provinces" onclick="switchNav(this)"><span class="mif-map"></span> 5 provinces registry</a></li>
@@ -536,12 +614,12 @@ def render_sangaia_id_html(is_subdomain=False):
       </div>
 
       <div class="side-nav-group">
-        <div class="side-nav-heading">SOVEREIGN STANDARDS</div>
+        <div class="side-nav-heading">sovereign standards</div>
         <div style="font-size:12px; color:var(--text-muted); line-height:1.6; padding-left:10px;">
-          <div><strong>Provinces:</strong> 5 Autonomous</div>
-          <div><strong>Currency:</strong> $ (Sangaian Dollar)</div>
-          <div><strong>Standards:</strong> Панотерм (°Пт) &bull; Мономер (Мн)</div>
-          <div><strong>Authentication:</strong> Aeretocratic Seal</div>
+          <div><strong>provinces:</strong> 5 autonomous</div>
+          <div><strong>currency:</strong> $ (sangaian dollar)</div>
+          <div><strong>standards:</strong> панотерм (°пт) &bull; мономер (мн)</div>
+          <div><strong>authentication:</strong> aeretocratic seal</div>
         </div>
       </div>
     </aside>
@@ -550,9 +628,19 @@ def render_sangaia_id_html(is_subdomain=False):
     <main>
       <!-- Citizen ID Card Panel -->
       <section class="card" id="card">
-        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:16px;">
-          <h2 style="margin-bottom:0;">Official Citizen Identity Credential</h2>
-          <span style="background:#eef9f2; color:#15803d; border:1px solid #bbf7d0; font-size:11px; font-weight:700; padding:3px 8px; border-radius:2px; text-transform:uppercase;">Statutory Verified</span>
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px; flex-wrap:wrap; gap:8px;">
+          <h2 style="margin-bottom:0;" id="cardHeaderTitle">official citizen identity credential</h2>
+          <span id="cardStatusBadge" style="background:#eef9f2; color:#15803d; border:1px solid #bbf7d0; font-size:11px; font-weight:700; padding:3px 8px; border-radius:2px; text-transform:lowercase;">statutory verified</span>
+        </div>
+
+        <!-- Dynamic Auth Banner -->
+        <div id="authNoticeBanner" style="background:#f0f9ff; border:1px solid #bae6fd; border-radius:2px; padding:8px 12px; margin-bottom:14px; font-size:12px; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:8px;">
+          <div id="authNoticeText">
+            <span class="mif-info fg-blue"></span> <strong>guest preview:</strong> sign in below to view your personalized sovereign citizen docket.
+          </div>
+          <div id="authNoticeAction">
+            <a href="#authSection" style="font-weight:600; text-decoration:underline;">sign in to sangaia id &rarr;</a>
+          </div>
         </div>
         
         <!-- The Sangaia ID Card Graphic -->
@@ -574,26 +662,26 @@ def render_sangaia_id_html(is_subdomain=False):
                     <img src="/images/official.png" alt="Citizen Photo" width="75" height="75" style="width:75px; height:75px; object-fit:contain;" />
                 </div>
                 <div style="flex:1 1 auto; font-size:13px; line-height:1.6;">
-                    <div><span style="color:#666;">Legal Name:</span> <strong style="color:#201f1e;">Jqackkk</strong></div>
-                    <div><span style="color:#666;">Citizen ID:</span> <strong style="font-family:monospace; color:#0078d4;">SG-2026-F1E8</strong></div>
-                    <div><span style="color:#666;">Territory:</span> <strong style="color:#201f1e;">New Jasper (Capital Shesk)</strong></div>
-                    <div><span style="color:#666;">Status:</span> <span style="background:#eef9f2; color:#15803d; border:1px solid #bbf7d0; font-size:10.5px; font-weight:700; padding:1px 6px; border-radius:2px;">VERIFIED CITIZEN</span></div>
-                    <div><span style="color:#666;">Coverage:</span> <strong style="color:#201f1e;">Tier 1 Universal Healthcare</strong></div>
+                    <div><span style="color:#666;">legal name:</span> <strong id="cardLegalName" style="color:#201f1e;">Jqackkk</strong></div>
+                    <div><span style="color:#666;">citizen id:</span> <strong id="cardCitizenId" style="font-family:monospace; color:#0078d4;">SG-2026-F1E8</strong></div>
+                    <div><span style="color:#666;">territory:</span> <strong id="cardTerritory" style="color:#201f1e;">New Jasper (Capital Shesk)</strong></div>
+                    <div><span style="color:#666;">status:</span> <span id="cardStatusInline" style="background:#eef9f2; color:#15803d; border:1px solid #bbf7d0; font-size:10.5px; font-weight:700; padding:1px 6px; border-radius:2px;">VERIFIED CITIZEN</span></div>
+                    <div><span style="color:#666;">coverage:</span> <strong id="cardCoverage" style="color:#201f1e;">Tier 1 Universal Healthcare</strong></div>
                 </div>
             </div>
             <div style="background:#f8fafc; border-top:1px solid #e2e8f0; padding:10px 18px; display:flex; justify-content:space-between; align-items:center; font-family:monospace; font-size:11px; color:#64748b;">
                 <span style="letter-spacing:2px;">||||| | |||| |||||| | ||||| ||| |||||||| | ||||</span>
-                <span style="color:#94a3b8; font-size:10px;">HASH: SG#9F8A-2026</span>
+                <span id="cardHash" style="color:#94a3b8; font-size:10px;">HASH: SG#9F8A-2026</span>
             </div>
         </div>
 
         <div style="display:flex; flex-wrap:wrap; gap:10px; justify-content:center; margin-top:14px;">
-          <button type="button" class="btn-neutral" onclick="window.print()"><span class="mif-printer"></span> Print Official Credential</button>
-          <button type="button" class="btn-neutral" onclick="downloadCredential()"><span class="mif-download"></span> Export Digital Pass (JSON-LD)</button>
-          <button type="button" class="btn-neutral" onclick="toggleQrCode()"><span class="mif-qrcode"></span> View Verification QR</button>
+          <button type="button" class="btn-neutral" onclick="window.print()"><span class="mif-printer"></span> print official credential</button>
+          <button type="button" class="btn-neutral" onclick="downloadCredential()"><span class="mif-download"></span> export digital pass (json-ld)</button>
+          <button type="button" class="btn-neutral" onclick="toggleQrCode()"><span class="mif-qrcode"></span> view verification qr</button>
         </div>
         <div id="qrBox" style="display:none; text-align:center; margin-top:14px; padding:14px; background:#f8fafc; border:1px dashed #cbd5e1; border-radius:4px;">
-          <div style="font-weight:600; color:#1e293b; margin-bottom:6px;">Cryptographic Quick-Response Pass</div>
+          <div style="font-weight:600; color:#1e293b; margin-bottom:6px;">cryptographic quick-response pass</div>
           <div style="display:inline-block; padding:10px; background:#fff; border:1px solid #e2e8f0; border-radius:4px;">
             <svg viewBox="0 0 100 100" width="100" height="100" fill="#0f172a">
               <rect x="10" y="10" width="25" height="25" rx="1"/>
@@ -613,39 +701,149 @@ def render_sangaia_id_html(is_subdomain=False):
               <rect x="75" y="70" width="10" height="10" fill="#fff"/>
             </svg>
           </div>
-          <div style="font-family:monospace; font-size:11px; color:#64748b; margin-top:6px;">TOKEN: urn:sangaia:id:SG-2026-F1E8</div>
+          <div id="qrTokenText" style="font-family:monospace; font-size:11px; color:#64748b; margin-top:6px;">token: urn:sangaia:id:SG-2026-F1E8</div>
+        </div>
+      </section>
+
+      <!-- Sign In & Registration Card (Single Sign-On Engine) -->
+      <section class="card" id="authSection">
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px;">
+          <h2 style="margin-bottom:0;" id="authSectionTitle">sangaia id authentication portal</h2>
+          <span style="font-size:11px; color:var(--text-muted);"><span class="mif-security"></span> cross-subdomain sso active</span>
+        </div>
+
+        <!-- Logged-In State Container (Hidden when logged out) -->
+        <div id="authenticatedView" style="display:none;">
+          <div style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:2px; padding:16px; margin-bottom:14px;">
+            <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:8px; margin-bottom:10px;">
+              <div>
+                <strong style="font-size:14px; color:var(--text-main);" id="authViewName">citizen</strong>
+                <div style="font-size:12px; color:var(--text-muted);" id="authViewEmail">citizen@sangaia.org</div>
+              </div>
+              <span style="background:#eef9f2; color:#15803d; border:1px solid #bbf7d0; font-size:11px; font-weight:700; padding:2px 8px; border-radius:2px; text-transform:lowercase;">session active</span>
+            </div>
+            <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(180px, 1fr)); gap:8px; font-size:12.5px; border-top:1px solid #e2e8f0; padding-top:10px; margin-top:10px;">
+              <div><span style="color:#666;">citizen docket:</span> <strong id="authViewId" style="font-family:monospace; color:#0078d4;">SG-2026-F1E8</strong></div>
+              <div><span style="color:#666;">jurisdiction:</span> <strong id="authViewProvince">New Jasper</strong></div>
+              <div><span style="color:#666;">healthcare:</span> <strong>Tier 1 Universal</strong></div>
+              <div><span style="color:#666;">wage protection:</span> <strong>$25.00/hr Floor</strong></div>
+            </div>
+          </div>
+          <div style="display:flex; gap:10px; flex-wrap:wrap;">
+            <button type="button" class="btn-neutral" onclick="window.SangaiaAuth.signOut()"><span class="mif-exit"></span> sign out of sangaia id</button>
+            <a href="{citizenship_url}" class="btn-neutral"><span class="mif-checkmark"></span> view citizenship charter</a>
+            <a href="{dashboard_url}" class="btn-neutral"><span class="mif-chart-bars"></span> national registry</a>
+          </div>
+        </div>
+
+        <!-- Logged-Out Authentication Forms -->
+        <div id="unauthenticatedView">
+          <p style="color:var(--text-muted); font-size:12.5px; margin-bottom:14px;">
+            Sign in to access your sovereign citizen docket, manage public benefit claims, and verify your civic rights across sangaia.org and all ministerial subdomains.
+          </p>
+
+          <div style="display:flex; border-bottom:1px solid var(--border); margin-bottom:16px;">
+            <button type="button" id="tabSignIn" onclick="switchPageAuthTab('signin')" style="padding:8px 16px; background:none; border:none; border-bottom:3px solid var(--primary); font-weight:600; cursor:pointer; color:var(--text-main); font-family:inherit; font-size:13px; text-transform:lowercase;">
+              <span class="mif-enter"></span> sign in
+            </button>
+            <button type="button" id="tabSignUp" onclick="switchPageAuthTab('signup')" style="padding:8px 16px; background:none; border:none; border-bottom:3px solid transparent; font-weight:400; cursor:pointer; color:var(--text-muted); font-family:inherit; font-size:13px; text-transform:lowercase;">
+              <span class="mif-user-plus"></span> register new citizen id
+            </button>
+          </div>
+
+          <!-- Page Sign In Form -->
+          <form id="pageSignInForm" onsubmit="handlePageSignIn(event)">
+            <div class="form-group">
+              <label for="pageSignInEmail">citizen email</label>
+              <input type="email" id="pageSignInEmail" class="form-control" required placeholder="citizen@sangaia.org" />
+            </div>
+            <div class="form-group">
+              <label for="pageSignInPassword">password</label>
+              <input type="password" id="pageSignInPassword" class="form-control" required placeholder="&bull;&bull;&bull;&bull;&bull;&bull;&bull;&bull;" />
+            </div>
+            <div id="pageSignInError" style="display:none; color:#b91c1c; font-size:12px; margin-bottom:10px; line-height:1.4;"></div>
+            <div id="pageSignInSuccess" style="display:none; color:#15803d; font-size:12px; margin-bottom:10px; line-height:1.4;"></div>
+            <div style="display:flex; align-items:center; gap:12px; flex-wrap:wrap;">
+              <button type="submit" id="pageSignInBtn" class="btn-primary">
+                <span class="mif-enter"></span> sign in to sangaia id
+              </button>
+              <span style="font-size:12px; color:var(--text-muted);">
+                new citizen? <a href="javascript:void(0)" onclick="switchPageAuthTab('signup')" style="color:var(--primary); font-weight:600;">register new id</a>
+              </span>
+            </div>
+          </form>
+
+          <!-- Page Sign Up / Registration Form -->
+          <form id="pageSignUpForm" onsubmit="handlePageSignUp(event)" style="display:none;">
+            <div class="form-group">
+              <label for="pageSignUpName">full legal name</label>
+              <input type="text" id="pageSignUpName" class="form-control" required placeholder="e.g. Jack Davenport" />
+            </div>
+            <div class="form-group">
+              <label for="pageSignUpDob">date of birth</label>
+              <input type="date" id="pageSignUpDob" class="form-control" />
+            </div>
+            <div class="form-group">
+              <label for="pageSignUpProvince">provincial jurisdiction</label>
+              <select id="pageSignUpProvince" class="form-control">
+                <option value="New Jasper (Capital Shesk)">New Jasper (Capital Shesk)</option>
+                <option value="New Madison">New Madison</option>
+                <option value="Liveland">Liveland</option>
+                <option value="Sentinel">Sentinel</option>
+                <option value="Columbia">Columbia</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="pageSignUpEmail">email address</label>
+              <input type="email" id="pageSignUpEmail" class="form-control" required placeholder="citizen@sangaia.org" />
+            </div>
+            <div class="form-group">
+              <label for="pageSignUpPassword">password (minimum 6 characters)</label>
+              <input type="password" id="pageSignUpPassword" minlength="6" class="form-control" required placeholder="&bull;&bull;&bull;&bull;&bull;&bull;&bull;&bull;" />
+            </div>
+            <div id="pageSignUpError" style="display:none; color:#b91c1c; font-size:12px; margin-bottom:10px; line-height:1.4;"></div>
+            <div id="pageSignUpSuccess" style="display:none; color:#15803d; font-size:12px; margin-bottom:10px; line-height:1.4;"></div>
+            <div style="display:flex; align-items:center; gap:12px; flex-wrap:wrap;">
+              <button type="submit" id="pageSignUpBtn" class="btn-primary" style="background:#15803d; border-color:#15803d;">
+                <span class="mif-user-plus"></span> register sovereign citizen id
+              </button>
+              <span style="font-size:12px; color:var(--text-muted);">
+                already registered? <a href="javascript:void(0)" onclick="switchPageAuthTab('signin')" style="color:var(--primary); font-weight:600;">sign in</a>
+              </span>
+            </div>
+          </form>
         </div>
       </section>
 
       <!-- Find & Verify Citizen Form Card -->
       <section class="card" id="verify">
-        <h2>Verify citizen credentials</h2>
-        <input type="text" class="input-find" id="verifyInput" placeholder="Search for people or citizen ID (e.g. SG-2026-F1E8)" value="SG-2026-F1E8" />
-        <div class="import-row">
-          <button type="button" class="btn-neutral" id="verifyBtn" onclick="runVerification()"><span class="mif-search"></span> Verify Docket</button>
-          <span>Instant validation against the Sovereign Civil Records Ledger.</span>
+        <h2>verify citizen credentials</h2>
+        <input type="text" class="input-find" id="verifyInput" placeholder="search for people or citizen id (e.g. SG-2026-F1E8)" value="SG-2026-F1E8" />
+        <div style="display:flex; align-items:center; gap:12px; flex-wrap:wrap; font-size:12.5px; color:var(--text-muted);">
+          <button type="button" class="btn-neutral" id="verifyBtn" onclick="runVerification()"><span class="mif-search"></span> verify docket</button>
+          <span>instant validation against the sovereign civil records ledger.</span>
         </div>
         <div id="verifyResults" style="display:none; margin-top:14px; padding:14px; background:#f0f9ff; border:1px solid #bae6fd; border-radius:2px; font-size:13px; line-height:1.5;"></div>
       </section>
 
       <!-- Civil Entitlements & Statutory Rights -->
       <section class="card" id="entitlements">
-        <h2>Civil Entitlements &amp; Constitutional Rights</h2>
+        <h2>civil entitlements &amp; constitutional rights</h2>
         <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(230px, 1fr)); gap:12px; margin-top:10px;">
           <div style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:3px; padding:12px;">
-            <strong style="color:#0078d4;"><span class="mif-medkit"></span> Universal Healthcare</strong>
+            <strong style="color:#0078d4;"><span class="mif-medkit"></span> universal healthcare</strong>
             <p style="font-size:12px; color:#555; margin-top:4px;">100% state-funded emergency, primary, specialist, dental, and pharmaceutical coverage for all citizens.</p>
           </div>
           <div style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:3px; padding:12px;">
-            <strong style="color:#15803d;"><span class="mif-coins"></span> Living Wage Protection</strong>
+            <strong style="color:#15803d;"><span class="mif-coins"></span> living wage protection</strong>
             <p style="font-size:12px; color:#555; margin-top:4px;">Guaranteed statutory wage floor of $25.00/hr ($1,000/week) with absolute prohibition on foreign debt bondage.</p>
           </div>
           <div style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:3px; padding:12px;">
-            <strong style="color:#b45309;"><span class="mif-school"></span> Tuition-Free Education</strong>
+            <strong style="color:#b45309;"><span class="mif-school"></span> tuition-free education</strong>
             <p style="font-size:12px; color:#555; margin-top:4px;">Complete public funding from early childhood through secondary polytechnics and provincial university degrees.</p>
           </div>
           <div style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:3px; padding:12px;">
-            <strong style="color:#4f46e5;"><span class="mif-compass"></span> Sovereign Standards</strong>
+            <strong style="color:#4f46e5;"><span class="mif-compass"></span> sovereign standards</strong>
             <p style="font-size:12px; color:#555; margin-top:4px;">Harmonized base-10 Monomer distance (1 Мн = 2.5 cm) and Panotherm temperature (°Пт = 0.9 &times; °C) across all 5 territories.</p>
           </div>
         </div>
@@ -653,17 +851,17 @@ def render_sangaia_id_html(is_subdomain=False):
 
       <!-- Five Sovereign Provinces Registry -->
       <section class="card" id="provinces">
-        <h2>Territorial Registries &bull; Five Sovereign Provinces</h2>
+        <h2>territorial registries &bull; five sovereign provinces</h2>
         <div style="font-size:13px; color:#555; margin-bottom:12px;">
           Every Sangaia ID credential is tethered to one of five sovereign provincial jurisdictions:
         </div>
         <table style="width:100%; border-collapse:collapse; font-size:12.5px;">
           <thead>
             <tr style="border-bottom:2px solid var(--border); text-align:left; color:#666;">
-              <th style="padding:6px 8px;">Province</th>
-              <th style="padding:6px 8px;">Capital</th>
-              <th style="padding:6px 8px;">Regional Bureau</th>
-              <th style="padding:6px 8px;">Status</th>
+              <th style="padding:6px 8px;">province</th>
+              <th style="padding:6px 8px;">capital</th>
+              <th style="padding:6px 8px;">regional bureau</th>
+              <th style="padding:6px 8px;">status</th>
             </tr>
           </thead>
           <tbody>
@@ -671,31 +869,31 @@ def render_sangaia_id_html(is_subdomain=False):
               <td style="padding:8px;"><strong>New Jasper</strong></td>
               <td style="padding:8px;">Shesk</td>
               <td style="padding:8px;">Capitol Civil Registrar</td>
-              <td style="padding:8px;"><span style="color:#15803d; font-weight:600;">Active</span></td>
+              <td style="padding:8px;"><span style="color:#15803d; font-weight:600;">active</span></td>
             </tr>
             <tr style="border-bottom:1px solid #eee;">
               <td style="padding:8px;"><strong>New Madison</strong></td>
               <td style="padding:8px;">Madison City</td>
               <td style="padding:8px;">Central Records Office</td>
-              <td style="padding:8px;"><span style="color:#15803d; font-weight:600;">Active</span></td>
+              <td style="padding:8px;"><span style="color:#15803d; font-weight:600;">active</span></td>
             </tr>
             <tr style="border-bottom:1px solid #eee;">
               <td style="padding:8px;"><strong>Liveland</strong></td>
               <td style="padding:8px;">Oaks</td>
               <td style="padding:8px;">Maritime Registry</td>
-              <td style="padding:8px;"><span style="color:#15803d; font-weight:600;">Active</span></td>
+              <td style="padding:8px;"><span style="color:#15803d; font-weight:600;">active</span></td>
             </tr>
             <tr style="border-bottom:1px solid #eee;">
               <td style="padding:8px;"><strong>Sentinel</strong></td>
               <td style="padding:8px;">Sentinel Ridge</td>
               <td style="padding:8px;">Highland Registry</td>
-              <td style="padding:8px;"><span style="color:#15803d; font-weight:600;">Active</span></td>
+              <td style="padding:8px;"><span style="color:#15803d; font-weight:600;">active</span></td>
             </tr>
             <tr>
               <td style="padding:8px;"><strong>Columbia</strong></td>
               <td style="padding:8px;">Columbia City</td>
               <td style="padding:8px;">Basin Civil Records</td>
-              <td style="padding:8px;"><span style="color:#15803d; font-weight:600;">Active</span></td>
+              <td style="padding:8px;"><span style="color:#15803d; font-weight:600;">active</span></td>
             </tr>
           </tbody>
         </table>
@@ -703,9 +901,9 @@ def render_sangaia_id_html(is_subdomain=False):
 
       <!-- Cryptographic Ledger & Audit Safeguards -->
       <section class="card" id="records">
-        <h2>Cryptographic Ledger &amp; Privacy Safeguards</h2>
-        <div class="empty-notice" style="flex-direction:column; gap:6px; min-height:auto; text-align:left; align-items:flex-start;">
-          <div style="color:#201f1e; font-weight:500;">Zero Commercial Data Brokerage</div>
+        <h2>cryptographic ledger &amp; privacy safeguards</h2>
+        <div style="display:flex; flex-direction:column; gap:6px; min-height:auto; text-align:left; align-items:flex-start;">
+          <div style="color:#201f1e; font-weight:600;">zero commercial data brokerage</div>
           <p style="font-size:12.5px; color:var(--text-muted); line-height:1.5;">All Sangaia ID credentials are authenticated via sovereign cryptographic seals. Personal records are strictly protected under the Aeretocratic Privacy Charter and are never shared with foreign commercial entities or ad networks.</p>
         </div>
       </section>
@@ -718,32 +916,175 @@ def render_sangaia_id_html(is_subdomain=False):
       &copy; 2026, The United Provinces of Sangaia &bull; Sovereign Identity Directorate &bull; The Aeretocracy.
     </div>
     <ul class="footer-links">
-      <li><a href="{home_url}">Federal Home</a></li>
-      <li><a href="{citizenship_url}">Citizenship Charter</a></li>
-      <li><a href="{services_url}">Public Services</a></li>
-      <li><a href="{units_url}">Sovereign Standards (Мн &bull; °Пт)</a></li>
-      <li><a href="{dashboard_url}">Registry Dashboard</a></li>
-      <li><a href="{government_url}">Constitution &amp; Virtues</a></li>
+      <li><a href="{home_url}">federal home</a></li>
+      <li><a href="{citizenship_url}">citizenship charter</a></li>
+      <li><a href="{services_url}">public services</a></li>
+      <li><a href="{units_url}">sovereign standards (мн &bull; °пт)</a></li>
+      <li><a href="{dashboard_url}">registry dashboard</a></li>
+      <li><a href="{government_url}">constitution &amp; virtues</a></li>
     </ul>
   </footer>
 
   <script>
-    // User profile dropdown toggle
-    const userProfileMenu = document.getElementById('userProfileMenu');
-    if (userProfileMenu) {{
-      userProfileMenu.addEventListener('click', (e) => {{
-        e.stopPropagation();
-        userProfileMenu.classList.toggle('open');
-      }});
-      document.addEventListener('click', () => {{
-        userProfileMenu.classList.remove('open');
-      }});
-    }}
+    // State management for authenticated citizen
+    let currentCitizen = null;
 
     // Sidebar navigation active state handler
     function switchNav(el) {{
       document.querySelectorAll('.side-nav-group a').forEach(a => a.classList.remove('active'));
       el.classList.add('active');
+    }}
+
+    // Switch between page sign-in and sign-up tabs
+    function switchPageAuthTab(tab) {{
+      const isSignIn = (tab === 'signin');
+      const signInForm = document.getElementById('pageSignInForm');
+      const signUpForm = document.getElementById('pageSignUpForm');
+      const tabSignIn = document.getElementById('tabSignIn');
+      const tabSignUp = document.getElementById('tabSignUp');
+
+      if (signInForm && signUpForm && tabSignIn && tabSignUp) {{
+        signInForm.style.display = isSignIn ? 'block' : 'none';
+        signUpForm.style.display = isSignIn ? 'none' : 'block';
+
+        tabSignIn.style.borderBottomColor = isSignIn ? 'var(--primary)' : 'transparent';
+        tabSignIn.style.fontWeight = isSignIn ? '600' : '400';
+        tabSignUp.style.borderBottomColor = !isSignIn ? 'var(--primary)' : 'transparent';
+        tabSignUp.style.fontWeight = !isSignIn ? '600' : '400';
+      }}
+    }}
+
+    // Synchronize ID card with authenticated citizen docket
+    async function syncCitizenCard() {{
+      if (!window.SangaiaAuth) return;
+
+      const session = await window.SangaiaAuth.getSession();
+      const authBanner = document.getElementById('authNoticeBanner');
+      const authView = document.getElementById('authenticatedView');
+      const unauthView = document.getElementById('unauthenticatedView');
+      const cardTitle = document.getElementById('cardHeaderTitle');
+
+      if (session && session.user) {{
+        // Fetch citizen docket
+        let citizen = await window.SangaiaAuth.getCitizenRecord(session.user.id);
+        const name = (citizen && citizen.full_name) || session.user.user_metadata?.full_name || session.user.email.split('@')[0];
+        const citizenId = (citizen && citizen.sangaia_id_number) || 'SG-2026-' + session.user.id.substring(0, 4).toUpperCase();
+        const province = (citizen && citizen.territory) || session.user.user_metadata?.territory || 'New Jasper (Capital Shesk)';
+
+        currentCitizen = {{
+          name: name,
+          id: citizenId,
+          province: province,
+          email: session.user.email
+        }};
+
+        // Update Card UI
+        document.getElementById('cardLegalName').innerText = name;
+        document.getElementById('cardCitizenId').innerText = citizenId;
+        document.getElementById('cardTerritory').innerText = province;
+        document.getElementById('cardHash').innerText = 'HASH: SG#' + citizenId.replace('SG-', '') + '-LIVE';
+        document.getElementById('qrTokenText').innerText = 'token: urn:sangaia:id:' + citizenId;
+
+        if (cardTitle) cardTitle.innerText = 'official sovereign citizen credential (' + name.toLowerCase() + ')';
+
+        // Update Banner & View
+        if (authBanner) {{
+          authBanner.style.background = '#eef9f2';
+          authBanner.style.borderColor = '#bbf7d0';
+          authBanner.innerHTML = `
+            <div><span class="mif-checkmark fg-forest"></span> <strong>authenticated citizen:</strong> ${{name}} &bull; docket ${{citizenId}} active across all subdomains.</div>
+            <div><button type="button" class="btn-neutral" style="padding:2px 8px; font-size:11px;" onclick="window.SangaiaAuth.signOut()"><span class="mif-exit"></span> sign out</button></div>
+          `;
+        }}
+
+        if (authView) authView.style.display = 'block';
+        if (unauthView) unauthView.style.display = 'none';
+
+        document.getElementById('authViewName').innerText = name;
+        document.getElementById('authViewEmail').innerText = session.user.email;
+        document.getElementById('authViewId').innerText = citizenId;
+        document.getElementById('authViewProvince').innerText = province;
+      }} else {{
+        // Reset to guest preview mode
+        currentCitizen = null;
+        if (authView) authView.style.display = 'none';
+        if (unauthView) unauthView.style.display = 'block';
+        if (authBanner) {{
+          authBanner.style.background = '#f0f9ff';
+          authBanner.style.borderColor = '#bae6fd';
+          authBanner.innerHTML = `
+            <div><span class="mif-info fg-blue"></span> <strong>guest preview:</strong> sign in below to view your personalized sovereign citizen docket.</div>
+            <div><a href="#authSection" style="font-weight:600; text-decoration:underline;">sign in to sangaia id &rarr;</a></div>
+          `;
+        }}
+      }}
+    }}
+
+    // Handle Page Sign In
+    async function handlePageSignIn(e) {{
+      e.preventDefault();
+      const email = document.getElementById('pageSignInEmail').value.trim();
+      const pass = document.getElementById('pageSignInPassword').value;
+      const btn = document.getElementById('pageSignInBtn');
+      const errBox = document.getElementById('pageSignInError');
+      const succBox = document.getElementById('pageSignInSuccess');
+
+      errBox.style.display = 'none';
+      succBox.style.display = 'none';
+      btn.disabled = true;
+      btn.innerHTML = '<span class="mif-spinner mif-ani-pulse"></span> authenticating...';
+
+      try {{
+        await window.SangaiaAuth.signIn(email, pass);
+        succBox.innerText = 'Authenticated successfully! Loading your sovereign credential...';
+        succBox.style.display = 'block';
+        await syncCitizenCard();
+        btn.disabled = false;
+        btn.innerHTML = '<span class="mif-enter"></span> sign in to sangaia id';
+      }} catch (err) {{
+        errBox.innerText = err.message || 'Authentication failed. Please verify your credentials.';
+        errBox.style.display = 'block';
+        btn.disabled = false;
+        btn.innerHTML = '<span class="mif-enter"></span> sign in to sangaia id';
+      }}
+    }}
+
+    // Handle Page Sign Up
+    async function handlePageSignUp(e) {{
+      e.preventDefault();
+      const name = document.getElementById('pageSignUpName').value.trim();
+      const dob = document.getElementById('pageSignUpDob').value;
+      const province = document.getElementById('pageSignUpProvince').value;
+      const email = document.getElementById('pageSignUpEmail').value.trim();
+      const pass = document.getElementById('pageSignUpPassword').value;
+      const btn = document.getElementById('pageSignUpBtn');
+      const errBox = document.getElementById('pageSignUpError');
+      const succBox = document.getElementById('pageSignUpSuccess');
+
+      errBox.style.display = 'none';
+      succBox.style.display = 'none';
+      btn.disabled = true;
+      btn.innerHTML = '<span class="mif-spinner mif-ani-pulse"></span> registering citizen docket...';
+
+      try {{
+        await window.SangaiaAuth.signUp({{
+          email,
+          password: pass,
+          fullName: name,
+          dob,
+          province
+        }});
+        succBox.innerText = 'Registration successful! Your sovereign citizen docket has been created.';
+        succBox.style.display = 'block';
+        await syncCitizenCard();
+        btn.disabled = false;
+        btn.innerHTML = '<span class="mif-user-plus"></span> register sovereign citizen id';
+      }} catch (err) {{
+        errBox.innerText = err.message || 'Registration failed. Please try again.';
+        errBox.style.display = 'block';
+        btn.disabled = false;
+        btn.innerHTML = '<span class="mif-user-plus"></span> register sovereign citizen id';
+      }}
     }}
 
     // Real-time Citizen Verification Engine
@@ -766,10 +1107,10 @@ def render_sangaia_id_html(is_subdomain=False):
           <span style="background:#eef9f2; color:#15803d; border:1px solid #bbf7d0; font-size:11px; font-weight:700; padding:2px 8px; border-radius:2px;">OFFICIAL DOCKET ACTIVE</span>
         </div>
         <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(180px, 1fr)); gap:8px;">
-          <div><span style="color:#666;">Subject:</span> <strong>${{name}}</strong></div>
-          <div><span style="color:#666;">Citizen ID:</span> <strong style="font-family:monospace;">${{token}}</strong></div>
-          <div><span style="color:#666;">Jurisdiction:</span> <strong>${{prov}}</strong></div>
-          <div><span style="color:#666;">Healthcare:</span> <strong>Tier 1 Full Universal</strong></div>
+          <div><span style="color:#666;">subject:</span> <strong>${{name}}</strong></div>
+          <div><span style="color:#666;">citizen id:</span> <strong style="font-family:monospace;">${{token}}</strong></div>
+          <div><span style="color:#666;">jurisdiction:</span> <strong>${{prov}}</strong></div>
+          <div><span style="color:#666;">healthcare:</span> <strong>Tier 1 Full Universal</strong></div>
         </div>
         <div style="font-family:monospace; font-size:11px; color:#0369a1; margin-top:8px; border-top:1px dashed #bae6fd; padding-top:6px;">
           DOCKET HASH: SG#VERIFY-${{Math.floor(100000 + Math.random()*900000)}}-OK &bull; Signed by Sovereign Directorate
@@ -778,28 +1119,22 @@ def render_sangaia_id_html(is_subdomain=False):
       results.style.display = 'block';
     }}
 
-    // Search input enter key
-    const searchInput = document.getElementById('verifyInput');
-    if (searchInput) {{
-      searchInput.addEventListener('keydown', (e) => {{
-        if (e.key === 'Enter') {{
-          runVerification();
-        }}
-      }});
-    }}
-
     // Export digital credential
     function downloadCredential() {{
+      const name = currentCitizen ? currentCitizen.name : "Jqackkk";
+      const citizenId = currentCitizen ? currentCitizen.id : "SG-2026-F1E8";
+      const province = currentCitizen ? currentCitizen.province : "New Jasper";
+
       const credentialData = {{
         "@context": "https://www.w3.org/2018/credentials/v1",
-        "id": "urn:sangaia:id:SG-2026-F1E8",
+        "id": "urn:sangaia:id:" + citizenId,
         "type": ["VerifiableCredential", "SangaiaCitizenCredential"],
         "issuer": "urn:sangaia:gov:identity-bureau",
         "issuanceDate": "2026-10-19T00:00:00Z",
         "credentialSubject": {{
-          "id": "SG-2026-F1E8",
-          "legalName": "Jqackkk",
-          "jurisdiction": "New Jasper",
+          "id": citizenId,
+          "legalName": name,
+          "jurisdiction": province,
           "country": "The United Provinces of Sangaia",
           "status": "Verified Citizen",
           "healthcareCoverage": "Tier 1 Universal Healthcare",
@@ -821,7 +1156,7 @@ def render_sangaia_id_html(is_subdomain=False):
       const url = URL.createObjectURL(blob);
       const a = document.createElement('a');
       a.href = url;
-      a.download = 'sangaia_citizen_credential_SG-2026-F1E8.json';
+      a.download = 'sangaia_citizen_credential_' + citizenId + '.json';
       document.body.appendChild(a);
       a.click();
       document.body.removeChild(a);
@@ -835,6 +1170,21 @@ def render_sangaia_id_html(is_subdomain=False):
         qr.style.display = (qr.style.display === 'none' || qr.style.display === '') ? 'block' : 'none';
       }}
     }}
+
+    // Page initialization
+    document.addEventListener('DOMContentLoaded', () => {{
+      setTimeout(syncCitizenCard, 100);
+      document.addEventListener('sangaia:auth-changed', () => {{
+        syncCitizenCard();
+      }});
+
+      // Auto-activate tab based on URL hash
+      if (window.location.hash === '#signin') {{
+        switchPageAuthTab('signin');
+      }} else if (window.location.hash === '#register') {{
+        switchPageAuthTab('signup');
+      }}
+    }});
   </script>
 </body>
 </html>"""
@@ -851,8 +1201,7 @@ def build_id_pages():
     with open(os.path.join("id", "index.html"), "w", encoding="utf-8") as f:
         f.write(sub_html)
 
-    print("Sangaia ID pages (id.html and id/index.html) successfully generated with One Live People layout!")
+    print("Sangaia ID pages (id.html and id/index.html) successfully generated with full Single Sign-On and registration support!")
 
 if __name__ == "__main__":
     build_id_pages()
-

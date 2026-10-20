@@ -976,6 +976,8 @@ button,
 
   </style>
   <link rel="stylesheet" href="/css/sangaia-live.css?v=20261019_v5">
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="/auth.js" onerror="this.onerror=null;this.src='auth.js';" defer></script>
   <script src="/js/sangaia-live.js" defer></script>
 </head>
 <body class="theme-education">
@@ -995,16 +997,16 @@ button,
           <span class="mif-bell" title="notifications"></span>
           <span class="mif-security" title="sovereign clearance active"></span>
         </div>
-        <div class="user-profile-menu" id="userProfileMenu">
-          <img src="/images/default-wl.png" alt="Avatar" width="28" height="28" style="width:28px; height:28px; border-radius:2px; object-fit:contain; background:#ffffff;" />
-          <span>jqackkk</span>
+        <div class="user-profile-menu unauthenticated" id="userProfileMenu">
+          <span class="mif-user" style="font-size:15px; color:#fff;"></span>
+          <span>sign in</span>
           <span class="mif-arrow-drop-down" style="font-size: 14px;"></span>
           <div class="user-dropdown">
-            <div class="user-dropdown-header">citizen: sg-2026-f1e8</div>
-            <a href="/id.html"><span class="mif-profile"></span> sangaia id card</a>
-            <a href="/citizenship.html"><span class="mif-checkmark"></span> citizenship status</a>
-            <a href="/index.html#units"><span class="mif-compass"></span> units &amp; measures</a>
-            <a href="/dashboard.html"><span class="mif-chart-bars"></span> sovereign registry</a>
+            <div class="user-dropdown-header">sangaia id portal</div>
+            <a href="javascript:void(0)" onclick="if(window.SangaiaAuth) window.SangaiaAuth.openAuthModal('signin'); else window.location.href='/id.html#signin';"><span class="mif-enter"></span> sign in to sangaia id</a>
+            <a href="javascript:void(0)" onclick="if(window.SangaiaAuth) window.SangaiaAuth.openAuthModal('signup'); else window.location.href='/id.html#register';"><span class="mif-user-plus"></span> register new citizen id</a>
+            <a href="/id.html"><span class="mif-profile"></span> citizen id directory</a>
+            <a href="/id.html#verify"><span class="mif-security"></span> verify citizen docket</a>
             <div style="border-top:1px solid #e1dfdd; margin:4px 0;"></div>
             <a href="/index.html"><span class="mif-home"></span> federal home</a>
           </div>
