@@ -76,19 +76,19 @@ MODAL_CONFIGS = {
     "gazette": {
         "type": "search",
         "icon": "📜",
-        "title_en": "Executive Orders & Decrees Official Gazette Archive",
-        "title_sgn": "Эксэкуто Дэкрито & Ордо Официало Газэта Архиво",
+        "title_en": "Executive Orders & Decrees Societal Press Archive",
+        "title_sgn": "Эксэкуто Дэкрито & Ордо Официало Социетало Прэсс Архиво",
         "fields": [
             {"name": "query", "label_en": "Keyword / Decree Reference", "label_sgn": "Ключо-слово / Дэкрито Номэро", "type": "text", "placeholder_en": "e.g., zero-debt, biome, education, cabinet", "placeholder_sgn": "наприм., син-дэбито, биом, эдукатио"},
             {"name": "category", "label_en": "Jurisdiction Category", "label_sgn": "Јурисдиктио Катэгорио", "type": "select", "options": [
-                {"val": "all", "en": "All Gazette Classifications", "sgn": "Холо Газэта Катэгорио"},
+                {"val": "all", "en": "All Societal Press Classifications", "sgn": "Холо Социетало Прэсс Катэгорио"},
                 {"val": "aretocratic", "en": "Aretocratic Proclamations (Veto / Constitutional)", "sgn": "Арэтократико Прокламатио"},
                 {"val": "cabinet", "en": "Cabinet Directives & Ministerial Mandates", "sgn": "Кабино Дирэктиво"},
                 {"val": "emergency", "en": "Sovereign Emergency Preparedness Orders", "sgn": "Сувэрэно Сургэнциа Ордо"}
             ]}
         ],
-        "action_en": "Query Gazette Archive",
-        "action_sgn": "Скэро Газэта Архиво",
+        "action_en": "Query Societal Press Archive",
+        "action_sgn": "Скэро Социетало Прэсс Архиво",
         "sample_results_en": [
             {"ref": "DEC-2026-088", "date": "14 Oct 2026", "title": "Aretocratic Veto on Discretionary Deficit Instruments", "desc": "Reaffirming the constitutional ceiling of 0% sovereign fiscal debt across all ministerial ledgers."},
             {"ref": "DEC-2026-071", "date": "02 Oct 2026", "title": "Statutory Expansion of Biome Corridor Protection Zones", "desc": "Allocating 24,000 additional hectares of alpine rain-forest to protected state biome status."},

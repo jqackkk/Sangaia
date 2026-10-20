@@ -142,15 +142,25 @@ def render_sangaia_id_html(is_subdomain=False):
       font-size: 12.5px;
       width: 200px;
       font-family: inherit;
+      background: transparent;
     }}
 
     .search-box button {{
-      background: #f38b00;
+      background: transparent;
       border: none;
-      padding: 7px 11px;
-      color: #fff;
+      padding: 6px 10px;
+      color: #605e5c;
       cursor: pointer;
-      font-size: 12px;
+      font-size: 13px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: color 0.15s ease, background 0.15s ease;
+    }}
+
+    .search-box button:hover {{
+      background: #f0f0f0;
+      color: var(--primary);
     }}
 
     .top-icons {{

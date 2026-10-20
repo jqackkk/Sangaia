@@ -75,7 +75,7 @@ def run_orchestration():
         build_departments.build_dept_page(s)
 
     print("=" * 60)
-    print("STEP 4: Rebuilding DDCR & Gazette Articles...")
+    print("STEP 4: Rebuilding DDCR & Societal Press Articles...")
     import build_ddcr
     build_ddcr.build_ddcr_index()
     build_ddcr.build_ddcr_topics()

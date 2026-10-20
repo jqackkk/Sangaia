@@ -35,7 +35,7 @@ MINISTRIES = {
                 "id": "state-cabinet",
                 "name_en": "Department of State & Department of the Cabinet",
                 "name_sgn": "Дэпарто эк Стато & Дэпарто эк Кабино",
-                "mandate_en": "Administering cabinet affairs, official state gazettes, executive decrees, and ceremonial protocols for foreign and domestic dignitaries.",
+                "mandate_en": "Administering cabinet affairs, official societal press dispatches, executive decrees, and ceremonial protocols for foreign and domestic dignitaries.",
                 "mandate_sgn": "Мануго кабино прагма, официало стато газэта, эксэкуто дэкрито, инкаи церемониало протоколо про дигнитаро.",
                 "functions": [
                     {
@@ -44,7 +44,7 @@ MINISTRIES = {
                         "title_sgn": "Эксэкуто Дэкрито & Ордо Архиво",
                         "desc_en": "Searchable, cryptographic full-text registry of all signed Aretocratic proclamations, cabinet minutes, and ministerial directives.",
                         "desc_sgn": "Скэро-гаранто криптографико архиво эк холо Арэтократико прокламатио инкаи кабино минютэ.",
-                        "action_en": "Browse Official Gazette",
+                        "action_en": "Browse Societal Press",
                         "action_sgn": "Визо Стато Газэта",
                         "modal": "gazette"
                     },

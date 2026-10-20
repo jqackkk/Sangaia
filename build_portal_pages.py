@@ -389,7 +389,7 @@ def build_services():
             <div class="docket-entry serv-entry" data-cat="executive">
                 <div class="docket-entry-body">
                     <strong style="font-size:14px; color:#1e3a8a;"><span class="mif-cabinet mif-lg fg-navy"></span> ministry of the executive</strong>
-                    <div class="ol-small">official gazette decree archives, citizen petition pipeline, dignitary ceremonial protocol, national kpi progress dashboard, multi-ministry policy whitepapers.</div>
+                    <div class="ol-small">official societal press decree archives, citizen petition pipeline, dignitary ceremonial protocol, national kpi progress dashboard, multi-ministry policy whitepapers.</div>
                     <div class="ol-mt-10"><a href="/executive_departments.html" class="ol-btn ol-btn-sm">launch executive departments (6 tools) &rarr;</a></div>
                 </div>
             </div>
@@ -677,66 +677,66 @@ def build_gov_about():
     generate_page("about.html", title_about, theme, tab, hero_title_about, hero_sub_about, "Sovereign Republic", "Overview & History", "Republic Stable", sidebar_links_about, main_about)
 
 # -----------------------------------------------------------------------------
-# 6. SOCIETAL PRESS & GAZETTE (societal_press.html)
+# 6. SOCIETAL PRESS (societal_press.html)
 # -----------------------------------------------------------------------------
 def build_societal_press():
-    title = "State Gazette & Societal Press"
+    title = "societal press &amp; public record"
     theme = "theme-federal"
     tab = "home"
-    hero_title = "the state gazette &amp; societal press"
-    hero_sub = "Official public gazette, executive decrees, circulars, statutory regulations & open government archives"
+    hero_title = "the societal press"
+    hero_sub = "official societal press, executive decrees, circulars, statutory regulations &amp; open government archives"
 
     sidebar_links = [
-        {"label": "Latest Decrees", "url": "#overview", "active": True},
-        {"label": "Executive Circulars", "url": "#circulars", "active": False},
-        {"label": "Regulatory Archives", "url": "#archives", "active": False},
-        {"label": "Public Hearing Transcripts", "url": "#transcripts", "active": False}
+        {"label": "latest decrees", "url": "#overview", "active": True},
+        {"label": "executive circulars", "url": "#circulars", "active": False},
+        {"label": "regulatory archives", "url": "#archives", "active": False},
+        {"label": "public hearing transcripts", "url": "#transcripts", "active": False}
     ]
 
     main_content = """
 
     <div class="ol-card">
         <div class="ol-card-title">
-            <span>Recent Official Executive Decrees</span>
-            <span class="ol-badge-tag ol-badge-success">Enacted Law</span>
+            <span>recent official executive decrees</span>
+            <span class="ol-badge-tag ol-badge-success">enacted law</span>
         </div>
         <div class="docket-entry">
             <div class="docket-entry-header">
                 <div>
                     <span class="mif-file-text" style="color:var(--primary); margin-right:6px;"></span>
-                    <strong style="color:#1e3a8a;">Decree No. 104-B: Mandatory 85% Wealth Redistribution for Religious Tithes</strong>
+                    <strong style="color:#1e3a8a;">decree no. 104-b: mandatory 85% wealth redistribution for religious tithes</strong>
                 </div>
-                <span class="ol-badge-tag ol-badge-success">Enacted</span>
+                <span class="ol-badge-tag ol-badge-success">enacted</span>
             </div>
             <div class="docket-entry-body">Enacts strict statutory accounting for all recognized chapels. Tithes must be returned directly to public kitchens, youth education, and community aid.</div>
-            <div class="docket-entry-meta">Published October 19, 2026 &bull; Promulgated by the Aeretocrat</div>
+            <div class="docket-entry-meta">published october 19, 2026 &bull; promulgated by the aeretocrat</div>
         </div>
         <div class="docket-entry">
             <div class="docket-entry-header">
                 <div>
                     <span class="mif-file-text" style="color:var(--primary); margin-right:6px;"></span>
-                    <strong style="color:#15803d;">Decree No. 103-A: Universal Standard Units Adoption (Панотерм &amp; Мономер)</strong>
+                    <strong style="color:#15803d;">decree no. 103-a: universal standard units adoption (панотерм &amp; мономер)</strong>
                 </div>
-                <span class="ol-badge-tag ol-badge-success">Enacted</span>
+                <span class="ol-badge-tag ol-badge-success">enacted</span>
             </div>
             <div class="docket-entry-body">Mandates base-10 Monomer scaling (1 Мн = 2.5 cm) and Panotherm (&deg;Пт = 0.9 &times; &deg;C) across all five provincial school boards and public signage.</div>
-            <div class="docket-entry-meta">Published October 15, 2026 &bull; Promulgated by the Aeretocrat</div>
+            <div class="docket-entry-meta">published october 15, 2026 &bull; promulgated by the aeretocrat</div>
         </div>
         <div class="docket-entry">
             <div class="docket-entry-header">
                 <div>
                     <span class="mif-file-text" style="color:var(--primary); margin-right:6px;"></span>
-                    <strong style="color:#0f766e;">Decree No. 102-F: Zero Out-of-Pocket Point-of-Service Healthcare Affirmation</strong>
+                    <strong style="color:#0f766e;">decree no. 102-f: zero out-of-pocket point-of-service healthcare affirmation</strong>
                 </div>
-                <span class="ol-badge-tag ol-badge-success">Enacted</span>
+                <span class="ol-badge-tag ol-badge-success">enacted</span>
             </div>
             <div class="docket-entry-body">Reaffirms constitutional prohibition against any emergency room, clinic, or pharmacy levying out-of-pocket charges or fees upon Sangaian ID holders.</div>
-            <div class="docket-entry-meta">Published October 10, 2026 &bull; Promulgated by the Aeretocrat</div>
+            <div class="docket-entry-meta">published october 10, 2026 &bull; promulgated by the aeretocrat</div>
         </div>
     </div>
     """
 
-    generate_page("societal_press.html", title, theme, tab, hero_title, hero_sub, "State Gazette Directorate", "Public Record Authority", "Gazette Online", sidebar_links, main_content)
+    generate_page("societal_press.html", title, theme, tab, hero_title, hero_sub, "societal press directorate", "public record authority", "societal press online", sidebar_links, main_content)
 
 # -----------------------------------------------------------------------------
 # 7. DASHBOARD & APPLICATIONS & ID & LITERACY

@@ -217,7 +217,7 @@ a:hover {
 .search-box {
   display: flex;
   align-items: center;
-  background: #fff;
+  background: #ffffff;
   border-radius: 2px;
   overflow: hidden;
   box-shadow: 0 1px 3px rgba(0,0,0,0.2);
@@ -231,22 +231,25 @@ a:hover {
   width: 190px;
   font-family: inherit;
   color: var(--text-main);
+  background: transparent;
 }
 
 .search-box button {
-  background: #f38b00;
+  background: transparent;
   border: none;
-  padding: 7px 10px;
-  color: #fff;
+  padding: 6px 10px;
+  color: #605e5c;
   cursor: pointer;
-  font-size: 12px;
+  font-size: 13px;
   display: flex;
   align-items: center;
   justify-content: center;
+  transition: color 0.15s ease, background 0.15s ease;
 }
 
 .search-box button:hover {
-  background: #e07f00;
+  background: #f0f0f0;
+  color: var(--primary);
 }
 
 .top-icons {
@@ -990,7 +993,7 @@ button,
       </div>
       <div class="top-right">
         <form class="search-box" action="/services.html" method="get">
-          <input type="text" name="q" placeholder="search services, laws &amp; gazette" />
+          <input type="text" name="q" placeholder="search services, laws &amp; societal press" />
           <button type="submit" aria-label="Search"><span class="mif-search"></span></button>
         </form>
         <div class="top-icons">
@@ -1055,7 +1058,7 @@ button,
             <div class="docket-entry serv-entry" data-cat="executive">
                 <div class="docket-entry-body">
                     <strong style="font-size:14px; color:#1e3a8a;"><span class="mif-cabinet mif-lg fg-navy"></span> ministry of the executive</strong>
-                    <div class="ol-small">official gazette decree archives, citizen petition pipeline, dignitary ceremonial protocol, national kpi progress dashboard, multi-ministry policy whitepapers.</div>
+                    <div class="ol-small">official societal press decree archives, citizen petition pipeline, dignitary ceremonial protocol, national kpi progress dashboard, multi-ministry policy whitepapers.</div>
                     <div class="ol-mt-10"><a href="/executive_departments.html" class="ol-btn ol-btn-sm">launch executive departments (6 tools) &rarr;</a></div>
                 </div>
             </div>

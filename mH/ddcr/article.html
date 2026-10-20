@@ -217,7 +217,7 @@ a:hover {
 .search-box {
   display: flex;
   align-items: center;
-  background: #fff;
+  background: #ffffff;
   border-radius: 2px;
   overflow: hidden;
   box-shadow: 0 1px 3px rgba(0,0,0,0.2);
@@ -231,22 +231,25 @@ a:hover {
   width: 190px;
   font-family: inherit;
   color: var(--text-main);
+  background: transparent;
 }
 
 .search-box button {
-  background: #f38b00;
+  background: transparent;
   border: none;
-  padding: 7px 10px;
-  color: #fff;
+  padding: 6px 10px;
+  color: #605e5c;
   cursor: pointer;
-  font-size: 12px;
+  font-size: 13px;
   display: flex;
   align-items: center;
   justify-content: center;
+  transition: color 0.15s ease, background 0.15s ease;
 }
 
 .search-box button:hover {
-  background: #e07f00;
+  background: #f0f0f0;
+  color: var(--primary);
 }
 
 .top-icons {
@@ -990,7 +993,7 @@ button,
       </div>
       <div class="top-right">
         <form class="search-box" action="/services.html" method="get">
-          <input type="text" name="q" placeholder="search services, laws &amp; gazette" />
+          <input type="text" name="q" placeholder="search services, laws &amp; societal press" />
           <button type="submit" aria-label="Search"><span class="mif-search"></span></button>
         </form>
         <div class="top-icons">

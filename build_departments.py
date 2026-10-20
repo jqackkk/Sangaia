@@ -360,7 +360,7 @@ document.addEventListener('DOMContentLoaded', () => {{
                 <div style="font-weight:700; margin-bottom:6px; color:#166534;">Official Sovereign Docket Generated</div>
                 <div>Statutory Authorization Token: <span style="font-family:monospace; font-weight:700;">${{token}}</span></div>
                 <div>Processing Authority: <strong>${{cfg.title_en || 'Federal Directorate'}}</strong></div>
-                <div>Status: <span class="ol-badge-tag ol-badge-success">CONFIRMED &bull; RECORDED IN GAZETTE</span></div>
+                <div>Status: <span class="ol-badge-tag ol-badge-success">confirmed &bull; recorded in societal press</span></div>
                 ${{sampleHtml}}
             `;
             modalResultsBox.classList.add('active');

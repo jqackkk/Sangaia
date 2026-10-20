@@ -153,7 +153,7 @@ def generate_page(
       </div>
       <div class="top-right">
         <form class="search-box" action="/services.html" method="get">
-          <input type="text" name="q" placeholder="search services, laws &amp; gazette" />
+          <input type="text" name="q" placeholder="search services, laws &amp; societal press" />
           <button type="submit" aria-label="Search"><span class="mif-search"></span></button>
         </form>
         <div class="top-icons">

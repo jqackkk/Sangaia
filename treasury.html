@@ -217,7 +217,7 @@ a:hover {
 .search-box {
   display: flex;
   align-items: center;
-  background: #fff;
+  background: #ffffff;
   border-radius: 2px;
   overflow: hidden;
   box-shadow: 0 1px 3px rgba(0,0,0,0.2);
@@ -231,22 +231,25 @@ a:hover {
   width: 190px;
   font-family: inherit;
   color: var(--text-main);
+  background: transparent;
 }
 
 .search-box button {
-  background: #f38b00;
+  background: transparent;
   border: none;
-  padding: 7px 10px;
-  color: #fff;
+  padding: 6px 10px;
+  color: #605e5c;
   cursor: pointer;
-  font-size: 12px;
+  font-size: 13px;
   display: flex;
   align-items: center;
   justify-content: center;
+  transition: color 0.15s ease, background 0.15s ease;
 }
 
 .search-box button:hover {
-  background: #e07f00;
+  background: #f0f0f0;
+  color: var(--primary);
 }
 
 .top-icons {
@@ -990,7 +993,7 @@ button,
       </div>
       <div class="top-right">
         <form class="search-box" action="/services.html" method="get">
-          <input type="text" name="q" placeholder="search services, laws &amp; gazette" />
+          <input type="text" name="q" placeholder="search services, laws &amp; societal press" />
           <button type="submit" aria-label="Search"><span class="mif-search"></span></button>
         </form>
         <div class="top-icons">
@@ -1101,7 +1104,7 @@ button,
                 <tr><td>Environment &amp; Biome Stewardship</td><td>$ 16.5 Billion</td><td>15.9%</td><td>Forest reserves, clean energy &amp; wildlife</td></tr>
                 <tr><td>Domestic Transit &amp; Roads</td><td>$ 14.2 Billion</td><td>13.7%</td><td>Highways, rail networks &amp; interprovincial bridges</td></tr>
                 <tr><td>Work &amp; Labor Standards</td><td>$ 10.8 Billion</td><td>10.4%</td><td>Vocational apprenticeships &amp; job board safety nets</td></tr>
-                <tr><td>Executive Administration &amp; Justice</td><td>$ 6.2 Billion</td><td>6.0%</td><td>Cabinet, High Magistrates &amp; public gazette</td></tr>
+                <tr><td>Executive Administration &amp; Justice</td><td>$ 6.2 Billion</td><td>6.0%</td><td>Cabinet, High Magistrates &amp; societal press</td></tr>
                 <tr><td>Propaganda &amp; Civic Education</td><td>$ 4.7 Billion</td><td>4.5%</td><td>National broadcasting &amp; cultural radio</td></tr>
             </tbody>
         </table>

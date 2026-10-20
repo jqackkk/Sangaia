@@ -209,7 +209,7 @@ a:hover {
 .search-box {
   display: flex;
   align-items: center;
-  background: #fff;
+  background: #ffffff;
   border-radius: 2px;
   overflow: hidden;
   box-shadow: 0 1px 3px rgba(0,0,0,0.2);
@@ -223,22 +223,43 @@ a:hover {
   width: 190px;
   font-family: inherit;
   color: var(--text-main);
+  background: transparent;
 }
 
 .search-box button {
-  background: #f38b00;
+  background: transparent;
   border: none;
-  padding: 7px 10px;
-  color: #fff;
+  padding: 6px 10px;
+  color: #605e5c;
   cursor: pointer;
-  font-size: 12px;
+  font-size: 13px;
   display: flex;
   align-items: center;
   justify-content: center;
+  transition: color 0.15s ease, background 0.15s ease;
 }
 
 .search-box button:hover {
-  background: #e07f00;
+  background: #f0f0f0;
+  color: var(--primary);
+}
+
+.top-icons {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  color: #fff;
+  font-size: 15px;
+}
+
+.top-icons span {
+  cursor: pointer;
+  opacity: 0.9;
+  transition: opacity 0.15s ease;
+}
+
+.top-icons span:hover {
+  opacity: 1;
 }
 
 .user-profile-menu {

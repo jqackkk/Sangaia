@@ -555,7 +555,7 @@ def build_article_press():
     main_content = """
     <div class="card">
         <h2>Provincial Review: Half-Year Address</h2>
-        <p style="color:var(--text-muted); font-size:12px; margin-bottom:12px;"><strong>By The Ministry of the Executive</strong> &bull; July 3rd, 2026 &bull; Sangaia Gazette</p>
+        <p style="color:var(--text-muted); font-size:12px; margin-bottom:12px;"><strong>By The Ministry of the Executive</strong> &bull; July 3rd, 2026 &bull; Sangaia Societal Press</p>
         
         <p><strong>HORNET'S POINT (NM)</strong> — The Sangaian government, on Friday, announced sweeping administrative reforms and economic expansions as part of their half-year provincial address, pointing to a capped tax rate and projected job growth ahead of the upcoming Revolution Day holiday.</p>
 
@@ -574,7 +574,7 @@ def build_article_press():
 
     sidebar_extra = """
     <div class="card">
-        <h3>gazette links</h3>
+        <h3>societal press links</h3>
         <ul class="sidebar-nav-list">
             <li><a href="/societal_press.html"><span class="mif-chevron-left"></span> return to societal press</a></li>
             <li><a href="/executive.html"><span class="mif-library"></span> executive journal</a></li>
@@ -588,10 +588,10 @@ def build_article_press():
         title="Provincial Review: Half-Year Address :: Sangaia Live",
         theme_class="theme-executive",
         active_tab="executive",
-        hero_title="Sovereign State Gazette & Dispatches",
-        hero_sub="Official Half-Year Address & Provincial Review &bull; Office of the Aeretocrat",
+        hero_title="sovereign societal press &amp; dispatches",
+        hero_sub="official half-year address &amp; provincial review &bull; office of the aeretocrat",
         sidebar_title="Ministry of the Executive",
-        sidebar_subtitle="Executive Gazette",
+        sidebar_subtitle="executive societal press",
         sidebar_status="Official Release",
         sidebar_nav_links=[],
         main_content_html=main_content,

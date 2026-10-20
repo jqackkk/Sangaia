@@ -143,7 +143,7 @@ def build_executive():
     <div class="ol-card" id="constitutional-framework">
         <div class="ol-card-title">
             <span>Constitutional Framework &amp; Sovereign Decrees</span>
-            <a class="ol-title-link" href="/societal_press.html">Official Gazette &rarr;</a>
+            <a class="ol-title-link" href="/societal_press.html">societal press &rarr;</a>
         </div>
         <p class="ol-small">The Constitution of the United Provinces of Sangaia establishes an unalterable framework of checks and virtues:</p>
         <ul class="ol-small" style="line-height:1.6;">
@@ -228,7 +228,7 @@ def build_executive():
             <div class="modal-results-box" id="askResults"></div>
             <div class="ol-modal-foot">
                 <button type="button" class="ol-btn" onclick="closeModal('askModal')">Cancel</button>
-                <button type="button" class="ol-btn ol-btn-primary" onclick="submitAsk()">Submit to Gazette Clerk</button>
+                <button type="button" class="ol-btn ol-btn-primary" onclick="submitAsk()">submit to press clerk</button>
             </div>
         </div>
     </div>
@@ -422,7 +422,7 @@ def build_treasury():
                 <tr><td>Environment &amp; Biome Stewardship</td><td>$ 16.5 Billion</td><td>15.9%</td><td>Forest reserves, clean energy &amp; wildlife</td></tr>
                 <tr><td>Domestic Transit &amp; Roads</td><td>$ 14.2 Billion</td><td>13.7%</td><td>Highways, rail networks &amp; interprovincial bridges</td></tr>
                 <tr><td>Work &amp; Labor Standards</td><td>$ 10.8 Billion</td><td>10.4%</td><td>Vocational apprenticeships &amp; job board safety nets</td></tr>
-                <tr><td>Executive Administration &amp; Justice</td><td>$ 6.2 Billion</td><td>6.0%</td><td>Cabinet, High Magistrates &amp; public gazette</td></tr>
+                <tr><td>Executive Administration &amp; Justice</td><td>$ 6.2 Billion</td><td>6.0%</td><td>Cabinet, High Magistrates &amp; societal press</td></tr>
                 <tr><td>Propaganda &amp; Civic Education</td><td>$ 4.7 Billion</td><td>4.5%</td><td>National broadcasting &amp; cultural radio</td></tr>
             </tbody>
         </table>
