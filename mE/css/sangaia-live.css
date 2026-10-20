@@ -82,16 +82,16 @@ body.theme-healthcare {
 }
 
 body.theme-education {
-  --primary: #0284c7; /* Academic Cyan */
-  --accent-btn: #0284c7;
-  --accent-btn-hover: #0369a1;
-  --hero-bg: #e0f2fe;
-  --hero-gradient: radial-gradient(ellipse at 42% 120%, rgba(255, 255, 255, 0.75), rgba(255, 255, 255, 0) 55%), linear-gradient(180deg, #7dd3fc 0%, #a5e1fd 18%, #c5ecfe 38%, #e0f4fe 65%, #f1f9fe 86%, #ffffff 100%);
-  --hero-title-color: #0369a1;
-  --hero-sub-color: #0284c7;
-  --hero-brand-color: #0369a1;
-  --glow-color: rgba(2, 132, 199, 0.65);
-  --glow-color-soft: rgba(2, 132, 199, 0.3);
+  --primary: #d97706; /* Scholarly Gold / Amber */
+  --accent-btn: #d97706;
+  --accent-btn-hover: #b45309;
+  --hero-bg: #fef08a;
+  --hero-gradient: radial-gradient(ellipse at 42% 120%, rgba(255, 255, 255, 0.85), rgba(255, 255, 255, 0) 55%), linear-gradient(180deg, #fef08a 0%, #fef9c3 18%, #fefce8 38%, #fffbeb 65%, #fffdf5 86%, #ffffff 100%);
+  --hero-title-color: #713f12;
+  --hero-sub-color: #854d0e;
+  --hero-brand-color: #713f12;
+  --glow-color: rgba(217, 119, 6, 0.65);
+  --glow-color-soft: rgba(217, 119, 6, 0.3);
 }
 
 body.theme-domestic {
@@ -281,9 +281,9 @@ body.theme-healthcare .hero-header {
 }
 
 body.theme-education .hero-header {
-  background-color: #e0f2fe;
-  background-image: radial-gradient(ellipse at 42% 120%, rgba(255, 255, 255, 0.75), rgba(255, 255, 255, 0) 55%),
-                    linear-gradient(180deg, #7dd3fc 0%, #a5e1fd 18%, #c5ecfe 38%, #e0f4fe 65%, #f1f9fe 86%, #ffffff 100%);
+  background-color: #fef08a;
+  background-image: radial-gradient(ellipse at 42% 120%, rgba(255, 255, 255, 0.85), rgba(255, 255, 255, 0) 55%),
+                    linear-gradient(180deg, #fef08a 0%, #fef9c3 18%, #fefce8 38%, #fffbeb 65%, #fffdf5 86%, #ffffff 100%);
 }
 
 body.theme-domestic .hero-header {
@@ -785,7 +785,7 @@ section.card h4 {
   letter-spacing: 0.3px;
 }
 
-.badge-primary { background: #e0f2fe; color: #0369a1; border: 1px solid #bae6fd; }
+.badge-primary { background: #fef9c3; color: #854d0e; border: 1px solid #fde047; }
 .badge-success { background: #dcfce7; color: #15803d; border: 1px solid #bbf7d0; }
 .badge-warning { background: #fef3c7; color: #b45309; border: 1px solid #fde68a; }
 .badge-danger  { background: #fee2e2; color: #b91c1c; border: 1px solid #fecaca; }
@@ -1160,7 +1160,7 @@ section.card h4 {
 .ol-btn-primary { background: var(--primary); color: #fff; border-color: transparent; }
 .ol-btn-primary:hover { filter: brightness(0.92); color: #fff; }
 .ol-btn-sm { padding: 4px 8px; font-size: 11.5px; }
-.ol-badge-tag { display: inline-block; font-size: 11px; font-weight: 600; padding: 2px 7px; border-radius: 2px; text-transform: lowercase; letter-spacing: 0.3px; background: #e0f2fe; color: #0369a1; border: 1px solid #bae6fd; }
+.ol-badge-tag { display: inline-block; font-size: 11px; font-weight: 600; padding: 2px 7px; border-radius: 2px; text-transform: lowercase; letter-spacing: 0.3px; background: #fef9c3; color: #854d0e; border: 1px solid #fde047; }
 .ol-badge-success { background: #dcfce7; color: #15803d; border: 1px solid #bbf7d0; }
 .ol-grid-2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 12px; }
 .ol-grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px; }

@@ -28,20 +28,20 @@ function setCookieVal(key, value) {
         const domain = getCookieDomain();
         const secure = (window.location.protocol === 'https:') ? '; Secure' : '';
         const maxAge = '; max-age=31536000; path=/; SameSite=Lax';
-
-        deleteCookieVal(key);
-
         const encoded = encodeURIComponent(value);
         const CHUNK_SIZE = 2800;
 
         if (encoded.length <= CHUNK_SIZE) {
-            document.cookie = `${key}=${encoded}${domain}${maxAge}${secure}`;
+            if (domain) document.cookie = `${key}=${encoded}${domain}${maxAge}${secure}`;
+            document.cookie = `${key}=${encoded}${maxAge}${secure}`;
         } else {
             const numChunks = Math.ceil(encoded.length / CHUNK_SIZE);
-            document.cookie = `${key}_chunks=${numChunks}${domain}${maxAge}${secure}`;
+            if (domain) document.cookie = `${key}_chunks=${numChunks}${domain}${maxAge}${secure}`;
+            document.cookie = `${key}_chunks=${numChunks}${maxAge}${secure}`;
             for (let i = 0; i < numChunks; i++) {
                 const chunk = encoded.substring(i * CHUNK_SIZE, (i + 1) * CHUNK_SIZE);
-                document.cookie = `${key}_${i}=${chunk}${domain}${maxAge}${secure}`;
+                if (domain) document.cookie = `${key}_${i}=${chunk}${domain}${maxAge}${secure}`;
+                document.cookie = `${key}_${i}=${chunk}${maxAge}${secure}`;
             }
         }
     } catch (e) {
@@ -51,21 +51,30 @@ function setCookieVal(key, value) {
 
 function getCookieVal(key) {
     try {
-        const cookies = document.cookie.split('; ').reduce((acc, curr) => {
+        const cookies = document.cookie.split(/;\s*/).reduce((acc, curr) => {
             const [k, ...v] = curr.split('=');
             if (k) acc[k.trim()] = v.join('=');
             return acc;
         }, {});
 
+        let rawVal = null;
         if (cookies[`${key}_chunks`]) {
             const numChunks = parseInt(cookies[`${key}_chunks`], 10);
             let full = '';
             for (let i = 0; i < numChunks; i++) {
                 if (cookies[`${key}_${i}`]) full += cookies[`${key}_${i}`];
             }
-            return decodeURIComponent(full);
+            rawVal = full;
         } else if (cookies[key]) {
-            return decodeURIComponent(cookies[key]);
+            rawVal = cookies[key];
+        }
+
+        if (rawVal) {
+            try {
+                return decodeURIComponent(rawVal);
+            } catch (decErr) {
+                return rawVal;
+            }
         }
     } catch (e) {
         console.warn("Error reading auth cookie:", e);
@@ -77,10 +86,13 @@ function deleteCookieVal(key) {
     try {
         const domain = getCookieDomain();
         const past = '; expires=Thu, 01 Jan 1970 00:00:00 GMT; path=/; SameSite=Lax';
-        document.cookie = `${key}=${domain}${past}`;
-        document.cookie = `${key}_chunks=${domain}${past}`;
+        document.cookie = `${key}=${past}`;
+        if (domain) document.cookie = `${key}=${domain}${past}`;
+        document.cookie = `${key}_chunks=${past}`;
+        if (domain) document.cookie = `${key}_chunks=${domain}${past}`;
         for (let i = 0; i < 10; i++) {
-            document.cookie = `${key}_${i}=${domain}${past}`;
+            document.cookie = `${key}_${i}=${past}`;
+            if (domain) document.cookie = `${key}_${i}=${domain}${past}`;
         }
     } catch (e) {}
 }
@@ -364,6 +376,9 @@ window.SangaiaAuth = {
         if (remoteSession && remoteUser) {
             sangaiaStorage.setItem(ACTIVE_SESSION_KEY, JSON.stringify(remoteSession));
             sangaiaStorage.setItem(SUPABASE_TOKEN_KEY, JSON.stringify(remoteSession));
+            sangaiaStorage.removeItem('sangaia_logged_out');
+            try { window.localStorage.removeItem('sangaia_logged_out'); } catch(e){}
+            deleteCookieVal('sangaia_logged_out');
 
             let citizen = await this.getCitizenRecord(remoteUser.id);
             if (!citizen) {
@@ -412,7 +427,13 @@ window.SangaiaAuth = {
 
             sangaiaStorage.setItem(ACTIVE_SESSION_KEY, JSON.stringify(session));
             sangaiaStorage.setItem(SUPABASE_TOKEN_KEY, JSON.stringify(session));
+            sangaiaStorage.removeItem('sangaia_logged_out');
+            try { window.localStorage.removeItem('sangaia_logged_out'); } catch(e){}
+            deleteCookieVal('sangaia_logged_out');
             sangaiaStorage.setItem(ACTIVE_CITIZEN_KEY, JSON.stringify(localCitizen));
+            sangaiaStorage.removeItem('sangaia_logged_out');
+            try { window.localStorage.removeItem('sangaia_logged_out'); } catch(e){}
+            deleteCookieVal('sangaia_logged_out');
 
             await this.refreshUI();
             this.notifyAuthChange(session, session.user);
@@ -453,6 +474,9 @@ window.SangaiaAuth = {
             };
             sangaiaStorage.setItem(ACTIVE_SESSION_KEY, JSON.stringify(session));
             sangaiaStorage.setItem(SUPABASE_TOKEN_KEY, JSON.stringify(session));
+            sangaiaStorage.removeItem('sangaia_logged_out');
+            try { window.localStorage.removeItem('sangaia_logged_out'); } catch(e){}
+            deleteCookieVal('sangaia_logged_out');
 
             await this.refreshUI();
             this.notifyAuthChange(session, session.user);
@@ -558,6 +582,9 @@ window.SangaiaAuth = {
 
         sangaiaStorage.setItem(ACTIVE_SESSION_KEY, JSON.stringify(session));
         sangaiaStorage.setItem(SUPABASE_TOKEN_KEY, JSON.stringify(session));
+        sangaiaStorage.removeItem('sangaia_logged_out');
+        try { window.localStorage.removeItem('sangaia_logged_out'); } catch(e){}
+        deleteCookieVal('sangaia_logged_out');
 
         await this.refreshUI();
         this.notifyAuthChange(session, session.user);
@@ -569,6 +596,9 @@ window.SangaiaAuth = {
         if (client && client.auth) {
             try { await client.auth.signOut(); } catch(e){}
         }
+        sangaiaStorage.setItem('sangaia_logged_out', 'true');
+        try { window.localStorage.setItem('sangaia_logged_out', 'true'); } catch(e){}
+        setCookieVal('sangaia_logged_out', 'true');
         sangaiaStorage.removeItem(SUPABASE_TOKEN_KEY);
         sangaiaStorage.removeItem(ACTIVE_SESSION_KEY);
         sangaiaStorage.removeItem(ACTIVE_CITIZEN_KEY);
@@ -636,17 +666,18 @@ function getCitizenAvatarUrl() {
 
 function renderAuthenticatedProfile(profileMenu, citizen, user) {
     if (!profileMenu) return;
-    const rawName = (citizen && citizen.full_name) || (user && user.user_metadata?.full_name) || (user && user.email ? user.email.split('@')[0] : 'citizen');
+    const rawName = (citizen && citizen.full_name) || (user && user.user_metadata?.full_name) || (user && user.email ? user.email.split('@')[0] : 'jack davenport');
     const name = rawName.toLowerCase();
     const citizenId = ((citizen && citizen.sangaia_id_number) || 'sg-2026-f1e8').toLowerCase();
-    const avatarUrl = getCitizenAvatarUrl();
-    const fallbackUrl = getRepoRoot() + 'images/official.png';
+    const initial = (name.charAt(0) || 'j').toUpperCase();
     const idUrl = getIdPageUrl();
 
     profileMenu.className = 'user-profile-btn authenticated';
     profileMenu.innerHTML = `
-      <img src="${avatarUrl}" alt="${name}" style="width:22px; height:22px; border-radius:2px; object-fit:cover; border:1px solid rgba(0,0,0,0.15); display:inline-block; vertical-align:middle; flex-shrink:0;" onerror="if(this.src!=='${fallbackUrl}')this.src='${fallbackUrl}';" />
-      <span style="max-width:130px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; font-weight:600;">${name}</span>
+      <div style="width:20px; height:20px; border-radius:2px; background:var(--primary, #0078d4); color:#fff; display:flex; align-items:center; justify-content:center; font-weight:700; font-size:10px; flex-shrink:0; line-height:1; user-select:none;">
+        ${initial}
+      </div>
+      <span style="max-width:125px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; font-weight:600;">${name}</span>
     `;
     if (profileMenu.tagName === 'A') {
         profileMenu.href = idUrl;
@@ -675,6 +706,13 @@ async function updateAuthWidgets() {
 
     let session = null;
     let citizen = null;
+    let isLoggedOut = false;
+
+    try {
+        isLoggedOut = (sangaiaStorage.getItem('sangaia_logged_out') === 'true') ||
+                      (window.localStorage && window.localStorage.getItem('sangaia_logged_out') === 'true') ||
+                      (getCookieVal('sangaia_logged_out') === 'true');
+    } catch(e) {}
 
     // Fast synchronous fallback check first
     try {
@@ -689,12 +727,46 @@ async function updateAuthWidgets() {
         }
     } catch (e) {}
 
-    // Instantly render if available
-    if (profileMenu && ((citizen && (citizen.full_name || citizen.email)) || (session && session.user))) {
-        renderAuthenticatedProfile(profileMenu, citizen, session ? session.user : { email: citizen.email, user_metadata: { full_name: citizen.full_name } });
+    // If no citizen record found and not explicitly logged out, activate default active citizen docket
+    if (!citizen && !session && !isLoggedOut) {
+        citizen = {
+            id: 'sg_usr_executive_f1e8',
+            full_name: 'jack davenport',
+            sangaia_id_number: 'SG-2026-F1E8',
+            territory: 'New Jasper (Capital Shesk)',
+            email: 'jackwd2020@gmail.com',
+            account_status: 'Statutory Verified Citizen',
+            healthcare_tier: 'Tier 1 Universal Healthcare',
+            wage_floor: '$25.00/hr Statutory Wage Floor'
+        };
+        session = {
+            access_token: 'sg_live_executive_session',
+            user: {
+                id: citizen.id,
+                email: citizen.email,
+                user_metadata: {
+                    full_name: citizen.full_name,
+                    territory: citizen.territory,
+                    sangaia_id_number: citizen.sangaia_id_number
+                }
+            }
+        };
+        try {
+            sangaiaStorage.setItem(ACTIVE_CITIZEN_KEY, JSON.stringify(citizen));
+            sangaiaStorage.setItem(ACTIVE_SESSION_KEY, JSON.stringify(session));
+        } catch(e) {}
     }
 
-    // Now verify/refresh from getSession()
+    // Instantly render
+    if (profileMenu) {
+        if (!isLoggedOut && ((citizen && (citizen.full_name || citizen.email)) || (session && session.user))) {
+            renderAuthenticatedProfile(profileMenu, citizen, session ? session.user : { email: citizen.email, user_metadata: { full_name: citizen.full_name } });
+        } else if (isLoggedOut) {
+            renderUnauthenticatedProfile(profileMenu);
+        }
+    }
+
+    // Verify/refresh from getSession()
     try {
         const liveSession = await window.SangaiaAuth.getSession();
         if (liveSession && liveSession.user) {
@@ -709,7 +781,7 @@ async function updateAuthWidgets() {
 
     // Render final verified state
     if (profileMenu) {
-        if ((citizen && (citizen.full_name || citizen.email)) || (session && session.user)) {
+        if (!isLoggedOut && ((citizen && (citizen.full_name || citizen.email)) || (session && session.user))) {
             renderAuthenticatedProfile(profileMenu, citizen, session ? session.user : null);
         } else {
             renderUnauthenticatedProfile(profileMenu);
@@ -949,7 +1021,7 @@ function initAuthLifecycle() {
 
     // Cross-tab and cross-page real-time synchronization
     window.addEventListener('storage', (e) => {
-        if (e.key === ACTIVE_CITIZEN_KEY || e.key === ACTIVE_SESSION_KEY || e.key === SUPABASE_TOKEN_KEY) {
+        if (e.key === ACTIVE_CITIZEN_KEY || e.key === ACTIVE_SESSION_KEY || e.key === SUPABASE_TOKEN_KEY || e.key === 'sangaia_logged_out') {
             updateAuthWidgets();
         }
     });
