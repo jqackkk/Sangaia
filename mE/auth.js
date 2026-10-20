@@ -323,8 +323,9 @@ window.SangaiaAuth = {
     handleProfileClick(e) {
         const menu = document.getElementById('userProfileMenu');
         if (!menu) return;
-        // Don't toggle if clicking directly on a dropdown link
-        if (e.target.closest('.user-dropdown')) return;
+        // Don't toggle if clicking directly on a dropdown link or button
+        if (e && e.target && e.target.closest('.user-dropdown a, .user-dropdown button')) return;
+        if (e && e.stopPropagation) e.stopPropagation();
         menu.classList.toggle('open');
     },
 
@@ -653,16 +654,24 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // 3. User profile click handler
-    const menu = document.getElementById('userProfileMenu');
-    if (menu) {
-        menu.addEventListener('click', (e) => {
-            window.SangaiaAuth.handleProfileClick(e);
-        });
-        document.addEventListener('click', (e) => {
-            if (!menu.contains(e.target)) {
-                menu.classList.remove('open');
-            }
-        });
+    // 3. User profile click handler (guarded against duplicate registration)
+    if (typeof setupProfileDropdown === 'function') {
+        setupProfileDropdown();
+    } else {
+        const menu = document.getElementById('userProfileMenu');
+        if (menu && !menu._profileMenuInitialized) {
+            menu._profileMenuInitialized = true;
+            menu.addEventListener('click', (e) => {
+                if (e.target.closest('.user-dropdown a, .user-dropdown button')) return;
+                e.preventDefault();
+                e.stopPropagation();
+                menu.classList.toggle('open');
+            });
+            document.addEventListener('click', (e) => {
+                if (!menu.contains(e.target)) {
+                    menu.classList.remove('open');
+                }
+            });
+        }
     }
 });

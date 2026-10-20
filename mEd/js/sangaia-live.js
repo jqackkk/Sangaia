@@ -5,18 +5,8 @@
  */
 
 document.addEventListener('DOMContentLoaded', () => {
-    // 1. User Profile Dropdown Menu Toggle
-    const userProfileMenu = document.getElementById('userProfileMenu');
-    if (userProfileMenu) {
-        userProfileMenu.addEventListener('click', (e) => {
-            e.stopPropagation();
-            userProfileMenu.classList.toggle('open');
-        });
-
-        document.addEventListener('click', () => {
-            userProfileMenu.classList.remove('open');
-        });
-    }
+    // 1. User Profile Dropdown Menu Toggle (de-duplicated across auth.js & sangaia-live.js)
+    setupProfileDropdown();
 
     // 2. Generic Modal System Setup
     setupModalSystem();
@@ -30,6 +20,29 @@ document.addEventListener('DOMContentLoaded', () => {
     // 5. Dynamic Variable-Width Search Box
     setupDynamicSearchWidth();
 });
+
+// User Profile Dropdown Menu Setup (guarded against duplicate event listener registration)
+function setupProfileDropdown() {
+    const menu = document.getElementById('userProfileMenu');
+    if (!menu || menu._profileMenuInitialized) return;
+    menu._profileMenuInitialized = true;
+
+    menu.addEventListener('click', (e) => {
+        // If clicking on an anchor/button inside the dropdown, allow navigation / handler to fire
+        if (e.target.closest('.user-dropdown a, .user-dropdown button')) {
+            return;
+        }
+        e.preventDefault();
+        e.stopPropagation();
+        menu.classList.toggle('open');
+    });
+
+    document.addEventListener('click', (e) => {
+        if (!menu.contains(e.target)) {
+            menu.classList.remove('open');
+        }
+    });
+}
 
 // Sub-Navigation Tab State Handling
 function setupSubnavTabs() {

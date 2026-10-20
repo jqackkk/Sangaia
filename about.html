@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>About the United Provinces of Sangaia :: Sangaia Live</title>
+  <title>The Aeretocrat & Constitutional Guardianship :: Sangaia Live</title>
   <link href="https://cdn.metroui.org.ua/4.5.12/icons.css" rel="stylesheet">
   <style>
 /* ==========================================================================
@@ -359,19 +359,30 @@ a:hover {
   display: none;
   position: absolute;
   right: 0;
-  top: 36px;
+  top: 100%;
+  margin-top: 6px;
   background: #fff;
   color: var(--text-main);
   border: 1px solid var(--border);
-  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  box-shadow: 0 4px 16px rgba(0,0,0,0.18);
   border-radius: 2px;
-  width: 200px;
+  width: 210px;
   z-index: 1000;
-  padding: 8px 0;
+  padding: 6px 0;
 }
 
-.user-profile-menu.open .user-dropdown {
+.user-profile-menu.open .user-dropdown,
+.user-profile-menu:hover .user-dropdown {
   display: block;
+}
+
+.user-profile-menu .user-dropdown::before {
+  content: '';
+  position: absolute;
+  top: -10px;
+  left: 0;
+  right: 0;
+  height: 10px;
 }
 
 .user-dropdown .user-dropdown-header {
@@ -1114,20 +1125,20 @@ button,
       </div>
     </div>
     <div class="hero-content">
-      <h1>About Sangaia</h1>
-      <p>History, sovereign geography, demographic prosperity, and the Aeretocrat's mission</p>
+      <h1>the aeretocrat &amp; constitutional guardianship</h1>
+      <p>Supreme executive magistrate of the sovereign republic, guardian of the constitution & virtues</p>
       <div class="hero-breadcrumbs"><a href="/index.html">← federal portal</a></div>
     </div>
   </header>
 
   <!-- Navigation Bar -->
   <nav class="subnav">
-    <a href="/index.html" class="active">home</a>
-    <a href="/index.html#overview">overview</a>
-    <a href="/index.html#showcase">5 provinces</a>
-    <a href="/index.html#aeretocracy">the aeretocracy</a>
-    <a href="/index.html#ministries">9 ministries</a>
+    <a href="/index.html">home</a>
     <a href="/services.html">services</a>
+    <a href="/government.html">government</a>
+    <a href="/about.html" class="active">the aeretocrat</a>
+    <a href="/citizenship.html">citizenship</a>
+    <a href="/societal_press.html">societal press</a>
     <a href="/index.html#units">units (мн • °пт)</a>
   </nav>
 
@@ -1136,6 +1147,37 @@ button,
     <!-- Left Column: Primary Content -->
     <div class="left-col">
 
+    <div class="ol-card" id="mandate">
+        <div class="ol-card-title">
+            <span>The Office &amp; Mandate of the Aeretocrat</span>
+            <span class="ol-badge-tag ol-badge-success">Supreme Executive Magistrate</span>
+        </div>
+        <p>The <strong>Aeretocrat</strong> serves as the head of state and guardian of the constitutional compact of the United Provinces of Sangaia. Distinct from traditional political executives, the Aeretocrat holds an unalterable civic trust: to defend the republican order against oligarchic capture, maintain macroeconomic sanity ($0 foreign debt), ensure universal health and education as fundamental rights, and uphold the moral integrity of the public commonwealth.</p>
+        <div class="ol-grid-3" style="margin-top:12px;">
+            <div class="ol-metric-box">
+                <div class="ol-metric-val"><span class="mif-security fg-blue"></span></div>
+                <div class="ol-metric-lbl">Constitutional Guardian</div>
+            </div>
+            <div class="ol-metric-box">
+                <div class="ol-metric-val"><span class="mif-balance-scale fg-teal"></span></div>
+                <div class="ol-metric-lbl">Separation of Virtues</div>
+            </div>
+            <div class="ol-metric-box">
+                <div class="ol-metric-val"><span class="mif-organization fg-green"></span></div>
+                <div class="ol-metric-lbl">5 Provinces Accord</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="ol-card" id="oath">
+        <div class="ol-card-title">
+            <span>The Aeretocratic Oath of Office</span>
+            <span class="ol-badge-tag">Statutory Covenant</span>
+        </div>
+        <blockquote style="border-left: 3px solid var(--primary); padding-left: 14px; font-style: italic; color: #334155; margin: 8px 0; font-size: 14px; line-height: 1.6;">
+            &ldquo;I swear by the enduring soil of Sangaia, the dignity of its citizens, and the eternal supremacy of virtue over avarice, to defend the charter of our republic, reject foreign bondage, preserve the common wealth, and govern solely for the flourishing of our people.&rdquo;
+        </blockquote>
+    </div>
 
     <div class="ol-card" id="history">
         <div class="ol-card-title">
@@ -1172,11 +1214,12 @@ button,
 
       <div class="card">
         <h3>Sovereign Republic</h3>
-        <p style="color: var(--text-muted); font-size: 12px; margin-bottom: 8px;">Overview & History</p>
+        <p style="color: var(--text-muted); font-size: 12px; margin-bottom: 8px;">Overview & Mandate</p>
         <ul class="sidebar-nav-list">
-          <li><a href="#overview" class="active"><span class="mif-chevron-right"></span> Republic History</a></li>
-<li><a href="#geography"><span class="mif-chevron-right"></span> Geography & 5 Provinces</a></li>
-<li><a href="#economy"><span class="mif-chevron-right"></span> Monetary Foundations</a></li>
+          <li><a href="#mandate" class="active"><span class="mif-chevron-right"></span> The Aeretocrat's Mandate</a></li>
+<li><a href="#oath"><span class="mif-chevron-right"></span> Constitutional Oath</a></li>
+<li><a href="#history"><span class="mif-chevron-right"></span> Republic Founding & History</a></li>
+<li><a href="#geography"><span class="mif-chevron-right"></span> Geography of 5 Provinces</a></li>
 <li><a href="/government.html"><span class="mif-chevron-right"></span> Government Structure</a></li>
 
         </ul>

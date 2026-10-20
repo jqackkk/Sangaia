@@ -103,11 +103,11 @@ def generate_page(
     else:
         nav_tabs = [
             ("home", "home", "/index.html"),
-            ("overview", "overview", "/index.html#overview"),
-            ("provinces", "5 provinces", "/index.html#showcase"),
-            ("aeretocracy", "the aeretocracy", "/index.html#aeretocracy"),
-            ("ministries", "9 ministries", "/index.html#ministries"),
             ("services", "services", "/services.html"),
+            ("government", "government", "/government.html"),
+            ("aeretocrat", "the aeretocrat", "/about.html"),
+            ("citizenship", "citizenship", "/citizenship.html"),
+            ("press", "societal press", "/societal_press.html"),
             ("units", "units (мн • °пт)", "/index.html#units"),
         ]
 

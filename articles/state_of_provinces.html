@@ -359,19 +359,30 @@ a:hover {
   display: none;
   position: absolute;
   right: 0;
-  top: 36px;
+  top: 100%;
+  margin-top: 6px;
   background: #fff;
   color: var(--text-main);
   border: 1px solid var(--border);
-  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  box-shadow: 0 4px 16px rgba(0,0,0,0.18);
   border-radius: 2px;
-  width: 200px;
+  width: 210px;
   z-index: 1000;
-  padding: 8px 0;
+  padding: 6px 0;
 }
 
-.user-profile-menu.open .user-dropdown {
+.user-profile-menu.open .user-dropdown,
+.user-profile-menu:hover .user-dropdown {
   display: block;
+}
+
+.user-profile-menu .user-dropdown::before {
+  content: '';
+  position: absolute;
+  top: -10px;
+  left: 0;
+  right: 0;
+  height: 10px;
 }
 
 .user-dropdown .user-dropdown-header {
@@ -1123,11 +1134,11 @@ button,
   <!-- Navigation Bar -->
   <nav class="subnav">
     <a href="/index.html">home</a>
-    <a href="/index.html#overview">overview</a>
-    <a href="/index.html#showcase">5 provinces</a>
-    <a href="/index.html#aeretocracy">the aeretocracy</a>
-    <a href="/index.html#ministries">9 ministries</a>
     <a href="/services.html">services</a>
+    <a href="/government.html">government</a>
+    <a href="/about.html">the aeretocrat</a>
+    <a href="/citizenship.html">citizenship</a>
+    <a href="/societal_press.html">societal press</a>
     <a href="/index.html#units">units (мн • °пт)</a>
   </nav>
 

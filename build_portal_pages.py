@@ -20,6 +20,16 @@ import shutil
 from generate_all_sites import generate_page
 from build_id_portal import build_id_pages
 
+FEDERAL_NAV_TABS = [
+    ("home", "home", "/index.html"),
+    ("services", "services", "/services.html"),
+    ("government", "government", "/government.html"),
+    ("aeretocrat", "the aeretocrat", "/about.html"),
+    ("citizenship", "citizenship", "/citizenship.html"),
+    ("press", "societal press", "/societal_press.html"),
+    ("units", "units (мн • °пт)", "/index.html#units"),
+]
+
 # -----------------------------------------------------------------------------
 # 1. ROOT PORTAL HOME (index.html)
 # -----------------------------------------------------------------------------
@@ -313,16 +323,7 @@ def build_index():
     </div>
     """
 
-    federal_nav_tabs = [
-        ("home", "federal home", "/index.html"),
-        ("overview", "overview", "#overview"),
-        ("showcase", "5 provinces", "#showcase"),
-        ("aeretocracy", "the aeretocracy", "#aeretocracy"),
-        ("ministries", "9 ministries", "#ministries"),
-        ("units", "units (мн • °пт)", "#units"),
-        ("services", "services", "/services.html"),
-    ]
-    generate_page("index.html", title, theme, tab, hero_title, hero_sub, "sovereign republic of sangaia", "federal executive gateway", "live infrastructure", sidebar_links, main_content, sidebar_right, custom_nav_tabs=federal_nav_tabs)
+    generate_page("index.html", title, theme, tab, hero_title, hero_sub, "sovereign republic of sangaia", "federal executive gateway", "live infrastructure", sidebar_links, main_content, sidebar_right, custom_nav_tabs=FEDERAL_NAV_TABS)
 
 # -----------------------------------------------------------------------------
 # 2. SOVEREIGN WEIGHTS & MEASURES (units.html redirect)
@@ -495,7 +496,7 @@ def build_services():
     </script>
     """
 
-    generate_page("services.html", title, theme, tab, hero_title, hero_sub, "Public Service Delivery", "Unified Portal Hub", "72 Tools Online", sidebar_links, main_content, sidebar_right, "", scripts)
+    generate_page("services.html", title, theme, "services", hero_title, hero_sub, "Public Service Delivery", "Unified Portal Hub", "72 Tools Online", sidebar_links, main_content, sidebar_right, "", scripts, custom_nav_tabs=FEDERAL_NAV_TABS)
 
 # -----------------------------------------------------------------------------
 # 4. CITIZENSHIP & CHARTER (citizenship.html)
@@ -503,7 +504,7 @@ def build_services():
 def build_citizenship():
     title = "Sovereign Citizenship"
     theme = "theme-federal"
-    tab = "home"
+    tab = "citizenship"
     hero_title = "citizenship & civic rights of sangaia"
     hero_sub = "Equal opportunity naturalization, charter of liberties, civic responsibilities & the oath"
 
@@ -565,7 +566,7 @@ def build_citizenship():
     </div>
     """
 
-    generate_page("citizenship.html", title, theme, tab, hero_title, hero_sub, "Civic Registry Bureau", "Citizenship & Naturalization", "Registry Active", sidebar_links, main_content, sidebar_right)
+    generate_page("citizenship.html", title, theme, tab, hero_title, hero_sub, "Civic Registry Bureau", "Citizenship & Naturalization", "Registry Active", sidebar_links, main_content, sidebar_right, custom_nav_tabs=FEDERAL_NAV_TABS)
 
 # -----------------------------------------------------------------------------
 # 5. GOVERNMENT & ABOUT (government.html & about.html)
@@ -574,19 +575,26 @@ def build_gov_about():
     # government.html
     title_gov = "Government Structure & The Aeretocracy"
     theme = "theme-federal"
-    tab = "home"
+    tab = "government"
     hero_title_gov = "Constitutional Structure of the Republic"
     hero_sub = "Separation of Virtues &bull; The Aeretocrat, Council of Magistrates & 5 Sovereign Provinces"
 
     sidebar_links_gov = [
         {"label": "Constitutional Structure", "url": "#overview", "active": True},
-        {"label": "The Aeretocrat", "url": "#aeretocrat", "active": False},
+        {"label": "The Aeretocrat", "url": "/about.html", "active": False},
         {"label": "Separation of Virtues", "url": "#virtues", "active": False},
         {"label": "The 5 Provinces", "url": "#provinces", "active": False},
         {"label": "Cabinet of Ministers", "url": "#cabinet", "active": False}
     ]
 
     main_gov = """
+    <div class="ol-card" id="overview">
+        <div class="ol-card-title">
+            <span>Aeretocratic Constitutional Architecture</span>
+            <span class="ol-badge-tag ol-badge-success">Supreme Charter</span>
+        </div>
+        <p>The sovereign republic operates under a constitutional <strong>Aeretocracy</strong> (rule of excellence and virtue), strictly bounded by the civic covenant of 2024. Authority is decentralized across the five sovereign provinces, with executive guardianship entrusted to the Aeretocrat and independent councils.</p>
+    </div>
 
     <div class="ol-card" id="virtues">
         <div class="ol-card-title">
@@ -629,21 +637,53 @@ def build_gov_about():
     </div>
     """
 
-    generate_page("government.html", title_gov, theme, tab, hero_title_gov, hero_sub, "Constitutional Council", "Aeretocratic Governance", "Constitution Active", sidebar_links_gov, main_gov)
+    generate_page("government.html", title_gov, theme, tab, hero_title_gov, hero_sub, "Constitutional Council", "Aeretocratic Governance", "Constitution Active", sidebar_links_gov, main_gov, custom_nav_tabs=FEDERAL_NAV_TABS)
 
     # about.html
-    title_about = "About the United Provinces of Sangaia"
-    hero_title_about = "About Sangaia"
-    hero_sub_about = "History, sovereign geography, demographic prosperity, and the Aeretocrat's mission"
+    title_about = "The Aeretocrat & Constitutional Guardianship"
+    hero_title_about = "the aeretocrat &amp; constitutional guardianship"
+    hero_sub_about = "Supreme executive magistrate of the sovereign republic, guardian of the constitution & virtues"
 
     sidebar_links_about = [
-        {"label": "Republic History", "url": "#overview", "active": True},
-        {"label": "Geography & 5 Provinces", "url": "#geography", "active": False},
-        {"label": "Monetary Foundations", "url": "#economy", "active": False},
+        {"label": "The Aeretocrat's Mandate", "url": "#mandate", "active": True},
+        {"label": "Constitutional Oath", "url": "#oath", "active": False},
+        {"label": "Republic Founding & History", "url": "#history", "active": False},
+        {"label": "Geography of 5 Provinces", "url": "#geography", "active": False},
         {"label": "Government Structure", "url": "/government.html", "active": False}
     ]
 
     main_about = """
+    <div class="ol-card" id="mandate">
+        <div class="ol-card-title">
+            <span>The Office &amp; Mandate of the Aeretocrat</span>
+            <span class="ol-badge-tag ol-badge-success">Supreme Executive Magistrate</span>
+        </div>
+        <p>The <strong>Aeretocrat</strong> serves as the head of state and guardian of the constitutional compact of the United Provinces of Sangaia. Distinct from traditional political executives, the Aeretocrat holds an unalterable civic trust: to defend the republican order against oligarchic capture, maintain macroeconomic sanity ($0 foreign debt), ensure universal health and education as fundamental rights, and uphold the moral integrity of the public commonwealth.</p>
+        <div class="ol-grid-3" style="margin-top:12px;">
+            <div class="ol-metric-box">
+                <div class="ol-metric-val"><span class="mif-security fg-blue"></span></div>
+                <div class="ol-metric-lbl">Constitutional Guardian</div>
+            </div>
+            <div class="ol-metric-box">
+                <div class="ol-metric-val"><span class="mif-balance-scale fg-teal"></span></div>
+                <div class="ol-metric-lbl">Separation of Virtues</div>
+            </div>
+            <div class="ol-metric-box">
+                <div class="ol-metric-val"><span class="mif-organization fg-green"></span></div>
+                <div class="ol-metric-lbl">5 Provinces Accord</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="ol-card" id="oath">
+        <div class="ol-card-title">
+            <span>The Aeretocratic Oath of Office</span>
+            <span class="ol-badge-tag">Statutory Covenant</span>
+        </div>
+        <blockquote style="border-left: 3px solid var(--primary); padding-left: 14px; font-style: italic; color: #334155; margin: 8px 0; font-size: 14px; line-height: 1.6;">
+            &ldquo;I swear by the enduring soil of Sangaia, the dignity of its citizens, and the eternal supremacy of virtue over avarice, to defend the charter of our republic, reject foreign bondage, preserve the common wealth, and govern solely for the flourishing of our people.&rdquo;
+        </blockquote>
+    </div>
 
     <div class="ol-card" id="history">
         <div class="ol-card-title">
@@ -674,7 +714,7 @@ def build_gov_about():
     </div>
     """
 
-    generate_page("about.html", title_about, theme, tab, hero_title_about, hero_sub_about, "Sovereign Republic", "Overview & History", "Republic Stable", sidebar_links_about, main_about)
+    generate_page("about.html", title_about, theme, "aeretocrat", hero_title_about, hero_sub_about, "Sovereign Republic", "Overview & Mandate", "Republic Stable", sidebar_links_about, main_about, custom_nav_tabs=FEDERAL_NAV_TABS)
 
 # -----------------------------------------------------------------------------
 # 6. SOCIETAL PRESS (societal_press.html)
@@ -682,7 +722,7 @@ def build_gov_about():
 def build_societal_press():
     title = "societal press &amp; public record"
     theme = "theme-federal"
-    tab = "home"
+    tab = "press"
     hero_title = "the societal press"
     hero_sub = "official societal press, executive decrees, circulars, statutory regulations &amp; open government archives"
 
@@ -736,7 +776,7 @@ def build_societal_press():
     </div>
     """
 
-    generate_page("societal_press.html", title, theme, tab, hero_title, hero_sub, "societal press directorate", "public record authority", "societal press online", sidebar_links, main_content)
+    generate_page("societal_press.html", title, theme, tab, hero_title, hero_sub, "societal press directorate", "public record authority", "societal press online", sidebar_links, main_content, custom_nav_tabs=FEDERAL_NAV_TABS)
 
 # -----------------------------------------------------------------------------
 # 7. DASHBOARD & APPLICATIONS & ID & LITERACY
@@ -788,7 +828,7 @@ def build_supporting_portals():
         </div>
     </div>
     """
-    generate_page("dashboard.html", "National KPI Dashboard", theme, tab, "National Telemetry & Performance Dashboard", "Real-time key performance indicators across all 9 ministries", "Statistical Bureau", "Telemetry Directorate", "Metrics Live", [{"label": "National KPIs", "url": "#overview", "active": True}], dash_content)
+    generate_page("dashboard.html", "National KPI Dashboard", theme, "home", "National Telemetry & Performance Dashboard", "Real-time key performance indicators across all 9 ministries", "Statistical Bureau", "Telemetry Directorate", "Metrics Live", [{"label": "National KPIs", "url": "#overview", "active": True}], dash_content, custom_nav_tabs=FEDERAL_NAV_TABS)
 
     # application.html
     app_content = """
@@ -836,7 +876,7 @@ def build_supporting_portals():
     }
     </script>
     """
-    generate_page("application.html", "Public Application Portal", theme, tab, "Civic & Civil Service Application Portal", "Online filing gateway for citizenship, civil service & cooperative grants", "Civic Registry", "Application Hub", "Submissions Open", [{"label": "Application Form", "url": "#overview", "active": True}], app_content, "", "", app_scripts)
+    generate_page("application.html", "Public Application Portal", theme, "services", "Civic & Civil Service Application Portal", "Online filing gateway for citizenship, civil service & cooperative grants", "Civic Registry", "Application Hub", "Submissions Open", [{"label": "Application Form", "url": "#overview", "active": True}], app_content, "", "", app_scripts, custom_nav_tabs=FEDERAL_NAV_TABS)
 
     # id.html & id/index.html with One Live People layout
     build_id_pages()
@@ -915,8 +955,8 @@ def build_supporting_portals():
     }
     </script>
     """
-    generate_page("literacy_test.html", "Civic Examination Portal", theme, tab, "Civic Literacy & Naturalization Examination", "Interactive 5-question examination on constitutional virtues and sovereign units", "Academic Board", "Examination Authority", "Testing Active", [{"label": "Examination", "url": "#overview", "active": True}], exam_content, "", "", exam_scripts)
-    generate_page("literacy_exam_en.html", "Civic Examination Portal", theme, tab, "Civic Literacy & Naturalization Examination", "Interactive 5-question examination on constitutional virtues and sovereign units", "Academic Board", "Examination Authority", "Testing Active", [{"label": "Examination", "url": "#overview", "active": True}], exam_content, "", "", exam_scripts)
+    generate_page("literacy_test.html", "Civic Examination Portal", theme, "citizenship", "Civic Literacy & Naturalization Examination", "Interactive 5-question examination on constitutional virtues and sovereign units", "Academic Board", "Examination Authority", "Testing Active", [{"label": "Examination", "url": "#overview", "active": True}], exam_content, "", "", exam_scripts, custom_nav_tabs=FEDERAL_NAV_TABS)
+    generate_page("literacy_exam_en.html", "Civic Examination Portal", theme, "citizenship", "Civic Literacy & Naturalization Examination", "Interactive 5-question examination on constitutional virtues and sovereign units", "Academic Board", "Examination Authority", "Testing Active", [{"label": "Examination", "url": "#overview", "active": True}], exam_content, "", "", exam_scripts, custom_nav_tabs=FEDERAL_NAV_TABS)
 
 if __name__ == "__main__":
     build_index()

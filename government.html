@@ -359,19 +359,30 @@ a:hover {
   display: none;
   position: absolute;
   right: 0;
-  top: 36px;
+  top: 100%;
+  margin-top: 6px;
   background: #fff;
   color: var(--text-main);
   border: 1px solid var(--border);
-  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  box-shadow: 0 4px 16px rgba(0,0,0,0.18);
   border-radius: 2px;
-  width: 200px;
+  width: 210px;
   z-index: 1000;
-  padding: 8px 0;
+  padding: 6px 0;
 }
 
-.user-profile-menu.open .user-dropdown {
+.user-profile-menu.open .user-dropdown,
+.user-profile-menu:hover .user-dropdown {
   display: block;
+}
+
+.user-profile-menu .user-dropdown::before {
+  content: '';
+  position: absolute;
+  top: -10px;
+  left: 0;
+  right: 0;
+  height: 10px;
 }
 
 .user-dropdown .user-dropdown-header {
@@ -1122,12 +1133,12 @@ button,
 
   <!-- Navigation Bar -->
   <nav class="subnav">
-    <a href="/index.html" class="active">home</a>
-    <a href="/index.html#overview">overview</a>
-    <a href="/index.html#showcase">5 provinces</a>
-    <a href="/index.html#aeretocracy">the aeretocracy</a>
-    <a href="/index.html#ministries">9 ministries</a>
+    <a href="/index.html">home</a>
     <a href="/services.html">services</a>
+    <a href="/government.html" class="active">government</a>
+    <a href="/about.html">the aeretocrat</a>
+    <a href="/citizenship.html">citizenship</a>
+    <a href="/societal_press.html">societal press</a>
     <a href="/index.html#units">units (мн • °пт)</a>
   </nav>
 
@@ -1136,6 +1147,13 @@ button,
     <!-- Left Column: Primary Content -->
     <div class="left-col">
 
+    <div class="ol-card" id="overview">
+        <div class="ol-card-title">
+            <span>Aeretocratic Constitutional Architecture</span>
+            <span class="ol-badge-tag ol-badge-success">Supreme Charter</span>
+        </div>
+        <p>The sovereign republic operates under a constitutional <strong>Aeretocracy</strong> (rule of excellence and virtue), strictly bounded by the civic covenant of 2024. Authority is decentralized across the five sovereign provinces, with executive guardianship entrusted to the Aeretocrat and independent councils.</p>
+    </div>
 
     <div class="ol-card" id="virtues">
         <div class="ol-card-title">
@@ -1187,7 +1205,7 @@ button,
         <p style="color: var(--text-muted); font-size: 12px; margin-bottom: 8px;">Aeretocratic Governance</p>
         <ul class="sidebar-nav-list">
           <li><a href="#overview" class="active"><span class="mif-chevron-right"></span> Constitutional Structure</a></li>
-<li><a href="#aeretocrat"><span class="mif-chevron-right"></span> The Aeretocrat</a></li>
+<li><a href="/about.html"><span class="mif-chevron-right"></span> The Aeretocrat</a></li>
 <li><a href="#virtues"><span class="mif-chevron-right"></span> Separation of Virtues</a></li>
 <li><a href="#provinces"><span class="mif-chevron-right"></span> The 5 Provinces</a></li>
 <li><a href="#cabinet"><span class="mif-chevron-right"></span> Cabinet of Ministers</a></li>
