@@ -52,10 +52,13 @@
     /* Top Hero Header */
     .hero-header {
       position: relative;
-      background: linear-gradient(rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.5)),
-                  url('https://images.unsplash.com/photo-1519501025264-65ba15a82390?auto=format&fit=crop&w=1600&q=80') center/cover no-repeat;
-      color: #fff;
-      padding: 12px 48px 24px 48px;
+      background-color: #d7ecfa;
+      background-image: radial-gradient(ellipse at 42% 120%, rgba(255, 255, 255, 0.85), rgba(255, 255, 255, 0) 55%), linear-gradient(180deg, #b7dff5 0%, #9ed3f0 16%, #bfe4f7 40%, #ddf0fb 66%, #f2fafd 88%, #ffffff 100%);
+      background-repeat: no-repeat;
+      background-position: top center;
+      color: #14405c;
+      padding: 16px 48px 24px 48px;
+      border-bottom: 1px solid var(--border);
     }
 
     .top-bar {
@@ -72,78 +75,36 @@
       font-size: 22px;
       font-weight: 600;
       letter-spacing: -0.4px;
-      color: #fff;
+      color: #14405c;
     }
 
     .brand a {
-      color: #fff;
+      color: #14405c;
       text-decoration: none;
       display: inline-flex;
       align-items: center;
       gap: 10px;
       position: relative;
-      overflow: hidden;
-      padding: 4px 10px;
-      margin: -4px -10px;
+      padding: 2px 4px;
       border-radius: 2px;
-      transition: opacity 0.2s ease, background-color 0.2s ease;
+      transition: color 0.2s ease, text-shadow 0.25s ease;
     }
 
     .brand a:hover {
       text-decoration: none;
-      opacity: 1;
-      background-color: rgba(255, 255, 255, 0.1);
-    }
-
-    .brand a::after {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: -130%;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(
-        115deg,
-        transparent 0%,
-        rgba(255, 255, 255, 0.05) 25%,
-        rgba(255, 255, 255, 0.75) 50%,
-        rgba(255, 255, 255, 0.05) 75%,
-        transparent 100%
-      );
-      transform: skewX(-20deg);
-      pointer-events: none;
-      opacity: 0;
-    }
-
-    .brand a:hover::after {
-      animation: metroFlashSweep 0.65s cubic-bezier(0.2, 0.8, 0.25, 1) forwards;
-    }
-
-    .brand a:hover .mif-windows {
-      filter: drop-shadow(0 0 6px rgba(255, 255, 255, 0.8));
-      transition: filter 0.2s ease;
-    }
-
-    @keyframes metroFlashSweep {
-      0% {
-        left: -130%;
-        opacity: 0.2;
-      }
-      20% {
-        opacity: 1;
-      }
-      80% {
-        opacity: 1;
-      }
-      100% {
-        left: 150%;
-        opacity: 0;
-      }
+      color: var(--primary);
+      text-shadow: 0 0 8px rgba(0, 120, 212, 0.65), 0 0 16px rgba(0, 120, 212, 0.35);
     }
 
     .brand .mif-windows {
       font-size: 20px;
-      transition: filter 0.2s ease;
+      color: var(--primary);
+      transition: filter 0.25s ease, transform 0.2s ease;
+    }
+
+    .brand a:hover .mif-windows {
+      filter: drop-shadow(0 0 6px rgba(0, 120, 212, 0.8));
+      transform: scale(1.05);
     }
 
     .top-right {
@@ -156,10 +117,16 @@
       display: inline-flex;
       align-items: center;
       background: #fff;
+      border: 1px solid rgba(0, 0, 0, 0.16);
       border-radius: 2px;
       overflow: hidden;
-      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25);
-      transition: width 0.12s ease, box-shadow 0.15s ease;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+      transition: width 0.12s ease, box-shadow 0.15s ease, border-color 0.15s ease;
+    }
+
+    .search-box:focus-within {
+      border-color: var(--primary);
+      box-shadow: 0 0 0 1px var(--primary);
     }
 
     .search-box input {
@@ -172,6 +139,7 @@
       max-width: 380px;
       field-sizing: content;
       font-family: inherit;
+      color: var(--text-main);
       background: transparent;
       transition: width 0.12s ease;
     }
@@ -198,17 +166,19 @@
       display: flex;
       align-items: center;
       gap: 14px;
-      color: #fff;
+      color: #3f6579;
       font-size: 15px;
     }
 
     .top-icons span {
       cursor: pointer;
       opacity: 0.9;
+      transition: opacity 0.15s ease, color 0.15s ease;
     }
 
     .top-icons span:hover {
       opacity: 1;
+      color: var(--primary);
     }
 
     .user-profile-menu {
@@ -220,6 +190,32 @@
       font-weight: 500;
       position: relative;
       user-select: none;
+      color: #14405c;
+      transition: color 0.15s ease;
+    }
+
+    .user-profile-menu:hover {
+      color: var(--primary);
+    }
+
+    .user-profile-menu .mif-user {
+      color: var(--primary) !important;
+    }
+
+    .user-profile-menu .mif-arrow-drop-down {
+      color: #3f6579;
+    }
+
+    .user-profile-menu img {
+      width: 28px !important;
+      height: 28px !important;
+      max-width: 28px !important;
+      max-height: 28px !important;
+      border-radius: 2px;
+      border: 1px solid rgba(0, 0, 0, 0.15);
+      object-fit: contain;
+      background: #ffffff;
+      display: block;
     }
 
     .user-dropdown {
@@ -277,15 +273,15 @@
 
     .hero-content h1 {
       font-size: 32px;
-      font-weight: 400;
+      font-weight: 300;
       letter-spacing: -0.5px;
       line-height: 1.1;
+      color: #14405c;
     }
 
     .hero-content p {
       font-size: 13px;
-      font-style: italic;
-      opacity: 0.9;
+      color: #3f6579;
       margin-top: 4px;
       margin-bottom: 4px;
     }
@@ -298,28 +294,27 @@
       gap: 8px;
       font-size: 12.5px;
       font-style: normal;
-      color: rgba(255, 255, 255, 0.8);
+      color: #3f6579;
     }
 
     .hero-breadcrumbs a {
-      color: #ffffff;
+      color: var(--primary);
       text-decoration: none;
       display: inline-flex;
       align-items: center;
       gap: 4px;
-      opacity: 0.9;
       font-weight: 500;
-      transition: opacity 0.15s ease, text-decoration 0.15s ease;
+      transition: text-decoration 0.15s ease;
     }
 
     .hero-breadcrumbs a:hover {
-      opacity: 1;
       text-decoration: underline;
     }
 
     .hero-breadcrumbs .bc-sep {
       opacity: 0.6;
       font-size: 11px;
+      color: #3f6579;
       user-select: none;
     }
 
@@ -638,7 +633,7 @@
           <span class="mif-security" title="sovereign cryptographic clearance active"></span>
         </div>
         <div class="user-profile-menu unauthenticated" id="userProfileMenu">
-          <span class="mif-user" style="font-size: 15px; color:#fff;"></span>
+          <span class="mif-user" style="font-size: 15px; color:var(--primary);"></span>
           <span>sign in</span>
           <span class="mif-arrow-drop-down" style="font-size: 14px;"></span>
           <div class="user-dropdown">

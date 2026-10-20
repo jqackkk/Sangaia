@@ -17,6 +17,15 @@
   --accent-btn-hover: #5d707e;
   --metro-blue: #002050;
   --font-family: 'Segoe WP', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
+  /* Windows Live / Metro Atmospheric Hero Defaults (Sky Blue -> White) */
+  --hero-bg: #d7ecfa;
+  --hero-gradient: radial-gradient(ellipse at 42% 120%, rgba(255, 255, 255, 0.85), rgba(255, 255, 255, 0) 55%), linear-gradient(180deg, #b7dff5 0%, #9ed3f0 16%, #bfe4f7 40%, #ddf0fb 66%, #f2fafd 88%, #ffffff 100%);
+  --hero-title-color: #14405c;
+  --hero-sub-color: #3f6579;
+  --hero-brand-color: #14405c;
+  --glow-color: rgba(0, 120, 212, 0.65);
+  --glow-color-soft: rgba(0, 120, 212, 0.3);
 }
 
 /* --- Ministerial Theme Overrides --- */
@@ -24,54 +33,117 @@ body.theme-executive {
   --primary: #1e3a8a; /* Imperial Navy & Gold */
   --accent-btn: #1e3a8a;
   --accent-btn-hover: #172554;
+  --hero-bg: #dbeafe;
+  --hero-gradient: radial-gradient(ellipse at 42% 120%, rgba(255, 255, 255, 0.85), rgba(255, 255, 255, 0) 55%), linear-gradient(180deg, #bfdbfe 0%, #93c5fd 16%, #c7d2fe 40%, #e0e7ff 66%, #f1f5f9 88%, #ffffff 100%);
+  --hero-title-color: #172554;
+  --hero-sub-color: #334155;
+  --hero-brand-color: #1e3a8a;
+  --glow-color: rgba(30, 58, 138, 0.65);
+  --glow-color-soft: rgba(30, 58, 138, 0.3);
 }
 
 body.theme-treasury {
   --primary: #0f766e; /* Slate & Emerald */
   --accent-btn: #0f766e;
   --accent-btn-hover: #115e59;
+  --hero-bg: #ccfbf1;
+  --hero-gradient: radial-gradient(ellipse at 42% 120%, rgba(255, 255, 255, 0.85), rgba(255, 255, 255, 0) 55%), linear-gradient(180deg, #99f6e4 0%, #5eead4 16%, #a7f3d0 40%, #ccfbf1 66%, #f0fdfa 88%, #ffffff 100%);
+  --hero-title-color: #115e59;
+  --hero-sub-color: #285e61;
+  --hero-brand-color: #0f766e;
+  --glow-color: rgba(15, 118, 110, 0.65);
+  --glow-color-soft: rgba(15, 118, 110, 0.3);
 }
 
 body.theme-work {
   --primary: #6b21a8; /* Industrial Purple */
   --accent-btn: #6b21a8;
   --accent-btn-hover: #581c87;
+  --hero-bg: #f3e8ff;
+  --hero-gradient: radial-gradient(ellipse at 42% 120%, rgba(255, 255, 255, 0.85), rgba(255, 255, 255, 0) 55%), linear-gradient(180deg, #e9d5ff 0%, #d8b4fe 16%, #e9d5ff 40%, #f3e8ff 66%, #faf5ff 88%, #ffffff 100%);
+  --hero-title-color: #581c87;
+  --hero-sub-color: #6b21a8;
+  --hero-brand-color: #581c87;
+  --glow-color: rgba(107, 33, 168, 0.65);
+  --glow-color-soft: rgba(107, 33, 168, 0.3);
 }
 
 body.theme-healthcare {
   --primary: #b91c1c; /* Clinical Crimson */
   --accent-btn: #b91c1c;
   --accent-btn-hover: #991b1b;
+  --hero-bg: #ffe4e6;
+  --hero-gradient: radial-gradient(ellipse at 42% 120%, rgba(255, 255, 255, 0.85), rgba(255, 255, 255, 0) 55%), linear-gradient(180deg, #fecdd3 0%, #fda4af 16%, #fecdd3 40%, #ffe4e6 66%, #fff1f2 88%, #ffffff 100%);
+  --hero-title-color: #991b1b;
+  --hero-sub-color: #881337;
+  --hero-brand-color: #991b1b;
+  --glow-color: rgba(185, 28, 28, 0.65);
+  --glow-color-soft: rgba(185, 28, 28, 0.3);
 }
 
 body.theme-education {
   --primary: #0284c7; /* Academic Cyan */
   --accent-btn: #0284c7;
   --accent-btn-hover: #0369a1;
+  --hero-bg: #e0f2fe;
+  --hero-gradient: radial-gradient(ellipse at 42% 120%, rgba(255, 255, 255, 0.85), rgba(255, 255, 255, 0) 55%), linear-gradient(180deg, #bae6fd 0%, #7dd3fc 16%, #bae6fd 40%, #e0f2fe 66%, #f0f9ff 88%, #ffffff 100%);
+  --hero-title-color: #0369a1;
+  --hero-sub-color: #0284c7;
+  --hero-brand-color: #0369a1;
+  --glow-color: rgba(2, 132, 199, 0.65);
+  --glow-color-soft: rgba(2, 132, 199, 0.3);
 }
 
 body.theme-domestic {
   --primary: #1e293b; /* Deep Navy Blue */
   --accent-btn: #334155;
   --accent-btn-hover: #0f172a;
+  --hero-bg: #e2e8f0;
+  --hero-gradient: radial-gradient(ellipse at 42% 120%, rgba(255, 255, 255, 0.85), rgba(255, 255, 255, 0) 55%), linear-gradient(180deg, #cbd5e1 0%, #94a3b8 16%, #cbd5e1 40%, #e2e8f0 66%, #f1f5f9 88%, #ffffff 100%);
+  --hero-title-color: #0f172a;
+  --hero-sub-color: #334155;
+  --hero-brand-color: #1e293b;
+  --glow-color: rgba(30, 41, 59, 0.65);
+  --glow-color-soft: rgba(30, 41, 59, 0.3);
 }
 
 body.theme-external {
   --primary: #db2777; /* Diplomatic Rose / Pink */
   --accent-btn: #db2777;
   --accent-btn-hover: #be185d;
+  --hero-bg: #fce7f3;
+  --hero-gradient: radial-gradient(ellipse at 42% 120%, rgba(255, 255, 255, 0.85), rgba(255, 255, 255, 0) 55%), linear-gradient(180deg, #fbcfe8 0%, #f472b6 16%, #fbcfe8 40%, #fce7f3 66%, #fdf2f8 88%, #ffffff 100%);
+  --hero-title-color: #831843;
+  --hero-sub-color: #9d174d;
+  --hero-brand-color: #9d174d;
+  --glow-color: rgba(219, 39, 119, 0.65);
+  --glow-color-soft: rgba(219, 39, 119, 0.3);
 }
 
 body.theme-environment {
   --primary: #15803d; /* Forest Green */
   --accent-btn: #15803d;
   --accent-btn-hover: #166534;
+  --hero-bg: #dcfce7;
+  --hero-gradient: radial-gradient(ellipse at 42% 120%, rgba(255, 255, 255, 0.85), rgba(255, 255, 255, 0) 55%), linear-gradient(180deg, #bbf7d0 0%, #86efac 16%, #bbf7d0 40%, #dcfce7 66%, #f0fdf4 88%, #ffffff 100%);
+  --hero-title-color: #14532d;
+  --hero-sub-color: #15803d;
+  --hero-brand-color: #14532d;
+  --glow-color: rgba(21, 128, 61, 0.65);
+  --glow-color-soft: rgba(21, 128, 61, 0.3);
 }
 
 body.theme-propaganda {
   --primary: #ea580c; /* Vibrant Orange */
   --accent-btn: #ea580c;
   --accent-btn-hover: #c2410c;
+  --hero-bg: #ffedd5;
+  --hero-gradient: radial-gradient(ellipse at 42% 120%, rgba(255, 255, 255, 0.85), rgba(255, 255, 255, 0) 55%), linear-gradient(180deg, #fed7aa 0%, #fdba74 16%, #fed7aa 40%, #ffedd5 66%, #fff7ed 88%, #ffffff 100%);
+  --hero-title-color: #7c2d12;
+  --hero-sub-color: #c2410c;
+  --hero-brand-color: #7c2d12;
+  --glow-color: rgba(234, 88, 12, 0.65);
+  --glow-color-soft: rgba(234, 88, 12, 0.3);
 }
 
 body.theme-federal,
@@ -79,6 +151,13 @@ body.theme-default {
   --primary: #0078d4; /* Sovereign Windows Live Blue */
   --accent-btn: #6e8494;
   --accent-btn-hover: #5d707e;
+  --hero-bg: #d7ecfa;
+  --hero-gradient: radial-gradient(ellipse at 42% 120%, rgba(255, 255, 255, 0.85), rgba(255, 255, 255, 0) 55%), linear-gradient(180deg, #b7dff5 0%, #9ed3f0 16%, #bfe4f7 40%, #ddf0fb 66%, #f2fafd 88%, #ffffff 100%);
+  --hero-title-color: #14405c;
+  --hero-sub-color: #3f6579;
+  --hero-brand-color: #14405c;
+  --glow-color: rgba(0, 120, 212, 0.65);
+  --glow-color-soft: rgba(0, 120, 212, 0.3);
 }
 
 /* ==========================================================================
@@ -160,10 +239,13 @@ a:hover {
    ========================================================================== */
 .hero-header {
   position: relative;
-  background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.45)),
-              url('https://images.unsplash.com/photo-1519501025264-65ba15a82390?auto=format&fit=crop&w=1600&q=80') center/cover no-repeat;
-  color: #fff;
+  background-color: var(--hero-bg, #d7ecfa);
+  background-image: var(--hero-gradient, linear-gradient(180deg, #b7dff5 0%, #9ed3f0 16%, #bfe4f7 40%, #ddf0fb 66%, #f2fafd 88%, #ffffff 100%));
+  background-repeat: no-repeat;
+  background-position: top center;
+  color: var(--text-main);
   padding: 16px 36px 24px 36px;
+  border-bottom: 1px solid var(--border);
 }
 
 .top-bar {
@@ -183,7 +265,7 @@ a:hover {
 }
 
 .brand a, .brand span {
-  color: #fff;
+  color: var(--hero-brand-color, #14405c);
   text-decoration: none;
   display: inline-flex;
   align-items: center;
@@ -192,69 +274,26 @@ a:hover {
 
 .brand a {
   position: relative;
-  overflow: hidden;
-  padding: 4px 10px;
-  margin: -4px -10px;
+  padding: 2px 4px;
   border-radius: 2px;
-  transition: opacity 0.2s ease, background-color 0.2s ease;
+  transition: color 0.2s ease, text-shadow 0.25s ease;
 }
 
 .brand a:hover {
   text-decoration: none;
-  opacity: 1;
-  background-color: rgba(255, 255, 255, 0.1);
-}
-
-.brand a::after {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: -130%;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(
-    115deg,
-    transparent 0%,
-    rgba(255, 255, 255, 0.05) 25%,
-    rgba(255, 255, 255, 0.75) 50%,
-    rgba(255, 255, 255, 0.05) 75%,
-    transparent 100%
-  );
-  transform: skewX(-20deg);
-  pointer-events: none;
-  opacity: 0;
-}
-
-.brand a:hover::after {
-  animation: metroFlashSweep 0.65s cubic-bezier(0.2, 0.8, 0.25, 1) forwards;
-}
-
-.brand a:hover .mif-windows {
-  filter: drop-shadow(0 0 6px rgba(255, 255, 255, 0.8));
-  transition: filter 0.2s ease;
-}
-
-@keyframes metroFlashSweep {
-  0% {
-    left: -130%;
-    opacity: 0.2;
-  }
-  20% {
-    opacity: 1;
-  }
-  80% {
-    opacity: 1;
-  }
-  100% {
-    left: 150%;
-    opacity: 0;
-  }
+  color: var(--primary, #0078d4);
+  text-shadow: 0 0 8px var(--glow-color, rgba(0, 120, 212, 0.65)), 0 0 16px var(--glow-color-soft, rgba(0, 120, 212, 0.35));
 }
 
 .brand .mif-windows {
   font-size: 18px;
-  color: #fff;
-  transition: filter 0.2s ease;
+  color: var(--primary, #0078d4);
+  transition: filter 0.25s ease, transform 0.2s ease;
+}
+
+.brand a:hover .mif-windows {
+  filter: drop-shadow(0 0 6px var(--glow-color, rgba(0, 120, 212, 0.8)));
+  transform: scale(1.05);
 }
 
 .top-right {
@@ -267,10 +306,16 @@ a:hover {
   display: inline-flex;
   align-items: center;
   background: #ffffff;
+  border: 1px solid rgba(0, 0, 0, 0.16);
   border-radius: 2px;
   overflow: hidden;
-  box-shadow: 0 1px 3px rgba(0,0,0,0.2);
-  transition: width 0.12s ease, box-shadow 0.15s ease;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+  transition: width 0.12s ease, box-shadow 0.15s ease, border-color 0.15s ease;
+}
+
+.search-box:focus-within {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 1px var(--primary);
 }
 
 .search-box input {
@@ -310,18 +355,19 @@ a:hover {
   display: flex;
   align-items: center;
   gap: 14px;
-  color: #fff;
+  color: var(--hero-sub-color, #4b6b82);
   font-size: 15px;
 }
 
 .top-icons span {
   cursor: pointer;
   opacity: 0.9;
-  transition: opacity 0.15s ease;
+  transition: opacity 0.15s ease, color 0.15s ease;
 }
 
 .top-icons span:hover {
   opacity: 1;
+  color: var(--primary);
 }
 
 .user-profile-menu {
@@ -333,6 +379,21 @@ a:hover {
   font-weight: 500;
   position: relative;
   user-select: none;
+  color: var(--hero-brand-color, #14405c);
+  transition: color 0.15s ease;
+}
+
+.user-profile-menu:hover {
+  color: var(--primary);
+}
+
+.user-profile-menu .mif-user {
+  color: var(--primary) !important;
+}
+
+.user-profile-menu .mif-arrow-drop-down {
+  color: var(--hero-sub-color, #4b6b82);
+  font-size: 14px;
 }
 
 .user-profile-menu img {
@@ -341,7 +402,7 @@ a:hover {
   max-width: 28px !important;
   max-height: 28px !important;
   border-radius: 2px;
-  border: 1px solid rgba(255,255,255,0.6);
+  border: 1px solid rgba(0, 0, 0, 0.15);
   object-fit: contain;
   background: #ffffff;
   display: block;
@@ -403,14 +464,15 @@ a:hover {
 
 .hero-content h1 {
   font-size: 28px;
-  font-weight: 400;
+  font-weight: 300;
   margin-bottom: 4px;
   letter-spacing: -0.5px;
+  color: var(--hero-title-color, #14405c);
 }
 
 .hero-content p {
-  font-size: 13px;
-  opacity: 0.9;
+  font-size: 13.5px;
+  color: var(--hero-sub-color, #3f6579);
   margin-bottom: 4px;
 }
 
@@ -422,22 +484,20 @@ a:hover {
   gap: 8px;
   font-size: 12.5px;
   font-style: normal;
-  color: rgba(255, 255, 255, 0.8);
+  color: var(--hero-sub-color, #3f6579);
 }
 
 .hero-breadcrumbs a {
-  color: #ffffff;
+  color: var(--primary);
   text-decoration: none;
   display: inline-flex;
   align-items: center;
   gap: 4px;
-  opacity: 0.9;
   font-weight: 500;
-  transition: opacity 0.15s ease, text-decoration 0.15s ease;
+  transition: text-decoration 0.15s ease;
 }
 
 .hero-breadcrumbs a:hover {
-  opacity: 1;
   text-decoration: underline;
 }
 
@@ -445,6 +505,7 @@ a:hover {
   opacity: 0.6;
   font-size: 11px;
   user-select: none;
+  color: var(--hero-sub-color, #3f6579);
 }
 
 /* ==========================================================================

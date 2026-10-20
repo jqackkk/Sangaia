@@ -185,7 +185,7 @@ def generate_page(
           <span class="mif-security" title="sovereign clearance active"></span>
         </div>
         <div class="user-profile-menu unauthenticated" id="userProfileMenu">
-          <span class="mif-user" style="font-size:15px; color:#fff;"></span>
+          <span class="mif-user" style="font-size:15px; color:var(--primary);"></span>
           <span>sign in</span>
           <span class="mif-arrow-drop-down" style="font-size: 14px;"></span>
           <div class="user-dropdown">

@@ -394,7 +394,7 @@ async function updateAuthWidgets() {
         } else {
             profileMenu.className = 'user-profile-menu unauthenticated';
             profileMenu.innerHTML = `
-              <span class="mif-user" style="font-size:15px; color:#fff;"></span>
+              <span class="mif-user" style="font-size:15px; color:var(--primary, #0078d4);"></span>
               <span>sign in</span>
               <span class="mif-arrow-drop-down" style="font-size: 14px;"></span>
               <div class="user-dropdown">
