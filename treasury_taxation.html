@@ -248,6 +248,7 @@ a:hover {
    ========================================================================== */
 .hero-header {
   position: relative;
+  z-index: 100;
   background-color: var(--hero-bg, #d7ecfa);
   background-image: var(--hero-gradient, linear-gradient(180deg, #96cdef 0%, #b3def6 18%, #cbe8f8 38%, #e2f2fc 65%, #f4fafd 86%, #ffffff 100%));
   background-repeat: no-repeat;
@@ -323,6 +324,7 @@ body.theme-propaganda .hero-header {
   justify-content: space-between;
   align-items: center;
   margin-bottom: 24px;
+  overflow: visible;
 }
 
 .brand {
@@ -364,7 +366,7 @@ body.theme-propaganda .hero-header {
 
 .brand a:hover {
   text-decoration: none;
-  animation: brandShine 0.45s linear infinite;
+  animation: brandShine 0.45s linear forwards;
 }
 
 @keyframes brandShine {
