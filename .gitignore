@@ -1,4 +1,10 @@
-__pycache__/
+# Python build scripts and bytecode
+*.py
 *.pyc
+__pycache__/
+scripts/
+
+# OS files
 .DS_Store
+Thumbs.db
 
