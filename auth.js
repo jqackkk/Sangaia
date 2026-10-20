@@ -468,7 +468,7 @@ function createAuthModalDOM() {
           <form id="modalSignUpForm" onsubmit="handleModalSignUp(event)" style="display:none;">
             <div class="form-group" style="margin-bottom:10px;">
               <label style="display:block; font-size:12px; font-weight:600; margin-bottom:4px; text-transform:lowercase;">full legal name</label>
-              <input type="text" id="modalRegName" required placeholder="e.g. Jack Davenport" style="width:100%; border:1px solid #ccc; padding:7px 10px; font-size:13px; border-radius:2px; font-family:inherit; outline:none;" />
+              <input type="text" id="modalRegName" required placeholder="e.g. John Doe" style="width:100%; border:1px solid #ccc; padding:7px 10px; font-size:13px; border-radius:2px; font-family:inherit; outline:none;" />
             </div>
             <div class="form-group" style="margin-bottom:10px;">
               <label style="display:block; font-size:12px; font-weight:600; margin-bottom:4px; text-transform:lowercase;">date of birth</label>
