@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Ministry of the Treasury :: Sangaia Live</title>
+  <title>Ministry of External Affairs :: Sangaia Live</title>
   <link href="https://cdn.metroui.org.ua/4.5.12/icons.css" rel="stylesheet">
   <link rel="stylesheet" href="/css/sangaia-live.css?v=20261020_v2">
   <style>
@@ -1325,16 +1325,16 @@ button,
   <script src="/auth.js" onerror="this.onerror=null;this.src='auth.js';" defer></script>
   <script src="/js/sangaia-live.js" onerror="this.onerror=null;this.src='js/sangaia-live.js';" defer></script>
 </head>
-<body class="theme-treasury">
+<body class="theme-external">
 
   <!-- Top Hero Header -->
   <header class="hero-header">
     <div class="top-bar">
       <div class="brand">
-        <a href="/treasury.html"><span class="mif-money"></span> ministry of the treasury</a>
+        <a href="index.html"><span class="mif-earth"></span> ministry of external affairs</a>
       </div>
       <div class="top-right">
-        <form class="search-box" action="/services.html" method="get">
+        <form class="search-box" action="https://sangaia.org/services.html" method="get">
           <input type="text" name="q" placeholder="search anything" />
           <button type="submit" aria-label="Search"><span class="mif-search"></span></button>
         </form>
@@ -1342,28 +1342,27 @@ button,
           <span class="mif-bell" title="notifications"></span>
           <span class="mif-security" title="sovereign clearance active"></span>
         </div>
-        <a href="/id/" class="user-profile-btn unauthenticated" id="userProfileMenu" title="sign in to sangaia id">
+        <a href="https://sangaia.org/id/" class="user-profile-btn unauthenticated" id="userProfileMenu" title="sign in to sangaia id">
           <span class="mif-user"></span>
           <span>sign in</span>
         </a>
       </div>
     </div>
     <div class="hero-content">
-      <h1>ministry of the treasury</h1>
-      <p>Statutory fiscal solvency, sovereign debt management, taxation, infrastructure bonds & audit ledgers</p>
-      <div class="hero-breadcrumbs"><a href="/index.html">← federal portal</a></div>
+      <h1>ministry of external affairs</h1>
+      <p>Global travel advisories for all nations, sovereign treaties, embassies & diplomatic protocol</p>
+      <div class="hero-breadcrumbs"><a href="https://sangaia.org/index.html">← federal portal</a></div>
     </div>
   </header>
 
   <!-- Navigation Bar -->
   <nav class="subnav">
-    <a href="/treasury.html" class="active">treasury home</a>
-    <a href="/treasury_departments.html">departments</a>
-    <a href="/treasury.html#debt-ceiling">debt ceiling ($0)</a>
-    <a href="/treasury.html#loans">solidarity loans</a>
-    <a href="/treasury.html#fund-allocation">budget ledger</a>
-    <a href="/treasury.html#electives">electives salaries</a>
-    <a href="/treasury.html#audits">check-ins & audits</a>
+    <a href="index.html" class="active">external home</a>
+    <a href="departments.html">departments</a>
+    <a href="#travel-advisories">travel advisories</a>
+    <a href="#treaties">treaties archive</a>
+    <a href="#embassies">global embassies</a>
+    <a href="#visa-services">visa services</a>
   </nav>
 
   <!-- Content Grid -->
@@ -1372,93 +1371,66 @@ button,
     <div class="left-col">
 
 
-    <!-- Zero Sovereign Debt Tracker -->
-    <div class="card" id="overview"><a id="debt"></a>
+    <!-- Travel Advisories for Every Worldwide Nation -->
+    <div class="card" id="overview"><a id="travel"></a>
         <div class="ol-card-title">
-            <span>Sovereign Debt Ceiling &amp; Foreign Solvency Ledger</span>
-            <span class="ol-badge-tag ol-badge-success">Constitutional Compliance</span>
+            <span>Global Travel Advisories &bull; Worldwide Nation Directory</span>
+            <span class="ol-badge-tag ol-badge-success">Consular Telemetry Live</span>
         </div>
-        <div class="ol-grid-3" style="margin-bottom:12px;">
-            <div class="ol-metric-box">
-                <div class="ol-metric-val">$ 0.00</div>
-                <div class="ol-metric-lbl">Foreign Sovereign Debt</div>
-            </div>
-            <div class="ol-metric-box">
-                <div class="ol-metric-val">100.0%</div>
-                <div class="ol-metric-lbl">National Fiscal Solvency</div>
-            </div>
-            <div class="ol-metric-box">
-                <div class="ol-metric-val">3.2%</div>
-                <div class="ol-metric-lbl">10-Yr Solidarity Bond Yield</div>
-            </div>
+        <p class="ol-small">Official risk assessments and travel guidance issued by the Sangaian Consular Service for all recognized nations worldwide.</p>
+        <div style="margin-bottom:12px;">
+            <input type="text" class="ol-input" id="countrySearch" placeholder="Type country name (e.g., France, Japan, Switzerland, Canada)..." oninput="filterCountries()">
         </div>
-        <p class="ol-small">Under the Sangaian Sovereign Monetary Act, the federal government is constitutionally barred from issuing bonds to foreign banking institutions or incurring compound interest deficits. All municipal and provincial capital loans are funded via internal solidarity bonds backed by public utility revenues.</p>
+        <div style="max-height:300px; overflow-y:auto; border:1px solid #dfe3e7; border-radius:3px;">
+            <table class="ol-table" id="countryTable" style="margin:0;">
+                <thead>
+                    <tr><th>Nation</th><th>Advisory Tier</th><th>Sangaia Embassy Status</th><th>Entry Conditions</th></tr>
+                </thead>
+                <tbody>
+                    <tr class="country-row"><td>Switzerland</td><td><span class="ol-badge-tag ol-badge-success">Level 1: Normal Caution</span></td><td>Bern Embassy &bull; Fully Operational</td><td>Visa-free 90 Days</td></tr>
+                    <tr class="country-row"><td>Japan</td><td><span class="ol-badge-tag ol-badge-success">Level 1: Normal Caution</span></td><td>Tokyo Embassy &bull; Fully Operational</td><td>Visa-free 90 Days</td></tr>
+                    <tr class="country-row"><td>Norway</td><td><span class="ol-badge-tag ol-badge-success">Level 1: Normal Caution</span></td><td>Oslo Embassy &bull; Fully Operational</td><td>Visa-free 90 Days</td></tr>
+                    <tr class="country-row"><td>Canada</td><td><span class="ol-badge-tag ol-badge-success">Level 1: Normal Caution</span></td><td>Ottawa Embassy &bull; Fully Operational</td><td>Visa-free 90 Days</td></tr>
+                    <tr class="country-row"><td>United Kingdom</td><td><span class="ol-badge-tag ol-badge-success">Level 1: Normal Caution</span></td><td>London Embassy &bull; Fully Operational</td><td>Visa-free 90 Days</td></tr>
+                    <tr class="country-row"><td>United States</td><td><span class="ol-badge-tag ol-badge-warning">Level 2: Exercise Caution</span></td><td>Washington Embassy &bull; Operational</td><td>Electronic Visa Clearance</td></tr>
+                    <tr class="country-row"><td>Germany</td><td><span class="ol-badge-tag ol-badge-success">Level 1: Normal Caution</span></td><td>Berlin Embassy &bull; Fully Operational</td><td>Visa-free 90 Days</td></tr>
+                    <tr class="country-row"><td>France</td><td><span class="ol-badge-tag ol-badge-success">Level 1: Normal Caution</span></td><td>Paris Embassy &bull; Fully Operational</td><td>Visa-free 90 Days</td></tr>
+                    <tr class="country-row"><td>Australia</td><td><span class="ol-badge-tag ol-badge-success">Level 1: Normal Caution</span></td><td>Canberra Embassy &bull; Fully Operational</td><td>Visa-free 90 Days</td></tr>
+                    <tr class="country-row"><td>New Zealand</td><td><span class="ol-badge-tag ol-badge-success">Level 1: Normal Caution</span></td><td>Wellington Embassy &bull; Fully Operational</td><td>Visa-free 90 Days</td></tr>
+                    <tr class="country-row"><td>Brazil</td><td><span class="ol-badge-tag ol-badge-warning">Level 2: Exercise Caution</span></td><td>Brasília Embassy &bull; Operational</td><td>Consular Visa Required</td></tr>
+                    <tr class="country-row"><td>South Africa</td><td><span class="ol-badge-tag ol-badge-warning">Level 2: Exercise Caution</span></td><td>Pretoria Embassy &bull; Operational</td><td>Consular Visa Required</td></tr>
+                    <tr class="country-row"><td>Ukraine</td><td><span class="ol-badge-tag ol-badge-danger">Level 4: Do Not Travel</span></td><td>Operations Remote / Warsaw Hub</td><td>Emergency Consular Only</td></tr>
+                    <tr class="country-row"><td>Syria</td><td><span class="ol-badge-tag ol-badge-danger">Level 4: Do Not Travel</span></td><td>Operations Suspended</td><td>Strict Travel Warning</td></tr>
+                </tbody>
+            </table>
+        </div>
     </div>
 
-    <!-- Solidarity Infrastructure Loans -->
-    <div class="ol-card" id="loans">
+    <!-- Active & Past Sovereign Treaties -->
+    <div class="ol-card" id="treaties">
         <div class="ol-card-title">
-            <span>Provincial Solidarity Loans &amp; Public Works Credit</span>
-            <button type="button" class="ol-btn ol-btn-sm" onclick="openLoanModal()">Simulate Loan Terms</button>
+            <span>Sovereign Treaties &amp; International Accords Registry</span>
+            <span class="ol-badge-tag">Ratified by Aeretocrat</span>
         </div>
-        <p class="ol-small ol-muted">Zero-interest and low-fee public development facilities provided directly to provincial cooperatives, green transit authorities, and municipal water boards.</p>
         <table class="ol-table">
             <thead>
-                <tr>
-                    <th>Facility ID</th>
-                    <th>Recipient Agency</th>
-                    <th>Capital Amount</th>
-                    <th>Term &amp; Amortization</th>
-                    <th>Status</th>
-                </tr>
+                <tr><th>Treaty Accord Title</th><th>Signatory Parties</th><th>Ratification</th><th>Scope of Accord</th></tr>
             </thead>
             <tbody>
-                <tr><td>SNG-LN-091</td><td>Maritime Coastal Transit District (Liveland)</td><td>$ 14,000,000</td><td>15 Years &bull; Utility Offset</td><td><span class="ol-badge-tag ol-badge-success">Disbursing</span></td></tr>
-                <tr><td>SNG-LN-088</td><td>Highland Clean Geothermal Plant (Sentinel)</td><td>$ 28,500,000</td><td>20 Years &bull; Grid Revenue</td><td><span class="ol-badge-tag ol-badge-success">Operational</span></td></tr>
-                <tr><td>SNG-LN-084</td><td>Columbia Agro-Irrigation System (Columbia)</td><td>$ 9,200,000</td><td>10 Years &bull; Crop Royalties</td><td><span class="ol-badge-tag ol-badge-success">Amortizing</span></td></tr>
+                <tr><td>Geneva Maritime Passage Accord</td><td>Sangaia, Nordic &amp; Alpine States</td><td>Ratified 2024</td><td>Protection of commercial shipping and neutral ports</td></tr>
+                <tr><td>Bilateral Clean Energy &amp; Battery Pact</td><td>Sangaia &amp; Pacific Alliance</td><td>Ratified 2025</td><td>Zero-tariff exchange of geothermal and lithium components</td></tr>
+                <tr><td>Universal Diplomatic Immunity Treaty</td><td>International Red Cross &amp; Neutral Nations</td><td>Ratified 2024</td><td>Absolute protection of medical delegates and neutral attaches</td></tr>
             </tbody>
         </table>
     </div>
 
-    <!-- Ministerial Fund Allocations -->
-    <div class="ol-card" id="allocations">
+    <!-- Embassies & Consular Directory -->
+    <div class="ol-card" id="embassies">
         <div class="ol-card-title">
-            <span>Statutory Budgetary Allocations by Sector (FY2026)</span>
-            <span class="ol-badge-tag">Total: $ 103.6 B Outlays</span>
+            <span>Embassy &amp; Consular Availability</span>
+            <button type="button" class="ol-btn ol-btn-sm" onclick="openConsularModal()">Register Citizen Travel</button>
         </div>
-        <table class="ol-table">
-            <thead>
-                <tr><th>Ministerial Portfolio</th><th>Statutory Allocation</th><th>Share of Outlay</th><th>Primary Public Purpose</th></tr>
-            </thead>
-            <tbody>
-                <tr><td>Healthcare &amp; Universal Coverage</td><td>$ 28.4 Billion</td><td>27.4%</td><td>Free hospital care, clinics &amp; pharmaceuticals</td></tr>
-                <tr><td>Education &amp; Academic Standards</td><td>$ 22.8 Billion</td><td>22.0%</td><td>Tuition-free schools, research &amp; textbooks</td></tr>
-                <tr><td>Environment &amp; Biome Stewardship</td><td>$ 16.5 Billion</td><td>15.9%</td><td>Forest reserves, clean energy &amp; wildlife</td></tr>
-                <tr><td>Domestic Transit &amp; Roads</td><td>$ 14.2 Billion</td><td>13.7%</td><td>Highways, rail networks &amp; interprovincial bridges</td></tr>
-                <tr><td>Work &amp; Labor Standards</td><td>$ 10.8 Billion</td><td>10.4%</td><td>Vocational apprenticeships &amp; job board safety nets</td></tr>
-                <tr><td>Executive Administration &amp; Justice</td><td>$ 6.2 Billion</td><td>6.0%</td><td>Cabinet, High Magistrates &amp; societal press</td></tr>
-                <tr><td>Propaganda &amp; Civic Education</td><td>$ 4.7 Billion</td><td>4.5%</td><td>National broadcasting &amp; cultural radio</td></tr>
-            </tbody>
-        </table>
-    </div>
-
-    <!-- Council of Fiscal Rectitude & Surprise Audits -->
-    <div class="ol-card" id="audits">
-        <div class="ol-card-title">
-            <span>Council of Fiscal Rectitude &amp; Surprise Public Audits</span>
-            <button type="button" class="ol-btn ol-btn-sm" onclick="openAuditModal()">File Audit Inquiry</button>
-        </div>
-        <p class="ol-small">To eliminate bureaucratic graft and kickbacks, the Treasury conducts unannounced quarterly forensic inspections of all procurement contracts above $50,000.</p>
-        <div class="ol-grid-2" style="margin-top:10px;">
-            <div style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:3px; padding:12px;">
-                <strong>Latest Public Audit Audit (Q3 FY26):</strong>
-                <div class="ol-small" style="margin-top:4px;">Inspected 412 municipal procurement contracts across all 5 provinces. 99.4% full statutory compliance. 2 contracts flagged for vendor price reconciliation.</div>
-            </div>
-            <div style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:3px; padding:12px;">
-                <strong>Civilian Whistleblower Hotline:</strong>
-                <div class="ol-small" style="margin-top:4px;">Citizens reporting proven fiscal waste or procurement inflation receive statutory legal immunity and a 5% public savings bonus.</div>
-            </div>
-        </div>
+        <p class="ol-small">Sangaia maintains 48 diplomatic missions and 112 consular posts worldwide to assist Sangaian citizens abroad with emergency passports, legal aid, and evacuation services.</p>
     </div>
     
     </div>
@@ -1467,15 +1439,15 @@ button,
     <aside class="sidebar">
 
       <div class="card">
-        <h3>Ministry of the Treasury</h3>
-        <p style="color: var(--text-muted); font-size: 12px; margin-bottom: 8px;">Fiscal & Solvency Authority</p>
+        <h3>Ministry of External Affairs</h3>
+        <p style="color: var(--text-muted); font-size: 12px; margin-bottom: 8px;">Foreign Service & Diplomatic Corp</p>
         <ul class="sidebar-nav-list">
-          <li><a href="#overview" class="active"><span class="mif-chevron-right"></span> Overview & Solvency</a></li>
-<li><a href="#debt"><span class="mif-chevron-right"></span> Zero Sovereign Debt</a></li>
-<li><a href="#loans"><span class="mif-chevron-right"></span> Solidarity Loans</a></li>
-<li><a href="#allocations"><span class="mif-chevron-right"></span> Fund Allocations</a></li>
-<li><a href="#audits"><span class="mif-chevron-right"></span> Fiscal Rectitude & Audits</a></li>
-<li><a href="/treasury_departments.html"><span class="mif-chevron-right"></span> Departments Portal →</a></li>
+          <li><a href="#overview" class="active"><span class="mif-chevron-right"></span> Overview & Neutrality</a></li>
+<li><a href="#travel"><span class="mif-chevron-right"></span> Worldwide Travel Advisories</a></li>
+<li><a href="#treaties"><span class="mif-chevron-right"></span> Sovereign Treaties & Accords</a></li>
+<li><a href="#embassies"><span class="mif-chevron-right"></span> Embassies & Consulates</a></li>
+<li><a href="#protocol"><span class="mif-chevron-right"></span> Diplomatic Protocol</a></li>
+<li><a href="/externalaffairs_departments.html"><span class="mif-chevron-right"></span> Departments Portal →</a></li>
 
         </ul>
       </div>
@@ -1483,10 +1455,10 @@ button,
 
 
     <div class="ol-sidebox">
-        <h3>Treasury Portal</h3>
-        <p class="ol-small ol-muted">Access tax calculators, clearance verification, bond purchases, and open procurement listings.</p>
+        <h3>External Affairs</h3>
+        <p class="ol-small ol-muted">Manages diplomatic missions, international treaties, global commerce agreements, and consular services.</p>
         <div class="ol-mt-10">
-            <a href="/treasury_departments.html" class="ol-btn ol-btn-primary ol-btn-sm" style="width:100%; text-align:center;">Launch Treasury Departments</a>
+            <a href="/externalaffairs_departments.html" class="ol-btn ol-btn-primary ol-btn-sm" style="width:100%; text-align:center;">Launch External Departments</a>
         </div>
     </div>
     
@@ -1494,80 +1466,53 @@ button,
   </main>
 
 
-    <!-- Loan Simulator Modal -->
-    <div class="ol-modal-overlay" id="loanModal">
+    <!-- Consular Register Modal -->
+    <div class="ol-modal-overlay" id="consularModal">
         <div class="ol-modal-dialog">
             <div class="ol-modal-head">
-                <span class="ol-modal-title">Solidarity Public Works Loan Simulator</span>
-                <button type="button" class="ol-modal-close" onclick="closeModal('loanModal')">&times;</button>
+                <span class="ol-modal-title">Register International Travel with Consular Service</span>
+                <button type="button" class="ol-modal-close" onclick="closeModal('consularModal')">&times;</button>
             </div>
             <div class="form-group">
-                <label class="form-label">Borrowing Municipal Agency / Cooperative</label>
-                <input type="text" class="ol-input" id="loan-agency" placeholder="e.g., Liveland Port Authority">
+                <label class="form-label">Citizen Legal Name</label>
+                <input type="text" class="ol-input" id="c-name" placeholder="Name as on Passport">
             </div>
             <div class="form-group">
-                <label class="form-label">Requested Principal ($ Sangaian Dollars)</label>
-                <input type="number" class="ol-input" id="loan-amt" value="5000000" step="500000">
+                <label class="form-label">Sangaia Passport Number</label>
+                <input type="text" class="ol-input" id="c-pass" placeholder="SG-P-XXXXXXX">
             </div>
             <div class="form-group">
-                <label class="form-label">Repayment Term</label>
-                <select class="ol-select" id="loan-term">
-                    <option value="10">10 Years (0.0% Public Works Utility Rate)</option>
-                    <option value="15">15 Years (0.5% Administrative Surcharge)</option>
-                    <option value="20">20 Years (1.0% Infrastructure Bond Rate)</option>
-                </select>
+                <label class="form-label">Destination Country</label>
+                <input type="text" class="ol-input" id="c-dest" placeholder="e.g., Switzerland, Japan, Norway">
             </div>
-            <div class="modal-results-box" id="loanResults"></div>
+            <div class="form-group">
+                <label class="form-label">Dates of Travel</label>
+                <input type="text" class="ol-input" id="c-dates" placeholder="Departure - Return">
+            </div>
+            <div class="modal-results-box" id="cResults"></div>
             <div class="ol-modal-foot">
-                <button type="button" class="ol-btn" onclick="closeModal('loanModal')">Cancel</button>
-                <button type="button" class="ol-btn ol-btn-primary" onclick="calcLoan()">Calculate Amortization</button>
-            </div>
-        </div>
-    </div>
-
-    <!-- Audit Inquiry Modal -->
-    <div class="ol-modal-overlay" id="auditModal">
-        <div class="ol-modal-dialog">
-            <div class="ol-modal-head">
-                <span class="ol-modal-title">Submit Forensic Audit Inquiry</span>
-                <button type="button" class="ol-modal-close" onclick="closeModal('auditModal')">&times;</button>
-            </div>
-            <div class="form-group">
-                <label class="form-label">Target Department or Procurement Tender</label>
-                <input type="text" class="ol-input" id="audit-dept" placeholder="Department name or Contract ID">
-            </div>
-            <div class="form-group">
-                <label class="form-label">Nature of Discrepancy or Waste</label>
-                <textarea class="ol-textarea" id="audit-desc" rows="4" placeholder="Detail the observed discrepancy..."></textarea>
-            </div>
-            <div class="modal-results-box" id="auditResults"></div>
-            <div class="ol-modal-foot">
-                <button type="button" class="ol-btn" onclick="closeModal('auditModal')">Cancel</button>
-                <button type="button" class="ol-btn ol-btn-primary" onclick="submitAudit()">Submit to Inspector General</button>
+                <button type="button" class="ol-btn" onclick="closeModal('consularModal')">Cancel</button>
+                <button type="button" class="ol-btn ol-btn-primary" onclick="submitConsular()">Register Travel Itinerary</button>
             </div>
         </div>
     </div>
     
 
     <script>
-    function openLoanModal() { document.getElementById('loanModal').classList.add('active'); }
-    function openAuditModal() { document.getElementById('auditModal').classList.add('active'); }
-    function closeModal(id) { document.getElementById(id).classList.remove('active'); }
-
-    function calcLoan() {
-        const amt = parseFloat(document.getElementById('loan-amt').value) || 0;
-        const term = parseInt(document.getElementById('loan-term').value) || 10;
-        const rate = term === 10 ? 0.0 : (term === 15 ? 0.005 : 0.01);
-        const annual = (amt / term) * (1 + rate);
-        const res = document.getElementById('loanResults');
-        res.innerHTML = `<strong>Simulated Schedule:</strong> Annual Amortization: <strong>$ ${annual.toLocaleString(undefined, {maximumFractionDigits:2})}</strong> / year. Effective Statutory Interest: <strong>${(rate*100).toFixed(1)}%</strong>. Fully asset-backed.`;
-        res.classList.add('active');
+    function filterCountries() {
+        const q = (document.getElementById('countrySearch').value || '').toLowerCase();
+        document.querySelectorAll('.country-row').forEach(row => {
+            row.style.display = row.innerText.toLowerCase().includes(q) ? '' : 'none';
+        });
     }
 
-    function submitAudit() {
-        const res = document.getElementById('auditResults');
-        const token = 'TREAS-AUD-' + Math.floor(100000 + Math.random() * 900000);
-        res.innerHTML = `<strong>Inquiry Docketed:</strong> Tracking Token: <span style="font-family:monospace;">${token}</span>. Assigned to Council of Fiscal Rectitude. Protected under Whistleblower Shield.`;
+    function openConsularModal() { document.getElementById('consularModal').classList.add('active'); }
+    function closeModal(id) { document.getElementById(id).classList.remove('active'); }
+
+    function submitConsular() {
+        const res = document.getElementById('cResults');
+        const token = 'CONS-REG-' + Math.floor(100000 + Math.random() * 900000);
+        res.innerHTML = `<strong>Travel Registered:</strong> Itinerary Token: <span style="font-family:monospace;">${token}</span>. Nearest Embassy notified.`;
         res.classList.add('active');
     }
     </script>

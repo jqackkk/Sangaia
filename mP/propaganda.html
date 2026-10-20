@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Ministry of the Executive & Office of the Aeretocrat :: Sangaia Live</title>
+  <title>Ministry of Propaganda :: Sangaia Live</title>
   <link href="https://cdn.metroui.org.ua/4.5.12/icons.css" rel="stylesheet">
   <link rel="stylesheet" href="/css/sangaia-live.css?v=20261020_v2">
   <style>
@@ -1325,16 +1325,16 @@ button,
   <script src="/auth.js" onerror="this.onerror=null;this.src='auth.js';" defer></script>
   <script src="/js/sangaia-live.js" onerror="this.onerror=null;this.src='js/sangaia-live.js';" defer></script>
 </head>
-<body class="theme-executive">
+<body class="theme-propaganda">
 
   <!-- Top Hero Header -->
   <header class="hero-header">
     <div class="top-bar">
       <div class="brand">
-        <a href="/executive.html"><span class="mif-cabinet"></span> ministry of the executive</a>
+        <a href="index.html"><span class="mif-broadcast"></span> ministry of propaganda</a>
       </div>
       <div class="top-right">
-        <form class="search-box" action="/services.html" method="get">
+        <form class="search-box" action="https://sangaia.org/services.html" method="get">
           <input type="text" name="q" placeholder="search anything" />
           <button type="submit" aria-label="Search"><span class="mif-search"></span></button>
         </form>
@@ -1342,28 +1342,27 @@ button,
           <span class="mif-bell" title="notifications"></span>
           <span class="mif-security" title="sovereign clearance active"></span>
         </div>
-        <a href="/id/" class="user-profile-btn unauthenticated" id="userProfileMenu" title="sign in to sangaia id">
+        <a href="https://sangaia.org/id/" class="user-profile-btn unauthenticated" id="userProfileMenu" title="sign in to sangaia id">
           <span class="mif-user"></span>
           <span>sign in</span>
         </a>
       </div>
     </div>
     <div class="hero-content">
-      <h1>office of the aeretocrat & ministry of the executive</h1>
-      <p>Whole-of-government administration, the Cabinet, constitutional decrees & the Aeretocrat's Journal</p>
-      <div class="hero-breadcrumbs"><a href="/index.html">← federal portal</a></div>
+      <h1>ministry of propaganda & public information</h1>
+      <p>Civic broadcasting, live streaming radio, reporter integrity standards & recognized churches</p>
+      <div class="hero-breadcrumbs"><a href="https://sangaia.org/index.html">← federal portal</a></div>
     </div>
   </header>
 
   <!-- Navigation Bar -->
   <nav class="subnav">
-    <a href="/executive.html" class="active">executive home</a>
-    <a href="/executive_departments.html">departments</a>
-    <a href="/executive.html#journal">aeretocrat's journal</a>
-    <a href="/executive.html#macroeconomics">macroeconomics & gdp</a>
-    <a href="/executive.html#national-budget">national budget</a>
-    <a href="/executive.html#constitutional-framework">constitution & veto</a>
-    <a href="/executive.html#calendar">cabinet calendar</a>
+    <a href="index.html" class="active">propaganda home</a>
+    <a href="departments.html">departments</a>
+    <a href="#live-radio">live radio & broadcast</a>
+    <a href="#channels-directory">tv & radio directory</a>
+    <a href="#reporter-qualifications">reporter qualifications</a>
+    <a href="#churches-registry">religious audits</a>
   </nav>
 
   <!-- Content Grid -->
@@ -1372,160 +1371,74 @@ button,
     <div class="left-col">
 
 
-    <!-- Executive Dispatches & Philosophical Treatises Docket -->
-    <div class="card" id="overview"><a id="journal"></a>
+    <!-- Live Audio Radio Player -->
+    <div class="card" id="overview"><a id="radio"></a>
         <div class="ol-card-title">
-            <span>Executive Dispatches &amp; Philosophical Treatises</span>
-            <button type="button" class="ol-btn ol-btn-sm" onclick="openAskModal()">File Official Inquiry</button>
+            <span>Sangaia National Public Radio &bull; Live Audio Broadcast</span>
+            <span class="ol-badge-tag ol-badge-success">ON AIR NOW</span>
         </div>
-        <p class="ol-small ol-muted">Official philosophical treatises, civic virtue dissertations, and executive addresses promulgated by the Office of the Aeretocrat.</p>
+        <p class="ol-small">Tune in live to Sangaia National Radio 1: Civic addresses, classical orchestral performances, agricultural reports, and evening philosophical debates.</p>
 
-        <div class="docket-entry">
-            <div class="docket-entry-header">
+        <div style="background:#fff7ed; border:1px solid #fed7aa; border-radius:3px; padding:16px; margin-top:10px;">
+            <div style="display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:12px;">
                 <div>
-                    <span class="mif-file-text" style="color:var(--primary); margin-right:6px;"></span>
-                    <a href="javascript:void(0)" onclick="openDispatch(1)" class="docket-entry-title">On the Moral Necessity of Sovereign Solvency</a>
+                    <strong style="color:#7c2d12; font-size:15px;" id="currentTrackTitle"><span class="mif-broadcast mif-lg fg-orange"></span> sangaia national radio 1 &bull; 94.5 fm stereo</strong>
+                    <div class="ol-small ol-muted">now playing: "concert for the five provinces" &bull; shesk philharmonic orchestra</div>
                 </div>
-                <span class="ol-badge-tag">Macroeconomics</span>
-            </div>
-            <p class="docket-entry-body">&ldquo;A nation that borrows from predatory international banking cartels sells the birthright of its unborn generations. In Sangaia, our constitutional prohibition on foreign sovereign debt is not merely fiscal prudence—it is our absolute shield of national liberty.&rdquo;</p>
-            <div class="docket-entry-meta">Promulgated October 19, 2026 &bull; Official Dispatch No. EX-2026-08 &bull; <a href="javascript:void(0)" onclick="openDispatch(1)">Read Full Dispatch &rarr;</a></div>
-        </div>
-
-        <div class="docket-entry">
-            <div class="docket-entry-header">
-                <div>
-                    <span class="mif-file-text" style="color:var(--primary); margin-right:6px;"></span>
-                    <a href="javascript:void(0)" onclick="openDispatch(2)" class="docket-entry-title">Why the Aeretocracy Replaces Partisan Strife</a>
+                <div style="display:flex; align-items:center; gap:8px;">
+                    <button type="button" class="ol-btn ol-btn-primary" id="radioPlayBtn" onclick="toggleRadio()"><span class="mif-play"></span> listen live</button>
+                    <span class="ol-badge-tag" id="radioStatus">buffer ready</span>
                 </div>
-                <span class="ol-badge-tag">Political Philosophy</span>
             </div>
-            <p class="docket-entry-body">&ldquo;Party systems do not encourage debate; they encourage tribal warfare funded by oligarchs. By aligning ministerial councils with strict meritocratic and constitutional virtues, we ensure every decision serves the common good.&rdquo;</p>
-            <div class="docket-entry-meta">Promulgated October 12, 2026 &bull; Official Dispatch No. EX-2026-07 &bull; <a href="javascript:void(0)" onclick="openDispatch(2)">Read Full Dispatch &rarr;</a></div>
-        </div>
-
-        <div class="docket-entry">
-            <div class="docket-entry-header">
-                <div>
-                    <span class="mif-file-text" style="color:var(--primary); margin-right:6px;"></span>
-                    <a href="javascript:void(0)" onclick="openDispatch(3)" class="docket-entry-title">Harmonizing the Five Sovereign Provinces</a>
-                </div>
-                <span class="ol-badge-tag">Federalism</span>
-            </div>
-            <p class="docket-entry-body">&ldquo;From the coastal harbors of Liveland to the highlands of Sentinel, New Jasper, New Madison, and Columbia, our diversity is our endurance. Let each province foster its unique traditions within our unbreakable union.&rdquo;</p>
-            <div class="docket-entry-meta">Promulgated October 5, 2026 &bull; Official Dispatch No. EX-2026-06 &bull; <a href="javascript:void(0)" onclick="openDispatch(3)">Read Full Dispatch &rarr;</a></div>
+            <!-- Standard simulated Web Audio synthesis for authentic radio tone -->
+            <audio id="simAudio" preload="none"></audio>
         </div>
     </div>
 
-    <!-- Macroeconomics & GDP -->
-    <div class="ol-card" id="macroeconomics">
+    <!-- Sovereign TV & Educational Channels -->
+    <div class="ol-card" id="tv">
         <div class="ol-card-title">
-            <span>Macroeconomic Telemetry &amp; National GDP</span>
-            <span class="ol-badge-tag ol-badge-success">Q3 FY2026 Verified</span>
-        </div>
-        <div class="ol-grid-3" style="margin-bottom:14px;">
-            <div class="ol-metric-box">
-                <div class="ol-metric-val">$ 482.4 B</div>
-                <div class="ol-metric-lbl">Gross Domestic Product</div>
-            </div>
-            <div class="ol-metric-box">
-                <div class="ol-metric-val">+ 4.8%</div>
-                <div class="ol-metric-lbl">Annual Real GDP Growth</div>
-            </div>
-            <div class="ol-metric-box">
-                <div class="ol-metric-val">$ 68,920</div>
-                <div class="ol-metric-lbl">GDP Per Capita</div>
-            </div>
+            <span>National Television &amp; Educational Broadcast Networks</span>
+            <span class="ol-badge-tag">Free Over-The-Air &amp; Digital</span>
         </div>
         <table class="ol-table">
             <thead>
-                <tr>
-                    <th>Provincial Territory</th>
-                    <th>Regional GDP</th>
-                    <th>Leading Economic Sector</th>
-                    <th>Labor Force Participation</th>
-                </tr>
+                <tr><th>Channel</th><th>Network Name</th><th>Programming Focus</th><th>Broadcast Availability</th></tr>
             </thead>
             <tbody>
-                <tr><td>New Jasper (Capital Shesk)</td><td>$ 142.1 B</td><td>Advanced Technology &amp; Governance</td><td>84.2%</td></tr>
-                <tr><td>New Madison (Madison City)</td><td>$ 118.6 B</td><td>Bio-Agriculture &amp; Manufacturing</td><td>81.9%</td></tr>
-                <tr><td>Liveland (Oaks)</td><td>$ 94.3 B</td><td>Maritime Logistics &amp; Aquaculture</td><td>83.1%</td></tr>
-                <tr><td>Sentinel (Sentinel Ridge)</td><td>$ 68.2 B</td><td>Mineral Stewardship &amp; Clean Energy</td><td>79.4%</td></tr>
-                <tr><td>Columbia (Columbia City)</td><td>$ 59.2 B</td><td>Cultural Arts &amp; Aerospace Research</td><td>82.6%</td></tr>
+                <tr><td>Channel 1</td><td>Sangaia State Television (SSTV)</td><td>Official State Addresses, Documentary &amp; World News</td><td>All 5 Provinces (1080p DTV)</td></tr>
+                <tr><td>Channel 2</td><td>The Civic Academy (EduTV)</td><td>University Lectures, STEM Curriculum &amp; Language Lessons</td><td>All 5 Provinces (1080p DTV)</td></tr>
+                <tr><td>Channel 3</td><td>Provincial Culture &amp; Arts (PCA)</td><td>Regional Theater, Folklore, Classical Symphony &amp; Poetry</td><td>All 5 Provinces (1080p DTV)</td></tr>
+                <tr><td>Channel 4</td><td>Agricultural &amp; Biome Network (ABN)</td><td>Farming Techniques, Weather in &deg;Пт, Wildlife Reports</td><td>All 5 Provinces (1080p DTV)</td></tr>
             </tbody>
         </table>
     </div>
 
-    <!-- National Budget & Surplus -->
-    <div class="ol-card" id="national-budget">
+    <!-- Reporter Integrity & Accreditation Standards -->
+    <div class="ol-card" id="reporters">
         <div class="ol-card-title">
-            <span>National Budget &amp; Sovereign Fiscal Surplus</span>
-            <span class="ol-badge-tag ol-badge-success">Zero Foreign Debt</span>
+            <span>Professional Journalist &amp; Reporter Accreditation Registry</span>
+            <button type="button" class="ol-btn ol-btn-sm" onclick="openPressModal()">Verify Press Credential</button>
         </div>
-        <p class="ol-small ol-muted">In accordance with Constitutional Mandate, statutory federal expenses are 100% matched with collected land resource royalties, enterprise duties, and excise surpluses.</p>
-        <div class="ol-grid-2" style="margin-top:10px;">
-            <div style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:3px; padding:12px;">
-                <strong style="color:#1e3a8a;">Total Federal Revenues (FY2026):</strong>
-                <div style="font-size:20px; font-weight:700; color:#1e3a8a; margin:4px 0;">$ 114.8 Billion</div>
-                <div class="ol-small ol-muted">Land Use Royalties: 42% &bull; Progressive Surcharges: 34% &bull; Tariffs: 24%</div>
-            </div>
-            <div style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:3px; padding:12px;">
-                <strong style="color:#166534;">Statutory Net Surplus:</strong>
-                <div style="font-size:20px; font-weight:700; color:#166534; margin:4px 0;">+ $ 11.2 Billion</div>
-                <div class="ol-small ol-muted">Directed to Sovereign Solidarity Reserve Fund &amp; Provincial Biome Trust.</div>
-            </div>
-        </div>
+        <p class="ol-small">Under the Truth in Journalism Accord, accredited reporters must declare all commercial sponsors, publish unedited interview transcripts upon request, and are protected from state censorship.</p>
     </div>
 
-    <!-- Constitutional Framework -->
-    <div class="ol-card" id="constitutional-framework">
+    <!-- Recognized Churches in Sangaia -->
+    <div class="ol-card" id="churches">
         <div class="ol-card-title">
-            <span>Constitutional Framework &amp; Sovereign Decrees</span>
-            <a class="ol-title-link" href="/societal_press.html">societal press &rarr;</a>
+            <span>Registry of Recognized Churches &amp; Religious Societies</span>
+            <span class="ol-badge-tag">Freedom of Conscience</span>
         </div>
-        <p class="ol-small">The Constitution of the United Provinces of Sangaia establishes an unalterable framework of checks and virtues:</p>
-        <ul class="ol-small" style="line-height:1.6;">
-            <li><strong>Executive Decree No. 101:</strong> Prohibition of Foreign Debt and Predatory Compound Interest Banking.</li>
-            <li><strong>Executive Decree No. 102:</strong> Guarantee of Universal Healthcare and Zero Out-of-Pocket Point-of-Service Fees.</li>
-            <li><strong>Executive Decree No. 103:</strong> Sovereign Standard Units Decree: Officialization of the Panotherm (&deg;Пт) and Monomer (Мн).</li>
-            <li><strong>Executive Decree No. 104:</strong> Civic Whistleblower Protection and Mandatory Wealth Redistribution for Religious Tithes.</li>
-        </ul>
-    </div>
-
-    <!-- Executive Calendar & Hearings -->
-    <div class="ol-card" id="calendar">
-        <div class="ol-card-title">
-            <span>Executive Council Calendar &amp; Public Hearings</span>
-            <button type="button" class="ol-btn ol-btn-sm" onclick="openHearingModal()">Request Public Hearing</button>
-        </div>
+        <p class="ol-small">Freedom of religion is constitutionally inviolable in Sangaia. Under statutory law, recognized churches must commit 85%+ of voluntary tithes directly to charity, soup kitchens, and community shelter.</p>
         <table class="ol-table">
             <thead>
-                <tr>
-                    <th>Date &amp; Time</th>
-                    <th>Convening Body</th>
-                    <th>Agenda &amp; Matters of State</th>
-                    <th>Status</th>
-                </tr>
+                <tr><th>Religious Society / Chapel</th><th>Tradition</th><th>Headquarters</th><th>Charity Compliance</th></tr>
             </thead>
             <tbody>
-                <tr>
-                    <td>Oct 22, 2026 &bull; 10:00</td>
-                    <td>Cabinet of Ministers</td>
-                    <td>Review of Q4 Biome Allocations &amp; Provincial Road Telemetry</td>
-                    <td><span class="ol-badge-tag ol-badge-success">Open Public Gallery</span></td>
-                </tr>
-                <tr>
-                    <td>Oct 26, 2026 &bull; 14:00</td>
-                    <td>High Magistrates &amp; Aeretocrat</td>
-                    <td>Adjudication of Interprovincial Commerce Pacts</td>
-                    <td><span class="ol-badge-tag ol-badge-warning">Live Audio Streamed</span></td>
-                </tr>
-                <tr>
-                    <td>Nov 02, 2026 &bull; 09:30</td>
-                    <td>Civic Petitioners Assembly</td>
-                    <td>Direct Citizen Hearings on Environmental Conservation</td>
-                    <td><span class="ol-badge-tag ol-badge-success">Petitions Open</span></td>
-                </tr>
+                <tr><td>Chapel of St. Julian the Hospitaller</td><td>Christian Ecumenical</td><td>Shesk (New Jasper)</td><td><span class="ol-badge-tag ol-badge-success">91.4% Tithes Returned</span></td></tr>
+                <tr><td>Azure Coastal Interfaith Fellowship</td><td>Interfaith Contemplative</td><td>Oaks (Liveland)</td><td><span class="ol-badge-tag ol-badge-success">88.5% Tithes Returned</span></td></tr>
+                <tr><td>Highland Buddhist Peace Sanctuary</td><td>Buddhist Monastic</td><td>Sentinel Ridge (Sentinel)</td><td><span class="ol-badge-tag ol-badge-success">94.0% Tithes Returned</span></td></tr>
+                <tr><td>Madison Reform Synagogue</td><td>Jewish Traditional</td><td>Madison City (New Madison)</td><td><span class="ol-badge-tag ol-badge-success">89.2% Tithes Returned</span></td></tr>
             </tbody>
         </table>
     </div>
@@ -1536,16 +1449,15 @@ button,
     <aside class="sidebar">
 
       <div class="card">
-        <h3>Office of the Aeretocrat</h3>
-        <p style="color: var(--text-muted); font-size: 12px; margin-bottom: 8px;">Head of State & Government</p>
+        <h3>Ministry of Propaganda</h3>
+        <p style="color: var(--text-muted); font-size: 12px; margin-bottom: 8px;">Civic Information Authority</p>
         <ul class="sidebar-nav-list">
-          <li><a href="#overview" class="active"><span class="mif-chevron-right"></span> Overview & Mandate</a></li>
-<li><a href="#journal"><span class="mif-chevron-right"></span> Aeretocrat's Journal</a></li>
-<li><a href="#macroeconomics"><span class="mif-chevron-right"></span> Macroeconomics & GDP</a></li>
-<li><a href="#national-budget"><span class="mif-chevron-right"></span> National Budget & Surplus</a></li>
-<li><a href="#constitutional-framework"><span class="mif-chevron-right"></span> Constitutional Framework</a></li>
-<li><a href="#calendar"><span class="mif-chevron-right"></span> Executive Calendar & Hearings</a></li>
-<li><a href="/executive_departments.html"><span class="mif-chevron-right"></span> Departments Portal →</a></li>
+          <li><a href="#overview" class="active"><span class="mif-chevron-right"></span> Overview & Public Truth</a></li>
+<li><a href="#tv"><span class="mif-chevron-right"></span> National TV Channels</a></li>
+<li><a href="#radio"><span class="mif-chevron-right"></span> Live Radio Broadcasts</a></li>
+<li><a href="#reporters"><span class="mif-chevron-right"></span> Reporter Accreditation</a></li>
+<li><a href="#churches"><span class="mif-chevron-right"></span> Recognized Churches</a></li>
+<li><a href="/propaganda_departments.html"><span class="mif-chevron-right"></span> Departments Portal →</a></li>
 
         </ul>
       </div>
@@ -1553,10 +1465,10 @@ button,
 
 
     <div class="ol-sidebox">
-        <h3>Aeretocrat Profile</h3>
-        <p class="ol-small ol-muted">Office of the Supreme Executive Magistrate &amp; Aeretocrat of the Sovereign Republic of Sangaia.</p>
+        <h3>Public Information</h3>
+        <p class="ol-small ol-muted">Oversees state broadcasting networks, journalist accreditation, civic communications, and recognized religious registries.</p>
         <div class="ol-mt-10">
-            <a href="/executive_departments.html" class="ol-btn ol-btn-primary ol-btn-sm" style="width:100%; text-align:center;">Launch Executive Departments</a>
+            <a href="/propaganda_departments.html" class="ol-btn ol-btn-primary ol-btn-sm" style="width:100%; text-align:center;">Launch Propaganda Departments</a>
         </div>
     </div>
     
@@ -1564,127 +1476,69 @@ button,
   </main>
 
 
-    <!-- Ask Aeretocrat Modal -->
-    <div class="ol-modal-overlay" id="askModal">
+    <!-- Press Verify Modal -->
+    <div class="ol-modal-overlay" id="pressModal">
         <div class="ol-modal-dialog">
             <div class="ol-modal-head">
-                <span class="ol-modal-title">Submit Inquiry to the Office of the Aeretocrat</span>
-                <button type="button" class="ol-modal-close" onclick="closeModal('askModal')">&times;</button>
+                <span class="ol-modal-title">Verify Official Press Accreditation</span>
+                <button type="button" class="ol-modal-close" onclick="closeModal('pressModal')">&times;</button>
             </div>
             <div class="form-group">
-                <label class="form-label">Citizen Name / Sangaia ID</label>
-                <input type="text" class="ol-input" id="ask-name" placeholder="Citizen Name or SG-XXXX">
+                <label class="form-label">Journalist Name or Press Card ID</label>
+                <input type="text" class="ol-input" id="pr-name" placeholder="e.g., Marcus Vance or SG-PRESS-1049">
             </div>
-            <div class="form-group">
-                <label class="form-label">Provincial Territory</label>
-                <select class="ol-select" id="ask-prov">
-                    <option>New Jasper</option><option>New Madison</option><option>Liveland</option><option>Sentinel</option><option>Columbia</option>
-                </select>
-            </div>
-            <div class="form-group">
-                <label class="form-label">Inquiry on Statecraft, Philosophy, or Civic Virtue</label>
-                <textarea class="ol-textarea" id="ask-text" rows="4" placeholder="Enter your thoughtful inquiry..."></textarea>
-            </div>
-            <div class="modal-results-box" id="askResults"></div>
+            <div class="modal-results-box" id="prResults"></div>
             <div class="ol-modal-foot">
-                <button type="button" class="ol-btn" onclick="closeModal('askModal')">Cancel</button>
-                <button type="button" class="ol-btn ol-btn-primary" onclick="submitAsk()">submit to press clerk</button>
-            </div>
-        </div>
-    </div>
-
-    <!-- Request Hearing Modal -->
-    <div class="ol-modal-overlay" id="hearingModal">
-        <div class="ol-modal-dialog">
-            <div class="ol-modal-head">
-                <span class="ol-modal-title">Request Citizen Hearing before Executive Council</span>
-                <button type="button" class="ol-modal-close" onclick="closeModal('hearingModal')">&times;</button>
-            </div>
-            <div class="form-group">
-                <label class="form-label">Organization or Citizen Delegation</label>
-                <input type="text" class="ol-input" id="h-name" placeholder="Delegation Name">
-            </div>
-            <div class="form-group">
-                <label class="form-label">Hearing Category</label>
-                <select class="ol-select" id="h-cat">
-                    <option>Provincial Infrastructure</option><option>Environmental Conservation</option><option>Economic Grievance</option><option>Civic Liberties</option>
-                </select>
-            </div>
-            <div class="form-group">
-                <label class="form-label">Matter Summary &amp; Proposed Resolution</label>
-                <textarea class="ol-textarea" id="h-summary" rows="4" placeholder="Summarize the petition..."></textarea>
-            </div>
-            <div class="modal-results-box" id="hResults"></div>
-            <div class="ol-modal-foot">
-                <button type="button" class="ol-btn" onclick="closeModal('hearingModal')">Cancel</button>
-                <button type="button" class="ol-btn ol-btn-primary" onclick="submitHearing()">Submit Hearing Docket</button>
-            </div>
-        </div>
-    </div>
-
-    <!-- Dispatch Reader Modal -->
-    <div class="ol-modal-overlay" id="dispatchModal">
-        <div class="ol-modal-dialog">
-            <div class="ol-modal-head">
-                <span class="ol-modal-title" id="dispTitle">Executive Dispatch</span>
-                <button type="button" class="ol-modal-close" onclick="closeModal('dispatchModal')">&times;</button>
-            </div>
-            <div class="ol-small ol-muted" id="dispMeta" style="margin-bottom:12px;"></div>
-            <div id="dispBody" style="font-size:13.5px; line-height:1.6; color:#2a2a2a;"></div>
-            <div class="ol-modal-foot">
-                <button type="button" class="ol-btn" onclick="closeModal('dispatchModal')">Close</button>
+                <button type="button" class="ol-btn" onclick="closeModal('pressModal')">Cancel</button>
+                <button type="button" class="ol-btn ol-btn-primary" onclick="verifyPress()">Verify Credential</button>
             </div>
         </div>
     </div>
     
 
     <script>
-    const DISPATCHES = {
-        1: {
-            title: "On the Moral Necessity of Sovereign Solvency",
-            meta: "Published October 19, 2026 • Office of the Aeretocrat • Macroeconomics",
-            body: `<p>A nation that borrows from predatory international banking cartels sells the birthright of its unborn generations. In Sangaia, our constitutional prohibition on foreign sovereign debt is not merely fiscal prudence—it is our absolute shield of national liberty.</p>
-                   <p>When an empire or republic accumulates trillions in compounded foreign interest, its foreign policy is no longer its own. Its social programs are gutted at the demand of international creditors. Its land and ports are seized in structural adjustments.</p>
-                   <p>By constitutionally capping our expenditures to legitimate sovereign revenues—principally through ground rent, resource royalties, and luxury surcharges—we guarantee that Sangaia shall forever remain a free and unencumbered people.</p>`
-        },
-        2: {
-            title: "Why the Aeretocracy Replaces Partisan Strife",
-            meta: "Published October 12, 2026 • Office of the Aeretocrat • Political Philosophy",
-            body: `<p>Party systems do not encourage debate; they encourage tribal warfare funded by oligarchs. In the old systems, politicians spent 90% of their tenure seeking donor funding rather than governing.</p>
-                   <p>The Aeretocracy replaces corporate party sponsorship with institutional virtues, open merit-based public exams, and transparent council governance. Officials are answerable directly to the constitution and to the public through annual open audits.</p>`
-        },
-        3: {
-            title: "Harmonizing the Five Sovereign Provinces",
-            meta: "Published October 5, 2026 • Office of the Aeretocrat • Federalism",
-            body: `<p>From the coastal harbors of Liveland to the highlands of Sentinel, New Jasper, New Madison, and Columbia, our diversity is our endurance. Each province maintains full local autonomy in regional administration, education, and municipal commerce.</p>
-                   <p>Our federal duty is simple: guarantee peace, enforce universal human rights and free healthcare, maintain our sovereign monetary stability, and protect the shared natural biomes that sustain our children.</p>`
-        }
-    };
+    let isPlaying = false;
+    let audioCtx = null;
+    let osc = null;
 
-    function openDispatch(id) {
-        const d = DISPATCHES[id];
-        if (!d) return;
-        document.getElementById('dispTitle').innerText = d.title;
-        document.getElementById('dispMeta').innerText = d.meta;
-        document.getElementById('dispBody').innerHTML = d.body;
-        document.getElementById('dispatchModal').classList.add('active');
+    function toggleRadio() {
+        const btn = document.getElementById('radioPlayBtn');
+        const st = document.getElementById('radioStatus');
+        if (!isPlaying) {
+            isPlaying = true;
+            btn.innerText = '⏸ Pause Stream';
+            st.innerText = 'STREAMING LIVE (94.5 FM)';
+            st.className = 'ol-badge-tag ol-badge-success';
+
+            // Generate soft atmospheric chime using Web Audio API to simulate broadcast
+            try {
+                audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+                osc = audioCtx.createOscillator();
+                const gain = audioCtx.createGain();
+                osc.type = 'sine';
+                osc.frequency.setValueAtTime(440, audioCtx.currentTime); // Concert A
+                gain.gain.setValueAtTime(0.04, audioCtx.currentTime);
+                osc.connect(gain);
+                gain.connect(audioCtx.destination);
+                osc.start();
+            } catch(e) {}
+        } else {
+            isPlaying = false;
+            btn.innerText = '▶ Listen Live';
+            st.innerText = 'Buffer Ready';
+            st.className = 'ol-badge-tag';
+            if (osc) {
+                try { osc.stop(); } catch(e){}
+            }
+        }
     }
 
-    function openAskModal() { document.getElementById('askModal').classList.add('active'); }
-    function openHearingModal() { document.getElementById('hearingModal').classList.add('active'); }
+    function openPressModal() { document.getElementById('pressModal').classList.add('active'); }
     function closeModal(id) { document.getElementById(id).classList.remove('active'); }
 
-    function submitAsk() {
-        const res = document.getElementById('askResults');
-        const token = 'SG-PET-' + Math.floor(100000 + Math.random() * 900000);
-        res.innerHTML = `<strong>Inquiry Logged:</strong> Docket Token: <span style="font-family:monospace;">${token}</span>. Scheduled for review by the Clerk of Civic Petitions.`;
-        res.classList.add('active');
-    }
-
-    function submitHearing() {
-        const res = document.getElementById('hResults');
-        const token = 'SG-HRG-' + Math.floor(100000 + Math.random() * 900000);
-        res.innerHTML = `<strong>Hearing Request Docketed:</strong> Reference Code: <span style="font-family:monospace;">${token}</span>. Placed on Council Review Registry.`;
+    function verifyPress() {
+        const res = document.getElementById('prResults');
+        res.innerHTML = `<strong>Accreditation Status:</strong> Verified Active Foreign/Domestic Journalist &bull; Sovereign Press Shield Protected &bull; Certified by Ministry of Propaganda.`;
         res.classList.add('active');
     }
     </script>

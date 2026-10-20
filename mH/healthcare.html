@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Ministry of External Affairs :: Sangaia Live</title>
+  <title>Ministry of Healthcare :: Sangaia Live</title>
   <link href="https://cdn.metroui.org.ua/4.5.12/icons.css" rel="stylesheet">
   <link rel="stylesheet" href="/css/sangaia-live.css?v=20261020_v2">
   <style>
@@ -1325,16 +1325,16 @@ button,
   <script src="/auth.js" onerror="this.onerror=null;this.src='auth.js';" defer></script>
   <script src="/js/sangaia-live.js" onerror="this.onerror=null;this.src='js/sangaia-live.js';" defer></script>
 </head>
-<body class="theme-external">
+<body class="theme-healthcare">
 
   <!-- Top Hero Header -->
   <header class="hero-header">
     <div class="top-bar">
       <div class="brand">
-        <a href="/externalaffairs.html"><span class="mif-earth"></span> ministry of external affairs</a>
+        <a href="index.html"><span class="mif-plus"></span> ministry of healthcare</a>
       </div>
       <div class="top-right">
-        <form class="search-box" action="/services.html" method="get">
+        <form class="search-box" action="https://sangaia.org/services.html" method="get">
           <input type="text" name="q" placeholder="search anything" />
           <button type="submit" aria-label="Search"><span class="mif-search"></span></button>
         </form>
@@ -1342,27 +1342,28 @@ button,
           <span class="mif-bell" title="notifications"></span>
           <span class="mif-security" title="sovereign clearance active"></span>
         </div>
-        <a href="/id/" class="user-profile-btn unauthenticated" id="userProfileMenu" title="sign in to sangaia id">
+        <a href="https://sangaia.org/id/" class="user-profile-btn unauthenticated" id="userProfileMenu" title="sign in to sangaia id">
           <span class="mif-user"></span>
           <span>sign in</span>
         </a>
       </div>
     </div>
     <div class="hero-content">
-      <h1>ministry of external affairs</h1>
-      <p>Global travel advisories for all nations, sovereign treaties, embassies & diplomatic protocol</p>
-      <div class="hero-breadcrumbs"><a href="/index.html">← federal portal</a></div>
+      <h1>ministry of healthcare</h1>
+      <p>Universal state-sponsored health coverage, hospital emergency room triage & public disease control</p>
+      <div class="hero-breadcrumbs"><a href="https://sangaia.org/index.html">← federal portal</a></div>
     </div>
   </header>
 
   <!-- Navigation Bar -->
   <nav class="subnav">
-    <a href="/externalaffairs.html" class="active">external home</a>
-    <a href="/externalaffairs_departments.html">departments</a>
-    <a href="/externalaffairs.html#travel-advisories">travel advisories</a>
-    <a href="/externalaffairs.html#treaties">treaties archive</a>
-    <a href="/externalaffairs.html#embassies">global embassies</a>
-    <a href="/externalaffairs.html#visa-services">visa services</a>
+    <a href="index.html" class="active">healthcare home</a>
+    <a href="departments.html">departments</a>
+    <a href="index.html">medical services</a>
+    <a href="index.html">5-province hospitals</a>
+    <a href="index.html">medical research</a>
+    <a href="index.html">patient support</a>
+    <a href="index.html">ddcr disease control</a>
   </nav>
 
   <!-- Content Grid -->
@@ -1371,66 +1372,81 @@ button,
     <div class="left-col">
 
 
-    <!-- Travel Advisories for Every Worldwide Nation -->
-    <div class="card" id="overview"><a id="travel"></a>
+    <!-- Universal Coverage Screening -->
+    <div class="card" id="overview"><a id="coverage"></a>
         <div class="ol-card-title">
-            <span>Global Travel Advisories &bull; Worldwide Nation Directory</span>
-            <span class="ol-badge-tag ol-badge-success">Consular Telemetry Live</span>
+            <span>Universal Healthcare Coverage &amp; Digital Insurance Verification</span>
+            <span class="ol-badge-tag ol-badge-success">Zero Out-of-Pocket Fees</span>
         </div>
-        <p class="ol-small">Official risk assessments and travel guidance issued by the Sangaian Consular Service for all recognized nations worldwide.</p>
-        <div style="margin-bottom:12px;">
-            <input type="text" class="ol-input" id="countrySearch" placeholder="Type country name (e.g., France, Japan, Switzerland, Canada)..." oninput="filterCountries()">
-        </div>
-        <div style="max-height:300px; overflow-y:auto; border:1px solid #dfe3e7; border-radius:3px;">
-            <table class="ol-table" id="countryTable" style="margin:0;">
-                <thead>
-                    <tr><th>Nation</th><th>Advisory Tier</th><th>Sangaia Embassy Status</th><th>Entry Conditions</th></tr>
-                </thead>
-                <tbody>
-                    <tr class="country-row"><td>Switzerland</td><td><span class="ol-badge-tag ol-badge-success">Level 1: Normal Caution</span></td><td>Bern Embassy &bull; Fully Operational</td><td>Visa-free 90 Days</td></tr>
-                    <tr class="country-row"><td>Japan</td><td><span class="ol-badge-tag ol-badge-success">Level 1: Normal Caution</span></td><td>Tokyo Embassy &bull; Fully Operational</td><td>Visa-free 90 Days</td></tr>
-                    <tr class="country-row"><td>Norway</td><td><span class="ol-badge-tag ol-badge-success">Level 1: Normal Caution</span></td><td>Oslo Embassy &bull; Fully Operational</td><td>Visa-free 90 Days</td></tr>
-                    <tr class="country-row"><td>Canada</td><td><span class="ol-badge-tag ol-badge-success">Level 1: Normal Caution</span></td><td>Ottawa Embassy &bull; Fully Operational</td><td>Visa-free 90 Days</td></tr>
-                    <tr class="country-row"><td>United Kingdom</td><td><span class="ol-badge-tag ol-badge-success">Level 1: Normal Caution</span></td><td>London Embassy &bull; Fully Operational</td><td>Visa-free 90 Days</td></tr>
-                    <tr class="country-row"><td>United States</td><td><span class="ol-badge-tag ol-badge-warning">Level 2: Exercise Caution</span></td><td>Washington Embassy &bull; Operational</td><td>Electronic Visa Clearance</td></tr>
-                    <tr class="country-row"><td>Germany</td><td><span class="ol-badge-tag ol-badge-success">Level 1: Normal Caution</span></td><td>Berlin Embassy &bull; Fully Operational</td><td>Visa-free 90 Days</td></tr>
-                    <tr class="country-row"><td>France</td><td><span class="ol-badge-tag ol-badge-success">Level 1: Normal Caution</span></td><td>Paris Embassy &bull; Fully Operational</td><td>Visa-free 90 Days</td></tr>
-                    <tr class="country-row"><td>Australia</td><td><span class="ol-badge-tag ol-badge-success">Level 1: Normal Caution</span></td><td>Canberra Embassy &bull; Fully Operational</td><td>Visa-free 90 Days</td></tr>
-                    <tr class="country-row"><td>New Zealand</td><td><span class="ol-badge-tag ol-badge-success">Level 1: Normal Caution</span></td><td>Wellington Embassy &bull; Fully Operational</td><td>Visa-free 90 Days</td></tr>
-                    <tr class="country-row"><td>Brazil</td><td><span class="ol-badge-tag ol-badge-warning">Level 2: Exercise Caution</span></td><td>Brasília Embassy &bull; Operational</td><td>Consular Visa Required</td></tr>
-                    <tr class="country-row"><td>South Africa</td><td><span class="ol-badge-tag ol-badge-warning">Level 2: Exercise Caution</span></td><td>Pretoria Embassy &bull; Operational</td><td>Consular Visa Required</td></tr>
-                    <tr class="country-row"><td>Ukraine</td><td><span class="ol-badge-tag ol-badge-danger">Level 4: Do Not Travel</span></td><td>Operations Remote / Warsaw Hub</td><td>Emergency Consular Only</td></tr>
-                    <tr class="country-row"><td>Syria</td><td><span class="ol-badge-tag ol-badge-danger">Level 4: Do Not Travel</span></td><td>Operations Suspended</td><td>Strict Travel Warning</td></tr>
-                </tbody>
-            </table>
+        <p class="ol-small">Every registered Sangaia ID holder is automatically enrolled into Tier 1 Universal Comprehensive Care, covering hospitalization, dental surgery, psychological therapy, and prescription drugs.</p>
+        <div class="ol-grid-3" style="margin-top:10px;">
+            <div class="ol-metric-box">
+                <div class="ol-metric-val">100%</div>
+                <div class="ol-metric-lbl">universal state coverage</div>
+            </div>
+            <div class="ol-metric-box">
+                <div class="ol-metric-val">100%</div>
+                <div class="ol-metric-lbl">Subsidized Generic Rx</div>
+            </div>
+            <div class="ol-metric-box">
+                <div class="ol-metric-val">5 Provinces</div>
+                <div class="ol-metric-lbl">Unified Digital Charting</div>
+            </div>
         </div>
     </div>
 
-    <!-- Active & Past Sovereign Treaties -->
-    <div class="ol-card" id="treaties">
+    <!-- Live Hospital ER Capacity Metrics Across the 5 Provinces -->
+    <div class="ol-card" id="hospitals">
         <div class="ol-card-title">
-            <span>Sovereign Treaties &amp; International Accords Registry</span>
-            <span class="ol-badge-tag">Ratified by Aeretocrat</span>
+            <span>Live Hospital Emergency Room Capacity Across the 5 Provinces</span>
+            <span class="ol-badge-tag ol-badge-success">Live Triage Network</span>
         </div>
+        <p class="ol-small ol-muted">Real-time telemetry of regional trauma centers across all 5 Sovereign Provinces.</p>
         <table class="ol-table">
             <thead>
-                <tr><th>Treaty Accord Title</th><th>Signatory Parties</th><th>Ratification</th><th>Scope of Accord</th></tr>
+                <tr>
+                    <th>Provincial Medical Center</th>
+                    <th>Territory</th>
+                    <th>ICU Beds Free</th>
+                    <th>Avg Triage Wait</th>
+                    <th>Trauma Status</th>
+                </tr>
             </thead>
             <tbody>
-                <tr><td>Geneva Maritime Passage Accord</td><td>Sangaia, Nordic &amp; Alpine States</td><td>Ratified 2024</td><td>Protection of commercial shipping and neutral ports</td></tr>
-                <tr><td>Bilateral Clean Energy &amp; Battery Pact</td><td>Sangaia &amp; Pacific Alliance</td><td>Ratified 2025</td><td>Zero-tariff exchange of geothermal and lithium components</td></tr>
-                <tr><td>Universal Diplomatic Immunity Treaty</td><td>International Red Cross &amp; Neutral Nations</td><td>Ratified 2024</td><td>Absolute protection of medical delegates and neutral attaches</td></tr>
+                <tr><td>Shesk Sovereign University Hospital</td><td>New Jasper</td><td>24 / 80 Free</td><td>12 min</td><td><span class="ol-badge-tag ol-badge-success">Operational</span></td></tr>
+                <tr><td>Madison Valley Regional Trauma Center</td><td>New Madison</td><td>18 / 60 Free</td><td>15 min</td><td><span class="ol-badge-tag ol-badge-success">Operational</span></td></tr>
+                <tr><td>Oaks Coastal Marine Hospital</td><td>Liveland</td><td>32 / 70 Free</td><td>8 min</td><td><span class="ol-badge-tag ol-badge-success">Operational</span></td></tr>
+                <tr><td>Sentinel Ridge Highland Clinic</td><td>Sentinel</td><td>14 / 40 Free</td><td>10 min</td><td><span class="ol-badge-tag ol-badge-success">Operational</span></td></tr>
+                <tr><td>Columbia City Metropolitan Health Hub</td><td>Columbia</td><td>28 / 65 Free</td><td>14 min</td><td><span class="ol-badge-tag ol-badge-success">Operational</span></td></tr>
             </tbody>
         </table>
     </div>
 
-    <!-- Embassies & Consular Directory -->
-    <div class="ol-card" id="embassies">
+    <!-- Disease Control & CDC Research -->
+    <div class="ol-card" id="cdc">
         <div class="ol-card-title">
-            <span>Embassy &amp; Consular Availability</span>
-            <button type="button" class="ol-btn ol-btn-sm" onclick="openConsularModal()">Register Citizen Travel</button>
+            <span>National Disease Control Telemetry &amp; Public Hygiene</span>
+            <span class="ol-badge-tag ol-badge-success">Epidemic Index: LOW</span>
         </div>
-        <p class="ol-small">Sangaia maintains 48 diplomatic missions and 112 consular posts worldwide to assist Sangaian citizens abroad with emergency passports, legal aid, and evacuation services.</p>
+        <div class="ol-grid-2" style="margin-top:10px;">
+            <div style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:3px; padding:12px;">
+                <strong>Water Quality &amp; Pathogen Screening:</strong>
+                <div class="ol-small" style="margin-top:4px;">Municipal water testing conducted daily across all 5 provincial aquifers: 100% compliant with zero toxic chemical runoff.</div>
+            </div>
+            <div style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:3px; padding:12px;">
+                <strong>Respiratory &amp; Viral Surveillance:</strong>
+                <div class="ol-small" style="margin-top:4px;">Automated clinical monitoring shows seasonal influenza transmission at baseline levels. Emergency vaccination supply at 140% statutory threshold.</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Paramedic & Emergency Ambulance Network -->
+    <div class="ol-card" id="ambulance">
+        <div class="ol-card-title">
+            <span>Paramedic Network &amp; Non-Emergency Medical Transport</span>
+            <button type="button" class="ol-btn ol-btn-sm" onclick="openAmbulanceModal()">Book Medical Transport</button>
+        </div>
+        <p class="ol-small">In life-threatening emergencies, dial <strong>9-1-1</strong>. For scheduled clinical transfers, dialysis transit, and mobility assistance, citizens may book state-funded transports.</p>
     </div>
     
     </div>
@@ -1439,15 +1455,15 @@ button,
     <aside class="sidebar">
 
       <div class="card">
-        <h3>Ministry of External Affairs</h3>
-        <p style="color: var(--text-muted); font-size: 12px; margin-bottom: 8px;">Foreign Service & Diplomatic Corp</p>
+        <h3>Ministry of Healthcare</h3>
+        <p style="color: var(--text-muted); font-size: 12px; margin-bottom: 8px;">Universal Health Authority</p>
         <ul class="sidebar-nav-list">
-          <li><a href="#overview" class="active"><span class="mif-chevron-right"></span> Overview & Neutrality</a></li>
-<li><a href="#travel"><span class="mif-chevron-right"></span> Worldwide Travel Advisories</a></li>
-<li><a href="#treaties"><span class="mif-chevron-right"></span> Sovereign Treaties & Accords</a></li>
-<li><a href="#embassies"><span class="mif-chevron-right"></span> Embassies & Consulates</a></li>
-<li><a href="#protocol"><span class="mif-chevron-right"></span> Diplomatic Protocol</a></li>
-<li><a href="/externalaffairs_departments.html"><span class="mif-chevron-right"></span> Departments Portal →</a></li>
+          <li><a href="#overview" class="active"><span class="mif-chevron-right"></span> Overview & Universal Care</a></li>
+<li><a href="#coverage"><span class="mif-chevron-right"></span> Universal Coverage Screening</a></li>
+<li><a href="#hospitals"><span class="mif-chevron-right"></span> Hospital ER Capacity</a></li>
+<li><a href="#cdc"><span class="mif-chevron-right"></span> Disease Control Telemetry</a></li>
+<li><a href="#ambulance"><span class="mif-chevron-right"></span> Ambulance Dispatch</a></li>
+<li><a href="/healthcare_departments.html"><span class="mif-chevron-right"></span> Departments Portal →</a></li>
 
         </ul>
       </div>
@@ -1455,10 +1471,10 @@ button,
 
 
     <div class="ol-sidebox">
-        <h3>External Affairs</h3>
-        <p class="ol-small ol-muted">Manages diplomatic missions, international treaties, global commerce agreements, and consular services.</p>
+        <h3>Healthcare Services</h3>
+        <p class="ol-small ol-muted">Check prescription benefit claims, digital card enrollment, hospital licensing, and non-emergency transports.</p>
         <div class="ol-mt-10">
-            <a href="/externalaffairs_departments.html" class="ol-btn ol-btn-primary ol-btn-sm" style="width:100%; text-align:center;">Launch External Departments</a>
+            <a href="/healthcare_departments.html" class="ol-btn ol-btn-primary ol-btn-sm" style="width:100%; text-align:center;">Launch Healthcare Departments</a>
         </div>
     </div>
     
@@ -1466,53 +1482,52 @@ button,
   </main>
 
 
-    <!-- Consular Register Modal -->
-    <div class="ol-modal-overlay" id="consularModal">
+    <!-- Ambulance Booking Modal -->
+    <div class="ol-modal-overlay" id="ambModal">
         <div class="ol-modal-dialog">
             <div class="ol-modal-head">
-                <span class="ol-modal-title">Register International Travel with Consular Service</span>
-                <button type="button" class="ol-modal-close" onclick="closeModal('consularModal')">&times;</button>
+                <span class="ol-modal-title">Book Non-Emergency Medical Transport</span>
+                <button type="button" class="ol-modal-close" onclick="closeModal('ambModal')">&times;</button>
             </div>
             <div class="form-group">
-                <label class="form-label">Citizen Legal Name</label>
-                <input type="text" class="ol-input" id="c-name" placeholder="Name as on Passport">
+                <label class="form-label">Patient Legal Name</label>
+                <input type="text" class="ol-input" id="amb-name" placeholder="Patient Name">
             </div>
             <div class="form-group">
-                <label class="form-label">Sangaia Passport Number</label>
-                <input type="text" class="ol-input" id="c-pass" placeholder="SG-P-XXXXXXX">
+                <label class="form-label">Sangaia ID Number</label>
+                <input type="text" class="ol-input" id="amb-id" placeholder="SG-XXXX-XXXX">
             </div>
             <div class="form-group">
-                <label class="form-label">Destination Country</label>
-                <input type="text" class="ol-input" id="c-dest" placeholder="e.g., Switzerland, Japan, Norway">
+                <label class="form-label">Pick-up Province &amp; Address</label>
+                <input type="text" class="ol-input" id="amb-addr" placeholder="Address">
             </div>
             <div class="form-group">
-                <label class="form-label">Dates of Travel</label>
-                <input type="text" class="ol-input" id="c-dates" placeholder="Departure - Return">
+                <label class="form-label">Destination Medical Center</label>
+                <select class="ol-select" id="amb-dest">
+                    <option>Shesk Sovereign University Hospital</option>
+                    <option>Madison Valley Trauma Center</option>
+                    <option>Oaks Coastal Marine Hospital</option>
+                    <option>Sentinel Ridge Highland Clinic</option>
+                    <option>Columbia City Health Hub</option>
+                </select>
             </div>
-            <div class="modal-results-box" id="cResults"></div>
+            <div class="modal-results-box" id="ambResults"></div>
             <div class="ol-modal-foot">
-                <button type="button" class="ol-btn" onclick="closeModal('consularModal')">Cancel</button>
-                <button type="button" class="ol-btn ol-btn-primary" onclick="submitConsular()">Register Travel Itinerary</button>
+                <button type="button" class="ol-btn" onclick="closeModal('ambModal')">Cancel</button>
+                <button type="button" class="ol-btn ol-btn-primary" onclick="submitAmb()">Confirm Dispatch</button>
             </div>
         </div>
     </div>
     
 
     <script>
-    function filterCountries() {
-        const q = (document.getElementById('countrySearch').value || '').toLowerCase();
-        document.querySelectorAll('.country-row').forEach(row => {
-            row.style.display = row.innerText.toLowerCase().includes(q) ? '' : 'none';
-        });
-    }
-
-    function openConsularModal() { document.getElementById('consularModal').classList.add('active'); }
+    function openAmbulanceModal() { document.getElementById('ambModal').classList.add('active'); }
     function closeModal(id) { document.getElementById(id).classList.remove('active'); }
 
-    function submitConsular() {
-        const res = document.getElementById('cResults');
-        const token = 'CONS-REG-' + Math.floor(100000 + Math.random() * 900000);
-        res.innerHTML = `<strong>Travel Registered:</strong> Itinerary Token: <span style="font-family:monospace;">${token}</span>. Nearest Embassy notified.`;
+    function submitAmb() {
+        const res = document.getElementById('ambResults');
+        const token = 'MED-DISP-' + Math.floor(100000 + Math.random() * 900000);
+        res.innerHTML = `<strong>Transport Dispatch Confirmed:</strong> Confirmation Code: <span style="font-family:monospace;">${token}</span>. Fully subsidized under Universal Healthcare.`;
         res.classList.add('active');
     }
     </script>

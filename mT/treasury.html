@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Ministry of the Environment :: Sangaia Live</title>
+  <title>Ministry of the Treasury :: Sangaia Live</title>
   <link href="https://cdn.metroui.org.ua/4.5.12/icons.css" rel="stylesheet">
   <link rel="stylesheet" href="/css/sangaia-live.css?v=20261020_v2">
   <style>
@@ -1325,16 +1325,16 @@ button,
   <script src="/auth.js" onerror="this.onerror=null;this.src='auth.js';" defer></script>
   <script src="/js/sangaia-live.js" onerror="this.onerror=null;this.src='js/sangaia-live.js';" defer></script>
 </head>
-<body class="theme-environment">
+<body class="theme-treasury">
 
   <!-- Top Hero Header -->
   <header class="hero-header">
     <div class="top-bar">
       <div class="brand">
-        <a href="/environment.html"><span class="mif-tree"></span> ministry of the environment</a>
+        <a href="index.html"><span class="mif-money"></span> ministry of the treasury</a>
       </div>
       <div class="top-right">
-        <form class="search-box" action="/services.html" method="get">
+        <form class="search-box" action="https://sangaia.org/services.html" method="get">
           <input type="text" name="q" placeholder="search anything" />
           <button type="submit" aria-label="Search"><span class="mif-search"></span></button>
         </form>
@@ -1342,29 +1342,28 @@ button,
           <span class="mif-bell" title="notifications"></span>
           <span class="mif-security" title="sovereign clearance active"></span>
         </div>
-        <a href="/id/" class="user-profile-btn unauthenticated" id="userProfileMenu" title="sign in to sangaia id">
+        <a href="https://sangaia.org/id/" class="user-profile-btn unauthenticated" id="userProfileMenu" title="sign in to sangaia id">
           <span class="mif-user"></span>
           <span>sign in</span>
         </a>
       </div>
     </div>
     <div class="hero-content">
-      <h1>ministry of the environment</h1>
-      <p>Atmospheric telemetry (°Пт), biome funding, wildlife intervention, food availability & conservation</p>
-      <div class="hero-breadcrumbs"><a href="/index.html">← federal portal</a></div>
+      <h1>ministry of the treasury</h1>
+      <p>Statutory fiscal solvency, sovereign debt management, taxation, infrastructure bonds & audit ledgers</p>
+      <div class="hero-breadcrumbs"><a href="https://sangaia.org/index.html">← federal portal</a></div>
     </div>
   </header>
 
   <!-- Navigation Bar -->
   <nav class="subnav">
-    <a href="/environment.html" class="active">environment home</a>
-    <a href="/environment_departments.html">departments</a>
-    <a href="/environment.html#services">eco services</a>
-    <a href="/environment.html#biome-funding">biome funding</a>
-    <a href="/environment.html#wildlife">wildlife rescue</a>
-    <a href="/environment.html#food-security">food security</a>
-    <a href="/environment.html#weather">weather (°пт)</a>
-    <a href="/environment.html#conservation">tree planting ledger</a>
+    <a href="index.html" class="active">treasury home</a>
+    <a href="departments.html">departments</a>
+    <a href="#debt-ceiling">debt ceiling ($0)</a>
+    <a href="#loans">solidarity loans</a>
+    <a href="#fund-allocation">budget ledger</a>
+    <a href="#electives">electives salaries</a>
+    <a href="#audits">check-ins & audits</a>
   </nav>
 
   <!-- Content Grid -->
@@ -1373,115 +1372,92 @@ button,
     <div class="left-col">
 
 
-    <!-- Live Atmospheric Weather in Panotherm (°Пт) -->
-    <div class="card" id="overview"><a id="weather"></a>
+    <!-- Zero Sovereign Debt Tracker -->
+    <div class="card" id="overview"><a id="debt"></a>
         <div class="ol-card-title">
-            <span>Atmospheric Telemetry &bull; Standard Weather in Панотерм (&deg;Пт)</span>
-            <button type="button" class="ol-btn ol-btn-sm" onclick="detectUserLocation()">Detect My Location Weather</button>
+            <span>Sovereign Debt Ceiling &amp; Foreign Solvency Ledger</span>
+            <span class="ol-badge-tag ol-badge-success">Constitutional Compliance</span>
         </div>
-        <p class="ol-small">Temperature reported in Sangaia's official unit: <strong>Панотерм (&deg;Пт)</strong>, where &deg;Пт = 0.9 &times; &deg;C = 0.5 &times; (&deg;F - 32).</p>
-
-        <div style="background:#f0fdf4; border:1px solid #bbf7d0; border-radius:3px; padding:14px; margin-top:10px;">
-            <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px;">
-                <div>
-                    <h3 id="currentLocTitle" style="color:#14532d; margin:0;">📍 New Jasper Central Station (Capital)</h3>
-                    <div class="ol-small ol-muted">Automated Federal Atmospheric Array &bull; Live Telemetry</div>
-                </div>
-                <div style="display:flex; align-items:baseline; gap:8px;">
-                    <span id="currentTempDisplay" style="font-size:36px; font-weight:700; color:#15803d;">20.5&deg;Пт</span>
-                    <span class="ol-small ol-muted" id="tempEquiv">(22.8&deg;C / 73.0&deg;F)</span>
-                </div>
+        <div class="ol-grid-3" style="margin-bottom:12px;">
+            <div class="ol-metric-box">
+                <div class="ol-metric-val">$ 0.00</div>
+                <div class="ol-metric-lbl">Foreign Sovereign Debt</div>
             </div>
-
-            <div class="ol-grid-3" style="margin-top:14px;">
-                <div class="ol-metric-box">
-                    <div class="ol-metric-val" id="weatherCond">Clear Sky</div>
-                    <div class="ol-metric-lbl">Conditions</div>
-                </div>
-                <div class="ol-metric-box">
-                    <div class="ol-metric-val">12 &deg;Пт / 24 &deg;Пт</div>
-                    <div class="ol-metric-lbl">Daily Low / High</div>
-                </div>
-                <div class="ol-metric-box">
-                    <div class="ol-metric-val">14 (Pure)</div>
-                    <div class="ol-metric-lbl">Air Quality Index (AQI)</div>
-                </div>
+            <div class="ol-metric-box">
+                <div class="ol-metric-val">100.0%</div>
+                <div class="ol-metric-lbl">National Fiscal Solvency</div>
+            </div>
+            <div class="ol-metric-box">
+                <div class="ol-metric-val">3.2%</div>
+                <div class="ol-metric-lbl">10-Yr Solidarity Bond Yield</div>
             </div>
         </div>
+        <p class="ol-small">Under the Sangaian Sovereign Monetary Act, the federal government is constitutionally barred from issuing bonds to foreign banking institutions or incurring compound interest deficits. All municipal and provincial capital loans are funded via internal solidarity bonds backed by public utility revenues.</p>
     </div>
 
-    <!-- Biome Funding Across the 5 Provinces -->
-    <div class="ol-card" id="biome-funding">
+    <!-- Solidarity Infrastructure Loans -->
+    <div class="ol-card" id="loans">
         <div class="ol-card-title">
-            <span>Provincial Biome Funding Allocations (FY2026)</span>
-            <span class="ol-badge-tag ol-badge-success">$ 16.5 Billion Outlay</span>
+            <span>Provincial Solidarity Loans &amp; Public Works Credit</span>
+            <button type="button" class="ol-btn ol-btn-sm" onclick="openLoanModal()">Simulate Loan Terms</button>
         </div>
+        <p class="ol-small ol-muted">Zero-interest and low-fee public development facilities provided directly to provincial cooperatives, green transit authorities, and municipal water boards.</p>
         <table class="ol-table">
             <thead>
-                <tr><th>Provincial Biome</th><th>Territory</th><th>Annual Funding</th><th>Protected Habitat</th><th>Primary Target</th></tr>
+                <tr>
+                    <th>Facility ID</th>
+                    <th>Recipient Agency</th>
+                    <th>Capital Amount</th>
+                    <th>Term &amp; Amortization</th>
+                    <th>Status</th>
+                </tr>
             </thead>
             <tbody>
-                <tr><td>Temperate Deciduous &amp; Oak Forest</td><td>New Jasper</td><td>$ 4.2 Billion</td><td>1,240,000 Hectares</td><td>Canopy Expansion &amp; River Basin Protection</td></tr>
-                <tr><td>Alluvial Valley &amp; Prairie Grasslands</td><td>New Madison</td><td>$ 3.8 Billion</td><td>1,650,000 Hectares</td><td>Soil Micro-Biome &amp; Organic Pollinators</td></tr>
-                <tr><td>Marine Estuary &amp; Tidal Salt Marshes</td><td>Liveland</td><td>$ 3.4 Billion</td><td>890,000 Hectares</td><td>Fishery Replenishment &amp; Coral Regeneration</td></tr>
-                <tr><td>Subalpine Conifer &amp; Glacial Ridge</td><td>Sentinel</td><td>$ 2.9 Billion</td><td>2,100,000 Hectares</td><td>Glacial Water Purity &amp; Geothermal Safety</td></tr>
-                <tr><td>Highland Savanna &amp; Wetlands</td><td>Columbia</td><td>$ 2.2 Billion</td><td>940,000 Hectares</td><td>Migratory Bird Corridors &amp; Wetland Buffers</td></tr>
+                <tr><td>SNG-LN-091</td><td>Maritime Coastal Transit District (Liveland)</td><td>$ 14,000,000</td><td>15 Years &bull; Utility Offset</td><td><span class="ol-badge-tag ol-badge-success">Disbursing</span></td></tr>
+                <tr><td>SNG-LN-088</td><td>Highland Clean Geothermal Plant (Sentinel)</td><td>$ 28,500,000</td><td>20 Years &bull; Grid Revenue</td><td><span class="ol-badge-tag ol-badge-success">Operational</span></td></tr>
+                <tr><td>SNG-LN-084</td><td>Columbia Agro-Irrigation System (Columbia)</td><td>$ 9,200,000</td><td>10 Years &bull; Crop Royalties</td><td><span class="ol-badge-tag ol-badge-success">Amortizing</span></td></tr>
             </tbody>
         </table>
     </div>
 
-    <!-- Wildlife Intervention Initiatives -->
-    <div class="ol-card" id="wildlife">
+    <!-- Ministerial Fund Allocations -->
+    <div class="ol-card" id="allocations">
         <div class="ol-card-title">
-            <span>Wildlife Intervention &amp; Endangered Habitat Rescue</span>
-            <button type="button" class="ol-btn ol-btn-sm" onclick="openWildlifeModal()">Report Injured Wildlife</button>
+            <span>Statutory Budgetary Allocations by Sector (FY2026)</span>
+            <span class="ol-badge-tag">Total: $ 103.6 B Outlays</span>
         </div>
-        <p class="ol-small">The Department of Wildlife Protection operates 24/7 rescue stations across all 5 provinces to rehabilitate native fauna and enforce zero-poaching laws.</p>
+        <table class="ol-table">
+            <thead>
+                <tr><th>Ministerial Portfolio</th><th>Statutory Allocation</th><th>Share of Outlay</th><th>Primary Public Purpose</th></tr>
+            </thead>
+            <tbody>
+                <tr><td>Healthcare &amp; Universal Coverage</td><td>$ 28.4 Billion</td><td>27.4%</td><td>Free hospital care, clinics &amp; pharmaceuticals</td></tr>
+                <tr><td>Education &amp; Academic Standards</td><td>$ 22.8 Billion</td><td>22.0%</td><td>Tuition-free schools, research &amp; textbooks</td></tr>
+                <tr><td>Environment &amp; Biome Stewardship</td><td>$ 16.5 Billion</td><td>15.9%</td><td>Forest reserves, clean energy &amp; wildlife</td></tr>
+                <tr><td>Domestic Transit &amp; Roads</td><td>$ 14.2 Billion</td><td>13.7%</td><td>Highways, rail networks &amp; interprovincial bridges</td></tr>
+                <tr><td>Work &amp; Labor Standards</td><td>$ 10.8 Billion</td><td>10.4%</td><td>Vocational apprenticeships &amp; job board safety nets</td></tr>
+                <tr><td>Executive Administration &amp; Justice</td><td>$ 6.2 Billion</td><td>6.0%</td><td>Cabinet, High Magistrates &amp; societal press</td></tr>
+                <tr><td>Propaganda &amp; Civic Education</td><td>$ 4.7 Billion</td><td>4.5%</td><td>National broadcasting &amp; cultural radio</td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Council of Fiscal Rectitude & Surprise Audits -->
+    <div class="ol-card" id="audits">
+        <div class="ol-card-title">
+            <span>Council of Fiscal Rectitude &amp; Surprise Public Audits</span>
+            <button type="button" class="ol-btn ol-btn-sm" onclick="openAuditModal()">File Audit Inquiry</button>
+        </div>
+        <p class="ol-small">To eliminate bureaucratic graft and kickbacks, the Treasury conducts unannounced quarterly forensic inspections of all procurement contracts above $50,000.</p>
         <div class="ol-grid-2" style="margin-top:10px;">
             <div style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:3px; padding:12px;">
-                <strong>Golden Osprey &amp; Falcon Restoration:</strong>
-                <div class="ol-small" style="margin-top:4px;">1,420 breeding pairs monitored in Liveland and Sentinel. Species officially elevated from Threatened to Stable.</div>
+                <strong>Latest Public Audit Audit (Q3 FY26):</strong>
+                <div class="ol-small" style="margin-top:4px;">Inspected 412 municipal procurement contracts across all 5 provinces. 99.4% full statutory compliance. 2 contracts flagged for vendor price reconciliation.</div>
             </div>
             <div style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:3px; padding:12px;">
-                <strong>Sangaian River Otter Protection:</strong>
-                <div class="ol-small" style="margin-top:4px;">River corridor connectivity program restored 340 km of unbroken freshwater migration routes.</div>
+                <strong>Civilian Whistleblower Hotline:</strong>
+                <div class="ol-small" style="margin-top:4px;">Citizens reporting proven fiscal waste or procurement inflation receive statutory legal immunity and a 5% public savings bonus.</div>
             </div>
-        </div>
-    </div>
-
-    <!-- Food Availability & Strategic Reserves -->
-    <div class="ol-card" id="food-security">
-        <div class="ol-card-title">
-            <span>Food Availability &amp; Strategic Grain Reserves</span>
-            <span class="ol-badge-tag ol-badge-success">100% Domestic Self-Sufficiency</span>
-        </div>
-        <p class="ol-small">Sangaia maintains a 24-month sovereign grain and seed reserve to protect citizens against global supply chain shocks or extreme weather.</p>
-        <div class="ol-grid-3" style="margin-top:10px;">
-            <div class="ol-metric-box">
-                <div class="ol-metric-val">24 Months</div>
-                <div class="ol-metric-lbl">Strategic Grain Reserve</div>
-            </div>
-            <div class="ol-metric-box">
-                <div class="ol-metric-val">100%</div>
-                <div class="ol-metric-lbl">Organic Public School Diet</div>
-            </div>
-            <div class="ol-metric-box">
-                <div class="ol-metric-val">$ 0.00</div>
-                <div class="ol-metric-lbl">Tax on Basic Staples</div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Conservation & Native Tree Counter -->
-    <div class="ol-card" id="conservation">
-        <div class="ol-card-title">
-            <span>Conservation Efforts &amp; Sovereign Reforestation</span>
-            <button type="button" class="ol-btn ol-btn-sm" onclick="openTreeModal()">Log Tree Planting</button>
-        </div>
-        <div style="text-align:center; padding:16px 0;">
-            <div class="ol-small ol-muted">TOTAL NATIVE TREES PLANTED UNDER CITIZEN INITIATIVE:</div>
-            <div style="font-size:36px; font-weight:700; color:#15803d; margin:6px 0;" id="treeCountVal">3,420,840</div>
-            <div class="ol-small">Goal: 5,000,000 Trees by 2028 across all 5 Provinces</div>
         </div>
     </div>
     
@@ -1491,16 +1467,15 @@ button,
     <aside class="sidebar">
 
       <div class="card">
-        <h3>Ministry of the Environment</h3>
-        <p style="color: var(--text-muted); font-size: 12px; margin-bottom: 8px;">Ecological Stewardship Authority</p>
+        <h3>Ministry of the Treasury</h3>
+        <p style="color: var(--text-muted); font-size: 12px; margin-bottom: 8px;">Fiscal & Solvency Authority</p>
         <ul class="sidebar-nav-list">
-          <li><a href="#weather" class="active"><span class="mif-chevron-right"></span> Overview & Weather (°Пт)</a></li>
-<li><a href="#services"><span class="mif-chevron-right"></span> Environmental Services</a></li>
-<li><a href="#biome-funding"><span class="mif-chevron-right"></span> Biome Funding by Province</a></li>
-<li><a href="#wildlife"><span class="mif-chevron-right"></span> Wildlife Interventions</a></li>
-<li><a href="#food-security"><span class="mif-chevron-right"></span> Food Security & Reserves</a></li>
-<li><a href="#conservation"><span class="mif-chevron-right"></span> Conservation & 3.4M Trees</a></li>
-<li><a href="/environment_departments.html"><span class="mif-chevron-right"></span> Departments Portal →</a></li>
+          <li><a href="#overview" class="active"><span class="mif-chevron-right"></span> Overview & Solvency</a></li>
+<li><a href="#debt"><span class="mif-chevron-right"></span> Zero Sovereign Debt</a></li>
+<li><a href="#loans"><span class="mif-chevron-right"></span> Solidarity Loans</a></li>
+<li><a href="#allocations"><span class="mif-chevron-right"></span> Fund Allocations</a></li>
+<li><a href="#audits"><span class="mif-chevron-right"></span> Fiscal Rectitude & Audits</a></li>
+<li><a href="/treasury_departments.html"><span class="mif-chevron-right"></span> Departments Portal →</a></li>
 
         </ul>
       </div>
@@ -1508,10 +1483,10 @@ button,
 
 
     <div class="ol-sidebox">
-        <h3>Environment Portal</h3>
-        <p class="ol-small ol-muted">Permits for eco-construction, biome stewardship, wildlife intervention, and water source protection.</p>
+        <h3>Treasury Portal</h3>
+        <p class="ol-small ol-muted">Access tax calculators, clearance verification, bond purchases, and open procurement listings.</p>
         <div class="ol-mt-10">
-            <a href="/environment_departments.html" class="ol-btn ol-btn-primary ol-btn-sm" style="width:100%; text-align:center;">Launch Environment Departments</a>
+            <a href="/treasury_departments.html" class="ol-btn ol-btn-primary ol-btn-sm" style="width:100%; text-align:center;">Launch Treasury Departments</a>
         </div>
     </div>
     
@@ -1519,89 +1494,80 @@ button,
   </main>
 
 
-    <!-- Wildlife Modal -->
-    <div class="ol-modal-overlay" id="wildModal">
+    <!-- Loan Simulator Modal -->
+    <div class="ol-modal-overlay" id="loanModal">
         <div class="ol-modal-dialog">
             <div class="ol-modal-head">
-                <span class="ol-modal-title">Report Injured or Endangered Wildlife</span>
-                <button type="button" class="ol-modal-close" onclick="closeModal('wildModal')">&times;</button>
+                <span class="ol-modal-title">Solidarity Public Works Loan Simulator</span>
+                <button type="button" class="ol-modal-close" onclick="closeModal('loanModal')">&times;</button>
             </div>
             <div class="form-group">
-                <label class="form-label">Observed Species</label>
-                <input type="text" class="ol-input" id="w-species" placeholder="e.g., Golden Osprey, River Otter, Red Fox">
+                <label class="form-label">Borrowing Municipal Agency / Cooperative</label>
+                <input type="text" class="ol-input" id="loan-agency" placeholder="e.g., Liveland Port Authority">
             </div>
             <div class="form-group">
-                <label class="form-label">Province &amp; Specific Location / Trail Marker</label>
-                <input type="text" class="ol-input" id="w-loc" placeholder="e.g., Sentinel Ridge Trail 4">
+                <label class="form-label">Requested Principal ($ Sangaian Dollars)</label>
+                <input type="number" class="ol-input" id="loan-amt" value="5000000" step="500000">
             </div>
             <div class="form-group">
-                <label class="form-label">Condition &amp; Urgency</label>
-                <textarea class="ol-textarea" id="w-desc" rows="3" placeholder="Describe injuries or hazards..."></textarea>
+                <label class="form-label">Repayment Term</label>
+                <select class="ol-select" id="loan-term">
+                    <option value="10">10 Years (0.0% Public Works Utility Rate)</option>
+                    <option value="15">15 Years (0.5% Administrative Surcharge)</option>
+                    <option value="20">20 Years (1.0% Infrastructure Bond Rate)</option>
+                </select>
             </div>
-            <div class="modal-results-box" id="wildResults"></div>
+            <div class="modal-results-box" id="loanResults"></div>
             <div class="ol-modal-foot">
-                <button type="button" class="ol-btn" onclick="closeModal('wildModal')">Cancel</button>
-                <button type="button" class="ol-btn ol-btn-primary" onclick="submitWildlife()">Dispatch Wildlife Rescue</button>
+                <button type="button" class="ol-btn" onclick="closeModal('loanModal')">Cancel</button>
+                <button type="button" class="ol-btn ol-btn-primary" onclick="calcLoan()">Calculate Amortization</button>
             </div>
         </div>
     </div>
 
-    <!-- Tree Modal -->
-    <div class="ol-modal-overlay" id="treeModal">
+    <!-- Audit Inquiry Modal -->
+    <div class="ol-modal-overlay" id="auditModal">
         <div class="ol-modal-dialog">
             <div class="ol-modal-head">
-                <span class="ol-modal-title">Record Citizen Tree Planting</span>
-                <button type="button" class="ol-modal-close" onclick="closeModal('treeModal')">&times;</button>
+                <span class="ol-modal-title">Submit Forensic Audit Inquiry</span>
+                <button type="button" class="ol-modal-close" onclick="closeModal('auditModal')">&times;</button>
             </div>
             <div class="form-group">
-                <label class="form-label">Citizen Name / Group</label>
-                <input type="text" class="ol-input" id="t-name" placeholder="Name or School / Guild">
+                <label class="form-label">Target Department or Procurement Tender</label>
+                <input type="text" class="ol-input" id="audit-dept" placeholder="Department name or Contract ID">
             </div>
             <div class="form-group">
-                <label class="form-label">Number of Native Trees Planted</label>
-                <input type="number" class="ol-input" id="t-count" value="10" min="1" max="500">
+                <label class="form-label">Nature of Discrepancy or Waste</label>
+                <textarea class="ol-textarea" id="audit-desc" rows="4" placeholder="Detail the observed discrepancy..."></textarea>
             </div>
-            <div class="form-group">
-                <label class="form-label">Species &amp; Province</label>
-                <input type="text" class="ol-input" id="t-species" placeholder="e.g., White Oak in New Madison">
-            </div>
-            <div class="modal-results-box" id="treeResults"></div>
+            <div class="modal-results-box" id="auditResults"></div>
             <div class="ol-modal-foot">
-                <button type="button" class="ol-btn" onclick="closeModal('treeModal')">Cancel</button>
-                <button type="button" class="ol-btn ol-btn-primary" onclick="submitTree()">Register to Reforestation Ledger</button>
+                <button type="button" class="ol-btn" onclick="closeModal('auditModal')">Cancel</button>
+                <button type="button" class="ol-btn ol-btn-primary" onclick="submitAudit()">Submit to Inspector General</button>
             </div>
         </div>
     </div>
     
 
     <script>
-    function detectUserLocation() {
-        const title = document.getElementById('currentLocTitle');
-        const temp = document.getElementById('currentTempDisplay');
-        const equiv = document.getElementById('tempEquiv');
-        title.innerText = '📍 Detected Location: Regional Sensor Array';
-        temp.innerText = '21.0°Пт';
-        equiv.innerText = '(23.3°C / 74.0°F)';
-    }
-
-    function openWildlifeModal() { document.getElementById('wildModal').classList.add('active'); }
-    function openTreeModal() { document.getElementById('treeModal').classList.add('active'); }
+    function openLoanModal() { document.getElementById('loanModal').classList.add('active'); }
+    function openAuditModal() { document.getElementById('auditModal').classList.add('active'); }
     function closeModal(id) { document.getElementById(id).classList.remove('active'); }
 
-    function submitWildlife() {
-        const res = document.getElementById('wildResults');
-        const token = 'WILD-RESC-' + Math.floor(100000 + Math.random() * 900000);
-        res.innerHTML = `<strong>Ranger Unit Dispatched:</strong> Tracking Token: <span style="font-family:monospace;">${token}</span>. Nearest Wildlife Haven notified.`;
+    function calcLoan() {
+        const amt = parseFloat(document.getElementById('loan-amt').value) || 0;
+        const term = parseInt(document.getElementById('loan-term').value) || 10;
+        const rate = term === 10 ? 0.0 : (term === 15 ? 0.005 : 0.01);
+        const annual = (amt / term) * (1 + rate);
+        const res = document.getElementById('loanResults');
+        res.innerHTML = `<strong>Simulated Schedule:</strong> Annual Amortization: <strong>$ ${annual.toLocaleString(undefined, {maximumFractionDigits:2})}</strong> / year. Effective Statutory Interest: <strong>${(rate*100).toFixed(1)}%</strong>. Fully asset-backed.`;
         res.classList.add('active');
     }
 
-    function submitTree() {
-        const count = parseInt(document.getElementById('t-count').value) || 10;
-        const cur = 3420840;
-        const updated = cur + count;
-        document.getElementById('treeCountVal').innerText = updated.toLocaleString();
-        const res = document.getElementById('treeResults');
-        res.innerHTML = `<strong>Reforestation Confirmed:</strong> Added ${count} trees to national ledger. Total: ${updated.toLocaleString()}!`;
+    function submitAudit() {
+        const res = document.getElementById('auditResults');
+        const token = 'TREAS-AUD-' + Math.floor(100000 + Math.random() * 900000);
+        res.innerHTML = `<strong>Inquiry Docketed:</strong> Tracking Token: <span style="font-family:monospace;">${token}</span>. Assigned to Council of Fiscal Rectitude. Protected under Whistleblower Shield.`;
         res.classList.add('active');
     }
     </script>

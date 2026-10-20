@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Ministry of Propaganda :: Sangaia Live</title>
+  <title>Ministry of Education :: Sangaia Live</title>
   <link href="https://cdn.metroui.org.ua/4.5.12/icons.css" rel="stylesheet">
   <link rel="stylesheet" href="/css/sangaia-live.css?v=20261020_v2">
   <style>
@@ -1325,16 +1325,16 @@ button,
   <script src="/auth.js" onerror="this.onerror=null;this.src='auth.js';" defer></script>
   <script src="/js/sangaia-live.js" onerror="this.onerror=null;this.src='js/sangaia-live.js';" defer></script>
 </head>
-<body class="theme-propaganda">
+<body class="theme-education">
 
   <!-- Top Hero Header -->
   <header class="hero-header">
     <div class="top-bar">
       <div class="brand">
-        <a href="/propaganda.html"><span class="mif-broadcast"></span> ministry of propaganda</a>
+        <a href="index.html"><span class="mif-book"></span> ministry of education</a>
       </div>
       <div class="top-right">
-        <form class="search-box" action="/services.html" method="get">
+        <form class="search-box" action="https://sangaia.org/services.html" method="get">
           <input type="text" name="q" placeholder="search anything" />
           <button type="submit" aria-label="Search"><span class="mif-search"></span></button>
         </form>
@@ -1342,27 +1342,27 @@ button,
           <span class="mif-bell" title="notifications"></span>
           <span class="mif-security" title="sovereign clearance active"></span>
         </div>
-        <a href="/id/" class="user-profile-btn unauthenticated" id="userProfileMenu" title="sign in to sangaia id">
+        <a href="https://sangaia.org/id/" class="user-profile-btn unauthenticated" id="userProfileMenu" title="sign in to sangaia id">
           <span class="mif-user"></span>
           <span>sign in</span>
         </a>
       </div>
     </div>
     <div class="hero-content">
-      <h1>ministry of propaganda & public information</h1>
-      <p>Civic broadcasting, live streaming radio, reporter integrity standards & recognized churches</p>
-      <div class="hero-breadcrumbs"><a href="/index.html">← federal portal</a></div>
+      <h1>ministry of education</h1>
+      <p>Universal public instruction, open digital textbook repositories, teacher certifications & higher ed grants</p>
+      <div class="hero-breadcrumbs"><a href="https://sangaia.org/index.html">← federal portal</a></div>
     </div>
   </header>
 
   <!-- Navigation Bar -->
   <nav class="subnav">
-    <a href="/propaganda.html" class="active">propaganda home</a>
-    <a href="/propaganda_departments.html">departments</a>
-    <a href="/propaganda.html#live-radio">live radio & broadcast</a>
-    <a href="/propaganda.html#channels-directory">tv & radio directory</a>
-    <a href="/propaganda.html#reporter-qualifications">reporter qualifications</a>
-    <a href="/propaganda.html#churches-registry">religious audits</a>
+    <a href="index.html" class="active">education home</a>
+    <a href="departments.html">departments</a>
+    <a href="#textbooks">open textbooks</a>
+    <a href="#higher-ed">higher ed & grants</a>
+    <a href="#schools">school scorecards</a>
+    <a href="#teachers">teacher certifications</a>
   </nav>
 
   <!-- Content Grid -->
@@ -1371,76 +1371,71 @@ button,
     <div class="left-col">
 
 
-    <!-- Live Audio Radio Player -->
-    <div class="card" id="overview"><a id="radio"></a>
+    <!-- Open Digital Textbooks -->
+    <div class="card" id="overview"><a id="textbooks"></a>
         <div class="ol-card-title">
-            <span>Sangaia National Public Radio &bull; Live Audio Broadcast</span>
-            <span class="ol-badge-tag ol-badge-success">ON AIR NOW</span>
+            <span>Open National Textbook &amp; Curriculum Repository</span>
+            <span class="ol-badge-tag ol-badge-success">100% Free Public Access</span>
         </div>
-        <p class="ol-small">Tune in live to Sangaia National Radio 1: Civic addresses, classical orchestral performances, agricultural reports, and evening philosophical debates.</p>
+        <p class="ol-small">All approved instructional frameworks, primary textbooks, and laboratory guides are freely available to students, parents, and self-directed learners nationwide.</p>
+        <table class="ol-table">
+            <thead>
+                <tr><th>Discipline</th><th>Level</th><th>Approved Syllabus</th><th>Digital Access</th></tr>
+            </thead>
+            <tbody>
+                <tr><td>Sovereign Mathematics &amp; Monomer Standards</td><td>Primary (Grades 1-6)</td><td>Base-10 Monomer Scaling &amp; Applied Geometry</td><td><a href="javascript:void(0)" class="ol-btn ol-btn-sm">Download PDF (Free)</a></td></tr>
+                <tr><td>Civic Statecraft &amp; Constitutional Virtues</td><td>Secondary (Grades 7-12)</td><td>The Aeretocracy &amp; Separation of Powers</td><td><a href="javascript:void(0)" class="ol-btn ol-btn-sm">Download PDF (Free)</a></td></tr>
+                <tr><td>Ecological Sciences &amp; Biome Stewardship</td><td>Secondary &amp; Tertiary</td><td>Native Biome Conservation &amp; Climate Telemetry</td><td><a href="javascript:void(0)" class="ol-btn ol-btn-sm">Download PDF (Free)</a></td></tr>
+            </tbody>
+        </table>
+    </div>
 
-        <div style="background:#fff7ed; border:1px solid #fed7aa; border-radius:3px; padding:16px; margin-top:10px;">
-            <div style="display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:12px;">
-                <div>
-                    <strong style="color:#7c2d12; font-size:15px;" id="currentTrackTitle"><span class="mif-broadcast mif-lg fg-orange"></span> sangaia national radio 1 &bull; 94.5 fm stereo</strong>
-                    <div class="ol-small ol-muted">now playing: "concert for the five provinces" &bull; shesk philharmonic orchestra</div>
-                </div>
-                <div style="display:flex; align-items:center; gap:8px;">
-                    <button type="button" class="ol-btn ol-btn-primary" id="radioPlayBtn" onclick="toggleRadio()"><span class="mif-play"></span> listen live</button>
-                    <span class="ol-badge-tag" id="radioStatus">buffer ready</span>
-                </div>
+    <!-- Higher Education Grants & Universities -->
+    <div class="ol-card" id="higher-ed">
+        <div class="ol-card-title">
+            <span>Provincial University Accreditation &amp; Research Grants</span>
+            <span class="ol-badge-tag">Zero Student Debt</span>
+        </div>
+        <p class="ol-small">Sangaia's five sovereign provincial universities offer tuition-free bachelor, master, and doctoral programs to all qualified citizens.</p>
+        <div class="ol-grid-2" style="margin-top:10px;">
+            <div style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:3px; padding:12px;">
+                <strong>Shesk Sovereign University (New Jasper):</strong>
+                <div class="ol-small" style="margin-top:4px;">Leading institution for Advanced Computational Science, Public Constitutional Law, and Monetary Theory.</div>
             </div>
-            <!-- Standard simulated Web Audio synthesis for authentic radio tone -->
-            <audio id="simAudio" preload="none"></audio>
+            <div style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:3px; padding:12px;">
+                <strong>Madison Agricultural &amp; Engineering Institute (New Madison):</strong>
+                <div class="ol-small" style="margin-top:4px;">Pioneering regenerative agriculture, hydroponic food systems, and environmental civil engineering.</div>
+            </div>
         </div>
     </div>
 
-    <!-- Sovereign TV & Educational Channels -->
-    <div class="ol-card" id="tv">
+    <!-- Provincial Public School Scorecards -->
+    <div class="ol-card" id="schools">
         <div class="ol-card-title">
-            <span>National Television &amp; Educational Broadcast Networks</span>
-            <span class="ol-badge-tag">Free Over-The-Air &amp; Digital</span>
+            <span>Provincial Public School Scorecards (FY2026)</span>
+            <span class="ol-badge-tag ol-badge-success">100% Funded</span>
         </div>
         <table class="ol-table">
             <thead>
-                <tr><th>Channel</th><th>Network Name</th><th>Programming Focus</th><th>Broadcast Availability</th></tr>
+                <tr><th>Provincial District</th><th>Schools</th><th>Student-Teacher Ratio</th><th>Nutritional Program</th><th>Composite Score</th></tr>
             </thead>
             <tbody>
-                <tr><td>Channel 1</td><td>Sangaia State Television (SSTV)</td><td>Official State Addresses, Documentary &amp; World News</td><td>All 5 Provinces (1080p DTV)</td></tr>
-                <tr><td>Channel 2</td><td>The Civic Academy (EduTV)</td><td>University Lectures, STEM Curriculum &amp; Language Lessons</td><td>All 5 Provinces (1080p DTV)</td></tr>
-                <tr><td>Channel 3</td><td>Provincial Culture &amp; Arts (PCA)</td><td>Regional Theater, Folklore, Classical Symphony &amp; Poetry</td><td>All 5 Provinces (1080p DTV)</td></tr>
-                <tr><td>Channel 4</td><td>Agricultural &amp; Biome Network (ABN)</td><td>Farming Techniques, Weather in &deg;Пт, Wildlife Reports</td><td>All 5 Provinces (1080p DTV)</td></tr>
+                <tr><td>New Jasper Unified</td><td>142 Schools</td><td>1:14</td><td>100% Free Organic Meals</td><td>94.6%</td></tr>
+                <tr><td>New Madison Regional</td><td>118 Schools</td><td>1:15</td><td>100% Free Organic Meals</td><td>93.8%</td></tr>
+                <tr><td>Liveland Coastal</td><td>98 Schools</td><td>1:13</td><td>100% Free Organic Meals</td><td>95.2%</td></tr>
+                <tr><td>Sentinel Mountain District</td><td>64 Schools</td><td>1:12</td><td>100% Free Organic Meals</td><td>92.9%</td></tr>
+                <tr><td>Columbia Metropolitan</td><td>86 Schools</td><td>1:14</td><td>100% Free Organic Meals</td><td>94.1%</td></tr>
             </tbody>
         </table>
     </div>
 
-    <!-- Reporter Integrity & Accreditation Standards -->
-    <div class="ol-card" id="reporters">
+    <!-- Teacher Certifications -->
+    <div class="ol-card" id="teachers">
         <div class="ol-card-title">
-            <span>Professional Journalist &amp; Reporter Accreditation Registry</span>
-            <button type="button" class="ol-btn ol-btn-sm" onclick="openPressModal()">Verify Press Credential</button>
+            <span>Teacher Certification &amp; Professional Educator Registry</span>
+            <button type="button" class="ol-btn ol-btn-sm" onclick="openCertModal()">Verify Teacher License</button>
         </div>
-        <p class="ol-small">Under the Truth in Journalism Accord, accredited reporters must declare all commercial sponsors, publish unedited interview transcripts upon request, and are protected from state censorship.</p>
-    </div>
-
-    <!-- Recognized Churches in Sangaia -->
-    <div class="ol-card" id="churches">
-        <div class="ol-card-title">
-            <span>Registry of Recognized Churches &amp; Religious Societies</span>
-            <span class="ol-badge-tag">Freedom of Conscience</span>
-        </div>
-        <p class="ol-small">Freedom of religion is constitutionally inviolable in Sangaia. Under statutory law, recognized churches must commit 85%+ of voluntary tithes directly to charity, soup kitchens, and community shelter.</p>
-        <table class="ol-table">
-            <thead>
-                <tr><th>Religious Society / Chapel</th><th>Tradition</th><th>Headquarters</th><th>Charity Compliance</th></tr>
-            </thead>
-            <tbody>
-                <tr><td>Chapel of St. Julian the Hospitaller</td><td>Christian Ecumenical</td><td>Shesk (New Jasper)</td><td><span class="ol-badge-tag ol-badge-success">91.4% Tithes Returned</span></td></tr>
-                <tr><td>Azure Coastal Interfaith Fellowship</td><td>Interfaith Contemplative</td><td>Oaks (Liveland)</td><td><span class="ol-badge-tag ol-badge-success">88.5% Tithes Returned</span></td></tr>
-                <tr><td>Highland Buddhist Peace Sanctuary</td><td>Buddhist Monastic</td><td>Sentinel Ridge (Sentinel)</td><td><span class="ol-badge-tag ol-badge-success">94.0% Tithes Returned</span></td></tr>
-                <tr><td>Madison Reform Synagogue</td><td>Jewish Traditional</td><td>Madison City (New Madison)</td><td><span class="ol-badge-tag ol-badge-success">89.2% Tithes Returned</span></td></tr>
-            </tbody>
-        </table>
+        <p class="ol-small">Educators in Sangaia are compensated with senior civil service status and sabbatical privileges, reflecting their vital societal role.</p>
     </div>
     
     </div>
@@ -1449,15 +1444,15 @@ button,
     <aside class="sidebar">
 
       <div class="card">
-        <h3>Ministry of Propaganda</h3>
-        <p style="color: var(--text-muted); font-size: 12px; margin-bottom: 8px;">Civic Information Authority</p>
+        <h3>Ministry of Education</h3>
+        <p style="color: var(--text-muted); font-size: 12px; margin-bottom: 8px;">Academic & Standards Authority</p>
         <ul class="sidebar-nav-list">
-          <li><a href="#overview" class="active"><span class="mif-chevron-right"></span> Overview & Public Truth</a></li>
-<li><a href="#tv"><span class="mif-chevron-right"></span> National TV Channels</a></li>
-<li><a href="#radio"><span class="mif-chevron-right"></span> Live Radio Broadcasts</a></li>
-<li><a href="#reporters"><span class="mif-chevron-right"></span> Reporter Accreditation</a></li>
-<li><a href="#churches"><span class="mif-chevron-right"></span> Recognized Churches</a></li>
-<li><a href="/propaganda_departments.html"><span class="mif-chevron-right"></span> Departments Portal →</a></li>
+          <li><a href="#overview" class="active"><span class="mif-chevron-right"></span> Overview & Curricula</a></li>
+<li><a href="#textbooks"><span class="mif-chevron-right"></span> Open Textbooks</a></li>
+<li><a href="#higher-ed"><span class="mif-chevron-right"></span> Higher Ed & Universities</a></li>
+<li><a href="#schools"><span class="mif-chevron-right"></span> School Scorecards</a></li>
+<li><a href="#teachers"><span class="mif-chevron-right"></span> Teacher Certifications</a></li>
+<li><a href="/education_departments.html"><span class="mif-chevron-right"></span> Departments Portal →</a></li>
 
         </ul>
       </div>
@@ -1465,10 +1460,10 @@ button,
 
 
     <div class="ol-sidebox">
-        <h3>Public Information</h3>
-        <p class="ol-small ol-muted">Oversees state broadcasting networks, journalist accreditation, civic communications, and recognized religious registries.</p>
+        <h3>Education Portal</h3>
+        <p class="ol-small ol-muted">Explore curriculum development, higher education subsidies, teacher certifications, and institutional funding.</p>
         <div class="ol-mt-10">
-            <a href="/propaganda_departments.html" class="ol-btn ol-btn-primary ol-btn-sm" style="width:100%; text-align:center;">Launch Propaganda Departments</a>
+            <a href="/education_departments.html" class="ol-btn ol-btn-primary ol-btn-sm" style="width:100%; text-align:center;">Launch Education Departments</a>
         </div>
     </div>
     
@@ -1476,69 +1471,33 @@ button,
   </main>
 
 
-    <!-- Press Verify Modal -->
-    <div class="ol-modal-overlay" id="pressModal">
+    <!-- Teacher Cert Modal -->
+    <div class="ol-modal-overlay" id="certModal">
         <div class="ol-modal-dialog">
             <div class="ol-modal-head">
-                <span class="ol-modal-title">Verify Official Press Accreditation</span>
-                <button type="button" class="ol-modal-close" onclick="closeModal('pressModal')">&times;</button>
+                <span class="ol-modal-title">Verify Educator Certification</span>
+                <button type="button" class="ol-modal-close" onclick="closeModal('certModal')">&times;</button>
             </div>
             <div class="form-group">
-                <label class="form-label">Journalist Name or Press Card ID</label>
-                <input type="text" class="ol-input" id="pr-name" placeholder="e.g., Marcus Vance or SG-PRESS-1049">
+                <label class="form-label">Educator Full Name or License ID</label>
+                <input type="text" class="ol-input" id="tc-name" placeholder="e.g., Elena Vance or SG-EDU-8491">
             </div>
-            <div class="modal-results-box" id="prResults"></div>
+            <div class="modal-results-box" id="certResults"></div>
             <div class="ol-modal-foot">
-                <button type="button" class="ol-btn" onclick="closeModal('pressModal')">Cancel</button>
-                <button type="button" class="ol-btn ol-btn-primary" onclick="verifyPress()">Verify Credential</button>
+                <button type="button" class="ol-btn" onclick="closeModal('certModal')">Cancel</button>
+                <button type="button" class="ol-btn ol-btn-primary" onclick="verifyCert()">Search Registry</button>
             </div>
         </div>
     </div>
     
 
     <script>
-    let isPlaying = false;
-    let audioCtx = null;
-    let osc = null;
-
-    function toggleRadio() {
-        const btn = document.getElementById('radioPlayBtn');
-        const st = document.getElementById('radioStatus');
-        if (!isPlaying) {
-            isPlaying = true;
-            btn.innerText = '⏸ Pause Stream';
-            st.innerText = 'STREAMING LIVE (94.5 FM)';
-            st.className = 'ol-badge-tag ol-badge-success';
-
-            // Generate soft atmospheric chime using Web Audio API to simulate broadcast
-            try {
-                audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-                osc = audioCtx.createOscillator();
-                const gain = audioCtx.createGain();
-                osc.type = 'sine';
-                osc.frequency.setValueAtTime(440, audioCtx.currentTime); // Concert A
-                gain.gain.setValueAtTime(0.04, audioCtx.currentTime);
-                osc.connect(gain);
-                gain.connect(audioCtx.destination);
-                osc.start();
-            } catch(e) {}
-        } else {
-            isPlaying = false;
-            btn.innerText = '▶ Listen Live';
-            st.innerText = 'Buffer Ready';
-            st.className = 'ol-badge-tag';
-            if (osc) {
-                try { osc.stop(); } catch(e){}
-            }
-        }
-    }
-
-    function openPressModal() { document.getElementById('pressModal').classList.add('active'); }
+    function openCertModal() { document.getElementById('certModal').classList.add('active'); }
     function closeModal(id) { document.getElementById(id).classList.remove('active'); }
 
-    function verifyPress() {
-        const res = document.getElementById('prResults');
-        res.innerHTML = `<strong>Accreditation Status:</strong> Verified Active Foreign/Domestic Journalist &bull; Sovereign Press Shield Protected &bull; Certified by Ministry of Propaganda.`;
+    function verifyCert() {
+        const res = document.getElementById('certResults');
+        res.innerHTML = `<strong>Registry Result:</strong> Verified Active Educator &bull; Master License in Good Standing &bull; Certified by Academic Board of Sangaia.`;
         res.classList.add('active');
     }
     </script>
