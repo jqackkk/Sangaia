@@ -579,7 +579,7 @@ def render_sangaia_id_html(is_subdomain=False):
                     <div><span style="color:#666;">Citizen ID:</span> <strong style="font-family:monospace; color:#0078d4;">SG-2026-F1E8</strong></div>
                     <div><span style="color:#666;">Territory:</span> <strong style="color:#201f1e;">New Jasper (Capital Shesk)</strong></div>
                     <div><span style="color:#666;">Status:</span> <span style="background:#eef9f2; color:#15803d; border:1px solid #bbf7d0; font-size:10.5px; font-weight:700; padding:1px 6px; border-radius:2px;">VERIFIED CITIZEN</span></div>
-                    <div><span style="color:#666;">Coverage:</span> <strong style="color:#201f1e;">Tier 1 Universal Health &bull; Zero Copay</strong></div>
+                    <div><span style="color:#666;">Coverage:</span> <strong style="color:#201f1e;">Tier 1 Universal Healthcare</strong></div>
                 </div>
             </div>
             <div style="background:#f8fafc; border-top:1px solid #e2e8f0; padding:10px 18px; display:flex; justify-content:space-between; align-items:center; font-family:monospace; font-size:11px; color:#64748b;">
@@ -635,7 +635,7 @@ def render_sangaia_id_html(is_subdomain=False):
         <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(230px, 1fr)); gap:12px; margin-top:10px;">
           <div style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:3px; padding:12px;">
             <strong style="color:#0078d4;"><span class="mif-medkit"></span> Universal Healthcare</strong>
-            <p style="font-size:12px; color:#555; margin-top:4px;">100% state-funded emergency, primary, specialist, dental, and pharmaceutical coverage with zero point-of-service copays.</p>
+            <p style="font-size:12px; color:#555; margin-top:4px;">100% state-funded emergency, primary, specialist, dental, and pharmaceutical coverage for all citizens.</p>
           </div>
           <div style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:3px; padding:12px;">
             <strong style="color:#15803d;"><span class="mif-coins"></span> Living Wage Protection</strong>
@@ -803,7 +803,7 @@ def render_sangaia_id_html(is_subdomain=False):
           "jurisdiction": "New Jasper",
           "country": "The United Provinces of Sangaia",
           "status": "Verified Citizen",
-          "healthcareCoverage": "Tier 1 Universal (Zero Copay)",
+          "healthcareCoverage": "Tier 1 Universal Healthcare",
           "wageFloorProtection": "$25.00/hr Statutory Living Wage",
           "standards": {{
             "currency": "$",

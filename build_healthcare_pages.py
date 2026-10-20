@@ -64,9 +64,9 @@ def build_hospitals_page():
                 <div style="font-size:11px; color:#8a8886;">Rapid Triage Standard</div>
             </div>
             <div style="background:#f8fafc; border:1px solid #e1dfdd; border-radius:2px; padding:10px; text-align:center;">
-                <div style="font-size:11px; color:#605e5c; text-transform:uppercase; font-weight:600;">Emergency Copay</div>
-                <div style="font-size:18px; font-weight:700; color:#b91c1c; margin:4px 0;">$ 0.00</div>
-                <div style="font-size:11px; color:#8a8886;">100% Sovereign Funded</div>
+                <div style="font-size:11px; color:#605e5c; text-transform:lowercase; font-weight:600;">acute trauma beds</div>
+                <div style="font-size:18px; font-weight:700; color:#b91c1c; margin:4px 0;">240+ beds</div>
+                <div style="font-size:11px; color:#8a8886;">100% acute capacity</div>
             </div>
             <div style="background:#f8fafc; border:1px solid #e1dfdd; border-radius:2px; padding:10px; text-align:center;">
                 <div style="font-size:11px; color:#605e5c; text-transform:uppercase; font-weight:600;">Helipad Capacity</div>
@@ -274,7 +274,7 @@ def build_services_page():
     <div class="ol-card" id="pharmacy">
         <div class="ol-card-title">
             <span>Prescription Drug Formulary &amp; Local Dispensaries</span>
-            <span class="ol-badge-tag">Zero Copay</span>
+            <span class="ol-badge-tag ol-badge-success">100% sovereign funded</span>
         </div>
         <p>All essential maintenance medications—including insulin, cardiovascular medications, antibiotics, and inhalers—are categorized under Tier 1 of the Sovereign Formulary and dispensed at zero cost through accredited public hospital pharmacies.</p>
     </div>

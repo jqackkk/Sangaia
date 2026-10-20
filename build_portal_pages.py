@@ -703,7 +703,7 @@ def build_societal_press():
                 </div>
                 <span class="ol-badge-tag ol-badge-success">Enacted</span>
             </div>
-            <div class="docket-entry-body">Reaffirms constitutional prohibition against any emergency room, clinic, or pharmacy levying copays upon Sangaian ID holders.</div>
+            <div class="docket-entry-body">Reaffirms constitutional prohibition against any emergency room, clinic, or pharmacy levying out-of-pocket charges or fees upon Sangaian ID holders.</div>
             <div class="docket-entry-meta">Published October 10, 2026 &bull; Promulgated by the Aeretocrat</div>
         </div>
     </div>

@@ -552,15 +552,15 @@ MODAL_CONFIGS = {
         "fields": [
             {"name": "med_name", "label_en": "Generic or Brand Drug Name", "label_sgn": "Мэдицина Номэ (Гэнэрико вэл Брандо)", "type": "text", "placeholder_en": "e.g., Insulin, Amoxicillin, Metformin, Salbutamol", "placeholder_sgn": "наприм., Инсулин, Амоксицилин, Салбутамол"}
         ],
-        "action_en": "Lookup Coverage & Co-Pay",
-        "action_sgn": "Инспэкто Кувэрта & Ко-Пэй",
+        "action_en": "Lookup Coverage",
+        "action_sgn": "Инспэкто Кувэрта",
         "sample_results_en": [
-            {"ref": "Rx-901", "date": "Co-Pay: $ 0.00", "title": "Human Biosimilar Insulin (All Formats)", "desc": "Classification: Essential Life-Support Therapeutic. 100% subsidized by federal sovereign healthcare fund."},
-            {"ref": "Rx-412", "date": "Co-Pay: $ 0.00", "title": "Broad-Spectrum Antibiotics (Amoxicillin / Clavulanate)", "desc": "Classification: Tier 1 Essential Anti-Infective. Available at all licensed community pharmacies."}
+            {"ref": "Rx-901", "date": "100% Subsidized", "title": "Human Biosimilar Insulin (All Formats)", "desc": "Classification: Essential Life-Support Therapeutic. 100% subsidized by federal sovereign healthcare fund."},
+            {"ref": "Rx-412", "date": "Tier 1 Essential", "title": "Broad-Spectrum Antibiotics (Amoxicillin / Clavulanate)", "desc": "Classification: Tier 1 Essential Anti-Infective. Available at all licensed community pharmacies."}
         ],
         "sample_results_sgn": [
-            {"ref": "Rx-901", "date": "Ко-Пэй: $ 0.00", "title": "Хумано Биосимиларо Инсулин (Холо Формато)", "desc": "Класификатио: Эсэнциало Салуто Тэрапи. 100% субсидиадо эк федерало фондо."},
-            {"ref": "Rx-412", "date": "Ко-Пэй: $ 0.00", "title": "Антибиотико (Амоксицилин / Клавуланат)", "desc": "Класификатио: Градо 1 Эсэнциало Анти-Инфэктиво. Либэро ин холо фармациа."}
+            {"ref": "Rx-901", "date": "100% Субсидиадо", "title": "Хумано Биосимиларо Инсулин (Холо Формато)", "desc": "Класификатио: Эсэнциало Салуто Тэрапи. 100% субсидиадо эк федерало фондо."},
+            {"ref": "Rx-412", "date": "Градо 1 Эсэнциало", "title": "Антибиотико (Амоксицилин / Клавуланат)", "desc": "Класификатио: Градо 1 Эсэнциало Анти-Инфэктиво. Либэро ин холо фармациа."}
         ]
     },
     "ercapacity": {

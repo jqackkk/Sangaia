@@ -419,7 +419,7 @@ MINISTRIES = {
                 "id": "universal-coverage",
                 "name_en": "Department of Universal Coverage",
                 "name_sgn": "Дэпарто эк Унивэрсало Салутиа-Кура",
-                "mandate_en": "Administering constitutional 100% state-sponsored healthcare, digital insurance cards, and essential prescription co-pay elimination.",
+                "mandate_en": "Administering constitutional 100% state-sponsored healthcare, digital health credentials, and universal prescription coverage.",
                 "mandate_sgn": "Мануго 100% либэро салутиа-кура, дигитало кардо, инкаи фармако бэнефито син ко-пай.",
                 "functions": [
                     {
