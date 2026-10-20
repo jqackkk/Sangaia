@@ -3,8 +3,10 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>sangaia id :: citizen directory &amp; digital credential</title>
+  <title>Sangaia ID :: Citizen Directory &amp; Digital Credential :: Sangaia</title>
   <link href="https://cdn.metroui.org.ua/4.5.12/icons.css" rel="stylesheet">
+  <link rel="stylesheet" href="/css/sangaia-live.css?v=20261020_v2">
+  <link rel="stylesheet" href="../css/sangaia-live.css?v=20261020_v2">
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   <script src="auth.js"></script>
   <script>
@@ -12,526 +14,97 @@
       document.write('<script src="../auth.js"><\/script>');
     }
   </script>
-  <script src="js/sangaia-live.js" defer></script>
+  <script src="/js/sangaia-live.js" defer></script>
   <style>
-    :root {
-      --primary: #0078d4;
-      --bg: #f4f4f4;
-      --card-bg: #ffffff;
-      --border: #e2e2e2;
-      --border-dark: #cccccc;
-      --text-main: #201f1e;
-      --text-muted: #666666;
-      --text-light: #8a8886;
-      --btn-gray: #f3f3f3;
-      --btn-gray-border: #ababab;
-      --btn-gray-hover: #e8e8e8;
+    /* Card graphic styles */
+    .id-card-frame {
+      max-width: 520px;
+      margin: 0 auto 16px auto;
+      background: #ffffff;
+      border: 2px solid #7fa8c0;
+      border-radius: 6px;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+      overflow: hidden;
     }
-
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    body {
-      font-family: 'Segoe WP', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background-color: var(--bg);
-      color: var(--text-main);
-      font-size: 13.5px;
-      line-height: 1.4;
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-    }
-
-    a {
-      color: var(--primary);
-      text-decoration: none;
-    }
-
-    a:hover {
-      text-decoration: underline;
-    }
-
-    /* Top Hero Header */
-    .hero-header {
-      position: relative;
-      background-color: #d7ecfa;
-      background-image: radial-gradient(ellipse at 42% 120%, rgba(255, 255, 255, 0.75), rgba(255, 255, 255, 0) 55%),
-                        linear-gradient(180deg, #96cdef 0%, #b3def6 18%, #cbe8f8 38%, #e2f2fc 65%, #f4fafd 86%, #ffffff 100%);
-      background-repeat: no-repeat;
-      background-position: top center;
-      color: #14405c;
-      padding: 16px 48px 24px 48px;
-      border-bottom: none;
-    }
-
-    .top-bar {
+    .id-card-header {
+      background: linear-gradient(135deg, #1e3a8a, #2563eb);
+      color: #ffffff;
+      padding: 12px 18px;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      margin-bottom: 24px;
     }
-
-    .brand {
+    .id-card-body {
+      padding: 18px;
       display: flex;
-      align-items: center;
-      gap: 10px;
-      font-size: 22px;
-      font-weight: 600;
-      letter-spacing: -0.4px;
-      color: var(--primary);
-    }
-
-    .brand a {
-      color: var(--primary);
-      text-decoration: none;
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      position: relative;
-      padding: 0;
-      background: linear-gradient(
-        110deg,
-        var(--primary) 0%,
-        var(--primary) 35%,
-        #ffffff 50%,
-        var(--primary) 65%,
-        var(--primary) 100%
-      );
-      background-size: 300% 100%;
-      background-position: 100% 0;
-      -webkit-background-clip: text;
-      background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
-
-    .brand a:hover {
-      text-decoration: none;
-      animation: brandShine 0.5s ease-out forwards;
-    }
-
-    @keyframes brandShine {
-      0% {
-        background-position: 100% 0;
-      }
-      100% {
-        background-position: 0% 0;
-      }
-    }
-
-    .brand [class*="mif-"] {
-      font-size: 20px;
-      display: inline-block;
-      line-height: 1;
-    }
-
-    .top-right {
-      display: flex;
-      align-items: center;
-      gap: 14px;
-    }
-
-    /* Dynamic Search Box */
-    .search-box {
-      display: flex;
+      gap: 18px;
       align-items: center;
       background: #ffffff;
-      border: 1px solid var(--border-dark);
-      border-radius: 2px;
-      padding: 3px 6px 3px 10px;
     }
-
-    .search-box input {
-      border: none;
-      outline: none;
-      font-size: 12.5px;
-      font-family: inherit;
-      color: var(--text-main);
-      width: 140px;
-      transition: width 0.15s ease;
-      background: transparent;
+    .id-card-photo {
+      width: 85px;
+      height: 85px;
+      background: #f8fafc;
+      border: 1px solid #cbd5e1;
+      border-radius: 4px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      overflow: hidden;
     }
-
-    .search-box button {
+    .id-card-photo img {
+      width: 85px;
+      height: 85px;
+      object-fit: cover;
+    }
+    .id-card-footer {
+      background: #f8fafc;
+      border-top: 1px solid #e2e8f0;
+      padding: 10px 18px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-family: monospace;
+      font-size: 11px;
+      color: #64748b;
+    }
+    .auth-tab-btn {
+      padding: 8px 16px;
       background: none;
       border: none;
-      cursor: pointer;
-      color: var(--text-muted);
-      display: flex;
-      align-items: center;
-      padding: 2px;
-    }
-
-    .search-box button:hover {
-      color: var(--primary);
-    }
-
-    .top-icons {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      color: var(--text-muted);
-      font-size: 15px;
-    }
-
-    .top-icons span {
-      cursor: pointer;
-    }
-
-    .top-icons span:hover {
-      color: var(--primary);
-    }
-
-    /* Metro Sign-in / User Profile Pill */
-    .user-profile-btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      padding: 4px 10px;
-      font-size: 12px;
-      border-radius: 2px;
-      border: 1px solid var(--border-dark);
-      background: #ffffff;
-      color: var(--text-main);
-      cursor: pointer;
-      text-decoration: none;
-      position: relative;
-    }
-
-    .user-profile-btn:hover {
-      border-color: var(--primary);
-      text-decoration: none;
-    }
-
-    .user-profile-btn.authenticated {
-      background: #eef9f2;
-      border-color: #bbf7d0;
-      color: #15803d;
-      font-weight: 600;
-    }
-
-    /* Hero Center Content */
-    .hero-content {
-      margin-top: 4px;
-    }
-
-    .hero-content h1 {
-      font-size: 32px;
-      font-weight: 300;
-      letter-spacing: -0.5px;
-      color: #0b2230;
-      margin-bottom: 2px;
-    }
-
-    .hero-content p {
-      font-size: 13px;
-      color: #2b536b;
-      margin-bottom: 8px;
-    }
-
-    .hero-breadcrumbs {
-      display: flex;
-      align-items: center;
-      flex-wrap: wrap;
-      gap: 8px;
-      font-size: 12.5px;
-      font-style: normal;
-      color: #3f6579;
-    }
-
-    .hero-breadcrumbs a {
-      color: var(--primary);
-      text-decoration: none;
-      display: inline-flex;
-      align-items: center;
-      gap: 4px;
+      border-bottom: 3px solid transparent;
       font-weight: 500;
-      transition: text-decoration 0.15s ease;
-    }
-
-    .hero-breadcrumbs a:hover {
-      text-decoration: underline;
-    }
-
-    /* Sub-Navigation Bar */
-    .subnav {
-      background: #fff;
-      border-bottom: 1px solid var(--border);
-      padding: 0 48px;
-      display: flex;
-      gap: 28px;
-      overflow-x: auto;
-      scrollbar-width: thin;
-    }
-
-    .subnav a {
-      color: var(--text-main);
-      padding: 12px 2px;
-      font-size: 13.5px;
-      text-decoration: none;
-      display: inline-block;
-      position: relative;
-      white-space: nowrap;
-    }
-
-    .subnav a.active {
-      font-weight: 600;
-      border-bottom: 3px solid var(--primary);
-      color: var(--primary);
-    }
-
-    .subnav a:hover:not(.active) {
-      color: var(--primary);
-    }
-
-    /* Unauthenticated Centered Portal */
-    #portalUnauthenticatedView {
-      max-width: 480px;
-      width: 100%;
-      margin: 40px auto;
-      padding: 0 20px;
-      flex: 1;
-    }
-
-    /* Authenticated Portal Wrapper */
-    #portalAuthenticatedView {
-      width: 100%;
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-    }
-
-    /* Main Container Layout */
-    .main-wrapper {
-      max-width: 1280px;
-      width: 100%;
-      margin: 24px auto;
-      padding: 0 48px;
-      display: grid;
-      grid-template-columns: 210px 1fr;
-      gap: 32px;
-      flex: 1;
-    }
-
-    /* Left Sidebar Navigation */
-    .side-nav-group {
-      margin-bottom: 24px;
-    }
-
-    .side-nav-group ul {
-      list-style: none;
-    }
-
-    .side-nav-group li {
-      margin-bottom: 6px;
-    }
-
-    .side-nav-group a {
-      color: var(--text-main);
-      font-size: 13.5px;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      padding: 4px 0 4px 10px;
-    }
-
-    .side-nav-group a.active {
-      font-weight: 600;
-      border-left: 3px solid #6b7782;
-      padding-left: 7px;
-    }
-
-    .side-nav-group a:hover:not(.active) {
-      color: var(--primary);
-    }
-
-    .side-nav-heading {
-      font-size: 11px;
-      font-weight: 700;
-      color: #999999;
-      letter-spacing: 0.6px;
-      margin-bottom: 10px;
-    }
-
-    /* Cards */
-    .card {
-      background: var(--card-bg);
-      border: 1px solid var(--border);
-      border-radius: 2px;
-      padding: 22px 26px;
-      margin-bottom: 20px;
-    }
-
-    .card h2 {
-      font-size: 16px;
-      font-weight: 500;
-      color: #444;
-      margin-bottom: 16px;
-    }
-
-    /* Input styling */
-    .input-find {
-      width: 100%;
-      max-width: 380px;
-      border: 1px solid var(--border-dark);
-      border-radius: 2px;
-      padding: 7px 10px;
-      font-size: 13px;
-      outline: none;
-      display: block;
-      margin-bottom: 12px;
-      font-family: inherit;
-    }
-
-    .input-find:focus {
-      border-color: var(--primary);
-    }
-
-    .btn-neutral {
-      background: var(--btn-gray);
-      border: 1px solid var(--btn-gray-border);
-      border-radius: 2px;
-      padding: 6px 14px;
-      font-size: 12.5px;
       cursor: pointer;
-      color: var(--text-main);
-      font-family: inherit;
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-    }
-
-    .btn-neutral:hover {
-      background: var(--btn-gray-hover);
-    }
-
-    .btn-primary {
-      background: var(--primary);
-      color: #ffffff;
-      border: 1px solid var(--primary);
-      border-radius: 2px;
-      padding: 7px 16px;
-      font-size: 13px;
-      cursor: pointer;
-      font-family: inherit;
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-    }
-
-    .btn-primary:hover {
-      filter: brightness(0.92);
-    }
-
-    .form-group {
-      margin-bottom: 12px;
-    }
-
-    .form-group label {
-      display: block;
-      font-size: 12px;
-      font-weight: 600;
       color: var(--text-muted);
-      margin-bottom: 4px;
+      font-family: inherit;
+      font-size: 13px;
       text-transform: lowercase;
     }
-
-    .form-control {
-      width: 100%;
-      border: 1px solid var(--border-dark);
-      border-radius: 2px;
-      padding: 7px 10px;
-      font-size: 13px;
-      font-family: inherit;
-      outline: none;
-      background: #ffffff;
-    }
-
-    .form-control:focus {
-      border-color: var(--primary);
-    }
-
-    /* Footer */
-    footer {
-      background: transparent;
-      border-top: 1px solid var(--border);
-      padding: 24px 48px;
-      font-size: 12px;
-      color: var(--text-muted);
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-      max-width: 1280px;
-      width: 100%;
-      margin: 0 auto;
-    }
-
-    .footer-links {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 14px;
-      list-style: none;
-    }
-
-    .footer-links a {
-      color: var(--text-muted);
-    }
-
-    .footer-links a:hover {
-      color: var(--primary);
-    }
-
-    @media (max-width: 860px) {
-      .main-wrapper {
-        grid-template-columns: 1fr;
-        padding: 0 20px;
-      }
-      .hero-header, .subnav, footer {
-        padding-left: 20px;
-        padding-right: 20px;
-      }
-      .subnav {
-        overflow-x: auto;
-      }
-    }
-
-    /* All-Lowercase Metro Typography */
-    .brand a,
-    .brand span,
-    .hero-content h1,
-    .hero-breadcrumbs a,
-    .subnav a,
-    .side-nav-heading,
-    .side-nav-group a,
-    .card h2,
-    .btn-neutral,
-    .btn-primary,
-    button,
-    .user-dropdown a,
-    .user-dropdown-header {
-      text-transform: lowercase;
+    .auth-tab-btn.active {
+      border-bottom-color: var(--primary);
+      font-weight: 600;
+      color: var(--text-main);
     }
   </style>
 </head>
-<body>
+<body class="theme-default">
 
   <!-- Top Hero Header -->
   <header class="hero-header">
     <div class="top-bar">
       <div class="brand">
-        <a href="https://sangaia.org/index.html"><span class="mif-home"></span> sangaia id</a>
+        <a href="/index.html"><span class="mif-home"></span> sangaia</a>
       </div>
       <div class="top-right">
-        <form class="search-box" action="https://sangaia.org/services.html" method="get">
+        <form class="search-box" action="/services.html" method="get">
           <input type="text" name="q" placeholder="search anything" />
           <button type="submit" aria-label="Search"><span class="mif-search"></span></button>
         </form>
         <div class="top-icons">
           <span class="mif-bell" title="notifications"></span>
         </div>
-        <a href="index.html#signin" class="user-profile-btn unauthenticated" id="userProfileMenu" title="sign in to sangaia id">
+        <a href="/id/" class="user-profile-btn unauthenticated" id="userProfileMenu" title="sign in to sangaia id">
           <span class="mif-user"></span>
           <span>sign in</span>
         </a>
@@ -539,152 +112,149 @@
     </div>
     <div class="hero-content">
       <h1>sangaia id</h1>
-      <p>official sovereign citizen credential &bull; cryptographic identity &bull; 5 provinces</p>
+      <p>official citizen identity credential &bull; single sign-on &bull; 5 provinces registry</p>
       <div class="hero-breadcrumbs">
-        <a href="https://sangaia.org/index.html">← federal portal</a>
+        <a href="/index.html">← federal portal</a> <span class="bc-sep">&bull;</span> <a href="/id/">sangaia id</a>
       </div>
     </div>
   </header>
 
-  <!-- Unauthenticated Sign In / Create Account Portal -->
-  <div id="portalUnauthenticatedView">
-    <section class="card" style="box-shadow: 0 4px 18px rgba(0,0,0,0.06); padding: 26px 30px;">
-      <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px;">
-        <h2 style="margin-bottom:0;" id="authPortalHeading">sangaia id authentication</h2>
-        <span style="font-size:11px; color:var(--text-muted);"><span class="mif-security"></span> sovereign sso</span>
-      </div>
-      <p style="color:var(--text-muted); font-size:12.5px; margin-bottom:18px; line-height: 1.5;">
-        sign in or register to access your sovereign citizen docket, view your official id card, and manage civil entitlements across all 5 provinces and ministerial services.
-      </p>
-
-      <div style="display:flex; border-bottom:1px solid var(--border); margin-bottom:18px;">
-        <button type="button" id="tabSignIn" onclick="switchPageAuthTab('signin')" style="padding:8px 16px; background:none; border:none; border-bottom:3px solid var(--primary); font-weight:600; cursor:pointer; color:var(--text-main); font-family:inherit; font-size:13px; text-transform:lowercase;">
-          <span class="mif-enter"></span> sign in
-        </button>
-        <button type="button" id="tabSignUp" onclick="switchPageAuthTab('signup')" style="padding:8px 16px; background:none; border:none; border-bottom:3px solid transparent; font-weight:400; cursor:pointer; color:var(--text-muted); font-family:inherit; font-size:13px; text-transform:lowercase;">
-          <span class="mif-user-plus"></span> create citizen account
-        </button>
-      </div>
-
-      <!-- Sign In Form -->
-      <form id="pageSignInForm" onsubmit="handlePageSignIn(event)">
-        <div class="form-group">
-          <label for="pageSignInEmail">citizen email</label>
-          <input type="email" id="pageSignInEmail" class="form-control" required placeholder="citizen@sangaia.org" />
-        </div>
-        <div class="form-group">
-          <label for="pageSignInPassword">password</label>
-          <input type="password" id="pageSignInPassword" class="form-control" required placeholder="••••••••" />
-        </div>
-        <div id="pageSignInError" style="display:none; color:#b91c1c; font-size:12px; margin-bottom:12px; line-height:1.4; padding:8px; background:#fef2f2; border:1px solid #fecaca; border-radius:2px;"></div>
-        <div id="pageSignInSuccess" style="display:none; color:#15803d; font-size:12px; margin-bottom:12px; line-height:1.4; padding:8px; background:#f0fdf4; border:1px solid #bbf7d0; border-radius:2px;"></div>
-        <div style="display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:12px; margin-top:16px;">
-          <button type="submit" id="pageSignInBtn" class="btn-primary">
-            <span class="mif-enter"></span> sign in to sangaia id
-          </button>
-          <span style="font-size:12px; color:var(--text-muted);">
-            need an id? <a href="javascript:void(0)" onclick="switchPageAuthTab('signup')" style="color:var(--primary); font-weight:600;">create account</a>
-          </span>
-        </div>
-      </form>
-
-      <!-- Sign Up / Register Form -->
-      <form id="pageSignUpForm" onsubmit="handlePageSignUp(event)" style="display:none;">
-        <div class="form-group">
-          <label for="pageSignUpName">full legal name</label>
-          <input type="text" id="pageSignUpName" class="form-control" required placeholder="e.g. John Doe" />
-        </div>
-        <div class="form-group">
-          <label for="pageSignUpDob">date of birth</label>
-          <input type="date" id="pageSignUpDob" class="form-control" />
-        </div>
-        <div class="form-group">
-          <label for="pageSignUpProvince">provincial jurisdiction</label>
-          <select id="pageSignUpProvince" class="form-control" style="background:#fff;">
-            <option value="New Jasper (Capital Shesk)">New Jasper (Capital Shesk)</option>
-            <option value="New Madison">New Madison</option>
-            <option value="Liveland">Liveland</option>
-            <option value="Sentinel">Sentinel</option>
-            <option value="Columbia">Columbia</option>
-          </select>
-        </div>
-        <div class="form-group">
-          <label for="pageSignUpEmail">email address</label>
-          <input type="email" id="pageSignUpEmail" class="form-control" required placeholder="citizen@sangaia.org" />
-        </div>
-        <div class="form-group">
-          <label for="pageSignUpPassword">password (minimum 6 characters)</label>
-          <input type="password" id="pageSignUpPassword" minlength="6" class="form-control" required placeholder="••••••••" />
-        </div>
-        <div id="pageSignUpError" style="display:none; color:#b91c1c; font-size:12px; margin-bottom:12px; line-height:1.4; padding:8px; background:#fef2f2; border:1px solid #fecaca; border-radius:2px;"></div>
-        <div id="pageSignUpSuccess" style="display:none; color:#15803d; font-size:12px; margin-bottom:12px; line-height:1.4; padding:8px; background:#f0fdf4; border:1px solid #bbf7d0; border-radius:2px;"></div>
-        <div style="display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:12px; margin-top:16px;">
-          <button type="submit" id="pageSignUpBtn" class="btn-primary" style="background:#15803d; border-color:#15803d;">
-            <span class="mif-user-plus"></span> register sovereign citizen id
-          </button>
-          <span style="font-size:12px; color:var(--text-muted);">
-            already registered? <a href="javascript:void(0)" onclick="switchPageAuthTab('signin')" style="color:var(--primary); font-weight:600;">sign in</a>
-          </span>
-        </div>
-      </form>
-    </section>
-  </div>
-
-  <!-- Authenticated View: The Actual ID Page & Management (Initially hidden until session detected) -->
-  <div id="portalAuthenticatedView" style="display: none;">
-    <!-- Horizontal Navigation Bar -->
-    <nav class="subnav">
-      <a href="#card" class="active">citizen credential</a>
-      <a href="#account">account &amp; session</a>
-      <a href="#verify">verify docket</a>
+  <!-- Horizontal Subnav -->
+  <nav class="subnav" id="pageSubnav">
+    <div id="subnavUnauth" style="display: flex; gap: 8px;">
+      <a href="javascript:void(0)" class="active" id="subnavSignIn" onclick="switchPageAuthTab('signin')">sign in</a>
+      <a href="javascript:void(0)" id="subnavSignUp" onclick="switchPageAuthTab('signup')">create account</a>
+      <a href="/citizenship.html">citizenship</a>
+      <a href="/services.html">services</a>
+      <a href="/government.html">government</a>
+    </div>
+    <div id="subnavAuth" style="display: none; gap: 8px;">
+      <a href="#card" class="active">my citizen id</a>
+      <a href="#account">session &amp; account</a>
+      <a href="#verify">verify credential</a>
       <a href="#entitlements">civil entitlements</a>
       <a href="#provinces">5 provinces registry</a>
-      <a href="https://sangaia.org/citizenship.html">citizenship</a>
-      <a href="https://sangaia.org/services.html">services</a>
-      <a href="https://sangaia.org/dashboard.html">registry dashboard</a>
-      <a href="https://sangaia.org/government.html">government</a>
-    </nav>
+      <a href="/citizenship.html">citizenship</a>
+      <a href="/services.html">services</a>
+    </div>
+  </nav>
 
-    <!-- Main Content Grid -->
-    <div class="main-wrapper">
-      <!-- Left Column Navigation -->
-      <aside>
-        <div class="side-nav-group">
-          <div class="side-nav-heading">identity services</div>
-          <ul>
-            <li><a href="#card" class="active" onclick="switchNav(this)"><span class="mif-profile"></span> my citizen id</a></li>
-            <li><a href="#account" onclick="switchNav(this)"><span class="mif-user"></span> session &amp; account</a></li>
-            <li><a href="#verify" onclick="switchNav(this)"><span class="mif-security"></span> verify credential</a></li>
-            <li><a href="#entitlements" onclick="switchNav(this)"><span class="mif-balance-scale"></span> civil entitlements</a></li>
-            <li><a href="#provinces" onclick="switchNav(this)"><span class="mif-map"></span> 5 provinces registry</a></li>
-            <li><a href="#records" onclick="switchNav(this)"><span class="mif-lock"></span> cryptographic ledger</a></li>
-          </ul>
-        </div>
+  <!-- Main Content Grid -->
+  <main class="main-wrapper">
+    <!-- Left Column: Primary Content -->
+    <div class="left-col">
 
-        <div class="side-nav-group">
-          <div class="side-nav-heading">related places</div>
-          <ul>
-            <li><a href="https://sangaia.org/citizenship.html"><span class="mif-checkmark"></span> citizenship status</a></li>
-            <li><a href="https://sangaia.org/literacy_test.html"><span class="mif-school"></span> literacy examination</a></li>
-            <li><a href="https://sangaia.org/application.html"><span class="mif-file-text"></span> civic applications</a></li>
-            <li><a href="https://sangaia.org/dashboard.html"><span class="mif-chart-bars"></span> sovereign dashboard</a></li>
-            <li><a href="https://sangaia.org/index.html"><span class="mif-home"></span> federal home</a></li>
-          </ul>
-        </div>
-
-        <div class="side-nav-group">
-          <div class="side-nav-heading">sovereign standards</div>
-          <div style="font-size:12px; color:var(--text-muted); line-height:1.6; padding-left:10px;">
-            <div><strong>provinces:</strong> 5 autonomous</div>
-            <div><strong>currency:</strong> $ (sangaian dollar)</div>
-            <div><strong>standards:</strong> панотерм (°пт) &bull; мономер (мн)</div>
-            <div><strong>authentication:</strong> aeretocratic seal</div>
+      <!-- ================================================================
+           UNAUTHENTICATED VIEW: SIGN IN / CREATE CITIZEN ACCOUNT
+           ================================================================ -->
+      <div id="portalUnauthenticatedView">
+        <section class="card">
+          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px;">
+            <h2 style="margin-bottom:0;" id="authPortalHeading">sangaia id authentication</h2>
+            <span style="font-size:11px; color:var(--text-muted);"><span class="mif-security"></span> single sign-on</span>
           </div>
-        </div>
-      </aside>
+          <p style="color:var(--text-muted); font-size:12.5px; margin-bottom:18px; line-height: 1.5;">
+            Sign in or create your citizen account to access your official identity credential, view your Sangaia ID card, and access services across all five provinces.
+          </p>
 
-      <!-- Main Content Panels -->
-      <main>
+          <div style="display:flex; border-bottom:1px solid var(--border); margin-bottom:18px;">
+            <button type="button" id="tabSignIn" class="auth-tab-btn active" onclick="switchPageAuthTab('signin')">
+              <span class="mif-enter"></span> sign in
+            </button>
+            <button type="button" id="tabSignUp" class="auth-tab-btn" onclick="switchPageAuthTab('signup')">
+              <span class="mif-user-plus"></span> create citizen account
+            </button>
+          </div>
+
+          <!-- Sign In Form -->
+          <form id="pageSignInForm" onsubmit="handlePageSignIn(event)">
+            <div class="form-group" style="margin-bottom: 14px;">
+              <label for="pageSignInEmail" style="display:block; font-size:12px; font-weight:600; margin-bottom:4px; text-transform:lowercase;">citizen email</label>
+              <input type="email" id="pageSignInEmail" class="ol-input" required placeholder="citizen@sangaia.org" style="width:100%; padding:8px 10px; border:1px solid var(--border-dark); border-radius:2px; font-family:inherit; font-size:13px;" />
+            </div>
+            <div class="form-group" style="margin-bottom: 14px;">
+              <label for="pageSignInPassword" style="display:block; font-size:12px; font-weight:600; margin-bottom:4px; text-transform:lowercase;">password</label>
+              <input type="password" id="pageSignInPassword" class="ol-input" required placeholder="••••••••" style="width:100%; padding:8px 10px; border:1px solid var(--border-dark); border-radius:2px; font-family:inherit; font-size:13px;" />
+            </div>
+            <div id="pageSignInError" style="display:none; color:#b91c1c; font-size:12px; margin-bottom:12px; line-height:1.4; padding:8px; background:#fef2f2; border:1px solid #fecaca; border-radius:2px;"></div>
+            <div id="pageSignInSuccess" style="display:none; color:#15803d; font-size:12px; margin-bottom:12px; line-height:1.4; padding:8px; background:#f0fdf4; border:1px solid #bbf7d0; border-radius:2px;"></div>
+            <div style="display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:12px; margin-top:16px;">
+              <button type="submit" id="pageSignInBtn" class="ol-btn ol-btn-primary">
+                <span class="mif-enter"></span> sign in to sangaia id
+              </button>
+              <span style="font-size:12px; color:var(--text-muted);">
+                need an id? <a href="javascript:void(0)" onclick="switchPageAuthTab('signup')" style="color:var(--primary); font-weight:600;">create account</a>
+              </span>
+            </div>
+          </form>
+
+          <!-- Create Account Form -->
+          <form id="pageSignUpForm" onsubmit="handlePageSignUp(event)" style="display:none;">
+            <div class="form-group" style="margin-bottom: 14px;">
+              <label for="pageSignUpName" style="display:block; font-size:12px; font-weight:600; margin-bottom:4px; text-transform:lowercase;">full legal name</label>
+              <input type="text" id="pageSignUpName" class="ol-input" required placeholder="e.g. John Doe" style="width:100%; padding:8px 10px; border:1px solid var(--border-dark); border-radius:2px; font-family:inherit; font-size:13px;" />
+            </div>
+            <div class="form-group" style="margin-bottom: 14px;">
+              <label for="pageSignUpDob" style="display:block; font-size:12px; font-weight:600; margin-bottom:4px; text-transform:lowercase;">date of birth (age 13+ per ⎰6.cp.cnsp)</label>
+              <input type="date" id="pageSignUpDob" class="ol-input" style="width:100%; padding:8px 10px; border:1px solid var(--border-dark); border-radius:2px; font-family:inherit; font-size:13px;" />
+            </div>
+            <div class="form-group" style="margin-bottom: 14px;">
+              <label for="pageSignUpProvince" style="display:block; font-size:12px; font-weight:600; margin-bottom:4px; text-transform:lowercase;">provincial jurisdiction</label>
+              <select id="pageSignUpProvince" class="ol-select" style="width:100%; padding:8px 10px; border:1px solid var(--border-dark); border-radius:2px; font-family:inherit; font-size:13px; background:#fff;">
+                <option value="New Jasper (Capital Shesk)">New Jasper (Capital Shesk)</option>
+                <option value="New Madison">New Madison</option>
+                <option value="Liveland">Liveland</option>
+                <option value="Sentinel">Sentinel</option>
+                <option value="Columbia">Columbia</option>
+              </select>
+            </div>
+            <div class="form-group" style="margin-bottom: 14px;">
+              <label for="pageSignUpEmail" style="display:block; font-size:12px; font-weight:600; margin-bottom:4px; text-transform:lowercase;">email address</label>
+              <input type="email" id="pageSignUpEmail" class="ol-input" required placeholder="citizen@sangaia.org" style="width:100%; padding:8px 10px; border:1px solid var(--border-dark); border-radius:2px; font-family:inherit; font-size:13px;" />
+            </div>
+            <div class="form-group" style="margin-bottom: 14px;">
+              <label for="pageSignUpPassword" style="display:block; font-size:12px; font-weight:600; margin-bottom:4px; text-transform:lowercase;">password (minimum 6 characters)</label>
+              <input type="password" id="pageSignUpPassword" minlength="6" class="ol-input" required placeholder="••••••••" style="width:100%; padding:8px 10px; border:1px solid var(--border-dark); border-radius:2px; font-family:inherit; font-size:13px;" />
+            </div>
+            <div id="pageSignUpError" style="display:none; color:#b91c1c; font-size:12px; margin-bottom:12px; line-height:1.4; padding:8px; background:#fef2f2; border:1px solid #fecaca; border-radius:2px;"></div>
+            <div id="pageSignUpSuccess" style="display:none; color:#15803d; font-size:12px; margin-bottom:12px; line-height:1.4; padding:8px; background:#f0fdf4; border:1px solid #bbf7d0; border-radius:2px;"></div>
+            <div style="display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:12px; margin-top:16px;">
+              <button type="submit" id="pageSignUpBtn" class="ol-btn ol-btn-primary" style="background:#15803d; border-color:#15803d;">
+                <span class="mif-user-plus"></span> create citizen account
+              </button>
+              <span style="font-size:12px; color:var(--text-muted);">
+                already registered? <a href="javascript:void(0)" onclick="switchPageAuthTab('signin')" style="color:var(--primary); font-weight:600;">sign in</a>
+              </span>
+            </div>
+          </form>
+        </section>
+
+        <!-- Informational Card -->
+        <section class="card" style="margin-top: 14px;">
+          <div class="ol-card-title">
+            <span>About Sangaia ID &amp; Privacy Protections</span>
+          </div>
+          <p class="ol-small">
+            Sangaia ID is the central identity credential for all citizens of the United Provinces of Sangaia. Under Article 1 (Declaration of Rights) and Article 6 (Citizenship), your digital identity guarantees:
+          </p>
+          <div class="ol-grid-2" style="margin-top: 10px;">
+            <div style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:3px; padding:12px;">
+              <strong style="color:var(--primary);"><span class="mif-shield"></span> Single Sign-On Access</strong>
+              <div class="ol-small" style="margin-top:4px;">One verified credential provides immediate access to all federal ministries, healthcare facilities, and provincial civil registries.</div>
+            </div>
+            <div style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:3px; padding:12px;">
+              <strong style="color:#15803d;"><span class="mif-lock"></span> Constitutional Privacy</strong>
+              <div class="ol-small" style="margin-top:4px;">Protected under ℶ3 of the Constitution: zero commercial data harvesting, zero tracking brokers, and inviolable privacy protections.</div>
+            </div>
+          </div>
+        </section>
+      </div>
+
+      <!-- ================================================================
+           AUTHENTICATED VIEW: OFFICIAL ID CARD & CITIZEN MANAGEMENT
+           ================================================================ -->
+      <div id="portalAuthenticatedView" style="display: none;">
+        
         <!-- Citizen ID Card Panel -->
         <section class="card" id="card">
           <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px; flex-wrap:wrap; gap:8px;">
@@ -692,9 +262,9 @@
             <span id="cardStatusBadge" style="background:#eef9f2; color:#15803d; border:1px solid #bbf7d0; font-size:11px; font-weight:700; padding:3px 8px; border-radius:2px; text-transform:lowercase;">statutory verified</span>
           </div>
 
-          <!-- The Sangaia ID Card Graphic -->
-          <div style="max-width:540px; margin:0 auto 16px auto; background:#ffffff; border:2px solid #7fa8c0; border-radius:6px; box-shadow:0 6px 20px rgba(0,0,0,0.08); overflow:hidden;">
-              <div style="background:linear-gradient(135deg, #1e3a8a, #2563eb); color:#ffffff; padding:12px 18px; display:flex; justify-content:space-between; align-items:center;">
+          <!-- Sangaia ID Card Graphic -->
+          <div class="id-card-frame">
+              <div class="id-card-header">
                   <div>
                       <strong style="font-size:15px; letter-spacing:0.5px; display:block;">UNITED PROVINCES OF SANGAIA</strong>
                       <div style="font-size:11px; color:#bfdbfe;">SOVEREIGN CITIZEN IDENTITY CARD &bull; AERETOCRACY OF SANGAIA</div>
@@ -706,9 +276,9 @@
                       <rect x="49" y="49" width="41" height="41" rx="2"/>
                   </svg>
               </div>
-              <div style="padding:18px; display:flex; gap:18px; align-items:center; background:#ffffff;">
-                  <div style="width:85px; height:85px; background:#f8fafc; border:1px solid #cbd5e1; border-radius:4px; display:flex; align-items:center; justify-content:center; flex-shrink:0;">
-                      <img src="images/official.png" onerror="this.onerror=null;this.src='images/official.png';" alt="Citizen Photo" width="75" height="75" style="width:75px; height:75px; object-fit:contain;" />
+              <div class="id-card-body">
+                  <div class="id-card-photo">
+                      <img src="/images/official.png" onerror="this.onerror=null;this.src='images/official.png';" alt="Citizen Photo" />
                   </div>
                   <div style="flex:1 1 auto; font-size:13px; line-height:1.6;">
                       <div><span style="color:#666;">legal name:</span> <strong id="cardLegalName" style="color:#201f1e;">citizen</strong></div>
@@ -718,19 +288,19 @@
                       <div><span style="color:#666;">coverage:</span> <strong id="cardCoverage" style="color:#201f1e;">Tier 1 Universal Healthcare</strong></div>
                   </div>
               </div>
-              <div style="background:#f8fafc; border-top:1px solid #e2e8f0; padding:10px 18px; display:flex; justify-content:space-between; align-items:center; font-family:monospace; font-size:11px; color:#64748b;">
+              <div class="id-card-footer">
                   <span style="letter-spacing:2px;">||||| | |||| |||||| | ||||| ||| |||||||| | ||||</span>
-                  <span id="cardHash" style="color:#94a3b8; font-size:10px;">HASH: SG#2026-LIVE</span>
+                  <span id="cardHash" style="color:#94a3b8; font-size:10px;">ID: SG#2026</span>
               </div>
           </div>
 
           <div style="display:flex; flex-wrap:wrap; gap:10px; justify-content:center; margin-top:14px;">
-            <button type="button" class="btn-neutral" onclick="window.print()"><span class="mif-printer"></span> print official credential</button>
-            <button type="button" class="btn-neutral" onclick="downloadCredential()"><span class="mif-download"></span> export digital pass (json-ld)</button>
-            <button type="button" class="btn-neutral" onclick="toggleQrCode()"><span class="mif-qrcode"></span> view verification qr</button>
+            <button type="button" class="ol-btn ol-btn-sm" onclick="window.print()"><span class="mif-printer"></span> print official credential</button>
+            <button type="button" class="ol-btn ol-btn-sm" onclick="downloadCredential()"><span class="mif-download"></span> export digital pass (json-ld)</button>
+            <button type="button" class="ol-btn ol-btn-sm" onclick="toggleQrCode()"><span class="mif-qrcode"></span> view verification qr</button>
           </div>
           <div id="qrBox" style="display:none; text-align:center; margin-top:14px; padding:14px; background:#f8fafc; border:1px dashed #cbd5e1; border-radius:4px;">
-            <div style="font-weight:600; color:#1e293b; margin-bottom:6px;">cryptographic quick-response pass</div>
+            <div style="font-weight:600; color:#1e293b; margin-bottom:6px;">digital verification qr</div>
             <div style="display:inline-block; padding:10px; background:#fff; border:1px solid #e2e8f0; border-radius:4px;">
               <svg viewBox="0 0 100 100" width="100" height="100" fill="#0f172a">
                 <rect x="10" y="10" width="25" height="25" rx="1"/>
@@ -750,12 +320,12 @@
                 <rect x="75" y="70" width="10" height="10" fill="#fff"/>
               </svg>
             </div>
-            <div id="qrTokenText" style="font-family:monospace; font-size:11px; color:#64748b; margin-top:6px;">token: urn:sangaia:id:SG-2026-LIVE</div>
+            <div id="qrTokenText" style="font-family:monospace; font-size:11px; color:#64748b; margin-top:6px;">token: urn:sangaia:id:SG-2026</div>
           </div>
         </section>
 
         <!-- Citizen Session & Account Management Panel -->
-        <section class="card" id="account">
+        <section class="card" id="account" style="margin-top: 14px;">
           <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px;">
             <h2 style="margin-bottom:0;">citizen session &amp; account management</h2>
             <span style="background:#eef9f2; color:#15803d; border:1px solid #bbf7d0; font-size:11px; font-weight:700; padding:2px 8px; border-radius:2px; text-transform:lowercase;">session active</span>
@@ -767,35 +337,35 @@
                 <strong style="font-size:14px; color:var(--text-main);" id="authViewName">citizen</strong>
                 <div style="font-size:12px; color:var(--text-muted);" id="authViewEmail">citizen@sangaia.org</div>
               </div>
-              <span style="font-size:11px; color:var(--text-muted);"><span class="mif-security"></span> cross-subdomain sso active</span>
+              <span style="font-size:11px; color:var(--text-muted);"><span class="mif-security"></span> single sign-on active</span>
             </div>
             <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(180px, 1fr)); gap:8px; font-size:12.5px; border-top:1px solid #e2e8f0; padding-top:10px; margin-top:10px;">
-              <div><span style="color:#666;">citizen docket:</span> <strong id="authViewId" style="font-family:monospace; color:#0078d4;">SG-2026-0000</strong></div>
+              <div><span style="color:#666;">citizen id:</span> <strong id="authViewId" style="font-family:monospace; color:#0078d4;">SG-2026-0000</strong></div>
               <div><span style="color:#666;">jurisdiction:</span> <strong id="authViewProvince">New Jasper (Capital Shesk)</strong></div>
               <div><span style="color:#666;">healthcare:</span> <strong>Tier 1 Universal</strong></div>
               <div><span style="color:#666;">wage protection:</span> <strong>$25.00/hr Floor</strong></div>
             </div>
           </div>
           <div style="display:flex; gap:10px; flex-wrap:wrap;">
-            <button type="button" class="btn-neutral" onclick="window.SangaiaAuth.signOut()"><span class="mif-exit"></span> sign out of sangaia id</button>
-            <a href="https://sangaia.org/citizenship.html" class="btn-neutral"><span class="mif-checkmark"></span> view citizenship charter</a>
-            <a href="https://sangaia.org/dashboard.html" class="btn-neutral"><span class="mif-chart-bars"></span> national registry</a>
+            <button type="button" class="ol-btn ol-btn-sm" onclick="window.SangaiaAuth.signOut()"><span class="mif-exit"></span> sign out of sangaia id</button>
+            <a href="/citizenship.html" class="ol-btn ol-btn-sm"><span class="mif-checkmark"></span> view citizenship charter</a>
+            <a href="/dashboard.html" class="ol-btn ol-btn-sm"><span class="mif-chart-bars"></span> national registry</a>
           </div>
         </section>
 
         <!-- Find & Verify Citizen Form Card -->
-        <section class="card" id="verify">
+        <section class="card" id="verify" style="margin-top: 14px;">
           <h2>verify citizen credentials</h2>
-          <input type="text" class="input-find" id="verifyInput" placeholder="search citizen id or name (e.g. SG-2026-F1E8)" value="" />
-          <div style="display:flex; align-items:center; gap:12px; flex-wrap:wrap; font-size:12.5px; color:var(--text-muted);">
-            <button type="button" class="btn-neutral" id="verifyBtn" onclick="runVerification()"><span class="mif-search"></span> verify docket</button>
-            <span>instant validation against the sovereign civil records ledger.</span>
+          <div style="display:flex; gap:10px; margin-bottom:10px;">
+            <input type="text" class="ol-input" id="verifyInput" placeholder="search citizen id or name (e.g. SG-2026-F1E8)" style="flex:1;" />
+            <button type="button" class="ol-btn ol-btn-primary" id="verifyBtn" onclick="runVerification()"><span class="mif-search"></span> verify record</button>
           </div>
+          <p class="ol-small ol-muted">Instant validation against the national civil records register.</p>
           <div id="verifyResults" style="display:none; margin-top:14px; padding:14px; background:#f0f9ff; border:1px solid #bae6fd; border-radius:2px; font-size:13px; line-height:1.5;"></div>
         </section>
 
         <!-- Civil Entitlements & Statutory Rights -->
-        <section class="card" id="entitlements">
+        <section class="card" id="entitlements" style="margin-top: 14px;">
           <h2>civil entitlements &amp; constitutional rights</h2>
           <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(230px, 1fr)); gap:12px; margin-top:10px;">
             <div style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:3px; padding:12px;">
@@ -804,80 +374,117 @@
             </div>
             <div style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:3px; padding:12px;">
               <strong style="color:#15803d;"><span class="mif-coins"></span> living wage protection</strong>
-              <p style="font-size:12px; color:#555; margin-top:4px;">Guaranteed statutory wage floor of $25.00/hr ($1,000/week) with absolute prohibition on foreign debt bondage.</p>
+              <p style="font-size:12px; color:#555; margin-top:4px;">Guaranteed statutory wage floor of $25.00/hr ($1,000/week) across all certified enterprises.</p>
             </div>
             <div style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:3px; padding:12px;">
               <strong style="color:#b45309;"><span class="mif-school"></span> tuition-free education</strong>
               <p style="font-size:12px; color:#555; margin-top:4px;">Complete public funding from early childhood through secondary polytechnics and provincial university degrees.</p>
             </div>
             <div style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:3px; padding:12px;">
-              <strong style="color:#4f46e5;"><span class="mif-compass"></span> sovereign standards</strong>
-              <p style="font-size:12px; color:#555; margin-top:4px;">Harmonized base-10 Monomer distance (1 Мн = 2.5 cm) and Panotherm temperature (°Пт = 0.9 &times; °C) across all 5 territories.</p>
+              <strong style="color:#4f46e5;"><span class="mif-compass"></span> statutory measurements</strong>
+              <p style="font-size:12px; color:#555; margin-top:4px;">Standardized metric and temperature scales harmonized across all five provinces.</p>
             </div>
           </div>
         </section>
 
         <!-- Five Sovereign Provinces Registry -->
-        <section class="card" id="provinces">
-          <h2>territorial registries &bull; five sovereign provinces</h2>
+        <section class="card" id="provinces" style="margin-top: 14px;">
+          <h2>territorial registries &bull; five autonomous provinces</h2>
           <div style="font-size:13px; color:#555; margin-bottom:12px;">
-            Every Sangaia ID credential is tethered to one of five sovereign provincial jurisdictions:
+            Every Sangaia ID credential is affiliated with one of five autonomous provincial jurisdictions:
           </div>
-          <table style="width:100%; border-collapse:collapse; font-size:12.5px;">
+          <table class="ol-table">
             <thead>
-              <tr style="border-bottom:2px solid var(--border); text-align:left; color:#666;">
-                <th style="padding:6px 8px;">province</th>
-                <th style="padding:6px 8px;">capital</th>
-                <th style="padding:6px 8px;">regional bureau</th>
-                <th style="padding:6px 8px;">status</th>
+              <tr>
+                <th>province</th>
+                <th>capital</th>
+                <th>regional bureau</th>
+                <th>status</th>
               </tr>
             </thead>
             <tbody>
-              <tr style="border-bottom:1px solid #eee;">
-                <td style="padding:8px;"><strong>New Jasper</strong></td>
-                <td style="padding:8px;">Shesk</td>
-                <td style="padding:8px;">Capitol Civil Registrar</td>
-                <td style="padding:8px;"><span style="color:#15803d; font-weight:600;">active</span></td>
-              </tr>
-              <tr style="border-bottom:1px solid #eee;">
-                <td style="padding:8px;"><strong>New Madison</strong></td>
-                <td style="padding:8px;">Madison City</td>
-                <td style="padding:8px;">Central Records Office</td>
-                <td style="padding:8px;"><span style="color:#15803d; font-weight:600;">active</span></td>
-              </tr>
-              <tr style="border-bottom:1px solid #eee;">
-                <td style="padding:8px;"><strong>Liveland</strong></td>
-                <td style="padding:8px;">Oaks</td>
-                <td style="padding:8px;">Maritime Registry</td>
-                <td style="padding:8px;"><span style="color:#15803d; font-weight:600;">active</span></td>
-              </tr>
-              <tr style="border-bottom:1px solid #eee;">
-                <td style="padding:8px;"><strong>Sentinel</strong></td>
-                <td style="padding:8px;">Sentinel Ridge</td>
-                <td style="padding:8px;">Highland Registry</td>
-                <td style="padding:8px;"><span style="color:#15803d; font-weight:600;">active</span></td>
+              <tr>
+                <td><strong>New Jasper</strong></td>
+                <td>Shesk</td>
+                <td>Capitol Civil Registrar</td>
+                <td><span class="ol-badge-tag ol-badge-success">active</span></td>
               </tr>
               <tr>
-                <td style="padding:8px;"><strong>Columbia</strong></td>
-                <td style="padding:8px;">Columbia City</td>
-                <td style="padding:8px;">Basin Civil Records</td>
-                <td style="padding:8px;"><span style="color:#15803d; font-weight:600;">active</span></td>
+                <td><strong>New Madison</strong></td>
+                <td>Madison City</td>
+                <td>Central Records Office</td>
+                <td><span class="ol-badge-tag ol-badge-success">active</span></td>
+              </tr>
+              <tr>
+                <td><strong>Liveland</strong></td>
+                <td>Oaks</td>
+                <td>Maritime Registry</td>
+                <td><span class="ol-badge-tag ol-badge-success">active</span></td>
+              </tr>
+              <tr>
+                <td><strong>Sentinel</strong></td>
+                <td>Sentinel Ridge</td>
+                <td>Highland Registry</td>
+                <td><span class="ol-badge-tag ol-badge-success">active</span></td>
+              </tr>
+              <tr>
+                <td><strong>Columbia</strong></td>
+                <td>Columbia City</td>
+                <td>Basin Civil Records</td>
+                <td><span class="ol-badge-tag ol-badge-success">active</span></td>
               </tr>
             </tbody>
           </table>
         </section>
 
-        <!-- Cryptographic Ledger & Audit Safeguards -->
-        <section class="card" id="records">
-          <h2>cryptographic ledger &amp; privacy safeguards</h2>
-          <div style="display:flex; flex-direction:column; gap:6px; min-height:auto; text-align:left; align-items:flex-start;">
+        <!-- Records & Privacy Safeguards -->
+        <section class="card" id="records" style="margin-top: 14px;">
+          <h2>public records registry &amp; privacy safeguards</h2>
+          <div style="display:flex; flex-direction:column; gap:6px;">
             <div style="color:#201f1e; font-weight:600;">zero commercial data brokerage</div>
-            <p style="font-size:12.5px; color:var(--text-muted); line-height:1.5;">All Sangaia ID credentials are authenticated via sovereign cryptographic seals. Personal records are strictly protected under the Aeretocratic Privacy Charter and are never shared with foreign commercial entities or ad networks.</p>
+            <p style="font-size:12.5px; color:var(--text-muted); line-height:1.5;">All Sangaia ID credentials are authenticated via official state seals. Personal records are strictly protected under the Constitutional Privacy Charter (Article 1, ℶ3) and are never disclosed to commercial ad networks or foreign tracking entities.</p>
           </div>
         </section>
-      </main>
+      </div>
+
     </div>
-  </div>
+
+    <!-- Right Column: Official Sidebar Widgets -->
+    <aside class="sidebar">
+      <div class="card">
+        <h3>Sangaia ID Services</h3>
+        <p style="color: var(--text-muted); font-size: 12px; margin-bottom: 8px;">Civil Identity Authority</p>
+        <ul class="sidebar-nav-list">
+          <li><a href="#card" class="active"><span class="mif-chevron-right"></span> Citizen Credential</a></li>
+          <li><a href="#account"><span class="mif-chevron-right"></span> Session &amp; Account</a></li>
+          <li><a href="#verify"><span class="mif-chevron-right"></span> Verify Credential</a></li>
+          <li><a href="#entitlements"><span class="mif-chevron-right"></span> Civil Entitlements</a></li>
+          <li><a href="#provinces"><span class="mif-chevron-right"></span> 5 Provinces Registry</a></li>
+          <li><a href="#records"><span class="mif-chevron-right"></span> Privacy Safeguards</a></li>
+        </ul>
+      </div>
+
+      <div class="card" style="margin-top: 14px;">
+        <h3>Identity Standards</h3>
+        <div style="font-size:12px; color:var(--text-muted); line-height:1.7;">
+          <div><strong>Provinces:</strong> 5 Autonomous</div>
+          <div><strong>Currency:</strong> $ (Sangaian Dollar)</div>
+          <div><strong>Healthcare:</strong> Tier 1 Universal</div>
+          <div><strong>Wage Floor:</strong> $25.00/hr Statutory</div>
+          <div><strong>Authentication:</strong> Official Seal</div>
+        </div>
+      </div>
+
+      <div class="ol-sidebox" style="margin-top: 14px;">
+        <h3>Citizenship Resources</h3>
+        <p class="ol-small ol-muted">Review constitutional naturalization standards or take the 40-question exam.</p>
+        <div class="ol-mt-10" style="display:flex; flex-direction:column; gap:8px;">
+          <a href="/citizenship.html" class="ol-btn ol-btn-sm" style="text-align:center;">Citizenship Charter</a>
+          <a href="/literacy_test.html" class="ol-btn ol-btn-primary ol-btn-sm" style="text-align:center;">Naturalization Exam</a>
+        </div>
+      </div>
+    </aside>
+  </main>
 
   <!-- Footer -->
   <footer>
@@ -885,23 +492,16 @@
       &copy; 2026, The United Provinces of Sangaia &bull; Sovereign Identity Directorate &bull; The Aeretocracy.
     </div>
     <ul class="footer-links">
-      <li><a href="https://sangaia.org/index.html">federal home</a></li>
-      <li><a href="https://sangaia.org/citizenship.html">citizenship charter</a></li>
-      <li><a href="https://sangaia.org/services.html">public services</a></li>
-      <li><a href="https://sangaia.org/dashboard.html">registry dashboard</a></li>
-      <li><a href="https://sangaia.org/government.html">constitution &amp; virtues</a></li>
+      <li><a href="/index.html">federal home</a></li>
+      <li><a href="/citizenship.html">citizenship charter</a></li>
+      <li><a href="/services.html">public services</a></li>
+      <li><a href="/dashboard.html">registry dashboard</a></li>
+      <li><a href="/government.html">constitution &amp; virtues</a></li>
     </ul>
   </footer>
 
   <script>
-    // State management for authenticated citizen
     let currentCitizen = null;
-
-    // Sidebar navigation active state handler
-    function switchNav(el) {
-      document.querySelectorAll('.side-nav-group a').forEach(a => a.classList.remove('active'));
-      el.classList.add('active');
-    }
 
     // Switch between page sign-in and sign-up tabs
     function switchPageAuthTab(tab) {
@@ -915,27 +515,23 @@
         signInForm.style.display = isSignIn ? 'block' : 'none';
         signUpForm.style.display = isSignIn ? 'none' : 'block';
 
-        tabSignIn.style.borderBottomColor = isSignIn ? 'var(--primary)' : 'transparent';
-        tabSignIn.style.fontWeight = isSignIn ? '600' : '400';
-        tabSignIn.style.color = isSignIn ? 'var(--text-main)' : 'var(--text-muted)';
-
-        tabSignUp.style.borderBottomColor = !isSignIn ? 'var(--primary)' : 'transparent';
-        tabSignUp.style.fontWeight = !isSignIn ? '600' : '400';
-        tabSignUp.style.color = !isSignIn ? 'var(--text-main)' : 'var(--text-muted)';
+        tabSignIn.classList.toggle('active', isSignIn);
+        tabSignUp.classList.toggle('active', !isSignIn);
       }
     }
 
-    // Synchronize ID card with authenticated citizen docket
+    // Synchronize ID card with authenticated citizen record
     async function syncCitizenCard() {
       if (!window.SangaiaAuth) return;
 
       const session = await window.SangaiaAuth.getSession();
       const portalAuth = document.getElementById('portalAuthenticatedView');
       const portalUnauth = document.getElementById('portalUnauthenticatedView');
+      const subnavAuth = document.getElementById('subnavAuth');
+      const subnavUnauth = document.getElementById('subnavUnauth');
       const cardTitle = document.getElementById('cardHeaderTitle');
 
       if (session && session.user) {
-        // Fetch citizen docket
         let citizen = await window.SangaiaAuth.getCitizenRecord(session.user.id);
         const name = (citizen && citizen.full_name) || session.user.user_metadata?.full_name || session.user.email.split('@')[0];
         const citizenId = (citizen && citizen.sangaia_id_number) || 'SG-2026-' + session.user.id.substring(0, 4).toUpperCase();
@@ -948,7 +544,6 @@
           email: session.user.email
         };
 
-        // Update Card UI
         const nameEl = document.getElementById('cardLegalName');
         const idEl = document.getElementById('cardCitizenId');
         const terrEl = document.getElementById('cardTerritory');
@@ -958,10 +553,10 @@
         if (nameEl) nameEl.innerText = name;
         if (idEl) idEl.innerText = citizenId;
         if (terrEl) terrEl.innerText = province;
-        if (hashEl) hashEl.innerText = 'HASH: SG#' + citizenId.replace('SG-', '') + '-LIVE';
+        if (hashEl) hashEl.innerText = 'ID: SG#' + citizenId.replace('SG-', '');
         if (qrEl) qrEl.innerText = 'token: urn:sangaia:id:' + citizenId;
 
-        if (cardTitle) cardTitle.innerText = 'official sovereign citizen credential (' + name.toLowerCase() + ')';
+        if (cardTitle) cardTitle.innerText = 'official citizen identity credential (' + name.toLowerCase() + ')';
 
         const authNameEl = document.getElementById('authViewName');
         const authEmailEl = document.getElementById('authViewEmail');
@@ -976,11 +571,19 @@
         // Switch to authenticated portal view
         if (portalUnauth) portalUnauth.style.display = 'none';
         if (portalAuth) portalAuth.style.display = 'block';
+        if (subnavUnauth) subnavUnauth.style.display = 'none';
+        if (subnavAuth) subnavAuth.style.display = 'flex';
+
+        // Also update the top profile menu
+        if (typeof updateAuthWidgets === 'function') {
+          updateAuthWidgets();
+        }
       } else {
-        // Reset to unauthenticated sign in / register view
         currentCitizen = null;
         if (portalAuth) portalAuth.style.display = 'none';
         if (portalUnauth) portalUnauth.style.display = 'block';
+        if (subnavAuth) subnavAuth.style.display = 'none';
+        if (subnavUnauth) subnavUnauth.style.display = 'flex';
       }
     }
 
@@ -996,7 +599,7 @@
       errBox.style.display = 'none';
       succBox.style.display = 'none';
       btn.disabled = true;
-      btn.innerHTML = '<span class="mif-spinner mif-ani-pulse"></span> authenticating...';
+      btn.innerHTML = '<span class="mif-spinner mif-ani-pulse"></span> signing in...';
 
       if (!window.SangaiaAuth) {
         errBox.innerText = 'Authentication engine is initializing. Please try again.';
@@ -1008,7 +611,7 @@
 
       try {
         await window.SangaiaAuth.signIn(email, pass);
-        succBox.innerText = 'Authenticated successfully! Loading your sovereign credential...';
+        succBox.innerText = 'Authenticated successfully! Loading your citizen credential...';
         succBox.style.display = 'block';
         await syncCitizenCard();
         btn.disabled = false;
@@ -1036,13 +639,13 @@
       errBox.style.display = 'none';
       succBox.style.display = 'none';
       btn.disabled = true;
-      btn.innerHTML = '<span class="mif-spinner mif-ani-pulse"></span> registering citizen docket...';
+      btn.innerHTML = '<span class="mif-spinner mif-ani-pulse"></span> creating account...';
 
       if (!window.SangaiaAuth) {
         errBox.innerText = 'Authentication engine is initializing. Please try again.';
         errBox.style.display = 'block';
         btn.disabled = false;
-        btn.innerHTML = '<span class="mif-user-plus"></span> register sovereign citizen id';
+        btn.innerHTML = '<span class="mif-user-plus"></span> create citizen account';
         return;
       }
 
@@ -1054,20 +657,20 @@
           dob,
           province
         });
-        succBox.innerText = 'Registration successful! Your sovereign citizen docket has been created.';
+        succBox.innerText = 'Registration successful! Your citizen account has been created.';
         succBox.style.display = 'block';
         await syncCitizenCard();
         btn.disabled = false;
-        btn.innerHTML = '<span class="mif-user-plus"></span> register sovereign citizen id';
+        btn.innerHTML = '<span class="mif-user-plus"></span> create citizen account';
       } catch (err) {
         errBox.innerText = err.message || 'Registration failed. Please try again.';
         errBox.style.display = 'block';
         btn.disabled = false;
-        btn.innerHTML = '<span class="mif-user-plus"></span> register sovereign citizen id';
+        btn.innerHTML = '<span class="mif-user-plus"></span> create citizen account';
       }
     }
 
-    // Real-time Citizen Verification Engine
+    // Citizen Verification
     function runVerification() {
       const input = document.getElementById('verifyInput');
       const val = (input ? input.value.trim() : '');
@@ -1076,131 +679,64 @@
         alert('Please enter a citizen ID or name to verify.');
         return;
       }
-      const token = val.toUpperCase().startsWith('SG-') ? val.toUpperCase() : 'SG-' + Math.floor(1000 + Math.random() * 9000) + '-V';
+      const token = val.toUpperCase().startsWith('SG-') ? val.toUpperCase() : 'SG-' + Math.floor(1000 + Math.random() * 9000);
       const name = val;
-      const prov = 'New Jasper (Capital Shesk)';
 
       results.innerHTML = `
-        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
-          <strong style="color:#0284c7; font-size:14px;"><span class="mif-checkmark"></span> Cryptographic Verification Confirmed</strong>
-          <span style="background:#eef9f2; color:#15803d; border:1px solid #bbf7d0; font-size:11px; font-weight:700; padding:2px 8px; border-radius:2px;">OFFICIAL DOCKET ACTIVE</span>
-        </div>
-        <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(180px, 1fr)); gap:8px;">
-          <div><span style="color:#666;">subject:</span> <strong>${name}</strong></div>
-          <div><span style="color:#666;">citizen id:</span> <strong style="font-family:monospace;">${token}</strong></div>
-          <div><span style="color:#666;">jurisdiction:</span> <strong>${prov}</strong></div>
-          <div><span style="color:#666;">healthcare:</span> <strong>Tier 1 Full Universal</strong></div>
-        </div>
-        <div style="font-family:monospace; font-size:11px; color:#0369a1; margin-top:8px; border-top:1px dashed #bae6fd; padding-top:6px;">
-          DOCKET HASH: SG#VERIFY-${Math.floor(100000 + Math.random()*900000)}-OK &bull; Signed by Sovereign Directorate
-        </div>
+        <div style="font-weight:700; color:#15803d; margin-bottom:4px;"><span class="mif-checkmark"></span> Credential Verified Active</div>
+        <div>Record Holder: <strong>${name}</strong> &bull; Citizen ID: <strong>${token}</strong></div>
+        <div style="font-size:11.5px; color:#555; margin-top:4px;">Status: Statutory Verified Citizen &bull; Healthcare: Tier 1 Universal &bull; Single Nationality Verified (⎰6.cp.dc)</div>
       `;
       results.style.display = 'block';
     }
 
-    // Export digital credential
-    function downloadCredential() {
-      const name = currentCitizen ? currentCitizen.name : "Citizen";
-      const citizenId = currentCitizen ? currentCitizen.id : "SG-2026-LIVE";
-      const province = currentCitizen ? currentCitizen.province : "New Jasper";
+    function toggleQrCode() {
+      const qr = document.getElementById('qrBox');
+      if (!qr) return;
+      qr.style.display = (qr.style.display === 'none' || qr.style.display === '') ? 'block' : 'none';
+    }
 
-      const credentialData = {
-        "@context": "https://www.w3.org/2018/credentials/v1",
-        "id": "urn:sangaia:id:" + citizenId,
-        "type": ["VerifiableCredential", "SangaiaCitizenCredential"],
-        "issuer": "urn:sangaia:gov:identity-bureau",
-        "issuanceDate": "2026-10-19T00:00:00Z",
-        "credentialSubject": {
-          "id": citizenId,
-          "legalName": name,
-          "jurisdiction": province,
-          "country": "The United Provinces of Sangaia",
-          "status": "Verified Citizen",
-          "healthcareCoverage": "Tier 1 Universal Healthcare",
-          "wageFloorProtection": "$25.00/hr Statutory Living Wage",
-          "standards": {
-            "currency": "$",
-            "temperature": "°Пт (Panotherm)",
-            "distance": "Мн (Monomer)"
-          }
+    function downloadCredential() {
+      if (!currentCitizen) {
+        alert('Please sign in to download your citizen credential.');
+        return;
+      }
+      const data = {
+        "@context": "https://schema.org",
+        "@type": "GovernmentPermit",
+        "name": "Sangaia Citizen Identity Credential",
+        "identifier": currentCitizen.id,
+        "issuedBy": "The United Provinces of Sangaia - Civil Identity Directorate",
+        "recipient": {
+          "@type": "Person",
+          "name": currentCitizen.name,
+          "email": currentCitizen.email
         },
-        "proof": {
-          "type": "Ed25519Signature2020",
-          "created": "2026-10-19T00:00:00Z",
-          "verificationMethod": "urn:sangaia:keys:sec-2026",
-          "proofValue": "z3s9f8a2026sangaiaverifiedcitizensignature"
-        }
+        "jurisdiction": currentCitizen.province,
+        "statutoryStatus": "Verified Citizen",
+        "healthcareCoverage": "Tier 1 Universal",
+        "livingWageProtection": "$25.00/hr Floor",
+        "dateIssued": "2026-10-20"
       };
-      const blob = new Blob([JSON.stringify(credentialData, null, 2)], { type: 'application/json' });
+
+      const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/ld+json' });
       const url = URL.createObjectURL(blob);
       const a = document.createElement('a');
       a.href = url;
-      a.download = 'sangaia_citizen_credential_' + citizenId + '.json';
+      a.download = `sangaia-id-${currentCitizen.id}.jsonld`;
       document.body.appendChild(a);
       a.click();
       document.body.removeChild(a);
       URL.revokeObjectURL(url);
     }
 
-    // QR Code toggle
-    function toggleQrCode() {
-      const qr = document.getElementById('qrBox');
-      if (qr) {
-        qr.style.display = (qr.style.display === 'none' || qr.style.display === '') ? 'block' : 'none';
-      }
-    }
-
-    // Page initialization
+    // Initialize state
     document.addEventListener('DOMContentLoaded', () => {
-      setTimeout(syncCitizenCard, 100);
+      syncCitizenCard();
       document.addEventListener('sangaia:auth-changed', () => {
         syncCitizenCard();
       });
-
-      // Auto-activate tab based on URL hash
-      function handleHash() {
-        if (window.location.hash === '#signup' || window.location.hash === '#register') {
-          switchPageAuthTab('signup');
-        } else {
-          switchPageAuthTab('signin');
-        }
-      }
-      handleHash();
-      window.addEventListener('hashchange', handleHash);
-
-      // Dynamic variable width search box
-      setupDynamicSearchWidth();
     });
-
-    // Variable Width Search Bar based on input text or placeholder
-    function setupDynamicSearchWidth() {
-      const searchInputs = document.querySelectorAll('.search-box input');
-      if (!searchInputs.length) return;
-
-      const canvas = document.createElement('canvas');
-      const ctx = canvas.getContext('2d');
-
-      searchInputs.forEach(input => {
-        function updateWidth() {
-          const val = input.value;
-          const placeholder = input.placeholder || 'search anything';
-          const textToMeasure = val.length > 0 ? val : placeholder;
-
-          const style = window.getComputedStyle(input);
-          ctx.font = `${style.fontWeight || '400'} ${style.fontSize || '12.5px'} ${style.fontFamily || 'Segoe UI, sans-serif'}`;
-          const metrics = ctx.measureText(textToMeasure);
-          const textWidth = Math.ceil(metrics.width) + 26;
-          const targetWidth = Math.min(Math.max(textWidth, 50), 380);
-          input.style.width = targetWidth + 'px';
-        }
-
-        input.addEventListener('input', updateWidth);
-        input.addEventListener('focus', updateWidth);
-        input.addEventListener('blur', updateWidth);
-        input.addEventListener('change', updateWidth);
-        updateWidth();
-      });
-    }
   </script>
 </body>
 </html>

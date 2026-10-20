@@ -492,14 +492,20 @@ body.theme-propaganda .hero-header {
   color: var(--primary);
 }
 
+.user-profile-btn.authenticated {
+  padding: 4px 10px 4px 6px;
+  gap: 8px;
+}
+
+.user-profile-btn img,
 .user-profile-menu img {
-  width: 28px !important;
-  height: 28px !important;
-  max-width: 28px !important;
-  max-height: 28px !important;
+  width: 22px !important;
+  height: 22px !important;
+  max-width: 22px !important;
+  max-height: 22px !important;
   border-radius: 2px;
   border: 1px solid rgba(0, 0, 0, 0.15);
-  object-fit: contain;
+  object-fit: cover;
   background: #ffffff;
   display: block;
 }

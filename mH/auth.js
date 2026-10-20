@@ -522,7 +522,7 @@ window.SangaiaAuth = {
             }
         }
 
-        // Establish the sovereign citizen docket record
+        // Establish the citizen record record
         const citizenRecord = {
             id: remoteUserId || ('sg_usr_' + Date.now().toString(36) + '_' + Math.random().toString(36).substring(2, 7)),
             full_name: cleanName,
@@ -626,6 +626,48 @@ window.SangaiaAuth = {
 // -----------------------------------------------------------------------------
 // 5. Header Profile Widget DOM Updater
 // -----------------------------------------------------------------------------
+function getCitizenAvatarUrl() {
+    const root = getRepoRoot();
+    if (window.location.protocol === 'file:') {
+        return root + 'images/official.png';
+    }
+    return '/images/official.png';
+}
+
+function renderAuthenticatedProfile(profileMenu, citizen, user) {
+    if (!profileMenu) return;
+    const rawName = (citizen && citizen.full_name) || (user && user.user_metadata?.full_name) || (user && user.email ? user.email.split('@')[0] : 'citizen');
+    const name = rawName.toLowerCase();
+    const citizenId = ((citizen && citizen.sangaia_id_number) || 'sg-2026-f1e8').toLowerCase();
+    const avatarUrl = getCitizenAvatarUrl();
+    const fallbackUrl = getRepoRoot() + 'images/official.png';
+    const idUrl = getIdPageUrl();
+
+    profileMenu.className = 'user-profile-btn authenticated';
+    profileMenu.innerHTML = `
+      <img src="${avatarUrl}" alt="${name}" style="width:22px; height:22px; border-radius:2px; object-fit:cover; border:1px solid rgba(0,0,0,0.15); display:inline-block; vertical-align:middle; flex-shrink:0;" onerror="if(this.src!=='${fallbackUrl}')this.src='${fallbackUrl}';" />
+      <span style="max-width:130px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; font-weight:600;">${name}</span>
+    `;
+    if (profileMenu.tagName === 'A') {
+        profileMenu.href = idUrl;
+        profileMenu.title = `citizen ${citizenId} (${name}) - view sangaia id`;
+    }
+}
+
+function renderUnauthenticatedProfile(profileMenu) {
+    if (!profileMenu) return;
+    const idUrl = getIdPageUrl();
+    profileMenu.className = 'user-profile-btn unauthenticated';
+    profileMenu.innerHTML = `
+      <span class="mif-user"></span>
+      <span>sign in</span>
+    `;
+    if (profileMenu.tagName === 'A') {
+        profileMenu.href = idUrl;
+        profileMenu.title = 'sign in to sangaia id';
+    }
+}
+
 async function updateAuthWidgets() {
     const profileMenu = document.getElementById('userProfileMenu');
     const legacyWidget = document.getElementById('auth-widget');
@@ -634,56 +676,54 @@ async function updateAuthWidgets() {
     let session = null;
     let citizen = null;
 
+    // Fast synchronous fallback check first
     try {
-        session = await window.SangaiaAuth.getSession();
-        if (session && session.user) {
-            citizen = await window.SangaiaAuth.getCitizenRecord(session.user.id);
+        const citRaw = sangaiaStorage.getItem(ACTIVE_CITIZEN_KEY) || (window.localStorage && window.localStorage.getItem(ACTIVE_CITIZEN_KEY));
+        if (citRaw) {
+            citizen = JSON.parse(citRaw);
+        }
+        const sessRaw = sangaiaStorage.getItem(ACTIVE_SESSION_KEY) || (window.localStorage && window.localStorage.getItem(ACTIVE_SESSION_KEY));
+        if (sessRaw) {
+            session = JSON.parse(sessRaw);
+            if (session && session.currentSession) session = session.currentSession;
+        }
+    } catch (e) {}
+
+    // Instantly render if available
+    if (profileMenu && ((citizen && (citizen.full_name || citizen.email)) || (session && session.user))) {
+        renderAuthenticatedProfile(profileMenu, citizen, session ? session.user : { email: citizen.email, user_metadata: { full_name: citizen.full_name } });
+    }
+
+    // Now verify/refresh from getSession()
+    try {
+        const liveSession = await window.SangaiaAuth.getSession();
+        if (liveSession && liveSession.user) {
+            session = liveSession;
+            if (!citizen) {
+                citizen = await window.SangaiaAuth.getCitizenRecord(session.user.id);
+            }
         }
     } catch (e) {
         console.warn("Auth check warning:", e);
     }
 
-    // 1. Update Modern One Live #userProfileMenu as a clean static button
+    // Render final verified state
     if (profileMenu) {
-        if (session && session.user) {
-            const rawName = (citizen && citizen.full_name) || session.user.user_metadata?.full_name || session.user.email.split('@')[0];
-            const name = rawName.toLowerCase();
-            const citizenId = ((citizen && citizen.sangaia_id_number) || 'sg-2026-f1e8').toLowerCase();
-            const initial = name.charAt(0).toUpperCase();
-
-            profileMenu.className = 'user-profile-btn authenticated';
-            profileMenu.innerHTML = `
-              <div style="width:20px; height:20px; border-radius:2px; background:var(--primary, #0078d4); color:#fff; display:flex; align-items:center; justify-content:center; font-weight:700; font-size:10px; flex-shrink:0;">
-                ${initial}
-              </div>
-              <span style="max-width:110px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;">${name}</span>
-            `;
-            if (profileMenu.tagName === 'A') {
-                profileMenu.href = idUrl;
-                profileMenu.title = `citizen ${citizenId} (${name}) - view sangaia id`;
-            }
+        if ((citizen && (citizen.full_name || citizen.email)) || (session && session.user)) {
+            renderAuthenticatedProfile(profileMenu, citizen, session ? session.user : null);
         } else {
-            profileMenu.className = 'user-profile-btn unauthenticated';
-            profileMenu.innerHTML = `
-              <span class="mif-user"></span>
-              <span>sign in</span>
-            `;
-            if (profileMenu.tagName === 'A') {
-                profileMenu.href = idUrl;
-                profileMenu.title = 'sign in to sangaia id';
-            }
+            renderUnauthenticatedProfile(profileMenu);
         }
     }
 
     // 2. Update Legacy #auth-widget if present
     if (legacyWidget) {
-        if (session && session.user) {
-            const name = (citizen && citizen.full_name) || session.user.user_metadata?.full_name || 'Citizen';
+        if ((citizen && (citizen.full_name || citizen.email)) || (session && session.user)) {
+            const name = (citizen && citizen.full_name) || (session && session.user && session.user.user_metadata?.full_name) || 'Citizen';
+            const avatarUrl = getCitizenAvatarUrl();
             legacyWidget.innerHTML = `
                 <a href="${idUrl}" title="Sangaia ID Portal" style="display: flex; align-items: center; gap: 7px; text-decoration: none; color: #fff; background: rgba(0, 40, 80, 0.4); padding: 2px 9px 2px 3px; border-radius: 20px; border: 1px solid rgba(0, 210, 255, 0.35); box-shadow: 0 0 8px rgba(0, 210, 255, 0.15);">
-                    <div style="width: 22px; height: 22px; border-radius: 50%; background: linear-gradient(135deg, #0077be 0%, #00d2ff 100%); display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: bold; color: white;">
-                        ${name.charAt(0).toUpperCase()}
-                    </div>
+                    <img src="${avatarUrl}" alt="${name}" style="width: 22px; height: 22px; border-radius: 50%; object-fit: cover;" onerror="this.style.display='none'" />
                     <span style="font-size: 11px; font-weight: bold;">${name.toLowerCase()}</span>
                     <span style="background: rgba(0, 210, 255, 0.2); border: 1px solid rgba(0, 210, 255, 0.5); border-radius: 8px; font-size: 9px; padding: 1px 5px; color: #00e5ff; font-weight: bold;">id</span>
                 </a>
@@ -777,7 +817,7 @@ function createAuthModalDOM() {
           </form>
         </div>
         <div class="modal-footer" style="padding:10px 18px; background:#f8fafc; border-top:1px solid #e1dfdd; display:flex; justify-content:space-between; align-items:center; font-size:11.5px; color:#666;">
-          <div><span class="mif-security"></span> aeretocratic cryptographic seal</div>
+          <div><span class="mif-security"></span> official authentication seal</div>
           <a href="${getIdPageUrl()}" style="color:var(--primary, #0078d4);">open id portal &rarr;</a>
         </div>
       </div>
@@ -907,11 +947,26 @@ window.handleModalSignUp = handleModalSignUp;
 function initAuthLifecycle() {
     updateAuthWidgets();
 
+    // Cross-tab and cross-page real-time synchronization
+    window.addEventListener('storage', (e) => {
+        if (e.key === ACTIVE_CITIZEN_KEY || e.key === ACTIVE_SESSION_KEY || e.key === SUPABASE_TOKEN_KEY) {
+            updateAuthWidgets();
+        }
+    });
+
     ensureSupabaseLoaded((client) => {
         if (client && client.auth) {
             client.auth.onAuthStateChange((event, session) => {
-                updateAuthWidgets();
-                window.SangaiaAuth.notifyAuthChange(session, session ? session.user : null);
+                if (event === 'SIGNED_OUT') {
+                    const hasLocalCitizen = sangaiaStorage.getItem(ACTIVE_CITIZEN_KEY) || (window.localStorage && window.localStorage.getItem(ACTIVE_CITIZEN_KEY));
+                    if (!hasLocalCitizen) {
+                        updateAuthWidgets();
+                        window.SangaiaAuth.notifyAuthChange(null, null);
+                    }
+                } else if (session) {
+                    updateAuthWidgets();
+                    window.SangaiaAuth.notifyAuthChange(session, session.user);
+                }
             });
         }
     });
