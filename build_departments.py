@@ -119,22 +119,80 @@ def get_subdomain_nav_tabs(tabs):
             sub_tabs.append((tid, tlabel, turl))
     return sub_tabs
 
+EMOJI_TO_MIF = {
+    "📜": "mif-description",
+    "📥": "mif-inbox",
+    "🎖️": "mif-medal",
+    "📈": "mif-chart-line",
+    "📑": "mif-bookmarks",
+    "🤝": "mif-handshake",
+    "🧮": "mif-calculator2",
+    "⚖️": "mif-balance-scale",
+    "🛑": "mif-stop",
+    "🏛️": "mif-cabinet",
+    "📊": "mif-chart-bars",
+    "🔍": "mif-search",
+    "📋": "mif-clipboard",
+    "🛡️": "mif-security",
+    "📚": "mif-books",
+    "💼": "mif-suitcase",
+    "🪙": "mif-coins",
+    "🎓": "mif-school",
+    "🛂": "mif-fingerprint",
+    "📞": "mif-phone",
+    "💳": "mif-credit-card",
+    "🏥": "mif-medkit",
+    "💊": "mif-injection",
+    "🚨": "mif-alarm",
+    "🚐": "mif-ambulance",
+    "👨‍⚕️": "mif-user-md",
+    "🌲": "mif-tree",
+    "📻": "mif-broadcast",
+    "🌐": "mif-earth",
+    "💰": "mif-coins",
+    "⚒️": "mif-hammer",
+    "🏢": "mif-location-city",
+    "⚠️": "mif-warning",
+    "🔬": "mif-microscope",
+    "🕊️": "mif-earth2",
+    "🌱": "mif-nature",
+    "💧": "mif-water",
+    "🐾": "mif-paw",
+    "🚗": "mif-drive",
+    "🛣️": "mif-drive-eta",
+    "🚆": "mif-subway",
+    "🚌": "mif-bus",
+    "🛳️": "mif-ship",
+    "✈️": "mif-airplane",
+    "📺": "mif-tv",
+    "📰": "mif-news",
+    "⛪": "mif-home",
+    "🔔": "mif-bell",
+}
+
+def get_mif_icon(raw_icon, size="mif-2x"):
+    if raw_icon and raw_icon.startswith("mif-"):
+        mif = raw_icon
+    else:
+        mif = EMOJI_TO_MIF.get(raw_icon.strip() if raw_icon else "", "mif-cabinet")
+    return f'<span class="{mif} {size} fg-primary"></span>'
+
 # Modal Dialog HTML Template
 MODAL_DIALOG_HTML = """
 <div class="ol-modal-overlay" id="interactive-modal-overlay">
     <div class="ol-modal-dialog" id="interactive-modal-window">
         <div class="ol-modal-head">
             <div style="display:flex; align-items:center; gap:8px;">
-                <span id="modal-icon" style="font-size:20px;">🏛️</span>
-                <span class="ol-modal-title" id="modal-title">Interactive Service</span>
+                <span id="modal-icon" class="mif-cabinet mif-lg fg-primary"></span>
+                <span class="ol-modal-title" id="modal-title">interactive service</span>
             </div>
             <button type="button" class="ol-modal-close" id="modal-close-btn">&times;</button>
         </div>
         <div id="modal-dynamic-fields"></div>
         <div class="modal-results-box" id="modal-results-box"></div>
         <div class="ol-modal-foot">
-            <button type="button" class="ol-btn" id="modal-cancel-btn">Close</button>
-            <button type="button" class="ol-btn ol-btn-primary" id="modal-action-btn">Submit Application</button>
+            <button type="button" class="ol-btn" id="modal-cancel-btn">close</button>
+            <button type="button" class="ol-btn ol-btn-primary" id="modal-action-btn">submit application</button>
         </div>
     </div>
 </div>
@@ -144,6 +202,42 @@ MODAL_DIALOG_HTML = """
 EXTRA_SCRIPTS_TEMPLATE = """
 <script>
 const MODAL_CONFIGS = {modal_configs_json};
+const EMOJI_MAP = {{
+    "📜": "mif-description",
+    "📥": "mif-inbox",
+    "🎖️": "mif-medal",
+    "📈": "mif-chart-line",
+    "📑": "mif-bookmarks",
+    "🤝": "mif-handshake",
+    "🧮": "mif-calculator2",
+    "⚖️": "mif-balance-scale",
+    "🛑": "mif-stop",
+    "🏛️": "mif-cabinet",
+    "📊": "mif-chart-bars",
+    "🔍": "mif-search",
+    "📋": "mif-clipboard",
+    "🛡️": "mif-security",
+    "📚": "mif-books",
+    "💼": "mif-suitcase",
+    "🪙": "mif-coins",
+    "🎓": "mif-school",
+    "🛂": "mif-fingerprint",
+    "📞": "mif-phone",
+    "💳": "mif-credit-card",
+    "🏥": "mif-medkit",
+    "💊": "mif-injection",
+    "🚨": "mif-alarm",
+    "🚐": "mif-ambulance",
+    "👨‍⚕️": "mif-user-md",
+    "🌲": "mif-tree",
+    "📻": "mif-broadcast",
+    "🌐": "mif-earth",
+    "💰": "mif-coins",
+    "⚒️": "mif-hammer",
+    "🏢": "mif-location-city",
+    "⚠️": "mif-warning",
+    "🔬": "mif-microscope"
+}};
 
 document.addEventListener('DOMContentLoaded', () => {{
     const modalOverlay = document.getElementById('interactive-modal-overlay');
@@ -176,11 +270,13 @@ document.addEventListener('DOMContentLoaded', () => {{
         activeModalConfig = cfg;
         activeModalId = modalId;
 
-        modalIcon.innerText = cfg.icon || '🏛️';
-        modalTitle.innerText = cfg.title_en || 'Service Portal';
+        const mifClass = (cfg.icon && cfg.icon.startsWith('mif-')) ? cfg.icon : (EMOJI_MAP[cfg.icon] || 'mif-cabinet');
+        modalIcon.className = mifClass + ' mif-lg fg-primary';
+        modalIcon.innerText = '';
+        modalTitle.innerText = (cfg.title_en || 'service portal').toLowerCase();
         modalResultsBox.classList.remove('active');
         modalResultsBox.innerHTML = '';
-        modalActionBtn.innerText = cfg.action_en || 'Submit';
+        modalActionBtn.innerText = (cfg.action_en || 'submit').toLowerCase();
 
         let fieldsHtml = '';
         if (cfg.fields && cfg.fields.length > 0) {{
@@ -346,12 +442,12 @@ def build_all_ministry_departments():
                 func_cards += f"""
                 <div class="ol-card func-item-box" style="margin-bottom:0; background:#fbfcfd; border:1px solid #dfe3e7;">
                     <div style="display:flex; align-items:flex-start; gap:12px;">
-                        <div style="font-size:26px; line-height:1;">{icon}</div>
+                        <div style="line-height:1;">{get_mif_icon(icon, 'mif-2x')}</div>
                         <div style="flex:1 1 auto; min-width:0;">
-                            <strong style="color:#1e293b; font-size:13.5px; display:block; margin-bottom:4px;">{ftitle}</strong>
+                            <strong style="color:#1e293b; font-size:13.5px; display:block; margin-bottom:4px;">{ftitle.lower()}</strong>
                             <p class="ol-small ol-muted" style="margin-bottom:10px; line-height:1.4;">{fdesc}</p>
                             <button type="button" class="ol-btn ol-btn-primary ol-btn-sm open-modal-btn" data-modal="{modal_id}">
-                                Launch Service &rarr;
+                                launch service &rarr;
                             </button>
                         </div>
                     </div>
@@ -361,18 +457,18 @@ def build_all_ministry_departments():
             hub_cards.append(f"""
             <div class="ol-card dept-container" id="{d['id']}">
                 <div class="ol-card-title">
-                    <span>🏢 {d['title']}</span>
-                    <a class="ol-title-link" href="/{d['file']}" style="font-weight:600;">Open Dedicated Page &rarr;</a>
+                    <span><span class="mif-location-city mif-lg fg-primary"></span> {d['title'].lower()}</span>
+                    <a class="ol-title-link" href="/{d['file']}" style="font-weight:600;">open dedicated page &rarr;</a>
                 </div>
                 <div class="ol-note" style="margin-bottom:14px;">
-                    <strong>Constitutional Mandate:</strong> {d['mandate']}
+                    <strong>constitutional mandate:</strong> {d['mandate']}
                 </div>
                 <div class="ol-grid-2">
                     {func_cards}
                 </div>
                 <div style="margin-top:12px; padding-top:10px; border-top:1px solid #e1dfdd; display:flex; justify-content:space-between; align-items:center;">
-                    <span class="ol-small ol-muted">Official Entity ID: {d['id']}</span>
-                    <a href="/{d['file']}" class="ol-btn ol-btn-sm">View Standalone {d['short_name']} Portal &rarr;</a>
+                    <span class="ol-small ol-muted">official entity id: {d['id']}</span>
+                    <a href="/{d['file']}" class="ol-btn ol-btn-sm">view standalone {d['short_name'].lower()} portal &rarr;</a>
                 </div>
             </div>
             """)
@@ -447,12 +543,12 @@ def build_all_ministry_departments():
                 func_cards += f"""
                 <div class="ol-card func-item-box" style="margin-bottom:0; background:#fbfcfd; border:1px solid #dfe3e7; padding:16px;">
                     <div style="display:flex; align-items:flex-start; gap:14px;">
-                        <div style="font-size:32px; line-height:1;">{icon}</div>
+                        <div style="line-height:1;">{get_mif_icon(icon, 'mif-2x')}</div>
                         <div style="flex:1 1 auto; min-width:0;">
-                            <h3 style="color:#1e293b; font-size:15px; margin-bottom:6px;">{ftitle}</h3>
+                            <h3 style="color:#1e293b; font-size:15px; margin-bottom:6px;">{ftitle.lower()}</h3>
                             <p class="ol-small ol-muted" style="margin-bottom:12px; line-height:1.5;">{fdesc}</p>
                             <button type="button" class="ol-btn ol-btn-primary ol-btn-sm open-modal-btn" data-modal="{modal_id}">
-                                Launch Interactive Service &rarr;
+                                launch interactive service &rarr;
                             </button>
                         </div>
                     </div>
@@ -460,12 +556,12 @@ def build_all_ministry_departments():
                 """
 
             sister_links = [
-                {"label": f"← All {ministry_title} Departments", "url": f"/{dept_hub_file}", "active": False},
-                {"label": f"← {ministry_title} Home", "url": home_url, "active": False},
+                {"label": f"← all {ministry_title} departments", "url": f"/{dept_hub_file}", "active": False},
+                {"label": f"← {ministry_title} home", "url": home_url, "active": False},
             ]
             for s in dept_entries:
                 sister_links.append({
-                    "label": f"Dept: {s['short_name']}",
+                    "label": f"dept: {s['short_name'].lower()}",
                     "url": f"/{s['file']}",
                     "active": (s["id"] == d["id"])
                 })
@@ -473,13 +569,13 @@ def build_all_ministry_departments():
             dedicated_main_html = f"""
             <div class="ol-card">
                 <div class="ol-card-title">
-                    <span>🏢 {dept_title}</span>
-                    <span class="ol-badge-tag ol-badge-success">Statutory Authority Active</span>
+                    <span><span class="mif-location-city mif-lg fg-primary"></span> {dept_title.lower()}</span>
+                    <span class="ol-badge-tag ol-badge-success">statutory authority active</span>
                 </div>
                 <div class="ol-note" style="margin-bottom:14px;">
-                    <strong>Official Constitutional Mandate:</strong> {d['mandate']}
+                    <strong>official constitutional mandate:</strong> {d['mandate']}
                 </div>
-                <p class="ol-small">This department operates under sovereign jurisdiction across all 5 provinces: New Jasper, New Madison, Liveland, Sentinel, and Columbia. All services are governed by statutory standards, guaranteed zero sovereign commercial debt, and integrated with Sangaia ID cryptographic authentication.</p>
+                <p class="ol-small">this department operates under sovereign jurisdiction across all 5 provinces: new jasper, new madison, liveland, sentinel, and columbia. all services are governed by statutory standards, guaranteed zero sovereign commercial debt, and integrated with sangaia id cryptographic authentication.</p>
             </div>
 
             <div class="ol-card">

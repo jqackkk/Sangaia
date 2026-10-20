@@ -15,12 +15,12 @@ from generate_all_sites import generate_page
 DDCR_DIR = "mH/ddcr"
 
 DDCR_NAV_TABS = [
-    ("home", "DDCR Home", "/mH/ddcr/index.html"),
-    ("topics", "Health Topics (A-Z)", "/mH/ddcr/health_topics.html"),
-    ("outbreaks", "Active Outbreaks", "/mH/ddcr/outbreaks.html"),
-    ("search", "PubMed Research", "/mH/ddcr/search.html"),
-    ("healthcare", "← Healthcare Home", "/healthcare.html"),
-    ("federal", "← Federal Portal", "/index.html"),
+    ("home", "ddcr home", "/mH/ddcr/index.html"),
+    ("topics", "health topics (a-z)", "/mH/ddcr/health_topics.html"),
+    ("outbreaks", "active outbreaks", "/mH/ddcr/outbreaks.html"),
+    ("search", "pubmed research", "/mH/ddcr/search.html"),
+    ("healthcare", "← healthcare home", "/healthcare.html"),
+    ("federal", "← federal portal", "/index.html"),
 ]
 
 def build_ddcr_index():
@@ -71,13 +71,13 @@ def build_ddcr_index():
     </div>
 
     <div class="card">
-        <h3>DDCR Direct Navigation</h3>
+        <h3>ddcr direct navigation</h3>
         <ul class="sidebar-nav-list">
-            <li><a href="/mH/ddcr/index.html" class="active"><span class="mif-home"></span> DDCR Home</a></li>
-            <li><a href="/mH/ddcr/health_topics.html"><span class="mif-folder"></span> Health Topics (A-Z)</a></li>
-            <li><a href="/mH/ddcr/outbreaks.html"><span class="mif-warning"></span> Active Outbreaks</a></li>
-            <li><a href="/mH/ddcr/search.html"><span class="mif-search"></span> Research Search</a></li>
-            <li><a href="/healthcare.html"><span class="mif-chevron-left"></span> Ministry of Healthcare</a></li>
+            <li><a href="/mH/ddcr/index.html" class="active"><span class="mif-home"></span> ddcr home</a></li>
+            <li><a href="/mH/ddcr/health_topics.html"><span class="mif-folder"></span> health topics (a-z)</a></li>
+            <li><a href="/mH/ddcr/outbreaks.html"><span class="mif-warning"></span> active outbreaks</a></li>
+            <li><a href="/mH/ddcr/search.html"><span class="mif-search"></span> research search</a></li>
+            <li><a href="/healthcare.html"><span class="mif-chevron-left"></span> ministry of healthcare</a></li>
         </ul>
     </div>
     """
@@ -130,11 +130,11 @@ def build_ddcr_topics():
     <div class="card">
         <h3>DDCR Navigation</h3>
         <ul class="sidebar-nav-list">
-            <li><a href="/mH/ddcr/index.html"><span class="mif-home"></span> DDCR Home</a></li>
-            <li><a href="/mH/ddcr/health_topics.html" class="active"><span class="mif-folder"></span> Health Topics (A-Z)</a></li>
-            <li><a href="/mH/ddcr/outbreaks.html"><span class="mif-warning"></span> Active Outbreaks</a></li>
-            <li><a href="/mH/ddcr/search.html"><span class="mif-search"></span> Research Search</a></li>
-            <li><a href="/healthcare.html"><span class="mif-chevron-left"></span> Ministry of Healthcare</a></li>
+            <li><a href="/mH/ddcr/index.html"><span class="mif-home"></span> ddcr home</a></li>
+            <li><a href="/mH/ddcr/health_topics.html"><span class="mif-folder"></span> health topics (a-z)</a></li>
+            <li><a href="/mH/ddcr/outbreaks.html"><span class="mif-warning"></span> active outbreaks</a></li>
+            <li><a href="/mH/ddcr/search.html"><span class="mif-search"></span> research search</a></li>
+            <li><a href="/healthcare.html"><span class="mif-chevron-left"></span> ministry of healthcare</a></li>
         </ul>
     </div>
     """
@@ -307,13 +307,13 @@ def build_ddcr_outbreaks():
 
     sidebar_extra = """
     <div class="card">
-        <h3>DDCR Navigation</h3>
+        <h3>ddcr navigation</h3>
         <ul class="sidebar-nav-list">
-            <li><a href="/mH/ddcr/index.html"><span class="mif-home"></span> DDCR Home</a></li>
-            <li><a href="/mH/ddcr/health_topics.html"><span class="mif-folder"></span> Health Topics (A-Z)</a></li>
-            <li><a href="/mH/ddcr/outbreaks.html" class="active"><span class="mif-warning"></span> Active Outbreaks</a></li>
-            <li><a href="/mH/ddcr/search.html"><span class="mif-search"></span> Research Search</a></li>
-            <li><a href="/healthcare.html"><span class="mif-chevron-left"></span> Ministry of Healthcare</a></li>
+            <li><a href="/mH/ddcr/index.html"><span class="mif-home"></span> ddcr home</a></li>
+            <li><a href="/mH/ddcr/health_topics.html"><span class="mif-folder"></span> health topics (a-z)</a></li>
+            <li><a href="/mH/ddcr/outbreaks.html" class="active"><span class="mif-warning"></span> active outbreaks</a></li>
+            <li><a href="/mH/ddcr/search.html"><span class="mif-search"></span> research search</a></li>
+            <li><a href="/healthcare.html"><span class="mif-chevron-left"></span> ministry of healthcare</a></li>
         </ul>
     </div>
     """
@@ -359,13 +359,13 @@ def build_ddcr_search():
 
     sidebar_extra = """
     <div class="card">
-        <h3>DDCR Navigation</h3>
+        <h3>ddcr navigation</h3>
         <ul class="sidebar-nav-list">
-            <li><a href="/mH/ddcr/index.html"><span class="mif-home"></span> DDCR Home</a></li>
-            <li><a href="/mH/ddcr/health_topics.html"><span class="mif-folder"></span> Health Topics (A-Z)</a></li>
-            <li><a href="/mH/ddcr/outbreaks.html"><span class="mif-warning"></span> Active Outbreaks</a></li>
-            <li><a href="/mH/ddcr/search.html" class="active"><span class="mif-search"></span> Research Search</a></li>
-            <li><a href="/healthcare.html"><span class="mif-chevron-left"></span> Ministry of Healthcare</a></li>
+            <li><a href="/mH/ddcr/index.html"><span class="mif-home"></span> ddcr home</a></li>
+            <li><a href="/mH/ddcr/health_topics.html"><span class="mif-folder"></span> health topics (a-z)</a></li>
+            <li><a href="/mH/ddcr/outbreaks.html"><span class="mif-warning"></span> active outbreaks</a></li>
+            <li><a href="/mH/ddcr/search.html" class="active"><span class="mif-search"></span> research search</a></li>
+            <li><a href="/healthcare.html"><span class="mif-chevron-left"></span> ministry of healthcare</a></li>
         </ul>
     </div>
     """
@@ -475,13 +475,13 @@ def build_ddcr_article():
 
     sidebar_extra = """
     <div class="card">
-        <h3>DDCR Navigation</h3>
+        <h3>ddcr navigation</h3>
         <ul class="sidebar-nav-list">
-            <li><a href="/mH/ddcr/index.html"><span class="mif-home"></span> DDCR Home</a></li>
-            <li><a href="/mH/ddcr/health_topics.html"><span class="mif-folder"></span> Health Topics (A-Z)</a></li>
-            <li><a href="/mH/ddcr/outbreaks.html"><span class="mif-warning"></span> Active Outbreaks</a></li>
-            <li><a href="/mH/ddcr/search.html"><span class="mif-search"></span> Research Search</a></li>
-            <li><a href="/healthcare.html"><span class="mif-chevron-left"></span> Ministry of Healthcare</a></li>
+            <li><a href="/mH/ddcr/index.html"><span class="mif-home"></span> ddcr home</a></li>
+            <li><a href="/mH/ddcr/health_topics.html"><span class="mif-folder"></span> health topics (a-z)</a></li>
+            <li><a href="/mH/ddcr/outbreaks.html"><span class="mif-warning"></span> active outbreaks</a></li>
+            <li><a href="/mH/ddcr/search.html"><span class="mif-search"></span> research search</a></li>
+            <li><a href="/healthcare.html"><span class="mif-chevron-left"></span> ministry of healthcare</a></li>
         </ul>
     </div>
     """
@@ -574,11 +574,11 @@ def build_article_press():
 
     sidebar_extra = """
     <div class="card">
-        <h3>Gazette Links</h3>
+        <h3>gazette links</h3>
         <ul class="sidebar-nav-list">
-            <li><a href="/societal_press.html"><span class="mif-chevron-left"></span> Return to Societal Press</a></li>
-            <li><a href="/executive.html"><span class="mif-library"></span> Executive Journal</a></li>
-            <li><a href="/index.html"><span class="mif-home"></span> Federal Home</a></li>
+            <li><a href="/societal_press.html"><span class="mif-chevron-left"></span> return to societal press</a></li>
+            <li><a href="/executive.html"><span class="mif-library"></span> executive journal</a></li>
+            <li><a href="/index.html"><span class="mif-home"></span> federal home</a></li>
         </ul>
     </div>
     """

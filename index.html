@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Sangaia Live Sovereign Portal :: Sangaia Live</title>
   <link href="https://cdn.metroui.org.ua/4.5.12/icons.css" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
   <style>
 /* ==========================================================================
    SANGAIA LIVE MASTER DESIGN SYSTEM
@@ -89,6 +88,45 @@ body.theme-default {
   --accent-btn: #6e8494;
   --accent-btn-hover: #5d707e;
 }
+
+/* ==========================================================================
+   METRO UI ICON & COLOR UTILITIES
+   Aligned with Metro UI Font & Colors (v4.metroui.org.ua/colors.html)
+   ========================================================================== */
+
+[class*="mif-"] {
+  display: inline-block;
+  vertical-align: middle;
+  line-height: 1;
+}
+
+.fg-cyan { color: #1ba1e2 !important; }
+.fg-teal { color: #00aba9 !important; }
+.fg-emerald { color: #008a00 !important; }
+.fg-green { color: #60a917 !important; }
+.fg-forest { color: #15803d !important; }
+.fg-lime { color: #a4c400 !important; }
+.fg-yellow { color: #e3c800 !important; }
+.fg-amber { color: #f0a30a !important; }
+.fg-orange { color: #fa6800 !important; }
+.fg-red { color: #e51400 !important; }
+.fg-crimson { color: #b91c1c !important; }
+.fg-magenta { color: #d80073 !important; }
+.fg-pink { color: #db2777 !important; }
+.fg-purple { color: #6b21a8 !important; }
+.fg-violet { color: #aa00ff !important; }
+.fg-indigo { color: #1e293b !important; }
+.fg-blue { color: #0078d4 !important; }
+.fg-cobalt { color: #0050ef !important; }
+.fg-navy { color: #1e3a8a !important; }
+.fg-steel { color: #647687 !important; }
+.fg-mauve { color: #76608a !important; }
+.fg-taupe { color: #87794e !important; }
+.fg-brown { color: #825a2c !important; }
+.fg-gray { color: #605e5c !important; }
+.fg-dark { color: #201f1e !important; }
+.fg-white { color: #ffffff !important; }
+.fg-primary { color: var(--primary) !important; }
 
 /* Global Reset */
 html {
@@ -209,6 +247,24 @@ a:hover {
 
 .search-box button:hover {
   background: #e07f00;
+}
+
+.top-icons {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  color: #fff;
+  font-size: 15px;
+}
+
+.top-icons span {
+  cursor: pointer;
+  opacity: 0.9;
+  transition: opacity 0.15s ease;
+}
+
+.top-icons span:hover {
+  opacity: 1;
 }
 
 .user-profile-menu {
@@ -935,6 +991,10 @@ button,
           <input type="text" name="q" placeholder="search services, laws &amp; gazette" />
           <button type="submit" aria-label="Search"><span class="mif-search"></span></button>
         </form>
+        <div class="top-icons">
+          <span class="mif-bell" title="notifications"></span>
+          <span class="mif-security" title="sovereign clearance active"></span>
+        </div>
         <div class="user-profile-menu" id="userProfileMenu">
           <img src="/images/default-wl.png" alt="Avatar" width="28" height="28" style="width:28px; height:28px; border-radius:2px; object-fit:contain; background:#ffffff;" />
           <span>jqackkk</span>
@@ -1044,47 +1104,74 @@ button,
         </div>
         <div class="ol-grid-3">
             <div class="ol-card" style="margin-bottom:0; background:#fbfcfd;">
-                <strong style="color:#1e3a8a;">🏛️ executive</strong>
+                <div style="display:flex; align-items:center; gap:8px; margin-bottom:6px;">
+                    <span class="mif-cabinet mif-2x fg-navy"></span>
+                    <strong style="color:#1e3a8a; font-size:14.5px;">executive</strong>
+                </div>
                 <p class="ol-small ol-muted" style="margin:4px 0 8px;">Aeretocrat's Journal, Cabinet, National Budget &amp; Decrees.</p>
                 <a href="/executive.html" class="ol-btn ol-btn-sm" style="width:100%; text-align:center;">portal &rarr;</a>
             </div>
             <div class="ol-card" style="margin-bottom:0; background:#fbfcfd;">
-                <strong style="color:#0f766e;">💰 treasury</strong>
+                <div style="display:flex; align-items:center; gap:8px; margin-bottom:6px;">
+                    <span class="mif-coins mif-2x fg-teal"></span>
+                    <strong style="color:#0f766e; font-size:14.5px;">treasury</strong>
+                </div>
                 <p class="ol-small ol-muted" style="margin:4px 0 8px;">Zero Debt, Solidarity Loans, Tax Code &amp; Audits.</p>
                 <a href="/treasury.html" class="ol-btn ol-btn-sm" style="width:100%; text-align:center;">portal &rarr;</a>
             </div>
             <div class="ol-card" style="margin-bottom:0; background:#fbfcfd;">
-                <strong style="color:#6b21a8;">⚒️ work</strong>
+                <div style="display:flex; align-items:center; gap:8px; margin-bottom:6px;">
+                    <span class="mif-hammer mif-2x fg-purple"></span>
+                    <strong style="color:#6b21a8; font-size:14.5px;">work</strong>
+                </div>
                 <p class="ol-small ol-muted" style="margin:4px 0 8px;">Living Wage ($25/hr), Job Board &amp; Guild Rights.</p>
                 <a href="/work.html" class="ol-btn ol-btn-sm" style="width:100%; text-align:center;">portal &rarr;</a>
             </div>
             <div class="ol-card" style="margin-bottom:0; background:#fbfcfd;">
-                <strong style="color:#b91c1c;">🏥 healthcare</strong>
+                <div style="display:flex; align-items:center; gap:8px; margin-bottom:6px;">
+                    <span class="mif-medkit mif-2x fg-crimson"></span>
+                    <strong style="color:#b91c1c; font-size:14.5px;">healthcare</strong>
+                </div>
                 <p class="ol-small ol-muted" style="margin:4px 0 8px;">100% Free Universal Healthcare &amp; ER Capacity.</p>
                 <a href="/healthcare.html" class="ol-btn ol-btn-sm" style="width:100%; text-align:center;">portal &rarr;</a>
             </div>
             <div class="ol-card" style="margin-bottom:0; background:#fbfcfd;">
-                <strong style="color:#0284c7;">🎓 education</strong>
+                <div style="display:flex; align-items:center; gap:8px; margin-bottom:6px;">
+                    <span class="mif-school mif-2x fg-cyan"></span>
+                    <strong style="color:#0284c7; font-size:14.5px;">education</strong>
+                </div>
                 <p class="ol-small ol-muted" style="margin:4px 0 8px;">Tuition-Free Universities, Textbooks &amp; Teachers.</p>
                 <a href="/education.html" class="ol-btn ol-btn-sm" style="width:100%; text-align:center;">portal &rarr;</a>
             </div>
             <div class="ol-card" style="margin-bottom:0; background:#fbfcfd;">
-                <strong style="color:#1e293b;">🏢 domestic affairs</strong>
+                <div style="display:flex; align-items:center; gap:8px; margin-bottom:6px;">
+                    <span class="mif-location-city mif-2x fg-indigo"></span>
+                    <strong style="color:#1e293b; font-size:14.5px;">domestic affairs</strong>
+                </div>
                 <p class="ol-small ol-muted" style="margin:4px 0 8px;">Provincial Relations, Trade, DMV &amp; Highways.</p>
                 <a href="/domesticaffairs.html" class="ol-btn ol-btn-sm" style="width:100%; text-align:center;">portal &rarr;</a>
             </div>
             <div class="ol-card" style="margin-bottom:0; background:#fbfcfd;">
-                <strong style="color:#db2777;">🌐 external affairs</strong>
+                <div style="display:flex; align-items:center; gap:8px; margin-bottom:6px;">
+                    <span class="mif-earth mif-2x fg-pink"></span>
+                    <strong style="color:#db2777; font-size:14.5px;">external affairs</strong>
+                </div>
                 <p class="ol-small ol-muted" style="margin:4px 0 8px;">Worldwide Travel Advisories, Treaties &amp; Embassies.</p>
                 <a href="/externalaffairs.html" class="ol-btn ol-btn-sm" style="width:100%; text-align:center;">portal &rarr;</a>
             </div>
             <div class="ol-card" style="margin-bottom:0; background:#fbfcfd;">
-                <strong style="color:#15803d;">🌲 environment</strong>
+                <div style="display:flex; align-items:center; gap:8px; margin-bottom:6px;">
+                    <span class="mif-tree mif-2x fg-forest"></span>
+                    <strong style="color:#15803d; font-size:14.5px;">environment</strong>
+                </div>
                 <p class="ol-small ol-muted" style="margin:4px 0 8px;">Weather in &deg;Пт, Biome Funds &amp; 3.4M Trees Planted.</p>
                 <a href="/environment.html" class="ol-btn ol-btn-sm" style="width:100%; text-align:center;">portal &rarr;</a>
             </div>
             <div class="ol-card" style="margin-bottom:0; background:#fbfcfd;">
-                <strong style="color:#ea580c;">📻 propaganda</strong>
+                <div style="display:flex; align-items:center; gap:8px; margin-bottom:6px;">
+                    <span class="mif-broadcast mif-2x fg-orange"></span>
+                    <strong style="color:#ea580c; font-size:14.5px;">propaganda</strong>
+                </div>
                 <p class="ol-small ol-muted" style="margin:4px 0 8px;">State TV, Live Radio Stream, Press &amp; Churches.</p>
                 <a href="/propaganda.html" class="ol-btn ol-btn-sm" style="width:100%; text-align:center;">portal &rarr;</a>
             </div>

@@ -472,19 +472,19 @@ def build_research_page():
         <p>looking for specific health topics, epidemic guidelines, outbreak surveillance, or biomedical research papers? the ddcr maintains our comprehensive national repository:</p>
         <div class="ol-grid-3" style="margin-top:14px;">
             <div style="background:#ffffff; border:1px solid #fecaca; border-radius:2px; padding:12px; text-align:center;">
-                <div style="font-size:22px;">📚</div>
+                <span class="mif-books mif-2x fg-crimson" style="margin-bottom:6px;"></span>
                 <strong style="display:block; margin:6px 0 4px; font-size:13px;">health topics (a-z)</strong>
                 <p class="ol-small ol-muted">verified disease symptom guides and clinical treatment protocols.</p>
                 <a href="/mH/ddcr/health_topics.html" class="ol-btn ol-btn-sm" style="width:100%; margin-top:8px;">browse topics &rarr;</a>
             </div>
             <div style="background:#ffffff; border:1px solid #fecaca; border-radius:2px; padding:12px; text-align:center;">
-                <div style="font-size:22px;">⚠️</div>
+                <span class="mif-warning mif-2x fg-crimson" style="margin-bottom:6px;"></span>
                 <strong style="display:block; margin:6px 0 4px; font-size:13px;">outbreak surveillance</strong>
                 <p class="ol-small ol-muted">real-time provincial alert levels, quarantine corridors, and containment.</p>
                 <a href="/mH/ddcr/outbreaks.html" class="ol-btn ol-btn-sm" style="width:100%; margin-top:8px;">view outbreaks &rarr;</a>
             </div>
             <div style="background:#ffffff; border:1px solid #fecaca; border-radius:2px; padding:12px; text-align:center;">
-                <div style="font-size:22px;">🔬</div>
+                <span class="mif-microscope mif-2x fg-crimson" style="margin-bottom:6px;"></span>
                 <strong style="display:block; margin:6px 0 4px; font-size:13px;">pubmed / literature</strong>
                 <p class="ol-small ol-muted">live search across pubmed, pmc, and sovereign biomedical papers.</p>
                 <a href="/mH/ddcr/search.html" class="ol-btn ol-btn-sm" style="width:100%; margin-top:8px;">search literature &rarr;</a>

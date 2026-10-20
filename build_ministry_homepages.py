@@ -1759,12 +1759,12 @@ def build_propaganda():
         <div style="background:#fff7ed; border:1px solid #fed7aa; border-radius:3px; padding:16px; margin-top:10px;">
             <div style="display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:12px;">
                 <div>
-                    <strong style="color:#7c2d12; font-size:15px;" id="currentTrackTitle">📻 Sangaia National Radio 1 &bull; 94.5 FM Stereo</strong>
-                    <div class="ol-small ol-muted">Now Playing: "Concert for the Five Provinces" &bull; Shesk Philharmonic Orchestra</div>
+                    <strong style="color:#7c2d12; font-size:15px;" id="currentTrackTitle"><span class="mif-broadcast mif-lg fg-orange"></span> sangaia national radio 1 &bull; 94.5 fm stereo</strong>
+                    <div class="ol-small ol-muted">now playing: "concert for the five provinces" &bull; shesk philharmonic orchestra</div>
                 </div>
                 <div style="display:flex; align-items:center; gap:8px;">
-                    <button type="button" class="ol-btn ol-btn-primary" id="radioPlayBtn" onclick="toggleRadio()">▶ Listen Live</button>
-                    <span class="ol-badge-tag" id="radioStatus">Buffer Ready</span>
+                    <button type="button" class="ol-btn ol-btn-primary" id="radioPlayBtn" onclick="toggleRadio()"><span class="mif-play"></span> listen live</button>
+                    <span class="ol-badge-tag" id="radioStatus">buffer ready</span>
                 </div>
             </div>
             <!-- Standard simulated Web Audio synthesis for authentic radio tone -->

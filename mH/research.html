@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Medical Research, Clinical Trials & DDCR Liaison :: Sangaia Live</title>
   <link href="https://cdn.metroui.org.ua/4.5.12/icons.css" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
   <style>
 /* ==========================================================================
    SANGAIA LIVE MASTER DESIGN SYSTEM
@@ -89,6 +88,45 @@ body.theme-default {
   --accent-btn: #6e8494;
   --accent-btn-hover: #5d707e;
 }
+
+/* ==========================================================================
+   METRO UI ICON & COLOR UTILITIES
+   Aligned with Metro UI Font & Colors (v4.metroui.org.ua/colors.html)
+   ========================================================================== */
+
+[class*="mif-"] {
+  display: inline-block;
+  vertical-align: middle;
+  line-height: 1;
+}
+
+.fg-cyan { color: #1ba1e2 !important; }
+.fg-teal { color: #00aba9 !important; }
+.fg-emerald { color: #008a00 !important; }
+.fg-green { color: #60a917 !important; }
+.fg-forest { color: #15803d !important; }
+.fg-lime { color: #a4c400 !important; }
+.fg-yellow { color: #e3c800 !important; }
+.fg-amber { color: #f0a30a !important; }
+.fg-orange { color: #fa6800 !important; }
+.fg-red { color: #e51400 !important; }
+.fg-crimson { color: #b91c1c !important; }
+.fg-magenta { color: #d80073 !important; }
+.fg-pink { color: #db2777 !important; }
+.fg-purple { color: #6b21a8 !important; }
+.fg-violet { color: #aa00ff !important; }
+.fg-indigo { color: #1e293b !important; }
+.fg-blue { color: #0078d4 !important; }
+.fg-cobalt { color: #0050ef !important; }
+.fg-navy { color: #1e3a8a !important; }
+.fg-steel { color: #647687 !important; }
+.fg-mauve { color: #76608a !important; }
+.fg-taupe { color: #87794e !important; }
+.fg-brown { color: #825a2c !important; }
+.fg-gray { color: #605e5c !important; }
+.fg-dark { color: #201f1e !important; }
+.fg-white { color: #ffffff !important; }
+.fg-primary { color: var(--primary) !important; }
 
 /* Global Reset */
 html {
@@ -209,6 +247,24 @@ a:hover {
 
 .search-box button:hover {
   background: #e07f00;
+}
+
+.top-icons {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  color: #fff;
+  font-size: 15px;
+}
+
+.top-icons span {
+  cursor: pointer;
+  opacity: 0.9;
+  transition: opacity 0.15s ease;
+}
+
+.top-icons span:hover {
+  opacity: 1;
 }
 
 .user-profile-menu {
@@ -935,6 +991,10 @@ button,
           <input type="text" name="q" placeholder="search services, laws &amp; gazette" />
           <button type="submit" aria-label="Search"><span class="mif-search"></span></button>
         </form>
+        <div class="top-icons">
+          <span class="mif-bell" title="notifications"></span>
+          <span class="mif-security" title="sovereign clearance active"></span>
+        </div>
         <div class="user-profile-menu" id="userProfileMenu">
           <img src="/images/default-wl.png" alt="Avatar" width="28" height="28" style="width:28px; height:28px; border-radius:2px; object-fit:contain; background:#ffffff;" />
           <span>jqackkk</span>
@@ -1002,19 +1062,19 @@ button,
         <p>looking for specific health topics, epidemic guidelines, outbreak surveillance, or biomedical research papers? the ddcr maintains our comprehensive national repository:</p>
         <div class="ol-grid-3" style="margin-top:14px;">
             <div style="background:#ffffff; border:1px solid #fecaca; border-radius:2px; padding:12px; text-align:center;">
-                <div style="font-size:22px;">📚</div>
+                <span class="mif-books mif-2x fg-crimson" style="margin-bottom:6px;"></span>
                 <strong style="display:block; margin:6px 0 4px; font-size:13px;">health topics (a-z)</strong>
                 <p class="ol-small ol-muted">verified disease symptom guides and clinical treatment protocols.</p>
                 <a href="/mH/ddcr/health_topics.html" class="ol-btn ol-btn-sm" style="width:100%; margin-top:8px;">browse topics &rarr;</a>
             </div>
             <div style="background:#ffffff; border:1px solid #fecaca; border-radius:2px; padding:12px; text-align:center;">
-                <div style="font-size:22px;">⚠️</div>
+                <span class="mif-warning mif-2x fg-crimson" style="margin-bottom:6px;"></span>
                 <strong style="display:block; margin:6px 0 4px; font-size:13px;">outbreak surveillance</strong>
                 <p class="ol-small ol-muted">real-time provincial alert levels, quarantine corridors, and containment.</p>
                 <a href="/mH/ddcr/outbreaks.html" class="ol-btn ol-btn-sm" style="width:100%; margin-top:8px;">view outbreaks &rarr;</a>
             </div>
             <div style="background:#ffffff; border:1px solid #fecaca; border-radius:2px; padding:12px; text-align:center;">
-                <div style="font-size:22px;">🔬</div>
+                <span class="mif-microscope mif-2x fg-crimson" style="margin-bottom:6px;"></span>
                 <strong style="display:block; margin:6px 0 4px; font-size:13px;">pubmed / literature</strong>
                 <p class="ol-small ol-muted">live search across pubmed, pmc, and sovereign biomedical papers.</p>
                 <a href="/mH/ddcr/search.html" class="ol-btn ol-btn-sm" style="width:100%; margin-top:8px;">search literature &rarr;</a>

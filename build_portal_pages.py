@@ -112,47 +112,74 @@ def build_index():
         </div>
         <div class="ol-grid-3">
             <div class="ol-card" style="margin-bottom:0; background:#fbfcfd;">
-                <strong style="color:#1e3a8a;">🏛️ executive</strong>
+                <div style="display:flex; align-items:center; gap:8px; margin-bottom:6px;">
+                    <span class="mif-cabinet mif-2x fg-navy"></span>
+                    <strong style="color:#1e3a8a; font-size:14.5px;">executive</strong>
+                </div>
                 <p class="ol-small ol-muted" style="margin:4px 0 8px;">Aeretocrat's Journal, Cabinet, National Budget &amp; Decrees.</p>
                 <a href="/executive.html" class="ol-btn ol-btn-sm" style="width:100%; text-align:center;">portal &rarr;</a>
             </div>
             <div class="ol-card" style="margin-bottom:0; background:#fbfcfd;">
-                <strong style="color:#0f766e;">💰 treasury</strong>
+                <div style="display:flex; align-items:center; gap:8px; margin-bottom:6px;">
+                    <span class="mif-coins mif-2x fg-teal"></span>
+                    <strong style="color:#0f766e; font-size:14.5px;">treasury</strong>
+                </div>
                 <p class="ol-small ol-muted" style="margin:4px 0 8px;">Zero Debt, Solidarity Loans, Tax Code &amp; Audits.</p>
                 <a href="/treasury.html" class="ol-btn ol-btn-sm" style="width:100%; text-align:center;">portal &rarr;</a>
             </div>
             <div class="ol-card" style="margin-bottom:0; background:#fbfcfd;">
-                <strong style="color:#6b21a8;">⚒️ work</strong>
+                <div style="display:flex; align-items:center; gap:8px; margin-bottom:6px;">
+                    <span class="mif-hammer mif-2x fg-purple"></span>
+                    <strong style="color:#6b21a8; font-size:14.5px;">work</strong>
+                </div>
                 <p class="ol-small ol-muted" style="margin:4px 0 8px;">Living Wage ($25/hr), Job Board &amp; Guild Rights.</p>
                 <a href="/work.html" class="ol-btn ol-btn-sm" style="width:100%; text-align:center;">portal &rarr;</a>
             </div>
             <div class="ol-card" style="margin-bottom:0; background:#fbfcfd;">
-                <strong style="color:#b91c1c;">🏥 healthcare</strong>
+                <div style="display:flex; align-items:center; gap:8px; margin-bottom:6px;">
+                    <span class="mif-medkit mif-2x fg-crimson"></span>
+                    <strong style="color:#b91c1c; font-size:14.5px;">healthcare</strong>
+                </div>
                 <p class="ol-small ol-muted" style="margin:4px 0 8px;">100% Free Universal Healthcare &amp; ER Capacity.</p>
                 <a href="/healthcare.html" class="ol-btn ol-btn-sm" style="width:100%; text-align:center;">portal &rarr;</a>
             </div>
             <div class="ol-card" style="margin-bottom:0; background:#fbfcfd;">
-                <strong style="color:#0284c7;">🎓 education</strong>
+                <div style="display:flex; align-items:center; gap:8px; margin-bottom:6px;">
+                    <span class="mif-school mif-2x fg-cyan"></span>
+                    <strong style="color:#0284c7; font-size:14.5px;">education</strong>
+                </div>
                 <p class="ol-small ol-muted" style="margin:4px 0 8px;">Tuition-Free Universities, Textbooks &amp; Teachers.</p>
                 <a href="/education.html" class="ol-btn ol-btn-sm" style="width:100%; text-align:center;">portal &rarr;</a>
             </div>
             <div class="ol-card" style="margin-bottom:0; background:#fbfcfd;">
-                <strong style="color:#1e293b;">🏢 domestic affairs</strong>
+                <div style="display:flex; align-items:center; gap:8px; margin-bottom:6px;">
+                    <span class="mif-location-city mif-2x fg-indigo"></span>
+                    <strong style="color:#1e293b; font-size:14.5px;">domestic affairs</strong>
+                </div>
                 <p class="ol-small ol-muted" style="margin:4px 0 8px;">Provincial Relations, Trade, DMV &amp; Highways.</p>
                 <a href="/domesticaffairs.html" class="ol-btn ol-btn-sm" style="width:100%; text-align:center;">portal &rarr;</a>
             </div>
             <div class="ol-card" style="margin-bottom:0; background:#fbfcfd;">
-                <strong style="color:#db2777;">🌐 external affairs</strong>
+                <div style="display:flex; align-items:center; gap:8px; margin-bottom:6px;">
+                    <span class="mif-earth mif-2x fg-pink"></span>
+                    <strong style="color:#db2777; font-size:14.5px;">external affairs</strong>
+                </div>
                 <p class="ol-small ol-muted" style="margin:4px 0 8px;">Worldwide Travel Advisories, Treaties &amp; Embassies.</p>
                 <a href="/externalaffairs.html" class="ol-btn ol-btn-sm" style="width:100%; text-align:center;">portal &rarr;</a>
             </div>
             <div class="ol-card" style="margin-bottom:0; background:#fbfcfd;">
-                <strong style="color:#15803d;">🌲 environment</strong>
+                <div style="display:flex; align-items:center; gap:8px; margin-bottom:6px;">
+                    <span class="mif-tree mif-2x fg-forest"></span>
+                    <strong style="color:#15803d; font-size:14.5px;">environment</strong>
+                </div>
                 <p class="ol-small ol-muted" style="margin:4px 0 8px;">Weather in &deg;Пт, Biome Funds &amp; 3.4M Trees Planted.</p>
                 <a href="/environment.html" class="ol-btn ol-btn-sm" style="width:100%; text-align:center;">portal &rarr;</a>
             </div>
             <div class="ol-card" style="margin-bottom:0; background:#fbfcfd;">
-                <strong style="color:#ea580c;">📻 propaganda</strong>
+                <div style="display:flex; align-items:center; gap:8px; margin-bottom:6px;">
+                    <span class="mif-broadcast mif-2x fg-orange"></span>
+                    <strong style="color:#ea580c; font-size:14.5px;">propaganda</strong>
+                </div>
                 <p class="ol-small ol-muted" style="margin:4px 0 8px;">State TV, Live Radio Stream, Press &amp; Churches.</p>
                 <a href="/propaganda.html" class="ol-btn ol-btn-sm" style="width:100%; text-align:center;">portal &rarr;</a>
             </div>
@@ -361,73 +388,73 @@ def build_services():
         <div id="servicesMasterList">
             <div class="docket-entry serv-entry" data-cat="executive">
                 <div class="docket-entry-body">
-                    <strong style="font-size:14px; color:#1e3a8a;">🏛️ Ministry of the Executive</strong>
-                    <div class="ol-small">Official Gazette decree archives, citizen petition pipeline, dignitary ceremonial protocol, national KPI progress dashboard, multi-ministry policy whitepapers.</div>
-                    <div class="ol-mt-10"><a href="/executive_departments.html" class="ol-btn ol-btn-sm">Launch Executive Departments (6 Tools) &rarr;</a></div>
+                    <strong style="font-size:14px; color:#1e3a8a;"><span class="mif-cabinet mif-lg fg-navy"></span> ministry of the executive</strong>
+                    <div class="ol-small">official gazette decree archives, citizen petition pipeline, dignitary ceremonial protocol, national kpi progress dashboard, multi-ministry policy whitepapers.</div>
+                    <div class="ol-mt-10"><a href="/executive_departments.html" class="ol-btn ol-btn-sm">launch executive departments (6 tools) &rarr;</a></div>
                 </div>
             </div>
 
             <div class="docket-entry serv-entry" data-cat="treasury">
                 <div class="docket-entry-body">
-                    <strong style="font-size:14px; color:#0f766e;">💰 Ministry of the Treasury</strong>
-                    <div class="ol-small">Individual &amp; corporate tax calculator, digital tax filing &amp; clearance, tax appeals, debt tracker &amp; solidarity bonds, procurement tenders, and expenditure audits.</div>
-                    <div class="ol-mt-10"><a href="/treasury_departments.html" class="ol-btn ol-btn-sm">Launch Treasury Departments (9 Tools) &rarr;</a></div>
+                    <strong style="font-size:14px; color:#0f766e;"><span class="mif-coins mif-lg fg-teal"></span> ministry of the treasury</strong>
+                    <div class="ol-small">individual &amp; corporate tax calculator, digital tax filing &amp; clearance, tax appeals, debt tracker &amp; solidarity bonds, procurement tenders, and expenditure audits.</div>
+                    <div class="ol-mt-10"><a href="/treasury_departments.html" class="ol-btn ol-btn-sm">launch treasury departments (9 tools) &rarr;</a></div>
                 </div>
             </div>
 
             <div class="docket-entry serv-entry" data-cat="work">
                 <div class="docket-entry-body">
-                    <strong style="font-size:14px; color:#6b21a8;">⚒️ Ministry of Work</strong>
-                    <div class="ol-small">Anonymous labor whistleblower reporting, union registry, online mediation calendar, national job board, unemployment safety nets, vocational retraining, foreign labor visas.</div>
-                    <div class="ol-mt-10"><a href="/work_departments.html" class="ol-btn ol-btn-sm">Launch Work Departments (9 Tools) &rarr;</a></div>
+                    <strong style="font-size:14px; color:#6b21a8;"><span class="mif-hammer mif-lg fg-purple"></span> ministry of work</strong>
+                    <div class="ol-small">anonymous labor whistleblower reporting, union registry, online mediation calendar, national job board, unemployment safety nets, vocational retraining, foreign labor visas.</div>
+                    <div class="ol-mt-10"><a href="/work_departments.html" class="ol-btn ol-btn-sm">launch work departments (9 tools) &rarr;</a></div>
                 </div>
             </div>
 
             <div class="docket-entry serv-entry" data-cat="healthcare">
                 <div class="docket-entry-body">
-                    <strong style="font-size:14px; color:#b91c1c;">🏥 Ministry of Healthcare</strong>
-                    <div class="ol-small">Universal coverage eligibility screening, digital health card management, prescription claims, live ER triage capacity, non-emergency transports, and paramedic licensing.</div>
-                    <div class="ol-mt-10"><a href="/healthcare_departments.html" class="ol-btn ol-btn-sm">Launch Healthcare Departments (6 Tools) &rarr;</a></div>
+                    <strong style="font-size:14px; color:#b91c1c;"><span class="mif-medkit mif-lg fg-crimson"></span> ministry of healthcare</strong>
+                    <div class="ol-small">universal coverage eligibility screening, digital health card management, prescription claims, live er triage capacity, non-emergency transports, and paramedic licensing.</div>
+                    <div class="ol-mt-10"><a href="/healthcare_departments.html" class="ol-btn ol-btn-sm">launch healthcare departments (6 tools) &rarr;</a></div>
                 </div>
             </div>
 
             <div class="docket-entry serv-entry" data-cat="education">
                 <div class="docket-entry-body">
-                    <strong style="font-size:14px; color:#0284c7;">🎓 Ministry of Education</strong>
-                    <div class="ol-small">Digital textbook repository, teacher certification, school performance scorecards, university accreditation, tuition-free research grants, and institutional funding audits.</div>
-                    <div class="ol-mt-10"><a href="/education_departments.html" class="ol-btn ol-btn-sm">Launch Education Departments (9 Tools) &rarr;</a></div>
+                    <strong style="font-size:14px; color:#0284c7;"><span class="mif-school mif-lg fg-cyan"></span> ministry of education</strong>
+                    <div class="ol-small">digital textbook repository, teacher certification, school performance scorecards, university accreditation, tuition-free research grants, and institutional funding audits.</div>
+                    <div class="ol-mt-10"><a href="/education_departments.html" class="ol-btn ol-btn-sm">launch education departments (9 tools) &rarr;</a></div>
                 </div>
             </div>
 
             <div class="docket-entry serv-entry" data-cat="domestic">
                 <div class="docket-entry-body">
-                    <strong style="font-size:14px; color:#1e293b;">🏢 Ministry of Domestic Affairs</strong>
-                    <div class="ol-small">Live road condition maps in Monomers/Kilomers, road maintenance reporting, commercial driver licensing, digital vehicle titles, provincial trade registry, inter-provincial dispute arbitration.</div>
-                    <div class="ol-mt-10"><a href="/domesticaffairs_departments.html" class="ol-btn ol-btn-sm">Launch Domestic Departments (9 Tools) &rarr;</a></div>
+                    <strong style="font-size:14px; color:#1e293b;"><span class="mif-location-city mif-lg fg-indigo"></span> ministry of domestic affairs</strong>
+                    <div class="ol-small">live road condition maps in monomers/kilomers, road maintenance reporting, commercial driver licensing, digital vehicle titles, provincial trade registry, inter-provincial dispute arbitration.</div>
+                    <div class="ol-mt-10"><a href="/domesticaffairs_departments.html" class="ol-btn ol-btn-sm">launch domestic departments (9 tools) &rarr;</a></div>
                 </div>
             </div>
 
             <div class="docket-entry serv-entry" data-cat="external">
                 <div class="docket-entry-body">
-                    <strong style="font-size:14px; color:#db2777;">🌐 Ministry of External Affairs</strong>
-                    <div class="ol-small">Consular services locator, emergency repatriation assistance, diplomatic visa applications, public treaty archive, treaty violation reporting, export compliance assistance.</div>
-                    <div class="ol-mt-10"><a href="/externalaffairs_departments.html" class="ol-btn ol-btn-sm">Launch External Departments (9 Tools) &rarr;</a></div>
+                    <strong style="font-size:14px; color:#db2777;"><span class="mif-earth mif-lg fg-pink"></span> ministry of external affairs</strong>
+                    <div class="ol-small">consular services locator, emergency repatriation assistance, diplomatic visa applications, public treaty archive, treaty violation reporting, export compliance assistance.</div>
+                    <div class="ol-mt-10"><a href="/externalaffairs_departments.html" class="ol-btn ol-btn-sm">launch external departments (9 tools) &rarr;</a></div>
                 </div>
             </div>
 
             <div class="docket-entry serv-entry" data-cat="environment">
                 <div class="docket-entry-body">
-                    <strong style="font-size:14px; color:#15803d;">🌲 Ministry of the Environment</strong>
-                    <div class="ol-small">Local weather in &deg;Пт, public land use permits, provincial biome funding trackers, wildlife intervention hotline, endangered species monitoring, emissions telemetry, and organic certifications.</div>
-                    <div class="ol-mt-10"><a href="/environment_departments.html" class="ol-btn ol-btn-sm">Launch Environment Departments (9 Tools) &rarr;</a></div>
+                    <strong style="font-size:14px; color:#15803d;"><span class="mif-tree mif-lg fg-forest"></span> ministry of the environment</strong>
+                    <div class="ol-small">local weather in &deg;пт, public land use permits, provincial biome funding trackers, wildlife intervention hotline, endangered species monitoring, emissions telemetry, and organic certifications.</div>
+                    <div class="ol-mt-10"><a href="/environment_departments.html" class="ol-btn ol-btn-sm">launch environment departments (9 tools) &rarr;</a></div>
                 </div>
             </div>
 
             <div class="docket-entry serv-entry" data-cat="propaganda">
                 <div class="docket-entry-body">
-                    <strong style="font-size:14px; color:#ea580c;">📻 Ministry of Propaganda</strong>
-                    <div class="ol-small">State broadcast channel directory, live radio audio stream player, journalist accreditation registry, religious society registry, and mandatory 85% wealth redistribution audits.</div>
-                    <div class="ol-mt-10"><a href="/propaganda_departments.html" class="ol-btn ol-btn-sm">Launch Propaganda Departments (9 Tools) &rarr;</a></div>
+                    <strong style="font-size:14px; color:#ea580c;"><span class="mif-broadcast mif-lg fg-orange"></span> ministry of propaganda</strong>
+                    <div class="ol-small">state broadcast channel directory, live radio audio stream player, journalist accreditation registry, religious society registry, and mandatory 85% wealth redistribution audits.</div>
+                    <div class="ol-mt-10"><a href="/propaganda_departments.html" class="ol-btn ol-btn-sm">launch propaganda departments (9 tools) &rarr;</a></div>
                 </div>
             </div>
         </div>

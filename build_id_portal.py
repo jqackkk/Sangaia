@@ -33,7 +33,6 @@ def render_sangaia_id_html(is_subdomain=False):
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Sangaia ID :: Citizen Directory &amp; Digital Credential</title>
   <link href="https://cdn.metroui.org.ua/4.5.12/icons.css" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
   <style>
     :root {{
       --primary: #0078d4;

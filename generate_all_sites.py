@@ -125,6 +125,9 @@ def generate_page(
       </div>
 """
 
+    with open(CSS_PATH, "r", encoding="utf-8") as _f:
+        current_css = _f.read()
+
     page_html = f"""<!DOCTYPE html>
 <html lang="en">
 <head>
@@ -132,9 +135,8 @@ def generate_page(
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>{title} :: Sangaia Live</title>
   <link href="https://cdn.metroui.org.ua/4.5.12/icons.css" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
   <style>
-{MASTER_EMBEDDED_CSS}
+{current_css}
   </style>
   <link rel="stylesheet" href="/css/sangaia-live.css?v=20261019_v5">
   <script src="/js/sangaia-live.js" defer></script>
@@ -152,6 +154,10 @@ def generate_page(
           <input type="text" name="q" placeholder="search services, laws &amp; gazette" />
           <button type="submit" aria-label="Search"><span class="mif-search"></span></button>
         </form>
+        <div class="top-icons">
+          <span class="mif-bell" title="notifications"></span>
+          <span class="mif-security" title="sovereign clearance active"></span>
+        </div>
         <div class="user-profile-menu" id="userProfileMenu">
           <img src="/images/default-wl.png" alt="Avatar" width="28" height="28" style="width:28px; height:28px; border-radius:2px; object-fit:contain; background:#ffffff;" />
           <span>jqackkk</span>
