@@ -304,7 +304,7 @@ window.SangaiaAuth = {
         this.notifyAuthChange(null, null);
 
         // If on ID page or dashboard, refresh to update card state
-        if (window.location.pathname.includes('id.html') || window.location.pathname.includes('dashboard.html')) {
+        if (window.location.pathname.includes('id.html') || window.location.pathname.includes('/id') || window.location.pathname.includes('dashboard.html')) {
             window.location.reload();
         }
     },
@@ -569,7 +569,7 @@ async function handleModalSignIn(e) {
             window.SangaiaAuth.closeAuthModal();
             btn.disabled = false;
             btn.innerHTML = '<span class="mif-enter"></span> sign in to sangaia id';
-            if (window.location.pathname.includes('id.html') || window.location.pathname.includes('dashboard.html')) {
+            if (window.location.pathname.includes('id.html') || window.location.pathname.includes('/id') || window.location.pathname.includes('dashboard.html')) {
                 window.location.reload();
             }
         }, 600);
@@ -613,7 +613,7 @@ async function handleModalSignUp(e) {
             window.SangaiaAuth.closeAuthModal();
             btn.disabled = false;
             btn.innerHTML = '<span class="mif-user-plus"></span> register sovereign citizen id';
-            if (window.location.pathname.includes('id.html') || window.location.pathname.includes('dashboard.html')) {
+            if (window.location.pathname.includes('id.html') || window.location.pathname.includes('/id') || window.location.pathname.includes('dashboard.html')) {
                 window.location.reload();
             }
         }, 800);
