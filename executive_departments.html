@@ -349,10 +349,10 @@ body.theme-propaganda .hero-header {
   background: linear-gradient(
     105deg,
     var(--primary) 0%,
-    var(--primary) 38%,
-    #ffffff 50%,
-    #ffffff 54%,
-    var(--primary) 66%,
+    var(--primary) 35%,
+    #ffffff 48%,
+    #ffffff 52%,
+    var(--primary) 65%,
     var(--primary) 100%
   );
   background-size: 260% 100%;
@@ -360,36 +360,23 @@ body.theme-propaganda .hero-header {
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
-  transition: filter 0.3s ease;
 }
 
 .brand a:hover {
   text-decoration: none;
-  animation: brandTextFlash 0.75s ease-in-out forwards;
+  animation: brandShine 0.45s linear infinite;
 }
 
-@keyframes brandTextFlash {
+@keyframes brandShine {
   0% {
     background-position: 100% 0;
-    filter: drop-shadow(0 0 0 rgba(255, 255, 255, 0));
-  }
-  40% {
-    filter: drop-shadow(0 0 6px var(--glow-color, var(--primary))) drop-shadow(0 0 12px rgba(255, 255, 255, 0.85));
-  }
-  50% {
-    background-position: 50% 0;
-    filter: drop-shadow(0 0 8px var(--glow-color, var(--primary))) drop-shadow(0 0 16px rgba(255, 255, 255, 0.95));
-  }
-  60% {
-    filter: drop-shadow(0 0 6px var(--glow-color, var(--primary))) drop-shadow(0 0 12px rgba(255, 255, 255, 0.85));
   }
   100% {
-    background-position: 0% 0;
-    filter: drop-shadow(0 0 4px var(--glow-color, var(--primary)));
+    background-position: -60% 0;
   }
 }
 
-.brand .mif-windows {
+.brand [class*="mif-"] {
   font-size: 18px;
   display: inline-block;
   line-height: 1;
@@ -1200,6 +1187,83 @@ section.card h4 {
 }
 
 /* ==========================================================================
+   Dedicated Uncluttered Sign In Page Layout (.auth-page-wrapper)
+   ========================================================================== */
+.auth-page-wrapper {
+  max-width: 440px;
+  width: 100%;
+  margin: 36px auto;
+  padding: 0 20px;
+  box-sizing: border-box;
+}
+
+.auth-card {
+  background: var(--card-bg, #ffffff);
+  border: 1px solid var(--border, #e1dfdd);
+  border-radius: 2px;
+  padding: 28px 30px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+}
+
+.auth-card-head h2 {
+  font-size: 20px;
+  font-weight: 400;
+  letter-spacing: -0.3px;
+  color: var(--text-main, #201f1e);
+  margin-bottom: 6px;
+}
+
+.auth-card-head p {
+  font-size: 13px;
+  color: var(--text-muted, #605e5c);
+  margin-bottom: 18px;
+  line-height: 1.45;
+}
+
+.auth-tabs {
+  display: flex;
+  border-bottom: 1px solid var(--border, #e1dfdd);
+  margin-bottom: 20px;
+}
+
+.auth-tab {
+  flex: 1;
+  padding: 10px 12px;
+  background: none;
+  border: none;
+  border-bottom: 3px solid transparent;
+  font-family: inherit;
+  font-size: 13px;
+  font-weight: 400;
+  color: var(--text-muted, #605e5c);
+  cursor: pointer;
+  text-transform: lowercase;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  transition: color 0.15s ease, border-color 0.15s ease;
+}
+
+.auth-tab.active {
+  color: var(--primary, #0078d4);
+  border-bottom-color: var(--primary, #0078d4);
+  font-weight: 600;
+}
+
+.auth-card-footer {
+  margin-top: 22px;
+  padding-top: 14px;
+  border-top: 1px solid var(--border, #e1dfdd);
+  font-size: 11.5px;
+  color: var(--text-light, #8a8886);
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+/* ==========================================================================
    Metro All-Lowercase Typography for Headings, Titles & Navigation
    ========================================================================== */
 h1, h2, h3, h4, h5, h6,
@@ -1254,7 +1318,7 @@ button,
   <header class="hero-header">
     <div class="top-bar">
       <div class="brand">
-        <a href="/executive.html"><span class="mif-windows"></span> ministry of the executive</a>
+        <a href="/executive.html"><span class="mif-cabinet"></span> ministry of the executive</a>
       </div>
       <div class="top-right">
         <form class="search-box" action="/services.html" method="get">
@@ -1274,7 +1338,7 @@ button,
             <a href="javascript:void(0)" onclick="if(window.SangaiaAuth) window.SangaiaAuth.openAuthModal('signin'); else window.location.href='/id.html#signin';"><span class="mif-enter"></span> sign in to sangaia id</a>
             <a href="javascript:void(0)" onclick="if(window.SangaiaAuth) window.SangaiaAuth.openAuthModal('signup'); else window.location.href='/id.html#register';"><span class="mif-user-plus"></span> register new citizen id</a>
             <a href="/id.html"><span class="mif-profile"></span> citizen id directory</a>
-            <a href="/id.html#verify"><span class="mif-security"></span> verify citizen docket</a>
+            <a href="/verify.html"><span class="mif-security"></span> verify citizen docket</a>
             <div style="border-top:1px solid #e1dfdd; margin:4px 0;"></div>
             <a href="/index.html"><span class="mif-home"></span> federal home</a>
           </div>
@@ -1444,17 +1508,6 @@ button,
         </ul>
       </div>
 
-
-      <div class="card" style="font-size: 12px; line-height: 1.6;">
-        <h3 style="color: var(--text-main); margin-bottom: 6px;">official government seal</h3>
-        <p style="color: var(--text-muted); margin-bottom: 8px;">united provinces of sangaia &bull; sovereign constitutional gateway</p>
-        <div style="display: flex; flex-direction: column; gap: 4px; color: var(--text-muted);">
-          <div><strong style="color: var(--text-main);">jurisdiction:</strong> 5 provinces (new jasper, new madison, liveland, sentinel, columbia)</div>
-          <div><strong style="color: var(--text-main);">currency:</strong> $ (sangaian dollar)</div>
-          <div><strong style="color: var(--text-main);">standards:</strong> sovereign civic charter &bull; metric</div>
-          <div><strong style="color: var(--text-main);">classification:</strong> verified official portal</div>
-        </div>
-      </div>
 
 
         <div class="ol-sidebox">

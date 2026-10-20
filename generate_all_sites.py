@@ -92,7 +92,7 @@ def generate_page(
             brand_icon_class = THEME_MINISTRY_MAP[theme_class][2] if len(THEME_MINISTRY_MAP[theme_class]) > 2 else "mif-windows"
         else:
             brand_text = "sangaia live"
-            brand_icon_class = "mif-windows"
+            brand_icon_class = "mif-home"
 
     if brand_url is None:
         if theme_class in THEME_MINISTRY_MAP:

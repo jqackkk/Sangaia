@@ -340,10 +340,10 @@ body.theme-propaganda .hero-header {
   background: linear-gradient(
     105deg,
     var(--primary) 0%,
-    var(--primary) 38%,
-    #ffffff 50%,
-    #ffffff 54%,
-    var(--primary) 66%,
+    var(--primary) 35%,
+    #ffffff 48%,
+    #ffffff 52%,
+    var(--primary) 65%,
     var(--primary) 100%
   );
   background-size: 260% 100%;
@@ -351,36 +351,23 @@ body.theme-propaganda .hero-header {
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
-  transition: filter 0.3s ease;
 }
 
 .brand a:hover {
   text-decoration: none;
-  animation: brandTextFlash 0.75s ease-in-out forwards;
+  animation: brandShine 0.45s linear infinite;
 }
 
-@keyframes brandTextFlash {
+@keyframes brandShine {
   0% {
     background-position: 100% 0;
-    filter: drop-shadow(0 0 0 rgba(255, 255, 255, 0));
-  }
-  40% {
-    filter: drop-shadow(0 0 6px var(--glow-color, var(--primary))) drop-shadow(0 0 12px rgba(255, 255, 255, 0.85));
-  }
-  50% {
-    background-position: 50% 0;
-    filter: drop-shadow(0 0 8px var(--glow-color, var(--primary))) drop-shadow(0 0 16px rgba(255, 255, 255, 0.95));
-  }
-  60% {
-    filter: drop-shadow(0 0 6px var(--glow-color, var(--primary))) drop-shadow(0 0 12px rgba(255, 255, 255, 0.85));
   }
   100% {
-    background-position: 0% 0;
-    filter: drop-shadow(0 0 4px var(--glow-color, var(--primary)));
+    background-position: -60% 0;
   }
 }
 
-.brand .mif-windows {
+.brand [class*="mif-"] {
   font-size: 18px;
   display: inline-block;
   line-height: 1;
