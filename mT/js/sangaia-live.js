@@ -1,5 +1,5 @@
 /**
- * Sangaia Live Core Interactive Script
+ * Sangaia Core Interactive Script
  * Provides runtime functionality for user profile menu,
  * interactive statutory modals, and sovereign calculators.
  */
