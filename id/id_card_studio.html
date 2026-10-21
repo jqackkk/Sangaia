@@ -289,8 +289,9 @@
 </head>
 <body>
 
-  <header>
+  <header style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:12px;">
     <h1>identity management studio</h1>
+    <a href="index.html" class="metro-btn" style="text-decoration:none; display:inline-block; font-size:11px; padding:6px 14px;">&larr; return to sangaia id</a>
   </header>
 
   <div class="app-container">
@@ -352,7 +353,7 @@
           </div>
           <div>
             <label>Height (Ht)</label>
-            <input type="text" id="inHt" value="5'8\"">
+            <input type="text" id="inHt" value="5'8&quot;">
           </div>
           <div>
             <label>Province / Region (PR)</label>
@@ -461,8 +462,8 @@
     };
 
     // Load persisted Supabase credentials
-    els.sbUrl.value = localStorage.getItem('metro_sb_url') || '';
-    els.sbKey.value = localStorage.getItem('metro_sb_key') || '';
+    els.sbUrl.value = localStorage.getItem('metro_sb_url') || 'https://qcgdjdnihwchjargpfcc.supabase.co';
+    els.sbKey.value = localStorage.getItem('metro_sb_key') || 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InFjZ2RqZG5paHdjaGphcmdwZmNjIiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTE0NzkxNTIsImV4cCI6MjEwNzA1NTE1Mn0.AfstClw4oXLj7stYL1bfyKSCMFBHZQBVBQACTT4dNLM';
     els.sbTable.value = localStorage.getItem('metro_sb_table') || 'id_cards';
 
     function showToast(msg, isSuccess = true) {

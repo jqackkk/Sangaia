@@ -100,24 +100,24 @@ function getLocalCitizenRegistry() {
             email: 'john.doe@sangaia.org',
             password: 'password123',
             full_name: 'john doe',
-            sangaia_id_number: 'SNG-7B4F92A1',
-            date_of_birth: '1995-04-12',
+            sangaia_id_number: 'SGN-09FDA816',
+            date_of_birth: '06/22/2010',
             issue_date: '2024-01-01',
-            account_status: 'Active',
+            account_status: 'ACTIVE',
             phone_number: '+1 (555) 019-2834',
             physical_address: '402 Constitution Way, Sector 4, Capital Shesk',
             blood_type: 'O+',
             allergies: 'No Known Allergies (NKDA)',
             primary_doctor: 'Dr. Elena Vance, Shesk Sovereign Medical Center',
             education_level: 'Higher Polytechnic (B.Sc. Computational Systems)',
-            territory: 'New Jasper (Capital Shesk)',
-            province: 'New Jasper (Capital Shesk)',
+            territory: 'SHESK',
+            province: 'SHESK',
             sex: 'M',
-            height: "5'11\"",
-            hair: 'Brown',
-            languages: 'English (Sangaian), High Sangaian',
-            under21_notice: false,
-            photo_url: 'https://sangaia.org/images/official.png'
+            height: "5'8\"",
+            hair: 'Bld',
+            languages: 'SGN, ENG, RUS, CHN, GER',
+            under21_notice: 'not twenty-one until 06/22/2031',
+            photo_url: ''
         };
     }
     return registry;
@@ -252,25 +252,25 @@ function getSupabaseStoredSession() {
 
 const SAMPLE_CITIZEN = {
     id: 'sg_usr_sample_01',
-    sangaia_id_number: 'SNG-7B4F92A1',
+    sangaia_id_number: 'SGN-09FDA816',
     full_name: 'john doe',
-    date_of_birth: '1995-04-12',
+    date_of_birth: '06/22/2010',
     issue_date: '2024-01-01',
-    account_status: 'Active',
+    account_status: 'ACTIVE',
     phone_number: '+1 (555) 019-2834',
     physical_address: '402 Constitution Way, Sector 4, Capital Shesk',
     blood_type: 'O+',
     allergies: 'No Known Allergies (NKDA)',
     primary_doctor: 'Dr. Elena Vance, Shesk Sovereign Medical Center',
     education_level: 'Higher Polytechnic (B.Sc. Computational Systems)',
-    territory: 'New Jasper (Capital Shesk)',
-    province: 'New Jasper (Capital Shesk)',
+    territory: 'SHESK',
+    province: 'SHESK',
     sex: 'M',
-    height: "5'11\"",
-    hair: 'Brown',
-    languages: 'English (Sangaian), High Sangaian',
-    under21_notice: false,
-    photo_url: 'https://sangaia.org/images/official.png',
+    height: "5'8\"",
+    hair: 'Bld',
+    languages: 'SGN, ENG, RUS, CHN, GER',
+    under21_notice: 'not twenty-one until 06/22/2031',
+    photo_url: '',
     healthcare_tier: 'Tier 1 Universal Healthcare',
     wage_floor: '$25.00/hr Statutory Wage Floor'
 };
@@ -320,7 +320,7 @@ window.SangaiaAuth = {
                             email: cit.email || 'citizen@sangaia.org',
                             user_metadata: {
                                 full_name: cit.full_name,
-                                territory: cit.territory || cit.province || 'New Jasper (Capital Shesk)',
+                                territory: cit.territory || cit.province || 'SHESK',
                                 sangaia_id_number: cit.sangaia_id_number
                             }
                         }
@@ -374,25 +374,38 @@ window.SangaiaAuth = {
         let criminalRecords = [];
         let citizenHistory = [];
 
-        if (client && userId) {
+        if (client) {
             try {
-                const [cardRes, benRes, eduRes, hltRes, comRes, crmRes, hisRes] = await Promise.all([
-                    client.from('id_cards').select('*').eq('id_number', citizen?.sangaia_id_number || '').maybeSingle(),
-                    client.from('government_benefits').select('*').eq('citizen_id', userId),
-                    client.from('education_courses').select('*').eq('citizen_id', userId),
-                    client.from('health_records').select('*').eq('citizen_id', userId),
-                    client.from('community_service_records').select('*').eq('citizen_id', userId),
-                    client.from('jail_criminal_records').select('*').eq('citizen_id', userId),
-                    client.from('citizen_history').select('*').eq('citizen_id', userId).order('changed_at', { ascending: false })
-                ]);
+                const promises = [
+                    (async () => {
+                        try {
+                            let q = client.from('id_cards').select('*');
+                            if (citizen?.sangaia_id_number) {
+                                q = q.eq('id_number', citizen.sangaia_id_number);
+                            } else if (citizen?.full_name) {
+                                q = q.ilike('full_name', citizen.full_name);
+                            }
+                            const res = await q.order('created_at', { ascending: false }).limit(1).maybeSingle();
+                            return res?.data || null;
+                        } catch(e) { return null; }
+                    })(),
+                    userId ? client.from('government_benefits').select('*').eq('citizen_id', userId) : Promise.resolve({ data: [] }),
+                    userId ? client.from('education_courses').select('*').eq('citizen_id', userId) : Promise.resolve({ data: [] }),
+                    userId ? client.from('health_records').select('*').eq('citizen_id', userId) : Promise.resolve({ data: [] }),
+                    userId ? client.from('community_service_records').select('*').eq('citizen_id', userId) : Promise.resolve({ data: [] }),
+                    userId ? client.from('jail_criminal_records').select('*').eq('citizen_id', userId) : Promise.resolve({ data: [] }),
+                    userId ? client.from('citizen_history').select('*').eq('citizen_id', userId).order('changed_at', { ascending: false }) : Promise.resolve({ data: [] })
+                ];
 
-                if (cardRes.data) idCard = cardRes.data;
-                if (benRes.data && benRes.data.length) benefits = benRes.data;
-                if (eduRes.data && eduRes.data.length) courses = eduRes.data;
-                if (hltRes.data && hltRes.data.length) healthRecords = hltRes.data;
-                if (comRes.data && comRes.data.length) communityRecords = comRes.data;
-                if (crmRes.data && crmRes.data.length) criminalRecords = crmRes.data;
-                if (hisRes.data && hisRes.data.length) citizenHistory = hisRes.data;
+                const [cardData, benRes, eduRes, hltRes, comRes, crmRes, hisRes] = await Promise.all(promises);
+
+                if (cardData) idCard = cardData;
+                if (benRes?.data && benRes.data.length) benefits = benRes.data;
+                if (eduRes?.data && eduRes.data.length) courses = eduRes.data;
+                if (hltRes?.data && hltRes.data.length) healthRecords = hltRes.data;
+                if (comRes?.data && comRes.data.length) communityRecords = comRes.data;
+                if (crmRes?.data && crmRes.data.length) criminalRecords = crmRes.data;
+                if (hisRes?.data && hisRes.data.length) citizenHistory = hisRes.data;
             } catch (e) {
                 console.warn("Supabase profile load warning:", e);
             }
@@ -405,15 +418,15 @@ window.SangaiaAuth = {
         if (!idCard) {
             idCard = {
                 id_number: citizen.sangaia_id_number || SAMPLE_CITIZEN.sangaia_id_number,
-                full_name: citizen.full_name,
+                full_name: citizen.full_name || SAMPLE_CITIZEN.full_name,
                 dob: citizen.date_of_birth || SAMPLE_CITIZEN.date_of_birth,
                 sex: citizen.sex || SAMPLE_CITIZEN.sex,
-                status: citizen.account_status || 'Active',
+                status: citizen.account_status || SAMPLE_CITIZEN.account_status,
                 hair: citizen.hair || SAMPLE_CITIZEN.hair,
                 height: citizen.height || SAMPLE_CITIZEN.height,
                 province: citizen.territory || citizen.province || SAMPLE_CITIZEN.province,
                 languages: citizen.languages || SAMPLE_CITIZEN.languages,
-                under21_notice: citizen.under21_notice || false,
+                under21_notice: citizen.under21_notice || SAMPLE_CITIZEN.under21_notice,
                 photo_url: citizen.photo_url || SAMPLE_CITIZEN.photo_url
             };
         }
@@ -521,18 +534,18 @@ window.SangaiaAuth = {
                     email: cleanEmail,
                     password: cleanPassword,
                     full_name: name,
-                    sangaia_id_number: 'SNG-' + remoteUser.id.replace(/-/g, '').substring(0, 8).toUpperCase(),
-                    date_of_birth: '1995-04-12',
+                    sangaia_id_number: 'SGN-' + remoteUser.id.replace(/-/g, '').substring(0, 8).toUpperCase(),
+                    date_of_birth: '06/22/2010',
                     issue_date: new Date().toISOString().split('T')[0],
-                    account_status: 'Active',
+                    account_status: 'ACTIVE',
                     phone_number: '+1 (555) 019-2834',
                     physical_address: '402 Constitution Way, Sector 4, Capital Shesk',
                     blood_type: 'O+',
                     allergies: 'No Known Allergies (NKDA)',
                     primary_doctor: 'Dr. Elena Vance, Shesk Sovereign Medical Center',
                     education_level: 'Higher Polytechnic',
-                    province: 'New Jasper (Capital Shesk)',
-                    territory: 'New Jasper (Capital Shesk)'
+                    province: 'SHESK',
+                    territory: 'SHESK'
                 };
             }
             citizen.password = cleanPassword;
@@ -545,8 +558,8 @@ window.SangaiaAuth = {
         }
 
         // Three-way verification against registered citizen registry:
-        const userWithEmail = registry[cleanEmail];
-        const anyUserWithPassword = Object.values(registry).some(u => u.password && u.password === cleanPassword);
+        const userWithEmail = cleanEmail ? registry[cleanEmail] : null;
+        const anyUserWithPassword = cleanPassword ? Object.values(registry).some(u => u.password && u.password === cleanPassword) : false;
 
         // Case 1: Email exists in system
         if (userWithEmail) {
@@ -612,30 +625,30 @@ window.SangaiaAuth = {
             }
         }
 
-        const citizenId = 'SNG-' + Math.floor(0x10000000 + Math.random() * 0x8fffffff).toString(16).toUpperCase();
+        const citizenId = 'SGN-' + Math.floor(0x10000000 + Math.random() * 0x8fffffff).toString(16).toUpperCase();
         const userId = remoteUserId || ('sg_usr_' + Date.now().toString(36));
 
         const citizenRecord = {
             id: userId,
             sangaia_id_number: citizenId,
             full_name: fullName.toLowerCase(),
-            date_of_birth: dob || '1995-04-12',
+            date_of_birth: dob || '06/22/2010',
             issue_date: new Date().toISOString().split('T')[0],
-            account_status: 'Active',
+            account_status: 'ACTIVE',
             phone_number: phone || '+1 (555) 019-2834',
             physical_address: address || '101 Republic Avenue, Capital Shesk',
             blood_type: 'O+',
             allergies: 'No Known Allergies (NKDA)',
             primary_doctor: 'Dr. Elena Vance, Shesk Sovereign Medical Center',
             education_level: 'Higher Polytechnic',
-            territory: province || 'New Jasper (Capital Shesk)',
-            province: province || 'New Jasper (Capital Shesk)',
+            territory: (province || 'SHESK').toUpperCase(),
+            province: (province || 'SHESK').toUpperCase(),
             sex: 'M',
-            height: "5'10\"",
-            hair: 'Brown',
-            languages: 'English (Sangaian)',
-            under21_notice: false,
-            photo_url: 'https://sangaia.org/images/official.png',
+            height: "5'8\"",
+            hair: 'Bld',
+            languages: 'SGN, ENG, RUS, CHN, GER',
+            under21_notice: 'not twenty-one until 06/22/2031',
+            photo_url: '',
             email: cleanEmail,
             password: password
         };
@@ -652,11 +665,17 @@ window.SangaiaAuth = {
         if (client) {
             try {
                 await client.from('id_cards').insert({
-                    full_name: fullName,
+                    full_name: fullName.toLowerCase(),
                     id_number: citizenId,
-                    dob: dob || null,
-                    province: province || 'New Jasper (Capital Shesk)',
-                    status: 'ACTIVE'
+                    dob: dob || '06/22/2010',
+                    sex: 'M',
+                    status: 'ACTIVE',
+                    hair: 'Bld',
+                    height: "5'8\"",
+                    province: (province || 'SHESK').toUpperCase(),
+                    languages: 'SGN, ENG, RUS, CHN, GER',
+                    under21_notice: 'not twenty-one until 06/22/2031',
+                    photo_url: ''
                 });
             } catch (e) {}
         }
@@ -702,7 +721,7 @@ function renderAuthenticatedProfile(profileMenu, citizen, user) {
     if (!profileMenu) return;
     const rawName = (citizen && citizen.full_name) || (user && user.user_metadata?.full_name) || (user && user.email ? user.email.split('@')[0] : 'john doe');
     const name = rawName.toLowerCase();
-    const citizenId = ((citizen && citizen.sangaia_id_number) || 'SNG-7B4F92A1').toLowerCase();
+    const citizenId = ((citizen && citizen.sangaia_id_number) || 'SGN-09FDA816').toLowerCase();
     const initial = (name.charAt(0) || 'j').toUpperCase();
     const idUrl = getIdPageUrl();
 
@@ -745,7 +764,7 @@ async function updateAuthWidgets() {
         renderAuthenticatedProfile(profileMenu, citizen, supaSession ? supaSession.user : null);
     } else if (supaSession && supaSession.user) {
         const name = supaSession.user.user_metadata?.full_name || supaSession.user.email?.split('@')[0] || 'citizen';
-        renderAuthenticatedProfile(profileMenu, { full_name: name, sangaia_id_number: 'SNG-7B4F92A1' }, supaSession.user);
+        renderAuthenticatedProfile(profileMenu, { full_name: name, sangaia_id_number: 'SGN-09FDA816' }, supaSession.user);
     } else {
         renderUnauthenticatedProfile(profileMenu);
     }

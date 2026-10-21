@@ -24,93 +24,120 @@
     .top-icons {
       display: none !important;
     }
-    /* ID Card Metro Graphic Styles */
-    .id-card-frame {
-      max-width: 540px;
-      margin: 0 auto 16px auto;
+    /* Metro ID Card Styles (public.id_cards) */
+    .card-scene {
+      width: 100%;
+      max-width: 580px;
+      aspect-ratio: 85.6 / 53.98;
+      perspective: 1000px;
+      margin: 0 auto 1.5rem auto;
+    }
+    .id-card {
+      width: 100%;
+      height: 100%;
+      position: relative;
       background: #ffffff;
-      border: 2px solid #2563eb;
-      border-radius: 6px;
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.12);
+      color: #000000;
+      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.6);
+      display: grid;
+      grid-template-columns: 185px 1fr 42px;
+      padding: 1.4rem 1rem 1.2rem 1.4rem;
+      gap: 1.2rem;
       overflow: hidden;
-      font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif;
+      user-select: none;
+      box-sizing: border-box;
+      border-radius: 0 !important;
+      text-align: left;
     }
-    .id-card-header {
-      background: linear-gradient(135deg, #0f2b48 0%, #1e40af 100%);
-      color: #ffffff;
-      padding: 12px 18px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      border-bottom: 2px solid #3b82f6;
-    }
-    .id-card-body {
-      padding: 18px;
-      display: flex;
-      gap: 18px;
-      align-items: stretch;
-      background: #ffffff;
-    }
-    .id-card-photo-box {
-      width: 105px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      flex-shrink: 0;
-    }
-    .id-card-photo {
-      width: 105px;
-      height: 125px;
-      background: #f1f5f9;
-      border: 1px solid #94a3b8;
-      border-radius: 3px;
+    .card-photo-wrapper {
+      width: 100%;
+      height: 100%;
+      background: #e0e0e0;
+      border: 1px solid #d0d0d0;
       overflow: hidden;
       display: flex;
       align-items: center;
       justify-content: center;
     }
-    .id-card-photo img {
+    .card-photo {
       width: 100%;
       height: 100%;
       object-fit: cover;
     }
-    .id-card-details {
-      flex: 1 1 auto;
+    .card-data-col {
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      font-size: 12px;
-      line-height: 1.5;
+      overflow: hidden;
     }
-    .id-card-grid {
+    .card-name {
+      font-size: 1.85rem;
+      font-weight: 300;
+      line-height: 1.05;
+      letter-spacing: -0.5px;
+      color: #000;
+      text-transform: lowercase;
+      margin-top: 0.2rem;
+      margin-bottom: 0.8rem;
+    }
+    .card-meta-grid {
       display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 6px 12px;
-      margin-top: 6px;
+      grid-template-columns: auto 1fr;
+      row-gap: 0.28rem;
+      column-gap: 1.2rem;
+      font-size: 0.82rem;
+      color: #111;
+      line-height: 1.2;
     }
-    .id-card-grid-item label {
-      display: block;
-      font-size: 10px;
-      color: #64748b;
-      text-transform: uppercase;
+    .card-meta-grid .status-col {
+      text-align: right;
+      font-weight: 400;
       letter-spacing: 0.5px;
-      font-weight: 600;
     }
-    .id-card-grid-item span {
-      font-weight: 600;
-      color: #0f172a;
-      font-size: 12px;
+    .card-meta-grid .full-width {
+      grid-column: span 2;
     }
-    .id-card-footer {
-      background: #f8fafc;
-      border-top: 1px solid #e2e8f0;
-      padding: 8px 18px;
+    .meta-spacer {
+      height: 0.45rem;
+      grid-column: span 2;
+    }
+    .card-footer-notice {
+      font-size: 0.78rem;
+      font-weight: 300;
+      color: #222;
+      text-align: right;
+      margin-top: auto;
+      padding-top: 0.4rem;
+    }
+    .card-barcode-col {
       display: flex;
-      justify-content: space-between;
       align-items: center;
-      font-family: monospace;
-      font-size: 10.5px;
-      color: #64748b;
+      justify-content: center;
+    }
+    .vertical-barcode {
+      width: 28px;
+      height: 100%;
+      background-repeat: repeat-y;
+      background-size: 100% 12px;
+      background-image: linear-gradient(
+        to bottom,
+        #000 0px, #000 2px,
+        transparent 2px, transparent 3px,
+        #000 3px, #000 6px,
+        transparent 6px, transparent 7px,
+        #000 7px, #000 8px,
+        transparent 8px, transparent 10px,
+        #000 10px, #000 12px
+      );
+      border-left: 1px solid #eee;
+    }
+    @media print {
+      body { background: white !important; padding: 0 !important; }
+      .top-bar, .sub-bar, .header-panel, .id-subnav, .nav-tabs, footer, .sidebar, .btn-group, .ol-badge-tag, #statusToast, .card-actions-bar, .card > div:first-child, .card > div:last-child, #authGateView, #tabContentBenefits, #tabContentEducation, #tabContentHealth, #tabContentCommunity, #tabContentLegal, #tabContentHistory, #tabContentSettings { display: none !important; }
+      .container { max-width: 100% !important; padding: 0 !important; margin: 0 !important; }
+      .card { border: none !important; box-shadow: none !important; padding: 0 !important; background: transparent !important; }
+      .card-scene { max-width: 85.6mm !important; aspect-ratio: 85.6 / 53.98 !important; margin: 0 auto !important; }
+      .id-card { box-shadow: none !important; border: 1px solid #ccc !important; -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
     }
     .tab-content {
       display: none;
@@ -317,62 +344,55 @@
               </div>
             </div>
 
-            <!-- The Sangaia Official Physical ID Card Graphic -->
-            <div class="id-card-frame">
-              <div class="id-card-header">
-                <div>
-                  <strong style="font-size:14px; letter-spacing:0.8px; display:block;">THE UNITED PROVINCES OF SANGAIA</strong>
-                  <div style="font-size:10.5px; color:#93c5fd; letter-spacing:0.4px;">SOVEREIGN CITIZEN IDENTIFICATION CARD &bull; AERETOCRACY</div>
+            <!-- The Sangaia Official Physical ID Card Graphic (public.id_cards) -->
+            <div class="card-scene">
+              <div class="id-card" id="cardElement">
+                <!-- PHOTO LEFT -->
+                <div class="card-photo-wrapper">
+                  <img id="cardPhotoImg" class="card-photo" src="" alt="Badge Portrait" style="display:none;">
+                  <span id="photoFallback" style="font-size:0.75rem; color:#888;">NO PHOTO</span>
                 </div>
-                <svg viewBox="0 0 90 90" width="22" height="22" fill="#ffffff">
-                  <rect x="0" y="0" width="41" height="41" rx="2"/>
-                  <rect x="49" y="0" width="41" height="41" rx="2"/>
-                  <rect x="0" y="49" width="41" height="41" rx="2"/>
-                  <rect x="49" y="49" width="41" height="41" rx="2"/>
-                </svg>
-              </div>
-              <div class="id-card-body">
-                <div class="id-card-photo-box">
-                  <div class="id-card-photo">
-                    <img id="cardPhotoImg" src="https://sangaia.org/images/official.png" onerror="this.onerror=null;this.src='/images/official.png';" alt="Citizen Portrait" />
-                  </div>
-                  <div style="font-size:9.5px; color:#64748b; font-weight:700; margin-top:4px; text-align:center;">PHOTO VERIFIED</div>
-                </div>
-                <div class="id-card-details">
-                  <div>
-                    <div style="font-size:11px; color:#64748b; text-transform:uppercase; font-weight:600;">full legal name</div>
-                    <div style="font-size:17px; font-weight:700; color:#0f172a; line-height:1.2;" id="cardLegalName">john doe</div>
-                    <div style="display:flex; align-items:center; gap:8px; margin-top:3px;">
-                      <span style="font-size:11px; color:#64748b; text-transform:uppercase; font-weight:600;">citizen id:</span>
-                      <strong style="font-family:monospace; color:#0078d4; font-size:13px;" id="cardCitizenId">SNG-7B4F92A1</strong>
-                    </div>
+
+                <!-- METADATA CENTER -->
+                <div class="card-data-col">
+                  <div class="card-name" id="cardDispName">john doe</div>
+                  
+                  <div class="card-meta-grid">
+                    <div>DOB: <span id="cardDispDob">06/22/2010</span></div>
+                    <div class="status-col">STA: <span id="cardDispSta">ACTIVE</span></div>
+
+                    <div class="full-width">SEX: <span id="cardDispSex">M</span></div>
+                    <div class="full-width">ID: <span id="cardDispId">SGN-09FDA816</span></div>
+
+                    <div class="meta-spacer"></div>
+
+                    <div class="full-width">Hr: <span id="cardDispHr">Bld</span></div>
+                    <div class="full-width">Ht: <span id="cardDispHt">5'8"</span></div>
+
+                    <div class="meta-spacer"></div>
+
+                    <div class="full-width">PR: <span id="cardDispPr">SHESK</span></div>
+                    <div class="full-width">LNG: <span id="cardDispLng">SGN, ENG, RUS, CHN, GER</span></div>
                   </div>
 
-                  <div class="id-card-grid">
-                    <div class="id-card-grid-item">
-                      <label>date of birth</label>
-                      <span id="cardDob">1995-04-12</span>
-                    </div>
-                    <div class="id-card-grid-item">
-                      <label>sex / height / hair</label>
-                      <span id="cardPhysicalTraits">M &bull; 5'11" &bull; Brown</span>
-                    </div>
-                    <div class="id-card-grid-item" style="grid-column: span 2;">
-                      <label>provincial jurisdiction</label>
-                      <span id="cardProvince">New Jasper (Capital Shesk)</span>
-                    </div>
-                    <div class="id-card-grid-item" style="grid-column: span 2;">
-                      <label>official languages</label>
-                      <span id="cardLanguages">English (Sangaian), High Sangaian</span>
-                    </div>
-                  </div>
+                  <div class="card-footer-notice" id="cardDispNotice">not twenty-one until 06/22/2031</div>
+                </div>
+
+                <!-- HIGH-DENSITY VERTICAL BARCODE RIGHT -->
+                <div class="card-barcode-col">
+                  <div class="vertical-barcode"></div>
                 </div>
               </div>
-              <div class="id-card-footer">
-                <span id="cardIssueText">ISSUED: 2024-01-01</span>
-                <span style="letter-spacing:2px; color:#475569;">&lt;&lt;&lt; SNG &lt;&lt;&lt; 2026 &lt;&lt;&lt; CITIZEN &lt;&lt;&lt;</span>
-                <span id="cardHash">ID: SG#7B4F</span>
-              </div>
+            </div>
+
+            <!-- Card Action Shortcuts: Print & Studio -->
+            <div class="card-actions-bar" style="display:flex; justify-content:center; gap:10px; margin-bottom:18px;">
+              <button class="ol-btn ol-btn-secondary" onclick="window.print()" style="font-size:12px; padding:6px 14px;">
+                <span class="mif-printer"></span> print credential
+              </button>
+              <a href="id_card_studio.html" class="ol-btn ol-btn-secondary" style="font-size:12px; padding:6px 14px; text-decoration:none; display:inline-flex; align-items:center; gap:4px;">
+                <span class="mif-tools"></span> open id card studio
+              </a>
             </div>
 
             <!-- Civil Demographics & Emergency Medical Vitals (sangaia_citizens) -->
@@ -644,7 +664,7 @@
           </div>
           <div>
             <div style="font-weight:700; font-size:14px; color:#0f172a;" id="sidebarName">john doe</div>
-            <div style="font-family:monospace; font-size:11.5px; color:#0078d4;" id="sidebarId">SNG-7B4F92A1</div>
+            <div style="font-family:monospace; font-size:11.5px; color:#0078d4;" id="sidebarId">SGN-09FDA816</div>
             <span class="ol-badge-tag ol-badge-success" style="font-size:9.5px;" id="sidebarStatus">active citizen</span>
           </div>
         </div>
@@ -793,27 +813,71 @@
       const cit = activeProfile?.citizen || {};
       const card = activeProfile?.idCard || {};
 
-      // Update ID Card Graphic
+      // Update ID Card Graphic (public.id_cards)
       const name = (card.full_name || cit.full_name || user.user_metadata?.full_name || user.email?.split('@')[0] || 'john doe').toLowerCase();
-      const citizenId = (card.id_number || cit.sangaia_id_number || 'SNG-7B4F92A1').toUpperCase();
-      const dob = card.dob || cit.date_of_birth || '1995-04-12';
-      const sex = card.sex || cit.sex || 'M';
-      const height = card.height || cit.height || "5'11\"";
-      const hair = card.hair || cit.hair || "Brown";
-      const prov = card.province || cit.province || cit.territory || 'New Jasper (Capital Shesk)';
-      const langs = card.languages || cit.languages || 'English (Sangaian), High Sangaian';
-      const photo = card.photo_url || cit.photo_url || 'https://sangaia.org/images/official.png';
+      const citizenId = (card.id_number || cit.sangaia_id_number || 'SGN-09FDA816').toUpperCase();
+      const dob = card.dob || cit.date_of_birth || '06/22/2010';
+      const sta = (card.status || cit.account_status || 'ACTIVE').toUpperCase();
+      const sex = (card.sex || cit.sex || 'M').toUpperCase();
+      const hr = card.hair || cit.hair || 'Bld';
+      const ht = card.height || cit.height || "5'8\"";
+      const pr = (card.province || cit.province || cit.territory || 'SHESK').toUpperCase();
+      const lng = card.languages || cit.languages || 'SGN, ENG, RUS, CHN, GER';
+      const notice = card.under21_notice || 'not twenty-one until 06/22/2031';
+      const photo = card.photo_url || cit.photo_url || '';
 
-      document.getElementById('cardLegalName').innerText = name;
-      document.getElementById('cardCitizenId').innerText = citizenId;
-      document.getElementById('cardDob').innerText = dob;
-      document.getElementById('cardPhysicalTraits').innerText = `${sex} • ${height} • ${hair}`;
-      document.getElementById('cardProvince').innerText = prov;
-      document.getElementById('cardLanguages').innerText = langs;
-      document.getElementById('cardPhotoImg').src = photo;
-      document.getElementById('cardIssueText').innerText = 'ISSUED: ' + (cit.issue_date || '2024-01-01');
-      document.getElementById('cardHash').innerText = 'ID: SG#' + citizenId.replace(/[^A-Z0-9]/gi, '').slice(-4);
-      document.getElementById('qrTokenText').innerText = 'token: urn:sangaia:id:' + citizenId;
+      const cardDispName = document.getElementById('cardDispName');
+      if (cardDispName) cardDispName.textContent = name;
+      const cardDispDob = document.getElementById('cardDispDob');
+      if (cardDispDob) cardDispDob.textContent = dob;
+      const cardDispSta = document.getElementById('cardDispSta');
+      if (cardDispSta) cardDispSta.textContent = sta;
+      const cardDispSex = document.getElementById('cardDispSex');
+      if (cardDispSex) cardDispSex.textContent = sex;
+      const cardDispId = document.getElementById('cardDispId');
+      if (cardDispId) cardDispId.textContent = citizenId;
+      const cardDispHr = document.getElementById('cardDispHr');
+      if (cardDispHr) cardDispHr.textContent = hr;
+      const cardDispHt = document.getElementById('cardDispHt');
+      if (cardDispHt) cardDispHt.textContent = ht;
+      const cardDispPr = document.getElementById('cardDispPr');
+      if (cardDispPr) cardDispPr.textContent = pr;
+      const cardDispLng = document.getElementById('cardDispLng');
+      if (cardDispLng) cardDispLng.textContent = lng;
+      const cardDispNotice = document.getElementById('cardDispNotice');
+      if (cardDispNotice) cardDispNotice.textContent = notice;
+
+      const cardPhotoImg = document.getElementById('cardPhotoImg');
+      const photoFallback = document.getElementById('photoFallback');
+      if (photo && photo.trim()) {
+        if (cardPhotoImg) {
+          cardPhotoImg.src = photo;
+          cardPhotoImg.style.display = 'block';
+        }
+        if (photoFallback) photoFallback.style.display = 'none';
+      } else {
+        if (cardPhotoImg) cardPhotoImg.style.display = 'none';
+        if (photoFallback) photoFallback.style.display = 'block';
+      }
+
+      // Status badges
+      const statusBadge = document.getElementById('cardStatusBadge');
+      if (statusBadge) {
+        statusBadge.textContent = (sta === 'ACTIVE' ? 'active citizen' : sta.toLowerCase());
+      }
+      const under21Badge = document.getElementById('cardUnder21Badge');
+      if (under21Badge) {
+        if (notice && notice.toLowerCase().includes('not twenty-one')) {
+          under21Badge.textContent = 'minor (under 21)';
+          under21Badge.className = 'ol-badge-tag ol-badge-warning';
+        } else {
+          under21Badge.textContent = 'majority 21+';
+          under21Badge.className = 'ol-badge-tag ol-badge-primary';
+        }
+      }
+
+      const qrTokenText = document.getElementById('qrTokenText');
+      if (qrTokenText) qrTokenText.innerText = 'token: urn:sangaia:id:' + citizenId;
 
       // Update Civil Registry Vitals
       document.getElementById('vitalAddress').innerText = cit.physical_address || '402 Constitution Way, Sector 4, Capital Shesk';
@@ -834,7 +898,7 @@
       document.getElementById('sidebarId').innerText = citizenId;
       document.getElementById('sidebarProvince').innerText = prov.split('(')[0].trim();
       document.getElementById('sidebarEducation').innerText = (cit.education_level || 'Higher Polytechnic').split('(')[0].trim();
-      document.getElementById('sidebarAvatar').src = photo;
+      document.getElementById('sidebarAvatar').src = photo || 'https://sangaia.org/images/official.png';
 
       // Render Benefits Table
       const benTbody = document.getElementById('benefitsTableBody');
