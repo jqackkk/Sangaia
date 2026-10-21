@@ -142,8 +142,55 @@ window.getIdPageUrl = getIdPageUrl;
 window.getRepoRoot = getRepoRoot;
 
 // -----------------------------------------------------------------------------
-// 4. Stored Session & Token Helpers
+// 4. Stored Session & Token Helpers (with Cross-Subdomain Tiny Cookie Sync)
 // -----------------------------------------------------------------------------
+function setTinyUserCookie(name, citizenId) {
+    try {
+        const cleanName = (name || '').trim().toLowerCase();
+        const cleanId = (citizenId || 'SGN-09FDA816').trim().toUpperCase();
+        if (!cleanName) return;
+        const val = encodeURIComponent(cleanName + '|' + cleanId);
+        const host = window.location.hostname;
+        let dom = '';
+        if (host.endsWith('sangaia.org') || host.includes('sangaia.org')) {
+            dom = '; domain=.sangaia.org';
+        }
+        const secure = (window.location.protocol === 'https:') ? '; Secure' : '';
+        document.cookie = 'sangaia_user=' + val + dom + '; path=/; max-age=2592000; SameSite=Lax' + secure;
+    } catch(e) {}
+}
+
+function getTinyUserCookie() {
+    try {
+        const m = document.cookie.match(/(?:^|;\s*)sangaia_user=([^;]+)/);
+        if (m && m[1]) {
+            const dec = decodeURIComponent(m[1]);
+            const parts = dec.split('|');
+            if (parts[0]) {
+                return {
+                    name: parts[0],
+                    id: parts[1] || 'SGN-09FDA816'
+                };
+            }
+        }
+    } catch(e) {}
+    return null;
+}
+
+function deleteTinyUserCookie() {
+    try {
+        const host = window.location.hostname;
+        const doms = ['', '; domain=' + host];
+        if (host.endsWith('sangaia.org') || host.includes('sangaia.org')) {
+            doms.push('; domain=.sangaia.org');
+            doms.push('; domain=sangaia.org');
+        }
+        doms.forEach(d => {
+            document.cookie = 'sangaia_user=; max-age=0; path=/' + d + '; expires=Thu, 01 Jan 1970 00:00:00 GMT; SameSite=Lax';
+        });
+    } catch(e) {}
+}
+
 function getSupabaseStoredSession() {
     try {
         let raw = window.localStorage.getItem(SUPABASE_TOKEN_KEY);
@@ -166,6 +213,28 @@ function getSupabaseStoredSession() {
             }
         }
     } catch (e) {}
+
+    // Cross-subdomain fallback via lightweight cookie:
+    const cookieUser = getTinyUserCookie();
+    if (cookieUser && cookieUser.name) {
+        const syntheticSession = {
+            user: {
+                id: cookieUser.id,
+                email: cookieUser.name.replace(/\s+/g, '.') + '@sangaia.org',
+                user_metadata: { full_name: cookieUser.name }
+            }
+        };
+        const syntheticCitizen = {
+            full_name: cookieUser.name,
+            sangaia_id_number: cookieUser.id
+        };
+        try {
+            sangaiaStorage.setItem(ACTIVE_CITIZEN_KEY, JSON.stringify(syntheticCitizen));
+            sangaiaStorage.setItem(ACTIVE_SESSION_KEY, JSON.stringify(syntheticSession));
+        } catch(e) {}
+        return syntheticSession;
+    }
+
     return null;
 }
 
@@ -377,6 +446,7 @@ window.SangaiaAuth = {
 
             sangaiaStorage.setItem(ACTIVE_CITIZEN_KEY, JSON.stringify(citizen));
             sangaiaStorage.setItem(ACTIVE_SESSION_KEY, JSON.stringify(remoteSession));
+            setTinyUserCookie(name, citizen.sangaia_id_number || 'SGN-09FDA816');
             await this.refreshUI();
             this.notifyAuthChange(remoteSession, remoteUser);
             return { session: remoteSession, user: remoteUser, citizen };
@@ -483,6 +553,7 @@ window.SangaiaAuth = {
             };
             sangaiaStorage.setItem(ACTIVE_CITIZEN_KEY, JSON.stringify(citizenRecord));
             sangaiaStorage.setItem(ACTIVE_SESSION_KEY, JSON.stringify(res.data.session));
+            setTinyUserCookie(fullName, citizenId);
             await this.refreshUI();
             this.notifyAuthChange(res.data.session, res.data.user);
             return { session: res.data.session, user: res.data.user, citizen: citizenRecord };
@@ -570,6 +641,7 @@ window.SangaiaAuth = {
         };
 
         sangaiaStorage.setItem(ACTIVE_CITIZEN_KEY, JSON.stringify(updatedCitizen));
+        setTinyUserCookie(updatedCitizen.full_name, updatedCitizen.sangaia_id_number);
         await this.refreshUI();
         this.notifyAuthChange(session, session.user);
 
@@ -581,6 +653,7 @@ window.SangaiaAuth = {
         if (client && client.auth) {
             try { await client.auth.signOut(); } catch(e){}
         }
+        deleteTinyUserCookie();
         sangaiaStorage.removeItem(SUPABASE_TOKEN_KEY);
         sangaiaStorage.removeItem(ACTIVE_SESSION_KEY);
         sangaiaStorage.removeItem(ACTIVE_CITIZEN_KEY);
@@ -625,6 +698,10 @@ function renderAuthenticatedProfile(profileMenu, citizen, user) {
     `;
     profileMenu.href = idUrl;
     profileMenu.title = 'citizen ' + citizenId + ' (' + name + ') - view sangaia id';
+    profileMenu.style.cursor = 'pointer';
+    profileMenu.onclick = function(e) {
+        window.location.href = idUrl;
+    };
 }
 
 function renderUnauthenticatedProfile(profileMenu) {
@@ -637,6 +714,10 @@ function renderUnauthenticatedProfile(profileMenu) {
     `;
     profileMenu.href = idUrl;
     profileMenu.title = 'sign in to sangaia id';
+    profileMenu.style.cursor = 'pointer';
+    profileMenu.onclick = function(e) {
+        window.location.href = idUrl;
+    };
 }
 
 async function updateAuthWidgets() {
@@ -652,9 +733,11 @@ async function updateAuthWidgets() {
 
     if (supaSession && supaSession.user) {
         if (citizen && citizen.full_name) {
+            setTinyUserCookie(citizen.full_name, citizen.sangaia_id_number);
             renderAuthenticatedProfile(profileMenu, citizen, supaSession.user);
         } else {
             const name = supaSession.user.user_metadata?.full_name || supaSession.user.email?.split('@')[0] || 'citizen';
+            setTinyUserCookie(name, 'SGN-09FDA816');
             renderAuthenticatedProfile(profileMenu, { full_name: name, sangaia_id_number: 'SGN-09FDA816' }, supaSession.user);
         }
     } else {
@@ -671,10 +754,12 @@ async function updateAuthWidgets() {
                     if (data && data.full_name) {
                         citizen = data;
                         sangaiaStorage.setItem(ACTIVE_CITIZEN_KEY, JSON.stringify(data));
+                        setTinyUserCookie(citizen.full_name, citizen.sangaia_id_number);
                     }
                 }
                 renderAuthenticatedProfile(profileMenu, citizen || {}, session.user);
             } else if (!supaSession || !supaSession.user) {
+                deleteTinyUserCookie();
                 sangaiaStorage.removeItem(ACTIVE_CITIZEN_KEY);
                 sangaiaStorage.removeItem(ACTIVE_SESSION_KEY);
                 renderUnauthenticatedProfile(profileMenu);
