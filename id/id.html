@@ -2,6 +2,21 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
+  <script>
+    (function() {
+      try {
+        var h = window.location.hostname;
+        var d = ['', '; domain=' + h];
+        if (h.indexOf('sangaia.org') !== -1) { d.push('; domain=.sangaia.org'); d.push('; domain=sangaia.org'); }
+        var bad = ['sangaia_registered_citizens', 'sangaia_active_citizen', 'sangaia_session', 'sb-qcgdjdnihwchjargpfcc-auth-token', 'sangaia_token'];
+        for (var i = 0; i < d.length; i++) {
+          for (var j = 0; j < bad.length; j++) {
+            document.cookie = bad[j] + '=; max-age=0; path=/; expires=Thu, 01 Jan 1970 00:00:00 GMT' + d[i];
+          }
+        }
+      } catch(e) {}
+    })();
+  </script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Sangaia ID :: Sovereign Citizen Credential &amp; Civil Dockets :: Sangaia</title>
   <link href="https://cdn.metroui.org.ua/4.5.12/icons.css" rel="stylesheet">
@@ -212,6 +227,7 @@
     <!-- Authenticated Subnav Links -->
     <div id="subnavAuthLinks" style="display: none; gap: 8px; flex-wrap: wrap;">
       <a href="javascript:void(0)" class="active" data-tab="card" onclick="switchIdTab('card')"><span class="mif-profile"></span> identity card</a>
+      <a href="javascript:void(0)" data-tab="manage" onclick="switchIdTab('manage')"><span class="mif-pencil"></span> manage info</a>
       <a href="javascript:void(0)" data-tab="benefits" onclick="switchIdTab('benefits')"><span class="mif-coins"></span> benefits &amp; entitlements</a>
       <a href="javascript:void(0)" data-tab="education" onclick="switchIdTab('education')"><span class="mif-school"></span> education &amp; courses</a>
       <a href="javascript:void(0)" data-tab="health" onclick="switchIdTab('health')"><span class="mif-medkit"></span> health records</a>
@@ -387,6 +403,9 @@
 
             <!-- Card Action Shortcuts -->
             <div class="card-actions-bar" style="display:flex; justify-content:center; gap:10px; margin-bottom:18px;">
+              <button class="ol-btn ol-btn-primary" onclick="switchIdTab('manage')" style="font-size:12px; padding:6px 14px;">
+                <span class="mif-pencil"></span> manage info
+              </button>
               <button class="ol-btn ol-btn-secondary" onclick="window.print()" style="font-size:12px; padding:6px 14px;">
                 <span class="mif-printer"></span> print credential
               </button>
@@ -455,7 +474,110 @@
           </section>
         </div>
 
-        <!-- TAB 2: GOVERNMENT BENEFITS & ENTITLEMENTS (government_benefits) -->
+        <!-- TAB: MANAGE CITIZEN INFORMATION -->
+        <div id="tabContentManage" class="tab-content">
+          <section class="card">
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px;">
+              <h2 style="margin-bottom:0;">manage citizen information &amp; credentials</h2>
+              <span class="ol-badge-tag ol-badge-primary">self-service docket</span>
+            </div>
+            <p style="color:var(--text-muted); font-size:12.5px; margin-bottom:16px;">
+              Update your sovereign ID credential details, civil registry vitals, and personal demographics directly in your national record.
+            </p>
+
+            <form id="manageInfoForm" onsubmit="executeManageInfo(event)">
+              <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(260px, 1fr)); gap:14px; margin-bottom:14px;">
+                <div class="form-group">
+                  <label style="display:block; font-size:12px; font-weight:600; margin-bottom:4px; text-transform:lowercase;">full name</label>
+                  <input type="text" id="inManageName" class="ol-input" style="width:100%; padding:8px 10px; font-size:13px;" required />
+                </div>
+                <div class="form-group">
+                  <label style="display:block; font-size:12px; font-weight:600; margin-bottom:4px; text-transform:lowercase;">date of birth (dob)</label>
+                  <input type="text" id="inManageDob" placeholder="MM/DD/YYYY" class="ol-input" style="width:100%; padding:8px 10px; font-size:13px;" required />
+                </div>
+                <div class="form-group">
+                  <label style="display:block; font-size:12px; font-weight:600; margin-bottom:4px; text-transform:lowercase;">sex</label>
+                  <select id="inManageSex" class="ol-select" style="width:100%; padding:8px 10px; font-size:13px; background:#fff;">
+                    <option value="M">M - Male</option>
+                    <option value="F">F - Female</option>
+                    <option value="X">X - Non-Binary / Other</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label style="display:block; font-size:12px; font-weight:600; margin-bottom:4px; text-transform:lowercase;">hair</label>
+                  <input type="text" id="inManageHair" placeholder="e.g. Bld, Brn, Blk" class="ol-input" style="width:100%; padding:8px 10px; font-size:13px;" />
+                </div>
+                <div class="form-group">
+                  <label style="display:block; font-size:12px; font-weight:600; margin-bottom:4px; text-transform:lowercase;">height</label>
+                  <input type="text" id="inManageHeight" placeholder="e.g. 5'8&quot;" class="ol-input" style="width:100%; padding:8px 10px; font-size:13px;" />
+                </div>
+                <div class="form-group">
+                  <label style="display:block; font-size:12px; font-weight:600; margin-bottom:4px; text-transform:lowercase;">provincial jurisdiction</label>
+                  <select id="inManageProvince" class="ol-select" style="width:100%; padding:8px 10px; font-size:13px; background:#fff;">
+                    <option value="New Jasper (Capital Shesk)">New Jasper (Capital Shesk)</option>
+                    <option value="New Madison">New Madison</option>
+                    <option value="Liveland">Liveland</option>
+                    <option value="Sentinel">Sentinel</option>
+                    <option value="Columbia">Columbia</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label style="display:block; font-size:12px; font-weight:600; margin-bottom:4px; text-transform:lowercase;">spoken languages</label>
+                  <input type="text" id="inManageLanguages" placeholder="e.g. SGN, ENG, RUS, CHN, GER" class="ol-input" style="width:100%; padding:8px 10px; font-size:13px;" />
+                </div>
+                <div class="form-group">
+                  <label style="display:block; font-size:12px; font-weight:600; margin-bottom:4px; text-transform:lowercase;">photo url</label>
+                  <input type="url" id="inManagePhoto" placeholder="https://example.com/photo.jpg" class="ol-input" style="width:100%; padding:8px 10px; font-size:13px;" />
+                </div>
+                <div class="form-group">
+                  <label style="display:block; font-size:12px; font-weight:600; margin-bottom:4px; text-transform:lowercase;">statutory notice / majority label</label>
+                  <input type="text" id="inManageNotice" placeholder="e.g. not twenty-one until MM/DD/YYYY or majority 21+" class="ol-input" style="width:100%; padding:8px 10px; font-size:13px;" />
+                </div>
+                <div class="form-group">
+                  <label style="display:block; font-size:12px; font-weight:600; margin-bottom:4px; text-transform:lowercase;">status</label>
+                  <select id="inManageStatus" class="ol-select" style="width:100%; padding:8px 10px; font-size:13px; background:#fff;">
+                    <option value="ACTIVE">ACTIVE</option>
+                    <option value="PENDING">PENDING</option>
+                    <option value="SUSPENDED">SUSPENDED</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label style="display:block; font-size:12px; font-weight:600; margin-bottom:4px; text-transform:lowercase;">physical residential address</label>
+                  <input type="text" id="inManageAddress" class="ol-input" style="width:100%; padding:8px 10px; font-size:13px;" />
+                </div>
+                <div class="form-group">
+                  <label style="display:block; font-size:12px; font-weight:600; margin-bottom:4px; text-transform:lowercase;">contact telephone</label>
+                  <input type="tel" id="inManagePhone" class="ol-input" style="width:100%; padding:8px 10px; font-size:13px;" />
+                </div>
+                <div class="form-group">
+                  <label style="display:block; font-size:12px; font-weight:600; margin-bottom:4px; text-transform:lowercase;">education credential</label>
+                  <input type="text" id="inManageEducation" class="ol-input" style="width:100%; padding:8px 10px; font-size:13px;" />
+                </div>
+                <div class="form-group">
+                  <label style="display:block; font-size:12px; font-weight:600; margin-bottom:4px; text-transform:lowercase;">blood type &amp; allergies</label>
+                  <input type="text" id="inManageBloodAllergies" placeholder="e.g. O+ &bull; NKDA" class="ol-input" style="width:100%; padding:8px 10px; font-size:13px;" />
+                </div>
+                <div class="form-group" style="grid-column: span 2;">
+                  <label style="display:block; font-size:12px; font-weight:600; margin-bottom:4px; text-transform:lowercase;">attending primary care physician</label>
+                  <input type="text" id="inManageDoctor" class="ol-input" style="width:100%; padding:8px 10px; font-size:13px;" />
+                </div>
+              </div>
+
+              <div id="manageInfoMsg" style="display:none; padding:8px 12px; font-size:12px; margin-bottom:12px; border-radius:2px;"></div>
+
+              <div style="display:flex; gap:10px; align-items:center;">
+                <button type="submit" id="btnSaveManageInfo" class="ol-btn ol-btn-primary" style="padding:9px 18px; font-weight:600;">
+                  <span class="mif-floppy-disk"></span> save changes
+                </button>
+                <button type="button" class="ol-btn" onclick="switchIdTab('card')">
+                  view id card
+                </button>
+              </div>
+            </form>
+          </section>
+        </div>
+
+        <!-- TAB 2: GOVERNMENT BENEFITS & ENTITLEMENTS -->
         <div id="tabContentBenefits" class="tab-content">
           <section class="card">
             <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px;">
@@ -479,7 +601,7 @@
           </section>
         </div>
 
-        <!-- TAB 3: EDUCATION & COURSES (education_courses) -->
+        <!-- TAB 3: EDUCATION & COURSES -->
         <div id="tabContentEducation" class="tab-content">
           <section class="card">
             <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px;">
@@ -505,7 +627,7 @@
           </section>
         </div>
 
-        <!-- TAB 4: HEALTH RECORDS & CLINICAL VITALITY (health_records) -->
+        <!-- TAB 4: HEALTH RECORDS & CLINICAL VITALITY -->
         <div id="tabContentHealth" class="tab-content">
           <section class="card">
             <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px;">
@@ -530,7 +652,7 @@
           </section>
         </div>
 
-        <!-- TAB 5: COMMUNITY SERVICE RECORDS (community_service_records) -->
+        <!-- TAB 5: COMMUNITY SERVICE RECORDS -->
         <div id="tabContentCommunity" class="tab-content">
           <section class="card">
             <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px;">
@@ -556,7 +678,7 @@
           </section>
         </div>
 
-        <!-- TAB 6: JUSTICE & JUDICIAL DOCKETS (jail_criminal_records) -->
+        <!-- TAB 6: JUSTICE & JUDICIAL DOCKETS -->
         <div id="tabContentJustice" class="tab-content">
           <section class="card">
             <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px;">
@@ -591,7 +713,7 @@
           </section>
         </div>
 
-        <!-- TAB 7: CITIZEN AUDIT HISTORY (citizen_history) -->
+        <!-- TAB 7: CITIZEN AUDIT HISTORY -->
         <div id="tabContentHistory" class="tab-content">
           <section class="card">
             <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px;">
@@ -818,9 +940,11 @@
       const sex = (card.sex || cit.sex || 'M').toUpperCase();
       const hr = card.hair || cit.hair || 'Bld';
       const ht = card.height || cit.height || "5'8\"";
+      const prov = card.province || cit.province || cit.territory || 'New Jasper (Capital Shesk)';
       const pr = (card.province || cit.province || cit.territory || 'SHESK').toUpperCase();
       const lng = card.languages || cit.languages || 'SGN, ENG, RUS, CHN, GER';
-      const notice = card.under21_notice || 'not twenty-one until 06/22/2031';
+      const rawNotice = card.under21_notice || cit.under21_notice || 'not twenty-one until 06/22/2031';
+      const notice = rawNotice.replace(/\[email:[^\]]+\]/g, '').trim();
       const photo = card.photo_url || cit.photo_url || '';
 
       const cardDispName = document.getElementById('cardDispName');
@@ -987,6 +1111,89 @@
             <td>${h.changed_at ? h.changed_at.replace('T', ' ').substring(0, 19) : ''}</td>
           </tr>
         `).join('');
+      }
+
+      // Populate Manage Information Form Inputs
+      if (document.getElementById('inManageName')) document.getElementById('inManageName').value = name;
+      if (document.getElementById('inManageDob')) document.getElementById('inManageDob').value = dob;
+      if (document.getElementById('inManageSex')) document.getElementById('inManageSex').value = sex;
+      if (document.getElementById('inManageHair')) document.getElementById('inManageHair').value = hr;
+      if (document.getElementById('inManageHeight')) document.getElementById('inManageHeight').value = ht;
+      if (document.getElementById('inManageProvince')) document.getElementById('inManageProvince').value = prov;
+      if (document.getElementById('inManageLanguages')) document.getElementById('inManageLanguages').value = lng;
+      if (document.getElementById('inManagePhoto')) document.getElementById('inManagePhoto').value = photo;
+      if (document.getElementById('inManageNotice')) document.getElementById('inManageNotice').value = notice;
+      if (document.getElementById('inManageStatus')) document.getElementById('inManageStatus').value = sta;
+      if (document.getElementById('inManageAddress')) document.getElementById('inManageAddress').value = cit.physical_address || '';
+      if (document.getElementById('inManagePhone')) document.getElementById('inManagePhone').value = cit.phone_number || '';
+      if (document.getElementById('inManageEducation')) document.getElementById('inManageEducation').value = cit.education_level || '';
+      if (document.getElementById('inManageBloodAllergies')) document.getElementById('inManageBloodAllergies').value = (cit.blood_type || 'O+') + (cit.allergies ? ' • ' + cit.allergies : '');
+      if (document.getElementById('inManageDoctor')) document.getElementById('inManageDoctor').value = cit.primary_doctor || '';
+
+      if (window.SangaiaAuth && typeof window.SangaiaAuth.refreshUI === 'function') {
+        window.SangaiaAuth.refreshUI();
+      }
+    }
+
+    async function executeManageInfo(e) {
+      e.preventDefault();
+      const msgBox = document.getElementById('manageInfoMsg');
+      const btn = document.getElementById('btnSaveManageInfo');
+      if (msgBox) msgBox.style.display = 'none';
+      if (btn) {
+        btn.disabled = true;
+        btn.innerHTML = '<span class="mif-spinner mif-ani-pulse"></span> saving...';
+      }
+
+      const updates = {
+        fullName: document.getElementById('inManageName').value.trim(),
+        dob: document.getElementById('inManageDob').value.trim(),
+        sex: document.getElementById('inManageSex').value,
+        hair: document.getElementById('inManageHair').value.trim(),
+        height: document.getElementById('inManageHeight').value.trim(),
+        province: document.getElementById('inManageProvince').value,
+        languages: document.getElementById('inManageLanguages').value.trim(),
+        photoUrl: document.getElementById('inManagePhoto').value.trim(),
+        under21Notice: document.getElementById('inManageNotice').value.trim(),
+        status: document.getElementById('inManageStatus').value,
+        address: document.getElementById('inManageAddress').value.trim(),
+        phone: document.getElementById('inManagePhone').value.trim(),
+        educationLevel: document.getElementById('inManageEducation').value.trim(),
+        bloodAllergies: document.getElementById('inManageBloodAllergies').value.trim(),
+        primaryDoctor: document.getElementById('inManageDoctor').value.trim()
+      };
+
+      try {
+        if (window.SangaiaAuth && typeof window.SangaiaAuth.updateCitizenInfo === 'function') {
+          await window.SangaiaAuth.updateCitizenInfo(updates);
+        }
+        if (msgBox) {
+          msgBox.className = '';
+          msgBox.style.background = '#f0fdf4';
+          msgBox.style.border = '1px solid #bbf7d0';
+          msgBox.style.color = '#15803d';
+          msgBox.innerText = 'Citizen information saved successfully!';
+          msgBox.style.display = 'block';
+        }
+
+        const session = await window.SangaiaAuth.getSession();
+        if (session && session.user) {
+          await loadAuthenticatedCitizenData(session.user);
+        }
+      } catch (err) {
+        if (msgBox) {
+          msgBox.className = '';
+          msgBox.style.background = '#fef2f2';
+          msgBox.style.border = '1px solid #fecaca';
+          msgBox.style.color = '#b91c1c';
+          msgBox.innerText = err.message || 'Failed to update information. Please try again.';
+          msgBox.style.display = 'block';
+        }
+      } finally {
+        if (btn) {
+          btn.disabled = false;
+          btn.innerHTML = '<span class="mif-floppy-disk"></span> save changes';
+        }
       }
     }
 

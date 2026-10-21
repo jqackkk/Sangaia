@@ -1,6 +1,33 @@
 // Sangaia Unified Authentication Engine
 // Strictly Supabase-backed: zero fake local accounts or phantom sessions.
-// Adheres strictly to the One Live Metro design system (all-lowercase, Segoe WP typography, Metro UI icons).
+// Cookies are strictly purged to prevent OpenResty 400 (Request Header Or Cookie Too Large).
+// All persistent client storage uses window.localStorage.
+
+// -----------------------------------------------------------------------------
+// 1. Purge Oversized Cookies (Prevents OpenResty 400 Request Header Too Large)
+// -----------------------------------------------------------------------------
+(function purgeOversizedCookies() {
+    try {
+        const host = window.location.hostname;
+        const domains = ['', '; domain=' + host];
+        if (host.endsWith('sangaia.org') || host.includes('sangaia.org')) {
+            domains.push('; domain=.sangaia.org');
+            domains.push('; domain=sangaia.org');
+        }
+        const badKeys = [
+            'sangaia_registered_citizens',
+            'sangaia_active_citizen',
+            'sangaia_session',
+            'sb-qcgdjdnihwchjargpfcc-auth-token',
+            'sangaia_token'
+        ];
+        domains.forEach(dom => {
+            badKeys.forEach(k => {
+                document.cookie = k + '=; max-age=0; path=/' + dom + '; expires=Thu, 01 Jan 1970 00:00:00 GMT; SameSite=Lax';
+            });
+        });
+    } catch(e) {}
+})();
 
 const SUPABASE_URL = 'https://qcgdjdnihwchjargpfcc.supabase.co';
 const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InFjZ2RqZG5paHdjaGphcmdwZmNjIiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTE0NzkxNTIsImV4cCI6MjEwNzA1NTE1Mn0.AfstClw4oXLj7stYL1bfyKSCMFBHZQBVBQACTT4dNLM';
@@ -9,73 +36,23 @@ const ACTIVE_CITIZEN_KEY = 'sangaia_active_citizen';
 const ACTIVE_SESSION_KEY = 'sangaia_session';
 const SUPABASE_TOKEN_KEY = 'sb-qcgdjdnihwchjargpfcc-auth-token';
 
-// -----------------------------------------------------------------------------
-// 1. Cross-Subdomain Storage & Cookie Synchronization
-// -----------------------------------------------------------------------------
-function getCookieDomain() {
-    try {
-        const host = window.location.hostname;
-        if (host.endsWith('sangaia.org')) {
-            return '; domain=.sangaia.org';
-        }
-    } catch (e) {}
-    return '';
-}
-
-function setCookieVal(key, value) {
-    try {
-        const domain = getCookieDomain();
-        const secure = (window.location.protocol === 'https:') ? '; Secure' : '';
-        const maxAge = '; max-age=31536000; path=/; SameSite=Lax';
-        const encoded = encodeURIComponent(value);
-        if (domain) document.cookie = key + '=' + encoded + domain + maxAge + secure;
-        document.cookie = key + '=' + encoded + maxAge + secure;
-    } catch (e) {}
-}
-
-function getCookieVal(key) {
-    try {
-        const cookies = document.cookie.split(/;\s*/).reduce((acc, curr) => {
-            const [k, ...v] = curr.split('=');
-            if (k) acc[k.trim()] = v.join('=');
-            return acc;
-        }, {});
-        if (cookies[key]) {
-            try { return decodeURIComponent(cookies[key]); } catch (e) { return cookies[key]; }
-        }
-    } catch (e) {}
-    return null;
-}
-
-function deleteCookieVal(key) {
-    try {
-        const domain = getCookieDomain();
-        const past = '; expires=Thu, 01 Jan 1970 00:00:00 GMT; path=/; SameSite=Lax';
-        document.cookie = key + '=' + past;
-        if (domain) document.cookie = key + '=' + domain + past;
-    } catch (e) {}
-}
-
 const sangaiaStorage = {
     getItem: (key) => {
         try {
-            const localVal = window.localStorage.getItem(key);
-            if (localVal) return localVal;
-        } catch(e){}
-        const cookieVal = getCookieVal(key);
-        if (cookieVal) {
-            try { window.localStorage.setItem(key, cookieVal); } catch(e){}
-            return cookieVal;
+            return window.localStorage.getItem(key);
+        } catch(e) {
+            return null;
         }
-        return null;
     },
     setItem: (key, value) => {
-        try { window.localStorage.setItem(key, value); } catch(e){}
-        setCookieVal(key, value);
+        try {
+            window.localStorage.setItem(key, value);
+        } catch(e) {}
     },
     removeItem: (key) => {
-        try { window.localStorage.removeItem(key); } catch(e){}
-        deleteCookieVal(key);
+        try {
+            window.localStorage.removeItem(key);
+        } catch(e) {}
     }
 };
 
@@ -179,6 +156,9 @@ function getSupabaseStoredSession() {
                 }
             }
         }
+        if (!raw) {
+            raw = window.localStorage.getItem(ACTIVE_SESSION_KEY);
+        }
         if (raw) {
             const parsed = JSON.parse(raw);
             if (parsed && (parsed.user || parsed.access_token)) {
@@ -190,13 +170,12 @@ function getSupabaseStoredSession() {
 }
 
 // -----------------------------------------------------------------------------
-// 5. SangaiaAuth Unified Interface (Strict Supabase)
+// 5. SangaiaAuth Unified Interface
 // -----------------------------------------------------------------------------
 window.SangaiaAuth = {
     client: () => initClient(),
 
     async getSession() {
-        // 1. Check active Supabase client session
         const client = initClient();
         if (client && client.auth) {
             try {
@@ -205,11 +184,10 @@ window.SangaiaAuth = {
             } catch (e) {}
         }
 
-        // 2. Check Supabase stored token
         const supaSession = getSupabaseStoredSession();
         if (supaSession && supaSession.user) return supaSession;
 
-        // If no real Supabase session exists, purge any stale local citizen / session
+        // Purge any stale local keys
         sangaiaStorage.removeItem(ACTIVE_CITIZEN_KEY);
         sangaiaStorage.removeItem(ACTIVE_SESSION_KEY);
         return null;
@@ -235,7 +213,7 @@ window.SangaiaAuth = {
         return null;
     },
 
-    // Query all related dockets from Supabase for authenticated user
+    // Query all related dockets from Supabase for authenticated citizen
     async getFullCitizenProfile(userId) {
         const client = initClient();
         const session = await this.getSession();
@@ -360,14 +338,12 @@ window.SangaiaAuth = {
             throw new Error("Supabase authentication service unavailable.");
         }
 
-        // Attempt actual sign-in with Supabase
         const res = await client.auth.signInWithPassword({
             email: cleanEmail,
             password: cleanPassword
         });
 
         if (res.data && res.data.session && res.data.user) {
-            // Valid Supabase authentication!
             const remoteSession = res.data.session;
             const remoteUser = res.data.user;
 
@@ -411,7 +387,7 @@ window.SangaiaAuth = {
         sangaiaStorage.removeItem(ACTIVE_CITIZEN_KEY);
         sangaiaStorage.removeItem(ACTIVE_SESSION_KEY);
 
-        // Check if the user exists in Supabase
+        // Check if the user exists in Supabase id_cards registry:
         let userExistsInSupabase = false;
         try {
             const check = await client.from('id_cards').select('id').ilike('under21_notice', `%${cleanEmail}%`).limit(1);
@@ -427,7 +403,6 @@ window.SangaiaAuth = {
         } else if (!isValidEmail) {
             throw new Error("This info doesn't exist");
         } else {
-            // Email not in Supabase:
             if (cleanPassword === 'password123' || cleanPassword.length >= 6) {
                 throw new Error("user not found");
             } else {
@@ -466,7 +441,6 @@ window.SangaiaAuth = {
 
         const citizenId = 'SGN-' + res.data.user.id.replace(/-/g, '').substring(0, 8).toUpperCase();
 
-        // Register in Supabase id_cards with email reference tag
         try {
             await client.from('id_cards').insert({
                 full_name: (fullName || 'citizen').toLowerCase(),
@@ -522,6 +496,86 @@ window.SangaiaAuth = {
         }
     },
 
+    // Self-Service Citizen Data Management (Updates live ID Card & Supabase)
+    async updateCitizenInfo(updates) {
+        const session = await this.getSession();
+        if (!session || !session.user) {
+            throw new Error("You must be signed in to update citizen information.");
+        }
+
+        const client = initClient();
+        if (!client) {
+            throw new Error("Supabase connection unavailable.");
+        }
+
+        const userId = session.user.id;
+        const currentCitizen = (await this.getCitizenRecord(userId)) || {};
+
+        // 1. Update public.id_cards table
+        try {
+            const check = await client.from('id_cards').select('id, id_number').order('created_at', { ascending: false }).limit(1).maybeSingle();
+            const idNumber = check?.data?.id_number || currentCitizen.sangaia_id_number || ('SGN-' + userId.replace(/-/g, '').substring(0, 8).toUpperCase());
+
+            const cardPayload = {
+                full_name: (updates.fullName || currentCitizen.full_name || session.user.user_metadata?.full_name || 'citizen').toLowerCase(),
+                dob: updates.dob || currentCitizen.date_of_birth || '06/22/2010',
+                sex: updates.sex || currentCitizen.sex || 'M',
+                status: updates.status || currentCitizen.account_status || 'ACTIVE',
+                hair: updates.hair || currentCitizen.hair || 'Bld',
+                height: updates.height || currentCitizen.height || "5'8\\\"",
+                province: (updates.province || currentCitizen.province || 'SHESK').toUpperCase(),
+                languages: updates.languages || currentCitizen.languages || 'SGN, ENG, RUS, CHN, GER',
+                under21_notice: updates.under21_notice || currentCitizen.under21_notice || 'not twenty-one until 06/22/2031',
+                photo_url: updates.photoUrl !== undefined ? updates.photoUrl : (currentCitizen.photo_url || '')
+            };
+
+            if (check?.data?.id) {
+                await client.from('id_cards').update(cardPayload).eq('id', check.data.id);
+            } else {
+                cardPayload.id_number = idNumber;
+                await client.from('id_cards').insert(cardPayload);
+            }
+        } catch (err) {
+            console.warn("id_cards update notice:", err);
+        }
+
+        // 2. Update public.sangaia_citizens table
+        try {
+            await client.from('sangaia_citizens').upsert({
+                id: userId,
+                full_name: (updates.fullName || currentCitizen.full_name || 'citizen').toLowerCase(),
+                date_of_birth: updates.dob || currentCitizen.date_of_birth || '06/22/2010',
+                physical_address: updates.address || currentCitizen.physical_address || null,
+                phone_number: updates.phone || currentCitizen.phone_number || null,
+                education_level: updates.educationLevel || currentCitizen.education_level || null
+            });
+        } catch(e) {}
+
+        // 3. Update active citizen cache
+        const updatedCitizen = {
+            ...currentCitizen,
+            full_name: (updates.fullName || currentCitizen.full_name || 'citizen').toLowerCase(),
+            date_of_birth: updates.dob || currentCitizen.date_of_birth,
+            sex: updates.sex || currentCitizen.sex,
+            hair: updates.hair || currentCitizen.hair,
+            height: updates.height || currentCitizen.height,
+            province: updates.province || currentCitizen.province,
+            territory: updates.province || currentCitizen.territory,
+            languages: updates.languages || currentCitizen.languages,
+            under21_notice: updates.under21_notice || currentCitizen.under21_notice,
+            photo_url: updates.photoUrl !== undefined ? updates.photoUrl : currentCitizen.photo_url,
+            physical_address: updates.address || currentCitizen.physical_address,
+            phone_number: updates.phone || currentCitizen.phone_number,
+            education_level: updates.educationLevel || currentCitizen.education_level
+        };
+
+        sangaiaStorage.setItem(ACTIVE_CITIZEN_KEY, JSON.stringify(updatedCitizen));
+        await this.refreshUI();
+        this.notifyAuthChange(session, session.user);
+
+        return updatedCitizen;
+    },
+
     async signOut() {
         const client = initClient();
         if (client && client.auth) {
@@ -530,10 +584,6 @@ window.SangaiaAuth = {
         sangaiaStorage.removeItem(SUPABASE_TOKEN_KEY);
         sangaiaStorage.removeItem(ACTIVE_SESSION_KEY);
         sangaiaStorage.removeItem(ACTIVE_CITIZEN_KEY);
-
-        deleteCookieVal(SUPABASE_TOKEN_KEY);
-        deleteCookieVal(ACTIVE_SESSION_KEY);
-        deleteCookieVal(ACTIVE_CITIZEN_KEY);
 
         await this.refreshUI();
         this.notifyAuthChange(null, null);
@@ -600,7 +650,6 @@ async function updateAuthWidgets() {
         if (rawCit) citizen = JSON.parse(rawCit);
     } catch (e) {}
 
-    // Only render as authenticated if a real Supabase session is present
     if (supaSession && supaSession.user) {
         if (citizen && citizen.full_name) {
             renderAuthenticatedProfile(profileMenu, citizen, supaSession.user);
@@ -612,18 +661,20 @@ async function updateAuthWidgets() {
         renderUnauthenticatedProfile(profileMenu);
     }
 
-    // Asynchronous check with Supabase client
     try {
         const client = initClient();
         if (client && client.auth) {
             const { data: { session } } = await client.auth.getSession();
             if (session && session.user) {
-                const { data } = await client.from('sangaia_citizens').select('*').eq('id', session.user.id).single();
-                if (data && data.full_name) {
-                    renderAuthenticatedProfile(profileMenu, data, session.user);
-                    sangaiaStorage.setItem(ACTIVE_CITIZEN_KEY, JSON.stringify(data));
+                if (!citizen || !citizen.full_name) {
+                    const { data } = await client.from('sangaia_citizens').select('*').eq('id', session.user.id).maybeSingle();
+                    if (data && data.full_name) {
+                        citizen = data;
+                        sangaiaStorage.setItem(ACTIVE_CITIZEN_KEY, JSON.stringify(data));
+                    }
                 }
-            } else {
+                renderAuthenticatedProfile(profileMenu, citizen || {}, session.user);
+            } else if (!supaSession || !supaSession.user) {
                 sangaiaStorage.removeItem(ACTIVE_CITIZEN_KEY);
                 sangaiaStorage.removeItem(ACTIVE_SESSION_KEY);
                 renderUnauthenticatedProfile(profileMenu);
@@ -636,7 +687,6 @@ async function updateAuthWidgets() {
 // 7. Lifecycle Initialization
 // -----------------------------------------------------------------------------
 function initAuthLifecycle() {
-    // Purge any orphan fake sessions if no Supabase session exists
     const supaSession = getSupabaseStoredSession();
     if (!supaSession || !supaSession.user) {
         sangaiaStorage.removeItem(ACTIVE_CITIZEN_KEY);
