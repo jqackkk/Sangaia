@@ -24,7 +24,7 @@
     .top-icons {
       display: none !important;
     }
-    /* Metro ID Card Styles (public.id_cards) */
+    /* Metro ID Card Styles */
     .card-scene {
       width: 100%;
       max-width: 580px;
@@ -337,14 +337,14 @@
         <div id="tabContentCard" class="tab-content active">
           <section class="card">
             <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:14px; flex-wrap:wrap; gap:8px;">
-              <h2 style="margin-bottom:0;" id="cardHeaderTitle">official citizen identity credential (public.id_cards)</h2>
+              <h2 style="margin-bottom:0;" id="cardHeaderTitle">official citizen identity credential</h2>
               <div style="display:flex; gap:6px; align-items:center;">
                 <span id="cardStatusBadge" class="ol-badge-tag ol-badge-success">active citizen</span>
                 <span id="cardUnder21Badge" class="ol-badge-tag ol-badge-primary">majority 21+</span>
               </div>
             </div>
 
-            <!-- The Sangaia Official Physical ID Card Graphic (public.id_cards) -->
+            <!-- The Sangaia Official Physical ID Card Graphic -->
             <div class="card-scene">
               <div class="id-card" id="cardElement">
                 <!-- PHOTO LEFT -->
@@ -385,20 +385,17 @@
               </div>
             </div>
 
-            <!-- Card Action Shortcuts: Print & Studio -->
+            <!-- Card Action Shortcuts -->
             <div class="card-actions-bar" style="display:flex; justify-content:center; gap:10px; margin-bottom:18px;">
               <button class="ol-btn ol-btn-secondary" onclick="window.print()" style="font-size:12px; padding:6px 14px;">
                 <span class="mif-printer"></span> print credential
               </button>
-              <a href="id_card_studio.html" class="ol-btn ol-btn-secondary" style="font-size:12px; padding:6px 14px; text-decoration:none; display:inline-flex; align-items:center; gap:4px;">
-                <span class="mif-tools"></span> open id card studio
-              </a>
             </div>
 
-            <!-- Civil Demographics & Emergency Medical Vitals (sangaia_citizens) -->
+            <!-- Civil Demographics & Emergency Medical Vitals -->
             <div style="margin-top:16px; border-top:1px solid #e2e8f0; padding-top:14px;">
               <div class="ol-card-title">
-                <span>Civil Registry &amp; Demographic Dockets (public.sangaia_citizens)</span>
+                <span>Civil Registry &amp; Demographic Dockets</span>
               </div>
               <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(210px, 1fr)); gap:12px; font-size:12.5px; margin-top:10px;">
                 <div class="stat-metric-box">
@@ -462,7 +459,7 @@
         <div id="tabContentBenefits" class="tab-content">
           <section class="card">
             <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px;">
-              <h2 style="margin-bottom:0;">statutory benefits &amp; entitlements (public.government_benefits)</h2>
+              <h2 style="margin-bottom:0;">statutory benefits &amp; entitlements</h2>
               <span class="ol-badge-tag ol-badge-success">active statutory entitlements</span>
             </div>
             <p style="color:var(--text-muted); font-size:12.5px; margin-bottom:16px;">
@@ -486,7 +483,7 @@
         <div id="tabContentEducation" class="tab-content">
           <section class="card">
             <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px;">
-              <h2 style="margin-bottom:0;">academic credentials &amp; courses (public.education_courses)</h2>
+              <h2 style="margin-bottom:0;">academic credentials &amp; courses</h2>
               <span class="ol-badge-tag ol-badge-primary" id="eduMetricsBadge">higher academic standing</span>
             </div>
             <p style="color:var(--text-muted); font-size:12.5px; margin-bottom:16px;">
@@ -512,7 +509,7 @@
         <div id="tabContentHealth" class="tab-content">
           <section class="card">
             <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px;">
-              <h2 style="margin-bottom:0;">clinical records &amp; digital health (public.health_records)</h2>
+              <h2 style="margin-bottom:0;">clinical records &amp; digital health</h2>
               <span class="ol-badge-tag ol-badge-success">tier 1 universal health coverage</span>
             </div>
             <p style="color:var(--text-muted); font-size:12.5px; margin-bottom:16px;">
@@ -537,7 +534,7 @@
         <div id="tabContentCommunity" class="tab-content">
           <section class="card">
             <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px;">
-              <h2 style="margin-bottom:0;">community service contributions (public.community_service_records)</h2>
+              <h2 style="margin-bottom:0;">community service contributions</h2>
               <span class="ol-badge-tag ol-badge-success" id="communityHoursBadge">verified civic hours</span>
             </div>
             <p style="color:var(--text-muted); font-size:12.5px; margin-bottom:16px;">
@@ -563,7 +560,7 @@
         <div id="tabContentJustice" class="tab-content">
           <section class="card">
             <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px;">
-              <h2 style="margin-bottom:0;">judicial dockets &amp; criminal records (public.jail_criminal_records)</h2>
+              <h2 style="margin-bottom:0;">judicial dockets &amp; criminal records</h2>
               <span class="ol-badge-tag ol-badge-success">clear conduct docket</span>
             </div>
 
@@ -598,7 +595,7 @@
         <div id="tabContentHistory" class="tab-content">
           <section class="card">
             <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px;">
-              <h2 style="margin-bottom:0;">statutory audit trail &amp; change log (public.citizen_history)</h2>
+              <h2 style="margin-bottom:0;">statutory audit trail &amp; change log</h2>
               <span class="ol-badge-tag ol-badge-neutral">immutable civil record</span>
             </div>
             <p style="color:var(--text-muted); font-size:12.5px; margin-bottom:16px;">
@@ -813,7 +810,7 @@
       const cit = activeProfile?.citizen || {};
       const card = activeProfile?.idCard || {};
 
-      // Update ID Card Graphic (public.id_cards)
+      // Update ID Card Graphic
       const name = (card.full_name || cit.full_name || user.user_metadata?.full_name || user.email?.split('@')[0] || 'john doe').toLowerCase();
       const citizenId = (card.id_number || cit.sangaia_id_number || 'SGN-09FDA816').toUpperCase();
       const dob = card.dob || cit.date_of_birth || '06/22/2010';
@@ -1039,7 +1036,7 @@
       btn.innerHTML = '<span class="mif-spinner mif-ani-pulse"></span> registering citizen...';
 
       try {
-        await window.SangaiaAuth.signUp({
+        const res = await window.SangaiaAuth.signUp({
           fullName: name,
           email,
           password: pass,
@@ -1048,9 +1045,14 @@
           address,
           phone
         });
-        succBox.innerText = 'Registration complete! Sovereign Citizen ID generated.';
-        succBox.style.display = 'block';
-        await initIdPortal();
+        if (res && res.requiresEmailConfirmation) {
+          succBox.innerText = res.message || 'Registration submitted! Please verify your email before signing in.';
+          succBox.style.display = 'block';
+        } else {
+          succBox.innerText = 'Registration complete! Sovereign Citizen ID generated.';
+          succBox.style.display = 'block';
+          await initIdPortal();
+        }
       } catch (err) {
         errBox.innerText = err.message || 'Registration failed. Please check inputs.';
         errBox.style.display = 'block';

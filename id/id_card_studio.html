@@ -297,28 +297,6 @@
   <div class="app-container">
     <!-- LEFT COLUMN: CONTROLS & CONFIG -->
     <div class="controls-col">
-      <!-- SUPABASE CONFIG -->
-      <section class="metro-panel">
-        <h2>Supabase Connection</h2>
-        <div class="form-grid">
-          <div class="full-width">
-            <label>Project URL</label>
-            <input type="text" id="sbUrl" value="https://qcgdjdnihwchjargpfcc.supabase.co">
-          </div>
-          <div class="full-width">
-            <label>Public Anon Key</label>
-            <input type="password" id="sbKey" value="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InFjZ2RqZG5paHdjaGphcmdwZmNjIiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTE0NzkxNTIsImV4cCI6MjEwNzA1NTE1Mn0.AfstClw4oXLj7stYL1bfyKSCMFBHZQBVBQACTT4dNLM">
-          </div>
-          <div>
-            <label>Table Name</label>
-            <input type="text" id="sbTable" value="id_cards">
-          </div>
-          <div style="display:flex; align-items:flex-end;">
-            <button class="metro-btn" style="width:100%" id="btnSaveConfig">Save Credentials</button>
-          </div>
-        </div>
-      </section>
-
       <!-- CARD DATA FIELDS -->
       <section class="metro-panel">
         <h2>Card Attributes</h2>
@@ -424,12 +402,11 @@
   </div>
 
   <script>
+    const SUPABASE_URL = 'https://qcgdjdnihwchjargpfcc.supabase.co';
+    const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InFjZ2RqZG5paHdjaGphcmdwZmNjIiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTE0NzkxNTIsImV4cCI6MjEwNzA1NTE1Mn0.AfstClw4oXLj7stYL1bfyKSCMFBHZQBVBQACTT4dNLM';
+
     // State & DOM cache
     const els = {
-      sbUrl: document.getElementById('sbUrl'),
-      sbKey: document.getElementById('sbKey'),
-      sbTable: document.getElementById('sbTable'),
-      btnSaveConfig: document.getElementById('btnSaveConfig'),
       btnPushSupabase: document.getElementById('btnPushSupabase'),
       statusToast: document.getElementById('statusToast'),
 
@@ -461,25 +438,12 @@
       photoFallback: document.getElementById('photoFallback')
     };
 
-    // Load persisted Supabase credentials
-    els.sbUrl.value = localStorage.getItem('metro_sb_url') || 'https://qcgdjdnihwchjargpfcc.supabase.co';
-    els.sbKey.value = localStorage.getItem('metro_sb_key') || 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InFjZ2RqZG5paHdjaGphcmdwZmNjIiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTE0NzkxNTIsImV4cCI6MjEwNzA1NTE1Mn0.AfstClw4oXLj7stYL1bfyKSCMFBHZQBVBQACTT4dNLM';
-    els.sbTable.value = localStorage.getItem('metro_sb_table') || 'id_cards';
-
     function showToast(msg, isSuccess = true) {
       els.statusToast.textContent = msg;
       els.statusToast.className = isSuccess ? 'toast-success' : 'toast-error';
       els.statusToast.style.display = 'block';
       setTimeout(() => { els.statusToast.style.display = 'none'; }, 4500);
     }
-
-    // Save Supabase credentials to localStorage
-    els.btnSaveConfig.addEventListener('click', () => {
-      localStorage.setItem('metro_sb_url', els.sbUrl.value.trim());
-      localStorage.setItem('metro_sb_key', els.sbKey.value.trim());
-      localStorage.setItem('metro_sb_table', els.sbTable.value.trim());
-      showToast('Supabase settings saved to local storage.');
-    });
 
     // Realtime preview binding
     function syncPreview() {
@@ -513,17 +477,8 @@
 
     // Supabase Insert Operation
     els.btnPushSupabase.addEventListener('click', async () => {
-      const url = els.sbUrl.value.trim();
-      const key = els.sbKey.value.trim();
-      const tableName = els.sbTable.value.trim() || 'id_cards';
-
-      if (!url || !key) {
-        showToast('Please provide your Supabase URL and Key above.', false);
-        return;
-      }
-
       try {
-        const supabase = window.supabase.createClient(url, key);
+        const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
 
         const payload = {
           full_name: els.inName.value.trim(),
