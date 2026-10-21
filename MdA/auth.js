@@ -84,7 +84,66 @@ const sangaiaStorage = {
 window.sangaiaStorage = sangaiaStorage;
 
 // -----------------------------------------------------------------------------
-// 2. Client Initialization & Supabase Client Factory
+// 2. Citizen Registry Helper Engine (Tracks registered users across portals)
+// -----------------------------------------------------------------------------
+function getLocalCitizenRegistry() {
+    let registry = {};
+    try {
+        const raw = sangaiaStorage.getItem(CITIZEN_REGISTRY_KEY);
+        if (raw) registry = JSON.parse(raw);
+    } catch (e) {}
+
+    // Seed default sample verified citizen if missing
+    if (!registry['john.doe@sangaia.org']) {
+        registry['john.doe@sangaia.org'] = {
+            id: 'sg_usr_john_doe',
+            email: 'john.doe@sangaia.org',
+            password: 'password123',
+            full_name: 'john doe',
+            sangaia_id_number: 'SNG-7B4F92A1',
+            date_of_birth: '1995-04-12',
+            issue_date: '2024-01-01',
+            account_status: 'Active',
+            phone_number: '+1 (555) 019-2834',
+            physical_address: '402 Constitution Way, Sector 4, Capital Shesk',
+            blood_type: 'O+',
+            allergies: 'No Known Allergies (NKDA)',
+            primary_doctor: 'Dr. Elena Vance, Shesk Sovereign Medical Center',
+            education_level: 'Higher Polytechnic (B.Sc. Computational Systems)',
+            territory: 'New Jasper (Capital Shesk)',
+            province: 'New Jasper (Capital Shesk)',
+            sex: 'M',
+            height: "5'11\"",
+            hair: 'Brown',
+            languages: 'English (Sangaian), High Sangaian',
+            under21_notice: false,
+            photo_url: 'https://sangaia.org/images/official.png'
+        };
+    }
+    return registry;
+}
+
+function saveLocalCitizen(citizen) {
+    if (!citizen || !citizen.email) return;
+    try {
+        const registry = getLocalCitizenRegistry();
+        registry[citizen.email.toLowerCase().trim()] = citizen;
+        sangaiaStorage.setItem(CITIZEN_REGISTRY_KEY, JSON.stringify(registry));
+    } catch (e) {}
+}
+
+function findLocalCitizen(email) {
+    if (!email) return null;
+    try {
+        const registry = getLocalCitizenRegistry();
+        return registry[email.toLowerCase().trim()] || null;
+    } catch (e) {
+        return null;
+    }
+}
+
+// -----------------------------------------------------------------------------
+// 3. Client Initialization & Supabase Client Factory
 // -----------------------------------------------------------------------------
 let clientInstance = null;
 
@@ -139,7 +198,7 @@ function ensureSupabaseLoaded(callback) {
 }
 
 // -----------------------------------------------------------------------------
-// 3. Navigation & Path Helpers
+// 4. Navigation & Path Helpers
 // -----------------------------------------------------------------------------
 function getRepoRoot() {
     const path = window.location.pathname;
@@ -167,7 +226,7 @@ window.getIdPageUrl = getIdPageUrl;
 window.getRepoRoot = getRepoRoot;
 
 // -----------------------------------------------------------------------------
-// 4. Stored Session & Citizen Helpers
+// 5. Stored Session & Token Helpers
 // -----------------------------------------------------------------------------
 function getSupabaseStoredSession() {
     try {
@@ -217,7 +276,7 @@ const SAMPLE_CITIZEN = {
 };
 
 // -----------------------------------------------------------------------------
-// 5. SangaiaAuth Unified Interface
+// 6. SangaiaAuth Unified Interface
 // -----------------------------------------------------------------------------
 window.SangaiaAuth = {
     client: () => initClient(),
@@ -296,7 +355,7 @@ window.SangaiaAuth = {
             const raw = sangaiaStorage.getItem(ACTIVE_CITIZEN_KEY);
             if (raw) {
                 const cit = JSON.parse(raw);
-                if (cit && cit.full_name) return cit;
+                if (cit && cit.full_name && (!userId || cit.id === userId)) return cit;
             }
         } catch (e) {}
 
@@ -318,7 +377,7 @@ window.SangaiaAuth = {
         if (client && userId) {
             try {
                 const [cardRes, benRes, eduRes, hltRes, comRes, crmRes, hisRes] = await Promise.all([
-                    client.from('id_cards').select('*').eq('citizen_id', userId).maybeSingle(),
+                    client.from('id_cards').select('*').eq('id_number', citizen?.sangaia_id_number || '').maybeSingle(),
                     client.from('government_benefits').select('*').eq('citizen_id', userId),
                     client.from('education_courses').select('*').eq('citizen_id', userId),
                     client.from('health_records').select('*').eq('citizen_id', userId),
@@ -345,11 +404,10 @@ window.SangaiaAuth = {
 
         if (!idCard) {
             idCard = {
-                citizen_id: citizen.id,
+                id_number: citizen.sangaia_id_number || SAMPLE_CITIZEN.sangaia_id_number,
                 full_name: citizen.full_name,
                 dob: citizen.date_of_birth || SAMPLE_CITIZEN.date_of_birth,
                 sex: citizen.sex || SAMPLE_CITIZEN.sex,
-                id_number: citizen.sangaia_id_number || SAMPLE_CITIZEN.sangaia_id_number,
                 status: citizen.account_status || 'Active',
                 hair: citizen.hair || SAMPLE_CITIZEN.hair,
                 height: citizen.height || SAMPLE_CITIZEN.height,
@@ -415,86 +473,112 @@ window.SangaiaAuth = {
         };
     },
 
+    // Strict Sign-In Verification matching exact requirements:
+    // - "user not found" if there isn't a user with that email
+    // - "incorrect password" if the password is wrong
+    // - "This info doesn't exist" if both are wrong
     async signIn(email, password) {
-        if (!email || !email.trim()) throw new Error("Citizen email is required.");
-        if (!password) throw new Error("Password is required.");
+        const cleanEmail = (email || '').trim().toLowerCase();
+        const cleanPassword = (password || '').trim();
 
-        const cleanEmail = email.trim().toLowerCase();
+        if (!cleanEmail && !cleanPassword) {
+            throw new Error("This info doesn't exist");
+        }
+        if (!cleanEmail) {
+            throw new Error("user not found");
+        }
+        if (!cleanPassword) {
+            throw new Error("incorrect password");
+        }
+
         const client = initClient();
+        const registry = getLocalCitizenRegistry();
         let remoteSession = null;
         let remoteUser = null;
+        let supabaseSuccess = false;
 
+        // Try Supabase authentication if client is available
         if (client && client.auth) {
             try {
-                const res = await client.auth.signInWithPassword({ email: cleanEmail, password });
+                const res = await client.auth.signInWithPassword({ email: cleanEmail, password: cleanPassword });
                 if (res.data && res.data.session) {
                     remoteSession = res.data.session;
                     remoteUser = res.data.user;
-                } else if (res.error) {
-                    const msg = (res.error.message || '').toLowerCase();
-                    if (!msg.includes('email not confirmed')) {
-                        throw new Error(res.error.message);
-                    }
+                    supabaseSuccess = true;
                 }
             } catch (err) {
-                const msg = (err.message || '').toLowerCase();
-                if (!msg.includes('email not confirmed') && !msg.includes('invalid login credentials')) {
-                    throw err;
-                }
+                // Handled in three-way verification below
             }
         }
 
-        // Fetch citizen record or create default
-        let citizen = null;
-        const userId = remoteUser ? remoteUser.id : ('sg_usr_' + cleanEmail.replace(/[^a-z0-9]/g, '_'));
-        const cleanName = remoteUser?.user_metadata?.full_name || cleanEmail.split('@')[0].replace(/[._-]/g, ' ');
-
-        citizen = {
-            id: userId,
-            sangaia_id_number: 'SNG-' + (userId.length > 8 ? userId.replace(/-/g, '').substring(0, 8).toUpperCase() : '7B4F92A1'),
-            full_name: cleanName,
-            date_of_birth: '1995-04-12',
-            issue_date: new Date().toISOString().split('T')[0],
-            account_status: 'Active',
-            phone_number: '+1 (555) 019-2834',
-            physical_address: '402 Constitution Way, Sector 4, Capital Shesk',
-            blood_type: 'O+',
-            allergies: 'No Known Allergies (NKDA)',
-            primary_doctor: 'Dr. Elena Vance, Shesk Sovereign Medical Center',
-            education_level: 'Higher Polytechnic',
-            territory: 'New Jasper (Capital Shesk)',
-            province: 'New Jasper (Capital Shesk)',
-            sex: 'M',
-            height: "5'11\"",
-            hair: 'Brown',
-            languages: 'English (Sangaian)',
-            under21_notice: false,
-            photo_url: 'https://sangaia.org/images/official.png',
-            email: cleanEmail
-        };
-
-        sangaiaStorage.setItem(ACTIVE_CITIZEN_KEY, JSON.stringify(citizen));
-        const session = remoteSession || {
-            access_token: 'sg_bearer_' + Date.now(),
-            user: { id: citizen.id, email: cleanEmail, user_metadata: { full_name: citizen.full_name } }
-        };
-        sangaiaStorage.setItem(ACTIVE_SESSION_KEY, JSON.stringify(session));
-
-        // Try upserting to Supabase
-        if (client && remoteUser) {
-            try {
-                await client.from('sangaia_citizens').upsert({
+        // If Supabase authentication succeeded
+        if (supabaseSuccess && remoteSession && remoteUser) {
+            let citizen = await this.getCitizenRecord(remoteUser.id);
+            if (!citizen) {
+                const name = remoteUser.user_metadata?.full_name || cleanEmail.split('@')[0].replace(/[._-]/g, ' ');
+                citizen = {
                     id: remoteUser.id,
-                    full_name: citizen.full_name,
-                    sangaia_id_number: citizen.sangaia_id_number,
-                    account_status: 'Active'
-                });
-            } catch (e) {}
+                    email: cleanEmail,
+                    password: cleanPassword,
+                    full_name: name,
+                    sangaia_id_number: 'SNG-' + remoteUser.id.replace(/-/g, '').substring(0, 8).toUpperCase(),
+                    date_of_birth: '1995-04-12',
+                    issue_date: new Date().toISOString().split('T')[0],
+                    account_status: 'Active',
+                    phone_number: '+1 (555) 019-2834',
+                    physical_address: '402 Constitution Way, Sector 4, Capital Shesk',
+                    blood_type: 'O+',
+                    allergies: 'No Known Allergies (NKDA)',
+                    primary_doctor: 'Dr. Elena Vance, Shesk Sovereign Medical Center',
+                    education_level: 'Higher Polytechnic',
+                    province: 'New Jasper (Capital Shesk)',
+                    territory: 'New Jasper (Capital Shesk)'
+                };
+            }
+            citizen.password = cleanPassword;
+            saveLocalCitizen(citizen);
+            sangaiaStorage.setItem(ACTIVE_CITIZEN_KEY, JSON.stringify(citizen));
+            sangaiaStorage.setItem(ACTIVE_SESSION_KEY, JSON.stringify(remoteSession));
+            await this.refreshUI();
+            this.notifyAuthChange(remoteSession, remoteUser);
+            return { session: remoteSession, user: remoteUser, citizen };
         }
 
-        await this.refreshUI();
-        this.notifyAuthChange(session, session.user);
-        return { session, user: session.user, citizen };
+        // Three-way verification against registered citizen registry:
+        const userWithEmail = registry[cleanEmail];
+        const anyUserWithPassword = Object.values(registry).some(u => u.password && u.password === cleanPassword);
+
+        // Case 1: Email exists in system
+        if (userWithEmail) {
+            if (userWithEmail.password && userWithEmail.password === cleanPassword) {
+                const session = {
+                    access_token: 'sg_live_' + Date.now().toString(36),
+                    user: {
+                        id: userWithEmail.id,
+                        email: cleanEmail,
+                        user_metadata: {
+                            full_name: userWithEmail.full_name,
+                            territory: userWithEmail.territory || userWithEmail.province,
+                            sangaia_id_number: userWithEmail.sangaia_id_number
+                        }
+                    }
+                };
+                sangaiaStorage.setItem(ACTIVE_CITIZEN_KEY, JSON.stringify(userWithEmail));
+                sangaiaStorage.setItem(ACTIVE_SESSION_KEY, JSON.stringify(session));
+                await this.refreshUI();
+                this.notifyAuthChange(session, session.user);
+                return { session, user: session.user, citizen: userWithEmail };
+            } else {
+                throw new Error("incorrect password");
+            }
+        }
+
+        // Case 2 & 3: Email does NOT exist in system
+        if (anyUserWithPassword) {
+            throw new Error("user not found");
+        } else {
+            throw new Error("This info doesn't exist");
+        }
     },
 
     async signUp(params) {
@@ -552,9 +636,11 @@ window.SangaiaAuth = {
             languages: 'English (Sangaian)',
             under21_notice: false,
             photo_url: 'https://sangaia.org/images/official.png',
-            email: cleanEmail
+            email: cleanEmail,
+            password: password
         };
 
+        saveLocalCitizen(citizenRecord);
         sangaiaStorage.setItem(ACTIVE_CITIZEN_KEY, JSON.stringify(citizenRecord));
         const session = remoteSession || {
             access_token: 'sg_bearer_' + Date.now(),
@@ -562,30 +648,17 @@ window.SangaiaAuth = {
         };
         sangaiaStorage.setItem(ACTIVE_SESSION_KEY, JSON.stringify(session));
 
-        // Insert into Supabase tables if remote user was created
-        if (client && remoteUserId) {
+        // Insert into Supabase id_cards table if client available
+        if (client) {
             try {
-                await client.from('sangaia_citizens').upsert({
-                    id: remoteUserId,
+                await client.from('id_cards').insert({
                     full_name: fullName,
-                    sangaia_id_number: citizenId,
-                    date_of_birth: dob || null,
-                    account_status: 'Active',
-                    physical_address: address || null,
-                    phone_number: phone || null
-                });
-                await client.from('id_cards').upsert({
-                    citizen_id: remoteUserId,
-                    full_name: fullName,
-                    dob: dob || '1995-04-12',
-                    sex: 'M',
                     id_number: citizenId,
-                    status: 'Active',
-                    province: province || 'New Jasper (Capital Shesk)'
+                    dob: dob || null,
+                    province: province || 'New Jasper (Capital Shesk)',
+                    status: 'ACTIVE'
                 });
-            } catch (e) {
-                console.warn("Error inserting Supabase dockets:", e);
-            }
+            } catch (e) {}
         }
 
         await this.refreshUI();
@@ -623,7 +696,7 @@ window.SangaiaAuth = {
 };
 
 // -----------------------------------------------------------------------------
-// 6. Header Profile Widget DOM Updater
+// 7. Header Profile Widget DOM Updater
 // -----------------------------------------------------------------------------
 function renderAuthenticatedProfile(profileMenu, citizen, user) {
     if (!profileMenu) return;
@@ -660,7 +733,7 @@ async function updateAuthWidgets() {
     const profileMenu = document.getElementById('userProfileMenu');
     if (!profileMenu) return;
 
-    // 1. Fast check if any session or citizen exists
+    // Fast check if any session or citizen exists
     let supaSession = getSupabaseStoredSession();
     let citizen = null;
     try {
@@ -677,7 +750,7 @@ async function updateAuthWidgets() {
         renderUnauthenticatedProfile(profileMenu);
     }
 
-    // 2. Asynchronous verification with Supabase
+    // Asynchronous verification with Supabase
     try {
         const client = initClient();
         if (client && client.auth) {
@@ -696,7 +769,7 @@ async function updateAuthWidgets() {
 }
 
 // -----------------------------------------------------------------------------
-// 7. Lifecycle Initialization
+// 8. Lifecycle Initialization
 // -----------------------------------------------------------------------------
 function initAuthLifecycle() {
     updateAuthWidgets();
